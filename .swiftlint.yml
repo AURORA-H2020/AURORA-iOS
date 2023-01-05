@@ -1,0 +1,8 @@
+opt_in_rules:
+  - empty_count
+  - sorted_imports
+
+disabled_rules:
+  - trailing_whitespace
+  - type_name
+  - identifier_name
