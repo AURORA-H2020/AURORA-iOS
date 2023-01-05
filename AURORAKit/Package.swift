@@ -25,7 +25,11 @@ let package = Package(
         .target(
             name: "App",
             dependencies: [
-                "FirebaseKit"
+                "FirebaseKit",
+                "AuthenticationModule",
+                "ConsumptionModule",
+                "SettingsModule",
+                "UserModule"
             ]
         ),
         .target(
@@ -47,8 +51,38 @@ let package = Package(
             path: "Sources/Kits/FirebaseKit"
         ),
         .target(
+            name: "ModuleKit",
+            path: "Sources/Kits/ModuleKit"
+        ),
+        .target(
             name: "AuthenticationModule",
+            dependencies: [
+                "FirebaseKit",
+                "ModuleKit"
+            ],
             path: "Sources/Modules/AuthenticationModule"
+        ),
+        .target(
+            name: "ConsumptionModule",
+            dependencies: [
+                "FirebaseKit"
+            ],
+            path: "Sources/Modules/ConsumptionModule"
+        ),
+        .target(
+            name: "SettingsModule",
+            dependencies: [
+                "FirebaseKit"
+            ],
+            path: "Sources/Modules/SettingsModule"
+        ),
+        .target(
+            name: "UserModule",
+            dependencies: [
+                "FirebaseKit",
+                "ModuleKit"
+            ],
+            path: "Sources/Modules/UserModule"
         )
     ]
 )

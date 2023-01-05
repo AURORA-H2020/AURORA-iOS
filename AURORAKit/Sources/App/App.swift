@@ -25,7 +25,7 @@ extension App: SwiftUI.App {
     /// The content and behavior of the app.
     public var body: some Scene {
         WindowGroup {
-            EmptyView()
+            ContentView()
                 .environmentObject(self.firebase)
         }
     }

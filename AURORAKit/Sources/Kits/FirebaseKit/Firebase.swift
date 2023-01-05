@@ -12,7 +12,12 @@ public final class Firebase: ObservableObject {
     // MARK: Static-Properties
     
     /// The default Firebase instance
-    public static let `default` = Firebase()
+    public static let `default`: Firebase = {
+        // Configure FirebaseApp
+        FirebaseApp.configure()
+        // Return Firebase instance
+        return .init()
+    }()
     
     // MARK: Properties
     
@@ -24,7 +29,7 @@ public final class Firebase: ObservableObject {
     
     /// The User, if available
     @Published
-    public var user: Result<User, Error>?
+    public var user: Result<User?, Error>?
     
     /// The auth state did change subscription
     private var authStateDidChangeSubscription: FirebaseAuth.AuthStateDidChangeListenerHandle?
@@ -36,8 +41,6 @@ public final class Firebase: ObservableObject {
     
     /// Creates a new instance of `Firebase`
     private init() {
-        // Configure Firebase
-        FirebaseApp.configure()
         // Perform Setup
         self.setup()
     }
@@ -87,7 +90,9 @@ private extension Firebase {
             .collection(FirestoreCollectionName.users.rawValue)
             .document(user.uid)
             .addSnapshotListener { [weak self] snapshot, error in
-                if let snapshot = snapshot {
+                if snapshot?.exists == false {
+                    self?.user = .success(nil)
+                } else if let snapshot = snapshot {
                     self?.user = .init {
                         try snapshot.data(as: User.self)
                     }
@@ -107,6 +112,11 @@ public extension Firebase {
     enum AuthenticationMethod {
         /// Password
         case password(email: String, password: String)
+    }
+    
+    /// Bool value if user is authenticated
+    var isAuthenticated: Bool {
+        self.auth.currentUser != nil
     }
     
     /// Register a new user by providing a E-Mail address and a password
