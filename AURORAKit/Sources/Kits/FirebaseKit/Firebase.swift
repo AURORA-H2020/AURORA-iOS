@@ -103,55 +103,52 @@ private extension Firebase {
 
 public extension Firebase {
     
-    enum Authentication {
+    /// A Firebase Authentication Method
+    enum AuthenticationMethod {
+        /// Password
         case password(email: String, password: String)
     }
     
+    /// Register a new user by providing a E-Mail address and a password
+    /// - Parameters:
+    ///   - email: The E-Mail address
+    ///   - password: The password
     @discardableResult
     func register(
-        using authentication: Authentication
-    ) async throws -> FirebaseAuth.User {
-        switch authentication {
-        case .password(let email, let password):
-            return try await withCheckedThrowingContinuation { continuation in
-                self.auth.createUser(withEmail: email, password: password) { result, error in
-                    if let user = result?.user {
-                        continuation.resume(returning: user)
-                    } else {
-                        continuation.resume(throwing: URLError(.appTransportSecurityRequiresSecureConnection))
-                    }
-                }
-            }
-        }
+        email: String,
+        password: String
+    ) async throws -> FirebaseAuth.AuthDataResult {
+        try await self.auth
+            .createUser(
+                withEmail: email,
+                password: password
+            )
     }
     
+    /// Login user using a given AuthenticationMethod
+    /// - Parameter authenticationMode: The AuthenticationMode used to login the user.
     @discardableResult
     func login(
-        using authentication: Authentication
-    ) async throws -> FirebaseAuth.User {
-        switch authentication {
+        using authenticationMode: AuthenticationMethod
+    ) async throws -> FirebaseAuth.AuthDataResult {
+        switch authenticationMode {
         case .password(let email, let password):
-            return try await withCheckedThrowingContinuation { continuation in
-                self.auth.signIn(withEmail: email, password: password) { result, error in
-                    if let user = result?.user {
-                        continuation.resume(returning: user)
-                    } else {
-                        continuation.resume(throwing: URLError(.appTransportSecurityRequiresSecureConnection))
-                    }
-                }
-            }
+            return try await self.auth
+                .signIn(
+                    withEmail: email,
+                    password: password
+                )
         }
     }
     
+    /// Logout the currently authenticated user.
     func logout() throws {
         try self.auth.signOut()
     }
     
-    func deleteUser() {
-        guard let firebaseUser = self.auth.currentUser else {
-            return
-        }
-        firebaseUser.delete()
+    /// Delete the currently authenticated user account.
+    func deleteUser() async throws {
+        try await self.auth.currentUser?.delete()
         self.user = nil
         self.userDocumentSnapshotSubscription?.remove()
         self.userDocumentSnapshotSubscription = nil
