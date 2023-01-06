@@ -15,6 +15,7 @@
 
 /* Begin PBXFileReference section */
 		3D384D852948F6C40018249C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D83A231296849F20066B039 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		3DD34C562948F280002064D8 /* AURORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AURORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD34C592948F280002064D8 /* AURORA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AURORA.swift; sourceTree = "<group>"; };
 		3DD34C5D2948F280002064D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 			children = (
 				3DD34C5D2948F280002064D8 /* Assets.xcassets */,
 				3D384D852948F6C40018249C /* GoogleService-Info.plist */,
+				3D83A231296849F20066B039 /* Entitlements.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -275,6 +277,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AURORA/Resources/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -304,6 +307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AURORA/Resources/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";

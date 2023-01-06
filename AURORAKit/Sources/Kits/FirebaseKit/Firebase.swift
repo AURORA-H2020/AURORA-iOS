@@ -1,4 +1,5 @@
 @_exported import Firebase
+import FirebaseAppCheck
 @_exported import FirebaseAuth
 @_exported import FirebaseFirestore
 @_exported import FirebaseFirestoreSwift
@@ -13,6 +14,12 @@ public final class Firebase: ObservableObject {
     
     /// The default Firebase instance
     public static let `default`: Firebase = {
+        // Set AppCheckProviderFactory
+        FirebaseAppCheck
+            .AppCheck
+            .setAppCheckProviderFactory(
+                AppCheckProviderFactory()
+            )
         // Configure FirebaseApp
         FirebaseApp.configure()
         // Return Firebase instance
@@ -102,4 +109,31 @@ private extension Firebase {
             }
     }
     
+}
+
+// MARK: - AppCheckProviderFactory
+
+private extension Firebase {
+
+    /// The AppCheckProviderFactory
+    final class AppCheckProviderFactory: NSObject, FirebaseAppCheck.AppCheckProviderFactory {
+        
+        /// Creates a new instance of `AppCheckProvider`
+        /// - Parameter app: The FirebaseApp
+        func createProvider(
+            with app: FirebaseApp
+        ) -> AppCheckProvider? {
+            #if targetEnvironment(simulator) || DEBUG
+            return FirebaseAppCheck.AppCheckDebugProvider(app: app)
+            #else
+            if #available(iOS 14.0, *) {
+                return FirebaseAppCheck.AppAttestProvider(app: app)
+            } else {
+                return FirebaseAppCheck.DeviceCheckProvider(app: app)
+            }
+            #endif
+        }
+        
+    }
+
 }
