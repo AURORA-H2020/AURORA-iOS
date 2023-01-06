@@ -28,6 +28,16 @@ public struct UserContentView {
     @State
     private var gender: User.Gender = .other
     
+    /// The site reference.
+    @State
+    private var site: Reference<Site>?
+    
+    /// The Sites
+    @FirebaseKit.FirestoreQuery(
+        collectionPath: Site.collectionName
+    )
+    private var sites: [Site]
+    
     /// The Firebase instance
     @EnvironmentObject
     private var firebase: Firebase
@@ -63,17 +73,21 @@ private extension UserContentView {
     
     /// Bool value if can submit
     var canSubmit: Bool {
-        !self.firstName.isEmpty && !self.lastName.isEmpty
+        !self.firstName.isEmpty && !self.lastName.isEmpty && self.site != nil
     }
     
     /// Submit
     func submit() {
+        guard let site = self.site else {
+            return
+        }
         try? self.firebase.update(
-            user: .init(
+            User(
                 firstName: self.firstName,
                 lastName: self.lastName,
                 yearOfBirth: self.yearOfBirth,
-                gender: self.gender
+                gender: self.gender,
+                site: site
             )
         )
     }
@@ -131,6 +145,24 @@ extension UserContentView: View {
                             }()
                         )
                         .tag(gender)
+                    }
+                }
+                Picker(
+                    "Sites",
+                    selection: self.$site
+                ) {
+                    ForEach(self.sites) { site in
+                        if let reference = Reference(site) {
+                            Text(
+                                verbatim: [
+                                    site.city,
+                                    site.localizedCountryName()
+                                ]
+                                .compactMap { $0 }
+                                .joined(separator: ", ")
+                            )
+                            .tag(reference as Reference<Site>?)
+                        }
                     }
                 }
                 Section(

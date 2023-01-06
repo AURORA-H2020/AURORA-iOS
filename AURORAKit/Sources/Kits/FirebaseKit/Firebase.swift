@@ -1,7 +1,7 @@
-import Firebase
-import FirebaseAuth
-import FirebaseFirestore
-import FirebaseFirestoreSwift
+@_exported import Firebase
+@_exported import FirebaseAuth
+@_exported import FirebaseFirestore
+@_exported import FirebaseFirestoreSwift
 import Foundation
 
 // MARK: - Firebase
@@ -35,7 +35,7 @@ public final class Firebase: ObservableObject {
     private var authStateDidChangeSubscription: FirebaseAuth.AuthStateDidChangeListenerHandle?
     
     /// The user document snapshot subscription
-    private var userDocumentSnapshotSubscription: ListenerRegistration?
+    var userDocumentSnapshotSubscription: ListenerRegistration?
     
     // MARK: Initializer
     
@@ -86,8 +86,8 @@ private extension Firebase {
             return
         }
         // Subscribe to user document snapshots
-        self.userDocumentSnapshotSubscription = self.firestore
-            .collection(FirestoreCollectionName.users.rawValue)
+        self.userDocumentSnapshotSubscription = User
+            .collectionReference(in: self.firestore)
             .document(user.uid)
             .addSnapshotListener { [weak self] snapshot, error in
                 if snapshot?.exists == false {
@@ -100,135 +100,6 @@ private extension Firebase {
                     self?.user = error.flatMap { .failure($0) }
                 }
             }
-    }
-    
-}
-
-// MARK: - Authentication
-
-public extension Firebase {
-    
-    /// A Firebase Authentication Method
-    enum AuthenticationMethod {
-        /// Password
-        case password(email: String, password: String)
-    }
-    
-    /// Bool value if user is authenticated
-    var isAuthenticated: Bool {
-        self.auth.currentUser != nil
-    }
-    
-    /// Register a new user by providing a E-Mail address and a password
-    /// - Parameters:
-    ///   - email: The E-Mail address
-    ///   - password: The password
-    @discardableResult
-    func register(
-        email: String,
-        password: String
-    ) async throws -> FirebaseAuth.AuthDataResult {
-        try await self.auth
-            .createUser(
-                withEmail: email,
-                password: password
-            )
-    }
-    
-    /// Login user using a given AuthenticationMethod
-    /// - Parameter authenticationMode: The AuthenticationMode used to login the user.
-    @discardableResult
-    func login(
-        using authenticationMode: AuthenticationMethod
-    ) async throws -> FirebaseAuth.AuthDataResult {
-        switch authenticationMode {
-        case .password(let email, let password):
-            return try await self.auth
-                .signIn(
-                    withEmail: email,
-                    password: password
-                )
-        }
-    }
-    
-    /// Logout the currently authenticated user.
-    func logout() throws {
-        try self.auth.signOut()
-    }
-    
-    /// Delete the currently authenticated user account.
-    func deleteUser() async throws {
-        try await self.auth.currentUser?.delete()
-        self.user = nil
-        self.userDocumentSnapshotSubscription?.remove()
-        self.userDocumentSnapshotSubscription = nil
-    }
-    
-}
-
-// MARK: - Firestore
-
-public extension Firebase {
-    
-    enum FirestoreCollectionName: String, Codable, Hashable, CaseIterable {
-        case users
-        case consumptions
-    }
-    
-    func update(
-        user: User
-    ) throws {
-        guard let firebaseUser = self.auth.currentUser else {
-            return
-        }
-        try self.firestore
-            .collection(FirestoreCollectionName.users.rawValue)
-            .document(firebaseUser.uid)
-            .setData(from: user)
-        self.user = .success(user)
-    }
-    
-    func add(
-        consumption: Consumption
-    ) throws {
-        guard let firebaseUser = self.auth.currentUser else {
-            return
-        }
-        _ = try self.firestore
-            .collection(FirestoreCollectionName.users.rawValue)
-            .document(firebaseUser.uid)
-            .collection(FirestoreCollectionName.consumptions.rawValue)
-            .addDocument(from: consumption)
-    }
-    
-    func update(
-        consumption: Consumption
-    ) throws {
-        guard let consumptionId = consumption.id,
-              let firebaseUser = self.auth.currentUser else {
-            return
-        }
-        try self.firestore
-            .collection(FirestoreCollectionName.users.rawValue)
-            .document(firebaseUser.uid)
-            .collection(FirestoreCollectionName.consumptions.rawValue)
-            .document(consumptionId)
-            .setData(from: consumptionId)
-    }
-    
-    func remove(
-        consumption: Consumption
-    ) {
-        guard let consumptionId = consumption.id,
-              let firebaseUser = self.auth.currentUser else {
-            return
-        }
-        self.firestore
-            .collection(FirestoreCollectionName.users.rawValue)
-            .document(firebaseUser.uid)
-            .collection(FirestoreCollectionName.consumptions.rawValue)
-            .document(consumptionId)
-            .delete()
     }
     
 }

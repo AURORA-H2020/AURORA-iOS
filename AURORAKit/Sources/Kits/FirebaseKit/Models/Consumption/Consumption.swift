@@ -1,10 +1,12 @@
+import FirebaseAuth
+import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
 // MARK: - Consumption
 
 /// A Consumption
-public struct Consumption: Codable, Hashable, Identifiable {
+public struct Consumption {
     
     // MARK: Properties
 
@@ -45,6 +47,31 @@ public struct Consumption: Codable, Hashable, Identifiable {
         self.type = type
         self.value = value
         self.carbonEmissions = carbonEmissions
+    }
+    
+}
+
+// MARK: - Consumption+FirestoreEntity
+
+extension Consumption: FirestoreEntity {
+    
+    /// The Firestore collection name.
+    public static var collectionName: String {
+        "consumptions"
+    }
+    
+    /// The Firestore CollectionReference.
+    /// - Parameters:
+    ///   - firestore: The Firestore instance.
+    ///   - parameter: The Firebase User.
+    public static func collectionReference(
+        in firestore: FirebaseFirestore.Firestore,
+        _ user: FirebaseAuth.User
+    ) -> FirebaseFirestore.CollectionReference {
+        firestore
+            .collection(User.collectionName)
+            .document(user.uid)
+            .collection(self.collectionName)
     }
     
 }

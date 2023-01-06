@@ -22,51 +22,87 @@ extension ContentView: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        if self.firebase.isAuthenticated {
-            switch self.firebase.user {
-            case .success(let user):
+        Group {
+            switch self.firebase.authenticationState {
+            case .authenticated:
                 Group {
-                    if user == nil {
-                        UserModule
-                            .UserContentView(
-                                mode: .create
-                            )
-                    } else {
-                        TabView {
-                            ConsumptionModule
-                                .ConsumptionContentView()
-                                .tabItem {
-                                    Label(
-                                        "Home",
-                                        systemImage: "chart.pie"
+                    switch self.firebase.user {
+                    case .success(let user):
+                        Group {
+                            if user == nil {
+                                UserModule
+                                    .UserContentView(
+                                        mode: .create
                                     )
+                            } else {
+                                TabView {
+                                    ConsumptionModule
+                                        .ConsumptionContentView()
+                                        .tabItem {
+                                            Label(
+                                                "Home",
+                                                systemImage: "chart.pie"
+                                            )
+                                        }
+                                    SettingsModule
+                                        .SettingsContentView()
+                                        .tabItem {
+                                            Label(
+                                                "Settings",
+                                                systemImage: "gear"
+                                            )
+                                        }
                                 }
-                            SettingsModule
-                                .SettingsContentView()
-                                .tabItem {
-                                    Label(
-                                        "Settings",
-                                        systemImage: "gear"
-                                    )
-                                }
+                            }
                         }
+                        .environment(
+                            \.user,
+                             user
+                        )
+                    case .failure:
+                        Text(
+                            verbatim: "An error occurred while loading your profile."
+                        )
+                    case nil:
+                        ProgressView()
                     }
                 }
-                .environment(
-                    \.user,
-                     user
+                .animation(
+                    .default,
+                    value: EquatableUserResult(
+                        result: self.firebase.user
+                    )
                 )
-            case .failure:
-                Text(
-                    verbatim: "An error occurred while loading your profile."
-                )
-            case nil:
-                ProgressView()
+            case .unauthenticated:
+                AuthenticationModule
+                    .AuthenticationContentView()
             }
-        } else {
-            AuthenticationModule
-                .AuthenticationContentView()
         }
+        .animation(
+            .default,
+            value: self.firebase.authenticationState
+        )
+    }
+    
+}
+
+private extension ContentView {
+    
+    struct EquatableUserResult: Equatable {
+        
+        let result: Result<User?, Error>?
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            switch (lhs.result, rhs.result) {
+            case (.success(let lhsUser), .success(let rhsUser)):
+                return lhsUser == rhsUser
+            case (.failure, .failure):
+                return true
+            default:
+                return false
+            }
+        }
+        
     }
     
 }

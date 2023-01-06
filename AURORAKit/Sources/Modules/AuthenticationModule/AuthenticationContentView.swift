@@ -13,10 +13,6 @@ public struct AuthenticationContentView {
     @State
     private var isBusy = false
     
-    /// The Mode
-    @State
-    private var mode: Mode = .login
-    
     /// The E-Mail address
     @State
     private var mailAddress = String()
@@ -40,20 +36,6 @@ public struct AuthenticationContentView {
     
 }
 
-// MARK: - Mode
-
-private extension AuthenticationContentView {
-    
-    /// A Mode
-    enum Mode: String, Codable, Hashable, CaseIterable {
-        /// Login
-        case login
-        /// Register
-        case register
-    }
-    
-}
-
 // MARK: - Submit
 
 private extension AuthenticationContentView {
@@ -70,20 +52,12 @@ private extension AuthenticationContentView {
             self.isBusy = false
         }
         do {
-            switch self.mode {
-            case .login:
-                try await self.firebase.login(
-                    using: .password(
-                        email: self.mailAddress,
-                        password: self.password
-                    )
-                )
-            case .register:
-                try await self.firebase.register(
+            try await self.firebase.login(
+                using: .password(
                     email: self.mailAddress,
                     password: self.password
                 )
-            }
+            )
         } catch {
             self.loginHasFailed = true
         }
@@ -106,17 +80,8 @@ extension AuthenticationContentView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxHeight: 70)
-                .padding(.top, 30)
+                .padding(.top, 65)
                 VStack(spacing: 20) {
-                    Picker("", selection: self.$mode) {
-                        ForEach(Mode.allCases, id: \.self) { mode in
-                            Text(
-                                verbatim: mode.rawValue.capitalized
-                            )
-                            .tag(mode)
-                        }
-                    }
-                    .pickerStyle(.segmented)
                     VStack(spacing: 12) {
                         TextField(
                             "E-Mail",
@@ -143,7 +108,7 @@ extension AuthenticationContentView: View {
                                 ProgressView()
                                     .controlSize(.regular)
                             }
-                            Text("Submit")
+                            Text("Login")
                                 .font(.headline)
                         }
                         .align(.centerHorizontal)
@@ -165,6 +130,13 @@ extension AuthenticationContentView: View {
             .ignoresSafeArea()
             .blur(radius: 40)
         )
+        .overlay(alignment: .top) {
+            Color
+                .clear
+                .background(.ultraThinMaterial)
+                .edgesIgnoringSafeArea(.top)
+                .frame(height: 0)
+        }
         .preferredColorScheme(.light)
         .disabled(self.isBusy)
         .alert(

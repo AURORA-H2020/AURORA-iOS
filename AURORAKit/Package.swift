@@ -46,6 +46,10 @@ let package = Package(
                 .product(
                     name: "FirebaseFirestoreSwift",
                     package: "firebase-ios-sdk"
+                ),
+                .product(
+                    name: "FirebaseFirestoreCombine-Community",
+                    package: "firebase-ios-sdk"
                 )
             ],
             path: "Sources/Kits/FirebaseKit"
