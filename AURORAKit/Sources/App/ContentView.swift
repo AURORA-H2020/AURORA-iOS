@@ -1,6 +1,8 @@
 import AuthenticationModule
 import ConsumptionModule
 import FirebaseKit
+import LocalNotificationKit
+import ModuleKit
 import SettingsModule
 import SwiftUI
 import UserModule
@@ -25,84 +27,117 @@ extension ContentView: View {
         Group {
             switch self.firebase.authenticationState {
             case .authenticated:
-                Group {
-                    switch self.firebase.user {
-                    case .success(let user):
-                        Group {
-                            if user == nil {
-                                UserModule
-                                    .UserContentView(
-                                        mode: .create
-                                    )
-                            } else {
-                                TabView {
-                                    ConsumptionModule
-                                        .ConsumptionContentView()
-                                        .tabItem {
-                                            Label(
-                                                "Home",
-                                                systemImage: "chart.pie"
-                                            )
-                                        }
-                                    SettingsModule
-                                        .SettingsContentView()
-                                        .tabItem {
-                                            Label(
-                                                "Settings",
-                                                systemImage: "gear"
-                                            )
-                                        }
-                                }
-                            }
-                        }
-                        .environment(
-                            \.user,
-                             user
-                        )
-                    case .failure:
-                        Text(
-                            verbatim: "An error occurred while loading your profile."
-                        )
-                    case nil:
-                        ProgressView()
-                    }
-                }
-                .animation(
-                    .default,
-                    value: EquatableUserResult(
-                        result: self.firebase.user
-                    )
-                )
+                self.authenticated
             case .unauthenticated:
-                AuthenticationModule
-                    .AuthenticationContentView()
+                self.unauthenticated
             }
         }
         .animation(
             .default,
             value: self.firebase.authenticationState
         )
+        .animation(
+            .default,
+            value: self.firebase.user,
+            by: { lhs, rhs in
+                switch (lhs, rhs) {
+                case (.success(let lhsUser), .success(let rhsUser)):
+                    return lhsUser == rhsUser
+                case (.failure, .failure):
+                    return true
+                default:
+                    return false
+                }
+            }
+        )
+        .task {
+            try? await LocalNotificationCenter
+                .current
+                .resetBadgeCount()
+        }
+        .onAppear {
+            LocalNotificationCenter
+                .current
+                .removeAllDeliveredNotifications()
+        }
     }
     
 }
 
+// MARK: - Authenticated
+
 private extension ContentView {
     
-    struct EquatableUserResult: Equatable {
-        
-        let result: Result<User?, Error>?
-        
-        static func == (lhs: Self, rhs: Self) -> Bool {
-            switch (lhs.result, rhs.result) {
-            case (.success(let lhsUser), .success(let rhsUser)):
-                return lhsUser == rhsUser
-            case (.failure, .failure):
-                return true
-            default:
-                return false
+    /// The authenticated view.
+    @ViewBuilder
+    var authenticated: some View {
+        switch self.firebase.user {
+        case .success(let user):
+            if user == nil {
+                UserModule
+                    .UserContentView()
+            } else {
+                TabView {
+                    ConsumptionModule
+                        .ConsumptionContentView()
+                        .tabItem {
+                            Label(
+                                "Home",
+                                systemImage: "chart.pie"
+                            )
+                        }
+                    SettingsModule
+                        .SettingsContentView()
+                        .tabItem {
+                            Label(
+                                "Settings",
+                                systemImage: "gear"
+                            )
+                        }
+                }
             }
+        case .failure:
+            EmptyPlaceholder(
+                systemImage: "wifi.exclamationmark",
+                title: "Error",
+                subtitle: "An error occurred while loading your profile.",
+                primaryAction: .init(
+                    title: "Reload",
+                    action: self.firebase.reloadUser
+                )
+            )
+        case nil:
+            ProgressView()
+                .delay(
+                    by: .init(value: 2, unit: .seconds),
+                    animation: .default
+                )
         }
-        
+    }
+    
+}
+
+// MARK: - Unauthenticated
+
+private extension ContentView {
+    
+    /// The unauthenticated view.
+    var unauthenticated: some View {
+        AuthenticationModule
+            .AuthenticationContentView()
+            .task {
+                try? await LocalNotificationCenter
+                    .current
+                    .resetBadgeCount()
+            }
+            .onAppear {
+                LocalNotificationCenter
+                    .current
+                    .removeAllPendingNotificationRequests()
+                LocalNotificationCenter
+                    .current
+                    .removeAllDeliveredNotifications()
+            }
     }
     
 }

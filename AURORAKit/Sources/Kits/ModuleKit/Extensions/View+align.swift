@@ -40,6 +40,7 @@ public extension View {
     /// Align this View using a given `ViewAlignment`
     /// - Parameter alignment: The ViewAlignment. When passing nil, the call has no effect.
     @ViewBuilder
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     func align(
         _ alignment: ViewAlignment?
     ) -> some View {

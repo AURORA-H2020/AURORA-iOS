@@ -15,35 +15,36 @@ public struct Consumption {
     public var id: String?
     
     /// The Date
-    public let date: Date
+    @ServerTimestamp
+    public var createdAt: Timestamp?
     
     /// The ConsumptionType
-    public let type: ConsumptionType
+    public var type: ConsumptionType
     
     /// The value
-    public let value: Double
+    public var value: Double
     
     /// The carbon emissions
-    public let carbonEmissions: Double
+    public let carbonEmissions: Double?
 
     // MARK: Initializer
 
     /// Creates a new instance of `Consumption`
     /// - Parameters:
     ///   - id: The identifier. Default value `nil`
-    ///   - date: The Date
+    ///   - createdAt: The creation date. Default value `nil`
     ///   - type: ConsumptionType
     ///   - value: The value
     ///   - carbonEmissions: The carbon emissions
     public init(
         id: String? = nil,
-        date: Date,
+        createdAt: Timestamp? = nil,
         type: ConsumptionType,
         value: Double,
-        carbonEmissions: Double
+        carbonEmissions: Double? = nil
     ) {
         self.id = id
-        self.date = date
+        self.createdAt = createdAt
         self.type = type
         self.value = value
         self.carbonEmissions = carbonEmissions

@@ -9,24 +9,21 @@ public struct UserContentView {
     
     // MARK: Properties
     
-    /// The Mode
-    private let mode: Mode
-    
     /// The first name.
     @State
-    private var firstName = String()
+    private var firstName: String
     
     /// The last name.
     @State
-    private var lastName = String()
+    private var lastName: String
     
     /// The year of birth.
     @State
-    private var yearOfBirth = Calendar.current.component(.year, from: Date()) - 18
+    private var yearOfBirth: Int
     
     /// The gender.
     @State
-    private var gender: User.Gender = .other
+    private var gender: User.Gender
     
     /// The site reference.
     @State
@@ -46,23 +43,34 @@ public struct UserContentView {
     
     /// Creates a new instance of `UserContentView`
     public init(
-        mode: Mode
+        user: User? = nil
     ) {
-        self.mode = mode
-    }
-    
-}
-
-// MARK: - Mode
-
-public extension UserContentView {
-    
-    /// A UserContentView Mode
-    enum Mode: String, Codable, Hashable, CaseIterable {
-        /// Create
-        case create
-        /// Edit
-        case edit
+        if let user = user {
+            self._firstName = .init(initialValue: user.firstName)
+            self._lastName = .init(initialValue: user.lastName)
+            self._yearOfBirth = .init(initialValue: user.yearOfBirth)
+            self._gender = .init(initialValue: user.gender)
+            self._site = .init(initialValue: user.site)
+        } else {
+            let firebaseUserDisplayNameComponents = try? Firebase
+                .default
+                .authenticationState
+                .user
+                .displayName?
+                .components(separatedBy: " ")
+            self._firstName = .init(
+                initialValue: firebaseUserDisplayNameComponents?.first ?? .init()
+            )
+            self._lastName = .init(
+                initialValue: firebaseUserDisplayNameComponents?.last ?? .init()
+            )
+            self._yearOfBirth = .init(
+                initialValue: Calendar.current.component(.year, from: Date()) - 18
+            )
+            self._gender = .init(
+                initialValue: .other
+            )
+        }
     }
     
 }
@@ -182,14 +190,7 @@ extension UserContentView: View {
                 }
                 .listRowInsets(.init())
             }
-            .navigationTitle({ () -> String in
-                switch self.mode {
-                case .create:
-                    return "Create your Profile"
-                case .edit:
-                    return "Profile"
-                }
-            }())
+            .navigationTitle("Profile")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(role: .destructive) {

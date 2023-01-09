@@ -73,12 +73,18 @@ public extension Firebase {
         case password(email: String, password: String)
     }
     
+    /// An error that represents that the user is already authenticated
+    struct AlreadyAuthenticatedError: Error {}
+    
     /// Login user using a given AuthenticationMethod
     /// - Parameter authenticationMode: The AuthenticationMode used to login the user.
     @discardableResult
     func login(
         using authenticationMode: AuthenticationMethod
     ) async throws -> FirebaseAuth.AuthDataResult {
+        guard !self.authenticationState.isAuthenticated else {
+            throw AlreadyAuthenticatedError()
+        }
         switch authenticationMode {
         case .password(let email, let password):
             do {
@@ -97,6 +103,60 @@ public extension Firebase {
                 throw error
             }
         }
+    }
+    
+}
+
+// MARK: - Firebase+isLoggedInViaPassword
+
+public extension Firebase {
+    
+    var isLoggedInViaPassword: Bool {
+        get throws {
+            try self.authenticationState
+                .user
+                .providerData
+                .map(\.providerID)
+                .contains("password")
+        }
+    }
+    
+}
+
+// MARK: - Firebase+update(email:)
+
+public extension Firebase {
+    
+    func update(
+        email: String
+    ) async throws {
+        guard try self.isLoggedInViaPassword else {
+            return
+        }
+        try await self.authenticationState
+            .user
+            .updateEmail(
+                to: email
+            )
+    }
+    
+}
+
+// MARK: - Firebase+update(password:)
+
+public extension Firebase {
+    
+    func update(
+        password: String
+    ) async throws {
+        guard try self.isLoggedInViaPassword else {
+            return
+        }
+        try await self.authenticationState
+            .user
+            .updatePassword(
+                to: password
+            )
     }
     
 }
@@ -120,9 +180,9 @@ public extension Firebase {
     /// Delete the currently authenticated user account.
     func deleteAccount() async throws {
         try await self.authenticationState.user.delete()
-        self.user = nil
         self.userDocumentSnapshotSubscription?.remove()
         self.userDocumentSnapshotSubscription = nil
+        self.user = nil
     }
     
 }

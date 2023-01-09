@@ -1,5 +1,7 @@
 # AURORA iOS App
 
+[![Build App](https://github.com/AURORA-H2020/AURORA-iOS/actions/workflows/build_app.yml/badge.svg)](https://github.com/AURORA-H2020/AURORA-iOS/actions/workflows/build_app.yml)
+
 AURORA is demonstrating how people can make a difference through the choices they make, reducing 13-20% of all greenhouse gas emissions linked to residential energy use and 13% linked to transport choices. In addition, the project will empower people to take ownership of new community solar energy projects.
 
 ---

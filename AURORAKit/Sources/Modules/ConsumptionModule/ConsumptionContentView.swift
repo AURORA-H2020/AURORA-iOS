@@ -1,3 +1,4 @@
+import FirebaseKit
 import SwiftUI
 
 // MARK: - ConsumptionContentView
@@ -22,6 +23,10 @@ extension ConsumptionContentView: View {
             }
             .navigationTitle("Dashboard")
         }
+        .analyticsScreen(
+            name: "Dashboard",
+            class: "ConsumptionContentView"
+        )
     }
     
 }
