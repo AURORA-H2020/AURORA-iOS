@@ -5,7 +5,6 @@ import Foundation
 public extension LocalNotificationRequest {
 
     /// A LocalNotificationRequest Identifier
-    // swiftlint:disable:next type_name
     struct ID: Codable, Hashable, Sendable {
         
         // MARK: Properties

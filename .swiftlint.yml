@@ -5,3 +5,5 @@ opt_in_rules:
 disabled_rules:
   - trailing_whitespace
   - identifier_name
+  - type_name
+  - orphaned_doc_comment
