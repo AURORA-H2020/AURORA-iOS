@@ -28,23 +28,28 @@ public struct User {
     /// The Site Reference.
     public var site: Reference<Site>
     
+    /// The optional consumption summary.
+    public let consumptionSummary: ConsumptionSummary?
+    
     // MARK: Initializer
     
     /// Creates a new instance of `User`
     /// - Parameters:
-    ///   - id: The identifier.
+    ///   - id: The identifier. Default value `nil`
     ///   - firstName: The first name.
     ///   - lastName: The last name.
     ///   - yearOfBirth: The year of birth.
     ///   - gender: The Gender.
     ///   - site: The Site Reference.
+    ///   - consumptionSummary: The optional consumption summary. Default value `nil`
     public init(
         id: String? = nil,
         firstName: String,
         lastName: String,
         yearOfBirth: Int,
         gender: Gender,
-        site: Reference<Site>
+        site: Reference<Site>,
+        consumptionSummary: ConsumptionSummary? = nil
     ) {
         self.id = id
         self.firstName = firstName
@@ -52,6 +57,7 @@ public struct User {
         self.yearOfBirth = yearOfBirth
         self.gender = gender
         self.site = site
+        self.consumptionSummary = consumptionSummary
     }
     
 }
