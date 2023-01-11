@@ -9,6 +9,10 @@ public struct SettingsContentView {
     
     // MARK: Properties
     
+    /// Bool value if change mail address form is presented
+    @State
+    private var isChangeMailAddressFormPresented = false
+    
     /// The Firebase instance
     @EnvironmentObject
     private var firebase: Firebase
@@ -39,6 +43,12 @@ extension SettingsContentView: View {
             name: "Settings",
             class: "SettingsContentView"
         )
+        .sheet(isPresented: self.$isChangeMailAddressFormPresented) {
+            SheetNavigationView {
+                ChangeMailAddressForm()
+            }
+            .environmentObject(self.firebase)
+        }
     }
     
 }
@@ -47,14 +57,22 @@ private extension SettingsContentView {
     
     var accountSection: some View {
         Section(
-            header: Text(verbatim: "Account")
-        ) {
-            if let email = try? self.firebase.authenticationState.user.email {
-                Label(email, systemImage: "envelope.fill")
+            header: VStack(alignment: .leading) {
+                Text(
+                    verbatim: "Account"
+                )
+                if let email = try? self.firebase.authenticationState.user.email {
+                    Text(
+                        verbatim: email
+                    )
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                }
             }
+        ) {
             if (try? self.firebase.isLoggedInViaPassword) == true {
                 Button {
-                    
+                    self.isChangeMailAddressFormPresented = true
                 } label: {
                     Label(
                         "Change E-Mail address",
