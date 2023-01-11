@@ -10,7 +10,7 @@ public struct LocalNotificationRequest: Hashable, Identifiable {
     // MARK: Properties
     
     /// The identifier.
-    public var id: String
+    public var id: ID
     
     /// The UNMutableNotificationContent
     public var content: UNMutableNotificationContent
@@ -26,7 +26,7 @@ public struct LocalNotificationRequest: Hashable, Identifiable {
     ///   - content: The UNMutableNotificationContent
     ///   - trigger: The optional Trigger. Default value `nil`
     public init(
-        id: String,
+        id: ID,
         content: UNMutableNotificationContent,
         trigger: Trigger? = nil
     ) {
@@ -47,7 +47,7 @@ public extension LocalNotificationRequest {
     ///   - trigger: The optional Trigger. Default value `nil`
     ///   - content: A closure which takes in a UNMutableNotificationContent for configuration.
     init(
-        id: String,
+        id: ID,
         trigger: Trigger? = nil,
         content: (UNMutableNotificationContent) -> Void
     ) {
@@ -71,7 +71,7 @@ public extension LocalNotificationRequest {
     /// The raw `UNNotificationRequest` value.
     var rawValue: UNNotificationRequest {
         .init(
-            identifier: self.id,
+            identifier: self.id.rawValue,
             content: self.content,
             trigger: self.trigger?.rawValue
         )

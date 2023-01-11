@@ -1,5 +1,5 @@
 import UIKit
-import UserNotifications
+@_exported import UserNotifications
 
 // MARK: - LocalNotificationCenter
 
