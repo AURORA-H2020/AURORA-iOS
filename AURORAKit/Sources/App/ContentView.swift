@@ -60,6 +60,14 @@ extension ContentView: View {
                 .current
                 .removeAllDeliveredNotifications()
         }
+        .environment(
+            \.user,
+             try? self.firebase.user?.get()
+        )
+        .environment(
+            \.firebaseUser,
+             try? self.firebase.authenticationState.user
+        )
     }
     
 }

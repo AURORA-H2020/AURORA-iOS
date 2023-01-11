@@ -26,17 +26,8 @@ extension App: SwiftUI.App {
     /// The content and behavior of the app.
     public var body: some Scene {
         WindowGroup {
-            let firebase = Firebase.default
             ContentView()
-                .environmentObject(firebase)
-                .environment(
-                    \.user,
-                     try? firebase.user?.get()
-                )
-                .environment(
-                    \.firebaseUser,
-                     try? firebase.authenticationState.user
-                )
+                .environmentObject(Firebase.default)
         }
     }
     
