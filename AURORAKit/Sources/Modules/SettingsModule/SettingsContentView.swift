@@ -140,15 +140,21 @@ private extension SettingsContentView {
         ) {
             NavigationLink(
                 "Electricity bill reminder",
-                destination: EmptyView()
+                destination: LocalNotificationForm(
+                    id: .electricityBillReminder
+                )
             )
             NavigationLink(
                 "Heating bill reminder",
-                destination: EmptyView()
+                destination: LocalNotificationForm(
+                    id: .heatingBillReminder
+                )
             )
             NavigationLink(
                 "Mobility reminder",
-                destination: EmptyView()
+                destination: LocalNotificationForm(
+                    id: .mobilityReminder
+                )
             )
         }
         .headerProminence(.increased)
