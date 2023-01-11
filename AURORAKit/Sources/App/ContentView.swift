@@ -32,6 +32,24 @@ extension ContentView: View {
                 self.unauthenticated
             }
         }
+        .environment(
+            \.user,
+             try? self.firebase.user?.get()
+        )
+        .environment(
+            \.firebaseUser,
+             try? self.firebase.authenticationState.user
+        )
+        .task {
+            try? await LocalNotificationCenter
+                .current
+                .resetBadgeCount()
+        }
+        .onAppear {
+            LocalNotificationCenter
+                .current
+                .removeAllDeliveredNotifications()
+        }
         .animation(
             .default,
             value: self.firebase.authenticationState
@@ -49,24 +67,6 @@ extension ContentView: View {
                     return false
                 }
             }
-        )
-        .task {
-            try? await LocalNotificationCenter
-                .current
-                .resetBadgeCount()
-        }
-        .onAppear {
-            LocalNotificationCenter
-                .current
-                .removeAllDeliveredNotifications()
-        }
-        .environment(
-            \.user,
-             try? self.firebase.user?.get()
-        )
-        .environment(
-            \.firebaseUser,
-             try? self.firebase.authenticationState.user
         )
     }
     
