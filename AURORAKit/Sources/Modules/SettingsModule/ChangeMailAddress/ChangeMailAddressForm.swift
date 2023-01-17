@@ -83,7 +83,7 @@ extension ChangeMailAddressForm: View {
         List {
             Section(
                 footer: Group {
-                    if let email = try? self.firebase.authenticationState.user.email {
+                    if let email = try? self.firebase.authentication.state.userAccount.email {
                         Text(
                             verbatim: "Current E-Mail address:\n\(email)"
                         )
@@ -106,6 +106,7 @@ extension ChangeMailAddressForm: View {
                     alert: self.alert,
                     action: {
                         try await self.firebase
+                            .authentication
                             .update(
                                 email: self.mailAddress
                             )
@@ -125,7 +126,7 @@ extension ChangeMailAddressForm: View {
             ) {
             }
         }
-        .navigationTitle("Change E-Mail address")
+        .navigationTitle("Change E-Mail")
     }
     
 }

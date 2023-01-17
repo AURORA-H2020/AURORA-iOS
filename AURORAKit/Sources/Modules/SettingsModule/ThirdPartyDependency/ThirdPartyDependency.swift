@@ -88,8 +88,78 @@ extension ThirdPartyDependency {
     static let all: [Self] = [
         .init(
             author: "Firebase",
+            name: "abseil-cpp-SwiftPM",
+            branchName: "main"
+        ),
+        .init(
+            author: "OpenID",
+            name: "AppAuth-iOS",
+            branchName: "master"
+        ),
+        .init(
+            author: "Firebase",
+            name: "boringssl-SwiftPM",
+            branchName: "main"
+        ),
+        .init(
+            author: "Firebase",
             name: "firebase-ios-sdk",
             branchName: "master"
+        ),
+        .init(
+            author: "Google",
+            name: "GoogleAppMeasurement",
+            branchName: "main"
+        ),
+        .init(
+            author: "Google",
+            name: "GoogleDataTransport",
+            branchName: "main"
+        ),
+        .init(
+            author: "Google",
+            name: "GoogleSignIn-iOS",
+            branchName: "main"
+        ),
+        .init(
+            author: "Google",
+            name: "GoogleUtilities",
+            branchName: "main"
+        ),
+        .init(
+            author: "gRPC",
+            name: "grpc-ios",
+            branchName: "main"
+        ),
+        .init(
+            author: "Google",
+            name: "gtm-session-fetcher",
+            branchName: "main"
+        ),
+        .init(
+            author: "Google",
+            name: "GTMAppAuth",
+            branchName: "master"
+        ),
+        .init(
+            author: "Firebase",
+            name: "leveldb",
+            branchName: "master"
+        ),
+        .init(
+            author: "Firebase",
+            name: "nanopb",
+            branchName: "master"
+        ),
+        .init(
+            author: "Google",
+            name: "promises",
+            branchName: "master"
+        ),
+        .init(
+            author: "Apple",
+            name: "swift-protobuf",
+            branchName: "main"
         )
     ]
     

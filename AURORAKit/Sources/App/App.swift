@@ -8,14 +8,15 @@ open class App {
     
     // MARK: Properties
     
-    /// The AppDelegate
-    @UIApplicationDelegateAdaptor(AppDelegate.self)
-    private var appDelegate
+    /// The Firebase instance.
+    private let firebase: Firebase
     
     // MARK: Initializer
     
     /// Creates a new instance of `App`
-    public required init() {}
+    public required init() {
+        self.firebase = .default
+    }
     
 }
 
@@ -27,32 +28,11 @@ extension App: SwiftUI.App {
     public var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(Firebase.default)
+                .environmentObject(self.firebase)
+                .onOpenURL { url in
+                    self.firebase.handle(opened: url)
+                }
         }
-    }
-    
-}
-
-// MARK: - AppDelegate
-
-extension App {
-    
-    /// The AppDelegate
-    final class AppDelegate: NSObject, UIApplicationDelegate {
-        
-        /// UIApplication did finish launching with options.
-        /// - Parameters:
-        ///   - application: The UIApplication.
-        ///   - launchOptions: The launch options.
-        func application(
-            _ application: UIApplication,
-            didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
-        ) -> Bool {
-            // Configure Firebase
-            Firebase.configure()
-            return true
-        }
-        
     }
     
 }

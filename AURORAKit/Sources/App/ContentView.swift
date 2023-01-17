@@ -25,7 +25,7 @@ extension ContentView: View {
     /// The content and behavior of the view.
     var body: some View {
         Group {
-            switch self.firebase.authenticationState {
+            switch self.firebase.authentication.state {
             case .authenticated:
                 self.authenticated
             case .unauthenticated:
@@ -34,11 +34,11 @@ extension ContentView: View {
         }
         .environment(
             \.user,
-             try? self.firebase.user?.get()
+             try? self.firebase.authentication.user?.get()
         )
         .environment(
-            \.firebaseUser,
-             try? self.firebase.authenticationState.user
+            \.userAccount,
+             try? self.firebase.authentication.state.userAccount
         )
         .task {
             try? await LocalNotificationCenter
@@ -52,11 +52,11 @@ extension ContentView: View {
         }
         .animation(
             .default,
-            value: self.firebase.authenticationState
+            value: self.firebase.authentication.state
         )
         .animation(
             .default,
-            value: self.firebase.user,
+            value: self.firebase.authentication.user,
             by: { lhs, rhs in
                 switch (lhs, rhs) {
                 case (.success(let lhsUser), .success(let rhsUser)):
@@ -79,15 +79,14 @@ private extension ContentView {
     /// The authenticated view.
     @ViewBuilder
     var authenticated: some View {
-        switch self.firebase.user {
+        switch self.firebase.authentication.user {
         case .success(let user):
-            if user == nil {
-                UserModule
-                    .UserContentView()
-            } else {
+            if let user = user {
                 TabView {
                     ConsumptionModule
-                        .ConsumptionContentView()
+                        .ConsumptionContentView(
+                            user: user
+                        )
                         .tabItem {
                             Label(
                                 "Home",
@@ -103,6 +102,9 @@ private extension ContentView {
                             )
                         }
                 }
+            } else {
+                UserModule
+                    .UserContentView()
             }
         case .failure:
             EmptyPlaceholder(
@@ -111,13 +113,16 @@ private extension ContentView {
                 subtitle: "An error occurred while loading your profile.",
                 primaryAction: .init(
                     title: "Reload",
-                    action: self.firebase.reloadUser
+                    action: self.firebase.authentication.reloadUser
                 )
             )
         case nil:
             ProgressView()
                 .delay(
-                    by: .init(value: 2, unit: .seconds),
+                    by: .init(
+                        value: 2,
+                        unit: .seconds
+                    ),
                     animation: .default
                 )
         }

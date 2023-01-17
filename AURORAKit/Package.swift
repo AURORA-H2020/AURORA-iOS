@@ -34,6 +34,10 @@ let packageTargets = (
                     package: "firebase-ios-sdk"
                 ),
                 .product(
+                    name: "FirebaseCrashlytics",
+                    package: "firebase-ios-sdk"
+                ),
+                .product(
                     name: "FirebaseFirestore",
                     package: "firebase-ios-sdk"
                 ),
@@ -53,6 +57,10 @@ let packageTargets = (
                     name: "FirebasePerformance",
                     package: "firebase-ios-sdk"
                 ),
+                .product(
+                    name: "GoogleSignInSwift",
+                    package: "GoogleSignIn-iOS"
+                ),
             ]
         ),
         .target(
@@ -60,6 +68,9 @@ let packageTargets = (
         ),
         .target(
             name: "ModuleKit"
+        ),
+        .target(
+            name: "PieChartKit"
         )
     ]),
     modules: [Target]([
@@ -113,7 +124,7 @@ let package = Package(
     name: "AURORAKit",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v16)
+        .iOS(.v15)
     ],
     products: [
         .library(
@@ -127,6 +138,10 @@ let package = Package(
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
             exact: "10.3.0"
+        ),
+        .package(
+            url: "https://github.com/google/GoogleSignIn-iOS",
+            exact: "7.0.0"
         )
     ],
     targets: {

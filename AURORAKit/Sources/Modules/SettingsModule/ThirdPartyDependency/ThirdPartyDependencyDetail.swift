@@ -6,6 +6,19 @@ import SwiftUI
 /// The ThirdPartyDependencyDetail
 struct ThirdPartyDependencyDetail {
     
+    // MARK: Static-Properties
+    
+    /// The URLSession
+    private static let urlSession = URLSession(
+        configuration: {
+            let configuration = URLSessionConfiguration.default
+            configuration.urlCache = .shared
+            return configuration
+        }()
+    )
+    
+    // MARK: Properties
+    
     /// The ThirdPartyDependency
     let thirdPartyDependency: ThirdPartyDependency
     
@@ -44,6 +57,7 @@ extension ThirdPartyDependencyDetail: View {
                             verbatim: license
                         )
                         .multilineTextAlignment(.leading)
+                        .textSelection(.enabled)
                     }
                 }
             ) {}
@@ -55,11 +69,36 @@ extension ThirdPartyDependencyDetail: View {
                 // Otherwise return out of function
                 return
             }
-            // Load license
-            self.license = (
-                try? await URLSession.shared.data(for: .init(url: licenseURL))
-            )
-            .flatMap { (data, _) in String(decoding: data, as: UTF8.self) }
+            // Initialize URLRequests
+            let urlRequests: [URLRequest] = [
+                .init(url: licenseURL),
+                .init(url: licenseURL.appendingPathExtension("txt"))
+            ]
+            // Verify license data is available
+            guard let licenseData: Data = await {
+                // For each URLRequest
+                for urlRequest in urlRequests {
+                    // Verify data and response are available
+                    guard let (data, response) = try? await Self.urlSession.data(for: urlRequest) else {
+                        // Otherwise continue with next request
+                        continue
+                    }
+                    // Verify status code is equal to 200 (OK)
+                    guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                        // Otherwise continue with next request
+                        continue
+                    }
+                    // Return data
+                    return data
+                }
+                // Otherwise return nil
+                return nil
+            }() else {
+                // Otherwise return out of function
+                return
+            }
+            // Set license
+            self.license = .init(decoding: licenseData, as: UTF8.self)
         }
         .task {
             // Verify repository URL is available

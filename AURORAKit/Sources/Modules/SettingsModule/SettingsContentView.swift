@@ -13,6 +13,10 @@ public struct SettingsContentView {
     @State
     private var isChangeMailAddressFormPresented = false
     
+    /// Bool value if change password form is presented
+    @State
+    private var isChangePasswordFormPresented = false
+    
     /// The Firebase instance
     @EnvironmentObject
     private var firebase: Firebase
@@ -43,9 +47,19 @@ extension SettingsContentView: View {
             name: "Settings",
             class: "SettingsContentView"
         )
-        .sheet(isPresented: self.$isChangeMailAddressFormPresented) {
+        .sheet(
+            isPresented: self.$isChangeMailAddressFormPresented
+        ) {
             SheetNavigationView {
                 ChangeMailAddressForm()
+            }
+            .environmentObject(self.firebase)
+        }
+        .sheet(
+            isPresented: self.$isChangePasswordFormPresented
+        ) {
+            SheetNavigationView {
+                ChangePasswordForm()
             }
             .environmentObject(self.firebase)
         }
@@ -61,7 +75,7 @@ private extension SettingsContentView {
                 Text(
                     verbatim: "Account"
                 )
-                if let email = try? self.firebase.authenticationState.user.email {
+                if let email = try? self.firebase.authentication.state.userAccount.email {
                     Text(
                         verbatim: email
                     )
@@ -70,17 +84,17 @@ private extension SettingsContentView {
                 }
             }
         ) {
-            if (try? self.firebase.isLoggedInViaPassword) == true {
+            if (try? self.firebase.authentication.providers.contains(.password)) == true {
                 Button {
                     self.isChangeMailAddressFormPresented = true
                 } label: {
                     Label(
-                        "Change E-Mail address",
+                        "Change E-Mail",
                         systemImage: "envelope"
                     )
                 }
                 Button {
-                    
+                    self.isChangePasswordFormPresented = true
                 } label: {
                     Label(
                         "Change Password",
@@ -116,7 +130,7 @@ private extension SettingsContentView {
                     )
                 },
                 action: {
-                    try self.firebase.logout()
+                    try self.firebase.authentication.logout()
                 },
                 label: {
                     Label(
@@ -139,23 +153,35 @@ private extension SettingsContentView {
             header: Text(verbatim: "Notifications")
         ) {
             NavigationLink(
-                "Electricity bill reminder",
                 destination: LocalNotificationForm(
                     id: .electricityBillReminder
                 )
-            )
+            ) {
+                Label(
+                    "Electricity bill reminder",
+                    systemImage: "bolt"
+                )
+            }
             NavigationLink(
-                "Heating bill reminder",
                 destination: LocalNotificationForm(
                     id: .heatingBillReminder
                 )
-            )
+            ) {
+                Label(
+                    "Heating bill reminder",
+                    systemImage: "heater.vertical"
+                )
+            }
             NavigationLink(
-                "Mobility reminder",
                 destination: LocalNotificationForm(
                     id: .mobilityReminder
                 )
-            )
+            ) {
+                Label(
+                    "Mobility reminder",
+                    systemImage: "car"
+                )
+            }
         }
         .headerProminence(.increased)
     }
@@ -192,7 +218,7 @@ private extension SettingsContentView {
                     }
                 },
                 action: {
-                    try await self.firebase.sendDownloadDataRequest()
+                    try await self.firebase.functions.downloadData()
                 },
                 label: {
                     Label(
@@ -233,7 +259,7 @@ private extension SettingsContentView {
                     )
                 },
                 action: {
-                    try await self.firebase.deleteAccount()
+                    try await self.firebase.authentication.deleteAccount()
                 },
                 label: {
                     Label(

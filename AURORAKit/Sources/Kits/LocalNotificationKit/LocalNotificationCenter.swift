@@ -49,16 +49,21 @@ public extension LocalNotificationCenter {
     /// Bool value if notifications are authorized.
     var isAuthorized: Bool {
         get async {
-            await self.authorizationStatus == .authorized
+            switch await self.authorizationStatus {
+            case .denied, .notDetermined:
+                return false
+            default:
+                return true
+            }
         }
     }
     
     /// Request authorization.
     /// This function returns a Bool value specifying if the authorization was granted by the user.
-    /// - Parameter options: The UNAuthorizationOptions. Default value `.init()`
+    /// - Parameter options: The UNAuthorizationOptions. Default value `[.alert, .sound, .badge]`
     /// - Returns: A Bool value if the authorization was granted by the user.
     func requestAuthorization(
-        options: UNAuthorizationOptions = .init()
+        options: UNAuthorizationOptions = [.alert, .sound, .badge]
     ) async throws -> Bool {
         try await self.notificationCenter
             .requestAuthorization(options: options)
@@ -114,11 +119,10 @@ public extension LocalNotificationCenter {
     ) async throws {
         if await !self.isAuthorized {
             guard try await self.requestAuthorization() else {
-                return
+                throw UNError(.notificationsNotAllowed)
             }
         }
-        try await self.notificationCenter
-            .add(request)
+        try await self.notificationCenter.add(request)
     }
     
     /// Add a new LocalNotificationRequest
@@ -135,12 +139,71 @@ public extension LocalNotificationCenter {
 
 public extension LocalNotificationCenter {
     
-    /// The pending UNNotificationRequests.
-    var pendingNotificationRequests: [UNNotificationRequest] {
+    /// The pending LocalNotificationRequest.
+    var pendingNotificationRequests: [LocalNotificationRequest] {
         get async {
             await self.notificationCenter
                 .pendingNotificationRequests()
+                .map(LocalNotificationRequest.init)
         }
+    }
+    
+    /// Retrieve a pending LocalNotificationRequest by its identifier.
+    /// - Parameter id: The LocalNotificationRequest identifier.
+    func pendingNotificationRequest(
+        _ id: LocalNotificationRequest.ID
+    ) async -> LocalNotificationRequest? {
+        await self.pendingNotificationRequests.first { $0.id == id }
+    }
+    
+}
+
+// MARK: - Remove Pending Notification Requests
+
+public extension LocalNotificationCenter {
+    
+    /// Remove pending notification request.
+    /// - Parameter request: The notification request to remove.
+    func removePendingNotificationRequest(
+        _ request: LocalNotificationRequest
+    ) {
+        self.removePendingNotificationRequest(request.id)
+    }
+    
+    /// Remove pending notification requests.
+    /// - Parameter requests: The notification requests to remove.
+    func removePendingNotificationRequests<Requests: Sequence>(
+        _ requests: Requests
+    ) where Requests.Element == LocalNotificationRequest {
+        self.removePendingNotificationRequests(requests.map(\.id))
+    }
+    
+    /// Remove pending notification request.
+    /// - Parameter identifier: The notification request identifier to remove.
+    func removePendingNotificationRequest(
+        _ identifier: LocalNotificationRequest.ID
+    ) {
+        self.notificationCenter
+            .removePendingNotificationRequests(
+                withIdentifiers: [identifier.rawValue]
+            )
+    }
+    
+    /// Remove pending notification requests.
+    /// - Parameter identifiers: The notification request identifiers to remove.
+    func removePendingNotificationRequests(
+        _ identifiers: [LocalNotificationRequest.ID]
+    ) {
+        self.notificationCenter
+            .removePendingNotificationRequests(
+                withIdentifiers: identifiers.map(\.rawValue)
+            )
+    }
+    
+    /// Remove all pending notification requests
+    func removeAllPendingNotificationRequests() {
+        self.notificationCenter
+            .removeAllPendingNotificationRequests()
     }
     
 }
@@ -155,29 +218,6 @@ public extension LocalNotificationCenter {
             await self.notificationCenter
                 .deliveredNotifications()
         }
-    }
-    
-}
-
-// MARK: - Remove Pending Notification Requests
-
-public extension LocalNotificationCenter {
-    
-    /// Remove pending notification requests.
-    /// - Parameter identifiers: The notification request identifiers to remove.
-    func removePendingNotificationRequests(
-        identifiers: [String]
-    ) {
-        self.notificationCenter
-            .removePendingNotificationRequests(
-                withIdentifiers: identifiers
-            )
-    }
-    
-    /// Remove all pending notification requests
-    func removeAllPendingNotificationRequests() {
-        self.notificationCenter
-            .removeAllPendingNotificationRequests()
     }
     
 }
@@ -232,6 +272,13 @@ public extension LocalNotificationCenter {
     /// Reset badge count to zero.
     func resetBadgeCount() async throws {
         try await self.set(badgeCount: 0)
+    }
+    
+    /// The next suitable badge count
+    var nextBadgeCount: Int {
+        get async {
+            await self.pendingNotificationRequests.count + 1
+        }
     }
     
 }

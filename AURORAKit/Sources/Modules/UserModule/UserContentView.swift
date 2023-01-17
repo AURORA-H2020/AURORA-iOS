@@ -54,8 +54,9 @@ public struct UserContentView {
         } else {
             let firebaseUserDisplayNameComponents = try? Firebase
                 .default
-                .authenticationState
-                .user
+                .authentication
+                .state
+                .userAccount
                 .displayName?
                 .components(separatedBy: " ")
             self._firstName = .init(
@@ -89,7 +90,7 @@ private extension UserContentView {
         guard let site = self.site else {
             return
         }
-        try? self.firebase.update(
+        try? self.firebase.firestore.update(
             User(
                 firstName: self.firstName,
                 lastName: self.lastName,
@@ -194,7 +195,7 @@ extension UserContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(role: .destructive) {
-                        try? self.firebase.logout()
+                        try? self.firebase.authentication.logout()
                     } label: {
                         Text("Logout")
                     }

@@ -1,11 +1,29 @@
 import Combine
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreCombineSwift
 import Foundation
 
-// MARK: - Firebase+get
+// MARK: - Firebase+Firestore
 
 public extension Firebase {
+    
+    /// The Firebase Firestore
+    struct Firestore {
+        
+        /// The Firebase Firestore instance.
+        let firestore: FirebaseFirestore.Firestore
+        
+        /// The Firebase Auth instance.
+        let auth: FirebaseAuth.Auth
+        
+    }
+    
+}
+
+// MARK: - Get
+
+public extension Firebase.Firestore {
     
     /// Retrieve FirestoreEntities
     /// - Parameters:
@@ -80,9 +98,9 @@ public extension Firebase {
     
 }
 
-// MARK: - Firebase+publisher
+// MARK: - Publisher
 
-public extension Firebase {
+public extension Firebase.Firestore {
     
     /// A Publisher which emits FirestoreEntities
     /// - Parameters:
@@ -171,9 +189,9 @@ public extension Firebase {
     
 }
 
-// MARK: - Firebase+add(entity:)
+// MARK: - Add
 
-public extension Firebase {
+public extension Firebase.Firestore {
     
     /// Adds a new FirestoreEnttity with an automatically generated ID.
     /// - Parameters:
@@ -207,9 +225,9 @@ public extension Firebase {
     
 }
 
-// MARK: - Firebase+update(entity:)
+// MARK: - Update
 
-public extension Firebase {
+public extension Firebase.Firestore {
     
     /// Update a FirestoreEntity
     /// - Parameters:
@@ -222,7 +240,7 @@ public extension Firebase {
         // Initialize mutable entity
         var entity = entity
         // Check if Entity is a User
-        if Entity.self is User.Type {
+        if Entity.self is User.Type && entity.id == nil {
             // Set identifier to UID of current Firebase user
             // as a User document id must always be equal
             // to the FirebaseAuth user
@@ -241,11 +259,6 @@ public extension Firebase {
             )
             .document(entityId)
             .setData(from: entity, completion: nil)
-        // Check if the entity is an instance of user
-        if let user = entity as? User {
-            // Pre-update the stored user
-            self.user = .success(user)
-        }
     }
     
     /// Update a FirestoreEntity
@@ -262,9 +275,9 @@ public extension Firebase {
     
 }
 
-// MARK: - Firebase+delete(entity:)
+// MARK: - Delete
 
-public extension Firebase {
+public extension Firebase.Firestore {
     
     /// Delete a FirestoreEntity
     /// - Parameters:
@@ -303,9 +316,9 @@ public extension Firebase {
     
 }
 
-// MARK: - Firebase+FirestoreEntityIdentifierMissingError
+// MARK: - FirestoreEntityIdentifierMissingError
 
-public extension Firebase {
+public extension Firebase.Firestore {
     
     /// An FirestoreEntity Identifier missing Error
     struct FirestoreEntityIdentifierMissingError: Error {}

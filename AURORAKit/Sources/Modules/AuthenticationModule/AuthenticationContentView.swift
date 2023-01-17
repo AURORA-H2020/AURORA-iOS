@@ -21,6 +21,10 @@ public struct AuthenticationContentView {
     @State
     private var password = String()
     
+    /// Bool value if ForgotPasswordForm is presented
+    @State
+    private var isForgotPassswordFormPresented = false
+    
     /// Bool value if login has failed
     @State
     private var loginHasFailed = false
@@ -40,26 +44,22 @@ public struct AuthenticationContentView {
 
 private extension AuthenticationContentView {
     
-    /// Bool value if can submit
-    var canSubmit: Bool {
-        !self.mailAddress.isEmpty && !self.password.isEmpty
-    }
-    
-    /// Submit
-    func submit() async {
+    /// Submit form using authentication method
+    /// - Parameter authenticationMethod: The authentication method
+    func submit(
+        using authenticationMethod: FirebaseKit.Firebase.Authentication.Method
+    ) async {
         self.isBusy = true
         defer {
             self.isBusy = false
         }
         do {
-            try await self.firebase.login(
-                using: .password(
-                    email: self.mailAddress,
-                    password: self.password
-                )
-            )
+            try await self.firebase
+                .authentication
+                .login(using: authenticationMethod)
         } catch {
-            self.loginHasFailed = true
+            self.loginHasFailed = !(error is CancellationError)
+            self.password.removeAll()
         }
     }
     
@@ -81,41 +81,76 @@ extension AuthenticationContentView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(maxHeight: 70)
                 .padding(.top, 65)
-                VStack(spacing: 20) {
-                    VStack(spacing: 12) {
-                        TextField(
-                            "E-Mail",
-                            text: self.$mailAddress
-                        )
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .textContentType(.emailAddress)
-                        .keyboardType(.emailAddress)
-                        SecureField(
-                            "Password",
-                            text: self.$password
-                        )
-                        .textContentType(.password)
-                    }
-                    .textFieldStyle(InputTextFieldStyle())
-                    Button {
-                        Task {
-                            await self.submit()
-                        }
-                    } label: {
-                        HStack(spacing: 10) {
-                            if self.isBusy {
-                                ProgressView()
-                                    .controlSize(.regular)
+                VStack(spacing: 25) {
+                    VStack(spacing: 15) {
+                        SignInWithAppleButton {
+                            Task {
+                                await self.submit(using: .apple)
                             }
-                            Text("Login")
-                                .font(.headline)
                         }
-                        .align(.centerHorizontal)
+                        SignInWithGoogleButton {
+                            Task {
+                                await self.submit(using: .google)
+                            }
+                        }
                     }
-                    .buttonStyle(.borderedProminent)
                     .controlSize(.large)
-                    .disabled(!self.canSubmit)
+                    HStack(alignment: .center) {
+                        Rectangle()
+                            .frame(
+                                height: 0.5
+                            )
+                        Text("or")
+                            .font(.caption)
+                        Rectangle()
+                            .frame(
+                                height: 0.5
+                            )
+                    }
+                    .foregroundColor(.secondary)
+                    .opacity(0.8)
+                    VStack(spacing: 20) {
+                        VStack(spacing: 12) {
+                            InputField(
+                                .email(self.$mailAddress)
+                            )
+                            InputField(
+                                .password(self.$password)
+                            )
+                        }
+                        Button {
+                            InputField.endEditing()
+                            Task {
+                                await self.submit(
+                                    using: .password(
+                                        email: self.mailAddress,
+                                        password: self.password
+                                    )
+                                )
+                            }
+                        } label: {
+                            HStack(spacing: 10) {
+                                if self.isBusy {
+                                    ProgressView()
+                                        .controlSize(.regular)
+                                }
+                                Text("Log In")
+                                    .font(.headline)
+                            }
+                            .align(.centerHorizontal)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        .disabled(self.mailAddress.isEmpty || self.password.isEmpty)
+                        Button {
+                            self.isForgotPassswordFormPresented = true
+                        } label: {
+                            Text(
+                                verbatim: "Forgot Password"
+                            )
+                            .font(.subheadline.weight(.semibold))
+                        }
+                    }
                 }
                 .padding(.horizontal)
             }
@@ -139,47 +174,31 @@ extension AuthenticationContentView: View {
         }
         .preferredColorScheme(.light)
         .disabled(self.isBusy)
+        .sheet(
+            isPresented: self.$isForgotPassswordFormPresented
+        ) {
+            SheetNavigationView {
+                ForgotPasswordForm(
+                    mailAddress: self.mailAddress
+                )
+            }
+            .environmentObject(self.firebase)
+        }
         .alert(
-            "Error",
+            "Login failed",
             isPresented: self.$loginHasFailed,
-            actions: EmptyView.init,
+            actions: {
+                Button {
+                } label: {
+                    Text(verbatim: "Okay")
+                }
+            },
             message: {
-                Text("An error occurred. Please check your inputs and try again.")
+                Text(
+                    verbatim: "The login has failed. Please check your inputs and try again."
+                )
             }
         )
-    }
-    
-}
-
-// MARK: - InputTextFieldStyle
-
-private extension AuthenticationContentView {
-    
-    /// The InputTextFieldStyle
-    struct InputTextFieldStyle: TextFieldStyle {
-        
-        /// Configure Body
-        /// - Parameter configuration: The Configuration
-        func _body(
-            configuration: TextField<Self._Label>
-        ) -> some View {
-            configuration
-                .padding(
-                    .init(
-                        top: 15,
-                        leading: 12,
-                        bottom: 15,
-                        trailing: 12
-                    )
-                )
-                .background(
-                    RoundedRectangle(
-                        cornerRadius: 8
-                    )
-                    .foregroundColor(Color(.systemBackground))
-                )
-        }
-        
     }
     
 }

@@ -10,22 +10,34 @@ public struct Consumption {
     
     // MARK: Properties
 
-    /// The identifier
+    /// The identifier.
     @DocumentID
     public var id: String?
     
-    /// The Date
+    /// The creation date.
     @ServerTimestamp
     public var createdAt: Timestamp?
     
-    /// The ConsumptionType
-    public var type: ConsumptionType
+    /// The date when the consumption has been update.
+    public var updatedAt: Timestamp?
+    
+    /// The category of the consumption.
+    public var category: Category
+    
+    /// The optional electricity information.
+    public var electricity: Electricity?
+    
+    /// The optional heating information.
+    public var heating: Heating?
+    
+    /// The optional transportation information.
+    public var transportation: Transportation?
     
     /// The value
     public var value: Double
     
     /// The carbon emissions
-    public let carbonEmissions: Double?
+    public let carbonEmissions: Decimal?
 
     // MARK: Initializer
 
@@ -33,19 +45,31 @@ public struct Consumption {
     /// - Parameters:
     ///   - id: The identifier. Default value `nil`
     ///   - createdAt: The creation date. Default value `nil`
-    ///   - type: ConsumptionType
-    ///   - value: The value
-    ///   - carbonEmissions: The carbon emissions
+    ///   - updatedAt: The date when the consumption has been updated. Default value `nil`
+    ///   - category: The category of the consumption.
+    ///   - electricity: The optional electricity information. Default value `nil`
+    ///   - heating: The optional heating information. Default value `nil`
+    ///   - transportation: The optional transportation information. Default value `nil`
+    ///   - value: The value.
+    ///   - carbonEmissions: The carbon emissions.
     public init(
         id: String? = nil,
         createdAt: Timestamp? = nil,
-        type: ConsumptionType,
+        updatedAt: Timestamp? = nil,
+        category: Category,
+        electricity: Electricity? = nil,
+        heating: Heating? = nil,
+        transportation: Transportation? = nil,
         value: Double,
-        carbonEmissions: Double? = nil
+        carbonEmissions: Decimal? = nil
     ) {
         self.id = id
         self.createdAt = createdAt
-        self.type = type
+        self.updatedAt = updatedAt
+        self.category = category
+        self.electricity = electricity
+        self.heating = heating
+        self.transportation = transportation
         self.value = value
         self.carbonEmissions = carbonEmissions
     }
@@ -67,12 +91,36 @@ extension Consumption: FirestoreEntity {
     ///   - parameter: The Firebase User.
     public static func collectionReference(
         in firestore: FirebaseFirestore.Firestore,
-        _ user: FirebaseAuth.User
+        _ userId: String
     ) -> FirebaseFirestore.CollectionReference {
         firestore
             .collection(User.collectionName)
-            .document(user.uid)
+            .document(userId)
             .collection(self.collectionName)
+    }
+    
+}
+
+// MARK: - Consumption+formattedValue
+
+public extension Consumption {
+    
+    /// A formatted representation of the consumptions' value.
+    var formattedValue: String {
+        switch self.category {
+        case .transportation:
+            return Measurement<UnitLength>(
+                value: self.value,
+                unit: .kilometers
+            )
+            .formatted()
+        case .heating, .electricity:
+            return Measurement<UnitPower>(
+                value: self.value,
+                unit: .kilowatts
+            )
+            .formatted()
+        }
     }
     
 }

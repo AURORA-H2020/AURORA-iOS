@@ -1,11 +1,9 @@
-import Firebase
 @_exported import FirebaseAnalyticsSwift
-import FirebaseAppCheck
 @_exported import FirebaseAuth
 @_exported import FirebaseFirestore
 @_exported import FirebaseFirestoreSwift
+@_exported import struct GoogleSignInSwift.GoogleSignInButton
 import FirebaseFunctions
-import FirebasePerformance
 import Foundation
 
 // MARK: - Firebase
@@ -20,21 +18,24 @@ public final class Firebase: ObservableObject {
     
     // MARK: Properties
     
-    /// The FirebaseAuth instance
-    public let auth: FirebaseAuth.Auth
+    /// The Firebase Auth instance.
+    let firebaseAuth: FirebaseAuth.Auth
     
-    /// The Firestore instance
-    public let firestore: FirebaseFirestore.Firestore
+    /// The Firebase Firestore instance.
+    let firebaseFirestore: FirebaseFirestore.Firestore
     
-    /// The User, if available
+    /// The Firebase Functions instance.
+    let firebaseFunctions: FirebaseFunctions.Functions
+    
+    /// The User.
     @Published
-    public var user: Result<User?, Error>?
+    var user: Result<User?, Error>?
+    
+    /// The user document snapshot subscription
+    var userDocumentSnapshotSubscription: FirebaseFirestore.ListenerRegistration?
     
     /// The auth state did change subscription
     private var authStateDidChangeSubscription: FirebaseAuth.AuthStateDidChangeListenerHandle?
-    
-    /// The user document snapshot subscription
-    var userDocumentSnapshotSubscription: ListenerRegistration?
     
     // MARK: Initializer
     
@@ -43,8 +44,9 @@ public final class Firebase: ObservableObject {
         // Configure Firebase
         Self.configure()
         // Initialize
-        self.auth = .auth()
-        self.firestore = .firestore()
+        self.firebaseAuth = .auth()
+        self.firebaseFirestore = .firestore()
+        self.firebaseFunctions = .functions()
         // Perform Setup
         self.setup()
     }
@@ -52,37 +54,37 @@ public final class Firebase: ObservableObject {
     /// Deinit
     deinit {
         // Remove auth state did change subscription
-        self.authStateDidChangeSubscription.flatMap(self.auth.removeStateDidChangeListener)
+        self.authStateDidChangeSubscription.flatMap(self.firebaseAuth.removeStateDidChangeListener)
         // Remove user document snapshot subscription
         self.userDocumentSnapshotSubscription?.remove()
     }
     
 }
 
-// MARK: - Configure
+// MARK: - API
 
 public extension Firebase {
     
-    /// Bool value if FirebaseApp is configured.
-    private(set) static var isConfigured = false
+    /// The Firebase Authentication
+    var authentication: Authentication {
+        .init(
+            firebase: self
+        )
+    }
     
-    /// Configure FIrebase
-    static func configure() {
-        // Verify is not configured
-        guard !self.isConfigured else {
-            // Otherwise return out of function
-            return
-        }
-        // Enable is configured
-        self.isConfigured = true
-        // Set AppCheckProviderFactory
-        FirebaseAppCheck
-            .AppCheck
-            .setAppCheckProviderFactory(
-                AppCheckProviderFactory()
-            )
-        // Configure FirebaseApp
-        FirebaseApp.configure()
+    /// The Firebase Firestore
+    var firestore: Firestore {
+        .init(
+            firestore: self.firebaseFirestore,
+            auth: self.firebaseAuth
+        )
+    }
+    
+    /// The Firebase Functions
+    var functions: Functions {
+        .init(
+            functions: self.firebaseFunctions
+        )
     }
     
 }
@@ -93,7 +95,7 @@ private extension Firebase {
     
     /// Setup Firebase
     func setup() {
-        self.authStateDidChangeSubscription = self.auth
+        self.authStateDidChangeSubscription = self.firebaseAuth
             .addStateDidChangeListener { [weak self] _, user in
                 // Send object will change event
                 self?.objectWillChange.send()
@@ -102,25 +104,34 @@ private extension Firebase {
             }
     }
     
-    /// Setup Firebase using Firebase User
-    /// - Parameter user: The optional Firebase User
+}
+
+// MARK: - Setup using User Account
+
+extension Firebase {
+    
+    /// Setup Firebase using the user account
+    /// - Parameter user: The user account, if available.
     func setup(
-        using user: FirebaseAuth.User?
+        using userAccount: UserAccount?
     ) {
         // Clear current user document subscription
         self.userDocumentSnapshotSubscription?.remove()
         self.userDocumentSnapshotSubscription = nil
-        // Verify a firebase user is available
-        guard let user = user else {
+        // Verify a user account is available
+        guard let userAccount = userAccount else {
             // Clear user
             self.user = nil
+            // Sign out on authentication providers
+            try? AppleFirebaseAuthenticationProvider().signOut()
+            try? GoogleFirebaseAuthenticationProvider().signOut()
             // Return out of function
             return
         }
         // Subscribe to user document snapshots
         self.userDocumentSnapshotSubscription = User
-            .collectionReference(in: self.firestore)
-            .document(user.uid)
+            .collectionReference(in: self.firebaseFirestore)
+            .document(userAccount.uid)
             .addSnapshotListener { [weak self] snapshot, error in
                 // Check if document does not exists
                 if snapshot?.exists == false {
@@ -142,56 +153,17 @@ private extension Firebase {
     
 }
 
-// MARK: - Reload User
+// MARK: - Handle Opened URL
 
 public extension Firebase {
     
-    /// Reload User
-    func reloadUser() {
-        self.user = nil
-        self.auth.currentUser.flatMap(self.setup)
+    /// Handle opened URL
+    /// - Parameter url: The opened URL.
+    @discardableResult
+    func handle(
+        opened url: URL
+    ) -> Bool {
+        GoogleFirebaseAuthenticationProvider().handle(openedURL: url)
     }
     
-}
-
-// MARK: - Reload User
-
-public extension Firebase {
-    
-    /// Send download data request
-    func sendDownloadDataRequest() async throws {
-        _ = try await FirebaseFunctions
-            .Functions
-            .functions(region: "europe-west3")
-            .httpsCallable("download-data")
-            .call()
-    }
-    
-}
-
-// MARK: - AppCheckProviderFactory
-
-private extension Firebase {
-
-    /// The AppCheckProviderFactory
-    final class AppCheckProviderFactory: NSObject, FirebaseAppCheck.AppCheckProviderFactory {
-        
-        /// Creates a new instance of `AppCheckProvider`
-        /// - Parameter app: The FirebaseApp
-        func createProvider(
-            with app: FirebaseApp
-        ) -> FirebaseAppCheck.AppCheckProvider? {
-            #if targetEnvironment(simulator) || DEBUG
-            return FirebaseAppCheck.AppCheckDebugProvider(app: app)
-            #else
-            if #available(iOS 14.0, *) {
-                return FirebaseAppCheck.AppAttestProvider(app: app)
-            } else {
-                return FirebaseAppCheck.DeviceCheckProvider(app: app)
-            }
-            #endif
-        }
-        
-    }
-
 }
