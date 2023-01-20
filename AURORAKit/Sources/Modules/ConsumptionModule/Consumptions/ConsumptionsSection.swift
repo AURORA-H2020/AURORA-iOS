@@ -29,7 +29,9 @@ struct ConsumptionsSection {
     ) {
         self._consumptions = .init(
             collectionPath: Consumption
-                .collectionReference(userId)
+                .collectionReference(
+                    context: userId
+                )
                 .path,
             predicates: [
                 .order(by: "createdAt")

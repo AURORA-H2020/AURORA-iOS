@@ -6,8 +6,8 @@ import Foundation
 /// A Firestore Entity.
 public protocol FirestoreEntity: Codable, Hashable, Identifiable where Self.ID == String? {
     
-    /// The CollectionReference Parameter type.
-    associatedtype CollectionReferenceParameter = Void
+    /// The CollectionReference Context type.
+    associatedtype CollectionReferenceContext = Void
     
     /// The Firestore collection name.
     static var collectionName: String { get }
@@ -15,10 +15,10 @@ public protocol FirestoreEntity: Codable, Hashable, Identifiable where Self.ID =
     /// The Firestore CollectionReference.
     /// - Parameters:
     ///   - firestore: The Firestore instance.
-    ///   - parameter: The CollectionReferenceParameter.
+    ///   - context: The CollectionReferenceContext.
     static func collectionReference(
         in firestore: FirebaseFirestore.Firestore,
-        _ parameter: CollectionReferenceParameter
+        context: CollectionReferenceContext
     ) -> FirebaseFirestore.CollectionReference
     
     /// The stable identity of the entity associated with this instance.
@@ -43,24 +43,24 @@ public extension FirestoreEntity {
     
     /// The Firestore CollectionReference.
     /// - Parameters:
-    ///   - parameter: The CollectionReferenceParameter.
+    ///   - context: The CollectionReferenceContext.
     static func collectionReference(
-        _ parameter: CollectionReferenceParameter
+        context: CollectionReferenceContext
     ) -> FirebaseFirestore.CollectionReference {
         self.collectionReference(
             in: .firestore(),
-            parameter
+            context: context
         )
     }
     
     /// The Firestore CollectionReference.
     /// - Parameters:
     ///   - firestore: The Firestore instance.
-    ///   - parameter: The CollectionReferenceParameter. Default value `()`
+    ///   - context: The CollectionReferenceContext. Default value `()`
     static func collectionReference(
         in firestore: FirebaseFirestore.Firestore = .firestore(),
-        _ parameter: CollectionReferenceParameter = ()
-    ) -> FirebaseFirestore.CollectionReference where CollectionReferenceParameter == Void {
+        context: CollectionReferenceContext = ()
+    ) -> FirebaseFirestore.CollectionReference where CollectionReferenceContext == Void {
         firestore.collection(self.collectionName)
     }
     

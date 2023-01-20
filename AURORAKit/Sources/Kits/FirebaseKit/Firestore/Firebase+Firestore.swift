@@ -28,18 +28,18 @@ public extension Firebase.Firestore {
     /// Retrieve FirestoreEntities
     /// - Parameters:
     ///   - entityType: The FirestoreEntity Type.
-    ///   - collectionReferenceParameter: The CollectionReferenceParameter.
+    ///   - context: The CollectionReferenceContext.
     ///   - wherePredicate: A closure which takes in a CollectionReference to attach where conditions.
     func get<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
-        collectionReferenceParameter: Entity.CollectionReferenceParameter,
+        context: Entity.CollectionReferenceContext,
         where wherePredicate: (FirebaseFirestore.CollectionReference) -> FirebaseFirestore.Query = { $0 }
     ) async throws -> [Entity] {
         try await wherePredicate(
             Entity
                 .collectionReference(
                     in: self.firestore,
-                    collectionReferenceParameter
+                    context: context
                 )
         )
         .getDocuments()
@@ -56,10 +56,10 @@ public extension Firebase.Firestore {
     func get<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
         where wherePredicate: (FirebaseFirestore.CollectionReference) -> FirebaseFirestore.Query = { $0 }
-    ) async throws -> [Entity] where Entity.CollectionReferenceParameter == Void {
+    ) async throws -> [Entity] where Entity.CollectionReferenceContext == Void {
         try await self.get(
             entityType,
-            collectionReferenceParameter: (),
+            context: (),
             where: wherePredicate
         )
     }
@@ -67,16 +67,16 @@ public extension Firebase.Firestore {
     /// Retrieve FirestoreEntity
     /// - Parameters:
     ///   - entityType: The FirestoreEntity Type.
-    ///   - collectionReferenceParameter: The CollectionReferenceParameter.
+    ///   - context: The CollectionReferenceContext.
     func get<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
-        collectionReferenceParameter: Entity.CollectionReferenceParameter,
+        context: Entity.CollectionReferenceContext,
         id: String
     ) async throws -> Entity {
         try await Entity
             .collectionReference(
                 in: self.firestore,
-                collectionReferenceParameter
+                context: context
             )
             .document(id)
             .getDocument(as: Entity.self)
@@ -88,10 +88,10 @@ public extension Firebase.Firestore {
     func get<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
         id: String
-    ) async throws -> Entity where Entity.CollectionReferenceParameter == Void {
+    ) async throws -> Entity where Entity.CollectionReferenceContext == Void {
         try await self.get(
             entityType,
-            collectionReferenceParameter: (),
+            context: (),
             id: id
         )
     }
@@ -105,18 +105,18 @@ public extension Firebase.Firestore {
     /// A Publisher which emits FirestoreEntities
     /// - Parameters:
     ///   - entityType: The FirestoreEntity Type.
-    ///   - collectionReferenceParameter: The CollectionReferenceParameter.
+    ///   - context: The CollectionReferenceContext.
     ///   - wherePredicate: A closure which takes in a CollectionReference to attach where conditions.
     func publisher<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
-        collectionReferenceParameter: Entity.CollectionReferenceParameter,
+        context: Entity.CollectionReferenceContext,
         where wherePredicate: (FirebaseFirestore.CollectionReference) -> FirebaseFirestore.Query = { $0 }
     ) -> AnyPublisher<[Result<Entity, Error>], Error> {
         wherePredicate(
             Entity
                 .collectionReference(
                     in: self.firestore,
-                    collectionReferenceParameter
+                    context: context
                 )
         )
         .snapshotPublisher()
@@ -139,10 +139,10 @@ public extension Firebase.Firestore {
     func publisher<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
         where wherePredicate: (FirebaseFirestore.CollectionReference) -> FirebaseFirestore.Query = { $0 }
-    ) -> AnyPublisher<[Result<Entity, Error>], Error> where Entity.CollectionReferenceParameter == Void {
+    ) -> AnyPublisher<[Result<Entity, Error>], Error> where Entity.CollectionReferenceContext == Void {
         self.publisher(
             entityType,
-            collectionReferenceParameter: (),
+            context: (),
             where: wherePredicate
         )
     }
@@ -150,17 +150,17 @@ public extension Firebase.Firestore {
     /// A Publisher that emits a FirestoreEntity
     /// - Parameters:
     ///   - entityType: The FirestoreEntity Type.
-    ///   - collectionReferenceParameter: The CollectionReferenceParameter.
+    ///   - context: The CollectionReferenceContext.
     ///   - id: The FirestoreEntity Identifier
     func publisher<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
-        collectionReferenceParameter: Entity.CollectionReferenceParameter,
+        context: Entity.CollectionReferenceContext,
         id: String
     ) -> AnyPublisher<Result<Entity, Error>, Error> {
         Entity
             .collectionReference(
                 in: self.firestore,
-                collectionReferenceParameter
+                context: context
             )
             .document(id)
             .snapshotPublisher()
@@ -179,10 +179,10 @@ public extension Firebase.Firestore {
     func publisher<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
         id: String
-    ) -> AnyPublisher<Result<Entity, Error>, Error> where Entity.CollectionReferenceParameter == Void {
+    ) -> AnyPublisher<Result<Entity, Error>, Error> where Entity.CollectionReferenceContext == Void {
         self.publisher(
             entityType,
-            collectionReferenceParameter: (),
+            context: (),
             id: id
         )
     }
@@ -196,16 +196,16 @@ public extension Firebase.Firestore {
     /// Adds a new FirestoreEnttity with an automatically generated ID.
     /// - Parameters:
     ///   - entity: The FirestoreEntity to add.
-    ///   - collectionReferenceParameter: The FirestoreEntity CollectionReferenceParameter.
+    ///   - context: The FirestoreEntity CollectionReferenceContext.
     @discardableResult
     func add<Entity: FirestoreEntity>(
         _ entity: Entity,
-        collectionReferenceParameter: Entity.CollectionReferenceParameter
+        context: Entity.CollectionReferenceContext
     ) throws -> FirebaseFirestore.DocumentReference {
         try Entity
             .collectionReference(
                 in: self.firestore,
-                collectionReferenceParameter
+                context: context
             )
             .addDocument(from: entity)
     }
@@ -216,10 +216,10 @@ public extension Firebase.Firestore {
     @discardableResult
     func add<Entity: FirestoreEntity>(
         _ entity: Entity
-    ) throws -> FirebaseFirestore.DocumentReference where Entity.CollectionReferenceParameter == Void {
+    ) throws -> FirebaseFirestore.DocumentReference where Entity.CollectionReferenceContext == Void {
         try self.add(
             entity,
-            collectionReferenceParameter: ()
+            context: ()
         )
     }
     
@@ -232,10 +232,10 @@ public extension Firebase.Firestore {
     /// Update a FirestoreEntity
     /// - Parameters:
     ///   - entity: The FirestoreEntity to update.
-    ///   - collectionReferenceParameter: The FirestoreEntity CollectionReferenceParameter.
+    ///   - context: The FirestoreEntity CollectionReferenceContext.
     func update<Entity: FirestoreEntity>(
         _ entity: Entity,
-        collectionReferenceParameter: Entity.CollectionReferenceParameter
+        context: Entity.CollectionReferenceContext
     ) throws {
         // Initialize mutable entity
         var entity = entity
@@ -255,7 +255,7 @@ public extension Firebase.Firestore {
         try Entity
             .collectionReference(
                 in: self.firestore,
-                collectionReferenceParameter
+                context: context
             )
             .document(entityId)
             .setData(from: entity, completion: nil)
@@ -266,10 +266,10 @@ public extension Firebase.Firestore {
     ///   - entity: The FirestoreEntity to update.
     func update<Entity: FirestoreEntity>(
         _ entity: Entity
-    ) throws where Entity.CollectionReferenceParameter == Void {
+    ) throws where Entity.CollectionReferenceContext == Void {
         try self.update(
             entity,
-            collectionReferenceParameter: ()
+            context: ()
         )
     }
     
@@ -282,10 +282,10 @@ public extension Firebase.Firestore {
     /// Delete a FirestoreEntity
     /// - Parameters:
     ///   - entity: The FirestoreEntity to delete.
-    ///   - collectionReferenceParameter: The FirestoreEntity CollectionReferenceParameter.
+    ///   - context: The FirestoreEntity CollectionReferenceContext.
     func delete<Entity: FirestoreEntity>(
         _ entity: Entity,
-        collectionReferenceParameter: Entity.CollectionReferenceParameter
+        context: Entity.CollectionReferenceContext
     ) throws {
         // Verify entity identifier is available
         guard let entityId = entity.id else {
@@ -296,7 +296,7 @@ public extension Firebase.Firestore {
         Entity
             .collectionReference(
                 in: self.firestore,
-                collectionReferenceParameter
+                context: context
             )
             .document(entityId)
             .delete(completion: nil)
@@ -305,15 +305,15 @@ public extension Firebase.Firestore {
     /// Delete a sequence of FirestoreEntities
     /// - Parameters:
     ///   - entities: The FirestoreEntities to delete.
-    ///   - collectionReferenceParameter: The FirestoreEntity CollectionReferenceParameter.
+    ///   - context: The FirestoreEntity CollectionReferenceContext.
     func delete<Entities: Sequence>(
         _ entities: Entities,
-        collectionReferenceParameter: Entities.Element.CollectionReferenceParameter
+        context: Entities.Element.CollectionReferenceContext
     ) where Entities.Element: FirestoreEntity {
         for entity in entities {
             try? self.delete(
                 entity,
-                collectionReferenceParameter: collectionReferenceParameter
+                context: context
             )
         }
     }
@@ -323,10 +323,10 @@ public extension Firebase.Firestore {
     ///   - entity: The FirestoreEntity to delete.
     func delete<Entity: FirestoreEntity>(
         _ entity: Entity
-    ) throws where Entity.CollectionReferenceParameter == Void {
+    ) throws where Entity.CollectionReferenceContext == Void {
         try self.delete(
             entity,
-            collectionReferenceParameter: ()
+            context: ()
         )
     }
     

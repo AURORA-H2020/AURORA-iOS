@@ -110,7 +110,7 @@ private extension AddConsumptionForm {
             .firestore
             .add(
                 consumption,
-                collectionReferenceParameter: self.firebase
+                context: self.firebase
                     .authentication
                     .userId
             )

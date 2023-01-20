@@ -88,10 +88,10 @@ extension Consumption: FirestoreEntity {
     /// The Firestore CollectionReference.
     /// - Parameters:
     ///   - firestore: The Firestore instance.
-    ///   - parameter: The Firebase User.
+    ///   - parameter: The Firebase User Identifier.
     public static func collectionReference(
         in firestore: FirebaseFirestore.Firestore,
-        _ userId: String
+        context userId: String
     ) -> FirebaseFirestore.CollectionReference {
         firestore
             .collection(User.collectionName)
