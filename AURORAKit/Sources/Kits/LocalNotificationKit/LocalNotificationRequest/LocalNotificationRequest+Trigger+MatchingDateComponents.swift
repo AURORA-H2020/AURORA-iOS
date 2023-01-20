@@ -1,12 +1,22 @@
 import Foundation
 
+// MARK: - LocalNotificationRequest+Trigger+MatchingDateComponents
+
 public extension LocalNotificationRequest.Trigger {
     
+    /// The matching date components of a local notification request trigger.
     @dynamicMemberLookup
     struct MatchingDateComponents: Hashable {
         
+        // MARK: Properties
+        
+        /// The date components.
         public var dateComponents: DateComponents
         
+        // MARK: Initializer
+        
+        /// Creates a new instance of `LocalNotificationRequest.Trigger.MatchingDateComponents`
+        /// - Parameter dateComponents: The date components.
         public init(
             dateComponents: DateComponents = .init()
         ) {
@@ -17,8 +27,40 @@ public extension LocalNotificationRequest.Trigger {
     
 }
 
+// MARK: - Convenience Initializer
+
 public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
+    /// Creates a new instance of `LocalNotificationRequest.Trigger.MatchingDateComponents`
+    /// - Parameters:
+    ///   - frequency: The Frequency.
+    ///   - time: The time information. Default value `nil`
+    init(
+        frequency: Frequency,
+        time: (hour: Int, minute: Int)? = nil
+    ) {
+        self.init()
+        self.frequency = frequency
+        if let time = time {
+            self.time = Calendar.current.date(
+                from: {
+                    var dateComponents = DateComponents()
+                    dateComponents.hour = time.hour
+                    dateComponents.minute = time.minute
+                    return dateComponents
+                }()
+            )
+        }
+    }
+    
+}
+
+// MARK: - DynamicMemberLookup
+
+public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
+    
+    /// Access a property of `DateComponents`
+    /// - Parameter keyPath: The key path.
     subscript<Value>(
         dynamicMember keyPath: WritableKeyPath<DateComponents, Value>
     ) -> Value {
@@ -32,38 +74,53 @@ public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
 }
 
+// MARK: - Symbols
+
 public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
+    /// An instance of DateFormatter
     private static let dateFormatter = DateFormatter()
     
+    /// The month symbols.
     static var monthSymbols: [String] {
         self.dateFormatter.monthSymbols
     }
     
+    /// The array of weekday symbols
     static var weekdaySymbols: [String] {
         self.dateFormatter.weekdaySymbols
     }
     
 }
 
+// MARK: - Reset
+
 public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
+    /// Reset date components
     mutating func reset() {
         self.dateComponents = .init()
     }
     
 }
 
+// MARK: - Frequency
+
 public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
-    /// A Frequency
+    /// A Frequency.
     enum Frequency: String, Codable, Hashable, CaseIterable {
+        /// Daily
         case daily
+        /// Weekly
         case weekly
+        /// Monthly
         case monthly
+        /// Yearly
         case yearly
     }
     
+    /// The Frequency.
     var frequency: Frequency {
         get {
             if self.dateComponents.day != nil && self.dateComponents.month != nil {
@@ -95,8 +152,11 @@ public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
 }
 
+// MARK: - Days
+
 public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
+    /// The range of days.
     var days: [Int] {
         if self.dateComponents.month != nil,
            let date = Calendar.current.date(from: self.dateComponents),
@@ -109,8 +169,11 @@ public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
 }
 
+// MARK: - Time
+
 public extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
+    /// The time information represented as an instance of a date.
     var time: Date? {
         get {
             Calendar.current.date(

@@ -71,18 +71,9 @@ private extension SettingsContentView {
     
     var accountSection: some View {
         Section(
-            header: VStack(alignment: .leading) {
-                Text(
-                    verbatim: "Account"
-                )
-                if let email = try? self.firebase.authentication.state.userAccount.email {
-                    Text(
-                        verbatim: email
-                    )
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                }
-            }
+            header: Text(
+                verbatim: "Account"
+            )
         ) {
             if (try? self.firebase.authentication.providers.contains(.password)) == true {
                 Button {

@@ -17,6 +17,10 @@ struct LocalNotificationForm {
     @State
     private var authorizationStatus: UNAuthorizationStatus?
     
+    /// The next date at which the trigger conditions are met.
+    @State
+    private var nextTriggerDate: Date?
+    
     /// The MatchingDateComponents.
     @State
     private var matchingDateComponents: LocalNotificationRequest.Trigger.MatchingDateComponents?
@@ -36,7 +40,7 @@ extension LocalNotificationForm: View {
                     title: "Notifications",
                     subtitle: "Please enable notifications for the AURORA app in the settings of your device.",
                     primaryAction: .init(
-                        title: "Allow",
+                        title: "Open Settings",
                         action: {
                             URL(
                                 string: {
@@ -75,8 +79,10 @@ extension LocalNotificationForm: View {
             }
         }
         .task {
-            self.matchingDateComponents = await self.localNotificationCenter
-                .pendingNotificationRequest(self.id)?
+            let pendingNotificationRequest = await self.localNotificationCenter
+                .pendingNotificationRequest(self.id)
+            self.nextTriggerDate = pendingNotificationRequest?.nextTriggerDate
+            self.matchingDateComponents = pendingNotificationRequest?
                 .trigger?
                 .matchingDateComponents
         }
@@ -85,20 +91,22 @@ extension LocalNotificationForm: View {
         ) { matchingDateComponents in
             if let matchingDateComponents = matchingDateComponents {
                 Task {
-                    try await self.localNotificationCenter.add(
-                        .init(
-                            id: self.id,
-                            content: .inferred(by: self.id),
-                            trigger: .calendar(
-                                dateMatching: matchingDateComponents,
-                                repeats: true
-                            )
+                    let localNotificationRequest = LocalNotificationRequest(
+                        id: self.id,
+                        content: .inferred(by: self.id),
+                        trigger: .calendar(
+                            dateMatching: matchingDateComponents,
+                            repeats: true
                         )
                     )
+                    try await self.localNotificationCenter
+                        .add(localNotificationRequest)
+                    self.nextTriggerDate = localNotificationRequest.nextTriggerDate
                 }
             } else {
                 self.localNotificationCenter
                     .removePendingNotificationRequest(self.id)
+                self.nextTriggerDate = nil
             }
         }
     }
@@ -121,7 +129,10 @@ private extension LocalNotificationForm {
                         },
                         set: { isOn in
                             if isOn {
-                                self.matchingDateComponents = .init()
+                                self.matchingDateComponents = .init(
+                                    frequency: .monthly,
+                                    time: (hour: 10, minute: 0)
+                                )
                             } else {
                                 self.matchingDateComponents = nil
                             }
@@ -130,7 +141,15 @@ private extension LocalNotificationForm {
                 )
             }
             if let matchingDateComponents = self.matchingDateComponents {
-                Section {
+                Section(
+                    footer: Group {
+                        if let nextTriggerDate = self.nextTriggerDate {
+                            Text(
+                                verbatim: "The next notification will be sent on \(nextTriggerDate.formatted())"
+                            )
+                        }
+                    }
+                ) {
                     Picker(
                         "Frequency",
                         selection: .init(

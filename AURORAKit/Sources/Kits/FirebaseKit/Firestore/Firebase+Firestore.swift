@@ -302,6 +302,22 @@ public extension Firebase.Firestore {
             .delete(completion: nil)
     }
     
+    /// Delete a sequence of FirestoreEntities
+    /// - Parameters:
+    ///   - entities: The FirestoreEntities to delete.
+    ///   - collectionReferenceParameter: The FirestoreEntity CollectionReferenceParameter.
+    func delete<Entities: Sequence>(
+        _ entities: Entities,
+        collectionReferenceParameter: Entities.Element.CollectionReferenceParameter
+    ) where Entities.Element: FirestoreEntity {
+        for entity in entities {
+            try? self.delete(
+                entity,
+                collectionReferenceParameter: collectionReferenceParameter
+            )
+        }
+    }
+    
     /// Delete a FirestoreEntity
     /// - Parameters:
     ///   - entity: The FirestoreEntity to delete.

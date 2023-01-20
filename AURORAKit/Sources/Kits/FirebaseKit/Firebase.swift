@@ -96,6 +96,7 @@ public extension Firebase {
     
     /// Handle opened URL
     /// - Parameter url: The opened URL.
+    @discardableResult
     func handle(
         opened url: URL
     ) -> Bool {

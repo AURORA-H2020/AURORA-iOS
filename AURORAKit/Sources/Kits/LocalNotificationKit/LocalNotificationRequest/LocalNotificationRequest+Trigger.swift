@@ -27,8 +27,11 @@ public extension LocalNotificationRequest {
     
 }
 
+// MARK: - Trigger+Repeats
+
 public extension LocalNotificationRequest.Trigger {
     
+    /// A Boolean value indicating whether the system reschedules the notification after it’s delivered.
     var repeats: Bool {
         switch self {
         case .timeInterval(_, let repeats),
@@ -40,8 +43,11 @@ public extension LocalNotificationRequest.Trigger {
     
 }
 
+// MARK: - Trigger+timeInterval
+
 public extension LocalNotificationRequest.Trigger {
     
+    /// The time interval, if available.
     var timeInterval: Measurement<UnitDuration>? {
         if case .timeInterval(let timeInterval, _) = self {
             return timeInterval
@@ -52,8 +58,11 @@ public extension LocalNotificationRequest.Trigger {
     
 }
 
+// MARK: - Trigger+matchingDateComponents
+
 public extension LocalNotificationRequest.Trigger {
     
+    /// The matching date components, if available.
     var matchingDateComponents: MatchingDateComponents? {
         if case .calendar(let dateMatching, _) = self {
             return dateMatching
@@ -64,11 +73,32 @@ public extension LocalNotificationRequest.Trigger {
     
 }
 
+// MARK: - Trigger+region
+
 public extension LocalNotificationRequest.Trigger {
     
+    /// The region, if available
     var region: CLRegion? {
         if case .location(let region, _) = self {
             return region
+        } else {
+            return nil
+        }
+    }
+    
+}
+
+// MARK: - Trigger+nextTriggerDate
+
+public extension LocalNotificationRequest.Trigger {
+ 
+    /// The next date at which the trigger conditions are met.
+    var nextTriggerDate: Date? {
+        let rawValue = self.rawValue
+        if let calendarNotificationTrigger = rawValue as? UNCalendarNotificationTrigger {
+            return calendarNotificationTrigger.nextTriggerDate()
+        } else if let timeIntervalNotificationTrigger = rawValue as? UNTimeIntervalNotificationTrigger {
+            return timeIntervalNotificationTrigger.nextTriggerDate()
         } else {
             return nil
         }

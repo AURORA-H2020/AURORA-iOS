@@ -31,13 +31,12 @@ extension ThirdPartyDependencyList: View {
                                 Text(
                                     verbatim: thirdPartyDependency.author
                                 )
-                                .font(.caption)
-                                .fontWeight(.semibold)
+                                .font(.caption.weight(.semibold))
                                 .foregroundColor(.secondary)
                                 Text(
                                     verbatim: thirdPartyDependency.name
                                 )
-                                .font(.headline)
+                                .font(.subheadline.weight(.semibold))
                                 .foregroundColor(.primary)
                             }
                             Spacer()

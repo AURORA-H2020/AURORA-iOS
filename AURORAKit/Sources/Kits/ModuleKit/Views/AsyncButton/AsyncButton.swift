@@ -144,10 +144,8 @@ extension AsyncButton: View {
             HStack(spacing: 10) {
                 // Check if auto progress view is enabled and is busy
                 if self.isAutoProgressViewEnabled && self.state == .busy {
-                    // Render progress view
-                    AdaptiveProgressView()
+                    ProgressView()
                 }
-                // Render label based on busy state
                 self.label(self.state)
             }
         }

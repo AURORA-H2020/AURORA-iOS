@@ -107,6 +107,17 @@ public extension LocalNotificationRequest {
     
 }
 
+// MARK: - Next Trigger Date
+
+public extension LocalNotificationRequest {
+    
+    /// The next date at which the trigger conditions are met.
+    var nextTriggerDate: Date? {
+        self.trigger?.nextTriggerDate
+    }
+    
+}
+
 // MARK: - Badge Count
 
 public extension LocalNotificationRequest {

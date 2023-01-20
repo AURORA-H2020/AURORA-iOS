@@ -1,4 +1,5 @@
 import FirebaseKit
+import ModuleKit
 import SwiftUI
 
 // MARK: - ConsumptionsSection
@@ -51,18 +52,36 @@ extension ConsumptionsSection: View {
                     verbatim: "Latest entries"
                 )
                 Spacer()
-                Button {
-                    self.isAddConsumptionFormPresented = true
-                } label: {
-                    Label(
-                        "Add entry",
-                        systemImage: "plus"
-                    )
-                    .font(.headline)
+                if !self.consumptions.isEmpty {
+                    Button {
+                        self.isAddConsumptionFormPresented = true
+                    } label: {
+                        Label(
+                            "Add entry",
+                            systemImage: "plus"
+                        )
+                        .font(.headline)
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                    .tint(.accentColor)
                 }
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.capsule)
-                .tint(.accentColor)
+            },
+            footer: Group {
+                if self.consumptions.isEmpty {
+                    EmptyPlaceholder(
+                        systemImage: "plus.circle.fill",
+                        title: "Consumptions",
+                        subtitle: "Add your first consumption entry.",
+                        primaryAction: .init(
+                            title: "Add consumption",
+                            action: {
+                                self.isAddConsumptionFormPresented = true
+                            }
+                        )
+                    )
+                    .padding(.vertical)
+                }
             }
         ) {
             ForEach(self.consumptions) { consumption in
