@@ -28,20 +28,36 @@ extension ConsumptionSummarySection: View {
                 verbatim: "Your carbon footprint"
             )
         ) {
-            if let consumptionSummary = self.consumptionSummary {
-                self.content(
-                    consumptionSummary: consumptionSummary
-                )
-                .padding(.vertical)
-            } else {
-                Text(
-                    verbatim: "Your carbon footprint is currently not available."
-                )
-                .multilineTextAlignment(.center)
-                .foregroundColor(.secondary)
-                .align(.centerHorizontal)
-                .padding(.vertical)
+            Group {
+                if let consumptionSummary = self.consumptionSummary {
+                    self.content(
+                        consumptionSummary: consumptionSummary
+                    )
+                } else {
+                    self.content(
+                        consumptionSummary: .init(
+                            totalCarbonEmissions: 0.79,
+                            entries: [
+                                .init(
+                                    category: "Living",
+                                    value: 0.29
+                                ),
+                                .init(
+                                    category: "Mobility",
+                                    value: 0.27
+                                ),
+                                .init(
+                                    category: "Other",
+                                    value: 0.44
+                                )
+                            ]
+                        )
+                    )
+                    .redacted(reason: .placeholder)
+                    .opacity(0.7)
+                }
             }
+            .padding(.vertical)
         }
         .listRowBackground(Color(.systemGroupedBackground))
         .listRowInsets(.init())
@@ -86,13 +102,18 @@ private extension ConsumptionSummarySection {
                 VStack(alignment: .leading, spacing: 8) {
                     ForEach(consumptionSummary.entries) { entry in
                         Label {
-                            Text(verbatim: entry.category)
+                            HStack(spacing: 4) {
+                                Text(
+                                    verbatim: entry.category
+                                )
                                 .font(.headline)
                                 .foregroundColor(.primary)
-                                + Text(verbatim: " ")
-                                + Text(verbatim: "(\(Int(entry.value * 100))%)")
+                                Text(
+                                    verbatim: "(\(Int(entry.value * 100))%)"
+                                )
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
+                            }
                         } icon: {
                             Image(
                                 systemName: "square.fill"

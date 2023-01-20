@@ -26,6 +26,19 @@ public extension Firebase.Authentication {
     
 }
 
+// MARK: - User ID
+
+public extension Firebase.Authentication {
+    
+    /// The User identifier or throws an error
+    var userId: String {
+        get throws {
+            try self.state.userAccount.uid
+        }
+    }
+    
+}
+
 // MARK: - Reload User
 
 public extension Firebase.Authentication {
@@ -61,34 +74,45 @@ public extension Firebase.Authentication {
     enum Method {
         /// E-Mail and Password
         case password(email: String, password: String)
-        /// Sign in with Apple
-        case apple
-        /// Sign in with Google
-        case google
+        /// Sign in with Provider
+        /// - Note: Please use `.password(email: String, password: String)` instead of `.password`
+        case provider(Provider)
     }
     
-    /// An error that represents that the user is already authenticated
-    struct AlreadyAuthenticatedError: Error {}
+    /// A LoginError
+    enum LoginError: Error {
+        /// User is already authenticated.
+        case alreadyAuthenticated
+        /// Unsupported provider.
+        case unsupportedProvider(Provider)
+    }
     
     /// Login user using a given AuthenticationMethod
-    /// - Parameter authenticationMode: The Authentication Mode used to login the user.
+    /// - Parameter method: The Authentication Mode used to login the user.
     @discardableResult
     func login(
-        using authenticationMode: Method
+        using method: Method
     ) async throws -> FirebaseAuth.AuthDataResult {
+        // Verify state is not authenticated
         guard !self.state.isAuthenticated else {
-            throw AlreadyAuthenticatedError()
+            // Otherwise throw already authenticated error
+            throw LoginError.alreadyAuthenticated
         }
-        switch authenticationMode {
+        // Switch on method
+        switch method {
         case .password(let email, let password):
             do {
+                // Try to sign in with E-Mail and password
                 return try await self.firebase
                     .firebaseAuth
                     .signIn(
                         withEmail: email,
                         password: password
                     )
-            } catch let error as AuthErrorCode where error.code == .userNotFound {
+            }
+            // Auto fallback on `userNotFound` error
+            catch let error as AuthErrorCode where error.code == .userNotFound {
+                // Create user with E-Mail and password
                 return try await self.firebase
                     .firebaseAuth
                     .createUser(
@@ -96,16 +120,23 @@ public extension Firebase.Authentication {
                         password: password
                     )
             } catch {
+                // Otherwise rethrow error
                 throw error
             }
-        case .apple:
-            let appleFirebaseAuthenticationProvider = AppleFirebaseAuthenticationProvider()
-            let credential = try await appleFirebaseAuthenticationProvider.signIn()
-            return try await self.firebase.firebaseAuth.signIn(with: credential)
-        case .google:
-            let googleFirebaseAuthenticationProvider = GoogleFirebaseAuthenticationProvider()
-            let credential = try await googleFirebaseAuthenticationProvider.signIn()
-            return try await self.firebase.firebaseAuth.signIn(with: credential)
+        case .provider(let provider):
+            // Verify a FirebaseAuthenticationProvider is available for the given provider
+            guard let firebaseAuthenticationProvider = self.firebase
+                .firebaseAuthenticationProviders
+                .first(where: { $0.provider == provider }) else {
+                // Otherwise throw unsupported provider error
+                throw LoginError.unsupportedProvider(provider)
+            }
+            // Sign in with FirebaseAuthenticationProvider
+            return try await self.firebase
+                .firebaseAuth
+                .signIn(
+                    with: firebaseAuthenticationProvider.signIn()
+                )
         }
     }
     
@@ -231,6 +262,11 @@ public extension Firebase.Authentication {
         _ = try self.state.userAccount
         // Sign out
         try self.firebase.firebaseAuth.signOut()
+        // For each authentication provider
+        for firebaseAuthenticationProvider in self.firebase.firebaseAuthenticationProviders {
+            // Sign out on authentication providers and ignore error
+            try? firebaseAuthenticationProvider.signOut()
+        }
     }
     
 }
@@ -241,7 +277,13 @@ public extension Firebase.Authentication {
     
     /// Delete the currently authenticated user account.
     func deleteAccount() async throws {
+        // Delete Firebase user account
         try await self.state.userAccount.delete()
+        // For each authentication provider
+        for firebaseAuthenticationProvider in self.firebase.firebaseAuthenticationProviders {
+            // Sign out on authentication providers and ignore error
+            try? firebaseAuthenticationProvider.signOut()
+        }
     }
     
 }

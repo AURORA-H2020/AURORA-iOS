@@ -85,12 +85,12 @@ extension AuthenticationContentView: View {
                     VStack(spacing: 15) {
                         SignInWithAppleButton {
                             Task {
-                                await self.submit(using: .apple)
+                                await self.submit(using: .provider(.apple))
                             }
                         }
                         SignInWithGoogleButton {
                             Task {
-                                await self.submit(using: .google)
+                                await self.submit(using: .provider(.google))
                             }
                         }
                     }

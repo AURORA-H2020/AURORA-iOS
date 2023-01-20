@@ -27,6 +27,9 @@ public final class Firebase: ObservableObject {
     /// The Firebase Functions instance.
     let firebaseFunctions: FirebaseFunctions.Functions
     
+    /// The FirebaseAuthenticationProviders
+    let firebaseAuthenticationProviders: [FirebaseAuthenticationProvider]
+    
     /// The User.
     @Published
     var user: Result<User?, Error>?
@@ -47,6 +50,10 @@ public final class Firebase: ObservableObject {
         self.firebaseAuth = .auth()
         self.firebaseFirestore = .firestore()
         self.firebaseFunctions = .functions()
+        self.firebaseAuthenticationProviders = [
+            AppleFirebaseAuthenticationProvider(),
+            GoogleFirebaseAuthenticationProvider()
+        ]
         // Perform Setup
         self.setup()
     }
@@ -61,7 +68,7 @@ public final class Firebase: ObservableObject {
     
 }
 
-// MARK: - API
+// MARK: - Public API
 
 public extension Firebase {
     
@@ -85,6 +92,24 @@ public extension Firebase {
         .init(
             functions: self.firebaseFunctions
         )
+    }
+    
+    /// Handle opened URL
+    /// - Parameter url: The opened URL.
+    func handle(
+        opened url: URL
+    ) -> Bool {
+        // For each FirebaseAuthenticationProvider
+        for firebaseAuthenticationProvider in self.firebaseAuthenticationProviders {
+            // Check if provider can handle opened url
+            // swiftlint:disable:next for_where
+            if firebaseAuthenticationProvider.handle(openedURL: url) {
+                // Return success
+                return true
+            }
+        }
+        // Return false as url couldn't be handled
+        return false
     }
     
 }
@@ -149,21 +174,6 @@ extension Firebase {
                     self?.user = error.flatMap { .failure($0) }
                 }
             }
-    }
-    
-}
-
-// MARK: - Handle Opened URL
-
-public extension Firebase {
-    
-    /// Handle opened URL
-    /// - Parameter url: The opened URL.
-    @discardableResult
-    func handle(
-        opened url: URL
-    ) -> Bool {
-        GoogleFirebaseAuthenticationProvider().handle(openedURL: url)
     }
     
 }

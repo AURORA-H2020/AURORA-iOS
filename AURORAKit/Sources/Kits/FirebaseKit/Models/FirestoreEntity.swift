@@ -26,23 +26,6 @@ public protocol FirestoreEntity: Codable, Hashable, Identifiable where Self.ID =
     
 }
 
-public extension FirestoreEntity {
-    
-    /// The Firestore CollectionReference.
-    /// - Parameters:
-    ///   - firestore: The Firestore instance.
-    ///   - parameter: The CollectionReferenceParameter.
-    static func collectionReference(
-        _ parameter: CollectionReferenceParameter
-    ) -> FirebaseFirestore.CollectionReference {
-        self.collectionReference(
-            in: .firestore(),
-            parameter
-        )
-    }
-    
-}
-
 // MARK: - Default-Implementations
 
 public extension FirestoreEntity {
@@ -58,9 +41,17 @@ public extension FirestoreEntity {
         return collectionName
     }
     
-}
-
-public extension FirestoreEntity where CollectionReferenceParameter == Void {
+    /// The Firestore CollectionReference.
+    /// - Parameters:
+    ///   - parameter: The CollectionReferenceParameter.
+    static func collectionReference(
+        _ parameter: CollectionReferenceParameter
+    ) -> FirebaseFirestore.CollectionReference {
+        self.collectionReference(
+            in: .firestore(),
+            parameter
+        )
+    }
     
     /// The Firestore CollectionReference.
     /// - Parameters:
@@ -69,7 +60,7 @@ public extension FirestoreEntity where CollectionReferenceParameter == Void {
     static func collectionReference(
         in firestore: FirebaseFirestore.Firestore = .firestore(),
         _ parameter: CollectionReferenceParameter = ()
-    ) -> FirebaseFirestore.CollectionReference {
+    ) -> FirebaseFirestore.CollectionReference where CollectionReferenceParameter == Void {
         firestore.collection(self.collectionName)
     }
     
