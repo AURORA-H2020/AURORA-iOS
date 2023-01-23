@@ -148,9 +148,6 @@ extension Firebase {
         guard let userAccount = userAccount else {
             // Clear user
             self.user = nil
-            // Sign out on authentication providers
-            try? AppleFirebaseAuthenticationProvider().signOut()
-            try? GoogleFirebaseAuthenticationProvider().signOut()
             // Return out of function
             return
         }
