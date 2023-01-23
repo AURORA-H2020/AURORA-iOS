@@ -48,6 +48,7 @@ extension ConsumptionContentView: View {
             }
             .navigationTitle("Dashboard")
         }
+        .navigationViewStyle(.stack)
         .analyticsScreen(
             name: "Dashboard",
             class: "ConsumptionContentView"

@@ -44,7 +44,7 @@ extension ConsumptionsSection.Cell: View {
                 .foregroundColor(.secondary)
                 if let carbonEmissions = self.consumption.carbonEmissions {
                     Text(
-                        verbatim: "≈ \(carbonEmissions) t"
+                        verbatim: "≈ \(carbonEmissions.formatted()) t"
                     )
                     .font(.caption)
                     .foregroundColor(.secondary)

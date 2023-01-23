@@ -110,9 +110,7 @@ private extension AddConsumptionForm {
             .firestore
             .add(
                 consumption,
-                context: self.firebase
-                    .authentication
-                    .userId
+                context: .current()
             )
         // Dismiss
         self.dismiss()
@@ -127,25 +125,11 @@ extension AddConsumptionForm: View {
     /// The content and behavior of the view.
     var body: some View {
         List {
-            Picker(
-                "Category",
-                selection: self.$category
-            ) {
-                Text(
-                    verbatim: "Please choose"
-                )
-                .tag(Optional<Consumption.Category>.none)
-                ForEach(
-                    Consumption.Category.allCases,
-                    id: \.self
-                ) { category in
-                    Text(
-                        verbatim: category.rawValue.capitalized
-                    )
-                    .tag(category as Consumption.Category?)
-                }
+            if let category = self.category {
+                self.content(for: category)
+            } else {
+                self.initialCategoryPicker
             }
-            self.category.flatMap(self.content)
         }
         .navigationTitle("Add Consumption")
         .onChange(
@@ -156,6 +140,43 @@ extension AddConsumptionForm: View {
             self.partialTransportation.removeAll()
             self.value = nil
         }
+        .animation(
+            .default,
+            value: self.category
+        )
+    }
+    
+}
+
+private extension AddConsumptionForm {
+    
+    var initialCategoryPicker: some View {
+        Section(
+            header: VStack {
+                ForEach(
+                    Consumption.Category.allCases,
+                    id: \.self
+                ) { category in
+                    Button {
+                        self.category = category
+                    } label: {
+                        HStack {
+                            category.icon
+                            Text(
+                                verbatim: category.localizedString
+                            )
+                        }
+                        .font(.headline)
+                        .align(.centerHorizontal)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(.accentColor)
+                    .controlSize(.large)
+                }
+            }
+        ) {
+        }
+        .headerProminence(.increased)
     }
     
 }
@@ -163,17 +184,60 @@ extension AddConsumptionForm: View {
 private extension AddConsumptionForm {
     
     @ViewBuilder
+    // swiftlint:disable:next function_body_length
     func content(
         for category: Consumption.Category
     ) -> some View {
-        switch category {
-        case .electricity:
-            self.electricityContent
-        case .heating:
-            self.heatingContent
-        case .transportation:
-            self.transportationContent
+        Section(
+            header: HStack {
+                Text(
+                    verbatim: category.localizedString
+                )
+                Spacer()
+                Menu {
+                    ForEach(
+                        Consumption
+                            .Category
+                            .allCases
+                            .filter { $0 != category },
+                        id: \.self
+                    ) { category in
+                        Button {
+                            self.category = category
+                        } label: {
+                            Text(
+                                verbatim: category.localizedString
+                            )
+                        }
+
+                    }
+                } label: {
+                    HStack(spacing: 4) {
+                        Text(
+                            verbatim: "Change"
+                        )
+                        Image(
+                            systemName: "chevron.up.chevron.down"
+                        )
+                    }
+                    .font(.subheadline.weight(.semibold))
+                }
+                .buttonStyle(.bordered)
+                .tint(.accentColor)
+                .buttonBorderShape(.capsule)
+            }
+            .padding(.vertical, 8)
+        ) {
+            switch category {
+            case .electricity:
+                self.electricityContent
+            case .heating:
+                self.heatingContent
+            case .transportation:
+                self.transportationContent
+            }
         }
+        .headerProminence(.increased)
         Section(
             footer: AsyncButton(
                 isAutoProgressViewEnabled: false,
@@ -214,11 +278,7 @@ private extension AddConsumptionForm {
 private extension AddConsumptionForm {
     
     var electricityContent: some View {
-        Section(
-            header: Text(verbatim: "Electricity")
-        ) {
-        }
-        .headerProminence(.increased)
+        EmptyView()
     }
     
 }
@@ -226,62 +286,107 @@ private extension AddConsumptionForm {
 private extension AddConsumptionForm {
     
     var heatingContent: some View {
-        Section(
-            header: Text(verbatim: "Heating")
-        ) {
-        }
-        .headerProminence(.increased)
+        EmptyView()
     }
     
 }
 
 private extension AddConsumptionForm {
     
+    @ViewBuilder
     var transportationContent: some View {
-        Section(
-            header: Text(verbatim: "Transportation")
-        ) {
-            DatePicker(
-                "Date of travel",
-                selection: .init(
-                    get: {
-                        self.partialTransportation.dateOfTravel?.dateValue() ?? .init()
-                    },
-                    set: { newValue in
-                        self.partialTransportation.dateOfTravel = .init(date: newValue)
-                    }
-                )
-            )
-            .onAppear {
-                guard self.partialTransportation.dateOfTravel == nil else {
-                    return
+        DatePicker(
+            "Date of travel",
+            selection: .init(
+                get: {
+                    self.partialTransportation.dateOfTravel?.dateValue() ?? .init()
+                },
+                set: { newValue in
+                    self.partialTransportation.dateOfTravel = .init(date: newValue)
                 }
-                self.partialTransportation.dateOfTravel = .init()
-            }
-            Picker(
-                "Occupancy",
-                selection: self.$partialTransportation.publicVehicleOccupancy
-            ) {
-                Text(
-                    verbatim: "Please choose"
-                )
-                .tag(nil as Consumption.Transportation.PublicVehicleOccupancy??)
-                ForEach(
-                    Consumption.Transportation.PublicVehicleOccupancy.allCases,
-                    id: \.self
-                ) { occupancy in
-                    Text(
-                        verbatim: occupancy.rawValue.capitalized
-                    )
-                    .tag(occupancy as Consumption.Transportation.PublicVehicleOccupancy??)
-                }
-            }
-            NumberTextField(
-                "Distance",
-                number: self.$value
             )
+        )
+        .onAppear {
+            guard self.partialTransportation.dateOfTravel == nil else {
+                return
+            }
+            self.partialTransportation.dateOfTravel = .init()
         }
-        .headerProminence(.increased)
+        Picker(
+            "Type",
+            selection: self.$partialTransportation.transportationType
+        ) {
+            Text(
+                verbatim: "Please choose"
+            )
+            .tag(nil as Consumption.Transportation.TransportationType??)
+            ForEach(
+                Consumption.Transportation.TransportationType.allCases,
+                id: \.self
+            ) { transportationType in
+                Text(
+                    verbatim: transportationType.rawValue.capitalized
+                )
+                .tag(transportationType as Consumption.Transportation.TransportationType??)
+            }
+        }
+        Picker(
+            "Occupancy",
+            selection: self.$partialTransportation.publicVehicleOccupancy
+        ) {
+            Text(
+                verbatim: "Please choose"
+            )
+            .tag(nil as Consumption.Transportation.PublicVehicleOccupancy??)
+            ForEach(
+                Consumption.Transportation.PublicVehicleOccupancy.allCases,
+                id: \.self
+            ) { occupancy in
+                Text(
+                    verbatim: occupancy.rawValue.capitalized
+                )
+                .tag(occupancy as Consumption.Transportation.PublicVehicleOccupancy??)
+            }
+        }
+        NumberTextField(
+            "Distance",
+            number: self.$value,
+            unitSymbol: "km"
+        )
+    }
+    
+}
+
+private extension Consumption.Category {
+    
+    var localizedString: String {
+        switch self {
+        case .electricity:
+            return "Electricity"
+        case .heating:
+            return "Heating"
+        case .transportation:
+            return "Transportation"
+        }
+    }
+    
+}
+
+private extension Consumption.Category {
+    
+    var icon: Image {
+        .init(
+            systemName: {
+                switch self {
+                case .electricity:
+                    return "bolt"
+                case .heating:
+                    return "heater.vertical"
+                case .transportation:
+                    return "car"
+                }
+            }()
+        )
     }
     
 }

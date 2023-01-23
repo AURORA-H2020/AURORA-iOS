@@ -1,7 +1,7 @@
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-import Foundation
+import SwiftUI
 
 // MARK: - Consumption
 
@@ -91,13 +91,23 @@ extension Consumption: FirestoreEntity {
     ///   - parameter: The Firebase User Identifier.
     public static func collectionReference(
         in firestore: FirebaseFirestore.Firestore,
-        context userId: String
+        context userUID: User.UID
     ) -> FirebaseFirestore.CollectionReference {
         firestore
             .collection(User.collectionName)
-            .document(userId)
+            .document(userUID.id)
             .collection(self.collectionName)
     }
+    
+    /// The Firestore CollectionReference..
+    public static var collectionReference: FirebaseFirestore.CollectionReference {
+        get throws {
+            try self.collectionReference(context: .current())
+        }
+    }
+    
+    /// The order by created at predicate.
+    public static let orderByCreatedAtPredicate = QueryPredicate.order(by: "createdAt")
     
 }
 

@@ -21,10 +21,60 @@ struct ChangeMailAddressForm {
     
 }
 
-private extension ChangeMailAddressForm {
+// MARK: - View
+
+extension ChangeMailAddressForm: View {
     
-    var canSubmit: Bool {
-        !self.mailAddress.isEmpty
+    /// The content and behavior of the view.
+    var body: some View {
+        List {
+            Section(
+                header: Text(verbatim: "New E-Mail address"),
+                footer: Group {
+                    if let email = try? self.firebase.authentication.state.userAccount.email {
+                        Text(
+                            verbatim: "Current E-Mail address:\n\(email)"
+                        )
+                        .multilineTextAlignment(.leading)
+                    }
+                }
+            ) {
+                TextField(
+                    "E-Mail address",
+                    text: self.$mailAddress
+                )
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .textContentType(.emailAddress)
+                .keyboardType(.emailAddress)
+            }
+            .headerProminence(.increased)
+            Section(
+                footer: AsyncButton(
+                    alert: self.alert,
+                    action: {
+                        try await self.firebase
+                            .authentication
+                            .update(
+                                email: self.mailAddress
+                            )
+                    },
+                    label: {
+                        Text(
+                            verbatim: "Submit"
+                        )
+                        .font(.headline)
+                        .padding(.horizontal)
+                    }
+                )
+                .disabled(self.mailAddress.isEmpty)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .align(.centerHorizontal)
+            ) {
+            }
+        }
+        .navigationTitle("Change E-Mail")
     }
     
 }
@@ -70,63 +120,6 @@ private extension ChangeMailAddressForm {
                 )
             }
         }
-    }
-    
-}
-
-// MARK: - View
-
-extension ChangeMailAddressForm: View {
-    
-    /// The content and behavior of the view.
-    var body: some View {
-        List {
-            Section(
-                footer: Group {
-                    if let email = try? self.firebase.authentication.state.userAccount.email {
-                        Text(
-                            verbatim: "Current E-Mail address:\n\(email)"
-                        )
-                        .multilineTextAlignment(.leading)
-                    }
-                }
-            ) {
-                TextField(
-                    "E-Mail address",
-                    text: self.$mailAddress
-                )
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .textContentType(.emailAddress)
-                .keyboardType(.emailAddress)
-            }
-            .headerProminence(.increased)
-            Section(
-                footer: AsyncButton(
-                    alert: self.alert,
-                    action: {
-                        try await self.firebase
-                            .authentication
-                            .update(
-                                email: self.mailAddress
-                            )
-                    },
-                    label: {
-                        Text(
-                            verbatim: "Submit"
-                        )
-                        .font(.headline)
-                        .padding(.horizontal)
-                    }
-                )
-                .disabled(!self.canSubmit)
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .align(.centerHorizontal)
-            ) {
-            }
-        }
-        .navigationTitle("Change E-Mail")
     }
     
 }

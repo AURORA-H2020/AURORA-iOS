@@ -9,6 +9,9 @@ struct ConsumptionsSection {
     
     // MARK: Properties
     
+    /// The user identifier
+    private let userId: String
+    
     /// The Consumptions.
     @FirestoreQuery
     private var consumptions: [Consumption]
@@ -16,6 +19,10 @@ struct ConsumptionsSection {
     /// Bool value if AddConsumptionForm is presented.
     @Binding
     private var isAddConsumptionFormPresented: Bool
+    
+    /// The Firebase instance.
+    @EnvironmentObject
+    private var firebase: Firebase
     
     // MARK: Initializer
     
@@ -27,14 +34,15 @@ struct ConsumptionsSection {
         userId: String,
         isAddConsumptionFormPresented: Binding<Bool>
     ) {
+        self.userId = userId
         self._consumptions = .init(
             collectionPath: Consumption
                 .collectionReference(
-                    context: userId
+                    context: .init(userId)
                 )
                 .path,
             predicates: [
-                .order(by: "createdAt")
+                Consumption.orderByCreatedAtPredicate
             ]
         )
         self._isAddConsumptionFormPresented = isAddConsumptionFormPresented
@@ -62,7 +70,7 @@ extension ConsumptionsSection: View {
                             "Add entry",
                             systemImage: "plus"
                         )
-                        .font(.headline)
+                        .font(.subheadline.weight(.semibold))
                     }
                     .buttonStyle(.bordered)
                     .buttonBorderShape(.capsule)
@@ -91,8 +99,20 @@ extension ConsumptionsSection: View {
                     consumption: consumption
                 )
             }
+            .onDelete { offsets in
+                self.firebase
+                    .firestore
+                    .delete(
+                        offsets.compactMap { self.consumptions[safe: $0] },
+                        context: .init(self.userId)
+                    )
+            }
         }
         .headerProminence(.increased)
+        .animation(
+            .default,
+            value: self.consumptions
+        )
     }
     
 }

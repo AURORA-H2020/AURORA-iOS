@@ -43,6 +43,7 @@ extension SettingsContentView: View {
             }
             .navigationTitle("Settings")
         }
+        .navigationViewStyle(.stack)
         .analyticsScreen(
             name: "Settings",
             class: "SettingsContentView"
@@ -209,7 +210,7 @@ private extension SettingsContentView {
                     }
                 },
                 action: {
-                    try await self.firebase.functions.downloadData()
+                    try await self.firebase.functions.exportUserData()
                 },
                 label: {
                     Label(

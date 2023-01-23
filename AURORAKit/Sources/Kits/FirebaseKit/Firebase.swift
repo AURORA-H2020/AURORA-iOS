@@ -139,7 +139,7 @@ extension Firebase {
     /// Setup Firebase using the user account
     /// - Parameter user: The user account, if available.
     func setup(
-        using userAccount: UserAccount?
+        using userAccount: User.Account?
     ) {
         // Clear current user document subscription
         self.userDocumentSnapshotSubscription?.remove()
@@ -159,21 +159,24 @@ extension Firebase {
             .collectionReference(in: self.firebaseFirestore)
             .document(userAccount.uid)
             .addSnapshotListener { [weak self] snapshot, error in
-                // Check if document does not exists
-                if snapshot?.exists == false {
-                    // Set success with nil
-                    self?.user = .success(nil)
-                }
-                // Otherwise check if a snapshot is available
-                else if let snapshot = snapshot {
-                    // Try to decode data as User
-                    self?.user = .init {
-                        try snapshot.data(as: User.self)
+                // Update user
+                self?.user = {
+                    // Check if document does not exists
+                    if snapshot?.exists == false {
+                        // Return success with nil
+                        return .success(nil)
                     }
-                } else {
-                    // Otherwise set failure
-                    self?.user = error.flatMap { .failure($0) }
-                }
+                    // Otherwise check if a snapshot is available
+                    else if let snapshot = snapshot {
+                        // Try to decode data as User
+                        return .init {
+                            try snapshot.data(as: User.self)
+                        }
+                    } else {
+                        // Otherwise return failure
+                        return error.flatMap { .failure($0) }
+                    }
+                }()
             }
     }
     

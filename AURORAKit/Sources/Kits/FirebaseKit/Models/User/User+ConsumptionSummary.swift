@@ -5,12 +5,12 @@ import Foundation
 public extension User {
     
     /// A consumption summary
-    struct ConsumptionSummary: Codable, Hashable {
+    struct ConsumptionSummary: Codable, Hashable, Sendable {
         
         // MARK: Properties
         
         /// The total carbon emissions.
-        public let totalCarbonEmissions: Double
+        public let totalCarbonEmissions: Decimal
         
         /// The entries
         public let entries: [Entry]
@@ -22,7 +22,7 @@ public extension User {
         ///   - totalCarbonEmissions: The total carbon emissions.
         ///   - entries: The entries.
         public init(
-            totalCarbonEmissions: Double,
+            totalCarbonEmissions: Decimal,
             entries: [Entry]
         ) {
             self.totalCarbonEmissions = totalCarbonEmissions

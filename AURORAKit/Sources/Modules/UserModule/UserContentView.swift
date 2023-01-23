@@ -27,7 +27,7 @@ public struct UserContentView {
     
     /// The site reference.
     @State
-    private var site: Reference<Site>?
+    private var site: FirestoreEntityReference<Site>?
     
     /// The Sites
     @FirebaseKit.FirestoreQuery(
@@ -161,7 +161,7 @@ extension UserContentView: View {
                     selection: self.$site
                 ) {
                     ForEach(self.sites) { site in
-                        if let reference = Reference(site) {
+                        if let reference = FirestoreEntityReference(site) {
                             Text(
                                 verbatim: [
                                     site.city,
@@ -170,7 +170,7 @@ extension UserContentView: View {
                                 .compactMap { $0 }
                                 .joined(separator: ", ")
                             )
-                            .tag(reference as Reference<Site>?)
+                            .tag(reference as FirestoreEntityReference<Site>?)
                         }
                     }
                 }
@@ -203,6 +203,7 @@ extension UserContentView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
     }
     
 }

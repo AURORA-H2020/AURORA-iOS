@@ -5,7 +5,7 @@ import Foundation
 public extension Consumption.Transportation {
     
     /// A Consumption TransportationType
-    enum TransportationType: String, Codable, Hashable, CaseIterable {
+    enum TransportationType: String, Codable, Hashable, CaseIterable, Sendable {
         case walking
         case bike
         case combustionEngineCar

@@ -39,15 +39,15 @@ extension ConsumptionSummarySection: View {
                             totalCarbonEmissions: 0.79,
                             entries: [
                                 .init(
-                                    category: "Living",
+                                    category: .electricity,
                                     value: 0.29
                                 ),
                                 .init(
-                                    category: "Mobility",
+                                    category: .transportation,
                                     value: 0.27
                                 ),
                                 .init(
-                                    category: "Other",
+                                    category: .heating,
                                     value: 0.44
                                 )
                             ]
@@ -78,7 +78,7 @@ private extension ConsumptionSummarySection {
                 VStack {
                     VStack {
                         Text(
-                            verbatim: "\(consumptionSummary.totalCarbonEmissions) tons"
+                            verbatim: "\(consumptionSummary.totalCarbonEmissions.formatted()) tons"
                         )
                         .font(.title3.weight(.bold))
                         .foregroundColor(.accentColor)
@@ -101,10 +101,14 @@ private extension ConsumptionSummarySection {
                 .cornerRadius(12)
                 VStack(alignment: .leading, spacing: 8) {
                     ForEach(consumptionSummary.entries) { entry in
-                        Label {
-                            HStack(spacing: 4) {
+                        HStack {
+                            Image(
+                                systemName: "square.fill"
+                            )
+                            .foregroundColor(.accentColor)
+                            VStack(alignment: .leading) {
                                 Text(
-                                    verbatim: entry.category
+                                    verbatim: entry.category.rawValue.capitalized
                                 )
                                 .font(.headline)
                                 .foregroundColor(.primary)
@@ -114,11 +118,6 @@ private extension ConsumptionSummarySection {
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             }
-                        } icon: {
-                            Image(
-                                systemName: "square.fill"
-                            )
-                            .foregroundColor(.accentColor)
                         }
                     }
                 }

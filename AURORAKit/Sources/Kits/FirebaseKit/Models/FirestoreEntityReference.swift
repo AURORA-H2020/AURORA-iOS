@@ -1,9 +1,10 @@
+import FirebaseFirestore
 import Foundation
 
-// MARK: - Reference
+// MARK: - FirestoreEntityReference
 
-/// A Reference
-public struct Reference<Destination: Identifiable>: Hashable, Identifiable {
+/// A FirestoreEntity Reference
+public struct FirestoreEntityReference<Destination: FirestoreEntity>: Hashable, Identifiable, Sendable {
     
     // MARK: Properties
     
@@ -12,7 +13,7 @@ public struct Reference<Destination: Identifiable>: Hashable, Identifiable {
     
     // MARK: Initializer
     
-    /// Creates a new instance of `Reference`
+    /// Creates a new instance of `FirestoreEntityReference`
     /// - Parameter id: The identifier.
     public init(
         id: String
@@ -22,15 +23,15 @@ public struct Reference<Destination: Identifiable>: Hashable, Identifiable {
     
 }
 
-// MARK: - Reference+init(destination:)
+// MARK: - FirestoreEntityReference+init(destination:)
 
-public extension Reference {
+public extension FirestoreEntityReference {
     
-    /// Creates a new instance of `Reference`, if available
+    /// Creates a new instance of `FirestoreEntityReference`, if available
     /// - Parameter destination: The Destination.
     init?(
         _ destination: Destination
-    ) where Destination.ID == Self.ID? {
+    ) {
         guard let id = destination.id else {
             return nil
         }
@@ -39,11 +40,11 @@ public extension Reference {
     
 }
 
-// MARK: - Reference+ExpressibleByStringLiteral
+// MARK: - FirestoreEntityReference+ExpressibleByStringLiteral
 
-extension Reference: ExpressibleByStringLiteral {
+extension FirestoreEntityReference: ExpressibleByStringLiteral {
     
-    /// Creates a new instance of `Reference`
+    /// Creates a new instance of `FirestoreEntityReference`
     /// - Parameter id: The string literal identifier
     public init(
         stringLiteral id: String
@@ -53,11 +54,11 @@ extension Reference: ExpressibleByStringLiteral {
     
 }
 
-// MARK: - Reference+Codable
+// MARK: - FirestoreEntityReference+Codable
 
-extension Reference: Codable {
+extension FirestoreEntityReference: Codable {
     
-    /// Creates a new instance of `Codable`
+    /// Creates a new instance of `FirestoreEntityReference`
     /// - Parameter decoder: The Decoder.
     public init(
         from decoder: Decoder
@@ -68,7 +69,7 @@ extension Reference: Codable {
         )
     }
     
-    /// Encode to Encoder
+    /// Encode
     /// - Parameter encoder: The Encoder.
     public func encode(
         to encoder: Encoder

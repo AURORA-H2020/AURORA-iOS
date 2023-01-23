@@ -5,7 +5,7 @@ import Foundation
 public extension User {
     
     /// A Gender
-    enum Gender: String, Codable, Hashable, CaseIterable {
+    enum Gender: String, Codable, Hashable, CaseIterable, Sendable {
         /// Male
         case male
         /// Female

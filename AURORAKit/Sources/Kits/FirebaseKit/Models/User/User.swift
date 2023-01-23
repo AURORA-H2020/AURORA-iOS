@@ -26,7 +26,7 @@ public struct User {
     public var gender: Gender
     
     /// The Site Reference.
-    public var site: Reference<Site>
+    public var site: FirestoreEntityReference<Site>
     
     /// The optional consumption summary.
     public let consumptionSummary: ConsumptionSummary?
@@ -48,7 +48,7 @@ public struct User {
         lastName: String,
         yearOfBirth: Int,
         gender: Gender,
-        site: Reference<Site>,
+        site: FirestoreEntityReference<Site>,
         consumptionSummary: ConsumptionSummary? = nil
     ) {
         self.id = id

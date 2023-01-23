@@ -5,12 +5,12 @@ import Foundation
 public extension User.ConsumptionSummary {
     
     /// A consumption summary entry
-    struct Entry: Codable, Hashable {
+    struct Entry: Codable, Hashable, Sendable {
         
         // MARK: Properties
         
-        /// The category.
-        public let category: String
+        /// The consumption category.
+        public let category: Consumption.Category
         
         /// The value.
         public let value: Double
@@ -19,10 +19,10 @@ public extension User.ConsumptionSummary {
         
         /// Creates a new instance of `User.ConsumptionSummary.Entry`
         /// - Parameters:
-        ///   - category: The category.
+        ///   - category: The consumption category.
         ///   - value: The value.
         public init(
-            category: String,
+            category: Consumption.Category,
             value: Double
         ) {
             self.category = category
@@ -38,7 +38,7 @@ public extension User.ConsumptionSummary {
 extension User.ConsumptionSummary.Entry: Identifiable {
     
     /// The stable identity of the entity associated with this instance.
-    public var id: String {
+    public var id: Consumption.Category {
         self.category
     }
     

@@ -302,6 +302,18 @@ public extension Firebase.Firestore {
             .delete(completion: nil)
     }
     
+    /// Delete a FirestoreEntity
+    /// - Parameters:
+    ///   - entity: The FirestoreEntity to delete.
+    func delete<Entity: FirestoreEntity>(
+        _ entity: Entity
+    ) throws where Entity.CollectionReferenceContext == Void {
+        try self.delete(
+            entity,
+            context: ()
+        )
+    }
+    
     /// Delete a sequence of FirestoreEntities
     /// - Parameters:
     ///   - entities: The FirestoreEntities to delete.
@@ -318,16 +330,18 @@ public extension Firebase.Firestore {
         }
     }
     
-    /// Delete a FirestoreEntity
+    /// Delete a sequence of FirestoreEntities
     /// - Parameters:
-    ///   - entity: The FirestoreEntity to delete.
-    func delete<Entity: FirestoreEntity>(
-        _ entity: Entity
-    ) throws where Entity.CollectionReferenceContext == Void {
-        try self.delete(
-            entity,
-            context: ()
-        )
+    ///   - entities: The FirestoreEntities to delete.
+    func delete<Entities: Sequence>(
+        _ entities: Entities
+    ) where Entities.Element: FirestoreEntity, Entities.Element.CollectionReferenceContext == Void {
+        for entity in entities {
+            try? self.delete(
+                entity,
+                context: ()
+            )
+        }
     }
     
 }

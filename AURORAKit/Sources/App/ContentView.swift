@@ -32,14 +32,6 @@ extension ContentView: View {
                 self.unauthenticated
             }
         }
-        .environment(
-            \.user,
-             try? self.firebase.authentication.user?.get()
-        )
-        .environment(
-            \.userAccount,
-             try? self.firebase.authentication.state.userAccount
-        )
         .task {
             try? await LocalNotificationCenter
                 .current

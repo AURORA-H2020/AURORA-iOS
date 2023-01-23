@@ -9,6 +9,12 @@ public struct NumberTextField {
     /// The title of the text view, describing its purpose
     private let title: String
     
+    /// The unit symbol.
+    private let unitSymbol: String?
+    
+    /// The NumberFormatter.
+    private let numberFormatter: NumberFormatter?
+    
     /// Bool value if number is a floating point value
     private let isFloatingPoint: Bool
     
@@ -28,13 +34,19 @@ public extension NumberTextField {
     
     /// Creates a new instance of `NumberTextField`
     /// - Parameters:
-    ///   - title: The title of the text view, describing its purpose
-    ///   - number: The number
+    ///   - title: The title of the text view, describing its purpose.
+    ///   - number: A Binding to a double value.
+    ///   - unitSymbol: The optional unit symbol. Default value `nil`
+    ///   - numberFormatter: The optional NumberFormatter. Default value `nil`
     init(
         _ title: String,
-        number: Binding<Double?>
+        number: Binding<Double?>,
+        unitSymbol: String? = nil,
+        numberFormatter: NumberFormatter? = nil
     ) {
         self.title = title
+        self.unitSymbol = unitSymbol
+        self.numberFormatter = numberFormatter
         self.isFloatingPoint = true
         self._number = number
         self._text = .init(
@@ -50,13 +62,19 @@ public extension NumberTextField {
     
     /// Creates a new instance of `NumberTextField`
     /// - Parameters:
-    ///   - title: The title of the text view, describing its purpose
-    ///   - number: The number
+    ///   - title: The title of the text view, describing its purpose.
+    ///   - number: A Binding to an integer value.
+    ///   - unitSymbol: The optional unit symbol. Default value `nil`
+    ///   - numberFormatter: The optional NumberFormatter. Default value `nil`
     init(
         _ title: String,
-        number: Binding<Int?>
+        number: Binding<Int?>,
+        unitSymbol: String? = nil,
+        numberFormatter: NumberFormatter? = nil
     ) {
         self.title = title
+        self.unitSymbol = unitSymbol
+        self.numberFormatter = numberFormatter
         self.isFloatingPoint = false
         self._number = .init(
             get: {
@@ -79,25 +97,34 @@ extension NumberTextField: View {
     
     /// The content and behavior of the view
     public var body: some View {
-        TextField(
-            self.title,
-            text: self.$text
-        )
-        .keyboardType(self.isFloatingPoint ? .decimalPad : .numberPad)
-        .disableAutocorrection(true)
-        .autocapitalization(.none)
-        .onReceive(
-            Just(self.text),
-            perform: self.textDidChange
-        )
-        .onChange(of: self.number) { number in
-            // Verify number is set to nil
-            guard number == nil else {
-                // Otherwise return out of function
-                return
+        HStack {
+            TextField(
+                self.title,
+                text: self.$text
+            )
+            .keyboardType(self.isFloatingPoint ? .decimalPad : .numberPad)
+            .disableAutocorrection(true)
+            .autocapitalization(.none)
+            .onReceive(
+                Just(self.text),
+                perform: self.textDidChange
+            )
+            .onChange(of: self.number) { number in
+                // Verify number is set to nil
+                guard number == nil else {
+                    // Otherwise return out of function
+                    return
+                }
+                // Clear text
+                self.text = .init()
             }
-            // Clear text
-            self.text = .init()
+            if let unitSymbol = self.unitSymbol {
+                Text(
+                    verbatim: unitSymbol
+                )
+                .font(.footnote)
+                .foregroundColor(.secondary)
+            }
         }
     }
     
@@ -106,6 +133,9 @@ extension NumberTextField: View {
 // MARK: - Text did change
 
 private extension NumberTextField {
+    
+    /// The decimal separator
+    static let decimalSeparator = "."
     
     /// Text did change
     /// - Parameter text: The new text
@@ -120,11 +150,11 @@ private extension NumberTextField {
             text = text
                 // Replace semicolon with dot
                 .replacingOccurrences(
-                    of: Locale.current.decimalSeparator ?? ".",
-                    with: "."
+                    of: Locale.current.decimalSeparator ?? Self.decimalSeparator,
+                    with: Self.decimalSeparator
                 )
                 // Only allow numbers and dots
-                .filter { $0.isNumber || $0 == "." }
+                .filter { $0.isNumber || String($0) == Self.decimalSeparator }
         } else {
             // Sanitize text
             text = text
@@ -148,10 +178,16 @@ private extension NumberTextField {
             }
         }
         // Reformat text
-        text = text.replacingOccurrences(
-            of: ".",
-            with: Locale.current.decimalSeparator ?? "."
-        )
+        text = {
+            if let formattedText = self.numberFormatter?.string(from: .init(value: number)) {
+                return formattedText
+            } else {
+                return text.replacingOccurrences(
+                    of: Self.decimalSeparator,
+                    with: Locale.current.decimalSeparator ?? Self.decimalSeparator
+                )
+            }
+        }()
         // Verify number has changed
         guard number != self.number else {
             // Set text

@@ -19,10 +19,10 @@ public extension Firebase {
 
 public extension Firebase.Functions {
     
-    /// Send download data request
-    func downloadData() async throws {
+    /// Export user data.
+    func exportUserData() async throws {
         _ = try await self.functions
-            .httpsCallable("download-data")
+            .httpsCallable("export-user-data")
             .call()
     }
     

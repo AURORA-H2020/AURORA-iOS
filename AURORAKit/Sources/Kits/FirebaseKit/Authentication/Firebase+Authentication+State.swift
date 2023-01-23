@@ -7,7 +7,7 @@ public extension Firebase.Authentication {
     /// A Firebase Authentication State
     enum State: Hashable {
         /// Authenticated
-        case authenticated(UserAccount)
+        case authenticated(User.Account)
         /// Unauthenticated
         case unauthenticated
     }
@@ -34,11 +34,16 @@ public extension Firebase.Authentication.State {
 public extension Firebase.Authentication.State {
     
     /// An Firebase AuthenticationState unauthenticated Error
-    struct UnauthenticatedError: Error {}
+    struct UnauthenticatedError: Error {
+        
+        /// Creates a new instance of `Firebase.Authentication.State.UnauthenticatedError`
+        public init() {}
+        
+    }
     
     /// The user account.
     /// Otherwise throws an `Firebase.Authentication.State.UnauthenticatedError`
-    var userAccount: UserAccount {
+    var userAccount: User.Account {
         get throws {
             switch self {
             case .authenticated(let userAccount):
