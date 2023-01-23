@@ -37,11 +37,8 @@ final class GoogleFirebaseAuthenticationProvider: NSObject {
 
 extension GoogleFirebaseAuthenticationProvider {
     
-    /// A SignIn Error
-    enum SignInError: String, Codable, Hashable, CaseIterable, Error {
-        case rootViewControllerMissing
-        case idTokenMissing
-    }
+    /// An ID Token Missing Error
+    struct IDTokenMissingError: Error, Sendable {}
     
 }
 
@@ -57,30 +54,11 @@ extension GoogleFirebaseAuthenticationProvider: FirebaseAuthenticationProvider {
     /// Sign in.
     /// - Returns: The Credential.
     func signIn() async throws -> FirebaseAuth.AuthCredential {
-        // Verify root ViewController is available
-        guard let rootViewController: UIViewController = await MainActor.run(
-            body: {
-                UIApplication
-                    .shared
-                    .connectedScenes
-                    .compactMap { $0 as? UIWindowScene }
-                    .first { $0.activationState == .foregroundActive }?
-                    .windows
-                    .first(where: \.isKeyWindow)?
-                    .rootViewController
-            }
-        ) else {
-            // Otherwise throw error
-            throw SignInError.rootViewControllerMissing
-        }
         // Declare sign in result
         let signInResult: GoogleSignIn.GIDSignInResult
         do {
             // Try to sign in
-            signInResult = try await self.googleSignIn
-                .signIn(
-                    withPresenting: rootViewController
-                )
+            signInResult = try await self.googleSignIn.signIn()
         } catch {
             // Check if error is cancelled
             if (error as? GoogleSignIn.GIDSignInError)?.code == .canceled {
@@ -94,7 +72,7 @@ extension GoogleFirebaseAuthenticationProvider: FirebaseAuthenticationProvider {
         // Verify id token is available
         guard let idToken = signInResult.user.idToken?.tokenString else {
             // Otherwise throw error
-            throw SignInError.idTokenMissing
+            throw IDTokenMissingError()
         }
         // Return credential
         return GoogleAuthProvider.credential(
@@ -112,6 +90,31 @@ extension GoogleFirebaseAuthenticationProvider: FirebaseAuthenticationProvider {
     /// - Parameter openedURL: The opened URL.
     func handle(openedURL: URL) -> Bool {
         self.googleSignIn.handle(openedURL)
+    }
+    
+}
+
+// MARK: - GIDSignIn+signIn(presentationContext)
+
+private extension GoogleSignIn.GIDSignIn {
+    
+    /// Starts an interactive sign-in flow on iOS on the `MainActor`.
+    @MainActor
+    func signIn() async throws -> GoogleSignIn.GIDSignInResult {
+        // Verify root ViewController is available
+        guard let rootViewController: UIViewController = UIApplication
+            .shared
+            .connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .first(where: { $0.activationState == .foregroundActive })?
+            .windows
+            .first(where: \.isKeyWindow)?
+            .rootViewController else {
+            // Otherwise throw error
+            throw GoogleSignIn.GIDSignInError(.unknown)
+        }
+        // Sign in
+        return try await self.signIn(withPresenting: rootViewController)
     }
     
 }
