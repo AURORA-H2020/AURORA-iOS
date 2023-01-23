@@ -98,7 +98,6 @@ extension EmptyPlaceholder: View {
                     systemName: systemImage
                 )
                 .foregroundColor(self.systemImageColor ?? .gray)
-                .opacity(0.6)
                 .font(.system(size: 75, weight: .thin))
             }
             VStack(spacing: 5) {
@@ -146,8 +145,8 @@ extension EmptyPlaceholder: View {
                     }
                 }
             }
-            .align(.centerHorizontal)
         }
+        .align(.centerHorizontal)
     }
     
 }

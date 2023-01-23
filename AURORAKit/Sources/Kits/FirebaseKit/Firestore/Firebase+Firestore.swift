@@ -197,26 +197,35 @@ public extension Firebase.Firestore {
     /// - Parameters:
     ///   - entity: The FirestoreEntity to add.
     ///   - context: The FirestoreEntity CollectionReferenceContext.
-    @discardableResult
     func add<Entity: FirestoreEntity>(
         _ entity: Entity,
         context: Entity.CollectionReferenceContext
-    ) throws -> FirebaseFirestore.DocumentReference {
-        try Entity
-            .collectionReference(
-                in: self.firestore,
+    ) throws {
+        // Check if the entity is type of User or has a non nil identifier
+        if Entity.self is User.Type || entity.id != nil {
+            // Update entity
+            try self.update(
+                entity,
                 context: context
             )
-            .addDocument(from: entity)
+        } else {
+            // Otherwise add entity
+            // which automatically assigns an identifier
+            _ = Entity
+                .collectionReference(
+                    in: self.firestore,
+                    context: context
+                )
+                .addDocument(from: entity)
+        }
     }
     
     /// Adds a new FirestoreEnttity with an automatically generated ID.
     /// - Parameters:
     ///   - entity: The FirestoreEntity to add.
-    @discardableResult
     func add<Entity: FirestoreEntity>(
         _ entity: Entity
-    ) throws -> FirebaseFirestore.DocumentReference where Entity.CollectionReferenceContext == Void {
+    ) throws where Entity.CollectionReferenceContext == Void {
         try self.add(
             entity,
             context: ()
@@ -240,11 +249,16 @@ public extension Firebase.Firestore {
         // Initialize mutable entity
         var entity = entity
         // Check if Entity is a User
-        if Entity.self is User.Type && entity.id == nil {
+        if Entity.self is User.Type {
+            // Verify user identifier is available
+            guard let userId = self.auth.currentUser?.uid else {
+                // Otherwise throw unauthenticated error
+                throw Firebase.Authentication.State.UnauthenticatedError()
+            }
             // Set identifier to UID of current Firebase user
             // as a User document id must always be equal
             // to the FirebaseAuth user
-            entity.id = self.auth.currentUser?.uid
+            entity.id = userId
         }
         // Verify entity identifier is available
         guard let entityId = entity.id else {

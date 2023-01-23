@@ -96,7 +96,7 @@ private extension ContentView {
                 }
             } else {
                 UserModule
-                    .UserContentView()
+                    .CreateUserContentView()
             }
         case .failure:
             EmptyPlaceholder(
