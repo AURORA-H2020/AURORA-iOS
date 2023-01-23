@@ -9,7 +9,7 @@ struct AddConsumptionForm {
     
     /// The Consumption Category
     @State
-    private var category: Consumption.Category?
+    var category: Consumption.Category?
     
     /// The Partial Consumption Electricity
     @State
