@@ -26,7 +26,7 @@ public protocol FirestoreEntity: Codable, Hashable, Identifiable where Self.ID =
     
 }
 
-// MARK: - Default-Implementations
+// MARK: - Default-Implementation
 
 public extension FirestoreEntity {
     

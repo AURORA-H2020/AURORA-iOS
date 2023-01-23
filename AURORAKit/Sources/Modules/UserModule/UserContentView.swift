@@ -30,9 +30,7 @@ public struct UserContentView {
     private var site: FirestoreEntityReference<Site>?
     
     /// The Sites
-    @FirebaseKit.FirestoreQuery(
-        collectionPath: Site.collectionName
-    )
+    @FirestoreEntityQuery()
     private var sites: [Site]
     
     /// The Firebase instance

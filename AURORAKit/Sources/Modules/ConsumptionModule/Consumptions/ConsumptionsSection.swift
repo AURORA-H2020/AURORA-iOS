@@ -13,7 +13,7 @@ struct ConsumptionsSection {
     private let userId: String
     
     /// The Consumptions.
-    @FirestoreQuery
+    @FirestoreEntityQuery
     private var consumptions: [Consumption]
     
     /// Bool value if AddConsumptionForm is presented.
@@ -36,11 +36,7 @@ struct ConsumptionsSection {
     ) {
         self.userId = userId
         self._consumptions = .init(
-            collectionPath: Consumption
-                .collectionReference(
-                    context: .init(userId)
-                )
-                .path,
+            context: .init(userId),
             predicates: [
                 Consumption.orderByCreatedAtPredicate
             ]

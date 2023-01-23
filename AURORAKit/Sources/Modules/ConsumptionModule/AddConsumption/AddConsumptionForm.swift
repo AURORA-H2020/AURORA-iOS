@@ -134,11 +134,25 @@ extension AddConsumptionForm: View {
         .navigationTitle("Add Consumption")
         .onChange(
             of: self.category
-        ) { _ in
+        ) { category in
             self.partialElectricity.removeAll()
             self.partialHeating.removeAll()
             self.partialTransportation.removeAll()
             self.value = nil
+            switch category {
+            case .electricity:
+                let startDate = Date()
+                self.partialElectricity.startDate = .init(date: startDate)
+                self.partialElectricity.endDate = .init(date: startDate.addingTimeInterval(172800))
+            case .heating:
+                let startDate = Date()
+                self.partialHeating.startDate = .init(date: startDate)
+                self.partialHeating.endDate = .init(date: startDate.addingTimeInterval(172800))
+            case .transportation:
+                self.partialTransportation.dateOfTravel = .init()
+            case nil:
+                break
+            }
         }
         .animation(
             .default,
@@ -277,16 +291,86 @@ private extension AddConsumptionForm {
 
 private extension AddConsumptionForm {
     
+    @ViewBuilder
     var electricityContent: some View {
-        EmptyView()
+        DatePicker(
+            "Start",
+            selection: .init(
+                get: {
+                    self.partialElectricity.startDate?.dateValue() ?? .init()
+                },
+                set: { newValue in
+                    self.partialElectricity.startDate = .init(date: newValue)
+                }
+            ),
+            displayedComponents: [.date]
+        )
+        DatePicker(
+            "End",
+            selection: .init(
+                get: {
+                    self.partialElectricity.endDate?.dateValue() ?? .init()
+                },
+                set: { newValue in
+                    self.partialElectricity.endDate = .init(date: newValue)
+                }
+            ),
+            in: (self.partialElectricity.startDate?.dateValue() ?? .init())...,
+            displayedComponents: [.date]
+        )
+        NumberTextField(
+            "Costs",
+            number: self.$partialElectricity.costs,
+            unitSymbol: "€"
+        )
+        NumberTextField(
+            "Consumption",
+            number: self.$value,
+            unitSymbol: "kWh"
+        )
     }
     
 }
 
 private extension AddConsumptionForm {
     
+    @ViewBuilder
     var heatingContent: some View {
-        EmptyView()
+        DatePicker(
+            "Start",
+            selection: .init(
+                get: {
+                    self.partialHeating.startDate?.dateValue() ?? .init()
+                },
+                set: { newValue in
+                    self.partialHeating.startDate = .init(date: newValue)
+                }
+            ),
+            displayedComponents: [.date]
+        )
+        DatePicker(
+            "End",
+            selection: .init(
+                get: {
+                    self.partialHeating.endDate?.dateValue() ?? .init()
+                },
+                set: { newValue in
+                    self.partialHeating.endDate = .init(date: newValue)
+                }
+            ),
+            in: (self.partialHeating.startDate?.dateValue() ?? .init())...,
+            displayedComponents: [.date]
+        )
+        NumberTextField(
+            "Costs",
+            number: self.$partialHeating.costs,
+            unitSymbol: "€"
+        )
+        NumberTextField(
+            "Consumption",
+            number: self.$value,
+            unitSymbol: "kWh"
+        )
     }
     
 }
@@ -306,12 +390,6 @@ private extension AddConsumptionForm {
                 }
             )
         )
-        .onAppear {
-            guard self.partialTransportation.dateOfTravel == nil else {
-                return
-            }
-            self.partialTransportation.dateOfTravel = .init()
-        }
         Picker(
             "Type",
             selection: self.$partialTransportation.transportationType

@@ -9,7 +9,7 @@ import SwiftUI
 struct ConsumptionSummarySection {
     
     /// The optional ConsumptionSummary
-    let consumptionSummary: User.ConsumptionSummary?
+    let consumptionSummary: ConsumptionSummary?
     
     /// The color scheme
     @Environment(\.colorScheme)
@@ -70,7 +70,7 @@ private extension ConsumptionSummarySection {
     
     // swiftlint:disable:next function_body_length
     func content(
-        consumptionSummary: User.ConsumptionSummary
+        consumptionSummary: ConsumptionSummary
     ) -> some View {
         HStack {
             Spacer()

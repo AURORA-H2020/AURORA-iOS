@@ -1,8 +1,8 @@
 import Foundation
 
-// MARK: - User+ConsumptionSummary+Entry
+// MARK: - ConsumptionSummary+Entry
 
-public extension User.ConsumptionSummary {
+public extension ConsumptionSummary {
     
     /// A consumption summary entry
     struct Entry: Codable, Hashable, Sendable {
@@ -17,7 +17,7 @@ public extension User.ConsumptionSummary {
         
         // MARK: Initializer
         
-        /// Creates a new instance of `User.ConsumptionSummary.Entry`
+        /// Creates a new instance of `ConsumptionSummary.Entry`
         /// - Parameters:
         ///   - category: The consumption category.
         ///   - value: The value.
@@ -35,7 +35,7 @@ public extension User.ConsumptionSummary {
 
 // MARK: - Identifiable
 
-extension User.ConsumptionSummary.Entry: Identifiable {
+extension ConsumptionSummary.Entry: Identifiable {
     
     /// The stable identity of the entity associated with this instance.
     public var id: Consumption.Category {
