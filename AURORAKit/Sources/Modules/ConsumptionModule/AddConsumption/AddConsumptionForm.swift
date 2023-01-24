@@ -254,7 +254,7 @@ private extension AddConsumptionForm {
         .headerProminence(.increased)
         Section(
             footer: AsyncButton(
-                isAutoProgressViewEnabled: false,
+                fillWidth: true,
                 alert: { result in
                     guard case .failure = result else {
                         return nil
@@ -276,7 +276,6 @@ private extension AddConsumptionForm {
                         verbatim: "Save"
                     )
                     .font(.headline)
-                    .align(.centerHorizontal)
                 }
             )
             .disabled(self.consumption == nil)

@@ -54,6 +54,7 @@ extension ChangePasswordForm: View {
             .headerProminence(.increased)
             Section(
                 footer: AsyncButton(
+                    fillWidth: true,
                     alert: self.alert,
                     action: {
                         try await self.firebase
@@ -67,7 +68,6 @@ extension ChangePasswordForm: View {
                             verbatim: "Submit"
                         )
                         .font(.headline)
-                        .padding(.horizontal)
                     }
                 )
                 .disabled(self.password.isEmpty || self.password != self.passwordConfirmation)

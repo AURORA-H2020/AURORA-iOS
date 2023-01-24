@@ -1,0 +1,127 @@
+import FirebaseKit
+import ModuleKit
+import SwiftUI
+
+// MARK: - AuthenticationPasswordLoginForm
+
+/// The AuthenticationPasswordLoginForm
+struct AuthenticationPasswordLoginForm {
+    
+    /// The mail address
+    @State
+    private var mailAddress = String()
+    
+    /// The password
+    @State
+    private var password = String()
+    
+    /// The AsyncButtonState
+    @State
+    private var asyncButtonState: AsyncButtonState = .idle
+    
+    /// The dismiss action
+    @Environment(\.dismiss)
+    private var dismiss
+    
+    /// The Firebase instance
+    @EnvironmentObject
+    private var firebase: Firebase
+    
+}
+
+// MARK: - View
+
+extension AuthenticationPasswordLoginForm: View {
+    
+    /// The content and behavior of the view.
+    var body: some View {
+        List {
+            Section(
+                header: Text(verbatim: "E-Mail")
+            ) {
+                TextField(
+                    "E-Mail",
+                    text: self.$mailAddress
+                )
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .keyboardType(.emailAddress)
+                .textContentType(.emailAddress)
+            }
+            .headerProminence(.increased)
+            Section(
+                header: Text(verbatim: "Password")
+            ) {
+                SecureField(
+                    "Password",
+                    text: self.$password
+                )
+                .textContentType(.password)
+            }
+            .headerProminence(.increased)
+            Section(
+                footer: AsyncButton(
+                    fillWidth: true,
+                    alert: { result in
+                        guard case .failure = result else {
+                            return nil
+                        }
+                        return .init(
+                            title: .init(
+                                verbatim: "Login failed"
+                            ),
+                            message: .init(
+                                // swiftlint:disable:next line_length
+                                verbatim: "An error occurred while trying to login. Please check your inputs and try again."
+                            )
+                        )
+                    },
+                    action: {
+                        try await self.firebase
+                            .authentication
+                            .login(
+                                using: .password(
+                                    email: self.mailAddress,
+                                    password: self.password
+                                )
+                            )
+                        self.dismiss()
+                    },
+                    label: {
+                        Text(
+                            verbatim: "Continue"
+                        )
+                        .font(.headline)
+                    }
+                )
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .align(.centerHorizontal)
+                .disabled(self.mailAddress.isEmpty || self.password.isEmpty)
+                .onPreferenceChange(
+                    AsyncButtonState.PreferenceKey.self
+                ) { asyncButtonState in
+                    self.asyncButtonState = asyncButtonState
+                }
+            ) {
+            }
+        }
+        .navigationTitle("Continue with E-Mail")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(
+                    destination: AuthenticationForgotPasswordForm(
+                        mailAddress: self.mailAddress
+                    )
+                ) {
+                    Text(
+                        verbatim: "Forgot Password"
+                    )
+                }
+            }
+        }
+        .disabled(self.asyncButtonState == .busy)
+        .interactiveDismissDisabled(self.asyncButtonState == .busy)
+    }
+    
+}

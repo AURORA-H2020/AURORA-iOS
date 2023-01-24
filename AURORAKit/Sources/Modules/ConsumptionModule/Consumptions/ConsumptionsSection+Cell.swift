@@ -46,7 +46,7 @@ extension ConsumptionsSection.Cell: View {
                     Text(
                         verbatim: "≈ \(carbonEmissions.formatted()) t"
                     )
-                    .font(.caption)
+                    .font(.footnote)
                     .foregroundColor(.secondary)
                 }
             }

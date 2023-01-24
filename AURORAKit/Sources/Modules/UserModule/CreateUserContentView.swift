@@ -180,7 +180,7 @@ extension CreateUserContentView: View {
                 .headerProminence(.increased)
                 Section(
                     footer: AsyncButton(
-                        isAutoProgressViewEnabled: false,
+                        fillWidth: true,
                         alert: { result in
                             guard case .failure = result else {
                                 return nil
@@ -203,7 +203,6 @@ extension CreateUserContentView: View {
                                 verbatim: "Submit"
                             )
                             .font(.headline)
-                            .align(.centerHorizontal)
                         }
                     )
                     .buttonStyle(.borderedProminent)

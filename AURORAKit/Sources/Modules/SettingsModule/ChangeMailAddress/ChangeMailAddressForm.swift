@@ -51,6 +51,7 @@ extension ChangeMailAddressForm: View {
             .headerProminence(.increased)
             Section(
                 footer: AsyncButton(
+                    fillWidth: true,
                     alert: self.alert,
                     action: {
                         try await self.firebase
@@ -64,7 +65,6 @@ extension ChangeMailAddressForm: View {
                             verbatim: "Submit"
                         )
                         .font(.headline)
-                        .padding(.horizontal)
                     }
                 )
                 .disabled(self.mailAddress.isEmpty)

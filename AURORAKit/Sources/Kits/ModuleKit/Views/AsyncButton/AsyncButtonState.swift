@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 // MARK: - AsyncButtonState
 
@@ -8,4 +8,21 @@ public enum AsyncButtonState: String, Codable, Hashable, CaseIterable {
     case idle
     /// Busy
     case busy
+}
+
+public extension AsyncButtonState {
+    
+    struct PreferenceKey: SwiftUI.PreferenceKey {
+        
+        public static var defaultValue = AsyncButtonState.idle
+        
+        public static func reduce(
+            value: inout AsyncButtonState,
+            nextValue: () -> AsyncButtonState
+        ) {
+            value = nextValue()
+        }
+        
+    }
+    
 }

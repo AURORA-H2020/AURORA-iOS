@@ -2,10 +2,10 @@ import FirebaseKit
 import ModuleKit
 import SwiftUI
 
-// MARK: - ForgotPasswordForm
+// MARK: - AuthenticationForgotPasswordForm
 
-/// The ForgotPasswordForm
-struct ForgotPasswordForm {
+/// The AuthenticationForgotPasswordForm
+struct AuthenticationForgotPasswordForm {
     
     // MARK: Properties
     
@@ -37,7 +37,7 @@ struct ForgotPasswordForm {
 
 // MARK: - View
 
-extension ForgotPasswordForm: View {
+extension AuthenticationForgotPasswordForm: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -62,6 +62,7 @@ extension ForgotPasswordForm: View {
             .headerProminence(.increased)
             Section(
                 footer: AsyncButton(
+                    fillWidth: true,
                     alert: { result in
                         switch result {
                         case .success:
@@ -95,13 +96,13 @@ extension ForgotPasswordForm: View {
                             .sendPasswordReset(
                                 to: self.mailAddress
                             )
+                        self.mailAddress.removeAll()
                     },
                     label: {
                         Text(
-                            verbatim: "Submit"
+                            verbatim: "Reset Password"
                         )
-                        .font(.subheadline.weight(.semibold))
-                        .padding(.horizontal)
+                        .font(.headline)
                     }
                 )
                 .buttonStyle(.borderedProminent)

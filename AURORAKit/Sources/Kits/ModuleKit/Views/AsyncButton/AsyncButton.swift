@@ -18,13 +18,11 @@ public struct AsyncButton<Success, Label: View> {
     
     // MARK: Properties
     
-    #if os(iOS)
     /// The UIImpactFeedbackGenerator
     private let impactFeedbackGenerator = UIImpactFeedbackGenerator()
     
     /// The UINotificationFeedbackGenerator
     private let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
-    #endif
     
     /// The optional TaskPriority
     var taskPriority: TaskPriority?
@@ -34,6 +32,9 @@ public struct AsyncButton<Success, Label: View> {
     
     /// Bool value if automatically showing a progress view is enabled
     var isAutoProgressViewEnabled: Bool
+    
+    /// Bool value if the width of the button should be expanded
+    var fillWidth: Bool
     
     /// An optional closure to show a confirmation dialog
     var confirmationDialogProvider: ConfirmationDialogProvider?
@@ -67,6 +68,7 @@ public struct AsyncButton<Success, Label: View> {
     ///   - isHapticFeedbackEnabled: Bool value if HapticFeedback is enabled. Default value `true`
     ///   - isAutoProgressViewEnabled: Bool value if automatically showing
     ///     a progress view is enabled. Default value `true`
+    ///   - fillWidth: Bool value if the width of the button should be expanded. Default value `false`
     ///   - confirmationDialog: An optional closure to show a confirmation dialog. Default value `nil`
     ///   - alert: An optional closure to show an alert after the action finishes. Default value `nil`
     ///   - action: The action to perform when the user triggers the button
@@ -75,6 +77,7 @@ public struct AsyncButton<Success, Label: View> {
         taskPriority: TaskPriority? = nil,
         isHapticFeedbackEnabled: Bool = true,
         isAutoProgressViewEnabled: Bool = true,
+        fillWidth: Bool = false,
         confirmationDialog: ConfirmationDialogProvider? = nil,
         alert: AlertProvider? = nil,
         action: @escaping Action,
@@ -84,6 +87,7 @@ public struct AsyncButton<Success, Label: View> {
         self.taskPriority = taskPriority
         self.isHapticFeedbackEnabled = isHapticFeedbackEnabled
         self.isAutoProgressViewEnabled = isAutoProgressViewEnabled
+        self.fillWidth = fillWidth
         self.confirmationDialogProvider = confirmationDialog
         self.alertProvider = alert
         self.action = action
@@ -96,6 +100,7 @@ public struct AsyncButton<Success, Label: View> {
     ///   - isHapticFeedbackEnabled: Bool value if HapticFeedback is enabled. Default value `true`
     ///   - isAutoProgressViewEnabled: Bool value if automatically showing
     ///     a progress view is enabled. Default value `true`
+    ///   - fillWidth: Bool value if the width of the button should be expanded. Default value `false`
     ///   - confirmationDialog: An optional closure to show a confirmation dialog. Default value `nil`
     ///   - alert: An optional closure to show an alert after the action finishes. Default value `nil`
     ///   - action: The action to perform when the user triggers the button
@@ -104,6 +109,7 @@ public struct AsyncButton<Success, Label: View> {
         taskPriority: TaskPriority? = nil,
         isHapticFeedbackEnabled: Bool = true,
         isAutoProgressViewEnabled: Bool = true,
+        fillWidth: Bool = false,
         confirmationDialog: ConfirmationDialogProvider? = nil,
         alert: AlertProvider? = nil,
         action: @escaping Action,
@@ -114,6 +120,7 @@ public struct AsyncButton<Success, Label: View> {
             taskPriority: taskPriority,
             isHapticFeedbackEnabled: isHapticFeedbackEnabled,
             isAutoProgressViewEnabled: isAutoProgressViewEnabled,
+            fillWidth: fillWidth,
             confirmationDialog: confirmationDialog,
             alert: alert,
             action: action,
@@ -142,11 +149,18 @@ extension AsyncButton: View {
             }
         } label: {
             HStack(spacing: 10) {
+                if self.fillWidth {
+                    Spacer()
+                }
                 // Check if auto progress view is enabled and is busy
                 if self.isAutoProgressViewEnabled && self.state == .busy {
                     ProgressView()
+                        .controlSize(.regular)
                 }
                 self.label(self.state)
+                if self.fillWidth {
+                    Spacer()
+                }
             }
         }
         .disabled(self.state == .busy)
@@ -158,7 +172,6 @@ extension AsyncButton: View {
             item: self.$confirmationDialog,
             content: \.value
         )
-        #if os(iOS)
         .onAppear {
             // Verify haptic feedback is enabled
             guard self.isHapticFeedbackEnabled else {
@@ -168,7 +181,10 @@ extension AsyncButton: View {
             // Prepare impact feedback generator
             self.impactFeedbackGenerator.prepare()
         }
-        #endif
+        .preference(
+            key: AsyncButtonState.PreferenceKey.self,
+            value: self.state
+        )
     }
     
 }
@@ -179,13 +195,11 @@ private extension AsyncButton {
     
     /// Perform action
     func perform() {
-        #if os(iOS)
         // Check if haptic feedback is enabled
         if self.isHapticFeedbackEnabled {
             // Invoke impact feedback
             self.impactFeedbackGenerator.impactOccurred()
         }
-        #endif
         // Perform Task
         Task(
             priority: self.taskPriority
@@ -204,13 +218,11 @@ private extension AsyncButton {
             // Reset state to idle
             self.state = .idle
         }
-        #if os(iOS)
         // Check if haptic feedback is enabled
         if self.isHapticFeedbackEnabled {
             // Prepare UINotificationFeedbackGenerator
             await self.notificationFeedbackGenerator.prepare()
         }
-        #endif
         // Initialize Result
         let result: Result<Success, Error> = await {
             do {
@@ -223,7 +235,6 @@ private extension AsyncButton {
                 return .failure(error)
             }
         }()
-        #if os(iOS)
         // Check if haptic feedback is enabled
         if self.isHapticFeedbackEnabled {
             // Invoke notification haptic feedback
@@ -237,7 +248,6 @@ private extension AsyncButton {
                     }
                 }())
         }
-        #endif
         // Verify an alert is availabl
         guard let alert = self.alertProvider?(result) else {
             // Otherwise return out of function
