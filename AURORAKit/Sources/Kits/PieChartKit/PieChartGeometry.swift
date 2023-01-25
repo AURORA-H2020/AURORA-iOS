@@ -14,8 +14,6 @@ extension PieChartGeometry {
     static func calculate<ID: Hashable>(
         using slices: [PieChart<ID>.Slice]
     ) -> [PieChart<ID>.Slice.Geometry] {
-        // Sort slices by value
-        let slices = slices.sorted { $0.value < $1.value }
         // Calculate the sum of all slices
         let sum = slices.map(\.value).reduce(0, +)
         // Verify the sum is greater zero
@@ -25,10 +23,11 @@ extension PieChartGeometry {
         }
         // Calculate the degree per slice
         let degreePerSlice = 360.0 / sum
-        // Initialize a mutable angle
-        var angle = 0.0
+        // Initialize a mutable angle starting a -90 degrees
+        var angle: Double = -90.0
         // Map slices
         return slices
+            .sorted { $0.value > $1.value }
             .map { slice in
                 // Calculate the ending angle
                 let endAngle = degreePerSlice * slice.value + angle
