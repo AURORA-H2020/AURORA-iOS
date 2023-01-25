@@ -17,6 +17,10 @@ struct AuthenticationForgotPasswordForm {
     @State
     private var asyncButtonState: AsyncButtonState = .idle
     
+    /// Bool value if a TextField is focused
+    @FocusState
+    private var isTextFieldFocused
+    
     /// The dismiss action
     @Environment(\.dismiss)
     private var dismiss
@@ -62,6 +66,7 @@ extension AuthenticationForgotPasswordForm: View {
                 .disableAutocorrection(true)
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
+                .focused(self.$isTextFieldFocused)
             }
             .headerProminence(.increased)
             Section(
@@ -95,6 +100,7 @@ extension AuthenticationForgotPasswordForm: View {
                         }
                     },
                     action: {
+                        self.isTextFieldFocused = false
                         try await self.firebase
                             .authentication
                             .sendPasswordReset(
@@ -114,7 +120,7 @@ extension AuthenticationForgotPasswordForm: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .align(.centerHorizontal)
-                .disabled(self.mailAddress.isEmpty)
+                .disabled(MailAddress(self.mailAddress) == nil)
             ) {
             }
         }

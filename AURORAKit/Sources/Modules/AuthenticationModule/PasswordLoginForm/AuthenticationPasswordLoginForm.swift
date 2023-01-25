@@ -19,6 +19,10 @@ struct AuthenticationPasswordLoginForm {
     @State
     private var asyncButtonState: AsyncButtonState = .idle
     
+    /// Bool value if a TextField is focused
+    @FocusState
+    private var isTextFieldFocused
+    
     /// The dismiss action
     @Environment(\.dismiss)
     private var dismiss
@@ -47,6 +51,7 @@ extension AuthenticationPasswordLoginForm: View {
                 .disableAutocorrection(true)
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
+                .focused(self.$isTextFieldFocused)
             }
             .headerProminence(.increased)
             Section(
@@ -57,6 +62,7 @@ extension AuthenticationPasswordLoginForm: View {
                     text: self.$password
                 )
                 .textContentType(.password)
+                .focused(self.$isTextFieldFocused)
             }
             .headerProminence(.increased)
             Section(
@@ -77,6 +83,7 @@ extension AuthenticationPasswordLoginForm: View {
                         )
                     },
                     action: {
+                        self.isTextFieldFocused = false
                         try await self.firebase
                             .authentication
                             .login(
@@ -100,7 +107,7 @@ extension AuthenticationPasswordLoginForm: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .align(.centerHorizontal)
-                .disabled(self.mailAddress.isEmpty || self.password.isEmpty)
+                .disabled(MailAddress(self.mailAddress) == nil || self.password.isEmpty)
             ) {
             }
         }
@@ -120,6 +127,7 @@ extension AuthenticationPasswordLoginForm: View {
         }
         .disabled(self.asyncButtonState == .busy)
         .interactiveDismissDisabled(self.asyncButtonState == .busy)
+        .onDisappear(perform: MailAddress.clearCache)
     }
     
 }
