@@ -190,14 +190,18 @@ private extension SettingsContentView {
             AsyncButton(
                 alert: { result in
                     switch result {
-                    case .success:
+                    case .success(let userDataFile):
                         return .init(
                             title: .init(
-                                verbatim: "Download my data"
+                                verbatim: "Export Data"
                             ),
                             message: .init(
-                                verbatim: "Your data will be send to your E-Mail address. Please check your inbox."
-                            )
+                                verbatim: "Your data has been successfully downloaded. Do you want to export it?"
+                            ),
+                            primaryButton: .default(Text(verbatim: "Export")) {
+                                self.export(userDataFile: userDataFile)
+                            },
+                            secondaryButton: .cancel()
                         )
                     case .failure:
                         return .init(
@@ -211,7 +215,7 @@ private extension SettingsContentView {
                     }
                 },
                 action: {
-                    try await self.firebase.functions.exportUserData()
+                    try await self.firebase.functions.downloadUserData()
                 },
                 label: {
                     Label(
@@ -264,6 +268,53 @@ private extension SettingsContentView {
             .foregroundColor(.red)
         }
         .headerProminence(.increased)
+    }
+    
+}
+
+// MARK: - Export User Data
+
+private extension SettingsContentView {
+    
+    /// Export user data file
+    /// - Parameter userDataFile: The user data file url which should be exported.
+    func export(
+        userDataFile: URL
+    ) {
+        // Verify root ViewController is available
+        guard let rootViewController = UIApplication
+            .shared
+            .connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .first(where: { $0.activationState == .foregroundActive })?
+            .windows
+            .first(where: \.isKeyWindow)?
+            .rootViewController else {
+            // Otherwise return out of function
+            return
+        }
+        // Initialize UIActivityViewController
+        let activityViewController = UIActivityViewController(
+            activityItems: [userDataFile],
+            applicationActivities: nil
+        )
+        // Initialize source view
+        let sourceView: UIView = rootViewController.view
+        // Set source view
+        activityViewController.popoverPresentationController?.sourceView = sourceView
+        // Set source rect
+        activityViewController.popoverPresentationController?.sourceRect = .init(
+            x: sourceView.bounds.width / 2,
+            y: sourceView.bounds.height / 2,
+            width: 0,
+            height: 0
+        )
+        // Present UIActivityViewController
+        rootViewController
+            .present(
+                activityViewController,
+                animated: true
+            )
     }
     
 }
