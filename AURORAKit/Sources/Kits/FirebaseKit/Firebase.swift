@@ -51,7 +51,9 @@ public final class Firebase: ObservableObject {
         self.firebaseAuth = .auth()
         self.firebaseFirestore = .firestore()
         self.firebaseCrashlytics = .crashlytics()
-        self.firebaseFunctions = .functions()
+        self.firebaseFunctions = .functions(
+            region: "europe-west3"
+        )
         self.firebaseAuthenticationProviders = [
             AppleFirebaseAuthenticationProvider(),
             GoogleFirebaseAuthenticationProvider()
