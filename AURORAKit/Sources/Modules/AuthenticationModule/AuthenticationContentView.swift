@@ -101,7 +101,7 @@ extension AuthenticationContentView: View {
                 }
                 VStack {
                     Spacer()
-                    VStack(spacing: 52) {
+                    VStack(spacing: 50) {
                         if !orientation.isLandscape {
                             Image(
                                 "logo",
@@ -122,29 +122,38 @@ extension AuthenticationContentView: View {
                             .foregroundColor(.secondary)
                         }
                         .multilineTextAlignment(.center)
-                        VStack(
-                            spacing: AuthenticationProviderButton.preferredStackSpacing
-                        ) {
-                            AuthenticationProviderButton(style: .apple) {
-                                Task {
-                                    await self.login(using: .provider(.apple))
+                        VStack(spacing: 25) {
+                            VStack(
+                                spacing: AuthenticationProviderButton.preferredStackSpacing
+                            ) {
+                                AuthenticationProviderButton(style: .apple) {
+                                    Task {
+                                        await self.login(using: .provider(.apple))
+                                    }
+                                }
+                                AuthenticationProviderButton(style: .google) {
+                                    Task {
+                                        await self.login(using: .provider(.google))
+                                    }
+                                }
+                                AuthenticationProviderButton(style: .mailAddress) {
+                                    guard !self.isBusy else {
+                                        return
+                                    }
+                                    self.isPasswordLoginFormPresented = true
                                 }
                             }
-                            AuthenticationProviderButton(style: .google) {
-                                Task {
-                                    await self.login(using: .provider(.google))
-                                }
-                            }
-                            AuthenticationProviderButton(style: .mailAddress) {
-                                guard !self.isBusy else {
-                                    return
-                                }
-                                self.isPasswordLoginFormPresented = true
-                            }
+                            Text(
+                                // swiftlint:disable:next line_length
+                                "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)."
+                            )
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
                         }
                     }
                     .padding(.horizontal)
-                    .padding(.bottom, 48)
+                    .padding(.bottom, 25)
                 }
             }
         }
