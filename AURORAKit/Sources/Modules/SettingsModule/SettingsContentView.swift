@@ -203,7 +203,8 @@ private extension SettingsContentView {
                             },
                             secondaryButton: .cancel()
                         )
-                    case .failure:
+                    case .failure(let error):
+                        self.firebase.crashlytics.record(error: error)
                         return .init(
                             title: .init(
                                 verbatim: "Error"
