@@ -101,7 +101,7 @@ private extension SettingsContentView {
                             verbatim: "Logout"
                         ),
                         message: .init(
-                            verbatim: "Are you sure you want to log out?"
+                            verbatim: "Are you sure you want to logout?"
                         ),
                         buttons: [
                             .destructive(

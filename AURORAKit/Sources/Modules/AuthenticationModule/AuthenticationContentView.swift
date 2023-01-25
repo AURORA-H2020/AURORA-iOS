@@ -167,7 +167,7 @@ extension AuthenticationContentView: View {
             },
             message: {
                 Text(
-                    verbatim: "The login has failed."
+                    verbatim: "An error occurred while logging in. Please try again."
                 )
             }
         )
