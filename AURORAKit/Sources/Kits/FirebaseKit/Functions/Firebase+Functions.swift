@@ -39,7 +39,7 @@ public extension Firebase.Functions {
             )
         // Call https callable cloud function
         let result = try await self.functions
-            .httpsCallable("download-user-data")
+            .httpsCallable("downloadUserData")
             .call()
         // Verify data is a dictionary
         guard let response = result.data as? [String: Any] else {
@@ -65,7 +65,7 @@ public extension Firebase.Functions {
                         "Export",
                         {
                             let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "dd.MM.yyyy-HH:mm"
+                            dateFormatter.dateFormat = "dd-MM-yyyy-HH-mm"
                             return dateFormatter.string(from: .init())
                         }()
                     ]
