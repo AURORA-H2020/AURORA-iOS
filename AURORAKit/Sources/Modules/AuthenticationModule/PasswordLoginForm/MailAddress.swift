@@ -26,8 +26,8 @@ struct MailAddress: Codable, Hashable, Sendable {
     init?(
         _ mailAddress: String
     ) {
-        // Verify mail addres is not empty
-        guard !mailAddress.isEmpty else {
+        // Verify mail addres is not empty and "@" sign is available
+        guard !mailAddress.isEmpty && mailAddress.contains("@") else {
             // Otherwise return nil
             return nil
         }
