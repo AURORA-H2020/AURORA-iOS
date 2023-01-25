@@ -13,6 +13,10 @@ struct AuthenticationForgotPasswordForm {
     @State
     private var mailAddress: String
     
+    /// The AsyncButtonState
+    @State
+    private var asyncButtonState: AsyncButtonState = .idle
+    
     /// The dismiss action
     @Environment(\.dismiss)
     private var dismiss
@@ -96,7 +100,6 @@ extension AuthenticationForgotPasswordForm: View {
                             .sendPasswordReset(
                                 to: self.mailAddress
                             )
-                        self.mailAddress.removeAll()
                     },
                     label: {
                         Text(
@@ -105,6 +108,9 @@ extension AuthenticationForgotPasswordForm: View {
                         .font(.headline)
                     }
                 )
+                .onStateChange { state in
+                    self.asyncButtonState = state
+                }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .align(.centerHorizontal)
@@ -113,6 +119,8 @@ extension AuthenticationForgotPasswordForm: View {
             }
         }
         .navigationTitle("Forgot Password")
+        .disabled(self.asyncButtonState == .busy)
+        .interactiveDismissDisabled(self.asyncButtonState == .busy)
     }
     
 }

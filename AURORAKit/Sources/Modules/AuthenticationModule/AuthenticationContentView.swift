@@ -53,7 +53,11 @@ private extension AuthenticationContentView {
                 .authentication
                 .login(using: authenticationMethod)
         } catch {
-            self.loginHasFailed = !(error is CancellationError)
+            guard !(error is CancellationError) else {
+                return
+            }
+            self.loginHasFailed = true
+            self.firebase.crashlytics.record(error: error)
         }
     }
     

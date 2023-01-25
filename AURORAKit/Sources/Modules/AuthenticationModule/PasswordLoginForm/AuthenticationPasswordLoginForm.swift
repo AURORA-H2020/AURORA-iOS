@@ -94,15 +94,13 @@ extension AuthenticationPasswordLoginForm: View {
                         .font(.headline)
                     }
                 )
+                .onStateChange { state in
+                    self.asyncButtonState = state
+                }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .align(.centerHorizontal)
                 .disabled(self.mailAddress.isEmpty || self.password.isEmpty)
-                .onPreferenceChange(
-                    AsyncButtonState.PreferenceKey.self
-                ) { asyncButtonState in
-                    self.asyncButtonState = asyncButtonState
-                }
             ) {
             }
         }

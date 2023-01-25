@@ -137,7 +137,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            exact: "10.3.0"
+            exact: "10.4.0"
         ),
         .package(
             url: "https://github.com/google/GoogleSignIn-iOS",

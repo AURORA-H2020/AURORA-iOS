@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 // MARK: - AsyncButton+map
 
@@ -118,6 +118,23 @@ public extension AsyncButton {
         ) { alertProvider, asyncButton in
             asyncButton.alertProvider = alertProvider
         }
+    }
+    
+}
+
+// MARK: - AsyncButton+onStateChange
+
+public extension AsyncButton {
+    
+    /// Adds an action to perform when the AsyncButtonState changes.
+    /// - Parameter perform: The action to perform when the AsyncButtonState changes.
+    func onStateChange(
+        perform: @escaping (AsyncButtonState) -> Void
+    ) -> some View {
+        self.onPreferenceChange(
+            AsyncButtonState.PreferenceKey.self,
+            perform: perform
+        )
     }
     
 }

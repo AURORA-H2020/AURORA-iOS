@@ -1,8 +1,8 @@
 @_exported import FirebaseAnalyticsSwift
 @_exported import FirebaseAuth
+import FirebaseCrashlytics
 @_exported import FirebaseFirestore
 @_exported import FirebaseFirestoreSwift
-@_exported import struct GoogleSignInSwift.GoogleSignInButton
 import FirebaseFunctions
 import Foundation
 
@@ -23,6 +23,9 @@ public final class Firebase: ObservableObject {
     
     /// The Firebase Firestore instance.
     let firebaseFirestore: FirebaseFirestore.Firestore
+    
+    /// The Firebase Crashlytics instance.
+    let firebaseCrashlytics: FirebaseCrashlytics.Crashlytics
     
     /// The Firebase Functions instance.
     let firebaseFunctions: FirebaseFunctions.Functions
@@ -49,6 +52,7 @@ public final class Firebase: ObservableObject {
         // Initialize
         self.firebaseAuth = .auth()
         self.firebaseFirestore = .firestore()
+        self.firebaseCrashlytics = .crashlytics()
         self.firebaseFunctions = .functions()
         self.firebaseAuthenticationProviders = [
             AppleFirebaseAuthenticationProvider(),
@@ -84,6 +88,13 @@ public extension Firebase {
         .init(
             firestore: self.firebaseFirestore,
             auth: self.firebaseAuth
+        )
+    }
+    
+    /// The Firebase Crashlytics
+    var crashlytics: Crashlytics {
+        .init(
+            crashlytics: self.firebaseCrashlytics
         )
     }
     
