@@ -1,3 +1,4 @@
+import FirebaseAnalyticsSwift
 import FirebaseKit
 import ModuleKit
 import SwiftUI

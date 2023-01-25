@@ -209,20 +209,33 @@ public extension Firebase.Authentication {
 public extension Firebase.Authentication {
     
     /// Update E-Mail address.
-    /// - Parameter email: The new E-Mail address
-    func update(
-        email: String
+    /// - Parameters:
+    ///   - newMailAddress: The new E-Mail address
+    ///   - currentPassword: The current password.
+    func updateMailAddress(
+        newMailAddress: String,
+        currentPassword: String
     ) async throws {
-        // Verify providers contains password
-        guard try self.providers.contains(.password) else {
+        // Try to retrieve the user account
+        let userAccount = try self.state.userAccount
+        // Verify providers contains passsword and a mail address is available
+        guard try self.providers.contains(.password),
+              let email = userAccount.email else {
             // Otherwise return out of function
             return
         }
+        // Reauthenticate user
+        try await userAccount
+            .reauthenticate(
+                with: EmailAuthProvider.credential(
+                    withEmail: email,
+                    password: currentPassword
+                )
+            )
         // Update E-Mail
-        try await self.state
-            .userAccount
+        try await userAccount
             .updateEmail(
-                to: email
+                to: newMailAddress
             )
     }
     
@@ -233,20 +246,33 @@ public extension Firebase.Authentication {
 public extension Firebase.Authentication {
     
     /// Update Password.
-    /// - Parameter password: The new password.
-    func update(
-        password: String
+    /// - Parameters:
+    ///   - newPassword: The new password.
+    ///   - currentPassword: The current password.
+    func updatePassword(
+        newPassword: String,
+        currentPassword: String
     ) async throws {
-        // Verify providers contains password
-        guard try self.providers.contains(.password) else {
+        // Try to retrieve the user account
+        let userAccount = try self.state.userAccount
+        // Verify providers contains passsword and a mail address is available
+        guard try self.providers.contains(.password),
+              let email = userAccount.email else {
             // Otherwise return out of function
             return
         }
+        // Reauthenticate user
+        try await userAccount
+            .reauthenticate(
+                with: EmailAuthProvider.credential(
+                    withEmail: email,
+                    password: currentPassword
+                )
+            )
         // Update password
-        try await self.state
-            .userAccount
+        try await userAccount
             .updatePassword(
-                to: password
+                to: newPassword
             )
     }
     

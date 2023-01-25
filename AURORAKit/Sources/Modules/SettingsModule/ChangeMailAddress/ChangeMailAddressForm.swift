@@ -11,6 +11,10 @@ struct ChangeMailAddressForm {
     @State
     private var mailAddress = String()
     
+    /// The password
+    @State
+    private var password = String()
+    
     /// The dismiss action
     @Environment(\.dismiss)
     private var dismiss
@@ -40,7 +44,7 @@ extension ChangeMailAddressForm: View {
                 }
             ) {
                 TextField(
-                    "E-Mail address",
+                    "New E-Mail address",
                     text: self.$mailAddress
                 )
                 .autocapitalization(.none)
@@ -50,14 +54,26 @@ extension ChangeMailAddressForm: View {
             }
             .headerProminence(.increased)
             Section(
+                header: Text(verbatim: "Password"),
+                footer: Text(verbatim: "Enter your current password.")
+            ) {
+                SecureField(
+                    "Password",
+                    text: self.$password
+                )
+                .textContentType(.password)
+            }
+            .headerProminence(.increased)
+            Section(
                 footer: AsyncButton(
                     fillWidth: true,
                     alert: self.alert,
                     action: {
                         try await self.firebase
                             .authentication
-                            .update(
-                                email: self.mailAddress
+                            .updateMailAddress(
+                                newMailAddress: self.mailAddress,
+                                currentPassword: self.password
                             )
                     },
                     label: {
@@ -67,7 +83,7 @@ extension ChangeMailAddressForm: View {
                         .font(.headline)
                     }
                 )
-                .disabled(self.mailAddress.isEmpty)
+                .disabled(MailAddress(self.mailAddress) == nil || self.password.isEmpty)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .align(.centerHorizontal)
@@ -98,27 +114,16 @@ private extension ChangeMailAddressForm {
                     action: self.dismiss.callAsFunction
                 )
             )
-        case .failure(let error):
-            if (error as? FirebaseKit.AuthErrorCode)?.code == .requiresRecentLogin {
-                return .init(
-                    title: .init(
-                        verbatim: "Recent login required"
-                    ),
-                    message: .init(
-                        verbatim: "A recent login is required in order to change your E-Mail address."
-                    )
+        case .failure:
+            return .init(
+                title: .init(
+                    verbatim: "Error"
+                ),
+                message: .init(
+                    // swiftlint:disable:next line_length
+                    verbatim: "An error occurred while trying to update your E-Mail address. Please check your inputs and try again."
                 )
-            } else {
-                return .init(
-                    title: .init(
-                        verbatim: "Error"
-                    ),
-                    message: .init(
-                        // swiftlint:disable:next line_length
-                        verbatim: "An error occurred while trying to update your E-Mail address. Please check your inputs and try again."
-                    )
-                )
-            }
+            )
         }
     }
     

@@ -1,8 +1,6 @@
-@_exported import FirebaseAnalyticsSwift
-@_exported import FirebaseAuth
+import FirebaseAuth
 import FirebaseCrashlytics
-@_exported import FirebaseFirestore
-@_exported import FirebaseFirestoreSwift
+import FirebaseFirestore
 import FirebaseFunctions
 import Foundation
 

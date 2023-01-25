@@ -7,6 +7,10 @@ import SwiftUI
 /// The ChangePasswordForm
 struct ChangePasswordForm {
     
+    /// The current password.
+    @State
+    private var currentPassword = String()
+    
     /// The password.
     @State
     private var password = String()
@@ -33,18 +37,27 @@ extension ChangePasswordForm: View {
     var body: some View {
         List {
             Section(
-                header: Text(verbatim: "New Password")
+                header: Text(
+                    verbatim: "Current Password"
+                )
+            ) {
+                SecureField(
+                    "Current Password",
+                    text: self.$currentPassword
+                )
+                .textContentType(.newPassword)
+            }
+            .headerProminence(.increased)
+            Section(
+                header: Text(
+                    verbatim: "New Password"
+                )
             ) {
                 SecureField(
                     "New Password",
                     text: self.$password
                 )
                 .textContentType(.newPassword)
-            }
-            .headerProminence(.increased)
-            Section(
-                header: Text(verbatim: "Confirmation")
-            ) {
                 SecureField(
                     "Confirm new password",
                     text: self.$passwordConfirmation
@@ -59,8 +72,9 @@ extension ChangePasswordForm: View {
                     action: {
                         try await self.firebase
                             .authentication
-                            .update(
-                                password: self.password
+                            .updatePassword(
+                                newPassword: self.password,
+                                currentPassword: self.currentPassword
                             )
                     },
                     label: {
@@ -70,7 +84,11 @@ extension ChangePasswordForm: View {
                         .font(.headline)
                     }
                 )
-                .disabled(self.password.isEmpty || self.password != self.passwordConfirmation)
+                .disabled(
+                    self.currentPassword.isEmpty
+                        || self.password.isEmpty
+                        || self.password != self.passwordConfirmation
+                )
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .align(.centerHorizontal)
@@ -101,27 +119,16 @@ private extension ChangePasswordForm {
                     action: self.dismiss.callAsFunction
                 )
             )
-        case .failure(let error):
-            if (error as? FirebaseKit.AuthErrorCode)?.code == .requiresRecentLogin {
-                return .init(
-                    title: .init(
-                        verbatim: "Recent login required"
-                    ),
-                    message: .init(
-                        verbatim: "A recent login is required in order to change your password."
-                    )
+        case .failure:
+            return .init(
+                title: .init(
+                    verbatim: "Error"
+                ),
+                message: .init(
+                    // swiftlint:disable:next line_length
+                    verbatim: "An error occurred while trying to update your password. Please check your inputs and try again."
                 )
-            } else {
-                return .init(
-                    title: .init(
-                        verbatim: "Error"
-                    ),
-                    message: .init(
-                        // swiftlint:disable:next line_length
-                        verbatim: "An error occurred while trying to update your password. Please check your inputs and try again."
-                    )
-                )
-            }
+            )
         }
     }
     

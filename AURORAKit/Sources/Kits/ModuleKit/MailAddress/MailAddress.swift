@@ -3,7 +3,7 @@ import Foundation
 // MARK: - MailAddress
 
 /// A MailAddress
-struct MailAddress: Codable, Hashable, Sendable {
+public struct MailAddress: Codable, Hashable, Sendable {
     
     // MARK: Static-Properties
     
@@ -16,14 +16,14 @@ struct MailAddress: Codable, Hashable, Sendable {
     // MARK: Properties
     
     /// The E-Mail address.
-    let address: String
+    public let address: String
     
     // MARK: Initializer
     
     /// Creates a new instance of `MailAddress`
     /// or returns `nil` if the given `mailAddress` is not a valid E-Mail address.
     /// - Parameter mailAddress: The E-Mail address.
-    init?(
+    public init?(
         _ mailAddress: String
     ) {
         // Verify mail addres is not empty and "@" sign is available
@@ -82,7 +82,7 @@ struct MailAddress: Codable, Hashable, Sendable {
     // MARK: Clear Cache
     
     /// Clear validation cache
-    static func clearCache() {
+    public static func clearCache() {
         Self.cache.removeAll()
     }
     
