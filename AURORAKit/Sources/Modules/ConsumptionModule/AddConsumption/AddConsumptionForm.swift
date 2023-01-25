@@ -184,7 +184,7 @@ private extension AddConsumptionForm {
                         .align(.centerHorizontal)
                     }
                     .buttonStyle(.bordered)
-                    .tint(.accentColor)
+                    .tint(category.tintColor)
                     .controlSize(.large)
                 }
             }
@@ -203,44 +203,45 @@ private extension AddConsumptionForm {
         for category: Consumption.Category
     ) -> some View {
         Section(
-            header: HStack {
-                Text(
-                    verbatim: category.localizedString
-                )
-                Spacer()
-                Menu {
-                    ForEach(
-                        Consumption
-                            .Category
-                            .allCases
-                            .filter { $0 != category },
-                        id: \.self
-                    ) { category in
-                        Button {
-                            self.category = category
-                        } label: {
+            header: Menu {
+                ForEach(
+                    Consumption
+                        .Category
+                        .allCases
+                        .filter { $0 != category },
+                    id: \.self
+                ) { category in
+                    Button {
+                        self.category = category
+                    } label: {
+                        Label {
                             Text(
                                 verbatim: category.localizedString
                             )
+                        } icon: {
+                            category.icon
                         }
-
                     }
-                } label: {
-                    HStack(spacing: 4) {
-                        Text(
-                            verbatim: "Change"
-                        )
-                        Image(
-                            systemName: "chevron.up.chevron.down"
-                        )
-                    }
-                    .font(.subheadline.weight(.semibold))
                 }
-                .buttonStyle(.bordered)
-                .tint(.accentColor)
-                .buttonBorderShape(.capsule)
+            } label: {
+                HStack {
+                    category.icon
+                    Text(
+                        verbatim: category.localizedString
+                    )
+                    .fontWeight(.semibold)
+                    Image(
+                        systemName: "chevron.up.chevron.down"
+                    )
+                    .imageScale(.small)
+                }
             }
-            .padding(.vertical, 8)
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.capsule)
+            .tint(category.tintColor)
+            .controlSize(.regular)
+            .align(.centerHorizontal)
+            .padding(.vertical, 15)
         ) {
             switch category {
             case .electricity:
@@ -429,40 +430,6 @@ private extension AddConsumptionForm {
             "Distance",
             number: self.$value,
             unitSymbol: "km"
-        )
-    }
-    
-}
-
-private extension Consumption.Category {
-    
-    var localizedString: String {
-        switch self {
-        case .electricity:
-            return "Electricity"
-        case .heating:
-            return "Heating"
-        case .transportation:
-            return "Transportation"
-        }
-    }
-    
-}
-
-private extension Consumption.Category {
-    
-    var icon: Image {
-        .init(
-            systemName: {
-                switch self {
-                case .electricity:
-                    return "bolt"
-                case .heating:
-                    return "heater.vertical"
-                case .transportation:
-                    return "car"
-                }
-            }()
         )
     }
     

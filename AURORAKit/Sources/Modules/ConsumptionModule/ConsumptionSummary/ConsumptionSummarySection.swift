@@ -100,12 +100,16 @@ private extension ConsumptionSummarySection {
                 )
                 .cornerRadius(12)
                 VStack(alignment: .leading, spacing: 8) {
-                    ForEach(consumptionSummary.entries) { entry in
+                    ForEach(
+                        consumptionSummary
+                            .entries
+                            .sorted { $0.value > $1.value }
+                    ) { entry in
                         HStack {
                             Image(
                                 systemName: "square.fill"
                             )
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(entry.category.tintColor)
                             VStack(alignment: .leading) {
                                 Text(
                                     verbatim: entry.category.rawValue.capitalized
@@ -113,7 +117,7 @@ private extension ConsumptionSummarySection {
                                 .font(.headline)
                                 .foregroundColor(.primary)
                                 Text(
-                                    verbatim: "(\(Int(entry.value * 100))%)"
+                                    verbatim: "\(Int(entry.value * 100))%"
                                 )
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
@@ -130,7 +134,7 @@ private extension ConsumptionSummarySection {
                         .init(
                             id: entry,
                             value: entry.value,
-                            color: .accentColor
+                            color: entry.category.tintColor
                         )
                     },
                 spacing: 4
