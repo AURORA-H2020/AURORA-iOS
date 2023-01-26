@@ -8,15 +8,14 @@ open class App {
     
     // MARK: Properties
     
-    /// The Firebase instance.
-    private let firebase: Firebase
+    /// The AppDelegate.
+    @UIApplicationDelegateAdaptor(AppDelegate.self)
+    private var appDelegate
     
     // MARK: Initializer
     
     /// Creates a new instance of `App`
-    public required init() {
-        self.firebase = .default
-    }
+    public required init() {}
     
 }
 
@@ -28,9 +27,9 @@ extension App: SwiftUI.App {
     public var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(self.firebase)
+                .environmentObject(self.appDelegate.firebase)
                 .onOpenURL { url in
-                    self.firebase.handle(opened: url)
+                    self.appDelegate.firebase.handle(opened: url)
                 }
         }
     }
