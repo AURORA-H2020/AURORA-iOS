@@ -131,12 +131,15 @@ public extension Firebase.Authentication {
                 // Otherwise throw unsupported provider error
                 throw LoginError.unsupportedProvider(provider)
             }
-            // Sign in with FirebaseAuthenticationProvider
-            return try await self.firebase
-                .firebaseAuth
-                .signIn(
-                    with: firebaseAuthenticationProvider.signIn()
-                )
+            // Record any error which occurs when trying to sign in
+            return try await self.firebase.crashlytics.recordError {
+                // Sign in with FirebaseAuthenticationProvider
+                try await self.firebase
+                    .firebaseAuth
+                    .signIn(
+                        with: firebaseAuthenticationProvider.signIn()
+                    )
+            }
         }
     }
     

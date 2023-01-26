@@ -57,7 +57,6 @@ private extension AuthenticationContentView {
                 return
             }
             self.loginHasFailed = true
-            self.firebase.crashlytics.record(error: error)
         }
     }
     

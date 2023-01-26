@@ -101,7 +101,7 @@ public extension Firebase {
     /// The Firebase Functions
     var functions: Functions {
         .init(
-            functions: self.firebaseFunctions
+            firebase: self
         )
     }
     
