@@ -137,7 +137,10 @@ private extension ConsumptionSummarySection {
                             color: entry.category.tintColor
                         )
                     },
-                spacing: 4
+                spacing: .init(
+                    width: 4,
+                    color: .init(.systemGroupedBackground)
+                )
             )
             .frame(height: 160)
         }
