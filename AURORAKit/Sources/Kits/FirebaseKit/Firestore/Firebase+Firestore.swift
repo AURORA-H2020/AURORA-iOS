@@ -11,11 +11,8 @@ public extension Firebase {
     /// The Firebase Firestore
     struct Firestore {
         
-        /// The Firebase Firestore instance.
-        let firestore: FirebaseFirestore.Firestore
-        
-        /// The Firebase Auth instance.
-        let auth: FirebaseAuth.Auth
+        /// The Firebase instance.
+        let firebase: Firebase
         
     }
     
@@ -38,14 +35,16 @@ public extension Firebase.Firestore {
         try await wherePredicate(
             Entity
                 .collectionReference(
-                    in: self.firestore,
+                    in: self.firebase.firebaseFirestore,
                     context: context
                 )
         )
         .getDocuments()
         .documents
         .compactMap { snapshot in
-            try? snapshot.data(as: Entity.self)
+            try? self.firebase.crashlytics.recordError {
+                try snapshot.data(as: Entity.self)
+            }
         }
     }
     
@@ -75,7 +74,7 @@ public extension Firebase.Firestore {
     ) async throws -> Entity {
         try await Entity
             .collectionReference(
-                in: self.firestore,
+                in: self.firebase.firebaseFirestore,
                 context: context
             )
             .document(id)
@@ -115,7 +114,7 @@ public extension Firebase.Firestore {
         wherePredicate(
             Entity
                 .collectionReference(
-                    in: self.firestore,
+                    in: self.firebase.firebaseFirestore,
                     context: context
                 )
         )
@@ -125,7 +124,9 @@ public extension Firebase.Firestore {
                 .documents
                 .map { snapshot in
                     .init {
-                        try snapshot.data(as: Entity.self)
+                        try self.firebase.crashlytics.recordError {
+                            try snapshot.data(as: Entity.self)
+                        }
                     }
                 }
         }
@@ -159,14 +160,16 @@ public extension Firebase.Firestore {
     ) -> AnyPublisher<Result<Entity, Error>, Error> {
         Entity
             .collectionReference(
-                in: self.firestore,
+                in: self.firebase.firebaseFirestore,
                 context: context
             )
             .document(id)
             .snapshotPublisher()
             .map { snapshot in
                 .init {
-                    try snapshot.data(as: Entity.self)
+                    try self.firebase.crashlytics.recordError {
+                        try snapshot.data(as: Entity.self)
+                    }
                 }
             }
             .eraseToAnyPublisher()
@@ -213,7 +216,7 @@ public extension Firebase.Firestore {
             // which automatically assigns an identifier
             _ = Entity
                 .collectionReference(
-                    in: self.firestore,
+                    in: self.firebase.firebaseFirestore,
                     context: context
                 )
                 .addDocument(from: entity)
@@ -250,15 +253,10 @@ public extension Firebase.Firestore {
         var entity = entity
         // Check if Entity is a User
         if Entity.self is User.Type {
-            // Verify user identifier is available
-            guard let userId = self.auth.currentUser?.uid else {
-                // Otherwise throw unauthenticated error
-                throw Firebase.Authentication.State.UnauthenticatedError()
-            }
             // Set identifier to UID of current Firebase user
             // as a User document id must always be equal
             // to the FirebaseAuth user
-            entity.id = userId
+            entity.id = try self.firebase.authentication.state.userAccount.uid
         }
         // Verify entity identifier is available
         guard let entityId = entity.id else {
@@ -268,7 +266,7 @@ public extension Firebase.Firestore {
         // Update document
         try Entity
             .collectionReference(
-                in: self.firestore,
+                in: self.firebase.firebaseFirestore,
                 context: context
             )
             .document(entityId)
@@ -309,7 +307,7 @@ public extension Firebase.Firestore {
         // Delete
         Entity
             .collectionReference(
-                in: self.firestore,
+                in: self.firebase.firebaseFirestore,
                 context: context
             )
             .document(entityId)

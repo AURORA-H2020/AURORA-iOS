@@ -12,39 +12,44 @@ public struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
     
     // MARK: Properties
     
-    /// The Entities
+    /// The Firebase instance.
+    private let firebase: Firebase
+    
+    /// The FirestoreQuery Result
     @FirebaseFirestoreSwift.FirestoreQuery
-    private var entity: Result<[Entity], Error>
+    private var queryResult: Result<[Entity], Error>
     
     /// The results of the query.
     /// This property returns an empty collection when there are no matching results.
     public var wrappedValue: [Entity] {
-        switch self.entity {
+        switch self.queryResult {
         case .success(let entities):
             return entities
-        case .failure:
+        case .failure(let error):
+            self.firebase.crashlytics.record(error: error)
             return .init()
         }
     }
     
     /// A binding to the request's mutable configuration properties
     public var projectedValue: FirebaseFirestoreSwift.FirestoreQuery<Result<[Entity], Error>>.Configuration {
-        self.$entity
+        self.$queryResult
     }
     
     /// The query's predicates.
     public var predicates: [FirebaseFirestoreSwift.QueryPredicate] {
         get {
-            self.$entity.predicates
+            self.$queryResult.predicates
         }
         set {
-            self.$entity.predicates = newValue
+            self.$queryResult.predicates = newValue
         }
     }
     
     /// The error, if any.
     public var error: Error? {
-        if case .failure(let error) = self.entity {
+        if case .failure(let error) = self.queryResult {
+            self.firebase.crashlytics.record(error: error)
             return error
         } else {
             return nil
@@ -57,11 +62,14 @@ public struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
     /// - Parameters:
     ///   - context: The CollectionReferenceContext.
     ///   - predicates: An array of `QueryPredicate`s that defines a filter for the fetched results. Default value `.init()`
+    ///   - firebase: The Firebase instance. Default value `.default`
     public init(
         context: Entity.CollectionReferenceContext,
-        predicates: [FirebaseFirestoreSwift.QueryPredicate] = .init()
+        predicates: [FirebaseFirestoreSwift.QueryPredicate] = .init(),
+        firebase: Firebase = .default
     ) {
-        self._entity = .init(
+        self.firebase = firebase
+        self._queryResult = .init(
             collectionPath: Entity
                 .collectionReference(
                     context: context
@@ -81,10 +89,13 @@ public extension FirestoreEntityQuery where Entity.CollectionReferenceContext ==
     /// Creates a new instance of `FirestoreEntityQuery`
     /// - Parameters:
     ///   - predicates: An array of `QueryPredicate`s that defines a filter for the fetched results. Default value `.init()`
+    ///   - firebase: The Firebase instance. Default value `.default`
     init(
-        predicates: [FirebaseFirestoreSwift.QueryPredicate] = .init()
+        predicates: [FirebaseFirestoreSwift.QueryPredicate] = .init(),
+        firebase: Firebase = .default
     ) {
-        self._entity = .init(
+        self.firebase = firebase
+        self._queryResult = .init(
             collectionPath: Entity
                 .collectionReference(context: ())
                 .path,

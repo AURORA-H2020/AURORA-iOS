@@ -16,27 +16,31 @@ public final class Firebase: ObservableObject {
     
     // MARK: Properties
     
-    /// The Firebase Auth instance.
-    let firebaseAuth: FirebaseAuth.Auth
-    
-    /// The Firebase Firestore instance.
-    let firebaseFirestore: FirebaseFirestore.Firestore
-    
-    /// The Firebase Crashlytics instance.
-    let firebaseCrashlytics: FirebaseCrashlytics.Crashlytics
-    
-    /// The Firebase Functions instance.
-    let firebaseFunctions: FirebaseFunctions.Functions
-    
-    /// The FirebaseAuthenticationProviders
-    let firebaseAuthenticationProviders: [FirebaseAuthenticationProvider]
-    
     /// The User.
     @Published
     var user: Result<User?, Error>?
     
+    /// The Firebase Auth instance.
+    private(set) lazy var firebaseAuth = FirebaseAuth.Auth.auth()
+    
+    /// The Firebase Firestore instance.
+    private(set) lazy var firebaseFirestore = FirebaseFirestore.Firestore.firestore()
+    
+    /// The Firebase Crashlytics instance.
+    private(set) lazy var firebaseCrashlytics = FirebaseCrashlytics.Crashlytics.crashlytics()
+    
+    /// The Firebase Functions instance.
+    /// Operating in the region `europe-west3`
+    private(set) lazy var firebaseFunctions = FirebaseFunctions.Functions.functions(region: "europe-west3")
+    
+    /// The FirebaseAuthenticationProviders
+    private(set) lazy var firebaseAuthenticationProviders: [FirebaseAuthenticationProvider] = [
+        AppleFirebaseAuthenticationProvider(),
+        GoogleFirebaseAuthenticationProvider()
+    ]
+    
     /// The user document snapshot subscription
-    var userDocumentSnapshotSubscription: FirebaseFirestore.ListenerRegistration?
+    private var userDocumentSnapshotSubscription: FirebaseFirestore.ListenerRegistration?
     
     /// The auth state did change subscription
     private var authStateDidChangeSubscription: FirebaseAuth.AuthStateDidChangeListenerHandle?
@@ -45,21 +49,14 @@ public final class Firebase: ObservableObject {
     
     /// Creates a new instance of `Firebase`
     private init() {
-        // Configure Firebase
-        Self.configure()
-        // Initialize
-        self.firebaseAuth = .auth()
-        self.firebaseFirestore = .firestore()
-        self.firebaseCrashlytics = .crashlytics()
-        self.firebaseFunctions = .functions(
-            region: "europe-west3"
-        )
-        self.firebaseAuthenticationProviders = [
-            AppleFirebaseAuthenticationProvider(),
-            GoogleFirebaseAuthenticationProvider()
-        ]
-        // Perform Setup
-        self.setup()
+        // Add auth state did change listener
+        self.authStateDidChangeSubscription = self.firebaseAuth
+            .addStateDidChangeListener { [weak self] _, user in
+                // Send object will change event
+                self?.objectWillChange.send()
+                // Setup using user
+                self?.setup(using: user)
+            }
     }
     
     /// Deinit
@@ -86,8 +83,7 @@ public extension Firebase {
     /// The Firebase Firestore
     var firestore: Firestore {
         .init(
-            firestore: self.firebaseFirestore,
-            auth: self.firebaseAuth
+            firebase: self
         )
     }
     
@@ -126,24 +122,7 @@ public extension Firebase {
     
 }
 
-// MARK: - Setup
-
-private extension Firebase {
-    
-    /// Setup Firebase
-    func setup() {
-        self.authStateDidChangeSubscription = self.firebaseAuth
-            .addStateDidChangeListener { [weak self] _, user in
-                // Send object will change event
-                self?.objectWillChange.send()
-                // Setup using user
-                self?.setup(using: user)
-            }
-    }
-    
-}
-
-// MARK: - Setup using User Account
+// MARK: - Internal API
 
 extension Firebase {
     
@@ -178,13 +157,27 @@ extension Firebase {
                     else if let snapshot = snapshot {
                         // Try to decode data as User
                         return .init {
-                            try snapshot.data(as: User.self)
+                            // Record any decoding error
+                            try self?.crashlytics.recordError {
+                                // Decode data as User
+                                try snapshot.data(as: User.self)
+                            }
                         }
                     } else {
                         // Otherwise return failure
                         return error.flatMap { .failure($0) }
                     }
                 }()
+                // Check if an error is available
+                if let error = error {
+                    // Record error
+                    self?.crashlytics.record(
+                        error: error,
+                        userInfo: [
+                            "Hint": "SnapshotListener Error for /user/{userId}"
+                        ]
+                    )
+                }
             }
     }
     
