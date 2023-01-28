@@ -215,7 +215,8 @@ extension AppleFirebaseAuthenticationProvider: AuthenticationServices.ASAuthoriz
         // Reinitialize error
         let error: Error = {
             // Check if error is cancelled
-            if (error as? ASAuthorizationError)?.code == .canceled {
+            if let authorizationError = error as? ASAuthorizationError,
+               (authorizationError.code == .canceled || authorizationError.code == .unknown) {
                 // Use CancellationError
                 return CancellationError()
             } else {
