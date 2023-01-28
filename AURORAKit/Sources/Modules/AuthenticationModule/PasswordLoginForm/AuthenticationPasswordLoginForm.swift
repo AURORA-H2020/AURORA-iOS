@@ -66,65 +66,63 @@ extension AuthenticationPasswordLoginForm: View {
             }
             .headerProminence(.increased)
             Section(
-                footer: AsyncButton(
-                    fillWidth: true,
-                    alert: { result in
-                        guard case .failure = result else {
-                            return nil
-                        }
-                        return .init(
-                            title: .init(
-                                verbatim: "Login failed"
-                            ),
-                            message: .init(
-                                // swiftlint:disable:next line_length
-                                verbatim: "An error occurred while trying to login. Please check your inputs and try again."
-                            )
-                        )
-                    },
-                    action: {
-                        self.isTextFieldFocused = false
-                        try await self.firebase
-                            .authentication
-                            .login(
-                                using: .password(
-                                    email: self.mailAddress,
-                                    password: self.password
+                footer: VStack(spacing: 20) {
+                    AsyncButton(
+                        fillWidth: true,
+                        alert: { result in
+                            guard case .failure = result else {
+                                return nil
+                            }
+                            return .init(
+                                title: .init(
+                                    verbatim: "Login failed"
+                                ),
+                                message: .init(
+                                    // swiftlint:disable:next line_length
+                                    verbatim: "An error occurred while trying to login. Please check your inputs and try again."
                                 )
                             )
-                        self.dismiss()
-                    },
-                    label: {
-                        Text(
-                            verbatim: "Continue"
-                        )
-                        .font(.headline)
+                        },
+                        action: {
+                            self.isTextFieldFocused = false
+                            try await self.firebase
+                                .authentication
+                                .login(
+                                    using: .password(
+                                        email: self.mailAddress,
+                                        password: self.password
+                                    )
+                                )
+                            self.dismiss()
+                        },
+                        label: {
+                            Text(
+                                verbatim: "Continue"
+                            )
+                            .font(.headline)
+                        }
+                    )
+                    .onStateChange { state in
+                        self.asyncButtonState = state
                     }
-                )
-                .onStateChange { state in
-                    self.asyncButtonState = state
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .align(.centerHorizontal)
+                    .disabled(MailAddress(self.mailAddress) == nil || self.password.isEmpty)
+                    NavigationLink(
+                        destination: AuthenticationForgotPasswordForm(
+                            mailAddress: self.mailAddress
+                        )
+                    ) {
+                        Text(
+                            verbatim: "Forgot Password"
+                        )
+                    }
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .align(.centerHorizontal)
-                .disabled(MailAddress(self.mailAddress) == nil || self.password.isEmpty)
             ) {
             }
         }
         .navigationTitle("Continue with E-Mail")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(
-                    destination: AuthenticationForgotPasswordForm(
-                        mailAddress: self.mailAddress
-                    )
-                ) {
-                    Text(
-                        verbatim: "Forgot Password"
-                    )
-                }
-            }
-        }
         .disabled(self.asyncButtonState == .busy)
         .interactiveDismissDisabled(self.asyncButtonState == .busy)
         .onDisappear(perform: MailAddress.clearCache)
