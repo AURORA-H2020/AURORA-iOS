@@ -318,16 +318,28 @@ private extension AddConsumptionForm {
             in: (self.partialElectricity.startDate?.dateValue() ?? .init())...,
             displayedComponents: [.date]
         )
-        NumberTextField(
-            "Costs",
-            number: self.$partialElectricity.costs,
-            unitSymbol: "€"
-        )
-        NumberTextField(
-            "Consumption",
-            number: self.$value,
-            unitSymbol: "kWh"
-        )
+        HStack {
+            NumberTextField(
+                "Costs",
+                value: self.$partialElectricity.costs
+            )
+            Text(
+                verbatim: "€"
+            )
+            .font(.footnote)
+            .foregroundColor(.secondary)
+        }
+        HStack {
+            NumberTextField(
+                "Consumption",
+                value: self.$value
+            )
+            Text(
+                verbatim: "kwH"
+            )
+            .font(.footnote)
+            .foregroundColor(.secondary)
+        }
     }
     
 }
@@ -361,16 +373,28 @@ private extension AddConsumptionForm {
             in: (self.partialHeating.startDate?.dateValue() ?? .init())...,
             displayedComponents: [.date]
         )
-        NumberTextField(
-            "Costs",
-            number: self.$partialHeating.costs,
-            unitSymbol: "€"
-        )
-        NumberTextField(
-            "Consumption",
-            number: self.$value,
-            unitSymbol: "kWh"
-        )
+        HStack {
+            NumberTextField(
+                "Costs",
+                value: self.$partialHeating.costs
+            )
+            Text(
+                verbatim: "€"
+            )
+            .font(.footnote)
+            .foregroundColor(.secondary)
+        }
+        HStack {
+            NumberTextField(
+                "Consumption",
+                value: self.$value
+            )
+            Text(
+                verbatim: "kwH"
+            )
+            .font(.footnote)
+            .foregroundColor(.secondary)
+        }
     }
     
 }
@@ -426,11 +450,17 @@ private extension AddConsumptionForm {
                 .tag(occupancy as Consumption.Transportation.PublicVehicleOccupancy??)
             }
         }
-        NumberTextField(
-            "Distance",
-            number: self.$value,
-            unitSymbol: "km"
-        )
+        HStack {
+            NumberTextField(
+                "Distance",
+                value: self.$value
+            )
+            Text(
+                verbatim: "km"
+            )
+            .font(.footnote)
+            .foregroundColor(.secondary)
+        }
     }
     
 }

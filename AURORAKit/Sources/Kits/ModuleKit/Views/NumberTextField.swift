@@ -1,91 +1,44 @@
-import Combine
 import SwiftUI
 
 // MARK: - NumberTextField
 
-/// A TextField that only allows numeric input
-public struct NumberTextField {
+/// The NumberTextField
+public struct NumberTextField<Value: Numeric & LosslessStringConvertible> {
+    
+    // MARK: Properties
     
     /// The title of the text view, describing its purpose
     private let title: String
     
-    /// The unit symbol.
-    private let unitSymbol: String?
-    
-    /// The NumberFormatter.
-    private let numberFormatter: NumberFormatter?
-    
-    /// Bool value if number is a floating point value
-    private let isFloatingPoint: Bool
-    
-    /// The number
+    /// The underlying value to edit.
     @Binding
-    private var number: Double?
+    private var value: Value?
     
-    /// The number text representation
+    /// The previously converted value.
+    @State
+    private var previouslyConvertedValue: Value?
+    
+    /// The text to display and edit
     @State
     private var text: String
     
-}
-
-// MARK: - Initializer with Double Binding
-
-public extension NumberTextField {
+    // MARK: Initializer
     
     /// Creates a new instance of `NumberTextField`
     /// - Parameters:
-    ///   - title: The title of the text view, describing its purpose.
-    ///   - number: A Binding to a double value.
-    ///   - unitSymbol: The optional unit symbol. Default value `nil`
-    ///   - numberFormatter: The optional NumberFormatter. Default value `nil`
-    init(
+    ///   - title: The title of the text view, describing its purpose
+    ///   - value: The underlying value to edit.
+    public init(
         _ title: String,
-        number: Binding<Double?>,
-        unitSymbol: String? = nil,
-        numberFormatter: NumberFormatter? = nil
+        value: Binding<Value?>
     ) {
         self.title = title
-        self.unitSymbol = unitSymbol
-        self.numberFormatter = numberFormatter
-        self.isFloatingPoint = true
-        self._number = number
-        self._text = .init(
-            initialValue: number.wrappedValue.flatMap { String($0) } ?? .init()
-        )
-    }
-    
-}
-
-// MARK: - Initializer with Integer Binding
-
-public extension NumberTextField {
-    
-    /// Creates a new instance of `NumberTextField`
-    /// - Parameters:
-    ///   - title: The title of the text view, describing its purpose.
-    ///   - number: A Binding to an integer value.
-    ///   - unitSymbol: The optional unit symbol. Default value `nil`
-    ///   - numberFormatter: The optional NumberFormatter. Default value `nil`
-    init(
-        _ title: String,
-        number: Binding<Int?>,
-        unitSymbol: String? = nil,
-        numberFormatter: NumberFormatter? = nil
-    ) {
-        self.title = title
-        self.unitSymbol = unitSymbol
-        self.numberFormatter = numberFormatter
-        self.isFloatingPoint = false
-        self._number = .init(
-            get: {
-                number.wrappedValue.flatMap(Double.init)
-            },
-            set: { newValue in
-                number.wrappedValue = newValue.flatMap(Int.init)
-            }
+        self._value = value
+        self._previouslyConvertedValue = .init(
+            initialValue: value.wrappedValue
         )
         self._text = .init(
-            initialValue: number.wrappedValue.flatMap(String.init) ?? .init()
+            initialValue: value.wrappedValue?.localizedNumericString ?? .init()
         )
     }
     
@@ -95,113 +48,133 @@ public extension NumberTextField {
 
 extension NumberTextField: View {
     
-    /// The content and behavior of the view
+    /// The content and behavior of the view.
     public var body: some View {
-        HStack {
-            TextField(
-                self.title,
-                text: self.$text
-            )
-            .keyboardType(self.isFloatingPoint ? .decimalPad : .numberPad)
-            .disableAutocorrection(true)
-            .autocapitalization(.none)
-            .onReceive(
-                Just(self.text),
-                perform: self.textDidChange
-            )
-            .onChange(of: self.number) { number in
-                // Verify number is set to nil
-                guard number == nil else {
-                    // Otherwise return out of function
-                    return
-                }
-                // Clear text
-                self.text = .init()
-            }
-            if let unitSymbol = self.unitSymbol {
-                Text(
-                    verbatim: unitSymbol
-                )
-                .font(.footnote)
-                .foregroundColor(.secondary)
-            }
-        }
+        TextField(
+            self.title,
+            text: self.$text
+        )
+        .keyboardType(Value.self is any BinaryInteger.Type ? .numberPad : .decimalPad)
+        .autocorrectionDisabled(true)
+        .textInputAutocapitalization(.never)
+        .onChange(
+            of: self.text,
+            perform: self.textDidChange
+        )
+        .onChange(
+            of: self.value,
+            perform: self.valueDidChange
+        )
     }
     
 }
 
-// MARK: - Text did change
+// MARK: - Text Did Change
 
 private extension NumberTextField {
-    
-    /// The decimal separator
-    static let decimalSeparator = "."
     
     /// Text did change
     /// - Parameter text: The new text
     func textDidChange(
         _ text: String
     ) {
-        // Initialize mutable text
-        var text = text
-        // Check if is floating point
-        if self.isFloatingPoint {
-            // Sanitize text
-            text = text
-                // Replace semicolon with dot
-                .replacingOccurrences(
-                    of: Locale.current.decimalSeparator ?? Self.decimalSeparator,
-                    with: Self.decimalSeparator
-                )
-                // Only allow numbers and dots
-                .filter { $0.isNumber || String($0) == Self.decimalSeparator }
-        } else {
-            // Sanitize text
-            text = text
-                // Only allow numbers
-                .filter(\.isNumber)
-        }
-        // Verify text is not empty and a Double can be initialized from text
-        guard !text.isEmpty, let number = Double(text) else {
-            // Otherwise perform transaction
-            return withTransaction(.init()) {
-                // Check if a number is available
-                if self.number != nil {
-                    // Clear number
-                    self.number = nil
-                }
-                // Check if text is not empty
-                if !self.text.isEmpty {
-                    // Clear text
-                    self.text = .init()
-                }
-            }
-        }
-        // Reformat text
-        text = {
-            if let formattedText = self.numberFormatter?.string(from: .init(value: number)) {
-                return formattedText
-            } else {
-                return text.replacingOccurrences(
-                    of: Self.decimalSeparator,
-                    with: Locale.current.decimalSeparator ?? Self.decimalSeparator
-                )
-            }
-        }()
-        // Verify number has changed
-        guard number != self.number else {
-            // Set text
-            self.text = text
+        // Verify text is not empty
+        guard !text.isEmpty else {
+            // Otherwise clear value
+            self.previouslyConvertedValue = nil
+            self.value = nil
             // Return out of function
             return
         }
-        // Perform transaction
-        withTransaction(.init()) {
-            // Set text
-            self.text = text
-            // Set number
-            self.number = number
+        // Declare bool if decimal separator is contained in the text
+        lazy var foundDecimalSeparator = false
+        // Filter text
+        let text = text.filter { character in
+            // Verify characer is not a number
+            guard !character.isNumber else {
+                // Otherwise accept number character
+                return true
+            }
+            // Verify is not a binary integer
+            guard !(Value.self is any BinaryInteger.Type) else {
+                // Otherwise if it is a binary integer
+                // do not include non number characters
+                return false
+            }
+            // Verify character is a decimal separator
+            // and a separator hasn't been previously found
+            guard character == Locale.current.decimalSeparatorCharacter && !foundDecimalSeparator else {
+                // Do not include character
+                return false
+            }
+            // Toggle found decimal separator
+            foundDecimalSeparator.toggle()
+            // Include separator
+            return true
         }
+        // Set text
+        self.text = text
+        // Verify value can be initialized from text
+        guard let newValue = Value(
+            text.replacingOccurrences(
+                of: String(Locale.current.decimalSeparatorCharacter),
+                with: "."
+            )
+        ) else {
+            // Otherwise return out of function
+            return
+        }
+        // Update value
+        self.previouslyConvertedValue = newValue
+        self.value = newValue
+    }
+    
+}
+
+// MARK: - Value Did Change
+
+private extension NumberTextField {
+    
+    /// Value did change.
+    /// - Parameter value: The new value.
+    func valueDidChange(
+        _ value: Value?
+    ) {
+        // Verify previously converted value is not equal to the new value
+        guard self.previouslyConvertedValue != value else {
+            // Otherwise return out of function
+            return
+        }
+        // Update value
+        self.value = value
+        // Update text
+        self.text = value?.localizedNumericString ?? .init()
+    }
+    
+}
+
+// MARK: - LosslessStringConvertible+localizedString
+
+private extension LosslessStringConvertible {
+    
+    /// A localized string.
+    var localizedNumericString: String {
+        String(self)
+            .replacingOccurrences(
+                of: ".",
+                with: String(Locale.current.decimalSeparatorCharacter)
+            )
+    }
+    
+}
+
+// MARK: - Locale+decimalSeparatorCharacter
+
+private extension Locale {
+    
+    /// The decimal separator character of the locale.
+    var decimalSeparatorCharacter: Character {
+        self.decimalSeparator.flatMap(Character.init) ?? "."
     }
     
 }

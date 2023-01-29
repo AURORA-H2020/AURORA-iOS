@@ -8,8 +8,8 @@ public extension Consumption {
     /// An Electricity Consumption
     struct Electricity: Codable, Hashable {
         
-        /// The costs in cents.
-        public var costs: Int
+        /// The costs.
+        public var costs: Double
         
         /// The start date.
         public var startDate: Timestamp
@@ -19,11 +19,11 @@ public extension Consumption {
         
         /// Creates a new instance of `Consumption.Electricity`
         /// - Parameters:
-        ///   - costs: The costs in cents.
+        ///   - costs: The costs.
         ///   - startDate: The start date.
         ///   - endDate: The end date.
         public init(
-            costs: Int,
+            costs: Double,
             startDate: Timestamp,
             endDate: Timestamp
         ) {
