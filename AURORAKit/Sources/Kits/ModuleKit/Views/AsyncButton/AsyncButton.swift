@@ -140,9 +140,7 @@ extension AsyncButton: View {
             // Check if a confirmation dialog is available
             if let confirmationDialog = self.confirmationDialogProvider?(self.perform) {
                 // Set confirmation dialog
-                self.confirmationDialog = .init(
-                    value: confirmationDialog
-                )
+                self.confirmationDialog = .init(confirmationDialog)
             } else {
                 // Otherwise perform action
                 self.perform()
@@ -254,9 +252,7 @@ private extension AsyncButton {
             return
         }
         // Set Alert item
-        self.alert = .init(
-            value: alert
-        )
+        self.alert = .init(alert)
     }
     
 }

@@ -17,9 +17,9 @@ public struct AuthenticationContentView {
     @State
     private var isPasswordLoginFormPresented = false
     
-    /// Bool value if login has failed
+    /// The login error.
     @State
-    private var loginHasFailed = false
+    private var loginError: Identified<Error>?
     
     /// The Firebase instance
     @EnvironmentObject
@@ -52,11 +52,10 @@ private extension AuthenticationContentView {
             try await self.firebase
                 .authentication
                 .login(using: authenticationMethod)
+        } catch is CancellationError {
+            return
         } catch {
-            guard !(error is CancellationError) else {
-                return
-            }
-            self.loginHasFailed = true
+            self.loginError = .init(error)
         }
     }
     
@@ -165,20 +164,21 @@ extension AuthenticationContentView: View {
             .environmentObject(self.firebase)
         }
         .alert(
-            "Login failed",
-            isPresented: self.$loginHasFailed,
-            actions: {
-                Button {
-                } label: {
-                    Text(verbatim: "Okay")
-                }
-            },
-            message: {
-                Text(
-                    verbatim: "An error occurred while logging in. Please try again."
+            item: self.$loginError
+        ) { loginError in
+            .init(
+                title: .init(
+                    verbatim: "Login failed"
+                ),
+                message: .init(
+                    verbatim: [
+                        "An error occurred while logging in. Please try again.",
+                        "\(loginError.value.localizedDescription)"
+                    ]
+                    .joined(separator: "\n\n")
                 )
-            }
-        )
+            )
+        }
     }
     
 }
