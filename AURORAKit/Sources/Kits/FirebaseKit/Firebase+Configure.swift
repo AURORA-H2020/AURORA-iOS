@@ -112,12 +112,8 @@ private extension Firebase {
             with app: FirebaseCore.FirebaseApp
         ) -> FirebaseAppCheck.AppCheckProvider? {
             if self.isDebug {
-                if !ProcessInfo.processInfo.arguments.contains("FIRDebugEnabled") {
-                    print(
-                        "[AppCheck]",
-                        "Add \"-FIRDebugEnabled\" to \"Arguments Passed On Launch\" to the scheme.",
-                        "Add the debug token which is logged to the console to Firebase App Check."
-                    )
+                if let debugToken = UserDefaults.standard.string(forKey: "FIRAAppCheckDebugToken") {
+                    print("[FirebaseAppCheck] Debug-Token: \(debugToken)")
                 }
                 return FirebaseAppCheck.AppCheckDebugProvider(app: app)
             } else {
