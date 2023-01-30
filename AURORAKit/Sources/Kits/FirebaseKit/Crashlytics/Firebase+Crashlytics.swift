@@ -39,6 +39,19 @@ public extension Firebase.Crashlytics {
             // as CancellationError shouldn't be recorded.
             return
         }
+        #if DEBUG
+        // Check if collection is disabled
+        if !self.crashlytics.isCrashlyticsCollectionEnabled() {
+            print(
+                "[Crashlytics]",
+                error.localizedDescription,
+                "File: \(file)",
+                "Function: \(function)",
+                "Line: \(line)",
+                userInfo ?? .init()
+            )
+        }
+        #endif
         // Record error
         self.crashlytics
             .record(
