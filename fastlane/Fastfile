@@ -64,7 +64,6 @@ platform :ios do
       app_identifier: APP_IDENTIFIER,
       ipa: "app.ipa",
       team_id: TEAM_ID,
-      distribute_external: true,
       groups: ["External-Tester"],
       reject_build_waiting_for_review: true,
     )
@@ -76,7 +75,7 @@ platform :ios do
     upload_symbols_to_crashlytics(
       dsym_path: "app.app.dSYM.zip",
       gsp_path: "AURORA/Resources/GoogleService-Info.plist",
-      binary_path: "./upload-symbols"
+      binary_path: "upload-symbols"
     )
   end
 
