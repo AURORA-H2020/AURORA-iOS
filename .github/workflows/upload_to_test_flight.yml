@@ -46,6 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_app
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
           name: ipa
@@ -67,6 +68,8 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: upload-symbols-binary
-          path: ./scripts/upload-symbols
-      - name: "Upload Debug Symbols to Firebase Crashlytics"
+          path: upload-symbols
+      - name: Prepare upload-symbols binary
+        run: chmod +x upload-symbols
+      - name: Upload Debug Symbols to Firebase Crashlytics
         run: fastlane upload_debug_symbols_to_crashlytics_lane

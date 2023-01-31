@@ -74,7 +74,8 @@ platform :ios do
     # Upload debug symbols to Firebase Crashlytics
     upload_symbols_to_crashlytics(
       dsym_path: "app.app.dSYM.zip",
-      gsp_path: "AURORA/Resources/GoogleService-Info.plist"
+      gsp_path: "AURORA/Resources/GoogleService-Info.plist",
+      binary_path: "./upload-symbols"
     )
   end
 
