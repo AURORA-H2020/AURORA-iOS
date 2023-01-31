@@ -16,7 +16,8 @@ platform :ios do
     # Create Keychain
     create_keychain(
       name: TEMP_KEYCHAIN,
-      password: TEMP_KEYCHAIN
+      password: TEMP_KEYCHAIN,
+      unlock: true
     )
     # Authenticate with App Store Connect
     authenticate_with_app_store_connect
