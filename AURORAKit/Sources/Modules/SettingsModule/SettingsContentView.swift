@@ -18,6 +18,10 @@ public struct SettingsContentView {
     @State
     private var isChangePasswordFormPresented = false
     
+    /// Bool value if feature preview is presented
+    @State
+    private var isFeaturePreviewPresented = false
+    
     /// The Firebase instance
     @EnvironmentObject
     private var firebase: Firebase
@@ -64,6 +68,13 @@ extension SettingsContentView: View {
                 ChangePasswordForm()
             }
             .environmentObject(self.firebase)
+        }
+        .sheet(
+            isPresented: self.$isFeaturePreviewPresented
+        ) {
+            SheetNavigationView {
+                FeaturePreview()
+            }
         }
     }
     
@@ -325,6 +336,14 @@ private extension SettingsContentView {
         Section(
             header: Text(verbatim: "Legal information")
         ) {
+            Button {
+                self.isFeaturePreviewPresented = true
+            } label: {
+                Label(
+                    "Feature Preview",
+                    systemImage: "wand.and.stars"
+                )
+            }
             Link(
                 destination: .init(
                     string: "https://www.aurora-h2020.eu/aurora/privacy-policy/"
