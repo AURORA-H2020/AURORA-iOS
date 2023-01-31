@@ -51,8 +51,7 @@ platform :ios do
     build_ios_app(
       output_name: "app",
       export_method: "app-store",
-      derived_data_path: "build",
-      xcodebuild_formatter: ""
+      derived_data_path: "build"
     )
   end
 
@@ -63,9 +62,10 @@ platform :ios do
     # Upload to TestFlight
     upload_to_testflight(
       app_identifier: APP_IDENTIFIER,
-      reject_build_waiting_for_review: true,
       team_id: TEAM_ID,
-      skip_waiting_for_build_processing: true
+      distribute_external: true,
+      groups: ["External-Tester"],
+      reject_build_waiting_for_review: true,
     )
   end
 
