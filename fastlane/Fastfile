@@ -7,14 +7,16 @@ platform :ios do
 
   desc "Build App"
   lane :build_app_lane do
-    # Initialize temporary keychain name/password
-    TEMP_KEYCHAIN = "fastlane"
+    # Initialize fastlane keychain name/password
+    FASTLANE_KEYCHAIN = "fastlane"
     # Create Keychain
     create_keychain(
-      name: TEMP_KEYCHAIN,
-      password: TEMP_KEYCHAIN,
+      name: FASTLANE_KEYCHAIN,
+      password: FASTLANE_KEYCHAIN,
       default_keychain: true,
-      unlock: true
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: false
     )
     # Authenticate with App Store Connect
     authenticate_with_app_store_connect
@@ -33,8 +35,8 @@ platform :ios do
       team_id: TEAM_ID,
       app_identifier: APP_IDENTIFIER,
       readonly: true,
-      keychain_name: TEMP_KEYCHAIN,
-      keychain_password: TEMP_KEYCHAIN,
+      keychain_name: FASTLANE_KEYCHAIN,
+      keychain_password: FASTLANE_KEYCHAIN,
       git_url: "https://github.com/AURORA-H2020/AURORA-iOS-Certificates.git",
       git_branch: "main"
     )
@@ -49,7 +51,8 @@ platform :ios do
     build_ios_app(
       output_name: "app",
       export_method: "app-store",
-      derived_data_path: "build"
+      derived_data_path: "build",
+      xcodebuild_formatter: ""
     )
   end
 
