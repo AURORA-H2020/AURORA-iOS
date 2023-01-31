@@ -7,14 +7,30 @@ on:
       - "release/**"
 
 jobs:
-  upload:
-    name: Upload to TestFlight
+  build_app:
+    name: Build App
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - name: Build App
         run: fastlane build_app
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ${{ github.workspace }}
+          retention-days: 7
+  upload_to_test_flight:
+    name: Upload to TestFlight
+    runs-on: ubuntu-latest
+    needs: build_app
+    steps:
+      - uses: actions/download-artifact@v3
       - name: Upload to TestFlight
         run: fastlane upload_to_test_flight
-      - name: Upload Debug Symbols to Firebase Crashlytics
+  upload_debug_symbols:
+    name: Upload Debug Symbols to Firebase Crashlytics
+    runs-on: ubuntu-latest
+    needs: build_app
+    steps:
+      - uses: actions/download-artifact@v3
+      - name: "Upload Debug Symbols to Firebase Crashlytics"
         run: fastlane upload_debug_symbols_to_crashlytics
