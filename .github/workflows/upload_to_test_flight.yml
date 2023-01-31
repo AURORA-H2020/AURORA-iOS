@@ -12,11 +12,10 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - name: Cache build files
+        uses: actions/cache@v3
         with:
-          path: |
-            build/SourcePackages
-            build/Build/Products
+          path: build
           key: ${{ runner.os }}-spm-${{ hashFiles('AURORA.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
           restore-keys: |
             ${{ runner.os }}-spm-
@@ -29,15 +28,18 @@ jobs:
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
-      - uses: actions/upload-artifact@v3
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v3
         with:
           name: ipa
           path: app.ipa
-      - uses: actions/upload-artifact@v3
+      - name: Upload Debug Symbols Artifact
+        uses: actions/upload-artifact@v3
         with:
           name: dSYM
           path: app.app.dSYM.zip
-      - uses: actions/upload-artifact@v3
+      - name: Upload Firebase Crashlytics Binary Artifact
+        uses: actions/upload-artifact@v3
         with:
           name: upload-symbols-binary
           path: build/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols
@@ -47,7 +49,8 @@ jobs:
     needs: build_app
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
+      - name: Download IPA Artifact
+        uses: actions/download-artifact@v3
         with:
           name: ipa
       - name: Upload to TestFlight
@@ -62,10 +65,12 @@ jobs:
     needs: build_app
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
+      - name: Download Debug Symbols Artifacts
+        uses: actions/download-artifact@v3
         with:
           name: dSYM
-      - uses: actions/download-artifact@v3
+      - name: Download Firebase Crashlytics Binary Artifact
+        uses: actions/download-artifact@v3
         with:
           name: upload-symbols-binary
           path: upload-symbols
