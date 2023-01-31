@@ -6,7 +6,7 @@ TEAM_ID = "UNLWT228LJ"
 platform :ios do
 
   desc "Build App"
-  lane :build_app do
+  lane :build_app_lane do
     # Initialize temporary keychain name/password
     TEMP_KEYCHAIN = "fastlane"
     # Delete any previous Keychain
@@ -58,7 +58,7 @@ platform :ios do
   end
 
   desc "Upload to TestFlight"
-  lane :upload_to_test_flight do
+  lane :upload_to_test_flight_lane do
     # Authenticate with App Store Connect
     authenticate_with_app_store_connect
     # Upload to TestFlight
@@ -71,7 +71,7 @@ platform :ios do
   end
 
   desc "Upload Debug Symbols to Firebase Crashlytics"
-  lane :upload_debug_symbols_to_crashlytics do
+  lane :upload_debug_symbols_to_crashlytics_lane do
     # Upload debug symbols to Firebase Crashlytics
     upload_symbols_to_crashlytics(
       gsp_path: "AURORA/Resources/GoogleService-Info.plist"

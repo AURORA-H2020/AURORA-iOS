@@ -21,7 +21,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-spm-
       - name: Build App
-        run: fastlane build_app
+        run: fastlane build_app_lane
         env:
           FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
       - uses: actions/upload-artifact@v3
@@ -45,7 +45,7 @@ jobs:
         with:
           name: ipa
       - name: Upload to TestFlight
-        run: fastlane upload_to_test_flight
+        run: fastlane upload_to_test_flight_lane
   upload_debug_symbols:
     name: Upload Debug Symbols to Firebase Crashlytics
     runs-on: ubuntu-latest
@@ -60,4 +60,4 @@ jobs:
           name: upload-symbols-binary
           path: ./scripts/upload-symbols
       - name: "Upload Debug Symbols to Firebase Crashlytics"
-        run: fastlane upload_debug_symbols_to_crashlytics
+        run: fastlane upload_debug_symbols_to_crashlytics_lane
