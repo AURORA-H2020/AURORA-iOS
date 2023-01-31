@@ -62,6 +62,7 @@ platform :ios do
     # Upload to TestFlight
     upload_to_testflight(
       app_identifier: APP_IDENTIFIER,
+      ipa: "app.ipa",
       team_id: TEAM_ID,
       distribute_external: true,
       groups: ["External-Tester"],
