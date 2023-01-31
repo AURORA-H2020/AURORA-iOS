@@ -1,0 +1,89 @@
+default_platform(:ios)
+
+APP_IDENTIFIER = "eu.inscico.aurora-app"
+TEAM_ID = "UNLWT228LJ"
+
+platform :ios do
+
+  desc "Build App"
+  lane :build_app do
+    # Initialize temporary keychain name/password
+    TEMP_KEYCHAIN = "fastlane"
+    # Delete any previous Keychain
+    delete_keychain(
+      name: TEMP_KEYCHAIN
+    ) if File.exist? File.expand_path("~/Library/Keychains/#{TEMP_KEYCHAIN}-db")
+    # Create Keychain
+    create_keychain(
+      name: TEMP_KEYCHAIN,
+      password: TEMP_KEYCHAIN
+    )
+    # Authenticate with App Store Connect
+    authenticate_with_app_store_connect
+    # Increment build number using lastest TestFlight build number
+    increment_build_number(
+      build_number: latest_testflight_build_number(
+        app_identifier: APP_IDENTIFIER,
+        initial_build_number: 0,
+        team_id: TEAM_ID
+      ) + 1,
+      skip_info_plist: true
+    )
+    # Sync Code Signing / Match
+    sync_code_signing(
+      type: "appstore",
+      team_id: TEAM_ID,
+      app_identifier: APP_IDENTIFIER,
+      readonly: true,
+      keychain_name: TEMP_KEYCHAIN,
+      keychain_password: TEMP_KEYCHAIN,
+      git_url: "https://github.com/AURORA-H2020/AURORA-iOS-Certificates.git",
+      git_branch: "main"
+    )
+    # Update Code Signing settings
+    update_code_signing_settings(
+      use_automatic_signing: false,
+      team_id: TEAM_ID,
+      code_sign_identity: "iPhone Distribution",
+      profile_name: ENV["sigh_#{APP_IDENTIFIER}_appstore_profile-name"]
+    )
+    # Build App
+    build_ios_app(
+      clean: true,
+      export_method: "app-store"
+    )
+  end
+
+  desc "Upload to TestFlight"
+  lane :upload_to_test_flight do
+    # Authenticate with App Store Connect
+    authenticate_with_app_store_connect
+    # Upload to TestFlight
+    upload_to_testflight(
+      app_identifier: APP_IDENTIFIER,
+      reject_build_waiting_for_review: true,
+      team_id: TEAM_ID,
+      skip_waiting_for_build_processing: true
+    )
+  end
+
+  desc "Upload Debug Symbols to Firebase Crashlytics"
+  lane :upload_debug_symbols_to_crashlytics do
+    # Upload debug symbols to Firebase Crashlytics
+    upload_symbols_to_crashlytics(
+      gsp_path: "AURORA/Resources/GoogleService-Info.plist",
+      binary_path: Dir.glob("#{ENV["DERIVED_DATA_PATH"]}/AURORA-*/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols")[0]
+    )
+  end
+
+  desc "Authenticate with App Store Connect using API Key"
+  private_lane :authenticate_with_app_store_connect do
+    # Authenticate using App Store Connect API Key
+    app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_content: ENV["APP_STORE_CONNECT_API_KEY_PRIVATE_KEY"]
+    )
+  end
+
+end

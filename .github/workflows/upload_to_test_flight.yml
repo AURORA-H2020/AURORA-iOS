@@ -1,0 +1,20 @@
+name: Upload to TestFlight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "release/**"
+
+jobs:
+  upload:
+    name: Upload to TestFlight
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build App
+        run: fastlane build_app
+      - name: Upload to TestFlight
+        run: fastlane upload_to_test_flight
+      - name: Upload Debug Symbols to Firebase Crashlytics
+        run: fastlane upload_debug_symbols_to_crashlytics
