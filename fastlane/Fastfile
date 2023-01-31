@@ -9,14 +9,11 @@ platform :ios do
   lane :build_app_lane do
     # Initialize temporary keychain name/password
     TEMP_KEYCHAIN = "fastlane"
-    # Delete any previous Keychain
-    delete_keychain(
-      name: TEMP_KEYCHAIN
-    ) if File.exist? File.expand_path("~/Library/Keychains/#{TEMP_KEYCHAIN}-db")
     # Create Keychain
     create_keychain(
       name: TEMP_KEYCHAIN,
       password: TEMP_KEYCHAIN,
+      default_keychain: true,
       unlock: true
     )
     # Authenticate with App Store Connect
