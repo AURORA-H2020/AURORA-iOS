@@ -51,8 +51,9 @@ platform :ios do
     # Build App
     build_ios_app(
       clean: true,
+      output_name: "app",
       export_method: "app-store",
-      derived_data_path: "./DerivedData"
+      derived_data_path: "build"
     )
   end
 
@@ -73,8 +74,7 @@ platform :ios do
   lane :upload_debug_symbols_to_crashlytics do
     # Upload debug symbols to Firebase Crashlytics
     upload_symbols_to_crashlytics(
-      gsp_path: "AURORA/Resources/GoogleService-Info.plist",
-      binary_path: Dir.glob("./DerivedData/AURORA-*/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols")[0]
+      gsp_path: "AURORA/Resources/GoogleService-Info.plist"
     )
   end
 
