@@ -306,8 +306,11 @@ extension Firebase.Authentication {
     
     /// Delete the currently authenticated user account.
     func deleteAccount() async throws {
-        // Delete Firebase user account
-        try await self.state.userAccount.delete()
+        // Record Error
+        try await self.firebase.crashlytics.recordError {
+            // Delete Firebase user account
+            try await self.state.userAccount.delete()
+        }
         // For each authentication provider
         for firebaseAuthenticationProvider in self.firebase.firebaseAuthenticationProviders {
             // Sign out on authentication providers and ignore error
