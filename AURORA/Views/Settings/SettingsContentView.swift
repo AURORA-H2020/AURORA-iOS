@@ -1,4 +1,5 @@
 import FirebaseAnalyticsSwift
+import FirebaseAuth
 import SwiftUI
 
 // MARK: - SettingsContentView
@@ -235,15 +236,24 @@ private extension SettingsContentView {
                     )
                 },
                 alert: { result in
-                    guard case .failure = result else {
+                    guard case .failure(let error) = result else {
                         return nil
                     }
-                    return .init(
-                        title: Text("Error"),
-                        message: Text(
-                            "An error occurred while trying to delete your account."
+                    if (error as? AuthErrorCode)?.code == .requiresRecentLogin {
+                        return .init(
+                            title: Text("Recent login required"),
+                            message: Text(
+                                "Please logout and login again to delete your account."
+                            )
                         )
-                    )
+                    } else {
+                        return .init(
+                            title: Text("Error"),
+                            message: Text(
+                                "An error occurred while trying to delete your account."
+                            )
+                        )
+                    }
                 },
                 action: {
                     try await self.firebase.authentication.deleteAccount()
