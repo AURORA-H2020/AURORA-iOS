@@ -45,7 +45,7 @@ jobs:
           path: build/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols
   upload_to_test_flight:
     name: Upload to TestFlight
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: build_app
     steps:
       - uses: actions/checkout@v3
@@ -61,7 +61,7 @@ jobs:
           APP_STORE_CONNECT_API_KEY_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_PRIVATE_KEY }}
   upload_debug_symbols:
     name: Upload Debug Symbols to Firebase Crashlytics
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: build_app
     steps:
       - uses: actions/checkout@v3
