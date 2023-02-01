@@ -7,3 +7,6 @@ disabled_rules:
   - identifier_name
   - type_name
   - orphaned_doc_comment
+
+included:
+  - AURORA
