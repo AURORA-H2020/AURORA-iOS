@@ -20,9 +20,7 @@ extension ConsumptionSummarySection: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        Section(
-            header: Text("Your carbon footprint")
-        ) {
+        Section {
             Group {
                 if let consumptionSummary = self.consumptionSummary {
                     self.content(

@@ -45,11 +45,12 @@ extension ConsumptionContentView: View {
                     )
                 }
             }
-            .navigationTitle("Dashboard")
+            .navigationTitle("Your carbon footprint")
+            .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(.stack)
         .analyticsScreen(
-            name: "Dashboard",
+            name: "Your carbon footprint",
             class: "ConsumptionContentView"
         )
         .sheet(
