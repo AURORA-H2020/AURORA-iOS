@@ -36,7 +36,8 @@ struct ConsumptionsSection {
         self._consumptions = .init(
             context: .init(userId),
             predicates: [
-                Consumption.orderByCreatedAtPredicate
+                Consumption.orderByCreatedAtPredicate,
+                .limit(to: 3)
             ]
         )
         self._isAddConsumptionFormPresented = isAddConsumptionFormPresented

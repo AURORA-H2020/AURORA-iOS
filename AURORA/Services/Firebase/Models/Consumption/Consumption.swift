@@ -107,7 +107,7 @@ extension Consumption: FirestoreEntity {
     }
     
     /// The order by created at predicate.
-    static let orderByCreatedAtPredicate = QueryPredicate.order(by: "createdAt")
+    static let orderByCreatedAtPredicate = QueryPredicate.order(by: "createdAt", descending: true)
     
 }
 
