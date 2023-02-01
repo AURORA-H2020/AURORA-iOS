@@ -1,8 +1,0 @@
-strings:
-  inputs: AURORAKit/Sources/Localization/Resources/en.lproj
-  filter: .+\.strings$
-  outputs:
-    templateName: structured-swift5
-    output: AURORAKit/Sources/Localization/L10n.swift
-    params:
-      publicAccess: true
