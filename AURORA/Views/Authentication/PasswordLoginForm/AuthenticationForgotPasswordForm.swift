@@ -108,7 +108,7 @@ extension AuthenticationForgotPasswordForm: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .align(.centerHorizontal)
-                .disabled(MailAddress(self.mailAddress) == nil)
+                .disabled(!self.mailAddress.isMailAddress)
             ) {
             }
         }

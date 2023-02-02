@@ -77,7 +77,7 @@ extension ChangeMailAddressForm: View {
                             .font(.headline)
                     }
                 )
-                .disabled(MailAddress(self.mailAddress) == nil || self.password.isEmpty)
+                .disabled(self.password.isEmpty || !self.mailAddress.isMailAddress)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .align(.centerHorizontal)

@@ -27,6 +27,24 @@ struct ChangePasswordForm {
     
 }
 
+// MARK: - Can Submit
+
+private extension ChangePasswordForm {
+    
+    /// Bool value if Form can be submitted
+    var canSubmit: Bool {
+        // Verify current password is not empty and
+        // password & password-confirmation are valid
+        !self.currentPassword.isEmpty
+            && Password(
+                password: self.password,
+                passwordConfirmation: self.passwordConfirmation
+            )
+            .isValid
+    }
+    
+}
+
 // MARK: - View
 
 extension ChangePasswordForm: View {
@@ -41,11 +59,32 @@ extension ChangePasswordForm: View {
                     "Current Password",
                     text: self.$currentPassword
                 )
-                .textContentType(.newPassword)
+                .textContentType(.password)
             }
             .headerProminence(.increased)
             Section(
-                header: Text("New Password")
+                header: Text("New Password"),
+                footer: VStack(alignment: .leading) {
+                    if !self.password.isEmpty {
+                        let password = Password(
+                            password: self.password,
+                            passwordConfirmation: self.passwordConfirmation
+                        )
+                        if !password.validationErrors.isEmpty {
+                            ForEach(password.validationErrors, id: \.self) { validationError in
+                                if validationError == .mismatchingConfirmation
+                                    && self.passwordConfirmation.isEmpty {
+                                    EmptyView()
+                                } else {
+                                    Text(
+                                        verbatim: "• \(validationError.localizedDescription)"
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+                .multilineTextAlignment(.leading)
             ) {
                 SecureField(
                     "New Password",
@@ -56,7 +95,6 @@ extension ChangePasswordForm: View {
                     "Confirm new password",
                     text: self.$passwordConfirmation
                 )
-                .textContentType(.newPassword)
             }
             .headerProminence(.increased)
             Section(
@@ -76,11 +114,7 @@ extension ChangePasswordForm: View {
                             .font(.headline)
                     }
                 )
-                .disabled(
-                    self.currentPassword.isEmpty
-                        || self.password.isEmpty
-                        || self.password != self.passwordConfirmation
-                )
+                .disabled(!self.canSubmit)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .align(.centerHorizontal)
@@ -92,8 +126,12 @@ extension ChangePasswordForm: View {
     
 }
 
+// MARK: - Alert
+
 private extension ChangePasswordForm {
     
+    /// Make Alert for a given Result
+    /// - Parameter result: The Result
     func alert(
         for result: Result<Void, Error>
     ) -> Alert? {

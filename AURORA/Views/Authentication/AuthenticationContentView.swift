@@ -89,7 +89,7 @@ extension AuthenticationContentView: View {
                 }
                 VStack {
                     Spacer()
-                    VStack(spacing: 50) {
+                    VStack(spacing: !orientation.isLandscape ? 50 : 25) {
                         if !orientation.isLandscape {
                             Image(
                                 "AURORA-Logo"
@@ -101,8 +101,10 @@ extension AuthenticationContentView: View {
                         VStack {
                             Text("Welcome to AURORA")
                                 .font(.largeTitle.weight(.semibold))
-                            Text("Empowering a new generation of\nnear zero-emission citizens")
-                                .foregroundColor(.secondary)
+                            if !orientation.isLandscape {
+                                Text("Empowering a new generation of\nnear zero-emission citizens")
+                                    .foregroundColor(.secondary)
+                            }
                         }
                         .multilineTextAlignment(.center)
                         VStack(spacing: 25) {
@@ -133,6 +135,7 @@ extension AuthenticationContentView: View {
                             .font(.footnote)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
                         }
                     }
                     .padding(.horizontal)

@@ -51,7 +51,7 @@ extension Firebase.Authentication {
     
 }
 
-// MARK: - Firebase+authenticationState
+// MARK: - AuthenticationState
 
 extension Firebase.Authentication {
     
@@ -70,38 +70,17 @@ extension Firebase.Authentication {
 
 extension Firebase.Authentication {
     
-    /// A Firebase Authentication Method
-    enum Method {
-        /// E-Mail and Password
-        case password(email: String, password: String)
-        /// Sign in with Provider
-        /// - Note: Please use `.password(email: String, password: String)` instead of `.password`
-        case provider(Provider)
-    }
-    
-    /// A LoginError
-    enum LoginError: Error {
-        /// User is already authenticated.
-        case alreadyAuthenticated
-        /// Unsupported provider.
-        case unsupportedProvider(Provider)
-    }
-    
     /// Login user using a given AuthenticationMethod
     /// - Parameter method: The Authentication Mode used to login the user.
     @discardableResult
     func login(
         using method: Method
     ) async throws -> FirebaseAuth.AuthDataResult {
-        // Verify state is not authenticated
-        guard !self.state.isAuthenticated else {
-            // Otherwise throw already authenticated error
-            throw LoginError.alreadyAuthenticated
-        }
         // Switch on method
         switch method {
-        case .password(let email, let password):
-            do {
+        case .password(let method, let email, let password):
+            switch method {
+            case .login:
                 // Try to sign in with E-Mail and password
                 return try await self.firebase
                     .firebaseAuth
@@ -109,9 +88,7 @@ extension Firebase.Authentication {
                         withEmail: email,
                         password: password
                     )
-            }
-            // Auto fallback on `userNotFound` error
-            catch let error as AuthErrorCode where error.code == .userNotFound {
+            case .register:
                 // Create user with E-Mail and password
                 return try await self.firebase
                     .firebaseAuth
@@ -119,9 +96,6 @@ extension Firebase.Authentication {
                         withEmail: email,
                         password: password
                     )
-            } catch {
-                // Otherwise rethrow error
-                throw error
             }
         case .provider(let provider):
             // Verify a FirebaseAuthenticationProvider is available for the given provider
@@ -129,7 +103,7 @@ extension Firebase.Authentication {
                 .firebaseAuthenticationProviders
                 .first(where: { $0.provider == provider }) else {
                 // Otherwise throw unsupported provider error
-                throw LoginError.unsupportedProvider(provider)
+                throw AuthErrorCode(.noSuchProvider)
             }
             // Record any error which occurs when trying to sign in
             return try await self.firebase.crashlytics.recordError {
