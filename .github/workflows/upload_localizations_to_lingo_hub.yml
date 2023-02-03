@@ -1,0 +1,24 @@
+name: Upload Localizations to LingoHub
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "release/**"
+
+jobs:
+  upload:
+    name: Upload Localizations to LingoHub
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Export Localizations
+        run: xcodebuild -exportLocalizations -localizationPath ./ -exportLanguage en -project AURORA.xcodeproj -scheme AURORA -derivedDataPath ./build
+      - name: Install LingoHub CLI
+        run: gem install lingohub
+      - name: Login to LingoHub
+        run: "echo $LINGO_HUB_CREDENTIALS > ~/.lingohub/credentials"
+        env:
+          LINGO_HUB_CREDENTIALS: ${{ secrets.LINGO_HUB_CREDENTIALS }}
+      - name: Upload Localizations to LingoHub
+        run: lingohub resource:up './en.xcloc/Localized Contents/en.xliff' --locale en --project AURORA
