@@ -42,39 +42,3 @@ extension UNMutableNotificationContent {
     }
     
 }
-
-// MARK: - UNMutableNotificationContent+inferred(by:)
-
-extension UNMutableNotificationContent {
-    
-    /// Creates a new instance of `UNMutableNotificationContent`
-    /// inferred by a given LocalNotificationRequest identifier.
-    /// - Parameter id: The LocalNotificationRequest identifier.
-    static func inferred(
-        by id: LocalNotificationRequest.ID
-    ) -> UNMutableNotificationContent {
-        switch id {
-        case .electricityBillReminder:
-            return .init(
-                title: String(localized: "Electricity Bill Reminder"),
-                body: String(localized: "Add your electricity bill.")
-            )
-        case .heatingBillReminder:
-            return .init(
-                title: String(localized: "Heating Bill Reminder"),
-                body: String(localized: "Add your heating bill.")
-            )
-        case .mobilityReminder:
-            return .init(
-                title: String(localized: "Mobility Reminder"),
-                body: String(localized: "Add your mobility data.")
-            )
-        default:
-            return .init(
-                title: String(localized: "Reminder"),
-                body: String(localized: "Add your consumptions.")
-            )
-        }
-    }
-    
-}

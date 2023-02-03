@@ -1,9 +1,9 @@
 import SwiftUI
 
-// MARK: - AuthenticationContentView
+// MARK: - AuthenticationForm
 
-/// The AuthenticationContentView
-struct AuthenticationContentView {
+/// The AuthenticationForm
+struct AuthenticationForm {
     
     /// Bool value if View is busy
     @State
@@ -25,7 +25,7 @@ struct AuthenticationContentView {
 
 // MARK: - Submit
 
-private extension AuthenticationContentView {
+private extension AuthenticationForm {
     
     /// Login using authentication method
     /// - Parameter authenticationMethod: The authentication method
@@ -54,7 +54,7 @@ private extension AuthenticationContentView {
 
 // MARK: - View
 
-extension AuthenticationContentView: View {
+extension AuthenticationForm: View {
     
     /// The content and behavior of the view.
     var body: some View {

@@ -1,26 +1,31 @@
 import SwiftUI
 
-// MARK: - ConsumptionCell
+// MARK: - ConsumptionList+Cell
 
-/// A Consumption Cell
-struct ConsumptionCell {
+extension ConsumptionList {
     
-    /// The Consumption
-    let consumption: Consumption
-    
-    /// Bool value if delete confirmation dialog is presented
-    @State
-    private var isDeleteConfirmationDialogPresented = false
-    
-    /// The Firebase instance.
-    @EnvironmentObject
-    private var firebase: Firebase
+    /// A ConsumptionList Cell
+    struct Cell {
+        
+        /// The Consumption
+        let consumption: Consumption
+        
+        /// Bool value if delete confirmation dialog is presented
+        @State
+        private var isDeleteConfirmationDialogPresented = false
+        
+        /// The Firebase instance.
+        @EnvironmentObject
+        private var firebase: Firebase
+        
+    }
+
     
 }
 
 // MARK: - View
 
-extension ConsumptionCell: View {
+extension ConsumptionList.Cell: View {
     
     /// The content and behavior of the view.
     var body: some View {

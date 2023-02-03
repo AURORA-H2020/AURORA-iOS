@@ -1,53 +1,57 @@
 import SwiftUI
 
-// MARK: - ConsumptionsSection
+// MARK: - ConsumptionOverview+LatestEntriesSection
 
-/// The ConsumptionsSection
-struct ConsumptionsSection {
+extension ConsumptionOverview {
     
-    // MARK: Properties
-    
-    /// The user identifier
-    private let userId: User.UID
-    
-    /// The Consumptions.
-    @FirestoreEntityQuery
-    private var consumptions: [Consumption]
-    
-    /// Bool value if AddConsumptionForm is presented.
-    @Binding
-    private var isAddConsumptionFormPresented: Bool
-    
-    /// The Firebase instance.
-    @EnvironmentObject
-    private var firebase: Firebase
-    
-    // MARK: Initializer
-    
-    /// Creates a new instance of `ConsumptionsSection`
-    /// - Parameters:
-    ///   - userId: The user identifier.
-    ///   - isAddConsumptionFormPresented: Bool Binding value if AddConsumptionForm is presented.
-    init(
-        userId: User.UID,
-        isAddConsumptionFormPresented: Binding<Bool>
-    ) {
-        self.userId = userId
-        self._consumptions = .init(
-            context: userId,
-            predicates: [
-                Consumption.orderByCreatedAtPredicate,
-                .limit(to: 3)
-            ]
-        )
-        self._isAddConsumptionFormPresented = isAddConsumptionFormPresented
+    /// The ConsumptionOverview LatestEntriesSection
+    struct LatestEntriesSection {
+        
+        // MARK: Properties
+        
+        /// The user identifier
+        private let userId: User.UID
+        
+        /// The Consumptions.
+        @FirestoreEntityQuery
+        private var consumptions: [Consumption]
+        
+        /// Bool value if CreateConsumptionForm is presented.
+        @Binding
+        private var isCreateConsumptionFormPresented: Bool
+        
+        /// The Firebase instance.
+        @EnvironmentObject
+        private var firebase: Firebase
+        
+        // MARK: Initializer
+        
+        /// Creates a new instance of `ConsumptionOverview.LatestEntriesSection`
+        /// - Parameters:
+        ///   - userId: The user identifier.
+        ///   - isCreateConsumptionFormPresented: Bool Binding value if CreateConsumptionForm is presented.
+        init(
+            userId: User.UID,
+            isCreateConsumptionFormPresented: Binding<Bool>
+        ) {
+            self.userId = userId
+            self._consumptions = .init(
+                context: userId,
+                predicates: [
+                    Consumption.orderByCreatedAtPredicate,
+                    .limit(to: 3)
+                ]
+            )
+            self._isCreateConsumptionFormPresented = isCreateConsumptionFormPresented
+        }
+        
     }
     
 }
 
 // MARK: - View
 
-extension ConsumptionsSection: View {
+extension ConsumptionOverview.LatestEntriesSection: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -57,7 +61,7 @@ extension ConsumptionsSection: View {
                 Spacer()
                 if !self.consumptions.isEmpty {
                     Button {
-                        self.isAddConsumptionFormPresented = true
+                        self.isCreateConsumptionFormPresented = true
                     } label: {
                         Label(
                             "Add entry",
@@ -79,7 +83,7 @@ extension ConsumptionsSection: View {
                         primaryAction: .init(
                             title: "Add consumption",
                             action: {
-                                self.isAddConsumptionFormPresented = true
+                                self.isCreateConsumptionFormPresented = true
                             }
                         )
                     )
@@ -103,7 +107,7 @@ extension ConsumptionsSection: View {
         ) {
             ForEach(
                 self.consumptions,
-                content: ConsumptionCell.init
+                content: ConsumptionList.Cell.init
             )
         }
         .headerProminence(.increased)

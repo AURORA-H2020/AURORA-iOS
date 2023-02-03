@@ -5,8 +5,8 @@ import SwiftUI
 /// The LocalNotificationForm
 struct LocalNotificationForm {
     
-    /// The LocalNotificationRequest Identifier
-    let id: LocalNotificationRequest.ID
+    /// The Predefined LocalNotificationRequest
+    let predefinedLocationNotificationRequest: LocalNotificationRequest.Predefined
     
     /// The LocalNotificationCenter
     var localNotificationCenter: LocalNotificationCenter = .current
@@ -39,29 +39,14 @@ extension LocalNotificationForm: View {
                     subtitle: "Please enable notifications for the AURORA app in the settings of your device.",
                     primaryAction: .init(
                         title: "Open Settings",
-                        action: {
-                            URL(
-                                string: {
-                                    if #available(iOS 16.0, *) {
-                                        return UIApplication
-                                            .openNotificationSettingsURLString
-                                    } else {
-                                        return UIApplication
-                                            .openSettingsURLString
-                                    }
-                                }()
-                            )
-                            .flatMap { url in
-                                UIApplication.shared.open(url)
-                            }
-                        }
+                        action: UIApplication.shared.openSettings
                     )
                 )
             } else {
                 self.content
             }
         }
-        .navigationTitle("Notification")
+        .navigationTitle(self.predefinedLocationNotificationRequest.localizedString)
         .task {
             self.authorizationStatus = await self.localNotificationCenter.authorizationStatus
         }
@@ -78,7 +63,7 @@ extension LocalNotificationForm: View {
         }
         .task {
             let pendingNotificationRequest = await self.localNotificationCenter
-                .pendingNotificationRequest(self.id)
+                .pendingNotificationRequest(self.predefinedLocationNotificationRequest.id)
             self.nextTriggerDate = pendingNotificationRequest?.nextTriggerDate
             self.matchingDateComponents = pendingNotificationRequest?
                 .trigger?
@@ -90,8 +75,8 @@ extension LocalNotificationForm: View {
             if let matchingDateComponents = matchingDateComponents {
                 Task {
                     let localNotificationRequest = LocalNotificationRequest(
-                        id: self.id,
-                        content: .inferred(by: self.id),
+                        id: self.predefinedLocationNotificationRequest.id,
+                        content: self.predefinedLocationNotificationRequest.content,
                         trigger: .calendar(
                             dateMatching: matchingDateComponents,
                             repeats: true
@@ -103,7 +88,7 @@ extension LocalNotificationForm: View {
                 }
             } else {
                 self.localNotificationCenter
-                    .removePendingNotificationRequest(self.id)
+                    .removePendingNotificationRequest(self.predefinedLocationNotificationRequest.id)
                 self.nextTriggerDate = nil
             }
         }

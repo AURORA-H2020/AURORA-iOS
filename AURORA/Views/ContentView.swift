@@ -68,7 +68,7 @@ private extension ContentView {
         case .success(let user):
             if let user = user {
                 TabView {
-                    ConsumptionContentView(
+                    ConsumptionOverview(
                         user: user
                     )
                     .tabItem {
@@ -77,7 +77,7 @@ private extension ContentView {
                             systemImage: "chart.pie"
                         )
                     }
-                    SettingsContentView()
+                    SettingsView()
                         .tabItem {
                             Label(
                                 "Settings",
@@ -86,7 +86,7 @@ private extension ContentView {
                         }
                 }
             } else {
-                CreateUserContentView()
+                CreateUserForm()
             }
         case .failure:
             EmptyPlaceholder(
@@ -118,7 +118,7 @@ private extension ContentView {
     
     /// The unauthenticated view.
     var unauthenticated: some View {
-        AuthenticationContentView()
+        AuthenticationForm()
             .task {
                 try? await LocalNotificationCenter
                     .current

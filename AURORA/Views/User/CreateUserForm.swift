@@ -1,9 +1,9 @@
 import SwiftUI
 
-// MARK: - CreateUserContentView
+// MARK: - CreateUserForm
 
-/// The CreateUserContentView
-struct CreateUserContentView {
+/// The CreateUserForm
+struct CreateUserForm {
     
     // MARK: Properties
     
@@ -64,7 +64,7 @@ struct CreateUserContentView {
 
 // MARK: - Submit
 
-private extension CreateUserContentView {
+private extension CreateUserForm {
     
     /// Bool value if can submit
     var canSubmit: Bool {
@@ -93,7 +93,7 @@ private extension CreateUserContentView {
 
 // MARK: - View
 
-extension CreateUserContentView: View {
+extension CreateUserForm: View {
     
     /// The content and behavior of the view.
     var body: some View {

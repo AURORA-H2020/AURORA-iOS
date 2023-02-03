@@ -1,9 +1,9 @@
 import SwiftUI
 
-// MARK: - AddConsumptionForm
+// MARK: - CreateConsumptionForm
 
-/// The AddConsumptionForm
-struct AddConsumptionForm {
+/// The CreateConsumptionForm
+struct CreateConsumptionForm {
     
     /// The Consumption Category
     @State
@@ -37,7 +37,7 @@ struct AddConsumptionForm {
 
 // MARK: - Consumption
 
-private extension AddConsumptionForm {
+private extension CreateConsumptionForm {
     
     /// The Consumption, if available.
     var consumption: Consumption? {
@@ -94,7 +94,7 @@ private extension AddConsumptionForm {
 
 // MARK: - Submit
 
-private extension AddConsumptionForm {
+private extension CreateConsumptionForm {
     
     /// Submit form
     func submit() throws {
@@ -118,7 +118,7 @@ private extension AddConsumptionForm {
 
 // MARK: - View
 
-extension AddConsumptionForm: View {
+extension CreateConsumptionForm: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -160,7 +160,7 @@ extension AddConsumptionForm: View {
     
 }
 
-private extension AddConsumptionForm {
+private extension CreateConsumptionForm {
     
     var initialCategoryPicker: some View {
         Section(
@@ -191,7 +191,7 @@ private extension AddConsumptionForm {
     
 }
 
-private extension AddConsumptionForm {
+private extension CreateConsumptionForm {
     
     @ViewBuilder
     // swiftlint:disable:next function_body_length
@@ -277,7 +277,7 @@ private extension AddConsumptionForm {
     
 }
 
-private extension AddConsumptionForm {
+private extension CreateConsumptionForm {
     
     @ViewBuilder
     var electricityContent: some View {
@@ -328,7 +328,7 @@ private extension AddConsumptionForm {
     
 }
 
-private extension AddConsumptionForm {
+private extension CreateConsumptionForm {
     
     @ViewBuilder
     var heatingContent: some View {
@@ -379,7 +379,7 @@ private extension AddConsumptionForm {
     
 }
 
-private extension AddConsumptionForm {
+private extension CreateConsumptionForm {
     
     @ViewBuilder
     var transportationContent: some View {

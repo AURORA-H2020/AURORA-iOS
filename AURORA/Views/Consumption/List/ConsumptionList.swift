@@ -7,9 +7,9 @@ struct ConsumptionList {
     
     // MARK: Properties
     
-    /// Bool value if AddConsumptionForm is presented
+    /// Bool value if CreateConsumptionForm is presented.
     @State
-    private var isAddConsumptionFormPresented = false
+    private var isCreateConsumptionFormPresented: Bool = false
     
     /// The Consumptions.
     @FirestoreEntityQuery
@@ -41,24 +41,24 @@ extension ConsumptionList: View {
         List {
             ForEach(
                 self.consumptions,
-                content: ConsumptionCell.init
+                content: Cell.init
             )
         }
         .navigationTitle("Entries")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.isAddConsumptionFormPresented = true
+                    self.isCreateConsumptionFormPresented = true
                 } label: {
                     Image(systemName: "plus")
                 }
             }
         }
         .sheet(
-            isPresented: self.$isAddConsumptionFormPresented
+            isPresented: self.$isCreateConsumptionFormPresented
         ) {
             SheetNavigationView {
-                AddConsumptionForm()
+                CreateConsumptionForm()
             }
         }
     }

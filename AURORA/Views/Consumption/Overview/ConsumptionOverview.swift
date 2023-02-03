@@ -1,23 +1,23 @@
 import FirebaseAnalyticsSwift
 import SwiftUI
 
-// MARK: - ConsumptionContentView
+// MARK: - ConsumptionOverview
 
-/// The ConsumptionContentView
-struct ConsumptionContentView {
+/// The ConsumptionOverview
+struct ConsumptionOverview {
     
     // MARK: Properties
     
     /// The User.
     private let user: User
     
-    /// Bool value if AddConsumptionForm is presented
+    /// Bool value if CreateConsumptionForm is presented.
     @State
-    private var isAddConsumptionFormPresented = false
+    private var isCreateConsumptionFormPresented: Bool = false
     
     // MARK: Initializer
     
-    /// Creates a new instance of `ConsumptionContentView`
+    /// Creates a new instance of `ConsumptionOverview`
     /// - Parameter user: The User.
     init(
         user: User
@@ -29,19 +29,19 @@ struct ConsumptionContentView {
 
 // MARK: - View
 
-extension ConsumptionContentView: View {
+extension ConsumptionOverview: View {
     
     /// The content and behavior of the view.
     var body: some View {
         NavigationView {
             List {
-                ConsumptionSummarySection(
+                SummarySection(
                     consumptionSummary: self.user.consumptionSummary
                 )
                 if let userId = self.user.id {
-                    ConsumptionsSection(
+                    LatestEntriesSection(
                         userId: .init(userId),
-                        isAddConsumptionFormPresented: self.$isAddConsumptionFormPresented
+                        isCreateConsumptionFormPresented: self.$isCreateConsumptionFormPresented
                     )
                 }
             }
@@ -51,13 +51,13 @@ extension ConsumptionContentView: View {
         .navigationViewStyle(.stack)
         .analyticsScreen(
             name: "Your carbon footprint",
-            class: "ConsumptionContentView"
+            class: "ConsumptionOverview"
         )
         .sheet(
-            isPresented: self.$isAddConsumptionFormPresented
+            isPresented: self.$isCreateConsumptionFormPresented
         ) {
             SheetNavigationView {
-                AddConsumptionForm()
+                CreateConsumptionForm()
             }
         }
     }

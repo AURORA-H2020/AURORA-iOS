@@ -1,22 +1,26 @@
 import SwiftUI
 
-// MARK: - ConsumptionSummarySection
+// MARK: - ConsumptionOverview+SummarySection
 
-/// The ConsumptionSummarySection
-struct ConsumptionSummarySection {
+extension ConsumptionOverview {
     
-    /// The optional ConsumptionSummary
-    let consumptionSummary: ConsumptionSummary?
-    
-    /// The color scheme
-    @Environment(\.colorScheme)
-    private var colorScheme
+    /// The ConsumptionOverview SummarySection
+    struct SummarySection {
+        
+        /// The optional ConsumptionSummary
+        let consumptionSummary: ConsumptionSummary?
+        
+        /// The color scheme
+        @Environment(\.colorScheme)
+        private var colorScheme
+        
+    }
     
 }
 
 // MARK: - View
 
-extension ConsumptionSummarySection: View {
+extension ConsumptionOverview.SummarySection: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -59,7 +63,7 @@ extension ConsumptionSummarySection: View {
     
 }
 
-private extension ConsumptionSummarySection {
+private extension ConsumptionOverview.SummarySection {
     
     // swiftlint:disable:next function_body_length
     func content(

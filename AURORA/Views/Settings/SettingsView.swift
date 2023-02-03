@@ -2,10 +2,10 @@ import FirebaseAnalyticsSwift
 import FirebaseAuth
 import SwiftUI
 
-// MARK: - SettingsContentView
+// MARK: - SettingsView
 
-/// The SettingsContentView
-struct SettingsContentView {
+/// The SettingsView
+struct SettingsView {
     
     // MARK: Properties
     
@@ -29,7 +29,7 @@ struct SettingsContentView {
 
 // MARK: - View
 
-extension SettingsContentView: View {
+extension SettingsView: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -45,7 +45,7 @@ extension SettingsContentView: View {
         .navigationViewStyle(.stack)
         .analyticsScreen(
             name: "Settings",
-            class: "SettingsContentView"
+            class: "SettingsView"
         )
         .sheet(
             isPresented: self.$isChangeMailAddressFormPresented
@@ -74,7 +74,7 @@ extension SettingsContentView: View {
     
 }
 
-private extension SettingsContentView {
+private extension SettingsView {
     
     var accountSection: some View {
         Section(
@@ -138,41 +138,29 @@ private extension SettingsContentView {
     
 }
 
-private extension SettingsContentView {
+private extension SettingsView {
     
     var notificationsSection: some View {
         Section(
             header: Text("Notifications")
         ) {
-            NavigationLink(
-                destination: LocalNotificationForm(
-                    id: .electricityBillReminder
-                )
-            ) {
-                Label(
-                    "Electricity bill reminder",
-                    systemImage: "bolt"
-                )
-            }
-            NavigationLink(
-                destination: LocalNotificationForm(
-                    id: .heatingBillReminder
-                )
-            ) {
-                Label(
-                    "Heating bill reminder",
-                    systemImage: "heater.vertical"
-                )
-            }
-            NavigationLink(
-                destination: LocalNotificationForm(
-                    id: .mobilityReminder
-                )
-            ) {
-                Label(
-                    "Mobility reminder",
-                    systemImage: "car"
-                )
+            ForEach(
+                LocalNotificationRequest
+                    .Predefined
+                    .allCases,
+                id: \.self
+            ) { predefinedLocationNotificationRequest in
+                NavigationLink(
+                    destination: LocalNotificationForm(
+                        predefinedLocationNotificationRequest: predefinedLocationNotificationRequest
+                    )
+                ) {
+                    Label {
+                        Text(predefinedLocationNotificationRequest.localizedString)
+                    } icon: {
+                        predefinedLocationNotificationRequest.icon
+                    }
+                }
             }
         }
         .headerProminence(.increased)
@@ -180,7 +168,7 @@ private extension SettingsContentView {
     
 }
 
-private extension SettingsContentView {
+private extension SettingsView {
     
     var privacySection: some View {
         Section(
@@ -274,7 +262,7 @@ private extension SettingsContentView {
 
 // MARK: - Export User Data
 
-private extension SettingsContentView {
+private extension SettingsView {
     
     /// Export user data file
     /// - Parameter userDataFile: The user data file url which should be exported.
@@ -319,7 +307,7 @@ private extension SettingsContentView {
     
 }
 
-private extension SettingsContentView {
+private extension SettingsView {
     
     var legalSection: some View {
         Section(
