@@ -40,7 +40,7 @@ extension ConsumptionContentView: View {
                 )
                 if let userId = self.user.id {
                     ConsumptionsSection(
-                        userId: userId,
+                        userId: .init(userId),
                         isAddConsumptionFormPresented: self.$isAddConsumptionFormPresented
                     )
                 }

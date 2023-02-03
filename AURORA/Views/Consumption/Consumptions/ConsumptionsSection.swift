@@ -8,7 +8,7 @@ struct ConsumptionsSection {
     // MARK: Properties
     
     /// The user identifier
-    private let userId: String
+    private let userId: User.UID
     
     /// The Consumptions.
     @FirestoreEntityQuery
@@ -29,12 +29,12 @@ struct ConsumptionsSection {
     ///   - userId: The user identifier.
     ///   - isAddConsumptionFormPresented: Bool Binding value if AddConsumptionForm is presented.
     init(
-        userId: String,
+        userId: User.UID,
         isAddConsumptionFormPresented: Binding<Bool>
     ) {
         self.userId = userId
         self._consumptions = .init(
-            context: .init(userId),
+            context: userId,
             predicates: [
                 Consumption.orderByCreatedAtPredicate,
                 .limit(to: 3)
@@ -84,22 +84,27 @@ extension ConsumptionsSection: View {
                         )
                     )
                     .padding(.vertical)
+                } else {
+                    NavigationLink(
+                        destination: ConsumptionList(
+                            userId: self.userId
+                        )
+                    ) {
+                        Text("Show all entries")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                    .tint(.accentColor)
+                    .align(.centerHorizontal)
+                    .padding(.vertical)
                 }
             }
         ) {
-            ForEach(self.consumptions) { consumption in
-                Cell(
-                    consumption: consumption
-                )
-            }
-            .onDelete { offsets in
-                self.firebase
-                    .firestore
-                    .delete(
-                        offsets.compactMap { self.consumptions[safe: $0] },
-                        context: .init(self.userId)
-                    )
-            }
+            ForEach(
+                self.consumptions,
+                content: ConsumptionCell.init
+            )
         }
         .headerProminence(.increased)
         .animation(
