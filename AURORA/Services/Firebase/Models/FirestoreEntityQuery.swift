@@ -25,8 +25,7 @@ struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
         switch self.queryResult {
         case .success(let entities):
             return entities
-        case .failure(let error):
-            self.firebase.crashlytics.record(error: error)
+        case .failure:
             return .init()
         }
     }
@@ -49,7 +48,6 @@ struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
     /// The error, if any.
     var error: Error? {
         if case .failure(let error) = self.queryResult {
-            self.firebase.crashlytics.record(error: error)
             return error
         } else {
             return nil
