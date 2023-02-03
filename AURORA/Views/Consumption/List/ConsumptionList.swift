@@ -60,6 +60,7 @@ extension ConsumptionList: View {
             SheetNavigationView {
                 CreateConsumptionForm()
             }
+            .adaptivePresentationDetents([.medium, .large])
         }
     }
     

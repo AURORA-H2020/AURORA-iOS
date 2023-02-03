@@ -7,8 +7,6 @@ import SwiftUI
 /// The SettingsView
 struct SettingsView {
     
-    // MARK: Properties
-    
     /// Bool value if change mail address form is presented
     @State
     private var isChangeMailAddressFormPresented = false
@@ -80,6 +78,18 @@ private extension SettingsView {
         Section(
             header: Text("Account")
         ) {
+            if let user = try? self.firebase.user?.get() {
+                NavigationLink(
+                    destination: EditUserForm(
+                        user: user
+                    )
+                ) {
+                    Label(
+                        "Edit profile",
+                        systemImage: "person.crop.circle"
+                    )
+                }
+            }
             if (try? self.firebase.authentication.providers.contains(.password)) == true {
                 Button {
                     self.isChangeMailAddressFormPresented = true

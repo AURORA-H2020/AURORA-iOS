@@ -37,7 +37,7 @@ struct CreateUserForm {
     
     // MARK: Initializer
     
-    /// Creates a new instance of `CreateUserContentView`
+    /// Creates a new instance of `CreateUserForm`
     init() {
         let firebaseUserDisplayNameComponents = try? Firebase
             .default
@@ -146,15 +146,8 @@ extension CreateUserForm: View {
                             .tag(nil as FirestoreEntityReference<Site>?)
                         ForEach(self.sites) { site in
                             if let reference = FirestoreEntityReference(site) {
-                                Text(
-                                    [
-                                        site.city,
-                                        site.localizedCountryName()
-                                    ]
-                                    .compactMap { $0 }
-                                    .joined(separator: ", ")
-                                )
-                                .tag(reference as FirestoreEntityReference<Site>?)
+                                Text(site.localizedString())
+                                    .tag(reference as FirestoreEntityReference<Site>?)
                             }
                         }
                     }

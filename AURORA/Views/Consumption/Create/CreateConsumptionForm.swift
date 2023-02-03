@@ -187,9 +187,11 @@ private extension CreateConsumptionForm {
                     .controlSize(.large)
                 }
             }
+            .padding(.top, 30)
         ) {
         }
         .headerProminence(.increased)
+        .listRowInsets(.init())
     }
     
 }

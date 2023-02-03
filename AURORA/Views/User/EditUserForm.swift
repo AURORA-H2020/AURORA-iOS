@@ -1,0 +1,173 @@
+import SwiftUI
+
+// MARK: - EditUserForm
+
+/// The EditUserForm
+struct EditUserForm {
+    
+    // MARK: Properties
+    
+    /// The User
+    private let user: User
+    
+    /// The edited User
+    private var editedUser: User {
+        var user = self.user
+        user.firstName = self.firstName
+        user.lastName = self.lastName
+        user.yearOfBirth = self.yearOfBirth
+        user.gender = self.gender
+        return user
+    }
+    
+    /// The first name.
+    @State
+    private var firstName: String
+    
+    /// The last name.
+    @State
+    private var lastName: String
+    
+    /// The year of birth.
+    @State
+    private var yearOfBirth: Int
+    
+    /// The gender.
+    @State
+    private var gender: User.Gender
+    
+    /// The Site
+    @State
+    private var site: Site?
+    
+    /// The DismissAction
+    @Environment(\.dismiss)
+    private var dismiss
+    
+    /// The Firebase instance
+    @EnvironmentObject
+    private var firebase: Firebase
+    
+    // MARK: Initializer
+    
+    /// Creates a new instnace of `EditUserForm`
+    /// - Parameter user: The User.
+    init(
+        user: User
+    ) {
+        self.user = user
+        self._firstName = .init(initialValue: user.firstName)
+        self._lastName = .init(initialValue: user.lastName)
+        self._yearOfBirth = .init(initialValue: user.yearOfBirth)
+        self._gender = .init(initialValue: user.gender)
+    }
+    
+}
+
+// MARK: - View
+
+extension EditUserForm: View {
+    
+    /// The content and behavior of the view.
+    var body: some View {
+        List {
+            Section(
+                footer: self.submitButton
+                    .align(.centerHorizontal)
+                    .padding(.vertical)
+                    .listRowInsets(.init())
+            ) {
+                TextField(
+                    "First name",
+                    text: self.$firstName
+                )
+                .textContentType(.givenName)
+                TextField(
+                    "Last name",
+                    text: self.$lastName
+                )
+                .textContentType(.familyName)
+                Picker(
+                    "Year of birth",
+                    selection: self.$yearOfBirth
+                ) {
+                    let currentYear = Calendar.current.component(.year, from: Date())
+                    let range = (currentYear - 90)...currentYear
+                    ForEach(range.reversed(), id: \.self) { year in
+                        Text(String(year))
+                            .tag(year)
+                    }
+                }
+                Picker(
+                    "Gender",
+                    selection: self.$gender
+                ) {
+                    ForEach(User.Gender.allCases, id: \.self) { gender in
+                        Text(gender.localizedString)
+                            .tag(gender)
+                    }
+                }
+                if let site = self.site {
+                    HStack {
+                        Text("Site")
+                        Spacer()
+                        Text(site.localizedString())
+                            .multilineTextAlignment(.trailing)
+                    }
+                    .foregroundColor(.secondary)
+                }
+            }
+        }
+        .navigationTitle("Edit profile")
+        .task {
+            self.site = try? await self.firebase
+                .firestore
+                .get(
+                    Site.self,
+                    id: self.user.site.id
+                )
+        }
+    }
+    
+}
+
+// MARK: - Submit Button
+
+private extension EditUserForm {
+    
+    /// The submit button
+    var submitButton: some View {
+        AsyncButton(
+            fillWidth: true,
+            alert: { result in
+                guard case .failure = result else {
+                    return nil
+                }
+                return .init(
+                    title: Text("Error"),
+                    message: Text(
+                        "Your profile changes couldn't be saved. Please check your inputs and try again."
+                    )
+                )
+            },
+            action: {
+                try self.firebase
+                    .firestore
+                    .update(self.editedUser)
+                self.dismiss()
+            },
+            label: {
+                Text("Save")
+                    .font(.headline)
+            }
+        )
+        .disabled(
+            self.firstName.isEmpty
+                || self.lastName.isEmpty
+                || self.editedUser == self.user
+        )
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
+    }
+    
+}

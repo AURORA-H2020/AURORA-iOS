@@ -59,6 +59,7 @@ extension ConsumptionOverview: View {
             SheetNavigationView {
                 CreateConsumptionForm()
             }
+            .adaptivePresentationDetents([.medium, .large])
         }
     }
     

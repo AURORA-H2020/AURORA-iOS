@@ -44,3 +44,18 @@ extension Site {
     }
     
 }
+
+extension Site {
+    
+    func localizedString(
+        locale: Locale = .current
+    ) -> String {
+        [
+            self.city,
+            self.localizedCountryName(locale: locale)
+        ]
+        .compactMap { $0 }
+        .joined(separator: ", ")
+    }
+    
+}
