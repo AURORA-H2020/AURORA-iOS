@@ -18,8 +18,11 @@ extension User {
     
 }
 
+// MARK: - Localized String
+
 extension User.Gender {
     
+    /// A localized string.
     var localizedString: String {
         switch self {
         case .male:

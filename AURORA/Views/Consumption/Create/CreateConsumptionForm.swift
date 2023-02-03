@@ -55,7 +55,8 @@ private extension CreateConsumptionForm {
                         startDate: self.partialElectricity(\.startDate),
                         endDate: self.partialElectricity(\.endDate)
                     ),
-                    value: value
+                    value: value,
+                    carbonEmissions: nil
                 )
             case .heating:
                 return .init(
@@ -65,7 +66,8 @@ private extension CreateConsumptionForm {
                         startDate: self.partialHeating(\.startDate),
                         endDate: self.partialHeating(\.endDate)
                     ),
-                    value: value
+                    value: value,
+                    carbonEmissions: nil
                 )
             case .transportation:
                 return .init(
@@ -82,7 +84,8 @@ private extension CreateConsumptionForm {
                             .publicVehicleOccupancy?
                             .flatMap { $0 }
                     ),
-                    value: value
+                    value: value,
+                    carbonEmissions: nil
                 )
             }
         } catch {

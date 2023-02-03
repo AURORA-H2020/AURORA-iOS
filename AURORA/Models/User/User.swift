@@ -7,8 +7,6 @@ import Foundation
 /// A User
 struct User {
     
-    // MARK: Properties
-    
     /// The identifier.
     @DocumentID
     var id: String?
@@ -30,35 +28,6 @@ struct User {
     
     /// The optional consumption summary.
     let consumptionSummary: ConsumptionSummary?
-    
-    // MARK: Initializer
-    
-    /// Creates a new instance of `User`
-    /// - Parameters:
-    ///   - id: The identifier. Default value `nil`
-    ///   - firstName: The first name.
-    ///   - lastName: The last name.
-    ///   - yearOfBirth: The year of birth.
-    ///   - gender: The Gender.
-    ///   - site: The Site Reference.
-    ///   - consumptionSummary: The optional consumption summary. Default value `nil`
-    init(
-        id: String? = nil,
-        firstName: String,
-        lastName: String,
-        yearOfBirth: Int,
-        gender: Gender,
-        site: FirestoreEntityReference<Site>,
-        consumptionSummary: ConsumptionSummary? = nil
-    ) {
-        self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
-        self.yearOfBirth = yearOfBirth
-        self.gender = gender
-        self.site = site
-        self.consumptionSummary = consumptionSummary
-    }
     
 }
 

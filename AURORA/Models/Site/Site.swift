@@ -5,8 +5,6 @@ import Foundation
 
 /// A Site
 struct Site {
-
-    // MARK: Properties
     
     /// The identifier.
     @DocumentID
@@ -17,23 +15,6 @@ struct Site {
     
     /// The city.
     let city: String
-    
-    // MARK: Initializer
-    
-    /// Creates a new instance of `Site`
-    /// - Parameters:
-    ///   - id: The identifier.
-    ///   - countryCode: The country code.
-    ///   - city: The city.
-    init(
-        id: String? = nil,
-        countryCode: String,
-        city: String
-    ) {
-        self.id = id
-        self.countryCode = countryCode
-        self.city = city
-    }
     
 }
 

@@ -84,7 +84,8 @@ private extension CreateUserForm {
                 lastName: self.lastName,
                 yearOfBirth: self.yearOfBirth,
                 gender: self.gender,
-                site: site
+                site: site,
+                consumptionSummary: nil
             )
         )
     }

@@ -222,6 +222,17 @@
 			path = Overview;
 			sourceTree = "<group>";
 		};
+		3D1CA71F298CF5050009177C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3D1EE672298AACF8009E4645 /* Site */,
+				3D1EE66A298AACF8009E4645 /* User */,
+				3D1EE65F298AACF8009E4645 /* Consumption */,
+				3D1EE674298AACF8009E4645 /* ConsumptionSummary */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3D1EE5F7298AA979009E4645 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,7 +254,6 @@
 				3D1EE656298AACF7009E4645 /* Crashlytics */,
 				3D1EE65B298AACF8009E4645 /* Firestore */,
 				3D1EE658298AACF7009E4645 /* Functions */,
-				3D1EE65E298AACF8009E4645 /* Models */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -451,22 +461,11 @@
 			isa = PBXGroup;
 			children = (
 				3D1EE65C298AACF8009E4645 /* Firebase+Firestore.swift */,
-			);
-			path = Firestore;
-			sourceTree = "<group>";
-		};
-		3D1EE65E298AACF8009E4645 /* Models */ = {
-			isa = PBXGroup;
-			children = (
 				3D1EE671298AACF8009E4645 /* FirestoreEntity.swift */,
 				3D1EE670298AACF8009E4645 /* FirestoreEntityReference.swift */,
 				3D1EE66F298AACF8009E4645 /* FirestoreEntityQuery.swift */,
-				3D1EE65F298AACF8009E4645 /* Consumption */,
-				3D1EE66A298AACF8009E4645 /* User */,
-				3D1EE672298AACF8009E4645 /* Site */,
-				3D1EE674298AACF8009E4645 /* ConsumptionSummary */,
 			);
-			path = Models;
+			path = Firestore;
 			sourceTree = "<group>";
 		};
 		3D1EE65F298AACF8009E4645 /* Consumption */ = {
@@ -631,6 +630,7 @@
 				3D1EE603298AAA21009E4645 /* AppDelegate.swift */,
 				3D1EE5F7298AA979009E4645 /* Views */,
 				3D1EE605298AAAB1009E4645 /* Services */,
+				3D1CA71F298CF5050009177C /* Models */,
 				3D1EE5F9298AA981009E4645 /* Shared */,
 				3DD34C6B2948F38B002064D8 /* Resources */,
 			);
