@@ -30,11 +30,11 @@ struct EditUserForm {
     
     /// The year of birth.
     @State
-    private var yearOfBirth: Int
+    private var yearOfBirth: Int?
     
     /// The gender.
     @State
-    private var gender: User.Gender
+    private var gender: User.Gender?
     
     /// The Site
     @State
@@ -91,20 +91,24 @@ extension EditUserForm: View {
                     "Year of birth",
                     selection: self.$yearOfBirth
                 ) {
+                    Text("Prefer not to say")
+                        .tag(nil as Int?)
                     let currentYear = Calendar.current.component(.year, from: Date())
                     let range = (currentYear - 90)...currentYear
                     ForEach(range.reversed(), id: \.self) { year in
                         Text(String(year))
-                            .tag(year)
+                            .tag(year as Int?)
                     }
                 }
                 Picker(
                     "Gender",
                     selection: self.$gender
                 ) {
+                    Text("Prefer not to say")
+                        .tag(nil as User.Gender?)
                     ForEach(User.Gender.allCases, id: \.self) { gender in
                         Text(gender.localizedString)
-                            .tag(gender)
+                            .tag(gender as User.Gender?)
                     }
                 }
                 if let site = self.site {

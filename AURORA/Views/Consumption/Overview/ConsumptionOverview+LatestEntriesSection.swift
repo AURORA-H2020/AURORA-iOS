@@ -106,9 +106,18 @@ extension ConsumptionOverview.LatestEntriesSection: View {
             }
         ) {
             ForEach(
-                self.consumptions,
-                content: ConsumptionList.Cell.init
-            )
+                self.consumptions
+            ) { consumption in
+                NavigationLink(
+                    destination: ConsumptionView(
+                        consumption: consumption
+                    )
+                ) {
+                    ConsumptionList.Cell(
+                        consumption: consumption
+                    )
+                }
+            }
         }
         .headerProminence(.increased)
         .animation(

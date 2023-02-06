@@ -17,11 +17,11 @@ struct CreateUserForm {
     
     /// The year of birth.
     @State
-    private var yearOfBirth: Int
+    private var yearOfBirth: Int?
     
     /// The gender.
     @State
-    private var gender: User.Gender
+    private var gender: User.Gender?
     
     /// The site reference.
     @State
@@ -51,12 +51,6 @@ struct CreateUserForm {
         )
         self._lastName = .init(
             initialValue: firebaseUserDisplayNameComponents?.last ?? .init()
-        )
-        self._yearOfBirth = .init(
-            initialValue: Calendar.current.component(.year, from: Date()) - 18
-        )
-        self._gender = .init(
-            initialValue: .other
         )
     }
     
@@ -122,29 +116,42 @@ extension CreateUserForm: View {
                         "Year of birth",
                         selection: self.$yearOfBirth
                     ) {
+                        Text("Prefer not to say")
+                            .tag(nil as Int?)
                         let currentYear = Calendar.current.component(.year, from: Date())
                         let range = (currentYear - 90)...currentYear
                         ForEach(range.reversed(), id: \.self) { year in
                             Text(String(year))
-                                .tag(year)
+                                .tag(year as Int?)
                         }
                     }
                     Picker(
                         "Gender",
                         selection: self.$gender
                     ) {
+                        Text("Prefer not to say")
+                            .tag(nil as User.Gender?)
                         ForEach(User.Gender.allCases, id: \.self) { gender in
                             Text(gender.localizedString)
-                                .tag(gender)
+                                .tag(gender as User.Gender?)
                         }
                     }
+                }
+                .headerProminence(.increased)
+                Section(
+                    header: Text("Site"),
+                    footer: Text(
+                        // swiftlint:disable:next line_length
+                        "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your Site later."
+                    )
+                ) {
                     Picker(
                         "Site",
                         selection: self.$site
                     ) {
                         Text("Please choose")
                             .tag(nil as FirestoreEntityReference<Site>?)
-                        ForEach(self.sites) { site in
+                        ForEach(self.sites.sorted()) { site in
                             if let reference = FirestoreEntityReference(site) {
                                 Text(site.localizedString())
                                     .tag(reference as FirestoreEntityReference<Site>?)
@@ -179,6 +186,7 @@ extension CreateUserForm: View {
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .disabled(!self.canSubmit)
+                    .padding(.bottom)
                 ) {
                 }
                 .listRowInsets(.init())

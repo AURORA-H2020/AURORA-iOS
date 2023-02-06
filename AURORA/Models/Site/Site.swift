@@ -10,11 +10,11 @@ struct Site {
     @DocumentID
     var id: String?
     
+    /// The city.
+    let city: String?
+    
     /// The country code.
     let countryCode: String
-    
-    /// The city.
-    let city: String
     
 }
 
@@ -25,6 +25,25 @@ extension Site: FirestoreEntity {
     /// The Firestore collection name.
     static var collectionName: String {
         "sites"
+    }
+    
+}
+
+// MARK: - Site+Comparable
+
+extension Site: Comparable {
+    
+    /// Returns a Boolean value indicating whether the value of the first
+    /// argument is less than that of the second argument.
+    /// - Parameters:
+    ///   - lhs: A value to compare.
+    ///   - rhs: Another value to compare.
+    static func < (lhs: Self, rhs: Self) -> Bool {
+        if lhs.city != nil && rhs.city == nil {
+            return true
+        } else {
+            return (lhs.city ?? .init()) < (rhs.city ?? .init())
+        }
     }
     
 }
@@ -45,17 +64,23 @@ extension Site {
     
 }
 
+// MARK: - Site+localizedString
+
 extension Site {
     
+    /// A localized string.
+    /// - Parameter locale: The Locale. Default value `.current`
     func localizedString(
         locale: Locale = .current
     ) -> String {
-        [
-            self.city,
-            self.localizedCountryName(locale: locale)
-        ]
-        .compactMap { $0 }
-        .joined(separator: ", ")
+        let countryName = self.localizedCountryName(locale: locale) ?? self.countryCode
+        if let city = self.city {
+            return "\(city), \(countryName)"
+        } else {
+            return .init(
+                localized: "Other city in \(countryName)"
+            )
+        }
     }
     
 }

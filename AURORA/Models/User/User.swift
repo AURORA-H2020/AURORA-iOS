@@ -18,10 +18,10 @@ struct User {
     var lastName: String
     
     /// The year of birth.
-    var yearOfBirth: Int
+    var yearOfBirth: Int?
     
     /// The gender.
-    var gender: Gender
+    var gender: Gender?
     
     /// The Site Reference.
     var site: FirestoreEntityReference<Site>
@@ -55,20 +55,6 @@ extension User {
         components.givenName = self.firstName
         components.familyName = self.lastName
         return formatter.string(from: components)
-    }
-    
-}
-
-// MARK: - User+age
-
-extension User {
-    
-    /// The current age.
-    /// - Parameter calendar: The Calendar. Default value `.current`
-    func age(
-        calendar: Calendar = .current
-    ) -> Int {
-        calendar.component(.year, from: .init()) - self.yearOfBirth
     }
     
 }

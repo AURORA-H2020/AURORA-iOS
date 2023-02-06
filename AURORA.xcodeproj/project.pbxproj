@@ -95,6 +95,7 @@
 		3D1EE6D0298AAEC0009E4645 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */; };
 		3D1EE6D1298AAEC0009E4645 /* OrientationReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CD298AAEC0009E4645 /* OrientationReader.swift */; };
 		3D1EE6D2298AAEC0009E4645 /* EmptyPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */; };
+		3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */; };
 		3D384D862948F6C40018249C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D384D852948F6C40018249C /* GoogleService-Info.plist */; };
 		3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */; };
 		3D537A62298B1E9500C294AA /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A61298B1E9500C294AA /* Password.swift */; };
@@ -182,6 +183,7 @@
 		3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		3D1EE6CD298AAEC0009E4645 /* OrientationReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationReader.swift; sourceTree = "<group>"; };
 		3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyPlaceholder.swift; sourceTree = "<group>"; };
+		3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionView.swift; sourceTree = "<group>"; };
 		3D384D852948F6C40018249C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isMailAddress.swift"; sourceTree = "<group>"; };
 		3D537A61298B1E9500C294AA /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 		3D1EE5FC298AA9DD009E4645 /* Consumption */ = {
 			isa = PBXGroup;
 			children = (
+				3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */,
 				3D1CA716298CEFA50009177C /* Overview */,
 				3D1EE630298AAC5B009E4645 /* Create */,
 				3D1EE633298AAC5B009E4645 /* List */,
@@ -820,6 +823,7 @@
 				3D1EE695298AACF8009E4645 /* ConsumptionSummary.swift in Sources */,
 				3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */,
 				3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */,
+				3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */,
 				3D1EE681298AACF8009E4645 /* Firebase+Functions.swift in Sources */,
 				3D1EE682298AACF8009E4645 /* Firebase.swift in Sources */,
 				3D1EE687298AACF8009E4645 /* Consumption+Transportation+PublicVehicleOccupancy.swift in Sources */,

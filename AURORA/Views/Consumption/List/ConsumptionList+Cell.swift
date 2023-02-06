@@ -19,7 +19,6 @@ extension ConsumptionList {
         private var firebase: Firebase
         
     }
-
     
 }
 
@@ -76,12 +75,10 @@ extension ConsumptionList.Cell: View {
                 } label: {
                     Text(verbatim: "Delete")
                 }
-                Button(role: .cancel) {
-                    
+                Button(role: .cancel) {   
                 } label: {
                     Text(verbatim: "Cancel")
                 }
-
             },
             message: {
                 Text(verbatim: "Are you sure you want to delete the entry?")

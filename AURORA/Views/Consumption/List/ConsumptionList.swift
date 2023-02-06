@@ -40,9 +40,18 @@ extension ConsumptionList: View {
     var body: some View {
         List {
             ForEach(
-                self.consumptions,
-                content: Cell.init
-            )
+                self.consumptions
+            ) { consumption in
+                NavigationLink(
+                    destination: ConsumptionView(
+                        consumption: consumption
+                    )
+                ) {
+                    Cell(
+                        consumption: consumption
+                    )
+                }
+            }
         }
         .navigationTitle("Entries")
         .toolbar {
