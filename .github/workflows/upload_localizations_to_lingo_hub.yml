@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Export Localizations
-        run: xcodebuild -exportLocalizations -localizationPath ./ -exportLanguage en -project AURORA.xcodeproj -scheme AURORA -derivedDataPath ./build
+        run: set -o pipefail && xcodebuild -exportLocalizations -localizationPath ./ -exportLanguage en -project AURORA.xcodeproj -scheme AURORA -derivedDataPath ./build | xcpretty
       - name: Install LingoHub CLI
         run: gem install lingohub
       - name: Login to LingoHub
