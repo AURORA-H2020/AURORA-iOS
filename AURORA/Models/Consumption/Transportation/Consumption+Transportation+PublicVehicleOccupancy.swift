@@ -26,7 +26,7 @@ extension Consumption.Transportation.PublicVehicleOccupancy {
         case .almostEmpty:
             return .init(localized: "Almot empty")
         case .average:
-            return .init(localized: "Average")
+            return .init(localized: "Medium")
         case .nearlyFulll:
             return .init(localized: "Nearly full")
         }
