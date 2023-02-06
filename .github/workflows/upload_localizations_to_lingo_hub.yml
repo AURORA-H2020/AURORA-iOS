@@ -17,7 +17,8 @@ jobs:
       - name: Install LingoHub CLI
         run: gem install lingohub
       - name: Login to LingoHub
-        run: "echo $LINGO_HUB_CREDENTIALS > ~/.lingohub/credentials"
+        run: echo "$LINGO_HUB_CREDENTIALS" >> ~/.lingohub/credentials
+        shell: bash
         env:
           LINGO_HUB_CREDENTIALS: ${{ secrets.LINGO_HUB_CREDENTIALS }}
       - name: Upload Localizations to LingoHub
