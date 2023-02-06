@@ -17,6 +17,13 @@ extension Consumption {
         /// The end date.
         var endDate: Timestamp
         
+        /// The heating fuel.
+        var heatingFuel: HeatingFuel
+        
+        /// The district heating source.
+        /// Only applicable if `heatingFuel` is equal to `.district`
+        var districtHeatingSource: DistrictHeatingSource?
+        
     }
     
 }

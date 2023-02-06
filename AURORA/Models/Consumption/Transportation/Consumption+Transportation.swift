@@ -12,7 +12,7 @@ extension Consumption {
         var dateOfTravel: Timestamp
         
         /// The type of transportation.
-        var transportationType: TransportationType?
+        var transportationType: TransportationType
         
         /// The private vehicle occupancy.
         var privateVehicleOccupancy: Int?

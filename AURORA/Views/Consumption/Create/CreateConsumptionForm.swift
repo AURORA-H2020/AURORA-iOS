@@ -64,7 +64,14 @@ private extension CreateConsumptionForm {
                     heating: try .init(
                         costs: self.partialHeating(\.costs),
                         startDate: self.partialHeating(\.startDate),
-                        endDate: self.partialHeating(\.endDate)
+                        endDate: self.partialHeating(\.endDate),
+                        heatingFuel: self.partialHeating(\.heatingFuel),
+                        districtHeatingSource: try {
+                            guard try self.partialHeating(\.heatingFuel) == .district else {
+                                return nil
+                            }
+                            return try self.partialHeating(\.districtHeatingSource)
+                        }()
                     ),
                     value: value,
                     carbonEmissions: nil
@@ -74,9 +81,7 @@ private extension CreateConsumptionForm {
                     category: category,
                     transportation: .init(
                         dateOfTravel: try self.partialTransportation(\.dateOfTravel),
-                        transportationType: self.partialTransportation
-                            .transportationType?
-                            .flatMap { $0 },
+                        transportationType: try self.partialTransportation(\.transportationType),
                         privateVehicleOccupancy: self.partialTransportation
                             .privateVehicleOccupancy?
                             .flatMap { $0 },
@@ -371,6 +376,36 @@ private extension CreateConsumptionForm {
                 .font(.footnote)
                 .foregroundColor(.secondary)
         }
+        Picker(
+            "Heating fuel",
+            selection: self.$partialHeating.heatingFuel
+        ) {
+            Text("Please choose")
+                .tag(nil as Consumption.Heating.HeatingFuel?)
+            ForEach(
+                Consumption.Heating.HeatingFuel.allCases,
+                id: \.self
+            ) { heatingFuel in
+                Text(heatingFuel.localizedString)
+                    .tag(heatingFuel as Consumption.Heating.HeatingFuel?)
+            }
+        }
+        if self.partialHeating.heatingFuel == .district {
+            Picker(
+                "District heating source",
+                selection: self.$partialHeating.districtHeatingSource
+            ) {
+                Text("Please choose")
+                    .tag(nil as Consumption.Heating.DistrictHeatingSource??)
+                ForEach(
+                    Consumption.Heating.DistrictHeatingSource.allCases,
+                    id: \.self
+                ) { districtHeatingSource in
+                    Text(districtHeatingSource.localizedString)
+                        .tag(districtHeatingSource as Consumption.Heating.DistrictHeatingSource??)
+                }
+            }
+        }
         HStack {
             NumberTextField(
                 "Consumption",
@@ -404,28 +439,62 @@ private extension CreateConsumptionForm {
             selection: self.$partialTransportation.transportationType
         ) {
             Text("Please choose")
-                .tag(nil as Consumption.Transportation.TransportationType??)
+                .tag(nil as Consumption.Transportation.TransportationType?)
             ForEach(
-                Consumption.Transportation.TransportationType.allCases,
+                Consumption
+                    .Transportation
+                    .TransportationType
+                    .Group
+                    .allCases,
                 id: \.self
-            ) { transportationType in
-                Text(transportationType.rawValue.capitalized)
-                    .tag(transportationType as Consumption.Transportation.TransportationType??)
+            ) { transportationTypeGroup in
+                Section(
+                    header: Text(transportationTypeGroup.localizedString)
+                ) {
+                    ForEach(
+                        transportationTypeGroup.elements,
+                        id: \.self
+                    ) { transportationType in
+                        Text(transportationType.localizedString)
+                            .tag(transportationType as Consumption.Transportation.TransportationType?)
+                    }
+                }
             }
         }
-        Picker(
-            "Occupancy",
-            selection: self.$partialTransportation.publicVehicleOccupancy
-        ) {
-            Text("Please choose")
-                .tag(nil as Consumption.Transportation.PublicVehicleOccupancy??)
-            ForEach(
-                Consumption.Transportation.PublicVehicleOccupancy.allCases,
-                id: \.self
-            ) { occupancy in
-                Text(occupancy.rawValue.capitalized)
-                    .tag(occupancy as Consumption.Transportation.PublicVehicleOccupancy??)
+        .onChange(of: self.partialTransportation.transportationType) { transportationType in
+            self.partialTransportation.privateVehicleOccupancy = transportationType?
+                .privateVehicleOccupancyRange != nil ? 1 : nil
+        }
+        if self.partialTransportation.transportationType?.isPublicVehicle == true {
+            Picker(
+                "Occupancy",
+                selection: self.$partialTransportation.publicVehicleOccupancy
+            ) {
+                Text("Please choose")
+                    .tag(nil as Consumption.Transportation.PublicVehicleOccupancy??)
+                ForEach(
+                    Consumption.Transportation.PublicVehicleOccupancy.allCases,
+                    id: \.self
+                ) { occupancy in
+                    Text(occupancy.localizedString)
+                        .tag(occupancy as Consumption.Transportation.PublicVehicleOccupancy??)
+                }
             }
+        } else if let privateVehicleOccupancyRange = self.partialTransportation
+            .transportationType?
+            .privateVehicleOccupancyRange {
+            Stepper(
+                "Occupancy: \(self.partialTransportation.privateVehicleOccupancy?.flatMap { $0 } ?? 1)",
+                value: .init(
+                    get: {
+                        self.partialTransportation.privateVehicleOccupancy?.flatMap { $0 } ?? 1
+                    },
+                    set: { privateVehicleOccupancy in
+                        self.partialTransportation.privateVehicleOccupancy = privateVehicleOccupancy
+                    }
+                ),
+                in: privateVehicleOccupancyRange
+            )
         }
         HStack {
             NumberTextField(

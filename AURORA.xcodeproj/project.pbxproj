@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D08956A2991080800C996AD /* Consumption+Heating+HeatingFuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0895692991080800C996AD /* Consumption+Heating+HeatingFuel.swift */; };
+		3D08956C299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08956B299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift */; };
 		3D1CA718298CEFE80009177C /* ConsumptionOverview+SummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA717298CEFE80009177C /* ConsumptionOverview+SummarySection.swift */; };
 		3D1CA71A298CEFF40009177C /* ConsumptionOverview+LatestEntriesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA719298CEFF40009177C /* ConsumptionOverview+LatestEntriesSection.swift */; };
 		3D1CA71C298CF2150009177C /* LocalNotificationRequest+Predefined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA71B298CF2150009177C /* LocalNotificationRequest+Predefined.swift */; };
@@ -97,6 +99,7 @@
 		3D1EE6D2298AAEC0009E4645 /* EmptyPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */; };
 		3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */; };
 		3D384D862948F6C40018249C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D384D852948F6C40018249C /* GoogleService-Info.plist */; };
+		3D3B8D3E2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8D3D2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift */; };
 		3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */; };
 		3D537A62298B1E9500C294AA /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A61298B1E9500C294AA /* Password.swift */; };
 		3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */; };
@@ -106,6 +109,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D0895692991080800C996AD /* Consumption+Heating+HeatingFuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Heating+HeatingFuel.swift"; sourceTree = "<group>"; };
+		3D08956B299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Heating+DistrictHeatingSource.swift"; sourceTree = "<group>"; };
 		3D1CA717298CEFE80009177C /* ConsumptionOverview+SummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionOverview+SummarySection.swift"; sourceTree = "<group>"; };
 		3D1CA719298CEFF40009177C /* ConsumptionOverview+LatestEntriesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionOverview+LatestEntriesSection.swift"; sourceTree = "<group>"; };
 		3D1CA71B298CF2150009177C /* LocalNotificationRequest+Predefined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalNotificationRequest+Predefined.swift"; sourceTree = "<group>"; };
@@ -185,6 +190,7 @@
 		3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyPlaceholder.swift; sourceTree = "<group>"; };
 		3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionView.swift; sourceTree = "<group>"; };
 		3D384D852948F6C40018249C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D3B8D3D2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Transportation+TransportationType+Group.swift"; sourceTree = "<group>"; };
 		3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isMailAddress.swift"; sourceTree = "<group>"; };
 		3D537A61298B1E9500C294AA /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Authentication+Method.swift"; sourceTree = "<group>"; };
@@ -495,6 +501,7 @@
 				3D1EE665298AACF8009E4645 /* Consumption+Transportation.swift */,
 				3D1EE663298AACF8009E4645 /* Consumption+Transportation+PublicVehicleOccupancy.swift */,
 				3D1EE664298AACF8009E4645 /* Consumption+Transportation+TransportationType.swift */,
+				3D3B8D3D2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift */,
 			);
 			path = Transportation;
 			sourceTree = "<group>";
@@ -503,6 +510,8 @@
 			isa = PBXGroup;
 			children = (
 				3D1EE667298AACF8009E4645 /* Consumption+Heating.swift */,
+				3D0895692991080800C996AD /* Consumption+Heating+HeatingFuel.swift */,
+				3D08956B299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift */,
 			);
 			path = Heating;
 			sourceTree = "<group>";
@@ -789,6 +798,7 @@
 				3D1EE64E298AAC9E009E4645 /* ChangeMailAddressForm.swift in Sources */,
 				3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */,
 				3D1EE60F298AAB39009E4645 /* AuthenticationProviderButton.swift in Sources */,
+				3D08956C299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift in Sources */,
 				3D1EE5FF298AA9EE009E4645 /* ContentView.swift in Sources */,
 				3D1CA71C298CF2150009177C /* LocalNotificationRequest+Predefined.swift in Sources */,
 				3D1EE699298AACF8009E4645 /* FirebaseAuthenticationProvider.swift in Sources */,
@@ -824,6 +834,7 @@
 				3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */,
 				3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */,
 				3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */,
+				3D3B8D3E2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift in Sources */,
 				3D1EE681298AACF8009E4645 /* Firebase+Functions.swift in Sources */,
 				3D1EE682298AACF8009E4645 /* Firebase.swift in Sources */,
 				3D1EE687298AACF8009E4645 /* Consumption+Transportation+PublicVehicleOccupancy.swift in Sources */,
@@ -833,6 +844,7 @@
 				3D1CA718298CEFE80009177C /* ConsumptionOverview+SummarySection.swift in Sources */,
 				3D1EE651298AAC9E009E4645 /* ThirdPartyDependency.swift in Sources */,
 				3D1EE696298AACF8009E4645 /* Firebase+Authentication.swift in Sources */,
+				3D08956A2991080800C996AD /* Consumption+Heating+HeatingFuel.swift in Sources */,
 				3D1EE6C2298AAE79009E4645 /* Partial.swift in Sources */,
 				3D1EE680298AACF8009E4645 /* Firebase+Crashlytics.swift in Sources */,
 				3D1EE638298AAC5B009E4645 /* CreateConsumptionForm.swift in Sources */,
