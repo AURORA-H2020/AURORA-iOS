@@ -23,8 +23,11 @@ struct User {
     /// The gender.
     var gender: Gender?
     
-    /// The Site Reference.
-    var site: FirestoreEntityReference<Site>
+    /// The Country Reference.
+    var country: FirestoreEntityReference<Country>
+    
+    /// The optional City Reference.
+    var city: FirestoreEntityReference<City>?
     
     /// The optional consumption summary.
     let consumptionSummary: ConsumptionSummary?

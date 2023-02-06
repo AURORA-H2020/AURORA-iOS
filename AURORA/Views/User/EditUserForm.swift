@@ -36,9 +36,13 @@ struct EditUserForm {
     @State
     private var gender: User.Gender?
     
-    /// The Site
+    /// The Country
     @State
-    private var site: Site?
+    private var country: Country?
+    
+    /// The City
+    @State
+    private var city: City?
     
     /// The DismissAction
     @Environment(\.dismiss)
@@ -111,11 +115,20 @@ extension EditUserForm: View {
                             .tag(gender as User.Gender?)
                     }
                 }
-                if let site = self.site {
+                if let country = self.country {
                     HStack {
-                        Text("Site")
+                        Text("Country")
                         Spacer()
-                        Text(site.localizedString())
+                        Text(country.localizedString())
+                            .multilineTextAlignment(.trailing)
+                    }
+                    .foregroundColor(.secondary)
+                }
+                if let city = self.city {
+                    HStack {
+                        Text("City")
+                        Spacer()
+                        Text(city.name)
                             .multilineTextAlignment(.trailing)
                     }
                     .foregroundColor(.secondary)
@@ -124,11 +137,23 @@ extension EditUserForm: View {
         }
         .navigationTitle("Edit profile")
         .task {
-            self.site = try? await self.firebase
+            self.country = try? await self.firebase
                 .firestore
                 .get(
-                    Site.self,
-                    id: self.user.site.id
+                    Country.self,
+                    id: self.user.country.id
+                )
+        }
+        .task {
+            guard let city = self.user.city else {
+                return
+            }
+            self.city = try? await self.firebase
+                .firestore
+                .get(
+                    City.self,
+                    context: self.user.country.id,
+                    id: city.id
                 )
         }
     }

@@ -23,13 +23,21 @@ struct CreateUserForm {
     @State
     private var gender: User.Gender?
     
-    /// The site reference.
+    /// The country reference.
     @State
-    private var site: FirestoreEntityReference<Site>?
+    private var country: FirestoreEntityReference<Country>?
     
-    /// The Sites
+    /// The city reference.
+    @State
+    private var city: FirestoreEntityReference<City>?
+    
+    /// The Cities
+    @State
+    private var cities: [City]?
+    
+    /// The Counties
     @FirestoreEntityQuery()
-    private var sites: [Site]
+    private var countries: [Country]
     
     /// The Firebase instance
     @EnvironmentObject
@@ -64,12 +72,12 @@ private extension CreateUserForm {
     var canSubmit: Bool {
         !self.firstName.isEmpty
             && !self.lastName.isEmpty
-            && self.site != nil
+            && self.country != nil
     }
     
     /// Submit
     func submit() throws {
-        guard let site = self.site else {
+        guard let country = self.country else {
             return
         }
         try self.firebase.firestore.add(
@@ -78,7 +86,8 @@ private extension CreateUserForm {
                 lastName: self.lastName,
                 yearOfBirth: self.yearOfBirth,
                 gender: self.gender,
-                site: site,
+                country: country,
+                city: self.city,
                 consumptionSummary: nil
             )
         )
@@ -139,27 +148,52 @@ extension CreateUserForm: View {
                 }
                 .headerProminence(.increased)
                 Section(
-                    header: Text("Site"),
+                    header: Text("Country"),
                     footer: Text(
                         // swiftlint:disable:next line_length
-                        "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your Site later."
+                        "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later."
                     )
                 ) {
                     Picker(
-                        "Site",
-                        selection: self.$site
+                        "Country",
+                        selection: self.$country
                     ) {
                         Text("Please choose")
-                            .tag(nil as FirestoreEntityReference<Site>?)
-                        ForEach(self.sites.sorted()) { site in
-                            if let reference = FirestoreEntityReference(site) {
-                                Text(site.localizedString())
-                                    .tag(reference as FirestoreEntityReference<Site>?)
+                            .tag(nil as FirestoreEntityReference<Country>?)
+                        ForEach(self.countries.sorted()) { country in
+                            if let reference = FirestoreEntityReference(country) {
+                                Text(country.localizedString())
+                                    .tag(reference as FirestoreEntityReference<Country>?)
+                            }
+                        }
+                    }
+                    if let cities = self.cities, !cities.isEmpty {
+                        Picker(
+                            "City",
+                            selection: self.$city
+                        ) {
+                            Text("Please choose")
+                                .tag(nil as FirestoreEntityReference<City>?)
+                            ForEach(cities.sorted()) { city in
+                                if let reference = FirestoreEntityReference(city) {
+                                    Text(city.name)
+                                        .tag(reference as FirestoreEntityReference<City>?)
+                                }
                             }
                         }
                     }
                 }
                 .headerProminence(.increased)
+                .onChange(of: self.country) { country in
+                    self.cities = nil
+                    self.city = nil
+                    guard let country = country else {
+                        return
+                    }
+                    Task {
+                        self.cities = try? await self.firebase.firestore.get(City.self, context: country.id)
+                    }
+                }
                 Section(
                     footer: AsyncButton(
                         fillWidth: true,
@@ -204,6 +238,14 @@ extension CreateUserForm: View {
             }
         }
         .navigationViewStyle(.stack)
+        .onChange(of: self.countries) { countries in
+            guard self.country == nil,
+                  let deviceRegionIdentifier = Locale.current.regionCode,
+                  let matchingCountry = countries.first(where: { $0.countryCode == deviceRegionIdentifier }) else {
+                return
+            }
+            self.country = .init(matchingCountry)
+        }
     }
     
 }
