@@ -29,6 +29,14 @@ extension ConsumptionList.Cell: View {
     /// The content and behavior of the view.
     var body: some View {
         HStack {
+            self.consumption
+                .category
+                .icon
+                .imageScale(.small)
+                .foregroundColor(self.consumption.category.tintColor)
+                .padding(8)
+                .background(self.consumption.category.tintColor.opacity(0.3))
+                .clipShape(Circle())
             VStack(alignment: .leading) {
                 Text(self.consumption.category.rawValue.capitalized)
                     .foregroundColor(.primary)
