@@ -9,7 +9,7 @@ extension Consumption.Heating {
         /// Oil
         case oil
         /// Gas
-        case gas
+        case naturalGas
         /// Liquified Petro gas (LPG)
         case liquifiedPetroGas
         /// Biomass
@@ -37,7 +37,7 @@ extension Consumption.Heating.HeatingFuel {
         switch self {
         case .oil:
             return .init(localized: "Heating oil")
-        case .gas:
+        case .naturalGas:
             return .init(localized: "Natural gas")
         case .liquifiedPetroGas:
             return .init(localized: "LPG")
