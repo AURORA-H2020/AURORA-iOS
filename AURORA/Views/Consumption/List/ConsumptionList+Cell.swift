@@ -51,8 +51,8 @@ extension ConsumptionList.Cell: View {
             VStack(alignment: .trailing) {
                 Text(self.consumption.formattedValue)
                     .foregroundColor(.secondary)
-                if let carbonEmissions = self.consumption.carbonEmissions {
-                    Text("≈ \(carbonEmissions.formatted()) t")
+                if let formattedCarbonEmissions = self.consumption.formattedCarbonEmissions {
+                    Text(formattedCarbonEmissions)
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }

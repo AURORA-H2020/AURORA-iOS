@@ -25,7 +25,105 @@ extension ConsumptionView: View {
     /// The content and behavior of the view.
     var body: some View {
         List {
-            
+            Section {
+                Entry {
+                    Text(self.consumption.formattedValue)
+                } label: {
+                    Text(self.consumption.category.localizedString)
+                }
+                if let formattedCarbonEmissions = self.consumption.formattedCarbonEmissions {
+                    Entry {
+                        Text(formattedCarbonEmissions)
+                    } label: {
+                        Text("Carbon emissions")
+                    }
+                }
+            }
+            if let electricity = self.consumption.electricity {
+                Entry {
+                    Text(electricity.costs.formatted(.currency(code: "EUR")))
+                } label: {
+                    Text("Costs")
+                }
+                Entry {
+                    Text(electricity.startDate.dateValue(), style: .date)
+                } label: {
+                    Text("Start")
+                }
+                Entry {
+                    Text(electricity.endDate.dateValue(), style: .date)
+                } label: {
+                    Text("End")
+                }
+            } else if let heating = self.consumption.heating {
+                Entry {
+                    Text(heating.costs.formatted(.currency(code: "EUR")))
+                } label: {
+                    Text("Costs")
+                }
+                Entry {
+                    Text(heating.startDate.dateValue(), style: .date)
+                } label: {
+                    Text("Start")
+                }
+                Entry {
+                    Text(heating.endDate.dateValue(), style: .date)
+                } label: {
+                    Text("End")
+                }
+                Entry {
+                    Text(heating.heatingFuel.localizedString)
+                } label: {
+                    Text("Heating fuel")
+                }
+                if let districtHeatingSource = heating.districtHeatingSource {
+                    Entry {
+                        Text(districtHeatingSource.localizedString)
+                    } label: {
+                        Text("Heating source")
+                    }
+                }
+            } else if let transportation = self.consumption.transportation {
+                Entry {
+                    Text(transportation.dateOfTravel.dateValue(), style: .date)
+                } label: {
+                    Text("Start of travel")
+                }
+                Entry {
+                    Text(transportation.transportationType.localizedString)
+                } label: {
+                    Text("Transportation type")
+                }
+                if let privateVehicleOccupancy = transportation.privateVehicleOccupancy {
+                    Entry {
+                        Text(String(privateVehicleOccupancy))
+                    } label: {
+                        Text("Occupancy")
+                    }
+                } else if let publicVehicleOccupancy = transportation.publicVehicleOccupancy {
+                    Entry {
+                        Text(publicVehicleOccupancy.localizedString)
+                    } label: {
+                        Text("Occupancy")
+                    }
+                }
+            }
+            if let createdAt = self.consumption.createdAt {
+                Section {
+                    Entry {
+                        Text(createdAt.dateValue(), style: .date)
+                    } label: {
+                        Text("Created")
+                    }
+                    if let updatedAt = self.consumption.updatedAt {
+                        Entry {
+                            Text(updatedAt.dateValue(), style: .date)
+                        } label: {
+                            Text("Updated")
+                        }
+                    }
+                }
+            }
         }
         .navigationTitle(self.consumption.category.localizedString)
         .toolbar {
@@ -64,6 +162,38 @@ extension ConsumptionView: View {
                 Text(verbatim: "Are you sure you want to delete the entry?")
             }
         )
+    }
+    
+}
+
+// MARK: - Entry
+
+private extension ConsumptionView {
+    
+    /// A ConsumptionView Entry
+    struct Entry<Label: View, Content: View>: View {
+        
+        // MARK: Properties
+        
+        /// A ViewBuilder closure providing the content.
+        @ViewBuilder
+        let content: () -> Content
+        
+        /// A ViewBuilder closure providing the label.
+        @ViewBuilder
+        let label: () -> Label
+        
+        // MARK: View
+        
+        /// The content and behavior of the view.
+        var body: some View {
+            HStack {
+                self.label()
+                Spacer()
+                self.content()
+            }
+        }
+        
     }
     
 }

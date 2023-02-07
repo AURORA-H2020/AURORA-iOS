@@ -57,8 +57,7 @@ private extension CreateConsumptionForm {
                 transportation: category == .transportation
                     ? try .init(partial: self.partialTransportation)
                     : nil,
-                value: value,
-                carbonEmissions: nil
+                value: value
             )
         }
     }
