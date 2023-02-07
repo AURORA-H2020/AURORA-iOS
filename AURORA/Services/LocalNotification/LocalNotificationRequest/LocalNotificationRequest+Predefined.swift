@@ -71,6 +71,33 @@ extension LocalNotificationRequest.Predefined {
     
 }
 
+// MARK: - TintColor
+
+extension LocalNotificationRequest.Predefined {
+    
+    /// The tint color.
+    var tintColor: Color {
+        switch self {
+        case .electricityBillReminder:
+            return Consumption
+                .Category
+                .electricity
+                .tintColor
+        case .heatingBillReminder:
+            return Consumption
+                .Category
+                .heating
+                .tintColor
+        case .mobilityReminder:
+            return Consumption
+                .Category
+                .transportation
+                .tintColor
+        }
+    }
+    
+}
+
 // MARK: - Content
 
 extension LocalNotificationRequest.Predefined {

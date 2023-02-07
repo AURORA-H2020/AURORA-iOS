@@ -168,7 +168,13 @@ private extension SettingsView {
                     Label {
                         Text(predefinedLocationNotificationRequest.localizedString)
                     } icon: {
-                        predefinedLocationNotificationRequest.icon
+                        predefinedLocationNotificationRequest
+                            .icon
+                            .imageScale(.small)
+                            .foregroundColor(predefinedLocationNotificationRequest.tintColor)
+                            .padding(8)
+                            .background(predefinedLocationNotificationRequest.tintColor.opacity(0.3))
+                            .clipShape(Circle())
                     }
                 }
             }
