@@ -8,10 +8,10 @@ extension Consumption.Transportation {
     enum PublicVehicleOccupancy: String, Codable, Hashable, CaseIterable, Sendable {
         /// Almost empty
         case almostEmpty
-        /// Average
-        case average
+        /// Medium
+        case medium
         /// Nearly full
-        case nearlyFulll
+        case nearlyFull
     }
     
 }
@@ -25,9 +25,9 @@ extension Consumption.Transportation.PublicVehicleOccupancy {
         switch self {
         case .almostEmpty:
             return .init(localized: "Almot empty")
-        case .average:
+        case .medium:
             return .init(localized: "Medium")
-        case .nearlyFulll:
+        case .nearlyFull:
             return .init(localized: "Nearly full")
         }
     }
