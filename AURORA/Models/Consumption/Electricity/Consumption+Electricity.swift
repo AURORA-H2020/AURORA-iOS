@@ -20,3 +20,19 @@ extension Consumption {
     }
     
 }
+
+// MARK: - PartialConvertible
+
+extension Consumption.Electricity: PartialConvertible {
+    
+    /// Creates a new instance from `Partial`.
+    /// - Parameter partial: The partial instance.
+    init(partial: Partial<Self>) throws {
+        self.init(
+            costs: try partial(\.costs),
+            startDate: try partial(\.startDate),
+            endDate: try partial(\.endDate)
+        )
+    }
+    
+}

@@ -23,3 +23,37 @@ extension Consumption {
     }
     
 }
+
+// MARK: - PartialConvertible
+
+extension Consumption.Transportation: PartialConvertible {
+    
+    /// Creates a new instance from `Partial`.
+    /// - Parameter partial: The partial instance.
+    init(partial: Partial<Self>) throws {
+        let transportationType: TransportationType = try partial(\.transportationType)
+        self.init(
+            dateOfTravel: try partial(\.dateOfTravel),
+            transportationType: transportationType,
+            privateVehicleOccupancy: try {
+                if transportationType.privateVehicleOccupancyRange != nil {
+                    return try partial(\.privateVehicleOccupancy)
+                } else {
+                    return partial
+                        .privateVehicleOccupancy?
+                        .flatMap { $0 }
+                }
+            }(),
+            publicVehicleOccupancy: try {
+                if transportationType.isPublicVehicle {
+                    return try partial(\.publicVehicleOccupancy)
+                } else {
+                    return partial
+                        .publicVehicleOccupancy?
+                        .flatMap { $0 }
+                }
+            }()
+        )
+    }
+    
+}

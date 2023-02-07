@@ -41,60 +41,25 @@ private extension CreateConsumptionForm {
     
     /// The Consumption, if available.
     var consumption: Consumption? {
-        guard let category = self.category,
-              let value = self.value else {
-            return nil
-        }
-        do {
-            switch category {
-            case .electricity:
-                return .init(
-                    category: category,
-                    electricity: try .init(
-                        costs: self.partialElectricity(\.costs),
-                        startDate: self.partialElectricity(\.startDate),
-                        endDate: self.partialElectricity(\.endDate)
-                    ),
-                    value: value,
-                    carbonEmissions: nil
-                )
-            case .heating:
-                return .init(
-                    category: category,
-                    heating: try .init(
-                        costs: self.partialHeating(\.costs),
-                        startDate: self.partialHeating(\.startDate),
-                        endDate: self.partialHeating(\.endDate),
-                        heatingFuel: self.partialHeating(\.heatingFuel),
-                        districtHeatingSource: try {
-                            guard try self.partialHeating(\.heatingFuel) == .district else {
-                                return nil
-                            }
-                            return try self.partialHeating(\.districtHeatingSource)
-                        }()
-                    ),
-                    value: value,
-                    carbonEmissions: nil
-                )
-            case .transportation:
-                return .init(
-                    category: category,
-                    transportation: .init(
-                        dateOfTravel: try self.partialTransportation(\.dateOfTravel),
-                        transportationType: try self.partialTransportation(\.transportationType),
-                        privateVehicleOccupancy: self.partialTransportation
-                            .privateVehicleOccupancy?
-                            .flatMap { $0 },
-                        publicVehicleOccupancy: self.partialTransportation
-                            .publicVehicleOccupancy?
-                            .flatMap { $0 }
-                    ),
-                    value: value,
-                    carbonEmissions: nil
-                )
+        get throws {
+            guard let category = self.category,
+                  let value = self.value else {
+                return nil
             }
-        } catch {
-            return nil
+            return .init(
+                category: category,
+                electricity: category == .electricity
+                    ? try .init(partial: self.partialElectricity)
+                    : nil,
+                heating: category == .heating
+                    ? try .init(partial: self.partialHeating)
+                    : nil,
+                transportation: category == .transportation
+                    ? try .init(partial: self.partialTransportation)
+                    : nil,
+                value: value,
+                carbonEmissions: nil
+            )
         }
     }
     
@@ -107,19 +72,63 @@ private extension CreateConsumptionForm {
     /// Submit form
     func submit() throws {
         // Verify a consumption is available
-        guard let consumption = self.consumption else {
+        guard let consumption = try self.consumption else {
             // Otherwise return out of function
             return
         }
-        // Add consumption
-        try self.firebase
-            .firestore
-            .add(
-                consumption,
-                context: .current()
-            )
+        // Initialize an UINotificationFeedbackGenerator
+        let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+        do {
+            // Add consumption
+            try self.firebase
+                .firestore
+                .add(
+                    consumption,
+                    context: .current()
+                )
+        } catch {
+            // Invoke error feedback
+            notificationFeedbackGenerator
+                .notificationOccurred(.error)
+            // Rethrow error
+            throw error
+        }
+        // Invoke success feedback
+        notificationFeedbackGenerator
+            .notificationOccurred(.success)
         // Dismiss
         self.dismiss()
+    }
+    
+}
+
+// MARK: - Category did change
+
+private extension CreateConsumptionForm {
+    
+    /// Category did change
+    /// - Parameter category: The new Consumption Category
+    func categoryDidChange(
+        _ category: Consumption.Category?
+    ) {
+        self.partialElectricity.removeAll()
+        self.partialHeating.removeAll()
+        self.partialTransportation.removeAll()
+        self.value = nil
+        switch category {
+        case .electricity:
+            let startDate = Date()
+            self.partialElectricity.startDate = .init(date: startDate)
+            self.partialElectricity.endDate = .init(date: startDate.addingTimeInterval(172800))
+        case .heating:
+            let startDate = Date()
+            self.partialHeating.startDate = .init(date: startDate)
+            self.partialHeating.endDate = .init(date: startDate.addingTimeInterval(172800))
+        case .transportation:
+            self.partialTransportation.dateOfTravel = .init()
+        case nil:
+            break
+        }
     }
     
 }
@@ -139,27 +148,9 @@ extension CreateConsumptionForm: View {
         }
         .navigationTitle("Add Consumption")
         .onChange(
-            of: self.category
-        ) { category in
-            self.partialElectricity.removeAll()
-            self.partialHeating.removeAll()
-            self.partialTransportation.removeAll()
-            self.value = nil
-            switch category {
-            case .electricity:
-                let startDate = Date()
-                self.partialElectricity.startDate = .init(date: startDate)
-                self.partialElectricity.endDate = .init(date: startDate.addingTimeInterval(172800))
-            case .heating:
-                let startDate = Date()
-                self.partialHeating.startDate = .init(date: startDate)
-                self.partialHeating.endDate = .init(date: startDate.addingTimeInterval(172800))
-            case .transportation:
-                self.partialTransportation.dateOfTravel = .init()
-            case nil:
-                break
-            }
-        }
+            of: self.category,
+            perform: self.categoryDidChange
+        )
         .animation(
             .default,
             value: self.category
@@ -168,8 +159,11 @@ extension CreateConsumptionForm: View {
     
 }
 
+// MARK: - Initial Category Picker
+
 private extension CreateConsumptionForm {
     
+    /// Initial category picker
     var initialCategoryPicker: some View {
         Section(
             header: VStack {
@@ -201,8 +195,12 @@ private extension CreateConsumptionForm {
     
 }
 
+// MARK: - Content
+
 private extension CreateConsumptionForm {
     
+    /// The content for a given category
+    /// - Parameter category: A Consumption Category
     @ViewBuilder
     // swiftlint:disable:next function_body_length
     func content(
@@ -247,11 +245,20 @@ private extension CreateConsumptionForm {
         ) {
             switch category {
             case .electricity:
-                self.electricityContent
+                Electricity(
+                    partialElectricity: self.$partialElectricity,
+                    value: self.$value
+                )
             case .heating:
-                self.heatingContent
+                Heating(
+                    partialHeating: self.$partialHeating,
+                    value: self.$value
+                )
             case .transportation:
-                self.transportationContent
+                Transportation(
+                    partialTransportation: self.$partialTransportation,
+                    value: self.$value
+                )
             }
         }
         .headerProminence(.increased)
@@ -277,233 +284,11 @@ private extension CreateConsumptionForm {
                         .font(.headline)
                 }
             )
-            .disabled(self.consumption == nil)
+            .disabled((try? self.consumption) == nil)
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
             .align(.centerHorizontal)
         ) {
-        }
-    }
-    
-}
-
-private extension CreateConsumptionForm {
-    
-    @ViewBuilder
-    var electricityContent: some View {
-        DatePicker(
-            "Start",
-            selection: .init(
-                get: {
-                    self.partialElectricity.startDate?.dateValue() ?? .init()
-                },
-                set: { newValue in
-                    self.partialElectricity.startDate = .init(date: newValue)
-                }
-            ),
-            displayedComponents: [.date]
-        )
-        DatePicker(
-            "End",
-            selection: .init(
-                get: {
-                    self.partialElectricity.endDate?.dateValue() ?? .init()
-                },
-                set: { newValue in
-                    self.partialElectricity.endDate = .init(date: newValue)
-                }
-            ),
-            in: (self.partialElectricity.startDate?.dateValue() ?? .init())...,
-            displayedComponents: [.date]
-        )
-        HStack {
-            NumberTextField(
-                "Costs",
-                value: self.$partialElectricity.costs
-            )
-            Text("€")
-                .font(.footnote)
-                .foregroundColor(.secondary)
-        }
-        HStack {
-            NumberTextField(
-                "Consumption",
-                value: self.$value
-            )
-            Text("kwH")
-                .font(.footnote)
-                .foregroundColor(.secondary)
-        }
-    }
-    
-}
-
-private extension CreateConsumptionForm {
-    
-    @ViewBuilder
-    var heatingContent: some View {
-        DatePicker(
-            "Start",
-            selection: .init(
-                get: {
-                    self.partialHeating.startDate?.dateValue() ?? .init()
-                },
-                set: { newValue in
-                    self.partialHeating.startDate = .init(date: newValue)
-                }
-            ),
-            displayedComponents: [.date]
-        )
-        DatePicker(
-            "End",
-            selection: .init(
-                get: {
-                    self.partialHeating.endDate?.dateValue() ?? .init()
-                },
-                set: { newValue in
-                    self.partialHeating.endDate = .init(date: newValue)
-                }
-            ),
-            in: (self.partialHeating.startDate?.dateValue() ?? .init())...,
-            displayedComponents: [.date]
-        )
-        HStack {
-            NumberTextField(
-                "Costs",
-                value: self.$partialHeating.costs
-            )
-            Text("€")
-                .font(.footnote)
-                .foregroundColor(.secondary)
-        }
-        Picker(
-            "Heating fuel",
-            selection: self.$partialHeating.heatingFuel
-        ) {
-            Text("Please choose")
-                .tag(nil as Consumption.Heating.HeatingFuel?)
-            ForEach(
-                Consumption.Heating.HeatingFuel.allCases,
-                id: \.self
-            ) { heatingFuel in
-                Text(heatingFuel.localizedString)
-                    .tag(heatingFuel as Consumption.Heating.HeatingFuel?)
-            }
-        }
-        if self.partialHeating.heatingFuel == .district {
-            Picker(
-                "District heating source",
-                selection: self.$partialHeating.districtHeatingSource
-            ) {
-                Text("Please choose")
-                    .tag(nil as Consumption.Heating.DistrictHeatingSource??)
-                ForEach(
-                    Consumption.Heating.DistrictHeatingSource.allCases,
-                    id: \.self
-                ) { districtHeatingSource in
-                    Text(districtHeatingSource.localizedString)
-                        .tag(districtHeatingSource as Consumption.Heating.DistrictHeatingSource??)
-                }
-            }
-        }
-        HStack {
-            NumberTextField(
-                "Consumption",
-                value: self.$value
-            )
-            Text("kwH")
-                .font(.footnote)
-                .foregroundColor(.secondary)
-        }
-    }
-    
-}
-
-private extension CreateConsumptionForm {
-    
-    @ViewBuilder
-    var transportationContent: some View {
-        DatePicker(
-            "Date of travel",
-            selection: .init(
-                get: {
-                    self.partialTransportation.dateOfTravel?.dateValue() ?? .init()
-                },
-                set: { newValue in
-                    self.partialTransportation.dateOfTravel = .init(date: newValue)
-                }
-            )
-        )
-        Picker(
-            "Type",
-            selection: self.$partialTransportation.transportationType
-        ) {
-            Text("Please choose")
-                .tag(nil as Consumption.Transportation.TransportationType?)
-            ForEach(
-                Consumption
-                    .Transportation
-                    .TransportationType
-                    .Group
-                    .allCases,
-                id: \.self
-            ) { transportationTypeGroup in
-                Section(
-                    header: Text(transportationTypeGroup.localizedString)
-                ) {
-                    ForEach(
-                        transportationTypeGroup.elements,
-                        id: \.self
-                    ) { transportationType in
-                        Text(transportationType.localizedString)
-                            .tag(transportationType as Consumption.Transportation.TransportationType?)
-                    }
-                }
-            }
-        }
-        .onChange(of: self.partialTransportation.transportationType) { transportationType in
-            self.partialTransportation.privateVehicleOccupancy = transportationType?
-                .privateVehicleOccupancyRange != nil ? 1 : nil
-        }
-        if self.partialTransportation.transportationType?.isPublicVehicle == true {
-            Picker(
-                "Occupancy",
-                selection: self.$partialTransportation.publicVehicleOccupancy
-            ) {
-                Text("Please choose")
-                    .tag(nil as Consumption.Transportation.PublicVehicleOccupancy??)
-                ForEach(
-                    Consumption.Transportation.PublicVehicleOccupancy.allCases,
-                    id: \.self
-                ) { occupancy in
-                    Text(occupancy.localizedString)
-                        .tag(occupancy as Consumption.Transportation.PublicVehicleOccupancy??)
-                }
-            }
-        } else if let privateVehicleOccupancyRange = self.partialTransportation
-            .transportationType?
-            .privateVehicleOccupancyRange {
-            Stepper(
-                "Occupancy: \(self.partialTransportation.privateVehicleOccupancy?.flatMap { $0 } ?? 1)",
-                value: .init(
-                    get: {
-                        self.partialTransportation.privateVehicleOccupancy?.flatMap { $0 } ?? 1
-                    },
-                    set: { privateVehicleOccupancy in
-                        self.partialTransportation.privateVehicleOccupancy = privateVehicleOccupancy
-                    }
-                ),
-                in: privateVehicleOccupancyRange
-            )
-        }
-        HStack {
-            NumberTextField(
-                "Distance",
-                value: self.$value
-            )
-            Text("km")
-                .font(.footnote)
-                .foregroundColor(.secondary)
         }
     }
     

@@ -104,6 +104,9 @@
 		3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */; };
 		3D537A62298B1E9500C294AA /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A61298B1E9500C294AA /* Password.swift */; };
 		3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */; };
+		3D8A05E32991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E22991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift */; };
+		3D8A05E52991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E42991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift */; };
+		3D8A05E72991B006005DEA43 /* CreateConsumptionForm+Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E62991B006005DEA43 /* CreateConsumptionForm+Transportation.swift */; };
 		3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */; };
 		3DD34C5A2948F280002064D8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD34C592948F280002064D8 /* App.swift */; };
 		3DD34C5E2948F280002064D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD34C5D2948F280002064D8 /* Assets.xcassets */; };
@@ -197,6 +200,9 @@
 		3D537A61298B1E9500C294AA /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Authentication+Method.swift"; sourceTree = "<group>"; };
 		3D83A231296849F20066B039 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
+		3D8A05E22991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateConsumptionForm+Electricity.swift"; sourceTree = "<group>"; };
+		3D8A05E42991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateConsumptionForm+Heating.swift"; sourceTree = "<group>"; };
+		3D8A05E62991B006005DEA43 /* CreateConsumptionForm+Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateConsumptionForm+Transportation.swift"; sourceTree = "<group>"; };
 		3DAA79C2297153F40097DD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionList.swift; sourceTree = "<group>"; };
 		3DD34C562948F280002064D8 /* AURORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AURORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -403,6 +409,9 @@
 			isa = PBXGroup;
 			children = (
 				3D1EE631298AAC5B009E4645 /* CreateConsumptionForm.swift */,
+				3D8A05E22991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift */,
+				3D8A05E42991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift */,
+				3D8A05E62991B006005DEA43 /* CreateConsumptionForm+Transportation.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -491,9 +500,9 @@
 			children = (
 				3D1EE660298AACF8009E4645 /* Consumption.swift */,
 				3D1EE661298AACF8009E4645 /* Consumption+Category.swift */,
-				3D1EE662298AACF8009E4645 /* Transportation */,
-				3D1EE666298AACF8009E4645 /* Heating */,
 				3D1EE668298AACF8009E4645 /* Electricity */,
+				3D1EE666298AACF8009E4645 /* Heating */,
+				3D1EE662298AACF8009E4645 /* Transportation */,
 			);
 			path = Consumption;
 			sourceTree = "<group>";
@@ -839,9 +848,11 @@
 				3D1EE691298AACF8009E4645 /* FirestoreEntityReference.swift in Sources */,
 				3D1EE6C8298AAEA3009E4645 /* AsyncButtonState.swift in Sources */,
 				3D1EE6D1298AAEC0009E4645 /* OrientationReader.swift in Sources */,
+				3D8A05E32991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift in Sources */,
 				3D1EE68D298AACF8009E4645 /* User.swift in Sources */,
 				3D1EE68C298AACF8009E4645 /* User+UID.swift in Sources */,
 				3D1EE64D298AAC9E009E4645 /* FeaturePreview+Page.swift in Sources */,
+				3D8A05E72991B006005DEA43 /* CreateConsumptionForm+Transportation.swift in Sources */,
 				3D1EE695298AACF8009E4645 /* ConsumptionSummary.swift in Sources */,
 				3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */,
 				3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */,
@@ -863,6 +874,7 @@
 				3D1EE638298AAC5B009E4645 /* CreateConsumptionForm.swift in Sources */,
 				3D1EE6D0298AAEC0009E4645 /* NumberTextField.swift in Sources */,
 				3D1EE6A5298AADD4009E4645 /* LocalNotificationRequest+Trigger+MatchingDateComponents.swift in Sources */,
+				3D8A05E52991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift in Sources */,
 				3D1EE68A298AACF8009E4645 /* Consumption+Heating.swift in Sources */,
 				3D1EE63A298AAC5B009E4645 /* ConsumptionList+Cell.swift in Sources */,
 				3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */,

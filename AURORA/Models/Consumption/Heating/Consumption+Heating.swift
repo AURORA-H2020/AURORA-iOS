@@ -27,3 +27,26 @@ extension Consumption {
     }
     
 }
+
+// MARK: - PartialConvertible
+
+extension Consumption.Heating: PartialConvertible {
+    
+    /// Creates a new instance from `Partial`.
+    /// - Parameter partial: The partial instance.
+    init(partial: Partial<Self>) throws {
+        self.init(
+            costs: try partial(\.costs),
+            startDate: try partial(\.startDate),
+            endDate: try partial(\.endDate),
+            heatingFuel: try partial(\.heatingFuel),
+            districtHeatingSource: try {
+                guard try partial(\.heatingFuel) == .district else {
+                    return nil
+                }
+                return try partial(\.districtHeatingSource)
+            }()
+        )
+    }
+    
+}
