@@ -27,25 +27,34 @@ struct AuthenticationForm {
 
 private extension AuthenticationForm {
     
-    /// Login using authentication method
-    /// - Parameter authenticationMethod: The authentication method
+    /// Login using authentication provider
+    /// - Parameter provider: The authentication provider
     func login(
-        using authenticationMethod: Firebase.Authentication.Method
+        using provider: Firebase.Authentication.Provider
     ) async {
+        // Verify is currently not busy
         guard !self.isBusy else {
+            // Otherwise return out of function
             return
         }
+        // Enable isBusy
         self.isBusy = true
+        // Defer
         defer {
+            // Disable isBusy
             self.isBusy = false
         }
         do {
+            // Try to login using provider
             try await self.firebase
                 .authentication
-                .login(using: authenticationMethod)
+                .login(using: .provider(provider))
         } catch is CancellationError {
+            // User cancelled login
+            // Simply return out of function
             return
         } catch {
+            // Set login error
             self.loginError = .init(error)
         }
     }
@@ -113,12 +122,12 @@ extension AuthenticationForm: View {
                             ) {
                                 AuthenticationProviderButton(style: .apple) {
                                     Task {
-                                        await self.login(using: .provider(.apple))
+                                        await self.login(using: .apple)
                                     }
                                 }
                                 AuthenticationProviderButton(style: .google) {
                                     Task {
-                                        await self.login(using: .provider(.google))
+                                        await self.login(using: .google)
                                     }
                                 }
                                 AuthenticationProviderButton(style: .mailAddress) {
