@@ -26,7 +26,7 @@ extension CreateConsumptionForm.Transportation: View {
     /// The content and behavior of the view.
     var body: some View {
         DatePicker(
-            "Date of travel",
+            "Start of travel",
             selection: .init(
                 get: {
                     self.partialTransportation.dateOfTravel?.dateValue() ?? .init()
