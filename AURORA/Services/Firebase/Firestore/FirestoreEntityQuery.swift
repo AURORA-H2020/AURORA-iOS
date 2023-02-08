@@ -74,7 +74,7 @@ struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
                 )
                 .path,
             predicates: predicates,
-            decodingFailureStrategy: .raise
+            decodingFailureStrategy: .ignore
         )
     }
     
