@@ -21,7 +21,7 @@ extension Consumption {
     
 }
 
-// MARK: - PartialConvertible
+// MARK: - Consumption+Electricity+PartialConvertible
 
 extension Consumption.Electricity: PartialConvertible {
     
@@ -33,6 +33,17 @@ extension Consumption.Electricity: PartialConvertible {
             startDate: try partial(\.startDate),
             endDate: try partial(\.endDate)
         )
+    }
+    
+}
+
+// MARK: - Consumption+Electricity+formattedCosts
+
+extension Consumption.Electricity {
+    
+    /// A formatted representation of the costs.
+    var formattedCosts: String {
+        self.costs.formatted(.currency(code: "EUR"))
     }
     
 }

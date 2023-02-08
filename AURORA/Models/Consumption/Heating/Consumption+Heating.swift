@@ -28,7 +28,7 @@ extension Consumption {
     
 }
 
-// MARK: - PartialConvertible
+// MARK: - Consumption+Heating+PartialConvertible
 
 extension Consumption.Heating: PartialConvertible {
     
@@ -47,6 +47,17 @@ extension Consumption.Heating: PartialConvertible {
                 return try partial(\.districtHeatingSource)
             }()
         )
+    }
+    
+}
+
+// MARK: - Consumption+Heating+formattedCosts
+
+extension Consumption.Heating {
+    
+    /// A formatted representation of the costs.
+    var formattedCosts: String {
+        self.costs.formatted(.currency(code: "EUR"))
     }
     
 }
