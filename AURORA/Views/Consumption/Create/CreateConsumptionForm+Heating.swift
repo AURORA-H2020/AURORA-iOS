@@ -109,11 +109,9 @@ extension CreateConsumptionForm.Heating: View {
                 "Consumption",
                 value: self.$value
             )
-            Text(
-                verbatim: "kWh"
-            )
-            .font(.footnote)
-            .foregroundColor(.secondary)
+            Text(UnitEnergy.kilowattHours.symbol)
+                .font(.footnote)
+                .foregroundColor(.secondary)
         }
     }
     
