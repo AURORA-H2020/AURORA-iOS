@@ -125,9 +125,9 @@ extension Consumption {
             )
             .formatted()
         case .heating, .electricity:
-            return Measurement<UnitPower>(
+            return Measurement<UnitEnergy>(
                 value: self.value,
-                unit: .kilowatts
+                unit: .kilowattHours
             )
             .formatted()
         }
