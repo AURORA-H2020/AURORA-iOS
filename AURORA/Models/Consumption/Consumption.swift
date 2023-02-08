@@ -141,17 +141,26 @@ extension Consumption {
     
     /// A formatted representation of the carbon emissions, if available.
     var formattedCarbonEmissions: String? {
-        self.carbonEmissions
-            .flatMap { carbonEmissions in
-                guard !carbonEmissions.isNaN else {
-                    return nil
-                }
-                return Measurement<UnitMass>(
-                    value: carbonEmissions,
-                    unit: .kilograms
+        guard let carbonEmissions = self.carbonEmissions,
+              !carbonEmissions.isNaN else {
+            return nil
+        }
+        let measurement = Measurement<UnitMass>(
+            value: carbonEmissions,
+            unit: .kilograms
+        )
+        if measurement.value <= 0 {
+            return measurement
+                .converted(to: .grams)
+                .formatted(
+                    .measurement(
+                        width: .abbreviated,
+                        usage: .asProvided
+                    )
                 )
-                .formatted()
-            }
+        } else {
+            return measurement.formatted()
+        }
     }
     
 }
