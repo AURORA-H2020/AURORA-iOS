@@ -17,6 +17,24 @@ struct AuthenticationForm {
     @State
     private var loginError: Identified<Error>?
     
+    /// The vertical size class.
+    @Environment(\.verticalSizeClass)
+    private var verticalSizeClass
+    
+    /// The horizontal size class.
+    @Environment(\.horizontalSizeClass)
+    private var horizontalSizeClass
+    
+    /// Bool value if is landscape.
+    private var isLandscape: Bool {
+        (
+            self.horizontalSizeClass == .compact
+                || self.horizontalSizeClass == .regular
+        )
+        &&
+        self.verticalSizeClass == .compact
+    }
+    
     /// The Firebase instance
     @EnvironmentObject
     private var firebase: Firebase
@@ -67,89 +85,85 @@ extension AuthenticationForm: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        OrientationReader(
-            transaction: .init(animation: .default)
-        ) { orientation in
-            ZStack(alignment: .top) {
-                GeometryReader { geometry in
-                    Image(
-                        "Login-Background"
+        ZStack(alignment: .top) {
+            GeometryReader { geometry in
+                Image(
+                    "Login-Background"
+                )
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(
+                    height: geometry.frame(in: .local).size.height / 1.6
+                )
+                .mask {
+                    LinearGradient(
+                        gradient: .init(
+                            stops: [
+                                .init(color: .black, location: 0),
+                                .init(color: .clear, location: 1),
+                                .init(color: .black, location: 1),
+                                .init(color: .clear, location: 1)
+                            ]
+                        ),
+                        startPoint: .top,
+                        endPoint: .bottom
                     )
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(
-                        height: geometry.frame(in: .local).size.height / 1.6
-                    )
-                    .mask {
-                        LinearGradient(
-                            gradient: .init(
-                                stops: [
-                                    .init(color: .black, location: 0),
-                                    .init(color: .clear, location: 1),
-                                    .init(color: .black, location: 1),
-                                    .init(color: .clear, location: 1)
-                                ]
-                            ),
-                            startPoint: .top,
-                            endPoint: .bottom
+                }
+                .ignoresSafeArea()
+            }
+            VStack {
+                Spacer()
+                VStack(spacing: !self.isLandscape ? 50 : 25) {
+                    if !self.isLandscape {
+                        Image(
+                            "AURORA-Logo"
                         )
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 120, height: 120)
                     }
-                    .ignoresSafeArea()
-                }
-                VStack {
-                    Spacer()
-                    VStack(spacing: !orientation.isLandscape ? 50 : 25) {
-                        if !orientation.isLandscape {
-                            Image(
-                                "AURORA-Logo"
-                            )
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 120)
+                    VStack {
+                        Text("Welcome to AURORA")
+                            .font(.largeTitle.weight(.semibold))
+                        if !self.isLandscape {
+                            Text("Empowering a new generation of\nnear zero-emission citizens")
+                                .foregroundColor(.secondary)
                         }
-                        VStack {
-                            Text("Welcome to AURORA")
-                                .font(.largeTitle.weight(.semibold))
-                            if !orientation.isLandscape {
-                                Text("Empowering a new generation of\nnear zero-emission citizens")
-                                    .foregroundColor(.secondary)
+                    }
+                    .multilineTextAlignment(.center)
+                    VStack(spacing: 25) {
+                        VStack(
+                            spacing: AuthenticationProviderButton.preferredStackSpacing
+                        ) {
+                            AuthenticationProviderButton(style: .apple) {
+                                Task {
+                                    await self.login(using: .apple)
+                                }
+                            }
+                            AuthenticationProviderButton(style: .google) {
+                                Task {
+                                    await self.login(using: .google)
+                                }
+                            }
+                            AuthenticationProviderButton(style: .mailAddress) {
+                                guard !self.isBusy else {
+                                    return
+                                }
+                                self.isPasswordLoginFormPresented = true
                             }
                         }
+                        Text(
+                            // swiftlint:disable:next line_length
+                            "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)."
+                        )
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
-                        VStack(spacing: 25) {
-                            VStack(
-                                spacing: AuthenticationProviderButton.preferredStackSpacing
-                            ) {
-                                AuthenticationProviderButton(style: .apple) {
-                                    Task {
-                                        await self.login(using: .apple)
-                                    }
-                                }
-                                AuthenticationProviderButton(style: .google) {
-                                    Task {
-                                        await self.login(using: .google)
-                                    }
-                                }
-                                AuthenticationProviderButton(style: .mailAddress) {
-                                    guard !self.isBusy else {
-                                        return
-                                    }
-                                    self.isPasswordLoginFormPresented = true
-                                }
-                            }
-                            Text(
-                                // swiftlint:disable:next line_length
-                                "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)."
-                            )
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                            .fixedSize(horizontal: false, vertical: true)
-                        }
+                        .fixedSize(horizontal: false, vertical: true)
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, 25)
                 }
+                .padding(.horizontal)
+                .padding(.bottom, 25)
             }
         }
         .sheet(

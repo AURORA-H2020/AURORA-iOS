@@ -94,7 +94,6 @@
 		3D1EE6CA298AAEA3009E4645 /* AsyncButton+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6C7298AAEA3009E4645 /* AsyncButton+Modifiers.swift */; };
 		3D1EE6CF298AAEC0009E4645 /* SheetNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */; };
 		3D1EE6D0298AAEC0009E4645 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */; };
-		3D1EE6D1298AAEC0009E4645 /* OrientationReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CD298AAEC0009E4645 /* OrientationReader.swift */; };
 		3D1EE6D2298AAEC0009E4645 /* EmptyPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */; };
 		3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */; };
 		3D384D862948F6C40018249C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D384D852948F6C40018249C /* GoogleService-Info.plist */; };
@@ -189,7 +188,6 @@
 		3D1EE6C7298AAEA3009E4645 /* AsyncButton+Modifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AsyncButton+Modifiers.swift"; sourceTree = "<group>"; };
 		3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetNavigationView.swift; sourceTree = "<group>"; };
 		3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
-		3D1EE6CD298AAEC0009E4645 /* OrientationReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationReader.swift; sourceTree = "<group>"; };
 		3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyPlaceholder.swift; sourceTree = "<group>"; };
 		3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionView.swift; sourceTree = "<group>"; };
 		3D384D852948F6C40018249C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -353,7 +351,6 @@
 				3D1EE6A9298AAE24009E4645 /* PieChart */,
 				3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */,
 				3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */,
-				3D1EE6CD298AAEC0009E4645 /* OrientationReader.swift */,
 				3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */,
 			);
 			path = Views;
@@ -847,7 +844,6 @@
 				3D1CA71E298CF44D0009177C /* UIApplication+openSettings.swift in Sources */,
 				3D1EE691298AACF8009E4645 /* FirestoreEntityReference.swift in Sources */,
 				3D1EE6C8298AAEA3009E4645 /* AsyncButtonState.swift in Sources */,
-				3D1EE6D1298AAEC0009E4645 /* OrientationReader.swift in Sources */,
 				3D8A05E32991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift in Sources */,
 				3D1EE68D298AACF8009E4645 /* User.swift in Sources */,
 				3D1EE68C298AACF8009E4645 /* User+UID.swift in Sources */,
