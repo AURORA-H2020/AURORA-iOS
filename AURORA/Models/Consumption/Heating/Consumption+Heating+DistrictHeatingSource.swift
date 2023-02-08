@@ -12,8 +12,8 @@ extension Consumption.Heating {
         case naturalGas
         /// Oil
         case oil
-        /// Electricity
-        case electricity
+        /// Electric
+        case electric
         /// Solar thermal energy
         case solarThermal
         /// Geothermal energy
@@ -41,7 +41,7 @@ extension Consumption.Heating.DistrictHeatingSource {
             return .init(localized: "Natural gas")
         case .oil:
             return .init(localized: "Oil")
-        case .electricity:
+        case .electric:
             return .init(localized: "Electricity")
         case .solarThermal:
             return .init(localized: "Solar thermal energy")
