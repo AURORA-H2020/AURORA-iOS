@@ -186,15 +186,15 @@ extension ConsumptionView: View {
                             context: .current()
                         )
                 } label: {
-                    Text(verbatim: "Delete")
+                    Text("Delete")
                 }
                 Button(role: .cancel) {
                 } label: {
-                    Text(verbatim: "Cancel")
+                    Text("Cancel")
                 }
             },
             message: {
-                Text(verbatim: "Are you sure you want to delete the entry?")
+                Text("Are you sure you want to delete the entry?")
             }
         )
     }
