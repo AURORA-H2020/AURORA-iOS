@@ -79,7 +79,7 @@ extension CreateConsumptionForm.Electricity: View {
                 value: self.$value
             )
             Text(
-                verbatim: "kwH"
+                verbatim: "kWh"
             )
             .font(.footnote)
             .foregroundColor(.secondary)
