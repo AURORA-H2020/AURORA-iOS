@@ -25,6 +25,29 @@ extension CreateConsumptionForm.Electricity: View {
     
     /// The content and behavior of the view.
     var body: some View {
+        HStack {
+            NumberTextField(
+                "Costs",
+                value: self.$partialElectricity.costs
+            )
+            Text(
+                verbatim: "€"
+            )
+            .font(.footnote)
+            .foregroundColor(.secondary)
+        }
+        Stepper(
+            "People in household: \(self.partialElectricity.householdSize ?? 1)",
+            value: .init(
+                get: {
+                    self.partialElectricity.householdSize ?? 1
+                },
+                set: { householdSize in
+                    self.partialElectricity.householdSize = householdSize
+                }
+            ),
+            in: 1...100
+        )
         DatePicker(
             "Start",
             selection: .init(
@@ -50,17 +73,6 @@ extension CreateConsumptionForm.Electricity: View {
             in: (self.partialElectricity.startDate?.dateValue() ?? .init())...,
             displayedComponents: [.date]
         )
-        HStack {
-            NumberTextField(
-                "Costs",
-                value: self.$partialElectricity.costs
-            )
-            Text(
-                verbatim: "€"
-            )
-            .font(.footnote)
-            .foregroundColor(.secondary)
-        }
         HStack {
             NumberTextField(
                 "Consumption",

@@ -117,10 +117,12 @@ private extension CreateConsumptionForm {
         switch category {
         case .electricity:
             let startDate = Date()
+            self.partialElectricity.householdSize = 1
             self.partialElectricity.startDate = .init(date: startDate)
             self.partialElectricity.endDate = .init(date: startDate.addingTimeInterval(172800))
         case .heating:
             let startDate = Date()
+            self.partialHeating.householdSize = 1
             self.partialHeating.startDate = .init(date: startDate)
             self.partialHeating.endDate = .init(date: startDate.addingTimeInterval(172800))
         case .transportation:

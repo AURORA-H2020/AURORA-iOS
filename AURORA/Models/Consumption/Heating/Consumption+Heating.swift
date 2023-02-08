@@ -11,6 +11,9 @@ extension Consumption {
         /// The costs in cents.
         var costs: Int
         
+        /// The size of the household
+        var householdSize: Int
+        
         /// The start date.
         var startDate: Timestamp
         
@@ -37,6 +40,7 @@ extension Consumption.Heating: PartialConvertible {
     init(partial: Partial<Self>) throws {
         self.init(
             costs: try partial(\.costs),
+            householdSize: try partial(\.householdSize),
             startDate: try partial(\.startDate),
             endDate: try partial(\.endDate),
             heatingFuel: try partial(\.heatingFuel),
