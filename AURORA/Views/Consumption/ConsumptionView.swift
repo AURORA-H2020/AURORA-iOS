@@ -42,67 +42,94 @@ extension ConsumptionView: View {
             if let electricity = self.consumption.electricity {
                 Entry {
                     Text(electricity.formattedCosts)
+                        .foregroundColor(.secondary)
                 } label: {
                     Text("Costs")
                 }
                 Entry {
-                    Text(electricity.startDate.dateValue(), style: .date)
+                    Text(
+                        electricity.startDate.dateValue(),
+                        style: .date
+                    )
+                    .foregroundColor(.secondary)
                 } label: {
                     Text("Start")
                 }
                 Entry {
-                    Text(electricity.endDate.dateValue(), style: .date)
+                    Text(
+                        electricity.endDate.dateValue(),
+                        style: .date
+                    )
+                    .foregroundColor(.secondary)
                 } label: {
                     Text("End")
                 }
             } else if let heating = self.consumption.heating {
                 Entry {
                     Text(heating.formattedCosts)
+                        .foregroundColor(.secondary)
                 } label: {
                     Text("Costs")
                 }
                 Entry {
-                    Text(heating.startDate.dateValue(), style: .date)
+                    Text(
+                        heating.startDate.dateValue(),
+                        style: .date
+                    )
+                    .foregroundColor(.secondary)
                 } label: {
                     Text("Start")
                 }
                 Entry {
-                    Text(heating.endDate.dateValue(), style: .date)
+                    Text(
+                        heating.endDate.dateValue(),
+                        style: .date
+                    )
+                    .foregroundColor(.secondary)
                 } label: {
                     Text("End")
                 }
                 Entry {
                     Text(heating.heatingFuel.localizedString)
+                        .foregroundColor(.secondary)
                 } label: {
                     Text("Heating fuel")
                 }
                 if let districtHeatingSource = heating.districtHeatingSource {
                     Entry {
                         Text(districtHeatingSource.localizedString)
+                            .foregroundColor(.secondary)
                     } label: {
                         Text("Heating source")
                     }
                 }
             } else if let transportation = self.consumption.transportation {
                 Entry {
-                    Text(transportation.dateOfTravel.dateValue(), style: .date)
+                    Text(
+                        transportation.dateOfTravel.dateValue(),
+                        style: .date
+                    )
+                    .foregroundColor(.secondary)
                 } label: {
                     Text("Start of travel")
                 }
                 Entry {
                     Text(transportation.transportationType.localizedString)
+                        .foregroundColor(.secondary)
                 } label: {
                     Text("Transportation type")
                 }
                 if let privateVehicleOccupancy = transportation.privateVehicleOccupancy {
                     Entry {
                         Text(String(privateVehicleOccupancy))
+                            .foregroundColor(.secondary)
                     } label: {
                         Text("Occupancy")
                     }
                 } else if let publicVehicleOccupancy = transportation.publicVehicleOccupancy {
                     Entry {
                         Text(publicVehicleOccupancy.localizedString)
+                            .foregroundColor(.secondary)
                     } label: {
                         Text("Occupancy")
                     }
@@ -111,13 +138,21 @@ extension ConsumptionView: View {
             if let createdAt = self.consumption.createdAt {
                 Section {
                     Entry {
-                        Text(createdAt.dateValue(), style: .date)
+                        Text(
+                            createdAt.dateValue(),
+                            style: .date
+                        )
+                        .foregroundColor(.secondary)
                     } label: {
                         Text("Created")
                     }
                     if let updatedAt = self.consumption.updatedAt {
                         Entry {
-                            Text(updatedAt.dateValue(), style: .date)
+                            Text(
+                                updatedAt.dateValue(),
+                                style: .date
+                            )
+                            .foregroundColor(.secondary)
                         } label: {
                             Text("Updated")
                         }
