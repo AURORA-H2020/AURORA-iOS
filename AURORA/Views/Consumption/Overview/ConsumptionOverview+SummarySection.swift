@@ -32,23 +32,7 @@ extension ConsumptionOverview.SummarySection: View {
                     )
                 } else {
                     self.content(
-                        consumptionSummary: .init(
-                            totalCarbonEmissions: 0.79,
-                            entries: [
-                                .init(
-                                    category: .electricity,
-                                    value: 0.29
-                                ),
-                                .init(
-                                    category: .transportation,
-                                    value: 0.27
-                                ),
-                                .init(
-                                    category: .heating,
-                                    value: 0.44
-                                )
-                            ]
-                        )
+                        consumptionSummary: .placeholder
                     )
                     .redacted(reason: .placeholder)
                     .opacity(0.7)
@@ -74,9 +58,7 @@ private extension ConsumptionOverview.SummarySection {
             VStack(alignment: .leading) {
                 VStack {
                     VStack {
-                        Text(
-                            "\(consumptionSummary.totalCarbonEmissions.formatted()) tons"
-                        )
+                        Text(consumptionSummary.formattedTotalCarbonEmissions)
                         .font(.title3.weight(.bold))
                         .foregroundColor(.accentColor)
                         Text("CO₂ emissions")
@@ -109,7 +91,7 @@ private extension ConsumptionOverview.SummarySection {
                                 Text(entry.category.rawValue.capitalized)
                                     .font(.headline)
                                     .foregroundColor(.primary)
-                                Text("\(Int(entry.value * 100))%")
+                                Text(entry.formattedValue)
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
@@ -136,5 +118,30 @@ private extension ConsumptionOverview.SummarySection {
             .frame(height: 160)
         }
     }
+    
+}
+
+// MARK: - ConsumptionSummary+placeholder
+
+private extension ConsumptionSummary {
+    
+    /// A placeholder ConsumptionSummary
+    static let placeholder = Self(
+        totalCarbonEmissions: 0.79,
+        entries: [
+            .init(
+                category: .electricity,
+                value: 0.29
+            ),
+            .init(
+                category: .transportation,
+                value: 0.27
+            ),
+            .init(
+                category: .heating,
+                value: 0.44
+            )
+        ]
+    )
     
 }
