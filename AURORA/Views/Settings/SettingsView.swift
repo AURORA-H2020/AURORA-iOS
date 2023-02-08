@@ -276,53 +276,6 @@ private extension SettingsView {
     
 }
 
-// MARK: - Export User Data
-
-private extension SettingsView {
-    
-    /// Export user data file
-    /// - Parameter userDataFile: The user data file url which should be exported.
-    func export(
-        userDataFile: URL
-    ) {
-        // Verify root ViewController is available
-        guard let rootViewController = UIApplication
-            .shared
-            .connectedScenes
-            .compactMap({ $0 as? UIWindowScene })
-            .first(where: { $0.activationState == .foregroundActive })?
-            .windows
-            .first(where: \.isKeyWindow)?
-            .rootViewController else {
-            // Otherwise return out of function
-            return
-        }
-        // Initialize UIActivityViewController
-        let activityViewController = UIActivityViewController(
-            activityItems: [userDataFile],
-            applicationActivities: nil
-        )
-        // Initialize source view
-        let sourceView: UIView = rootViewController.view
-        // Set source view
-        activityViewController.popoverPresentationController?.sourceView = sourceView
-        // Set source rect
-        activityViewController.popoverPresentationController?.sourceRect = .init(
-            x: sourceView.bounds.width / 2,
-            y: sourceView.bounds.height / 2,
-            width: 0,
-            height: 0
-        )
-        // Present UIActivityViewController
-        rootViewController
-            .present(
-                activityViewController,
-                animated: true
-            )
-    }
-    
-}
-
 private extension SettingsView {
     
     var legalSection: some View {
@@ -367,6 +320,53 @@ private extension SettingsView {
             }
         }
         .headerProminence(.increased)
+    }
+    
+}
+
+// MARK: - Export User Data
+
+private extension SettingsView {
+    
+    /// Export user data file
+    /// - Parameter userDataFile: The user data file url which should be exported.
+    func export(
+        userDataFile: URL
+    ) {
+        // Verify root ViewController is available
+        guard let rootViewController = UIApplication
+            .shared
+            .connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .first(where: { $0.activationState == .foregroundActive })?
+            .windows
+            .first(where: \.isKeyWindow)?
+            .rootViewController else {
+            // Otherwise return out of function
+            return
+        }
+        // Initialize UIActivityViewController
+        let activityViewController = UIActivityViewController(
+            activityItems: [userDataFile],
+            applicationActivities: nil
+        )
+        // Initialize source view
+        let sourceView: UIView = rootViewController.view
+        // Set source view
+        activityViewController.popoverPresentationController?.sourceView = sourceView
+        // Set source rect
+        activityViewController.popoverPresentationController?.sourceRect = .init(
+            x: sourceView.bounds.width / 2,
+            y: sourceView.bounds.height / 2,
+            width: 0,
+            height: 0
+        )
+        // Present UIActivityViewController
+        rootViewController
+            .present(
+                activityViewController,
+                animated: true
+            )
     }
     
 }
