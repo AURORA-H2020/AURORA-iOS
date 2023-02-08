@@ -3,9 +3,7 @@ import SwiftUI
 // MARK: - FeaturePreview
 
 /// The FeaturePreview
-struct FeaturePreview {
-    
-}
+struct FeaturePreview {}
 
 // MARK: - View
 
