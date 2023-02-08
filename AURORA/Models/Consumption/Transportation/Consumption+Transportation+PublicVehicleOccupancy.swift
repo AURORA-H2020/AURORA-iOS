@@ -24,9 +24,9 @@ extension Consumption.Transportation.PublicVehicleOccupancy {
     var localizedString: String {
         switch self {
         case .almostEmpty:
-            return .init(localized: "Almot empty")
+            return .init(localized: "Almost empty")
         case .medium:
-            return .init(localized: "Medium")
+            return .init(localized: "Medium occupancy")
         case .nearlyFull:
             return .init(localized: "Nearly full")
         }
