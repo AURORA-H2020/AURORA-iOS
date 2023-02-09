@@ -42,48 +42,50 @@ extension PieChart: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        GeometryReader { geometry in
-            let localFrame = geometry.frame(in: .local)
-            let halfWidth = localFrame.size.width / 2
-            let halfHeight = localFrame.size.height / 2
-            let radius =  min(
-                halfWidth,
-                halfHeight
-            )
-            let center = CGPoint(
-                x: halfWidth,
-                y: halfHeight
-            )
-            ZStack(alignment: .center) {
-                ForEach(self.slices) { slice in
-                    let slicePath = Path { path in
-                        path.move(
-                            to: center
-                        )
-                        path.addArc(
-                            center: center,
-                            radius: radius,
-                            startAngle: slice.start,
-                            endAngle: slice.end,
-                            clockwise: false
-                        )
-                        if self.spacing != nil {
-                            path.addLine(
-                                to: .init(
-                                    x: localFrame.midX,
-                                    y: localFrame.midY
-                                )
+        if !self.slices.isEmpty {
+            GeometryReader { geometry in
+                let localFrame = geometry.frame(in: .local)
+                let halfWidth = localFrame.size.width / 2
+                let halfHeight = localFrame.size.height / 2
+                let radius =  min(
+                    halfWidth,
+                    halfHeight
+                )
+                let center = CGPoint(
+                    x: halfWidth,
+                    y: halfHeight
+                )
+                ZStack(alignment: .center) {
+                    ForEach(self.slices) { slice in
+                        let slicePath = Path { path in
+                            path.move(
+                                to: center
                             )
+                            path.addArc(
+                                center: center,
+                                radius: radius,
+                                startAngle: slice.start,
+                                endAngle: slice.end,
+                                clockwise: false
+                            )
+                            if self.spacing != nil {
+                                path.addLine(
+                                    to: .init(
+                                        x: localFrame.midX,
+                                        y: localFrame.midY
+                                    )
+                                )
+                            }
                         }
+                        slicePath
+                            .fill()
+                            .foregroundColor(slice.rawValue.color)
+                            .overlay(self.spacing.flatMap { slicePath.stroke($0.color, lineWidth: $0.width) })
+                            .opacity(self.selection.flatMap { $0 == slice.rawValue ? 1 : 0.2 } ?? 1)
+                            .onTapGesture {
+                                self.selection = slice.rawValue
+                            }
                     }
-                    slicePath
-                        .fill()
-                        .foregroundColor(slice.rawValue.color)
-                        .overlay(self.spacing.flatMap { slicePath.stroke($0.color, lineWidth: $0.width) })
-                        .opacity(self.selection.flatMap { $0 == slice.rawValue ? 1 : 0.2 } ?? 1)
-                        .onTapGesture {
-                            self.selection = slice.rawValue
-                        }
                 }
             }
         }
