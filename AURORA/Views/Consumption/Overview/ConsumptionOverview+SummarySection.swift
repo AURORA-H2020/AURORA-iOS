@@ -81,6 +81,7 @@ private extension ConsumptionOverview.SummarySection {
                         consumptionSummary
                             .entries
                             .sorted { $0.value > $1.value }
+                            .filter { !$0.value.isNaN }
                     ) { entry in
                         HStack {
                             Image(
@@ -103,8 +104,11 @@ private extension ConsumptionOverview.SummarySection {
             PieChart(
                 consumptionSummary
                     .entries
-                    .map { entry in
-                        .init(
+                    .compactMap { entry -> PieChart<ConsumptionSummary.Entry>.Slice? in
+                        guard !entry.value.isNaN else {
+                            return nil
+                        }
+                        return .init(
                             id: entry,
                             value: entry.value,
                             color: entry.category.tintColor
