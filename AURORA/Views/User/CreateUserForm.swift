@@ -180,6 +180,8 @@ extension CreateUserForm: View {
                                         .tag(reference as FirestoreEntityReference<City>?)
                                 }
                             }
+                            Text("Other City")
+                                .tag(nil as FirestoreEntityReference<City>?)
                         }
                     }
                 }
