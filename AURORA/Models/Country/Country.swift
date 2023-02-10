@@ -41,6 +41,15 @@ extension Country: Comparable {
     
 }
 
+// MARK: - Country+europe
+
+private extension Country {
+    
+    /// A Country representing Europe (EU)
+    static let europe = Self(countryCode: "EU")
+    
+}
+
 // MARK: - Country+localizedString
 
 extension Country {
@@ -50,11 +59,18 @@ extension Country {
     func localizedString(
         locale: Locale = .current
     ) -> String {
-        locale.localizedString(
-            forRegionCode: self.countryCode
-        )
-        ??
-        self.countryCode
+        if self.countryCode == Self.europe.countryCode {
+            return .init(
+                localized: "Europe"
+            )
+        } else {
+            return locale
+                .localizedString(
+                    forRegionCode: self.countryCode
+                )
+                ??
+                self.countryCode
+        }
     }
     
 }
