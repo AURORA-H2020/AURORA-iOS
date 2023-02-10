@@ -36,6 +36,9 @@ struct Consumption {
     /// The value.
     var value: Double
     
+    /// The optional description
+    var description: String?
+    
     /// The carbon emissions.
     let carbonEmissions: Double?
     
@@ -44,13 +47,14 @@ struct Consumption {
     /// Creates a new instance of `Consumption`
     /// - Parameters:
     ///   - id: The identifier
-    ///   - createdAt: The creation date. Default value `nil`
-    ///   - updatedAt: The date when the consumption has been updated. Default value `nil`
+    ///   - createdAt: The creation date.
+    ///   - updatedAt: The date when the consumption has been updated.
     ///   - category: The category of the consumption.
     ///   - electricity: The optional electricity information.
     ///   - heating: The optional heating information.
     ///   - transportation: The optional transportation information.
     ///   - value: The value
+    ///   - description: The optional description.
     ///   - carbonEmissions: The carbon emissions.
     init(
         id: String? = nil,
@@ -61,6 +65,7 @@ struct Consumption {
         heating: Heating? = nil,
         transportation: Transportation? = nil,
         value: Double,
+        description: String? = nil,
         carbonEmissions: Double? = nil
     ) {
         self.id = id
@@ -71,6 +76,7 @@ struct Consumption {
         self.heating = heating
         self.transportation = transportation
         self.value = value
+        self.description = description
         self.carbonEmissions = carbonEmissions
     }
     

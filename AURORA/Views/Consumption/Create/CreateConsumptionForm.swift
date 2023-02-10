@@ -25,6 +25,10 @@ struct CreateConsumptionForm {
     @State
     private var value: Double?
     
+    /// The description
+    @State
+    private var description = String()
+    
     /// The DismissAction
     @Environment(\.dismiss)
     private var dismiss
@@ -57,7 +61,12 @@ private extension CreateConsumptionForm {
                 transportation: category == .transportation
                     ? try .init(partial: self.partialTransportation)
                     : nil,
-                value: value
+                value: value,
+                description: {
+                    let description = self.description
+                        .trimmingCharacters(in: .whitespaces)
+                    return description.isEmpty ? nil : description
+                }()
             )
         }
     }
@@ -242,23 +251,41 @@ private extension CreateConsumptionForm {
             .tint(category.tintColor)
             .controlSize(.regular)
             .align(.centerHorizontal)
-            .padding(.vertical, 15)
+            .padding(.top, 15)
         ) {
-            switch category {
-            case .electricity:
-                Electricity(
-                    partialElectricity: self.$partialElectricity,
-                    value: self.$value
+        }
+        .headerProminence(.increased)
+        switch category {
+        case .electricity:
+            Electricity(
+                partialElectricity: self.$partialElectricity,
+                value: self.$value
+            )
+        case .heating:
+            Heating(
+                partialHeating: self.$partialHeating,
+                value: self.$value
+            )
+        case .transportation:
+            Transportation(
+                partialTransportation: self.$partialTransportation,
+                value: self.$value
+            )
+        }
+        Section(
+            header: Text("Description"),
+            footer: Text("Add an optional description to your entry.")
+        ) {
+            if #available(iOS 16.0, *) {
+                TextField(
+                    "Description",
+                    text: self.$description,
+                    axis: .vertical
                 )
-            case .heating:
-                Heating(
-                    partialHeating: self.$partialHeating,
-                    value: self.$value
-                )
-            case .transportation:
-                Transportation(
-                    partialTransportation: self.$partialTransportation,
-                    value: self.$value
+            } else {
+                TextField(
+                    "Description",
+                    text: self.$description
                 )
             }
         }
