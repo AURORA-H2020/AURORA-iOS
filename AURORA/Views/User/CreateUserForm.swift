@@ -230,12 +230,34 @@ extension CreateUserForm: View {
             .navigationTitle("Profile")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(role: .destructive) {
-                        try? self.firebase.authentication.logout()
+                    Menu {
+                        Button {
+                            try? self.firebase.authentication.logout()
+                        } label: {
+                            Label(
+                                "Logout",
+                                systemImage: "arrow.up.forward.square"
+                            )
+                        }
+                        Button(role: .destructive) {
+                            Task {
+                                do {
+                                    try await self.firebase.authentication.deleteAccount()
+                                } catch {
+                                    try? self.firebase.authentication.logout()
+                                }
+                            }
+                        } label: {
+                            Label(
+                                "Delete my account",
+                                systemImage: "trash"
+                            )
+                        }
                     } label: {
-                        Text("Logout")
+                        Image(
+                            systemName: "ellipsis.circle"
+                        )
                     }
-
                 }
             }
         }
