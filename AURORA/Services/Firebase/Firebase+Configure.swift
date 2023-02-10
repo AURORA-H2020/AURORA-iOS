@@ -59,6 +59,11 @@ extension Firebase {
                 .FirebaseApp
                 .configure()
         }
+        // Use App Language
+        FirebaseAuth
+            .Auth
+            .auth()
+            .useAppLanguage()
         // Disable Firebase Analytics for debug builds
         FirebaseAnalytics
             .Analytics
