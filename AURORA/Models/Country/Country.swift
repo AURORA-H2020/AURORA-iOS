@@ -61,7 +61,7 @@ extension Country {
     ) -> String {
         if self.countryCode == Self.europe.countryCode {
             return .init(
-                localized: "Europe"
+                localized: "Other"
             )
         } else {
             return locale
