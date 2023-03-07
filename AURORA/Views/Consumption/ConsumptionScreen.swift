@@ -1,10 +1,10 @@
 import FirebaseAnalyticsSwift
 import SwiftUI
 
-// MARK: - ConsumptionOverview
+// MARK: - ConsumptionScreen
 
-/// The ConsumptionOverview
-struct ConsumptionOverview {
+/// The ConsumptionScreen
+struct ConsumptionScreen {
     
     // MARK: Properties
     
@@ -29,7 +29,7 @@ struct ConsumptionOverview {
 
 // MARK: - View
 
-extension ConsumptionOverview: View {
+extension ConsumptionScreen: View {
     
     /// The content and behavior of the view.
     var body: some View {

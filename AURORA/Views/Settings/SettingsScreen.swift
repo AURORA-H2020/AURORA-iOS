@@ -2,10 +2,10 @@ import FirebaseAnalyticsSwift
 import FirebaseAuth
 import SwiftUI
 
-// MARK: - SettingsView
+// MARK: - SettingsScreen
 
-/// The SettingsView
-struct SettingsView {
+/// The SettingsScreen
+struct SettingsScreen {
     
     /// Bool value if change mail address form is presented
     @State
@@ -27,7 +27,7 @@ struct SettingsView {
 
 // MARK: - View
 
-extension SettingsView: View {
+extension SettingsScreen: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -72,7 +72,7 @@ extension SettingsView: View {
     
 }
 
-private extension SettingsView {
+private extension SettingsScreen {
     
     var accountSection: some View {
         Section(
@@ -148,7 +148,7 @@ private extension SettingsView {
     
 }
 
-private extension SettingsView {
+private extension SettingsScreen {
     
     var notificationsSection: some View {
         Section(
@@ -184,7 +184,7 @@ private extension SettingsView {
     
 }
 
-private extension SettingsView {
+private extension SettingsScreen {
     
     var privacySection: some View {
         Section(
@@ -276,7 +276,7 @@ private extension SettingsView {
     
 }
 
-private extension SettingsView {
+private extension SettingsScreen {
     
     var legalSection: some View {
         Section(
@@ -326,7 +326,7 @@ private extension SettingsView {
 
 // MARK: - Export User Data
 
-private extension SettingsView {
+private extension SettingsScreen {
     
     /// Export user data file
     /// - Parameter userDataFile: The user data file url which should be exported.

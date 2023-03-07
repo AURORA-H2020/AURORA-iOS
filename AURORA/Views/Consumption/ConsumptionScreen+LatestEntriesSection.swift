@@ -1,10 +1,10 @@
 import SwiftUI
 
-// MARK: - ConsumptionOverview+LatestEntriesSection
+// MARK: - ConsumptionScreen+LatestEntriesSection
 
-extension ConsumptionOverview {
+extension ConsumptionScreen {
     
-    /// The ConsumptionOverview LatestEntriesSection
+    /// The ConsumptionScreen LatestEntriesSection
     struct LatestEntriesSection {
         
         // MARK: Properties
@@ -51,7 +51,7 @@ extension ConsumptionOverview {
 
 // MARK: - View
 
-extension ConsumptionOverview.LatestEntriesSection: View {
+extension ConsumptionScreen.LatestEntriesSection: View {
     
     /// The content and behavior of the view.
     var body: some View {

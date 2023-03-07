@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3D08956A2991080800C996AD /* Consumption+Heating+HeatingFuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0895692991080800C996AD /* Consumption+Heating+HeatingFuel.swift */; };
 		3D08956C299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08956B299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift */; };
-		3D1CA718298CEFE80009177C /* ConsumptionOverview+SummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA717298CEFE80009177C /* ConsumptionOverview+SummarySection.swift */; };
-		3D1CA71A298CEFF40009177C /* ConsumptionOverview+LatestEntriesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA719298CEFF40009177C /* ConsumptionOverview+LatestEntriesSection.swift */; };
+		3D1CA718298CEFE80009177C /* ConsumptionScreen+SummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA717298CEFE80009177C /* ConsumptionScreen+SummarySection.swift */; };
+		3D1CA71A298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA719298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift */; };
 		3D1CA71C298CF2150009177C /* LocalNotificationRequest+Predefined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA71B298CF2150009177C /* LocalNotificationRequest+Predefined.swift */; };
 		3D1CA71E298CF44D0009177C /* UIApplication+openSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA71D298CF44D0009177C /* UIApplication+openSettings.swift */; };
 		3D1CA721298CF6AD0009177C /* EditUserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA720298CF6AD0009177C /* EditUserForm.swift */; };
@@ -28,20 +28,20 @@
 		3D1EE5F6298AA965009E4645 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5F5298AA965009E4645 /* GoogleSignInSwift */; };
 		3D1EE5FF298AA9EE009E4645 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE5FE298AA9EE009E4645 /* ContentView.swift */; };
 		3D1EE604298AAA21009E4645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE603298AAA21009E4645 /* AppDelegate.swift */; };
-		3D1EE60E298AAB39009E4645 /* AuthenticationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE607298AAB39009E4645 /* AuthenticationForm.swift */; };
+		3D1EE60E298AAB39009E4645 /* AuthenticationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE607298AAB39009E4645 /* AuthenticationScreen.swift */; };
 		3D1EE60F298AAB39009E4645 /* AuthenticationProviderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE609298AAB39009E4645 /* AuthenticationProviderButton.swift */; };
 		3D1EE610298AAB39009E4645 /* AuthenticationProviderButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE60A298AAB39009E4645 /* AuthenticationProviderButton+Style.swift */; };
 		3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE60C298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift */; };
 		3D1EE612298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE60D298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift */; };
 		3D1EE638298AAC5B009E4645 /* CreateConsumptionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE631298AAC5B009E4645 /* CreateConsumptionForm.swift */; };
-		3D1EE639298AAC5B009E4645 /* ConsumptionOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE632298AAC5B009E4645 /* ConsumptionOverview.swift */; };
+		3D1EE639298AAC5B009E4645 /* ConsumptionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE632298AAC5B009E4645 /* ConsumptionScreen.swift */; };
 		3D1EE63A298AAC5B009E4645 /* ConsumptionList+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE634298AAC5B009E4645 /* ConsumptionList+Cell.swift */; };
 		3D1EE64B298AAC9E009E4645 /* ChangePasswordForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE63E298AAC9E009E4645 /* ChangePasswordForm.swift */; };
 		3D1EE64C298AAC9E009E4645 /* FeaturePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE640298AAC9E009E4645 /* FeaturePreview.swift */; };
 		3D1EE64D298AAC9E009E4645 /* FeaturePreview+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE641298AAC9E009E4645 /* FeaturePreview+Page.swift */; };
 		3D1EE64E298AAC9E009E4645 /* ChangeMailAddressForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE643298AAC9E009E4645 /* ChangeMailAddressForm.swift */; };
 		3D1EE64F298AAC9E009E4645 /* LocalNotificationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE645298AAC9E009E4645 /* LocalNotificationForm.swift */; };
-		3D1EE650298AAC9E009E4645 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE646298AAC9E009E4645 /* SettingsView.swift */; };
+		3D1EE650298AAC9E009E4645 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE646298AAC9E009E4645 /* SettingsScreen.swift */; };
 		3D1EE651298AAC9E009E4645 /* ThirdPartyDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE648298AAC9E009E4645 /* ThirdPartyDependency.swift */; };
 		3D1EE652298AAC9E009E4645 /* ThirdPartyDependencyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE649298AAC9E009E4645 /* ThirdPartyDependencyDetail.swift */; };
 		3D1EE653298AAC9E009E4645 /* ThirdPartyDependencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE64A298AAC9E009E4645 /* ThirdPartyDependencyList.swift */; };
@@ -107,6 +107,7 @@
 		3D8A05E52991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E42991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift */; };
 		3D8A05E72991B006005DEA43 /* CreateConsumptionForm+Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E62991B006005DEA43 /* CreateConsumptionForm+Transportation.swift */; };
 		3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */; };
+		3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */; };
 		3DD34C5A2948F280002064D8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD34C592948F280002064D8 /* App.swift */; };
 		3DD34C5E2948F280002064D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD34C5D2948F280002064D8 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -114,28 +115,28 @@
 /* Begin PBXFileReference section */
 		3D0895692991080800C996AD /* Consumption+Heating+HeatingFuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Heating+HeatingFuel.swift"; sourceTree = "<group>"; };
 		3D08956B299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Heating+DistrictHeatingSource.swift"; sourceTree = "<group>"; };
-		3D1CA717298CEFE80009177C /* ConsumptionOverview+SummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionOverview+SummarySection.swift"; sourceTree = "<group>"; };
-		3D1CA719298CEFF40009177C /* ConsumptionOverview+LatestEntriesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionOverview+LatestEntriesSection.swift"; sourceTree = "<group>"; };
+		3D1CA717298CEFE80009177C /* ConsumptionScreen+SummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionScreen+SummarySection.swift"; sourceTree = "<group>"; };
+		3D1CA719298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionScreen+LatestEntriesSection.swift"; sourceTree = "<group>"; };
 		3D1CA71B298CF2150009177C /* LocalNotificationRequest+Predefined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalNotificationRequest+Predefined.swift"; sourceTree = "<group>"; };
 		3D1CA71D298CF44D0009177C /* UIApplication+openSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+openSettings.swift"; sourceTree = "<group>"; };
 		3D1CA720298CF6AD0009177C /* EditUserForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserForm.swift; sourceTree = "<group>"; };
 		3D1CA722298CFDC70009177C /* View+adaptivePresentationDetents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+adaptivePresentationDetents.swift"; sourceTree = "<group>"; };
 		3D1EE5FE298AA9EE009E4645 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D1EE603298AAA21009E4645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D1EE607298AAB39009E4645 /* AuthenticationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationForm.swift; sourceTree = "<group>"; };
+		3D1EE607298AAB39009E4645 /* AuthenticationScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationScreen.swift; sourceTree = "<group>"; };
 		3D1EE609298AAB39009E4645 /* AuthenticationProviderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderButton.swift; sourceTree = "<group>"; };
 		3D1EE60A298AAB39009E4645 /* AuthenticationProviderButton+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AuthenticationProviderButton+Style.swift"; sourceTree = "<group>"; };
 		3D1EE60C298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationForgotPasswordForm.swift; sourceTree = "<group>"; };
 		3D1EE60D298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationPasswordLoginForm.swift; sourceTree = "<group>"; };
 		3D1EE631298AAC5B009E4645 /* CreateConsumptionForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateConsumptionForm.swift; sourceTree = "<group>"; };
-		3D1EE632298AAC5B009E4645 /* ConsumptionOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumptionOverview.swift; sourceTree = "<group>"; };
+		3D1EE632298AAC5B009E4645 /* ConsumptionScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumptionScreen.swift; sourceTree = "<group>"; };
 		3D1EE634298AAC5B009E4645 /* ConsumptionList+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumptionList+Cell.swift"; sourceTree = "<group>"; };
 		3D1EE63E298AAC9E009E4645 /* ChangePasswordForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordForm.swift; sourceTree = "<group>"; };
 		3D1EE640298AAC9E009E4645 /* FeaturePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePreview.swift; sourceTree = "<group>"; };
 		3D1EE641298AAC9E009E4645 /* FeaturePreview+Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeaturePreview+Page.swift"; sourceTree = "<group>"; };
 		3D1EE643298AAC9E009E4645 /* ChangeMailAddressForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeMailAddressForm.swift; sourceTree = "<group>"; };
 		3D1EE645298AAC9E009E4645 /* LocalNotificationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationForm.swift; sourceTree = "<group>"; };
-		3D1EE646298AAC9E009E4645 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3D1EE646298AAC9E009E4645 /* SettingsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		3D1EE648298AAC9E009E4645 /* ThirdPartyDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyDependency.swift; sourceTree = "<group>"; };
 		3D1EE649298AAC9E009E4645 /* ThirdPartyDependencyDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyDependencyDetail.swift; sourceTree = "<group>"; };
 		3D1EE64A298AAC9E009E4645 /* ThirdPartyDependencyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyDependencyList.swift; sourceTree = "<group>"; };
@@ -203,6 +204,7 @@
 		3D8A05E62991B006005DEA43 /* CreateConsumptionForm+Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateConsumptionForm+Transportation.swift"; sourceTree = "<group>"; };
 		3DAA79C2297153F40097DD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionList.swift; sourceTree = "<group>"; };
+		3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotovoltaicScreen.swift; sourceTree = "<group>"; };
 		3DD34C562948F280002064D8 /* AURORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AURORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD34C592948F280002064D8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		3DD34C5D2948F280002064D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -230,16 +232,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D1CA716298CEFA50009177C /* Overview */ = {
-			isa = PBXGroup;
-			children = (
-				3D1EE632298AAC5B009E4645 /* ConsumptionOverview.swift */,
-				3D1CA717298CEFE80009177C /* ConsumptionOverview+SummarySection.swift */,
-				3D1CA719298CEFF40009177C /* ConsumptionOverview+LatestEntriesSection.swift */,
-			);
-			path = Overview;
-			sourceTree = "<group>";
-		};
 		3D1CA71F298CF5050009177C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +250,7 @@
 				3D1EE5FE298AA9EE009E4645 /* ContentView.swift */,
 				3D1EE5FD298AA9E8009E4645 /* Authentication */,
 				3D1EE5FC298AA9DD009E4645 /* Consumption */,
+				3DC2C2AA29B787B300A37D0C /* Photovoltaic */,
 				3D1EE5FB298AA9D8009E4645 /* Settings */,
 				3D1EE5FA298AA9D5009E4645 /* User */,
 			);
@@ -299,7 +292,7 @@
 		3D1EE5FB298AA9D8009E4645 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				3D1EE646298AAC9E009E4645 /* SettingsView.swift */,
+				3D1EE646298AAC9E009E4645 /* SettingsScreen.swift */,
 				3D1EE642298AAC9E009E4645 /* ChangeMailAddress */,
 				3D1EE63D298AAC9E009E4645 /* ChangePassword */,
 				3D1EE63F298AAC9E009E4645 /* FeaturePreview */,
@@ -312,8 +305,10 @@
 		3D1EE5FC298AA9DD009E4645 /* Consumption */ = {
 			isa = PBXGroup;
 			children = (
-				3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */,
-				3D1CA716298CEFA50009177C /* Overview */,
+				3D1EE632298AAC5B009E4645 /* ConsumptionScreen.swift */,
+				3D1CA717298CEFE80009177C /* ConsumptionScreen+SummarySection.swift */,
+				3D1CA719298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift */,
+				3DC2C2A929B7852E00A37D0C /* Detail */,
 				3D1EE630298AAC5B009E4645 /* Create */,
 				3D1EE633298AAC5B009E4645 /* List */,
 			);
@@ -323,7 +318,7 @@
 		3D1EE5FD298AA9E8009E4645 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				3D1EE607298AAB39009E4645 /* AuthenticationForm.swift */,
+				3D1EE607298AAB39009E4645 /* AuthenticationScreen.swift */,
 				3D1EE608298AAB39009E4645 /* ProviderButton */,
 				3D1EE60B298AAB39009E4645 /* PasswordLoginForm */,
 			);
@@ -641,6 +636,22 @@
 			path = City;
 			sourceTree = "<group>";
 		};
+		3DC2C2A929B7852E00A37D0C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		3DC2C2AA29B787B300A37D0C /* Photovoltaic */ = {
+			isa = PBXGroup;
+			children = (
+				3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */,
+			);
+			path = Photovoltaic;
+			sourceTree = "<group>";
+		};
 		3DD34C4D2948F280002064D8 = {
 			isa = PBXGroup;
 			children = (
@@ -805,7 +816,7 @@
 				3D1EE6A8298AADD4009E4645 /* UNMutableNotificationContent+Init.swift in Sources */,
 				3D1EE612298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift in Sources */,
 				3D1EE697298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift in Sources */,
-				3D1EE60E298AAB39009E4645 /* AuthenticationForm.swift in Sources */,
+				3D1EE60E298AAB39009E4645 /* AuthenticationScreen.swift in Sources */,
 				3D1EE688298AACF8009E4645 /* Consumption+Transportation+TransportationType.swift in Sources */,
 				3D1EE68F298AACF8009E4645 /* User+Gender.swift in Sources */,
 				3D1EE683298AACF8009E4645 /* Firebase+Firestore.swift in Sources */,
@@ -833,6 +844,7 @@
 				3D1EE610298AAB39009E4645 /* AuthenticationProviderButton+Style.swift in Sources */,
 				3D1EE6D2298AAEC0009E4645 /* EmptyPlaceholder.swift in Sources */,
 				3D1EE6BD298AAE62009E4645 /* Identified.swift in Sources */,
+				3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */,
 				3D1EE652298AAC9E009E4645 /* ThirdPartyDependencyDetail.swift in Sources */,
 				3D1CA721298CF6AD0009177C /* EditUserForm.swift in Sources */,
 				3D1EE684298AACF8009E4645 /* Firebase+Configure.swift in Sources */,
@@ -840,7 +852,7 @@
 				3D1EE68B298AACF8009E4645 /* Consumption+Electricity.swift in Sources */,
 				3D1EE653298AAC9E009E4645 /* ThirdPartyDependencyList.swift in Sources */,
 				3D1EE6CF298AAEC0009E4645 /* SheetNavigationView.swift in Sources */,
-				3D1EE639298AAC5B009E4645 /* ConsumptionOverview.swift in Sources */,
+				3D1EE639298AAC5B009E4645 /* ConsumptionScreen.swift in Sources */,
 				3D1CA71E298CF44D0009177C /* UIApplication+openSettings.swift in Sources */,
 				3D1EE691298AACF8009E4645 /* FirestoreEntityReference.swift in Sources */,
 				3D1EE6C8298AAEA3009E4645 /* AsyncButtonState.swift in Sources */,
@@ -860,7 +872,7 @@
 				3DD34C5A2948F280002064D8 /* App.swift in Sources */,
 				3D1EE686298AACF8009E4645 /* Consumption+Category.swift in Sources */,
 				3D1EE6B0298AAE24009E4645 /* PieChartSpacing.swift in Sources */,
-				3D1CA718298CEFE80009177C /* ConsumptionOverview+SummarySection.swift in Sources */,
+				3D1CA718298CEFE80009177C /* ConsumptionScreen+SummarySection.swift in Sources */,
 				3D1EE651298AAC9E009E4645 /* ThirdPartyDependency.swift in Sources */,
 				3D1EE696298AACF8009E4645 /* Firebase+Authentication.swift in Sources */,
 				3D3B8D44299150E5008590A8 /* City.swift in Sources */,
@@ -881,14 +893,14 @@
 				3D537A62298B1E9500C294AA /* Password.swift in Sources */,
 				3D1EE6CA298AAEA3009E4645 /* AsyncButton+Modifiers.swift in Sources */,
 				3D1EE64C298AAC9E009E4645 /* FeaturePreview.swift in Sources */,
-				3D1CA71A298CEFF40009177C /* ConsumptionOverview+LatestEntriesSection.swift in Sources */,
+				3D1CA71A298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift in Sources */,
 				3D1EE6A3298AADD4009E4645 /* LocalNotificationCenter.swift in Sources */,
 				3D1EE64B298AAC9E009E4645 /* ChangePasswordForm.swift in Sources */,
 				3D1EE68E298AACF8009E4645 /* User+Account.swift in Sources */,
 				3D1EE6B1298AAE24009E4645 /* PieChart+Slice.swift in Sources */,
 				3D1EE6C9298AAEA3009E4645 /* AsyncButton.swift in Sources */,
 				3D1EE6B8298AAE4C009E4645 /* View+delay.swift in Sources */,
-				3D1EE650298AAC9E009E4645 /* SettingsView.swift in Sources */,
+				3D1EE650298AAC9E009E4645 /* SettingsScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,17 +15,6 @@ extension Firebase {
     
 }
 
-// MARK: - User
-
-extension Firebase.Authentication {
-    
-    /// The User
-    var user: Result<User?, Error>? {
-        self.firebase.user
-    }
-    
-}
-
 // MARK: - User ID
 
 extension Firebase.Authentication {

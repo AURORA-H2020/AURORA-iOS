@@ -41,7 +41,7 @@ extension ContentView: View {
         )
         .animation(
             .default,
-            value: self.firebase.authentication.user,
+            value: self.firebase.user,
             by: { lhs, rhs in
                 switch (lhs, rhs) {
                 case (.success(let lhsUser), .success(let rhsUser)):
@@ -64,11 +64,11 @@ private extension ContentView {
     /// The authenticated view.
     @ViewBuilder
     var authenticated: some View {
-        switch self.firebase.authentication.user {
+        switch self.firebase.user {
         case .success(let user):
             if let user = user {
                 TabView {
-                    ConsumptionOverview(
+                    ConsumptionScreen(
                         user: user
                     )
                     .tabItem {
@@ -77,7 +77,20 @@ private extension ContentView {
                             systemImage: "chart.pie"
                         )
                     }
-                    SettingsView()
+                    if let country = try? self.firebase.country?.get(),
+                       let city = try? self.firebase.city?.get(),
+                       city.hasPhotovoltaics == true {
+                        PhotovoltaicScreen(
+                            country: country
+                        )
+                        .tabItem {
+                            Label(
+                                "Photovoltaics",
+                                systemImage: "sun.max"
+                            )
+                        }
+                    }
+                    SettingsScreen()
                         .tabItem {
                             Label(
                                 "Settings",
@@ -118,7 +131,7 @@ private extension ContentView {
     
     /// The unauthenticated view.
     var unauthenticated: some View {
-        AuthenticationForm()
+        AuthenticationScreen()
             .task {
                 try? await LocalNotificationCenter
                     .current

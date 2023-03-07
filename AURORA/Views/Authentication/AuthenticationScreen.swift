@@ -1,9 +1,9 @@
 import SwiftUI
 
-// MARK: - AuthenticationForm
+// MARK: - AuthenticationScreen
 
-/// The AuthenticationForm
-struct AuthenticationForm {
+/// The AuthenticationScreen
+struct AuthenticationScreen {
     
     /// Bool value if View is busy
     @State
@@ -43,7 +43,7 @@ struct AuthenticationForm {
 
 // MARK: - Submit
 
-private extension AuthenticationForm {
+private extension AuthenticationScreen {
     
     /// Login using authentication provider
     /// - Parameter provider: The authentication provider
@@ -81,7 +81,7 @@ private extension AuthenticationForm {
 
 // MARK: - View
 
-extension AuthenticationForm: View {
+extension AuthenticationScreen: View {
     
     /// The content and behavior of the view.
     var body: some View {

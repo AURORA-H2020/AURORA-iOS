@@ -1,10 +1,10 @@
 import SwiftUI
 
-// MARK: - ConsumptionOverview+SummarySection
+// MARK: - ConsumptionScreen+SummarySection
 
-extension ConsumptionOverview {
+extension ConsumptionScreen {
     
-    /// The ConsumptionOverview SummarySection
+    /// The ConsumptionScreen SummarySection
     struct SummarySection {
         
         /// The optional ConsumptionSummary
@@ -20,7 +20,7 @@ extension ConsumptionOverview {
 
 // MARK: - View
 
-extension ConsumptionOverview.SummarySection: View {
+extension ConsumptionScreen.SummarySection: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -47,7 +47,7 @@ extension ConsumptionOverview.SummarySection: View {
     
 }
 
-private extension ConsumptionOverview.SummarySection {
+private extension ConsumptionScreen.SummarySection {
     
     // swiftlint:disable:next function_body_length
     func content(

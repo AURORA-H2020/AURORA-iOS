@@ -19,9 +19,6 @@ extension Firebase {
 
 extension Firebase.Functions {
     
-    /// The download user data bad response error
-    struct DownloadUserDataBadResponseError: Error {}
-    
     /// Download user data and save it as a file to the cache directory.
     /// - Returns: The URL which points to a file in JSON format which contains the downloaded user data.
     func downloadUserData() async throws -> URL {
@@ -44,7 +41,13 @@ extension Firebase.Functions {
             // Verify data is a dictionary
             guard let response = result.data as? [String: Any] else {
                 // Otherwise throw an error
-                throw DownloadUserDataBadResponseError()
+                throw DecodingError
+                    .dataCorrupted(
+                        .init(
+                            codingPath: .init(),
+                            debugDescription: "Bad Response"
+                        )
+                    )
             }
             // Try to serialize dictionary as data
             let userData = try JSONSerialization
@@ -79,6 +82,59 @@ extension Firebase.Functions {
             // Return user data file url
             return userDataFileURL
         }
+    }
+    
+}
+
+// MARK: - Calculate Photovoltaic Investment
+
+extension Firebase.Functions {
+    
+    /// A photovoltaic investment result
+    struct PhotovoltaicInvestmentResult: Codable, Hashable {
+        
+        /// The produced energy
+        let producedEnergy: Double
+        
+        /// The carbon emissions savings
+        let carbonEmissionsSavings: Double
+        
+    }
+    
+    /// Calculate Photovoltaic Investment
+    /// - Parameter amount: The amount to invest
+    func calculatePhotovoltaicInvestment(
+        amount: Double
+    ) async throws -> PhotovoltaicInvestmentResult {
+        // Call function with amount
+        let result = try await self.firebase
+            .firebaseFunctions
+            .httpsCallable("calculatePhotovoltaicInvestment")
+            .call(amount)
+        // Try to decode result
+        return try JSONDecoder()
+            .decode(
+                PhotovoltaicInvestmentResult.self,
+                from: {
+                    // Verify data is a dictionary
+                    guard let response = result.data as? [String: Any] else {
+                        // Otherwise throw an error
+                        throw DecodingError
+                            .dataCorrupted(
+                                .init(
+                                    codingPath: .init(),
+                                    debugDescription: "Bad Response"
+                                )
+                            )
+                    }
+                    // Try to serialize dictionary as data
+                    return try JSONSerialization
+                        .data(
+                            withJSONObject: response,
+                            options: .init()
+                        )
+                }()
+            )
     }
     
 }
