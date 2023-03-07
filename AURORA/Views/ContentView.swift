@@ -79,9 +79,12 @@ private extension ContentView {
                     }
                     if let country = try? self.firebase.country?.get(),
                        let city = try? self.firebase.city?.get(),
-                       city.hasPhotovoltaics == true {
+                       city.hasPhotovoltaics == true,
+                       let pvgisParams = city.pvgisParams {
                         PhotovoltaicScreen(
-                            country: country
+                            country: country,
+                            city: city,
+                            pvgisParams: pvgisParams
                         )
                         .tabItem {
                             Label(

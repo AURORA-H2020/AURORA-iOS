@@ -102,6 +102,8 @@
 		3D3B8D44299150E5008590A8 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8D43299150E5008590A8 /* City.swift */; };
 		3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */; };
 		3D537A62298B1E9500C294AA /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A61298B1E9500C294AA /* Password.swift */; };
+		3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF229B792ED000EE0EB /* PVGISService.swift */; };
+		3D57AEF729B795A7000EE0EB /* City+PVGISParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF629B795A7000EE0EB /* City+PVGISParams.swift */; };
 		3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */; };
 		3D8A05E32991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E22991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift */; };
 		3D8A05E52991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E42991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift */; };
@@ -197,6 +199,8 @@
 		3D3B8D43299150E5008590A8 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isMailAddress.swift"; sourceTree = "<group>"; };
 		3D537A61298B1E9500C294AA /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
+		3D57AEF229B792ED000EE0EB /* PVGISService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVGISService.swift; sourceTree = "<group>"; };
+		3D57AEF629B795A7000EE0EB /* City+PVGISParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+PVGISParams.swift"; sourceTree = "<group>"; };
 		3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Authentication+Method.swift"; sourceTree = "<group>"; };
 		3D83A231296849F20066B039 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		3D8A05E22991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateConsumptionForm+Electricity.swift"; sourceTree = "<group>"; };
@@ -366,6 +370,7 @@
 			children = (
 				3D1EE5F8298AA97D009E4645 /* Firebase */,
 				3D1EE606298AAAB8009E4645 /* LocalNotification */,
+				3D57AEF129B792CC000EE0EB /* PVGISService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -632,8 +637,17 @@
 			isa = PBXGroup;
 			children = (
 				3D3B8D43299150E5008590A8 /* City.swift */,
+				3D57AEF629B795A7000EE0EB /* City+PVGISParams.swift */,
 			);
 			path = City;
+			sourceTree = "<group>";
+		};
+		3D57AEF129B792CC000EE0EB /* PVGISService */ = {
+			isa = PBXGroup;
+			children = (
+				3D57AEF229B792ED000EE0EB /* PVGISService.swift */,
+			);
+			path = PVGISService;
 			sourceTree = "<group>";
 		};
 		3DC2C2A929B7852E00A37D0C /* Detail */ = {
@@ -844,6 +858,7 @@
 				3D1EE610298AAB39009E4645 /* AuthenticationProviderButton+Style.swift in Sources */,
 				3D1EE6D2298AAEC0009E4645 /* EmptyPlaceholder.swift in Sources */,
 				3D1EE6BD298AAE62009E4645 /* Identified.swift in Sources */,
+				3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */,
 				3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */,
 				3D1EE652298AAC9E009E4645 /* ThirdPartyDependencyDetail.swift in Sources */,
 				3D1CA721298CF6AD0009177C /* EditUserForm.swift in Sources */,
@@ -856,6 +871,7 @@
 				3D1CA71E298CF44D0009177C /* UIApplication+openSettings.swift in Sources */,
 				3D1EE691298AACF8009E4645 /* FirestoreEntityReference.swift in Sources */,
 				3D1EE6C8298AAEA3009E4645 /* AsyncButtonState.swift in Sources */,
+				3D57AEF729B795A7000EE0EB /* City+PVGISParams.swift in Sources */,
 				3D8A05E32991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift in Sources */,
 				3D1EE68D298AACF8009E4645 /* User.swift in Sources */,
 				3D1EE68C298AACF8009E4645 /* User+UID.swift in Sources */,

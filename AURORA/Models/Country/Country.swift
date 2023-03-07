@@ -13,6 +13,9 @@ struct Country {
     /// The ISO 3166 Alpha-2 country code.
     let countryCode: String
     
+    /// The ISO 4217 currency code.
+    let currencyCode: String
+    
 }
 
 // MARK: - Country+FirestoreEntity
@@ -46,7 +49,10 @@ extension Country: Comparable {
 private extension Country {
     
     /// A Country representing Europe (EU)
-    static let europe = Self(countryCode: "EU")
+    static let europe = Self(
+        countryCode: "EU",
+        currencyCode: "EUR"
+    )
     
 }
 
