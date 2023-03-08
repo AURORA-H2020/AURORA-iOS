@@ -43,6 +43,9 @@ extension PVGISService {
     /// A photovoltaic investment result
     struct PhotovoltaicInvestmentResult: Codable, Hashable {
         
+        /// The investment amount.
+        let amount: Double
+        
         /// The produced energy by the photovoltaic.
         let producedEnergy: Measurement<UnitEnergy>
     
@@ -108,6 +111,7 @@ extension PVGISService {
         )
         // Return photovoltaic investment result
         return .init(
+            amount: amount,
             producedEnergy: producedEnergy,
             carbonEmissions: .init(
                 value: producedEnergy.value * 0.0305,
