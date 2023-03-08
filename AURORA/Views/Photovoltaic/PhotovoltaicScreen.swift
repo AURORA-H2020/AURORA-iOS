@@ -14,8 +14,17 @@ struct PhotovoltaicScreen {
     /// The PVGIS parameters of the city.
     let pvgisParams: City.PVGISParams
     
-    /// The PVGISService
-    private let pvgisService = PVGISService()
+    /// The amount to invest.
+    @State
+    private var investmentAmount: Double?
+    
+    /// The AsyncButtonState.
+    @State
+    private var asyncButtonState: AsyncButtonState?
+    
+    /// The calculcated photovoltaic investment result.
+    @State
+    private var investmentResult: PVGISService.PhotovoltaicInvestmentResult?
     
 }
 
@@ -27,16 +36,114 @@ extension PhotovoltaicScreen: View {
     var body: some View {
         NavigationView {
             List {
-                AsyncButton {
-                    try await self.pvgisService.calculcatePhotovoltaicInvestment(
-                        amount: 900,
-                        using: self.pvgisParams,
-                        in: self.country
-                    )
-                } label: {
-                    Text("Test")
+                Section(
+                    header: HStack {
+                        Text("\(self.city.name) Investment")
+                        Spacer()
+                        if self.investmentResult != nil {
+                            Button {
+                                self.investmentResult = nil
+                            } label: {
+                                Text("Reset")
+                                    .font(.subheadline.weight(.semibold))
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(.accentColor)
+                            .buttonBorderShape(.capsule)
+                        }
+                    },
+                    footer: Group {
+                        if self.investmentResult == nil {
+                            AsyncButton(
+                                fillWidth: true,
+                                alert: { result in
+                                    guard case .failure = result else {
+                                        return nil
+                                    }
+                                    return .init(
+                                        title: Text("Error"),
+                                        message: Text("An error occurred please try again.")
+                                    )
+                                },
+                                action: {
+                                    guard let investmentAmount = self.investmentAmount else {
+                                        return
+                                    }
+                                    self.investmentResult = try await PVGISService()
+                                        .calculcatePhotovoltaicInvestment(
+                                            amount: investmentAmount,
+                                            using: self.pvgisParams,
+                                            in: self.country
+                                        )
+                                },
+                                label: {
+                                    Text("Calculcate")
+                                        .font(.headline)
+                                }
+                            )
+                            .onPreferenceChange(
+                                AsyncButtonState.PreferenceKey.self
+                            ) { asyncButtonState in
+                                self.asyncButtonState = asyncButtonState
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .controlSize(.large)
+                            .disabled(
+                                self.investmentAmount == nil || self.investmentAmount == 0
+                            )
+                            .padding(.vertical)
+                        }
+                    }
+                ) {
+                    if let investmentResult = self.investmentResult {
+                        HStack {
+                            Text("Investment")
+                            Spacer()
+                            Text(investmentResult.amount.formatted(.currency(code: self.country.currencyCode)))
+                        }
+                        HStack {
+                            Text("Produced Energy")
+                            Spacer()
+                            Text(investmentResult.producedEnergy.formatted())
+                        }
+                        HStack {
+                            Text("Carbon emissions produced by PV")
+                            Spacer()
+                            Text(investmentResult.carbonEmissions.formatted())
+                        }
+                        HStack {
+                            Text("Normal carbon emissions")
+                            Spacer()
+                            Text(investmentResult.normalCarbonEmissions.formatted())
+                        }
+                        HStack {
+                            Text("Carbon emissions reduction")
+                            Spacer()
+                            Text(investmentResult.carbonEmissionsReduction.formatted())
+                        }
+                    } else {
+                        HStack {
+                            NumberTextField(
+                                "Investment",
+                                value: self.$investmentAmount
+                            )
+                            if let localizedCurrency = self.country.localizedCurrencySymbol {
+                                Text(
+                                    verbatim: localizedCurrency
+                                )
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                            }
+                        }
+                        .disabled(self.asyncButtonState == .busy)
+                    }
                 }
+                .headerProminence(.increased)
             }
+            .animation(
+                .default,
+                value: self.investmentResult
+            )
             .navigationTitle("Photovoltaics")
         }
     }
