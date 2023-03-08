@@ -44,21 +44,15 @@ extension Country: Comparable {
     
 }
 
-// MARK: - Country+europe
-
-private extension Country {
-    
-    /// A Country representing Europe (EU)
-    static let europe = Self(
-        countryCode: "EU",
-        currencyCode: "EUR"
-    )
-    
-}
-
 // MARK: - Country+localizedString
 
 extension Country {
+    
+    /// A Country representing Europe (EU)
+    private static let europe = Self(
+        countryCode: "EU",
+        currencyCode: "EUR"
+    )
     
     /// The localized country name based on the current country code, if available.
     /// - Parameter locale: The Locale. Default value `.current`
@@ -77,6 +71,33 @@ extension Country {
                 ??
                 self.countryCode
         }
+    }
+    
+}
+
+// MARK: - Country+localizedCurrencySymbol
+
+extension Country {
+    
+    /// The localized currency symbol
+    var localizedCurrencySymbol: String {
+        Locale(
+            identifier: Locale.identifier(
+                fromComponents: [
+                    NSLocale.Key.countryCode.rawValue: self.countryCode,
+                    NSLocale.Key.currencyCode.rawValue: self.currencyCode
+                ]
+            )
+        )
+        .currencySymbol
+        ??
+        Locale
+            .current
+            .localizedString(
+                forCurrencyCode: self.currencyCode
+            )
+        ??
+        self.currencyCode
     }
     
 }
