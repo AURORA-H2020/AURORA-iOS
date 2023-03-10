@@ -25,17 +25,10 @@ extension CreateConsumptionForm.Heating: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        HStack {
-            NumberTextField(
-                "Costs",
-                value: self.$partialHeating.costs
-            )
-            Text(
-                verbatim: "€"
-            )
-            .font(.footnote)
-            .foregroundColor(.secondary)
-        }
+        CurrencyTextField(
+            "Costs",
+            value: self.$partialHeating.costs
+        )
         Stepper(
             "People in household: \(self.partialHeating.householdSize ?? 1)",
             value: .init(

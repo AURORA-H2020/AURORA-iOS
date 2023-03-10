@@ -41,7 +41,7 @@ extension ConsumptionView: View {
             }
             if let electricity = self.consumption.electricity {
                 Entry {
-                    Text(electricity.formattedCosts)
+                    CurrencyText(electricity.costs)
                         .foregroundColor(.secondary)
                 } label: {
                     Text("Costs")
@@ -66,7 +66,7 @@ extension ConsumptionView: View {
                 }
             } else if let heating = self.consumption.heating {
                 Entry {
-                    Text(heating.formattedCosts)
+                    CurrencyText(heating.costs)
                         .foregroundColor(.secondary)
                 } label: {
                     Text("Costs")

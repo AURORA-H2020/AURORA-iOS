@@ -40,14 +40,3 @@ extension Consumption.Electricity: PartialConvertible {
     }
     
 }
-
-// MARK: - Consumption+Electricity+formattedCosts
-
-extension Consumption.Electricity {
-    
-    /// A formatted representation of the costs.
-    var formattedCosts: String {
-        self.costs.formatted(.currency(code: "EUR"))
-    }
-    
-}

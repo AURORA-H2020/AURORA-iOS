@@ -100,6 +100,8 @@
 		3D3B8D3E2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8D3D2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift */; };
 		3D3B8D412991504E008590A8 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8D402991504E008590A8 /* Country.swift */; };
 		3D3B8D44299150E5008590A8 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8D43299150E5008590A8 /* City.swift */; };
+		3D411D0F29BB28E0008EBB75 /* CurrencyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */; };
+		3D411D1129BB2A10008EBB75 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */; };
 		3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */; };
 		3D537A62298B1E9500C294AA /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A61298B1E9500C294AA /* Password.swift */; };
 		3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF229B792ED000EE0EB /* PVGISService.swift */; };
@@ -197,6 +199,8 @@
 		3D3B8D3D2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Transportation+TransportationType+Group.swift"; sourceTree = "<group>"; };
 		3D3B8D402991504E008590A8 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		3D3B8D43299150E5008590A8 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyText.swift; sourceTree = "<group>"; };
+		3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isMailAddress.swift"; sourceTree = "<group>"; };
 		3D537A61298B1E9500C294AA /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		3D57AEF229B792ED000EE0EB /* PVGISService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVGISService.swift; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 				3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */,
 				3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */,
 				3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */,
+				3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */,
+				3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -843,6 +849,7 @@
 				3D08956C299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift in Sources */,
 				3D1EE5FF298AA9EE009E4645 /* ContentView.swift in Sources */,
 				3D1CA71C298CF2150009177C /* LocalNotificationRequest+Predefined.swift in Sources */,
+				3D411D1129BB2A10008EBB75 /* CurrencyTextField.swift in Sources */,
 				3D1EE699298AACF8009E4645 /* FirebaseAuthenticationProvider.swift in Sources */,
 				3D3B8D412991504E008590A8 /* Country.swift in Sources */,
 				3D1EE6A4298AADD4009E4645 /* LocalNotificationRequest+ID.swift in Sources */,
@@ -910,6 +917,7 @@
 				3D1EE6CA298AAEA3009E4645 /* AsyncButton+Modifiers.swift in Sources */,
 				3D1EE64C298AAC9E009E4645 /* FeaturePreview.swift in Sources */,
 				3D1CA71A298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift in Sources */,
+				3D411D0F29BB28E0008EBB75 /* CurrencyText.swift in Sources */,
 				3D1EE6A3298AADD4009E4645 /* LocalNotificationCenter.swift in Sources */,
 				3D1EE64B298AAC9E009E4645 /* ChangePasswordForm.swift in Sources */,
 				3D1EE68E298AACF8009E4645 /* User+Account.swift in Sources */,

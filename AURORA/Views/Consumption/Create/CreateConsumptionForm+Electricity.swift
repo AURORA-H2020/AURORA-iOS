@@ -25,17 +25,10 @@ extension CreateConsumptionForm.Electricity: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        HStack {
-            NumberTextField(
-                "Costs",
-                value: self.$partialElectricity.costs
-            )
-            Text(
-                verbatim: "€"
-            )
-            .font(.footnote)
-            .foregroundColor(.secondary)
-        }
+        CurrencyTextField(
+            "Costs",
+            value: self.$partialElectricity.costs
+        )
         Stepper(
             "People in household: \(self.partialElectricity.householdSize ?? 1)",
             value: .init(

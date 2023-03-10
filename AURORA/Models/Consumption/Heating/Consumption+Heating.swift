@@ -9,7 +9,7 @@ extension Consumption {
     struct Heating: Codable, Hashable {
         
         /// The costs in cents.
-        var costs: Int
+        var costs: Double
         
         /// The size of the household
         var householdSize: Int
@@ -51,17 +51,6 @@ extension Consumption.Heating: PartialConvertible {
                 return try partial(\.districtHeatingSource)
             }()
         )
-    }
-    
-}
-
-// MARK: - Consumption+Heating+formattedCosts
-
-extension Consumption.Heating {
-    
-    /// A formatted representation of the costs.
-    var formattedCosts: String {
-        self.costs.formatted(.currency(code: "EUR"))
     }
     
 }

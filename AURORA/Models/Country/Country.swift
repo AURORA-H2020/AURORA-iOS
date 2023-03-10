@@ -44,15 +44,21 @@ extension Country: Comparable {
     
 }
 
-// MARK: - Country+localizedString
+// MARK: - Country+europe
 
 extension Country {
     
     /// A Country representing Europe (EU)
-    private static let europe = Self(
+    static let europe = Self(
         countryCode: "EU",
         currencyCode: "EUR"
     )
+    
+}
+
+// MARK: - Country+localizedString
+
+extension Country {
     
     /// The localized country name based on the current country code, if available.
     /// - Parameter locale: The Locale. Default value `.current`

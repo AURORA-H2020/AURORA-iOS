@@ -92,6 +92,15 @@ extension PhotovoltaicScreen: View {
                                 self.investmentAmount == nil || self.investmentAmount == 0
                             )
                             .padding(.vertical)
+                        } else {
+                            // swiftlint:disable line_length
+                            Text(
+                                """
+                                Please note that these numbers are purely informational and only provide estimates based on current discussions with our photovoltaic partners.
+                                Calculated savings may be different from actual data, once the photovoltaic installations go live.
+                                """
+                            )
+                            // swiftlint:enable line_length
                         }
                     }
                 ) {
