@@ -29,9 +29,6 @@ struct User {
     /// The optional City Reference.
     var city: FirestoreEntityReference<City>?
     
-    /// The optional consumption summary.
-    let consumptionSummary: ConsumptionSummary?
-    
 }
 
 // MARK: - User+FirestoreEntity
