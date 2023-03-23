@@ -1182,7 +1182,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 10.5.0;
+				version = 10.7.0;
 			};
 		};
 		3D1EE5F4298AA965009E4645 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
