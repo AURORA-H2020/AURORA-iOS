@@ -26,7 +26,7 @@ extension ConsumptionScreen {
         
         // MARK: Initializer
         
-        /// Creates a new instance of `ConsumptionOverview.LatestEntriesSection`
+        /// Creates a new instance of `ConsumptionScreen.LatestEntriesSection`
         /// - Parameters:
         ///   - userId: The user identifier.
         ///   - isCreateConsumptionFormPresented: Bool Binding value if CreateConsumptionForm is presented.
