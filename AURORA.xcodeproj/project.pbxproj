@@ -65,8 +65,7 @@
 		3D1EE690298AACF8009E4645 /* FirestoreEntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE66F298AACF8009E4645 /* FirestoreEntityQuery.swift */; };
 		3D1EE691298AACF8009E4645 /* FirestoreEntityReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE670298AACF8009E4645 /* FirestoreEntityReference.swift */; };
 		3D1EE692298AACF8009E4645 /* FirestoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE671298AACF8009E4645 /* FirestoreEntity.swift */; };
-		3D1EE694298AACF8009E4645 /* ConsumptionSummary+Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE675298AACF8009E4645 /* ConsumptionSummary+Entry.swift */; };
-		3D1EE695298AACF8009E4645 /* ConsumptionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE676298AACF8009E4645 /* ConsumptionSummary.swift */; };
+		3D1EE694298AACF8009E4645 /* ConsumptionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE675298AACF8009E4645 /* ConsumptionSummary.swift */; };
 		3D1EE696298AACF8009E4645 /* Firebase+Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE678298AACF8009E4645 /* Firebase+Authentication.swift */; };
 		3D1EE697298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE67B298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift */; };
 		3D1EE698298AACF8009E4645 /* GoogleFirebaseAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE67D298AACF8009E4645 /* GoogleFirebaseAuthenticationProvider.swift */; };
@@ -102,6 +101,7 @@
 		3D3B8D44299150E5008590A8 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8D43299150E5008590A8 /* City.swift */; };
 		3D411D0F29BB28E0008EBB75 /* CurrencyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */; };
 		3D411D1129BB2A10008EBB75 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */; };
+		3D46F64B29CB5CC2004573DF /* EnergyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D46F64A29CB5CC2004573DF /* EnergyLabel.swift */; };
 		3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */; };
 		3D537A62298B1E9500C294AA /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A61298B1E9500C294AA /* Password.swift */; };
 		3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF229B792ED000EE0EB /* PVGISService.swift */; };
@@ -110,6 +110,12 @@
 		3D8A05E32991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E22991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift */; };
 		3D8A05E52991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E42991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift */; };
 		3D8A05E72991B006005DEA43 /* CreateConsumptionForm+Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E62991B006005DEA43 /* CreateConsumptionForm+Transportation.swift */; };
+		3D8C288E29C70AAF00811044 /* ConsumptionSummary+LabeledConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C288D29C70AAF00811044 /* ConsumptionSummary+LabeledConsumption.swift */; };
+		3D8C289029C70B6500811044 /* ConsumptionSummary+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C288F29C70B6500811044 /* ConsumptionSummary+Category.swift */; };
+		3D8C289229C70C0100811044 /* ConsumptionSummary+Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C289129C70C0100811044 /* ConsumptionSummary+Month.swift */; };
+		3D8C289429C70D9F00811044 /* ConsumptionSummary+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C289329C70D9F00811044 /* ConsumptionSummary+Label.swift */; };
+		3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */; };
+		3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */; };
 		3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */; };
 		3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */; };
 		3DD34C5A2948F280002064D8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD34C592948F280002064D8 /* App.swift */; };
@@ -164,8 +170,7 @@
 		3D1EE66F298AACF8009E4645 /* FirestoreEntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreEntityQuery.swift; sourceTree = "<group>"; };
 		3D1EE670298AACF8009E4645 /* FirestoreEntityReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreEntityReference.swift; sourceTree = "<group>"; };
 		3D1EE671298AACF8009E4645 /* FirestoreEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreEntity.swift; sourceTree = "<group>"; };
-		3D1EE675298AACF8009E4645 /* ConsumptionSummary+Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Entry.swift"; sourceTree = "<group>"; };
-		3D1EE676298AACF8009E4645 /* ConsumptionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumptionSummary.swift; sourceTree = "<group>"; };
+		3D1EE675298AACF8009E4645 /* ConsumptionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumptionSummary.swift; sourceTree = "<group>"; };
 		3D1EE678298AACF8009E4645 /* Firebase+Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Firebase+Authentication.swift"; sourceTree = "<group>"; };
 		3D1EE67B298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleFirebaseAuthenticationProvider.swift; sourceTree = "<group>"; };
 		3D1EE67D298AACF8009E4645 /* GoogleFirebaseAuthenticationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFirebaseAuthenticationProvider.swift; sourceTree = "<group>"; };
@@ -201,6 +206,7 @@
 		3D3B8D43299150E5008590A8 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyText.swift; sourceTree = "<group>"; };
 		3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
+		3D46F64A29CB5CC2004573DF /* EnergyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyLabel.swift; sourceTree = "<group>"; };
 		3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isMailAddress.swift"; sourceTree = "<group>"; };
 		3D537A61298B1E9500C294AA /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		3D57AEF229B792ED000EE0EB /* PVGISService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVGISService.swift; sourceTree = "<group>"; };
@@ -210,6 +216,12 @@
 		3D8A05E22991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateConsumptionForm+Electricity.swift"; sourceTree = "<group>"; };
 		3D8A05E42991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateConsumptionForm+Heating.swift"; sourceTree = "<group>"; };
 		3D8A05E62991B006005DEA43 /* CreateConsumptionForm+Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateConsumptionForm+Transportation.swift"; sourceTree = "<group>"; };
+		3D8C288D29C70AAF00811044 /* ConsumptionSummary+LabeledConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+LabeledConsumption.swift"; sourceTree = "<group>"; };
+		3D8C288F29C70B6500811044 /* ConsumptionSummary+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Category.swift"; sourceTree = "<group>"; };
+		3D8C289129C70C0100811044 /* ConsumptionSummary+Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Month.swift"; sourceTree = "<group>"; };
+		3D8C289329C70D9F00811044 /* ConsumptionSummary+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Label.swift"; sourceTree = "<group>"; };
+		3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionSummaryView.swift; sourceTree = "<group>"; };
+		3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+CarbonEmissions.swift"; sourceTree = "<group>"; };
 		3DAA79C2297153F40097DD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionList.swift; sourceTree = "<group>"; };
 		3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotovoltaicScreen.swift; sourceTree = "<group>"; };
@@ -281,6 +293,7 @@
 		3D1EE5F9298AA981009E4645 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3D98EC4B29C9B19200CC3ABE /* FormatStyles */,
 				3D1EE602298AAA0C009E4645 /* DataStructures */,
 				3D1EE600298AAA01009E4645 /* Extensions */,
 				3D1EE601298AAA06009E4645 /* Views */,
@@ -316,6 +329,7 @@
 				3D1EE632298AAC5B009E4645 /* ConsumptionScreen.swift */,
 				3D1CA717298CEFE80009177C /* ConsumptionScreen+SummarySection.swift */,
 				3D1CA719298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift */,
+				3D98EC4829C9A63400CC3ABE /* Summary */,
 				3DC2C2A929B7852E00A37D0C /* Detail */,
 				3D1EE630298AAC5B009E4645 /* Create */,
 				3D1EE633298AAC5B009E4645 /* List */,
@@ -357,6 +371,7 @@
 				3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */,
 				3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */,
 				3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */,
+				3D46F64A29CB5CC2004573DF /* EnergyLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -553,8 +568,11 @@
 		3D1EE674298AACF8009E4645 /* ConsumptionSummary */ = {
 			isa = PBXGroup;
 			children = (
-				3D1EE676298AACF8009E4645 /* ConsumptionSummary.swift */,
-				3D1EE675298AACF8009E4645 /* ConsumptionSummary+Entry.swift */,
+				3D1EE675298AACF8009E4645 /* ConsumptionSummary.swift */,
+				3D8C288F29C70B6500811044 /* ConsumptionSummary+Category.swift */,
+				3D8C289129C70C0100811044 /* ConsumptionSummary+Month.swift */,
+				3D8C288D29C70AAF00811044 /* ConsumptionSummary+LabeledConsumption.swift */,
+				3D8C289329C70D9F00811044 /* ConsumptionSummary+Label.swift */,
 			);
 			path = ConsumptionSummary;
 			sourceTree = "<group>";
@@ -654,6 +672,22 @@
 				3D57AEF229B792ED000EE0EB /* PVGISService.swift */,
 			);
 			path = PVGISService;
+			sourceTree = "<group>";
+		};
+		3D98EC4829C9A63400CC3ABE /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		3D98EC4B29C9B19200CC3ABE /* FormatStyles */ = {
+			isa = PBXGroup;
+			children = (
+				3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */,
+			);
+			path = FormatStyles;
 			sourceTree = "<group>";
 		};
 		3DC2C2A929B7852E00A37D0C /* Detail */ = {
@@ -836,7 +870,10 @@
 				3D1EE6A8298AADD4009E4645 /* UNMutableNotificationContent+Init.swift in Sources */,
 				3D1EE612298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift in Sources */,
 				3D1EE697298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift in Sources */,
+				3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */,
+				3D46F64B29CB5CC2004573DF /* EnergyLabel.swift in Sources */,
 				3D1EE60E298AAB39009E4645 /* AuthenticationScreen.swift in Sources */,
+				3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */,
 				3D1EE688298AACF8009E4645 /* Consumption+Transportation+TransportationType.swift in Sources */,
 				3D1EE68F298AACF8009E4645 /* User+Gender.swift in Sources */,
 				3D1EE683298AACF8009E4645 /* Firebase+Firestore.swift in Sources */,
@@ -852,11 +889,13 @@
 				3D411D1129BB2A10008EBB75 /* CurrencyTextField.swift in Sources */,
 				3D1EE699298AACF8009E4645 /* FirebaseAuthenticationProvider.swift in Sources */,
 				3D3B8D412991504E008590A8 /* Country.swift in Sources */,
+				3D8C289229C70C0100811044 /* ConsumptionSummary+Month.swift in Sources */,
+				3D8C289029C70B6500811044 /* ConsumptionSummary+Category.swift in Sources */,
 				3D1EE6A4298AADD4009E4645 /* LocalNotificationRequest+ID.swift in Sources */,
 				3D1EE69A298AACF8009E4645 /* Firebase+Authentication+State.swift in Sources */,
 				3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */,
 				3D1EE685298AACF8009E4645 /* Consumption.swift in Sources */,
-				3D1EE694298AACF8009E4645 /* ConsumptionSummary+Entry.swift in Sources */,
+				3D1EE694298AACF8009E4645 /* ConsumptionSummary.swift in Sources */,
 				3D1EE692298AACF8009E4645 /* FirestoreEntity.swift in Sources */,
 				3D1EE6A7298AADD4009E4645 /* LocalNotificationRequest.swift in Sources */,
 				3D1EE6B3298AAE24009E4645 /* PieChart.swift in Sources */,
@@ -866,6 +905,7 @@
 				3D1EE6D2298AAEC0009E4645 /* EmptyPlaceholder.swift in Sources */,
 				3D1EE6BD298AAE62009E4645 /* Identified.swift in Sources */,
 				3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */,
+				3D8C289429C70D9F00811044 /* ConsumptionSummary+Label.swift in Sources */,
 				3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */,
 				3D1EE652298AAC9E009E4645 /* ThirdPartyDependencyDetail.swift in Sources */,
 				3D1CA721298CF6AD0009177C /* EditUserForm.swift in Sources */,
@@ -884,7 +924,6 @@
 				3D1EE68C298AACF8009E4645 /* User+UID.swift in Sources */,
 				3D1EE64D298AAC9E009E4645 /* FeaturePreview+Page.swift in Sources */,
 				3D8A05E72991B006005DEA43 /* CreateConsumptionForm+Transportation.swift in Sources */,
-				3D1EE695298AACF8009E4645 /* ConsumptionSummary.swift in Sources */,
 				3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */,
 				3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */,
 				3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */,
@@ -904,6 +943,7 @@
 				3D1EE680298AACF8009E4645 /* Firebase+Crashlytics.swift in Sources */,
 				3D1EE638298AAC5B009E4645 /* CreateConsumptionForm.swift in Sources */,
 				3D1EE6D0298AAEC0009E4645 /* NumberTextField.swift in Sources */,
+				3D8C288E29C70AAF00811044 /* ConsumptionSummary+LabeledConsumption.swift in Sources */,
 				3D1EE6A5298AADD4009E4645 /* LocalNotificationRequest+Trigger+MatchingDateComponents.swift in Sources */,
 				3D8A05E52991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift in Sources */,
 				3D1EE68A298AACF8009E4645 /* Consumption+Heating.swift in Sources */,
@@ -1142,7 +1182,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 10.5.0;
+				version = 10.7.0;
 			};
 		};
 		3D1EE5F4298AA965009E4645 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {

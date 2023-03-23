@@ -87,8 +87,7 @@ private extension CreateUserForm {
                 yearOfBirth: self.yearOfBirth,
                 gender: self.gender,
                 country: country,
-                city: self.city,
-                consumptionSummary: nil
+                city: self.city
             )
         )
     }

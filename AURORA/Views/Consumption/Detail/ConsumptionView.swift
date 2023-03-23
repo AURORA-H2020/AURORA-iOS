@@ -31,7 +31,9 @@ extension ConsumptionView: View {
                 } label: {
                     Text(self.consumption.category.localizedString)
                 }
-                if let formattedCarbonEmissions = self.consumption.formattedCarbonEmissions {
+                if let formattedCarbonEmissions = self.consumption
+                    .carbonEmissions?
+                    .formatted(.carbonEmissions) {
                     Entry {
                         Text(formattedCarbonEmissions)
                     } label: {
