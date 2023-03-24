@@ -115,3 +115,38 @@ extension ConsumptionSummary.Label {
     }
     
 }
+
+// MARK: - ConsumptionSummary+Label+localizedString
+
+extension ConsumptionSummary.Label {
+    
+    /// A localized string, if any.
+    var localizedString: String? {
+        switch self {
+        case .aPlus:
+            return .init(localized: "Ambassador+")
+        case .a:
+            return .init(localized: "Ambassador")
+        case .b:
+            return .init(localized: "Big Achiever")
+        case .c:
+            return .init(localized: "Champion")
+        case .d:
+            return .init(localized: "Driver")
+        case .e:
+            return .init(localized: "Explorer")
+        case .f:
+            return .init(localized: "First Mover")
+        case .g:
+            return .init(localized: "Ground Breaker")
+        default:
+            return nil
+        }
+    }
+    
+    /// A localize display string, if any.
+    var localizedDisplayString: String? {
+        self.localizedString.flatMap { "\($0) (\(self.value))" }
+    }
+    
+}
