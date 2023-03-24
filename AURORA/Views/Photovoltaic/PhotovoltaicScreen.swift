@@ -59,13 +59,9 @@ private extension PhotovoltaicScreen {
     /// The investment form
     var investmentForm: some View {
         Section(
-            // swiftlint:disable line_length
             header: Text(
-                """
-                You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be
-                """
+                "You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment."
             )
-            // swiftlint:enable line_length
             .font(.subheadline)
             .multilineTextAlignment(.leading)
             .listRowInsets(.init())
@@ -109,7 +105,6 @@ private extension PhotovoltaicScreen {
                     self.investmentAmount == nil || self.investmentAmount == 0
                 )
                 .padding(.vertical)
-                // swiftlint:disable line_length
                 Text(
                     """
                     Please note that all values displayed here are specific for your city, \(self.city.name), and are merely for information.
@@ -118,7 +113,6 @@ private extension PhotovoltaicScreen {
                     You obviously do not make any commitments by using this calculator.
                     """
                 )
-                // swiftlint:enable line_length
                 .multilineTextAlignment(.leading)
                 .font(.caption)
             }
@@ -169,7 +163,9 @@ private extension PhotovoltaicScreen {
         Section(
             header: Text("CO₂ emitted if conventional"),
             footer: VStack {
-                Text("This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead")
+                Text(
+                    "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead"
+                )
                 Image(
                     systemName: "minus.circle"
                 )
@@ -186,7 +182,9 @@ private extension PhotovoltaicScreen {
         Section(
             header: Text("CO₂ emitted if photovoltaics"),
             footer: VStack {
-                Text("Did you know? Even the use of photovoltaics emit some CO₂ - albeit significantly less than conventional sources of energy.")
+                Text(
+                    "Did you know? Even the use of photovoltaics emit some CO₂ - albeit significantly less than conventional sources of energy."
+                )
                 Image(
                     systemName: "equal.circle"
                 )
@@ -203,7 +201,9 @@ private extension PhotovoltaicScreen {
         .headerProminence(.increased)
         Section(
             header: Text("CO₂ reduction"),
-            footer: Text("You would be reducing CO₂ emission within your local community by this amount. Great job!")
+            footer: Text(
+                "You would be reducing CO₂ emission within your local community by this amount. Great job!"
+            )
         ) {
             Text(investmentResult.carbonEmissionsReduction.formatted())
                 .font(.title2.weight(.semibold))
@@ -233,13 +233,9 @@ private extension PhotovoltaicScreen {
                 .buttonStyle(.bordered)
                 .tint(.accentColor)
                 .buttonBorderShape(.capsule)
-                // swiftlint:disable line_length
                 Text(
-                    """
-                    Please note that all values displayed here are specific for your city, \(self.city.name), and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.
-                    """
+                    "Please note that all values displayed here are specific for your city, \(self.city.name), and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator."
                 )
-                // swiftlint:enable line_length
                 .font(.caption)
                 .multilineTextAlignment(.leading)
             }

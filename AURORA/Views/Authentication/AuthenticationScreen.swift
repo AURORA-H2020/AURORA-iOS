@@ -153,7 +153,6 @@ extension AuthenticationScreen: View {
                             }
                         }
                         Text(
-                            // swiftlint:disable:next line_length
                             "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)."
                         )
                         .font(.footnote)

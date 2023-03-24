@@ -134,8 +134,9 @@ extension ConsumptionSummaryView: View {
                     }
                 }
                 Section(
-                    // swiftlint:disable:next line_length
-                    footer: Text("Your energy labels are calculated based on your tracked consumption. Your carbon emission budget is calculated for the full calendar year, meaning at the end of January you will only have one twelfth of your budget available. As the year goes on your budget is recalculated accordingly on a daily basis")
+                    footer: Text(
+                        "Your energy labels are calculated based on your tracked consumption. Your carbon emission budget is calculated for the full calendar year, meaning at the end of January you will only have one twelfth of your budget available. As the year goes on your budget is recalculated accordingly on a daily basis"
+                    )
                 ) {
                 }
             }

@@ -149,7 +149,6 @@ extension CreateUserForm: View {
                 Section(
                     header: Text("Country"),
                     footer: Text(
-                        // swiftlint:disable:next line_length
                         "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later."
                     )
                 ) {
@@ -205,7 +204,6 @@ extension CreateUserForm: View {
                             return .init(
                                 title: Text("Error"),
                                 message: Text(
-                                    // swiftlint:disable:next line_length
                                     "An error occurred while trying to create your profile. Please check your inputs and try again."
                                 )
                             )

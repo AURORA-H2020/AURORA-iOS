@@ -162,7 +162,6 @@ extension AuthenticationPasswordLoginForm: View {
                                 return .init(
                                     title: Text("Login failed"),
                                     message: Text(
-                                        // swiftlint:disable:next line_length
                                         "An error occurred while trying to login. Please check your inputs and try again."
                                     )
                                 )
@@ -170,7 +169,6 @@ extension AuthenticationPasswordLoginForm: View {
                                 return .init(
                                     title: Text("Registration failed"),
                                     message: Text(
-                                        // swiftlint:disable:next line_length
                                         "An error occurred while trying to create a new account. Please check your inputs and try again."
                                     )
                                 )

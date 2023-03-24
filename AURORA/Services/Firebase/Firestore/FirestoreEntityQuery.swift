@@ -2,8 +2,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import SwiftUI
 
-// swiftlint:disable line_length
-
 // MARK: - FirestoreEntityQuery
 
 /// A property wrapper that listens to a Firestore entity collection.

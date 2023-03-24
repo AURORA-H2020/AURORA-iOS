@@ -235,7 +235,6 @@ extension AppleFirebaseAuthenticationProvider: AuthenticationServices.ASAuthoriz
 
 // MARK: - ASAuthorizationControllerPresentationContextProviding
 
-// swiftlint:disable:next line_length
 extension AppleFirebaseAuthenticationProvider: AuthenticationServices.ASAuthorizationControllerPresentationContextProviding {
     
     /// Retrieve ASPresentationAnchor for ASAuthorizationController

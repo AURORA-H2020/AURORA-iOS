@@ -83,7 +83,6 @@ extension AuthenticationForgotPasswordForm: View {
                             return .init(
                                 title: Text("Error"),
                                 message: Text(
-                                    // swiftlint:disable:next line_length
                                     "An error occurred while trying to reset your password. Please check your E-Mail address and try again."
                                 )
                             )

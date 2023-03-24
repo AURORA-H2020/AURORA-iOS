@@ -109,7 +109,6 @@ extension ConsumptionScreen.SummarySection: View {
                         .chartXAxis {
                             AxisMarks(values: .stride(by: .month))
                         }
-                        // swiftlint:disable line_length
                         .chartForegroundStyleScale(
                             [
                                 Consumption.Category.electricity.localizedString: Consumption.Category.electricity.tintColor,
@@ -117,7 +116,6 @@ extension ConsumptionScreen.SummarySection: View {
                                 Consumption.Category.transportation.localizedString: Consumption.Category.transportation.tintColor
                             ]
                         )
-                        // swiftlint:enable line_length
                         .chartSymbolScale(
                             [
                                 Consumption.Category.electricity.localizedString: Circle(),

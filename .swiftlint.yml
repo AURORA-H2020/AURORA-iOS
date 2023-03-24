@@ -3,6 +3,7 @@ opt_in_rules:
   - sorted_imports
 
 disabled_rules:
+  - line_length
   - trailing_whitespace
   - identifier_name
   - type_name

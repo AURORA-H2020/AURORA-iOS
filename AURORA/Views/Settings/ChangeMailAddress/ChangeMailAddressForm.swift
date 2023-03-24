@@ -108,7 +108,6 @@ private extension ChangeMailAddressForm {
             return .init(
                 title: Text("Error"),
                 message: Text(
-                    // swiftlint:disable:next line_length
                     "An error occurred while trying to update your E-Mail address. Please check your inputs and try again."
                 )
             )
