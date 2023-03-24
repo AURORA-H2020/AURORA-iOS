@@ -36,124 +36,214 @@ extension PhotovoltaicScreen: View {
     var body: some View {
         NavigationView {
             List {
-                Section(
-                    header: HStack {
-                        Text("\(self.city.name) Investment")
-                        Spacer()
-                        if self.investmentResult != nil {
-                            Button {
-                                self.investmentResult = nil
-                            } label: {
-                                Text("Reset")
-                                    .font(.subheadline.weight(.semibold))
-                            }
-                            .buttonStyle(.bordered)
-                            .tint(.accentColor)
-                            .buttonBorderShape(.capsule)
-                        }
-                    },
-                    footer: Group {
-                        if self.investmentResult == nil {
-                            AsyncButton(
-                                fillWidth: true,
-                                alert: { result in
-                                    guard case .failure = result else {
-                                        return nil
-                                    }
-                                    return .init(
-                                        title: Text("Error"),
-                                        message: Text("An error occurred please try again.")
-                                    )
-                                },
-                                action: {
-                                    guard let investmentAmount = self.investmentAmount else {
-                                        return
-                                    }
-                                    self.investmentResult = try await PVGISService()
-                                        .calculcatePhotovoltaicInvestment(
-                                            amount: investmentAmount,
-                                            using: self.pvgisParams,
-                                            in: self.country
-                                        )
-                                },
-                                label: {
-                                    Text("Calculcate")
-                                        .font(.headline)
-                                }
-                            )
-                            .onPreferenceChange(
-                                AsyncButtonState.PreferenceKey.self
-                            ) { asyncButtonState in
-                                self.asyncButtonState = asyncButtonState
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .controlSize(.large)
-                            .disabled(
-                                self.investmentAmount == nil || self.investmentAmount == 0
-                            )
-                            .padding(.vertical)
-                        } else {
-                            // swiftlint:disable line_length
-                            Text(
-                                """
-                                Please note that these numbers are purely informational and only provide estimates based on current discussions with our photovoltaic partners.
-                                Calculated savings may be different from actual data, once the photovoltaic installations go live.
-                                """
-                            )
-                            // swiftlint:enable line_length
-                        }
-                    }
-                ) {
-                    if let investmentResult = self.investmentResult {
-                        HStack {
-                            Text("Investment")
-                            Spacer()
-                            Text(investmentResult.amount.formatted(.currency(code: self.country.currencyCode)))
-                        }
-                        HStack {
-                            Text("Produced Energy")
-                            Spacer()
-                            Text(investmentResult.producedEnergy.formatted())
-                        }
-                        HStack {
-                            Text("Carbon emissions produced by PV")
-                            Spacer()
-                            Text(investmentResult.carbonEmissions.formatted())
-                        }
-                        HStack {
-                            Text("Normal carbon emissions")
-                            Spacer()
-                            Text(investmentResult.normalCarbonEmissions.formatted())
-                        }
-                        HStack {
-                            Text("Carbon emissions reduction")
-                            Spacer()
-                            Text(investmentResult.carbonEmissionsReduction.formatted())
-                        }
-                    } else {
-                        HStack {
-                            NumberTextField(
-                                "Investment",
-                                value: self.$investmentAmount
-                            )
-                            if let localizedCurrency = self.country.localizedCurrencySymbol {
-                                Text(
-                                    verbatim: localizedCurrency
-                                )
-                                .font(.footnote)
-                                .foregroundColor(.secondary)
-                            }
-                        }
-                        .disabled(self.asyncButtonState == .busy)
-                    }
+                if let investmentResult = self.investmentResult {
+                    self.investmentResultForm(investmentResult)
+                } else {
+                    self.investmentForm
                 }
-                .headerProminence(.increased)
             }
             .animation(
                 .default,
                 value: self.investmentResult
             )
-            .navigationTitle("Photovoltaics")
+            .navigationTitle("Your Solar Power")
+        }
+    }
+    
+}
+
+// MARK: - Investment Form
+
+private extension PhotovoltaicScreen {
+    
+    /// The investment form
+    var investmentForm: some View {
+        Section(
+            // swiftlint:disable line_length
+            header: Text(
+                """
+                You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be
+                """
+            )
+            // swiftlint:enable line_length
+            .font(.subheadline)
+            .multilineTextAlignment(.leading)
+            .listRowInsets(.init())
+            .padding(.bottom),
+            footer: VStack {
+                AsyncButton(
+                    fillWidth: true,
+                    alert: { result in
+                        guard case .failure = result else {
+                            return nil
+                        }
+                        return .init(
+                            title: Text("Error"),
+                            message: Text("An error occurred please try again.")
+                        )
+                    },
+                    action: {
+                        guard let investmentAmount = self.investmentAmount else {
+                            return
+                        }
+                        self.investmentResult = try await PVGISService()
+                            .calculcatePhotovoltaicInvestment(
+                                amount: investmentAmount,
+                                using: self.pvgisParams,
+                                in: self.country
+                            )
+                    },
+                    label: {
+                        Text("Calculcate")
+                            .font(.headline)
+                    }
+                )
+                .onPreferenceChange(
+                    AsyncButtonState.PreferenceKey.self
+                ) { asyncButtonState in
+                    self.asyncButtonState = asyncButtonState
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .disabled(
+                    self.investmentAmount == nil || self.investmentAmount == 0
+                )
+                .padding(.vertical)
+                // swiftlint:disable line_length
+                Text(
+                    """
+                    Please note that all values displayed here are specific for your city, \(self.city.name), and are merely for information.
+                    All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later.
+                    Estimated savings might be different from actual data, once the photovoltaic installations will be operational.
+                    You obviously do not make any commitments by using this calculator.
+                    """
+                )
+                // swiftlint:enable line_length
+                .multilineTextAlignment(.leading)
+                .font(.caption)
+            }
+        ) {
+            HStack {
+                NumberTextField(
+                    "Investment",
+                    value: self.$investmentAmount
+                )
+                if let localizedCurrency = self.country.localizedCurrencySymbol {
+                    Text(
+                        verbatim: localizedCurrency
+                    )
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                }
+            }
+            .disabled(self.asyncButtonState == .busy)
+        }
+        .headerProminence(.increased)
+    }
+    
+}
+
+// MARK: - Investment Result Form
+
+private extension PhotovoltaicScreen {
+    
+    /// Investment result form.
+    /// - Parameter investmentResult: The PhotovoltaicInvestmentResult.
+    @ViewBuilder
+    // swiftlint:disable:next function_body_length
+    func investmentResultForm(
+        _ investmentResult: PVGISService.PhotovoltaicInvestmentResult
+    ) -> some View {
+        Section {
+            HStack {
+                Text("Your investment")
+                Spacer()
+                Text(investmentResult.amount.formatted(.currency(code: self.country.currencyCode)))
+            }
+            HStack {
+                Text("Energy produced")
+                Spacer()
+                Text(investmentResult.producedEnergy.formatted())
+            }
+        }
+        Section(
+            header: Text("CO₂ emitted if conventional"),
+            footer: VStack {
+                Text("This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead")
+                Image(
+                    systemName: "minus.circle"
+                )
+                .font(.system(size: 30))
+            }
+        ) {
+            Text(investmentResult.normalCarbonEmissions.formatted())
+                .font(.title2.weight(.semibold))
+                .foregroundColor(.black)
+                .align(.centerHorizontal)
+        }
+        .listRowBackground(Color.orange)
+        .headerProminence(.increased)
+        Section(
+            header: Text("CO₂ emitted if photovoltaics"),
+            footer: VStack {
+                Text("Did you know? Even the use of photovoltaics emit some CO₂ - albeit significantly less than conventional sources of energy.")
+                Image(
+                    systemName: "equal.circle"
+                )
+                .font(.system(size: 30))
+                .padding(.top, 3)
+            }
+        ) {
+            Text(investmentResult.carbonEmissions.formatted())
+                .font(.title2.weight(.semibold))
+                .foregroundColor(.black)
+                .align(.centerHorizontal)
+        }
+        .listRowBackground(Color.orange)
+        .headerProminence(.increased)
+        Section(
+            header: Text("CO₂ reduction"),
+            footer: Text("You would be reducing CO₂ emission within your local community by this amount. Great job!")
+        ) {
+            Text(investmentResult.carbonEmissionsReduction.formatted())
+                .font(.title2.weight(.semibold))
+                .foregroundColor(.black)
+                .align(.centerHorizontal)
+        }
+        .listRowBackground(Color.green)
+        .headerProminence(.increased)
+        Section(
+            footer: VStack {
+                HStack {
+                    Button {
+                        self.investmentResult = nil
+                    } label: {
+                        Text("Reset")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                    Link(
+                        destination: .init(
+                            string: "https://www.aurora-h2020.eu"
+                        )!
+                    ) {
+                        Text("Learn more on our website")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                }
+                .buttonStyle(.bordered)
+                .tint(.accentColor)
+                .buttonBorderShape(.capsule)
+                // swiftlint:disable line_length
+                Text(
+                    """
+                    Please note that all values displayed here are specific for your city, \(self.city.name), and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.
+                    """
+                )
+                // swiftlint:enable line_length
+                .font(.caption)
+                .multilineTextAlignment(.leading)
+            }
+        ) {
         }
     }
     
