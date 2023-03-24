@@ -42,6 +42,9 @@ struct Consumption {
     /// The carbon emissions.
     let carbonEmissions: Double?
     
+    /// The energy expenditure.
+    let energyExpended: Double?
+    
     // MARK: Initializer
     
     /// Creates a new instance of `Consumption`
@@ -56,6 +59,7 @@ struct Consumption {
     ///   - value: The value
     ///   - description: The optional description.
     ///   - carbonEmissions: The carbon emissions.
+    ///   - energyExpended: The energy expenditure.
     init(
         id: String? = nil,
         createdAt: Timestamp? = nil,
@@ -66,7 +70,8 @@ struct Consumption {
         transportation: Transportation? = nil,
         value: Double,
         description: String? = nil,
-        carbonEmissions: Double? = nil
+        carbonEmissions: Double? = nil,
+        energyExpended: Double? = nil
     ) {
         self.id = id
         self.createdAt = createdAt
@@ -78,6 +83,7 @@ struct Consumption {
         self.value = value
         self.description = description
         self.carbonEmissions = carbonEmissions
+        self.energyExpended = energyExpended
     }
     
 }
