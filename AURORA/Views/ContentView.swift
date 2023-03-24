@@ -88,7 +88,7 @@ private extension ContentView {
                         )
                         .tabItem {
                             Label(
-                                "Photovoltaics",
+                                "Solar Power",
                                 systemImage: "sun.max"
                             )
                         }
