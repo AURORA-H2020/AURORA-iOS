@@ -106,6 +106,7 @@ extension ConsumptionScreen.SummarySection: View {
                                 }
                             }
                         }
+                        .chartYAxisLabel(UnitEnergy.kilowattHours.symbol)
                         .chartXAxis {
                             AxisMarks(values: .stride(by: .month))
                         }
