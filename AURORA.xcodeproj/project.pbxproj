@@ -101,7 +101,6 @@
 		3D3B8D44299150E5008590A8 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8D43299150E5008590A8 /* City.swift */; };
 		3D411D0F29BB28E0008EBB75 /* CurrencyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */; };
 		3D411D1129BB2A10008EBB75 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */; };
-		3D46F64B29CB5CC2004573DF /* EnergyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D46F64A29CB5CC2004573DF /* EnergyLabel.swift */; };
 		3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */; };
 		3D537A62298B1E9500C294AA /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A61298B1E9500C294AA /* Password.swift */; };
 		3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF229B792ED000EE0EB /* PVGISService.swift */; };
@@ -206,7 +205,6 @@
 		3D3B8D43299150E5008590A8 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyText.swift; sourceTree = "<group>"; };
 		3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
-		3D46F64A29CB5CC2004573DF /* EnergyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyLabel.swift; sourceTree = "<group>"; };
 		3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isMailAddress.swift"; sourceTree = "<group>"; };
 		3D537A61298B1E9500C294AA /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		3D57AEF229B792ED000EE0EB /* PVGISService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVGISService.swift; sourceTree = "<group>"; };
@@ -371,7 +369,6 @@
 				3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */,
 				3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */,
 				3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */,
-				3D46F64A29CB5CC2004573DF /* EnergyLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -871,7 +868,6 @@
 				3D1EE612298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift in Sources */,
 				3D1EE697298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift in Sources */,
 				3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */,
-				3D46F64B29CB5CC2004573DF /* EnergyLabel.swift in Sources */,
 				3D1EE60E298AAB39009E4645 /* AuthenticationScreen.swift in Sources */,
 				3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */,
 				3D1EE688298AACF8009E4645 /* Consumption+Transportation+TransportationType.swift in Sources */,
