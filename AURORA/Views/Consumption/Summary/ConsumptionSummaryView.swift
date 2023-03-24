@@ -104,7 +104,7 @@ extension ConsumptionSummaryView: View {
             }
             if let consumptionSummary = self.consumptionSummaries.first(where: { $0.id == self.selection }) {
                 LabledConsumptionSection(
-                    title: "Overall",
+                    year: consumptionSummary.year,
                     labledConsumption: {
                         switch self.mode {
                         case .carbonEmission:
@@ -120,7 +120,8 @@ extension ConsumptionSummaryView: View {
                 ) { category in
                     if let consumptionSummaryCategory = consumptionSummary.category(category) {
                         LabledConsumptionSection(
-                            title: .init(stringLiteral: category.localizedString),
+                            category: category,
+                            year: consumptionSummary.year,
                             labledConsumption: {
                                 switch self.mode {
                                 case .carbonEmission:
@@ -163,7 +164,10 @@ private extension ConsumptionSummaryView {
         // MARK: Properties
         
         /// The title.
-        let title: LocalizedStringKey
+        var category: Consumption.Category?
+        
+        /// The year.
+        let year: Int
         
         /// The labled consumption.
         let labledConsumption: ConsumptionSummary.LabeledConsumption
@@ -172,20 +176,72 @@ private extension ConsumptionSummaryView {
         var body: some View {
             Section(
                 header: HStack {
-                    Text(self.title)
-                    Spacer()
-                    if self.labledConsumption.label != nil,
-                       let carbonEmissions = self.labledConsumption.total.formatted(.carbonEmissions) {
-                        Text("\(carbonEmissions) CO₂")
-                            .font(.headline)
+                    if let category = self.category {
+                        Text(category.localizedString)
+                        Spacer()
+                        if self.labledConsumption.label != nil,
+                           let carbonEmissions = self.labledConsumption.total.formatted(.carbonEmissions) {
+                            Text("\(carbonEmissions) CO₂ in \(self.year)")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                        }
+                    } else {
+                        Text("Overall")
+                        Spacer()
+                        Text(String(self.year))
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
                     }
                 }
             ) {
-                EnergyLabel(
-                    label: self.labledConsumption.label
-                )
+                HStack {
+                    if let category = self.category {
+                        category.icon
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
+                        Divider()
+                            .overlay(Color.white)
+                        Spacer()
+                        Group {
+                            if let labelDisplayString = self.labledConsumption.label?.localizedDisplayString {
+                                Text(labelDisplayString)
+                            } else {
+                                Text("No consumptions entered (?)")
+                            }
+                        }
+                        .font(.subheadline.weight(.semibold))
+                        Spacer()
+                    } else {
+                        
+                        Spacer()
+                        VStack {
+                            Text(String(self.year))
+                                .font(.title3)
+                            if let labelDisplayString = self.labledConsumption.label?.localizedDisplayString {
+                                Text(labelDisplayString)
+                                    .font(.subheadline.weight(.semibold))
+                            }
+                        }
+                        if let carbonEmissions = self.labledConsumption.total.formatted(.carbonEmissions) {
+                            Spacer()
+                            Divider()
+                                .overlay(Color.white)
+                            Spacer()
+                            Text("\(carbonEmissions) CO₂\nproduced")
+                                .fontWeight(.semibold)
+                        }
+                        Spacer()
+                    }
+                }
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white)
+                .padding()
+                .background(self.labledConsumption.label?.color.flatMap(Color.init) ?? Color.gray)
+                .cornerRadius(8)
+                .padding(.top, 5)
             }
             .listRowBackground(Color(.systemGroupedBackground))
+            .listRowInsets(.init())
             .headerProminence(.increased)
         }
         
