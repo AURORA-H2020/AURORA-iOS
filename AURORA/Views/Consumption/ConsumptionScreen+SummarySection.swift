@@ -106,7 +106,7 @@ extension ConsumptionScreen.SummarySection: View {
                                 }
                             }
                         }
-                        .chartYAxisLabel(UnitEnergy.kilowattHours.symbol)
+                        .chartYAxisLabel("CO₂")
                         .chartXAxis {
                             AxisMarks(values: .stride(by: .month))
                         }

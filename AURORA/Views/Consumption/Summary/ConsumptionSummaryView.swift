@@ -36,36 +36,6 @@ struct ConsumptionSummaryView {
     
 }
 
-// MARK: - Mode
-
-private extension ConsumptionSummaryView {
-    
-    /// A ConsumptionSummaryView mode.
-    enum Mode: String, Hashable, CaseIterable {
-        /// Carbon emissions.
-        case carbonEmission
-        /// Energy expenditure.
-        case energyExpended
-    }
-    
-}
-
-// MARK: - Mode+localizedString
-
-private extension ConsumptionSummaryView.Mode {
-    
-    /// A localized string.
-    var localizedString: String {
-        switch self {
-        case .carbonEmission:
-            return .init(localized: "Carbon emissions")
-        case .energyExpended:
-            return .init(localized: "Energy expenditure")
-        }
-    }
-    
-}
-
 // MARK: - View
 
 extension ConsumptionSummaryView: View {
@@ -73,6 +43,23 @@ extension ConsumptionSummaryView: View {
     /// The content and behavior of the view.
     var body: some View {
         List {
+            Section {
+                Picker(
+                    "",
+                    selection: self.$mode
+                ) {
+                    ForEach(
+                        Mode.allCases,
+                        id: \.self
+                    ) { mode in
+                        Text(mode.localizedString)
+                            .tag(mode.rawValue)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+            .listRowInsets(.init())
+            .listRowBackground(Color(.systemGroupedBackground))
             Section {
                 Picker(
                     "Year",
@@ -84,26 +71,10 @@ extension ConsumptionSummaryView: View {
                     }
                 }
                 .pickerStyle(.menu)
-                HStack {
-                    Text("Type")
-                    Spacer()
-                    Picker(
-                        "",
-                        selection: self.$mode.animation()
-                    ) {
-                        ForEach(
-                            Mode.allCases,
-                            id: \.self
-                        ) { mode in
-                            Text(mode.localizedString)
-                                .tag(mode.rawValue)
-                        }
-                    }
-                    .pickerStyle(.menu)
-                }
             }
             if let consumptionSummary = self.consumptionSummaries.first(where: { $0.id == self.selection }) {
                 LabledConsumptionSection(
+                    mode: self.mode,
                     year: consumptionSummary.year,
                     labledConsumption: {
                         switch self.mode {
@@ -120,6 +91,7 @@ extension ConsumptionSummaryView: View {
                 ) { category in
                     if let consumptionSummaryCategory = consumptionSummary.category(category) {
                         LabledConsumptionSection(
+                            mode: self.mode,
                             category: category,
                             year: consumptionSummary.year,
                             labledConsumption: {
@@ -141,8 +113,7 @@ extension ConsumptionSummaryView: View {
                 }
             }
         }
-        .navigationTitle("Energy Labels")
-        .animation(.default, value: self.selection)
+        .navigationTitle(self.mode.localizedNavigationTitle)
         .onChange(
             of: self.consumptionSummaries
         ) { consumptionSummaries in
@@ -164,6 +135,9 @@ private extension ConsumptionSummaryView {
         
         // MARK: Properties
         
+        /// The Mode
+        let mode: Mode
+        
         /// The title.
         var category: Consumption.Category?
         
@@ -180,9 +154,8 @@ private extension ConsumptionSummaryView {
                     if let category = self.category {
                         Text(category.localizedString)
                         Spacer()
-                        if self.labledConsumption.label != nil,
-                           let carbonEmissions = self.labledConsumption.total.formatted(.carbonEmissions) {
-                            Text("\(carbonEmissions) CO₂ in \(self.year)")
+                        if let formattedConsumption = self.mode.format(consumption: self.labledConsumption) {
+                            Text("\(formattedConsumption) in \(String(self.year))")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                         }
@@ -213,7 +186,6 @@ private extension ConsumptionSummaryView {
                         .font(.subheadline.weight(.semibold))
                         Spacer()
                     } else {
-                        
                         Spacer()
                         VStack {
                             Text(String(self.year))
@@ -223,19 +195,23 @@ private extension ConsumptionSummaryView {
                                     .font(.subheadline.weight(.semibold))
                             }
                         }
-                        if let carbonEmissions = self.labledConsumption.total.formatted(.carbonEmissions) {
+                        if let formattedConsumption = self.mode.format(consumption: self.labledConsumption) {
                             Spacer()
                             Divider()
                                 .overlay(Color.white)
                             Spacer()
-                            Text("\(carbonEmissions) CO₂\nproduced")
+                            Text("\(formattedConsumption)\nproduced")
                                 .fontWeight(.semibold)
                         }
                         Spacer()
                     }
                 }
                 .multilineTextAlignment(.center)
-                .foregroundColor(.white)
+                .foregroundColor(
+                    self.labledConsumption.label == .c || self.labledConsumption.label == .d
+                        ? .black
+                        : .white
+                )
                 .padding()
                 .background(self.labledConsumption.label?.color.flatMap(Color.init) ?? Color.gray)
                 .cornerRadius(8)

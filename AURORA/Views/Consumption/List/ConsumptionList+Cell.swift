@@ -45,6 +45,12 @@ extension ConsumptionList.Cell: View {
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
+                if let description = self.consumption.description, !description.isEmpty {
+                    Text(description)
+                        .lineLimit(2)
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
             }
             .multilineTextAlignment(.leading)
             Spacer()

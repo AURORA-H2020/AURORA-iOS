@@ -16,7 +16,7 @@ struct PhotovoltaicScreen {
     
     /// The amount to invest.
     @State
-    private var investmentAmount: Double?
+    private var investmentAmount: Int?
     
     /// The AsyncButtonState.
     @State
@@ -59,13 +59,15 @@ private extension PhotovoltaicScreen {
     /// The investment form
     var investmentForm: some View {
         Section(
-            header: Text(
-                "You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment."
-            )
-            .font(.subheadline)
-            .multilineTextAlignment(.leading)
-            .listRowInsets(.init())
-            .padding(.bottom),
+            header: VStack {
+                Text(
+                    "You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment."
+                )
+                .font(.subheadline)
+                .multilineTextAlignment(.leading)
+                Text(String(" "))
+            }
+            .listRowInsets(.init()),
             footer: VStack {
                 AsyncButton(
                     fillWidth: true,
@@ -116,6 +118,8 @@ private extension PhotovoltaicScreen {
                 .multilineTextAlignment(.leading)
                 .font(.caption)
             }
+            .listRowInsets(.init())
+            .padding(.top)
         ) {
             HStack {
                 NumberTextField(
@@ -152,7 +156,7 @@ private extension PhotovoltaicScreen {
             HStack {
                 Text("Your investment")
                 Spacer()
-                Text(investmentResult.amount.formatted(.currency(code: self.country.currencyCode)))
+                Text(investmentResult.amount.formatted(.currency(code: self.country.currencyCode).precision(.fractionLength(0))))
             }
             HStack {
                 Text("Energy produced")
@@ -161,7 +165,6 @@ private extension PhotovoltaicScreen {
             }
         }
         Section(
-            header: Text("CO₂ emitted if conventional"),
             footer: VStack {
                 Text(
                     "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead"
@@ -172,15 +175,14 @@ private extension PhotovoltaicScreen {
                 .font(.system(size: 30))
             }
         ) {
-            Text(investmentResult.normalCarbonEmissions.formatted())
-                .font(.title2.weight(.semibold))
-                .foregroundColor(.black)
-                .align(.centerHorizontal)
+            self.investmentResultBox(
+                title: "CO₂ emitted if **conventional**",
+                value: investmentResult.normalCarbonEmissions.formatted()
+            )
         }
         .listRowBackground(Color.orange)
         .headerProminence(.increased)
         Section(
-            header: Text("CO₂ emitted if photovoltaics"),
             footer: VStack {
                 Text(
                     "Did you know? Even the use of photovoltaics emit some CO₂ - albeit significantly less than conventional sources of energy."
@@ -192,23 +194,22 @@ private extension PhotovoltaicScreen {
                 .padding(.top, 3)
             }
         ) {
-            Text(investmentResult.carbonEmissions.formatted())
-                .font(.title2.weight(.semibold))
-                .foregroundColor(.black)
-                .align(.centerHorizontal)
+            self.investmentResultBox(
+                title: "CO₂ emitted if **photovoltaics**",
+                value: investmentResult.carbonEmissions.formatted()
+            )
         }
         .listRowBackground(Color.orange)
         .headerProminence(.increased)
         Section(
-            header: Text("CO₂ reduction"),
             footer: Text(
                 "You would be reducing CO₂ emission within your local community by this amount. Great job!"
             )
         ) {
-            Text(investmentResult.carbonEmissionsReduction.formatted())
-                .font(.title2.weight(.semibold))
-                .foregroundColor(.black)
-                .align(.centerHorizontal)
+            self.investmentResultBox(
+                title: "CO₂ reduction",
+                value: investmentResult.carbonEmissionsReduction.formatted()
+            )
         }
         .listRowBackground(Color.green)
         .headerProminence(.increased)
@@ -241,6 +242,29 @@ private extension PhotovoltaicScreen {
             }
         ) {
         }
+    }
+    
+    /// Investment Result Box
+    /// - Parameters:
+    ///   - title: The title.
+    ///   - value: The value.
+    func investmentResultBox(
+        title: LocalizedStringKey,
+        value: String
+    ) -> some View {
+        HStack {
+            Text(title)
+                .font(.subheadline)
+            Spacer()
+            Divider()
+                .overlay(Color.black)
+            Spacer()
+            Text(value)
+                .font(.title2.weight(.semibold))
+                .align(.centerHorizontal)
+        }
+        .foregroundColor(.black)
+        .multilineTextAlignment(.leading)
     }
     
 }

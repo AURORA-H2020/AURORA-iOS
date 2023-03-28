@@ -105,6 +105,7 @@
 		3D537A62298B1E9500C294AA /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A61298B1E9500C294AA /* Password.swift */; };
 		3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF229B792ED000EE0EB /* PVGISService.swift */; };
 		3D57AEF729B795A7000EE0EB /* City+PVGISParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF629B795A7000EE0EB /* City+PVGISParams.swift */; };
+		3D60A40029D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60A3FF29D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift */; };
 		3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */; };
 		3D8A05E32991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E22991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift */; };
 		3D8A05E52991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E42991AF9A005DEA43 /* CreateConsumptionForm+Heating.swift */; };
@@ -209,6 +210,7 @@
 		3D537A61298B1E9500C294AA /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		3D57AEF229B792ED000EE0EB /* PVGISService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVGISService.swift; sourceTree = "<group>"; };
 		3D57AEF629B795A7000EE0EB /* City+PVGISParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+PVGISParams.swift"; sourceTree = "<group>"; };
+		3D60A3FF29D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+Mode.swift"; sourceTree = "<group>"; };
 		3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Authentication+Method.swift"; sourceTree = "<group>"; };
 		3D83A231296849F20066B039 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		3D8A05E22991AF2F005DEA43 /* CreateConsumptionForm+Electricity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateConsumptionForm+Electricity.swift"; sourceTree = "<group>"; };
@@ -675,6 +677,7 @@
 			isa = PBXGroup;
 			children = (
 				3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */,
+				3D60A3FF29D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				3D1EE604298AAA21009E4645 /* AppDelegate.swift in Sources */,
 				3D1EE64E298AAC9E009E4645 /* ChangeMailAddressForm.swift in Sources */,
 				3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */,
+				3D60A40029D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift in Sources */,
 				3D1EE60F298AAB39009E4645 /* AuthenticationProviderButton.swift in Sources */,
 				3D08956C299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift in Sources */,
 				3D1EE5FF298AA9EE009E4645 /* ContentView.swift in Sources */,

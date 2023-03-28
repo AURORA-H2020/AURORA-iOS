@@ -44,7 +44,7 @@ extension PVGISService {
     struct PhotovoltaicInvestmentResult: Codable, Hashable {
         
         /// The investment amount.
-        let amount: Double
+        let amount: Int
         
         /// The produced energy by the photovoltaic.
         let producedEnergy: Measurement<UnitEnergy>
@@ -74,7 +74,7 @@ extension PVGISService {
     ///   - pvgisParams: The PVGIS parameters of the city.
     ///   - country: The country.
     func calculcatePhotovoltaicInvestment(
-        amount: Double,
+        amount: Int,
         using pvgisParams: City.PVGISParams,
         in country: Country
     ) async throws -> PhotovoltaicInvestmentResult {
@@ -137,7 +137,7 @@ private extension URL {
     ///   - pvgisParams: The PVGIS parameters.
     init(
         url: URL,
-        amount: Double,
+        amount: Int,
         pvgisParams: City.PVGISParams
     ) throws {
         // Verify URLComponents can be initialized from URL.
@@ -160,7 +160,7 @@ private extension URL {
             ),
             .init(
                 name: "peakpower",
-                value: .init(amount / pvgisParams.investmentFactor / 1000)
+                value: .init(Double(amount) / pvgisParams.investmentFactor / 1000)
             ),
             .init(
                 name: "loss",
