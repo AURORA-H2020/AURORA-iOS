@@ -177,7 +177,7 @@ private extension PhotovoltaicScreen {
         ) {
             self.investmentResultBox(
                 title: "CO₂ emitted if **conventional**",
-                value: investmentResult.normalCarbonEmissions.formatted()
+                measurement: investmentResult.normalCarbonEmissions
             )
         }
         .listRowBackground(Color.orange)
@@ -196,7 +196,7 @@ private extension PhotovoltaicScreen {
         ) {
             self.investmentResultBox(
                 title: "CO₂ emitted if **photovoltaics**",
-                value: investmentResult.carbonEmissions.formatted()
+                measurement: investmentResult.carbonEmissions
             )
         }
         .listRowBackground(Color.orange)
@@ -208,7 +208,7 @@ private extension PhotovoltaicScreen {
         ) {
             self.investmentResultBox(
                 title: "CO₂ reduction",
-                value: investmentResult.carbonEmissionsReduction.formatted()
+                measurement: investmentResult.carbonEmissionsReduction
             )
         }
         .listRowBackground(Color.green)
@@ -247,10 +247,10 @@ private extension PhotovoltaicScreen {
     /// Investment Result Box
     /// - Parameters:
     ///   - title: The title.
-    ///   - value: The value.
+    ///   - measurement: The measurement.
     func investmentResultBox(
         title: LocalizedStringKey,
-        value: String
+        measurement: Measurement<UnitMass>
     ) -> some View {
         HStack {
             Text(title)
@@ -259,9 +259,18 @@ private extension PhotovoltaicScreen {
             Divider()
                 .overlay(Color.black)
             Spacer()
-            Text(value)
-                .font(.title2.weight(.semibold))
-                .align(.centerHorizontal)
+            Text(
+                measurement.formatted(
+                    .measurement(
+                        width: .abbreviated,
+                        usage: .asProvided,
+                        numberFormatStyle: .number
+                            .precision(.fractionLength(1))
+                    )
+                )
+            )
+            .font(.title2.weight(.semibold))
+            .align(.centerHorizontal)
         }
         .foregroundColor(.black)
         .multilineTextAlignment(.leading)
