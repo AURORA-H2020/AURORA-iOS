@@ -40,7 +40,7 @@ struct CarbonEmissionsFormatStyle: FormatStyle {
 extension CarbonEmissionsFormatStyle {
     
     /// The carbon emissions symbol
-    static let symbol = "CO₂"
+    static let symbol = String(localized: "CO₂")
     
 }
 
