@@ -50,6 +50,8 @@ extension ConsumptionSummaryView.Mode {
 
 extension ConsumptionSummaryView.Mode {
     
+    /// Format a labled consumption.
+    /// - Parameter consumption: The labled consumption to format.
     func format(
         consumption: ConsumptionSummary.LabeledConsumption
     ) -> String? {
@@ -58,7 +60,7 @@ extension ConsumptionSummaryView.Mode {
             guard let formattedCarbonEmissions = consumption.total.formatted(.carbonEmissions) else {
                 return nil
             }
-            return "\(formattedCarbonEmissions) CO₂"
+            return "\(formattedCarbonEmissions) \(CarbonEmissionsFormatStyle.symbol)"
         case .energyExpended:
             return Measurement<UnitEnergy>(
                 value: consumption.total,

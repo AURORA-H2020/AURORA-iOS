@@ -45,6 +45,16 @@ extension ConsumptionSummaryView: View {
         List {
             Section {
                 Picker(
+                    "Year",
+                    selection: self.$selection
+                ) {
+                    ForEach(self.consumptionSummaries) { consumptionSummary in
+                        Text(String(consumptionSummary.year))
+                            .tag(consumptionSummary.id)
+                    }
+                }
+                .pickerStyle(.menu)
+                Picker(
                     "",
                     selection: self.$mode
                 ) {
@@ -58,21 +68,16 @@ extension ConsumptionSummaryView: View {
                 }
                 .pickerStyle(.segmented)
             }
-            .listRowInsets(.init())
-            .listRowBackground(Color(.systemGroupedBackground))
-            Section {
-                Picker(
-                    "Year",
-                    selection: self.$selection
-                ) {
-                    ForEach(self.consumptionSummaries) { consumptionSummary in
-                        Text(String(consumptionSummary.year))
-                            .tag(consumptionSummary.id)
-                    }
-                }
-                .pickerStyle(.menu)
-            }
             if let consumptionSummary = self.consumptionSummaries.first(where: { $0.id == self.selection }) {
+                Section {
+                    Chart(
+                        consumptionSummary: consumptionSummary,
+                        mode: self.mode
+                    )
+                    .padding(.bottom)
+                }
+                .listRowInsets(.init())
+                .listRowBackground(Color(.systemGroupedBackground))
                 LabledConsumptionSection(
                     mode: self.mode,
                     year: consumptionSummary.year,
@@ -124,104 +129,4 @@ extension ConsumptionSummaryView: View {
         }
     }
     
-}
-
-// MARK: - LabledConsumptionSection
-
-private extension ConsumptionSummaryView {
-    
-    /// A labled consumption section
-    struct LabledConsumptionSection: View {
-        
-        // MARK: Properties
-        
-        /// The Mode
-        let mode: Mode
-        
-        /// The title.
-        var category: Consumption.Category?
-        
-        /// The year.
-        let year: Int
-        
-        /// The labled consumption.
-        let labledConsumption: ConsumptionSummary.LabeledConsumption
-        
-        /// The content and behavior of the view.
-        var body: some View {
-            Section(
-                header: HStack {
-                    if let category = self.category {
-                        Text(category.localizedString)
-                        Spacer()
-                        if let formattedConsumption = self.mode.format(consumption: self.labledConsumption) {
-                            Text("\(formattedConsumption) in \(String(self.year))")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                        }
-                    } else {
-                        Text("Overall")
-                        Spacer()
-                        Text(String(self.year))
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                    }
-                }
-            ) {
-                HStack {
-                    if let category = self.category {
-                        category.icon
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
-                        Divider()
-                            .overlay(Color.white)
-                        Spacer()
-                        Group {
-                            if let labelDisplayString = self.labledConsumption.label?.localizedDisplayString {
-                                Text(labelDisplayString)
-                            } else {
-                                Text("No consumptions entered (?)")
-                            }
-                        }
-                        .font(.subheadline.weight(.semibold))
-                        Spacer()
-                    } else {
-                        Spacer()
-                        VStack {
-                            Text(String(self.year))
-                                .font(.title3)
-                            if let labelDisplayString = self.labledConsumption.label?.localizedDisplayString {
-                                Text(labelDisplayString)
-                                    .font(.subheadline.weight(.semibold))
-                            }
-                        }
-                        if let formattedConsumption = self.mode.format(consumption: self.labledConsumption) {
-                            Spacer()
-                            Divider()
-                                .overlay(Color.white)
-                            Spacer()
-                            Text("\(formattedConsumption)\nproduced")
-                                .fontWeight(.semibold)
-                        }
-                        Spacer()
-                    }
-                }
-                .multilineTextAlignment(.center)
-                .foregroundColor(
-                    self.labledConsumption.label == .c || self.labledConsumption.label == .d
-                        ? .black
-                        : .white
-                )
-                .padding()
-                .background(self.labledConsumption.label?.color.flatMap(Color.init) ?? Color.gray)
-                .cornerRadius(8)
-                .padding(.top, 5)
-            }
-            .listRowBackground(Color(.systemGroupedBackground))
-            .listRowInsets(.init())
-            .headerProminence(.increased)
-        }
-        
-    }
-
 }

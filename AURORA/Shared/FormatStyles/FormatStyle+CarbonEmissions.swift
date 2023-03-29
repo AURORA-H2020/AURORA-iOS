@@ -35,6 +35,15 @@ struct CarbonEmissionsFormatStyle: FormatStyle {
     
 }
 
+// MARK: - CarbonEmissionsFormatStyle+symbol
+
+extension CarbonEmissionsFormatStyle {
+    
+    /// The carbon emissions symbol
+    static let symbol = "CO₂"
+    
+}
+
 // MARK: - FormatStyle+carbonEmissions
 
 extension FormatStyle where Self == FloatingPointFormatStyle<Double> {

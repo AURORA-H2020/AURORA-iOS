@@ -106,7 +106,7 @@ extension ConsumptionScreen.SummarySection: View {
                                 }
                             }
                         }
-                        .chartYAxisLabel("CO₂")
+                        .chartYAxisLabel(CarbonEmissionsFormatStyle.symbol)
                         .chartXAxis {
                             AxisMarks(values: .stride(by: .month))
                         }
