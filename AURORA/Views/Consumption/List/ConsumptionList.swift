@@ -7,6 +7,10 @@ struct ConsumptionList {
     
     // MARK: Properties
     
+    /// The search text
+    @State
+    private var searchText = String()
+    
     /// Bool value if CreateConsumptionForm is presented.
     @State
     private var isCreateConsumptionFormPresented: Bool = false
@@ -40,7 +44,7 @@ extension ConsumptionList: View {
     var body: some View {
         List {
             ForEach(
-                self.consumptions
+                self.consumptions.filter(by: self.searchText)
             ) { consumption in
                 NavigationLink(
                     destination: ConsumptionView(
@@ -54,6 +58,7 @@ extension ConsumptionList: View {
             }
         }
         .navigationTitle("Entries")
+        .searchable(text: self.$searchText)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -70,6 +75,29 @@ extension ConsumptionList: View {
                 CreateConsumptionForm()
             }
             .adaptivePresentationDetents([.medium, .large])
+        }
+    }
+    
+}
+
+// MARK: - [Consumption]+filter(by:)
+
+private extension Array where Element == Consumption {
+    
+    /// Filters the current instance of consumptions based on the given `searchText`.
+    /// - Parameters:
+    ///   - searchText: The text to filter by.
+    func filter(
+        by searchText: String
+    ) -> Self {
+        let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !searchText.isEmpty else {
+            return self
+        }
+        return self.filter { consumption in
+            consumption.category.rawValue.localizedCaseInsensitiveContains(searchText)
+                || consumption.description?.localizedCaseInsensitiveContains(searchText) == true
+                || String(consumption.value).localizedCaseInsensitiveContains(searchText)
         }
     }
     
