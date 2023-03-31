@@ -116,6 +116,15 @@ extension ConsumptionSummaryView: View {
                     )
                 ) {
                 }
+            } else {
+                Section {
+                    EmptyPlaceholder(
+                        systemImage: "chart.bar.xaxis",
+                        title: .init(self.mode.localizedNavigationTitle),
+                        subtitle: "Your energy lables are currently not available."
+                    )
+                }
+                .listRowBackground(Color(.systemGroupedBackground))
             }
         }
         .navigationTitle(self.mode.localizedNavigationTitle)
