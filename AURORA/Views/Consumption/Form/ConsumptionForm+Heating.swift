@@ -1,10 +1,10 @@
 import SwiftUI
 
-// MARK: - CreateConsumptionForm+Heating
+// MARK: - ConsumptionForm+Heating
 
-extension CreateConsumptionForm {
+extension ConsumptionForm {
     
-    /// The CreateConsumptionForm Heating content
+    /// The ConsumptionForm Heating content
     struct Heating {
         
         /// The partial consumption heating.
@@ -21,7 +21,7 @@ extension CreateConsumptionForm {
 
 // MARK: - View
 
-extension CreateConsumptionForm.Heating: View {
+extension ConsumptionForm.Heating: View {
     
     /// The content and behavior of the view.
     var body: some View {

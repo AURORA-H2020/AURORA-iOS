@@ -28,6 +28,16 @@ extension Consumption {
 
 extension Consumption.Electricity: PartialConvertible {
     
+    /// A `Partial` representation.
+    var partial: Partial<Self> {
+        [
+            \.costs: self.costs,
+             \.householdSize: self.householdSize,
+             \.startDate: self.startDate,
+             \.endDate: self.endDate
+        ]
+    }
+    
     /// Creates a new instance from `Partial`.
     /// - Parameter partial: The partial instance.
     init(partial: Partial<Self>) throws {

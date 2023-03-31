@@ -8,6 +8,10 @@ struct ConsumptionView {
     /// The Consumption
     let consumption: Consumption
     
+    /// Bool value if consumption form is presented
+    @State
+    private var isConsumptionFormPresented = false
+    
     /// Bool value if delete confirmation dialog is presented
     @State
     private var isDeleteConfirmationDialogPresented = false
@@ -173,6 +177,16 @@ extension ConsumptionView: View {
         .navigationTitle(self.consumption.category.localizedString)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self.isConsumptionFormPresented = true
+                } label: {
+                    Label(
+                        "Edit",
+                        systemImage: "pencil"
+                    )
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button(role: .destructive) {
                     self.isDeleteConfirmationDialogPresented = true
                 } label: {
@@ -182,6 +196,15 @@ extension ConsumptionView: View {
                     )
                     .foregroundColor(.red)
                 }
+            }
+        }
+        .sheet(
+            isPresented: self.$isConsumptionFormPresented
+        ) {
+            SheetNavigationView {
+                ConsumptionForm(
+                    consumption: self.consumption
+                )
             }
         }
         .confirmationDialog(

@@ -28,6 +28,16 @@ extension Consumption {
 
 extension Consumption.Transportation: PartialConvertible {
     
+    /// A `Partial` representation.
+    var partial: Partial<Self> {
+        [
+            \.dateOfTravel: self.dateOfTravel,
+             \.transportationType: self.transportationType,
+             \.privateVehicleOccupancy: self.privateVehicleOccupancy,
+             \.publicVehicleOccupancy: self.publicVehicleOccupancy
+        ]
+    }
+    
     /// Creates a new instance from `Partial`.
     /// - Parameter partial: The partial instance.
     init(partial: Partial<Self>) throws {

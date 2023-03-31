@@ -1,10 +1,10 @@
 import SwiftUI
 
-// MARK: - CreateConsumptionForm+Electricity
+// MARK: - ConsumptionForm+Electricity
 
-extension CreateConsumptionForm {
+extension ConsumptionForm {
     
-    /// The CreateConsumptionForm Electricity content
+    /// The ConsumptionForm Electricity content
     struct Electricity {
         
         /// The partial consumption electricity.
@@ -21,7 +21,7 @@ extension CreateConsumptionForm {
 
 // MARK: - View
 
-extension CreateConsumptionForm.Electricity: View {
+extension ConsumptionForm.Electricity: View {
     
     /// The content and behavior of the view.
     var body: some View {

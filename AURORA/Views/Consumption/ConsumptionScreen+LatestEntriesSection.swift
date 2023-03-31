@@ -16,9 +16,9 @@ extension ConsumptionScreen {
         @FirestoreEntityQuery
         private var consumptions: [Consumption]
         
-        /// Bool value if CreateConsumptionForm is presented.
+        /// Bool value if ConsumptionForm is presented.
         @Binding
-        private var isCreateConsumptionFormPresented: Bool
+        private var isConsumptionFormPresented: Bool
         
         /// The Firebase instance.
         @EnvironmentObject
@@ -29,10 +29,10 @@ extension ConsumptionScreen {
         /// Creates a new instance of `ConsumptionScreen.LatestEntriesSection`
         /// - Parameters:
         ///   - userId: The user identifier.
-        ///   - isCreateConsumptionFormPresented: Bool Binding value if CreateConsumptionForm is presented.
+        ///   - isConsumptionFormPresented: Bool Binding value if ConsumptionForm is presented.
         init(
             userId: User.UID,
-            isCreateConsumptionFormPresented: Binding<Bool>
+            isConsumptionFormPresented: Binding<Bool>
         ) {
             self.userId = userId
             self._consumptions = .init(
@@ -42,7 +42,7 @@ extension ConsumptionScreen {
                     .limit(to: 3)
                 ]
             )
-            self._isCreateConsumptionFormPresented = isCreateConsumptionFormPresented
+            self._isConsumptionFormPresented = isConsumptionFormPresented
         }
         
     }
@@ -56,24 +56,7 @@ extension ConsumptionScreen.LatestEntriesSection: View {
     /// The content and behavior of the view.
     var body: some View {
         Section(
-            header: HStack {
-                Text("Latest entries")
-                Spacer()
-                if !self.consumptions.isEmpty {
-                    Button {
-                        self.isCreateConsumptionFormPresented = true
-                    } label: {
-                        Label(
-                            "Add entry",
-                            systemImage: "plus"
-                        )
-                        .font(.subheadline.weight(.semibold))
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
-                    .tint(.accentColor)
-                }
-            },
+            header: Text("Latest entries"),
             footer: Group {
                 if self.consumptions.isEmpty {
                     EmptyPlaceholder(
@@ -83,7 +66,7 @@ extension ConsumptionScreen.LatestEntriesSection: View {
                         primaryAction: .init(
                             title: "Add consumption",
                             action: {
-                                self.isCreateConsumptionFormPresented = true
+                                self.isConsumptionFormPresented = true
                             }
                         )
                     )

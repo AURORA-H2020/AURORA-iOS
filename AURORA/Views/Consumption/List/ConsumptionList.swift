@@ -11,9 +11,9 @@ struct ConsumptionList {
     @State
     private var searchText = String()
     
-    /// Bool value if CreateConsumptionForm is presented.
+    /// Bool value if ConsumptionForm is presented.
     @State
-    private var isCreateConsumptionFormPresented: Bool = false
+    private var isConsumptionFormPresented: Bool = false
     
     /// The Consumptions.
     @FirestoreEntityQuery
@@ -62,17 +62,17 @@ extension ConsumptionList: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.isCreateConsumptionFormPresented = true
+                    self.isConsumptionFormPresented = true
                 } label: {
                     Image(systemName: "plus")
                 }
             }
         }
         .sheet(
-            isPresented: self.$isCreateConsumptionFormPresented
+            isPresented: self.$isConsumptionFormPresented
         ) {
             SheetNavigationView {
-                CreateConsumptionForm()
+                ConsumptionForm()
             }
             .adaptivePresentationDetents([.medium, .large])
         }

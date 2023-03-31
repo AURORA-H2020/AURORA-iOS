@@ -15,9 +15,9 @@ struct ConsumptionScreen {
     @State
     private var isConsumptionSummaryViewPresented: Bool = false
     
-    /// Bool value if CreateConsumptionForm is presented.
+    /// Bool value if ConsumptionForm is presented.
     @State
-    private var isCreateConsumptionFormPresented: Bool = false
+    private var isConsumptionFormPresented: Bool = false
     
     // MARK: Initializer
     
@@ -46,7 +46,7 @@ extension ConsumptionScreen: View {
                     )
                     LatestEntriesSection(
                         userId: .init(userId),
-                        isCreateConsumptionFormPresented: self.$isCreateConsumptionFormPresented
+                        isConsumptionFormPresented: self.$isConsumptionFormPresented
                     )
                 }
             }
@@ -59,10 +59,10 @@ extension ConsumptionScreen: View {
             class: "ConsumptionOverview"
         )
         .sheet(
-            isPresented: self.$isCreateConsumptionFormPresented
+            isPresented: self.$isConsumptionFormPresented
         ) {
             SheetNavigationView {
-                CreateConsumptionForm()
+                ConsumptionForm()
             }
             .adaptivePresentationDetents([.medium, .large])
         }

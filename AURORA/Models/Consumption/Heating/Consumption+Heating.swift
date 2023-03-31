@@ -35,6 +35,18 @@ extension Consumption {
 
 extension Consumption.Heating: PartialConvertible {
     
+    /// A `Partial` representation.
+    var partial: Partial<Self> {
+        [
+            \.costs: self.costs,
+             \.householdSize: self.householdSize,
+             \.startDate: self.startDate,
+             \.endDate: self.endDate,
+             \.heatingFuel: self.heatingFuel,
+             \.districtHeatingSource: self.districtHeatingSource
+        ]
+    }
+    
     /// Creates a new instance from `Partial`.
     /// - Parameter partial: The partial instance.
     init(partial: Partial<Self>) throws {
