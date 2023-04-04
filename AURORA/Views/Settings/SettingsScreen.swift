@@ -280,7 +280,18 @@ private extension SettingsScreen {
     
     var legalSection: some View {
         Section(
-            header: Text("Legal information")
+            header: Text("Legal information"),
+            footer: HStack(spacing: 10) {
+                Image("EU-Flag")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 60)
+                Text(
+                    "[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)."
+                )
+            }
+            .padding(.vertical, 15)
+            .listRowInsets(.init())
         ) {
             Button {
                 self.isFeaturePreviewPresented = true
