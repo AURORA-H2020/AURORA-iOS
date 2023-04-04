@@ -34,12 +34,10 @@ extension ConsumptionSummaryView.LabeledConsumptionSection: View {
                 if let category = self.category {
                     Text(category.localizedString)
                     Spacer()
-                    if let formattedConsumption = self.labeledConsumption.formatted(using: self.mode) {
-                        Text("\(formattedConsumption) in \(String(self.year))")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.secondary)
-                    }
+                    Text("\(self.labeledConsumption.formatted(using: self.mode)) in \(String(self.year))")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.secondary)
                 } else {
                     Text("Overall")
                     Spacer()
@@ -71,14 +69,12 @@ extension ConsumptionSummaryView.LabeledConsumptionSection: View {
                                 .font(.subheadline.weight(.semibold))
                         }
                     }
-                    if let formattedConsumption = self.labeledConsumption.formatted(using: self.mode) {
-                        Spacer()
-                        Divider()
-                            .overlay(Color.white)
-                        Spacer()
-                        Text("\(formattedConsumption)\nproduced")
-                            .fontWeight(.semibold)
-                    }
+                    Spacer()
+                    Divider()
+                        .overlay(Color.white)
+                    Spacer()
+                    Text("\(self.labeledConsumption.formatted(using: self.mode))\nproduced")
+                        .fontWeight(.semibold)
                     Spacer()
                 }
             }

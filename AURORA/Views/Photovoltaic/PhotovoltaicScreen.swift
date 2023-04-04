@@ -173,12 +173,8 @@ private extension PhotovoltaicScreen {
                 Text(
                     investmentResult
                         .producedEnergy
-                        .formatted(
-                            .measurement(
-                                width: .abbreviated,
-                                numberFormatStyle: .number.precision(.fractionLength(0))
-                            )
-                        )
+                        .value
+                        .formatted(.kilowattHours)
                 )
             }
         }
@@ -195,7 +191,10 @@ private extension PhotovoltaicScreen {
         ) {
             self.investmentResultBox(
                 title: "CO₂ emitted if **conventional**",
-                measurement: investmentResult.normalCarbonEmissions
+                value: investmentResult
+                    .normalCarbonEmissions
+                    .value
+                    .formatted(.carbonEmissions)
             )
         }
         .listRowBackground(Color.orange)
@@ -214,7 +213,10 @@ private extension PhotovoltaicScreen {
         ) {
             self.investmentResultBox(
                 title: "CO₂ emitted if **photovoltaics**",
-                measurement: investmentResult.carbonEmissions
+                value: investmentResult
+                    .carbonEmissions
+                    .value
+                    .formatted(.carbonEmissions)
             )
         }
         .listRowBackground(Color.orange)
@@ -226,7 +228,10 @@ private extension PhotovoltaicScreen {
         ) {
             self.investmentResultBox(
                 title: "CO₂ reduction",
-                measurement: investmentResult.carbonEmissionsReduction
+                value: investmentResult
+                    .carbonEmissionsReduction
+                    .value
+                    .formatted(.carbonEmissions)
             )
         }
         .listRowBackground(Color.green)
@@ -273,7 +278,7 @@ private extension PhotovoltaicScreen {
     ///   - measurement: The measurement.
     func investmentResultBox(
         title: LocalizedStringKey,
-        measurement: Measurement<UnitMass>
+        value: String
     ) -> some View {
         HStack {
             Text(title)
@@ -282,18 +287,9 @@ private extension PhotovoltaicScreen {
             Divider()
                 .overlay(Color.black)
             Spacer()
-            Text(
-                measurement.formatted(
-                    .measurement(
-                        width: .abbreviated,
-                        usage: .asProvided,
-                        numberFormatStyle: .number
-                            .precision(.fractionLength(1))
-                    )
-                )
-            )
-            .font(.title2.weight(.semibold))
-            .align(.centerHorizontal)
+            Text(value)
+                .font(.title2.weight(.semibold))
+                .align(.centerHorizontal)
         }
         .foregroundColor(.black)
         .multilineTextAlignment(.leading)

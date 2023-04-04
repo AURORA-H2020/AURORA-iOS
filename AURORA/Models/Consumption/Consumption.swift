@@ -131,27 +131,9 @@ extension Consumption {
     var formattedValue: String {
         switch self.category {
         case .transportation:
-            return Measurement<UnitLength>(
-                value: self.value,
-                unit: .kilometers
-            )
-            .formatted(
-                .measurement(
-                    width: .abbreviated,
-                    numberFormatStyle: .number.precision(.fractionLength(1))
-                )
-            )
+            return self.value.formatted(.kilometers)
         case .heating, .electricity:
-            return Measurement<UnitEnergy>(
-                value: self.value,
-                unit: .kilowattHours
-            )
-            .formatted(
-                .measurement(
-                    width: .abbreviated,
-                    numberFormatStyle: .number.precision(.fractionLength(1))
-                )
-            )
+            return self.value.formatted(.kilowattHours)
         }
     }
     

@@ -40,7 +40,7 @@ extension ConsumptionSummary.Mode {
         case .carbonEmission:
             return CarbonEmissionsFormatStyle.symbol
         case .energyExpended:
-            return UnitEnergy.kilowattHours.symbol
+            return KilowattHoursFormatStyle.symbol
         }
     }
     
@@ -54,24 +54,12 @@ extension ConsumptionSummary.Mode {
     /// - Parameter consumption: The labeled consumption to format.
     func format(
         consumption: ConsumptionSummary.LabeledConsumption
-    ) -> String? {
+    ) -> String {
         switch self {
         case .carbonEmission:
-            guard let formattedCarbonEmissions = consumption.total.formatted(.carbonEmissions) else {
-                return nil
-            }
-            return "\(formattedCarbonEmissions) \(self.symbol)"
+            return "\(consumption.total.formatted(.carbonEmissions)) \(self.symbol)"
         case .energyExpended:
-            return Measurement<UnitEnergy>(
-                value: consumption.total,
-                unit: .kilowattHours
-            )
-            .formatted(
-                .measurement(
-                    width: .abbreviated,
-                    numberFormatStyle: .number.precision(.fractionLength(1))
-                )
-            )
+            return consumption.total.formatted(.kilowattHours)
         }
     }
     

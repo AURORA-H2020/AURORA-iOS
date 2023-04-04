@@ -147,10 +147,8 @@ private extension ConsumptionScreen.OverviewSection {
                 }
                 Text(mode.localizedString)
                     .font(.caption2)
-                if let formattedConsumption = consumption.formatted(using: mode) {
-                    Text(formattedConsumption)
-                        .font(.caption2)
-                }
+                Text(consumption.formatted(using: mode))
+                    .font(.caption2)
             }
             .foregroundColor(consumption.foregroundColor)
             .align(.centerHorizontal)

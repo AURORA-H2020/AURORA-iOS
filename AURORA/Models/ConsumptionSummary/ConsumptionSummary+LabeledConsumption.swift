@@ -29,7 +29,7 @@ extension ConsumptionSummary.LabeledConsumption {
     /// - Parameter mode: The mode.
     func formatted(
         using mode: ConsumptionSummary.Mode
-    ) -> String? {
+    ) -> String {
         mode.format(consumption: self)
     }
     

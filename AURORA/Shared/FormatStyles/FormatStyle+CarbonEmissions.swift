@@ -10,10 +10,8 @@ struct CarbonEmissionsFormatStyle: FormatStyle {
     /// - Returns: A formatted string representation of the given double value, or nil if the value is not a number.
     func format(
         _ value: Double
-    ) -> String? {
-        guard !value.isNaN else {
-            return nil
-        }
+    ) -> String {
+        let value = value.isNaN ? 0 : value
         var measurement = Measurement<UnitMass>(
             value: value,
             unit: .kilograms
@@ -26,7 +24,7 @@ struct CarbonEmissionsFormatStyle: FormatStyle {
                 .measurement(
                     width: .abbreviated,
                     usage: .asProvided,
-                    numberFormatStyle: .number.precision(.fractionLength(1))
+                    numberFormatStyle: .number.precision(.fractionLength(0...1))
                 )
             )
     }
