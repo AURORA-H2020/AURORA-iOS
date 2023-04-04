@@ -10,10 +10,10 @@ extension ConsumptionSummary {
         /// The number of the month.
         let number: Int
         
-        /// The carbon emission labled consumption.
+        /// The carbon emission labeled consumption.
         let carbonEmission: ConsumptionSummary.LabeledConsumption
         
-        /// The enerfy expended labled consumption.
+        /// The enerfy expended labeled consumption.
         let energyExpended: ConsumptionSummary.LabeledConsumption
         
         /// The categories.

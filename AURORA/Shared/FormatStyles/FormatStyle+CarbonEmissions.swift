@@ -29,7 +29,12 @@ struct CarbonEmissionsFormatStyle: FormatStyle {
                 )
         } else {
             return measurement
-                .formatted()
+                .formatted(
+                    .measurement(
+                        width: .abbreviated,
+                        usage: .asProvided
+                    )
+                )
         }
     }
     

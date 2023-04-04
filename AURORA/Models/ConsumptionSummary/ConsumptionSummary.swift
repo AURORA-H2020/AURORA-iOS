@@ -14,10 +14,10 @@ struct ConsumptionSummary {
     /// The year.
     let year: Int
     
-    /// The carbon emission labled consumption.
+    /// The carbon emission labeled consumption.
     let carbonEmission: LabeledConsumption
     
-    /// The enerfy expended labled consumption.
+    /// The enerfy expended labeled consumption.
     let energyExpended: LabeledConsumption
     
     /// The categories.
@@ -91,6 +91,25 @@ extension ConsumptionSummary {
         _ category: Consumption.Category
     ) -> Category? {
         self.categories.first { $0.category == category }
+    }
+    
+}
+
+// MARK: - ConsumptionSummary+labeledConsumption
+
+extension ConsumptionSummary {
+    
+    /// Retrieve a LabeledConsumption for a given Mode.
+    /// - Parameter mode: The Mode.
+    func labeledConsumption(
+        for mode: Mode
+    ) -> LabeledConsumption {
+        switch mode {
+        case .carbonEmission:
+            return self.carbonEmission
+        case .energyExpended:
+            return self.energyExpended
+        }
     }
     
 }

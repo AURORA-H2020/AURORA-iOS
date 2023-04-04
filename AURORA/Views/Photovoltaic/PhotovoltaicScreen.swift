@@ -109,7 +109,7 @@ private extension PhotovoltaicScreen {
                 .padding(.vertical)
                 Text(
                     """
-                    Please note that all values displayed here are specific for your city, \(self.city.name), and are merely for information.
+                    Please note that all values displayed here are specific for your city, **\(self.city.name)**, and are merely for information.
                     All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later.
                     Estimated savings might be different from actual data, once the photovoltaic installations will be operational.
                     You obviously do not make any commitments by using this calculator.
@@ -126,13 +126,11 @@ private extension PhotovoltaicScreen {
                     "Investment",
                     value: self.$investmentAmount
                 )
-                if let localizedCurrency = self.country.localizedCurrencySymbol {
-                    Text(
-                        verbatim: localizedCurrency
-                    )
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                }
+                Text(
+                    verbatim: self.country.localizedCurrencySymbol
+                )
+                .font(.footnote)
+                .foregroundColor(.secondary)
             }
             .disabled(self.asyncButtonState == .busy)
         }

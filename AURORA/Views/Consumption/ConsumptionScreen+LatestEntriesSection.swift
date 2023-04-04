@@ -16,9 +16,9 @@ extension ConsumptionScreen {
         @FirestoreEntityQuery
         private var consumptions: [Consumption]
         
-        /// Bool value if ConsumptionForm is presented.
+        /// The currently presented sheet.
         @Binding
-        private var isConsumptionFormPresented: Bool
+        private var sheet: ConsumptionScreen.Sheet?
         
         /// The Firebase instance.
         @EnvironmentObject
@@ -29,10 +29,10 @@ extension ConsumptionScreen {
         /// Creates a new instance of `ConsumptionScreen.LatestEntriesSection`
         /// - Parameters:
         ///   - userId: The user identifier.
-        ///   - isConsumptionFormPresented: Bool Binding value if ConsumptionForm is presented.
+        ///   - sheet: The currently presented sheet.
         init(
             userId: User.UID,
-            isConsumptionFormPresented: Binding<Bool>
+            sheet: Binding<ConsumptionScreen.Sheet?>
         ) {
             self.userId = userId
             self._consumptions = .init(
@@ -42,7 +42,7 @@ extension ConsumptionScreen {
                     .limit(to: 3)
                 ]
             )
-            self._isConsumptionFormPresented = isConsumptionFormPresented
+            self._sheet = sheet
         }
         
     }
@@ -66,7 +66,7 @@ extension ConsumptionScreen.LatestEntriesSection: View {
                         primaryAction: .init(
                             title: "Add consumption",
                             action: {
-                                self.isConsumptionFormPresented = true
+                                self.sheet = .consumptionForm
                             }
                         )
                     )

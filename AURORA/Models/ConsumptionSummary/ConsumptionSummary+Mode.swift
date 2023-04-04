@@ -1,10 +1,10 @@
 import Foundation
 
-// MARK: - ConsumptionSummaryView+Mode
+// MARK: - ConsumptionSummary+Mode
 
-extension ConsumptionSummaryView {
+extension ConsumptionSummary {
     
-    /// A ConsumptionSummaryView mode.
+    /// A consumption summary mode.
     enum Mode: String, Hashable, CaseIterable {
         /// Carbon emission.
         case carbonEmission
@@ -16,7 +16,7 @@ extension ConsumptionSummaryView {
 
 // MARK: - Mode+localizedString
 
-extension ConsumptionSummaryView.Mode {
+extension ConsumptionSummary.Mode {
     
     /// A localized string.
     var localizedString: String {
@@ -24,34 +24,34 @@ extension ConsumptionSummaryView.Mode {
         case .carbonEmission:
             return .init(localized: "Carbon Emissions")
         case .energyExpended:
-            return .init(localized: "Energy Expended")
+            return .init(localized: "Energy Used")
         }
     }
     
 }
 
-// MARK: - Mode+localizedNavigationTitle
+// MARK: - Mode+symbol
 
-extension ConsumptionSummaryView.Mode {
+extension ConsumptionSummary.Mode {
     
-    /// A localized navigation title.
-    var localizedNavigationTitle: String {
+    /// The symbol
+    var symbol: String {
         switch self {
         case .carbonEmission:
-            return .init(localized: "Your Carbon Emissions Labels")
+            return CarbonEmissionsFormatStyle.symbol
         case .energyExpended:
-            return .init(localized: "Your Energy Labels")
+            return UnitEnergy.kilowattHours.symbol
         }
     }
     
 }
 
-// MARK: - Mode+localizedNavigationTitle
+// MARK: - Mode+format(consumption:)
 
-extension ConsumptionSummaryView.Mode {
+extension ConsumptionSummary.Mode {
     
-    /// Format a labled consumption.
-    /// - Parameter consumption: The labled consumption to format.
+    /// Format a labeled consumption.
+    /// - Parameter consumption: The labeled consumption to format.
     func format(
         consumption: ConsumptionSummary.LabeledConsumption
     ) -> String? {
@@ -60,7 +60,7 @@ extension ConsumptionSummaryView.Mode {
             guard let formattedCarbonEmissions = consumption.total.formatted(.carbonEmissions) else {
                 return nil
             }
-            return "\(formattedCarbonEmissions) \(CarbonEmissionsFormatStyle.symbol)"
+            return "\(formattedCarbonEmissions) \(self.symbol)"
         case .energyExpended:
             return Measurement<UnitEnergy>(
                 value: consumption.total,

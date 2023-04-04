@@ -11,8 +11,8 @@ extension ConsumptionSummaryView {
         /// The ConsumptionSummary
         let consumptionSummary: ConsumptionSummary
         
-        /// The ConsumptionSummaryView Mode
-        let mode: Mode
+        /// The ConsumptionSummary Mode
+        let mode: ConsumptionSummary.Mode
         
     }
     
@@ -36,8 +36,8 @@ extension ConsumptionSummaryView.Chart: View {
                                 unit: .month
                             ),
                             y: .value(
-                                "Carbon Emission",
-                                self.mode == .carbonEmission ? category.carbonEmission.total : category.energyExpended.total
+                                self.mode.localizedString,
+                                category.labeledConsumption(for: self.mode).total
                             )
                         )
                         .foregroundStyle(
@@ -56,12 +56,7 @@ extension ConsumptionSummaryView.Chart: View {
                 }
             }
             .chartYAxisLabel {
-                switch self.mode {
-                case .carbonEmission:
-                    Text(CarbonEmissionsFormatStyle.symbol)
-                case .energyExpended:
-                    Text(UnitEnergy.kilowattHours.symbol)
-                }
+                Text(self.mode.symbol)
             }
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month))

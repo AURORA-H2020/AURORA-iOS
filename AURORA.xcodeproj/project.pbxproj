@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3D08956A2991080800C996AD /* Consumption+Heating+HeatingFuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0895692991080800C996AD /* Consumption+Heating+HeatingFuel.swift */; };
 		3D08956C299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08956B299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift */; };
-		3D1CA718298CEFE80009177C /* ConsumptionScreen+SummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA717298CEFE80009177C /* ConsumptionScreen+SummarySection.swift */; };
 		3D1CA71A298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA719298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift */; };
 		3D1CA71C298CF2150009177C /* LocalNotificationRequest+Predefined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA71B298CF2150009177C /* LocalNotificationRequest+Predefined.swift */; };
 		3D1CA71E298CF44D0009177C /* UIApplication+openSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA71D298CF44D0009177C /* UIApplication+openSettings.swift */; };
@@ -105,9 +104,10 @@
 		3D537A62298B1E9500C294AA /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D537A61298B1E9500C294AA /* Password.swift */; };
 		3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF229B792ED000EE0EB /* PVGISService.swift */; };
 		3D57AEF729B795A7000EE0EB /* City+PVGISParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF629B795A7000EE0EB /* City+PVGISParams.swift */; };
-		3D60A40029D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60A3FF29D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift */; };
+		3D5CB9CB29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CB9CA29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift */; };
+		3D5CB9CD29D6D4F3008E7414 /* ConsumptionSummary+Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CB9CC29D6D4F2008E7414 /* ConsumptionSummary+Mode.swift */; };
 		3D6F643529D410F70096CB97 /* ConsumptionSummaryView+Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F643429D410F70096CB97 /* ConsumptionSummaryView+Chart.swift */; };
-		3D6F643729D4194B0096CB97 /* ConsumptionSummaryView+LabledConsumptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabledConsumptionSection.swift */; };
+		3D6F643729D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift */; };
 		3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */; };
 		3D8A05E32991AF2F005DEA43 /* ConsumptionForm+Electricity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E22991AF2F005DEA43 /* ConsumptionForm+Electricity.swift */; };
 		3D8A05E52991AF9A005DEA43 /* ConsumptionForm+Heating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E42991AF9A005DEA43 /* ConsumptionForm+Heating.swift */; };
@@ -127,7 +127,6 @@
 /* Begin PBXFileReference section */
 		3D0895692991080800C996AD /* Consumption+Heating+HeatingFuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Heating+HeatingFuel.swift"; sourceTree = "<group>"; };
 		3D08956B299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Heating+DistrictHeatingSource.swift"; sourceTree = "<group>"; };
-		3D1CA717298CEFE80009177C /* ConsumptionScreen+SummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionScreen+SummarySection.swift"; sourceTree = "<group>"; };
 		3D1CA719298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionScreen+LatestEntriesSection.swift"; sourceTree = "<group>"; };
 		3D1CA71B298CF2150009177C /* LocalNotificationRequest+Predefined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalNotificationRequest+Predefined.swift"; sourceTree = "<group>"; };
 		3D1CA71D298CF44D0009177C /* UIApplication+openSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+openSettings.swift"; sourceTree = "<group>"; };
@@ -212,9 +211,10 @@
 		3D537A61298B1E9500C294AA /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		3D57AEF229B792ED000EE0EB /* PVGISService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVGISService.swift; sourceTree = "<group>"; };
 		3D57AEF629B795A7000EE0EB /* City+PVGISParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+PVGISParams.swift"; sourceTree = "<group>"; };
-		3D60A3FF29D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+Mode.swift"; sourceTree = "<group>"; };
+		3D5CB9CA29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionScreen+OverviewSection.swift"; sourceTree = "<group>"; };
+		3D5CB9CC29D6D4F2008E7414 /* ConsumptionSummary+Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Mode.swift"; sourceTree = "<group>"; };
 		3D6F643429D410F70096CB97 /* ConsumptionSummaryView+Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+Chart.swift"; sourceTree = "<group>"; };
-		3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabledConsumptionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+LabledConsumptionSection.swift"; sourceTree = "<group>"; };
+		3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+LabeledConsumptionSection.swift"; sourceTree = "<group>"; };
 		3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Authentication+Method.swift"; sourceTree = "<group>"; };
 		3D83A231296849F20066B039 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		3D8A05E22991AF2F005DEA43 /* ConsumptionForm+Electricity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionForm+Electricity.swift"; sourceTree = "<group>"; };
@@ -331,7 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				3D1EE632298AAC5B009E4645 /* ConsumptionScreen.swift */,
-				3D1CA717298CEFE80009177C /* ConsumptionScreen+SummarySection.swift */,
+				3D5CB9CA29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift */,
 				3D1CA719298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift */,
 				3D98EC4829C9A63400CC3ABE /* Summary */,
 				3DC2C2A929B7852E00A37D0C /* Detail */,
@@ -572,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				3D1EE675298AACF8009E4645 /* ConsumptionSummary.swift */,
+				3D5CB9CC29D6D4F2008E7414 /* ConsumptionSummary+Mode.swift */,
 				3D8C288F29C70B6500811044 /* ConsumptionSummary+Category.swift */,
 				3D8C289129C70C0100811044 /* ConsumptionSummary+Month.swift */,
 				3D8C288D29C70AAF00811044 /* ConsumptionSummary+LabeledConsumption.swift */,
@@ -681,9 +682,8 @@
 			isa = PBXGroup;
 			children = (
 				3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */,
-				3D60A3FF29D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift */,
 				3D6F643429D410F70096CB97 /* ConsumptionSummaryView+Chart.swift */,
-				3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabledConsumptionSection.swift */,
+				3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -875,6 +875,8 @@
 				3D1EE6AF298AAE24009E4645 /* PieChartGeometry.swift in Sources */,
 				3D1EE6A8298AADD4009E4645 /* UNMutableNotificationContent+Init.swift in Sources */,
 				3D1EE612298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift in Sources */,
+				3D5CB9CB29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift in Sources */,
+				3D5CB9CD29D6D4F3008E7414 /* ConsumptionSummary+Mode.swift in Sources */,
 				3D1EE697298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift in Sources */,
 				3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */,
 				3D1EE60E298AAB39009E4645 /* AuthenticationScreen.swift in Sources */,
@@ -887,7 +889,6 @@
 				3D1EE604298AAA21009E4645 /* AppDelegate.swift in Sources */,
 				3D1EE64E298AAC9E009E4645 /* ChangeMailAddressForm.swift in Sources */,
 				3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */,
-				3D60A40029D043A4000C53A6 /* ConsumptionSummaryView+Mode.swift in Sources */,
 				3D1EE60F298AAB39009E4645 /* AuthenticationProviderButton.swift in Sources */,
 				3D08956C299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift in Sources */,
 				3D1EE5FF298AA9EE009E4645 /* ContentView.swift in Sources */,
@@ -932,7 +933,7 @@
 				3D8A05E72991B006005DEA43 /* ConsumptionForm+Transportation.swift in Sources */,
 				3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */,
 				3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */,
-				3D6F643729D4194B0096CB97 /* ConsumptionSummaryView+LabledConsumptionSection.swift in Sources */,
+				3D6F643729D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift in Sources */,
 				3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */,
 				3D3B8D3E2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift in Sources */,
 				3D1EE681298AACF8009E4645 /* Firebase+Functions.swift in Sources */,
@@ -941,7 +942,6 @@
 				3DD34C5A2948F280002064D8 /* App.swift in Sources */,
 				3D1EE686298AACF8009E4645 /* Consumption+Category.swift in Sources */,
 				3D1EE6B0298AAE24009E4645 /* PieChartSpacing.swift in Sources */,
-				3D1CA718298CEFE80009177C /* ConsumptionScreen+SummarySection.swift in Sources */,
 				3D1EE651298AAC9E009E4645 /* ThirdPartyDependency.swift in Sources */,
 				3D1EE696298AACF8009E4645 /* Firebase+Authentication.swift in Sources */,
 				3D3B8D44299150E5008590A8 /* City.swift in Sources */,

@@ -11,13 +11,9 @@ struct ConsumptionScreen {
     /// The User.
     private let user: User
     
-    /// Bool value if ConsumptionSummaryView is presented.
+    /// The currently presented sheet.
     @State
-    private var isConsumptionSummaryViewPresented: Bool = false
-    
-    /// Bool value if ConsumptionForm is presented.
-    @State
-    private var isConsumptionFormPresented: Bool = false
+    private var sheet: Sheet?
     
     // MARK: Initializer
     
@@ -31,6 +27,30 @@ struct ConsumptionScreen {
     
 }
 
+// MARK: - Sheet
+
+extension ConsumptionScreen {
+    
+    /// A consumption screen sheet.
+    enum Sheet: Hashable, Identifiable {
+        /// ConsumptionSummary
+        case consumptionSummary(ConsumptionSummary.Mode = .carbonEmission)
+        /// ConsumptionForm
+        case consumptionForm
+        
+        /// The stable identity of the entity associated with this instance.
+        var id: String {
+            switch self {
+            case .consumptionSummary(let mode):
+                return mode.rawValue
+            case .consumptionForm:
+                return "ConsumptionForm"
+            }
+        }
+    }
+    
+}
+
 // MARK: - View
 
 extension ConsumptionScreen: View {
@@ -40,13 +60,13 @@ extension ConsumptionScreen: View {
         NavigationView {
             List {
                 if let userId = self.user.id {
-                    SummarySection(
+                    OverviewSection(
                         userId: .init(userId),
-                        isConsumptionSummaryViewPresented: self.$isConsumptionSummaryViewPresented
+                        sheet: self.$sheet
                     )
                     LatestEntriesSection(
                         userId: .init(userId),
-                        isConsumptionFormPresented: self.$isConsumptionFormPresented
+                        sheet: self.$sheet
                     )
                 }
             }
@@ -59,22 +79,23 @@ extension ConsumptionScreen: View {
             class: "ConsumptionOverview"
         )
         .sheet(
-            isPresented: self.$isConsumptionFormPresented
-        ) {
-            SheetNavigationView {
-                ConsumptionForm()
-            }
-            .adaptivePresentationDetents([.medium, .large])
-        }
-        .sheet(
-            isPresented: self.$isConsumptionSummaryViewPresented
-        ) {
-            if let userId = self.user.id {
-                SheetNavigationView {
-                    ConsumptionSummaryView(
-                        userId: .init(userId)
-                    )
+            item: self.$sheet
+        ) { sheet in
+            switch sheet {
+            case .consumptionSummary(let mode):
+                if let userId = self.user.id {
+                    SheetNavigationView {
+                        ConsumptionSummaryView(
+                            userId: .init(userId),
+                            mode: mode
+                        )
+                    }
                 }
+            case .consumptionForm:
+                SheetNavigationView {
+                    ConsumptionForm()
+                }
+                .adaptivePresentationDetents([.medium, .large])
             }
         }
     }

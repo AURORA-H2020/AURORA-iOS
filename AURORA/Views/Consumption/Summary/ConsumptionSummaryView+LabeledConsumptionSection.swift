@@ -1,14 +1,14 @@
 import SwiftUI
 
-// MARK: - ConsumptionSummaryView+LabledConsumptionSection
+// MARK: - ConsumptionSummaryView+LabeledConsumptionSection
 
 extension ConsumptionSummaryView {
     
-    /// A labled consumption section
-    struct LabledConsumptionSection {
+    /// A labeled consumption section
+    struct LabeledConsumptionSection {
         
-        /// The Mode
-        let mode: Mode
+        /// The ConsumptionSummary Mode
+        let mode: ConsumptionSummary.Mode
         
         /// The title.
         var category: Consumption.Category?
@@ -16,8 +16,8 @@ extension ConsumptionSummaryView {
         /// The year.
         let year: Int
         
-        /// The labled consumption.
-        let labledConsumption: ConsumptionSummary.LabeledConsumption
+        /// The labeled consumption.
+        let labeledConsumption: ConsumptionSummary.LabeledConsumption
         
     }
 
@@ -25,7 +25,7 @@ extension ConsumptionSummaryView {
 
 // MARK: - View
 
-extension ConsumptionSummaryView.LabledConsumptionSection: View {
+extension ConsumptionSummaryView.LabeledConsumptionSection: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -34,7 +34,7 @@ extension ConsumptionSummaryView.LabledConsumptionSection: View {
                 if let category = self.category {
                     Text(category.localizedString)
                     Spacer()
-                    if let formattedConsumption = self.mode.format(consumption: self.labledConsumption) {
+                    if let formattedConsumption = self.labeledConsumption.formatted(using: self.mode) {
                         Text("\(formattedConsumption) in \(String(self.year))")
                             .font(.subheadline)
                             .fontWeight(.semibold)
@@ -58,26 +58,20 @@ extension ConsumptionSummaryView.LabledConsumptionSection: View {
                     Divider()
                         .overlay(Color.white)
                     Spacer()
-                    Group {
-                        if let labelDisplayString = self.labledConsumption.label?.localizedDisplayString {
-                            Text(labelDisplayString)
-                        } else {
-                            Text("No consumptions entered (?)")
-                        }
-                    }
-                    .font(.subheadline.weight(.semibold))
+                    Text(self.labeledConsumption.localizedLabelDisplayString)
+                        .font(.subheadline.weight(.semibold))
                     Spacer()
                 } else {
                     Spacer()
                     VStack {
                         Text(String(self.year))
                             .font(.title3)
-                        if let labelDisplayString = self.labledConsumption.label?.localizedDisplayString {
+                        if let labelDisplayString = self.labeledConsumption.label?.localizedDisplayString {
                             Text(labelDisplayString)
                                 .font(.subheadline.weight(.semibold))
                         }
                     }
-                    if let formattedConsumption = self.mode.format(consumption: self.labledConsumption) {
+                    if let formattedConsumption = self.labeledConsumption.formatted(using: self.mode) {
                         Spacer()
                         Divider()
                             .overlay(Color.white)
@@ -89,13 +83,9 @@ extension ConsumptionSummaryView.LabledConsumptionSection: View {
                 }
             }
             .multilineTextAlignment(.center)
-            .foregroundColor(
-                self.labledConsumption.label == .c || self.labledConsumption.label == .d
-                    ? .black
-                    : .white
-            )
+            .foregroundColor(self.labeledConsumption.foregroundColor)
             .padding()
-            .background(self.labledConsumption.label?.color.flatMap(Color.init) ?? Color.gray)
+            .background(self.labeledConsumption.labelColor)
             .cornerRadius(8)
             .padding(.vertical)
         }

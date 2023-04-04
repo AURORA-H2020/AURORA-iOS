@@ -7,9 +7,9 @@ struct ConsumptionSummaryView {
     
     // MARK: Properties
     
-    /// The model
+    /// The mode.
     @State
-    private var mode: Mode = .carbonEmission
+    private var mode: ConsumptionSummary.Mode
     
     /// The selected consumption summary identifier.
     @State
@@ -22,16 +22,36 @@ struct ConsumptionSummaryView {
     // MARK: Initializer
     
     /// Creates a new instance of `ConsumptionSummaryView`
-    /// - Parameter userId: The user identifier.
+    /// - Parameters:
+    ///   - userId: The user identifier.
+    ///   - mode: The mode. Default value `.carbonEmission`
     init(
-        userId: User.UID
+        userId: User.UID,
+        mode: ConsumptionSummary.Mode = .carbonEmission
     ) {
+        self._mode = .init(initialValue: mode)
         self._consumptionSummaries = .init(
             context: userId,
             predicates: [
                 ConsumptionSummary.orderByYearPredicate
             ]
         )
+    }
+    
+}
+
+// MARK: - Localized Navigation Title
+
+extension ConsumptionSummaryView {
+    
+    /// A localized navigation title.
+    var localizedNavigationTitle: String {
+        switch self.mode {
+        case .carbonEmission:
+            return .init(localized: "Your Carbon Emissions Labels")
+        case .energyExpended:
+            return .init(localized: "Your Energy Labels")
+        }
     }
     
 }
@@ -59,7 +79,7 @@ extension ConsumptionSummaryView: View {
                     selection: self.$mode
                 ) {
                     ForEach(
-                        Mode.allCases,
+                        ConsumptionSummary.Mode.allCases,
                         id: \.self
                     ) { mode in
                         Text(mode.localizedString)
@@ -78,35 +98,21 @@ extension ConsumptionSummaryView: View {
                 }
                 .listRowInsets(.init())
                 .listRowBackground(Color(.systemGroupedBackground))
-                LabledConsumptionSection(
+                LabeledConsumptionSection(
                     mode: self.mode,
                     year: consumptionSummary.year,
-                    labledConsumption: {
-                        switch self.mode {
-                        case .carbonEmission:
-                            return consumptionSummary.carbonEmission
-                        case .energyExpended:
-                            return consumptionSummary.energyExpended
-                        }
-                    }()
+                    labeledConsumption: consumptionSummary.labeledConsumption(for: self.mode)
                 )
                 ForEach(
                     Consumption.Category.allCases,
                     id: \.self
                 ) { category in
                     if let consumptionSummaryCategory = consumptionSummary.category(category) {
-                        LabledConsumptionSection(
+                        LabeledConsumptionSection(
                             mode: self.mode,
                             category: category,
                             year: consumptionSummary.year,
-                            labledConsumption: {
-                                switch self.mode {
-                                case .carbonEmission:
-                                    return consumptionSummaryCategory.carbonEmission
-                                case .energyExpended:
-                                    return consumptionSummaryCategory.energyExpended
-                                }
-                            }()
+                            labeledConsumption: consumptionSummaryCategory.labeledConsumption(for: self.mode)
                         )
                     }
                 }
@@ -120,14 +126,15 @@ extension ConsumptionSummaryView: View {
                 Section {
                     EmptyPlaceholder(
                         systemImage: "chart.bar.xaxis",
-                        title: .init(self.mode.localizedNavigationTitle),
+                        title: .init(self.localizedNavigationTitle),
                         subtitle: "Your energy lables are currently not available."
                     )
                 }
                 .listRowBackground(Color(.systemGroupedBackground))
             }
         }
-        .navigationTitle(self.mode.localizedNavigationTitle)
+        .navigationTitle(self.localizedNavigationTitle)
+        .navigationBarTitleDisplayMode(.inline)
         .onChange(
             of: self.consumptionSummaries
         ) { consumptionSummaries in
