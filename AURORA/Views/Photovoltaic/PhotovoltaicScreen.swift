@@ -113,6 +113,8 @@ private extension PhotovoltaicScreen {
                     All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later.
                     Estimated savings might be different from actual data, once the photovoltaic installations will be operational.
                     You obviously do not make any commitments by using this calculator.
+                    
+                    This calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre.
                     """
                 )
                 .multilineTextAlignment(.leading)
@@ -230,7 +232,7 @@ private extension PhotovoltaicScreen {
         .listRowBackground(Color.green)
         .headerProminence(.increased)
         Section(
-            footer: VStack {
+            footer: VStack(spacing: 10) {
                 HStack {
                     Button {
                         self.investmentResult = nil
@@ -251,11 +253,16 @@ private extension PhotovoltaicScreen {
                 .tint(.accentColor)
                 .buttonBorderShape(.capsule)
                 Text(
-                    "Please note that all values displayed here are specific for your city, \(self.city.name), and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator."
+                    """
+                    Please note that all values displayed here are specific for your city, **\(self.city.name)**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.
+                    
+                    This calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre.
+                    """
                 )
                 .font(.caption)
                 .multilineTextAlignment(.leading)
             }
+            .listRowInsets(.init())
         ) {
         }
     }
