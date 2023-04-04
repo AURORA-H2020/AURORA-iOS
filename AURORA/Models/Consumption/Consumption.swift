@@ -135,13 +135,23 @@ extension Consumption {
                 value: self.value,
                 unit: .kilometers
             )
-            .formatted()
+            .formatted(
+                .measurement(
+                    width: .abbreviated,
+                    numberFormatStyle: .number.precision(.fractionLength(1))
+                )
+            )
         case .heating, .electricity:
             return Measurement<UnitEnergy>(
                 value: self.value,
                 unit: .kilowattHours
             )
-            .formatted()
+            .formatted(
+                .measurement(
+                    width: .abbreviated,
+                    numberFormatStyle: .number.precision(.fractionLength(1))
+                )
+            )
         }
     }
     

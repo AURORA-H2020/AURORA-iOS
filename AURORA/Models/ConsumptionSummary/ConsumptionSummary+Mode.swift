@@ -66,7 +66,12 @@ extension ConsumptionSummary.Mode {
                 value: consumption.total,
                 unit: .kilowattHours
             )
-            .formatted()
+            .formatted(
+                .measurement(
+                    width: .abbreviated,
+                    numberFormatStyle: .number.precision(.fractionLength(1))
+                )
+            )
         }
     }
     

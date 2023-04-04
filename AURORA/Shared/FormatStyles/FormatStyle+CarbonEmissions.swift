@@ -14,28 +14,21 @@ struct CarbonEmissionsFormatStyle: FormatStyle {
         guard !value.isNaN else {
             return nil
         }
-        let measurement = Measurement<UnitMass>(
+        var measurement = Measurement<UnitMass>(
             value: value,
             unit: .kilograms
         )
         if measurement.value <= 0 {
-            return measurement
-                .converted(to: .grams)
-                .formatted(
-                    .measurement(
-                        width: .abbreviated,
-                        usage: .asProvided
-                    )
-                )
-        } else {
-            return measurement
-                .formatted(
-                    .measurement(
-                        width: .abbreviated,
-                        usage: .asProvided
-                    )
-                )
+            measurement = measurement.converted(to: .grams)
         }
+        return measurement
+            .formatted(
+                .measurement(
+                    width: .abbreviated,
+                    usage: .asProvided,
+                    numberFormatStyle: .number.precision(.fractionLength(1))
+                )
+            )
     }
     
 }

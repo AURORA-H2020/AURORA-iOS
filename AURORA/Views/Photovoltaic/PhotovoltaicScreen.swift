@@ -154,12 +154,30 @@ private extension PhotovoltaicScreen {
             HStack {
                 Text("Your investment")
                 Spacer()
-                Text(investmentResult.amount.formatted(.currency(code: self.country.currencyCode).precision(.fractionLength(0))))
+                Text(
+                    investmentResult
+                        .amount
+                        .formatted(
+                            .currency(
+                                code: self.country.currencyCode
+                            )
+                            .precision(.fractionLength(0))
+                        )
+                )
             }
             HStack {
                 Text("Energy produced")
                 Spacer()
-                Text(investmentResult.producedEnergy.formatted())
+                Text(
+                    investmentResult
+                        .producedEnergy
+                        .formatted(
+                            .measurement(
+                                width: .abbreviated,
+                                numberFormatStyle: .number.precision(.fractionLength(0))
+                            )
+                        )
+                )
             }
         }
         Section(
