@@ -58,7 +58,12 @@ extension ConsumptionList: View {
             }
         }
         .navigationTitle("Entries")
-        .searchable(text: self.$searchText)
+        .searchable(
+            text: self.$searchText,
+            placement: .navigationBarDrawer(
+                displayMode: .always
+            )
+        )
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
