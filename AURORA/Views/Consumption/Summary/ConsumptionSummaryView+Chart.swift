@@ -56,7 +56,12 @@ extension ConsumptionSummaryView.Chart: View {
                 }
             }
             .chartYAxisLabel {
-                Text(self.mode.symbol)
+                switch self.mode {
+                case .carbonEmission:
+                    Text(verbatim: "\(UnitMass.kilograms.symbol) \(self.mode.symbol)")
+                case .energyExpended:
+                    Text(self.mode.symbol)
+                }
             }
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month))
