@@ -28,23 +28,43 @@ extension ConsumptionList.Cell: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        HStack {
+        HStack(spacing: 10) {
             self.consumption
                 .category
                 .icon
                 .imageScale(.small)
+                .frame(minWidth: 32, minHeight: 32)
                 .foregroundColor(self.consumption.category.tintColor)
-                .padding(8)
                 .background(self.consumption.category.tintColor.opacity(0.3))
                 .clipShape(Circle())
             VStack(alignment: .leading) {
                 Text(self.consumption.category.rawValue.capitalized)
                     .foregroundColor(.primary)
-                if let createdAt = self.consumption.createdAt?.dateValue() {
-                    Text(createdAt.formatted(date: .numeric, time: .shortened))
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                Group {
+                    switch self.consumption.category {
+                    case .electricity:
+                        if let electricity = self.consumption.electricity {
+                            Text(
+                                electricity.startDate.dateValue()...electricity.endDate.dateValue()
+                            )
+                        }
+                    case .heating:
+                        if let heating = self.consumption.heating {
+                            Text(
+                                heating.startDate.dateValue()...heating.endDate.dateValue()
+                            )
+                        }
+                    case .transportation:
+                        if let transportation = self.consumption.transportation {
+                            Text(
+                                transportation.dateOfTravel.dateValue(),
+                                format: .dateTime
+                            )
+                        }
+                    }
                 }
+                .font(.footnote)
+                .foregroundColor(.secondary)
                 if let description = self.consumption.description, !description.isEmpty {
                     Text(description)
                         .lineLimit(2)
@@ -56,6 +76,7 @@ extension ConsumptionList.Cell: View {
             Spacer()
             VStack(alignment: .trailing) {
                 Text(self.consumption.formattedValue)
+                    .font(.subheadline)
                     .foregroundColor(.secondary)
                 if let formattedCarbonEmissions = self.consumption
                     .carbonEmissions?
@@ -100,6 +121,7 @@ extension ConsumptionList.Cell: View {
                 Text("Are you sure you want to delete the entry?")
             }
         )
+        .frame(minHeight: 38)
     }
     
 }
