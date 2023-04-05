@@ -315,7 +315,7 @@ private extension SettingsScreen {
                     }
                     urlComponents.queryItems = [
                         .init(
-                            name: "user",
+                            name: "user_id",
                             value: userAccountId
                         )
                     ]
