@@ -97,17 +97,14 @@ extension ConsumptionScreen: View {
                     }
                 }
             case .consumptionForm(let consumption):
-                if let consumption = consumption {
-                    SheetNavigationView {
+                SheetNavigationView {
+                    if let consumption = consumption {
                         ConsumptionForm(
                             consumption: consumption
                         )
-                    }
-                } else {
-                    SheetNavigationView {
+                    } else {
                         ConsumptionForm()
                     }
-                    .adaptivePresentationDetents([.medium, .large])
                 }
             }
         }
