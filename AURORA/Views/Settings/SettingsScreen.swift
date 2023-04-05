@@ -2,6 +2,8 @@ import FirebaseAnalyticsSwift
 import FirebaseAuth
 import SwiftUI
 
+// swiftlint:disable file_length
+
 // MARK: - SettingsScreen
 
 /// The SettingsScreen
@@ -36,6 +38,7 @@ extension SettingsScreen: View {
                 self.accountSection
                 self.notificationsSection
                 self.privacySection
+                self.supportSection
                 self.legalSection
             }
             .navigationTitle("Settings")
@@ -72,8 +75,11 @@ extension SettingsScreen: View {
     
 }
 
+// MARK: - Account Section
+
 private extension SettingsScreen {
     
+    /// The account section.
     var accountSection: some View {
         Section(
             header: Text("Account")
@@ -148,8 +154,11 @@ private extension SettingsScreen {
     
 }
 
+// MARK: - Notifications Section
+
 private extension SettingsScreen {
     
+    /// The notifications section.
     var notificationsSection: some View {
         Section(
             header: Text("Notifications")
@@ -184,8 +193,11 @@ private extension SettingsScreen {
     
 }
 
+// MARK: - Privacy Section
+
 private extension SettingsScreen {
     
+    /// The privacy section.
     var privacySection: some View {
         Section(
             header: Text("Data privacy")
@@ -276,8 +288,56 @@ private extension SettingsScreen {
     
 }
 
+// MARK: - Support Section
+
 private extension SettingsScreen {
     
+    /// The support section.
+    var supportSection: some View {
+        Section(
+            header: Text("Support")
+        ) {
+            Link(
+                destination: .init(
+                    string: "https://www.aurora-h2020.eu/aurora/ourapp/"
+                )!
+            ) {
+                Label("About the App", systemImage: "app.fill")
+            }
+            Link(
+                destination: {
+                    let url = URL(string: "https://aurora-h2020.eu/app-support")!
+                    guard let userAccountId = try? self.firebase.authentication.state.userAccount.uid else {
+                        return url
+                    }
+                    guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+                        return url
+                    }
+                    urlComponents.queryItems = [
+                        .init(
+                            name: "user",
+                            value: userAccountId
+                        )
+                    ]
+                    return urlComponents.url ?? url
+                }()
+            ) {
+                Label(
+                    "Contact Support",
+                    systemImage: "questionmark.circle.fill"
+                )
+            }
+        }
+        .headerProminence(.increased)
+    }
+    
+}
+
+// MARK: - Legal Section
+
+private extension SettingsScreen {
+    
+    /// The legal section.
     var legalSection: some View {
         Section(
             header: Text("Legal information"),
