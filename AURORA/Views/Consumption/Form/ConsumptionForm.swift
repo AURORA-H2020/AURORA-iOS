@@ -77,6 +77,35 @@ struct ConsumptionForm {
     
 }
 
+// MARK: - ConsumptionForm+preferredDatePickerRange
+
+extension ConsumptionForm {
+    
+    /// The preferred DatePicker range.
+    static let preferredDatePickerRange: ClosedRange<Date> = {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let yearExpansionFactor: Int = 30
+        lazy var oneYearInSeconds: TimeInterval = 60 * 60 * 24 * 365
+        let minimumDate = calendar.date(
+            byAdding: .year,
+            value: -yearExpansionFactor,
+            to: currentDate
+        )
+        ??
+        currentDate.addingTimeInterval(-(oneYearInSeconds * .init(yearExpansionFactor)))
+        let maximumDate = calendar.date(
+            byAdding: .year,
+            value: yearExpansionFactor,
+            to: currentDate
+        )
+        ??
+        currentDate.addingTimeInterval(oneYearInSeconds * .init(yearExpansionFactor))
+        return minimumDate...maximumDate
+    }()
+    
+}
+
 // MARK: - Consumption
 
 private extension ConsumptionForm {
@@ -90,9 +119,21 @@ private extension ConsumptionForm {
                 // Otherwise return nil
                 return nil
             }
-            // Verify fractional decimal digits is equal or less than two.
-            guard max(-Decimal(value).exponent, 0) <= 2 else {
+            // Verify description count is less than 2000 characters
+            guard self.description.count <= 2000 else {
                 // Otherwise return nil
+                return nil
+            }
+            // Verify fractional decimal digits of the value is equal or less than two
+            // and less than 100000
+            guard value <= 100000 && max(-Decimal(value).exponent, 0) <= 2 else {
+                // Otherwise return nil
+                return nil
+            }
+            // Check if costs is greater 100000
+            if let costs = (self.partialElectricity.costs ?? self.partialHeating.costs).flatMap({ $0 }),
+               costs > 100000 {
+                // Return nil
                 return nil
             }
             // Try to initialize consumption

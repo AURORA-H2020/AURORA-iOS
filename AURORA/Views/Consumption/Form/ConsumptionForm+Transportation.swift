@@ -34,7 +34,8 @@ extension ConsumptionForm.Transportation: View {
                 set: { newValue in
                     self.partialTransportation.dateOfTravel = .init(date: newValue)
                 }
-            )
+            ),
+            in: ConsumptionForm.preferredDatePickerRange
         )
         Picker(
             "Type",
