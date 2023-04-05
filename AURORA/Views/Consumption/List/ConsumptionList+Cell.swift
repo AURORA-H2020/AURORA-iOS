@@ -112,6 +112,7 @@ extension ConsumptionList.Cell: View {
         .confirmationDialog(
             "Delete Entry",
             isPresented: self.$isDeleteConfirmationDialogPresented,
+            titleVisibility: .visible,
             actions: {
                 Button(role: .destructive) {
                     try? self.firebase
@@ -129,7 +130,12 @@ extension ConsumptionList.Cell: View {
                 }
             },
             message: {
-                Text("Are you sure you want to delete the entry?")
+                Text(
+                    """
+                    Are you sure you want to delete the entry?
+                    Please note that it can take up to a minute for your summary to update.
+                    """
+                )
             }
         )
         .frame(minHeight: 38)
