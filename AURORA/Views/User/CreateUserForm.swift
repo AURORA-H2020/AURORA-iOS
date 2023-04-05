@@ -149,7 +149,10 @@ extension CreateUserForm: View {
                 Section(
                     header: Text("Country"),
                     footer: Text(
-                        "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later."
+                        """
+                        This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.
+                        Crowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners.
+                        """
                     )
                 ) {
                     Picker(
