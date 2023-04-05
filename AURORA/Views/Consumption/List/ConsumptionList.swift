@@ -103,6 +103,11 @@ private extension Array where Element == Consumption {
             consumption.category.rawValue.localizedCaseInsensitiveContains(searchText)
                 || consumption.description?.localizedCaseInsensitiveContains(searchText) == true
                 || String(consumption.value).localizedCaseInsensitiveContains(searchText)
+                || consumption.electricity?.startDate.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
+                || consumption.electricity?.endDate.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
+                || consumption.heating?.startDate.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
+                || consumption.heating?.endDate.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
+                || consumption.transportation?.dateOfTravel.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
         }
     }
     
