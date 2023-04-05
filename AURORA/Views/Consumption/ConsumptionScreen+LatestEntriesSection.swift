@@ -66,7 +66,7 @@ extension ConsumptionScreen.LatestEntriesSection: View {
                         primaryAction: .init(
                             title: "Add consumption",
                             action: {
-                                self.sheet = .consumptionForm
+                                self.sheet = .consumptionForm()
                             }
                         )
                     )
@@ -97,7 +97,10 @@ extension ConsumptionScreen.LatestEntriesSection: View {
                     )
                 ) {
                     ConsumptionList.Cell(
-                        consumption: consumption
+                        consumption: consumption,
+                        editAction: {
+                            self.sheet = .consumptionForm(consumption)
+                        }
                     )
                 }
             }

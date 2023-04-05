@@ -7,13 +7,13 @@ struct ConsumptionList {
     
     // MARK: Properties
     
-    /// The search text
+    /// The search text.
     @State
     private var searchText = String()
     
-    /// Bool value if ConsumptionForm is presented.
+    /// The currently presented Sheet.
     @State
-    private var isConsumptionFormPresented: Bool = false
+    private var sheet: Sheet?
     
     /// The Consumptions.
     @FirestoreEntityQuery
@@ -36,6 +36,31 @@ struct ConsumptionList {
     
 }
 
+// MARK: - Sheet
+
+private extension ConsumptionList {
+    
+    /// A Sheet
+    enum Sheet: Hashable, Identifiable {
+        /// ConsumptionForm
+        case consumptionForm(Consumption? = nil)
+        
+        /// The stable identity of the entity associated with this instance.
+        var id: String {
+            switch self {
+            case .consumptionForm(let consumption):
+                return [
+                    "ConsumptionForm",
+                    consumption?.id
+                ]
+                .compactMap { $0 }
+                .joined(separator: "-")
+            }
+        }
+    }
+    
+}
+
 // MARK: - View
 
 extension ConsumptionList: View {
@@ -52,7 +77,10 @@ extension ConsumptionList: View {
                     )
                 ) {
                     Cell(
-                        consumption: consumption
+                        consumption: consumption,
+                        editAction: {
+                            self.sheet = .consumptionForm(consumption)
+                        }
                     )
                 }
             }
@@ -67,19 +95,30 @@ extension ConsumptionList: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.isConsumptionFormPresented = true
+                    self.sheet = .consumptionForm()
                 } label: {
                     Image(systemName: "plus")
                 }
             }
         }
         .sheet(
-            isPresented: self.$isConsumptionFormPresented
-        ) {
-            SheetNavigationView {
-                ConsumptionForm()
+            item: self.$sheet
+        ) { sheet in
+            switch sheet {
+            case .consumptionForm(let consumption):
+                if let consumption = consumption {
+                    SheetNavigationView {
+                        ConsumptionForm(
+                            consumption: consumption
+                        )
+                    }
+                } else {
+                    SheetNavigationView {
+                        ConsumptionForm()
+                    }
+                    .adaptivePresentationDetents([.medium, .large])
+                }
             }
-            .adaptivePresentationDetents([.medium, .large])
         }
     }
     

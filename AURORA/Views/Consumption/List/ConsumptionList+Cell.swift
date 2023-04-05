@@ -10,6 +10,9 @@ extension ConsumptionList {
         /// The Consumption
         let consumption: Consumption
         
+        /// An optional edit action.
+        var editAction: (() -> Void)?
+        
         /// Bool value if delete confirmation dialog is presented
         @State
         private var isDeleteConfirmationDialogPresented = false
@@ -97,6 +100,14 @@ extension ConsumptionList.Cell: View {
                 Label("Delete", systemImage: "trash")
             }
             .tint(.red)
+            if let editAction = self.editAction {
+                Button {
+                    editAction()
+                } label: {
+                    Label("Edit", systemImage: "square.and.pencil")
+                }
+                .tint(.accentColor)
+            }
         }
         .confirmationDialog(
             "Delete Entry",

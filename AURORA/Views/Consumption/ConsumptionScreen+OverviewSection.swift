@@ -95,7 +95,7 @@ extension ConsumptionScreen.OverviewSection: View {
                 )
             }
             Button {
-                self.sheet = .consumptionForm
+                self.sheet = .consumptionForm()
             } label: {
                 Label(
                     "Add a consumption",

@@ -36,15 +36,20 @@ extension ConsumptionScreen {
         /// ConsumptionSummary
         case consumptionSummary(ConsumptionSummary.Mode = .carbonEmission)
         /// ConsumptionForm
-        case consumptionForm
+        case consumptionForm(Consumption? = nil)
         
         /// The stable identity of the entity associated with this instance.
         var id: String {
             switch self {
             case .consumptionSummary(let mode):
                 return mode.rawValue
-            case .consumptionForm:
-                return "ConsumptionForm"
+            case .consumptionForm(let consumption):
+                return [
+                    "ConsumptionForm",
+                    consumption?.id
+                ]
+                .compactMap { $0 }
+                .joined(separator: "-")
             }
         }
     }
@@ -91,11 +96,19 @@ extension ConsumptionScreen: View {
                         )
                     }
                 }
-            case .consumptionForm:
-                SheetNavigationView {
-                    ConsumptionForm()
+            case .consumptionForm(let consumption):
+                if let consumption = consumption {
+                    SheetNavigationView {
+                        ConsumptionForm(
+                            consumption: consumption
+                        )
+                    }
+                } else {
+                    SheetNavigationView {
+                        ConsumptionForm()
+                    }
+                    .adaptivePresentationDetents([.medium, .large])
                 }
-                .adaptivePresentationDetents([.medium, .large])
             }
         }
     }
