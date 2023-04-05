@@ -25,6 +25,73 @@ extension ConsumptionForm.Electricity: View {
     
     /// The content and behavior of the view.
     var body: some View {
+        Section(
+            footer: Text(
+                "You can find this information on your electricity bill."
+            )
+            .multilineTextAlignment(.leading)
+        ) {
+            HStack {
+                NumberTextField(
+                    "Consumption",
+                    value: self.$value
+                )
+                Text(KilowattHoursFormatStyle.symbol)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+            }
+        }
+        Section(
+            footer: Text(
+                "How many people, including you, are living in your household."
+            )
+            .multilineTextAlignment(.leading)
+        ) {
+            Stepper(
+                "People in household: \(self.partialElectricity.householdSize ?? 1)",
+                value: .init(
+                    get: {
+                        self.partialElectricity.householdSize ?? 1
+                    },
+                    set: { householdSize in
+                        self.partialElectricity.householdSize = householdSize
+                    }
+                ),
+                in: 1...100
+            )
+        }
+        Section(
+            footer: Text(
+                "Select the start and end date of this consumption. You can find this information on your electricity bill."
+            )
+            .multilineTextAlignment(.leading)
+        ) {
+            DatePicker(
+                "Start",
+                selection: .init(
+                    get: {
+                        self.partialElectricity.startDate?.dateValue() ?? .init()
+                    },
+                    set: { newValue in
+                        self.partialElectricity.startDate = .init(date: newValue)
+                    }
+                ),
+                displayedComponents: [.date]
+            )
+            DatePicker(
+                "End",
+                selection: .init(
+                    get: {
+                        self.partialElectricity.endDate?.dateValue() ?? .init()
+                    },
+                    set: { newValue in
+                        self.partialElectricity.endDate = .init(date: newValue)
+                    }
+                ),
+                in: (self.partialElectricity.startDate?.dateValue() ?? .init())...,
+                displayedComponents: [.date]
+            )
+        }
         CurrencyTextField(
             "Costs",
             value: .init(
@@ -36,52 +103,6 @@ extension ConsumptionForm.Electricity: View {
                 }
             )
         )
-        Stepper(
-            "People in household: \(self.partialElectricity.householdSize ?? 1)",
-            value: .init(
-                get: {
-                    self.partialElectricity.householdSize ?? 1
-                },
-                set: { householdSize in
-                    self.partialElectricity.householdSize = householdSize
-                }
-            ),
-            in: 1...100
-        )
-        DatePicker(
-            "Start",
-            selection: .init(
-                get: {
-                    self.partialElectricity.startDate?.dateValue() ?? .init()
-                },
-                set: { newValue in
-                    self.partialElectricity.startDate = .init(date: newValue)
-                }
-            ),
-            displayedComponents: [.date]
-        )
-        DatePicker(
-            "End",
-            selection: .init(
-                get: {
-                    self.partialElectricity.endDate?.dateValue() ?? .init()
-                },
-                set: { newValue in
-                    self.partialElectricity.endDate = .init(date: newValue)
-                }
-            ),
-            in: (self.partialElectricity.startDate?.dateValue() ?? .init())...,
-            displayedComponents: [.date]
-        )
-        HStack {
-            NumberTextField(
-                "Consumption",
-                value: self.$value
-            )
-            Text(KilowattHoursFormatStyle.symbol)
-                .font(.footnote)
-                .foregroundColor(.secondary)
-        }
     }
     
 }
