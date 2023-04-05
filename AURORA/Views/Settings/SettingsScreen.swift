@@ -302,7 +302,10 @@ private extension SettingsScreen {
                     string: "https://www.aurora-h2020.eu/aurora/ourapp/"
                 )!
             ) {
-                Label("About the App", systemImage: "app.fill")
+                Label(
+                    "About the App",
+                    systemImage: "square.stack.3d.up.fill"
+                )
             }
             Link(
                 destination: {
@@ -317,8 +320,19 @@ private extension SettingsScreen {
                         .init(
                             name: "user_id",
                             value: userAccountId
-                        )
+                        ),
+                        (
+                            try? self.firebase.country?.get()
+                        )?
+                        .id
+                        .flatMap { countryId in
+                            .init(
+                                name: "country_id",
+                                value: countryId
+                            )
+                        }
                     ]
+                    .compactMap { $0 }
                     return urlComponents.url ?? url
                 }()
             ) {
