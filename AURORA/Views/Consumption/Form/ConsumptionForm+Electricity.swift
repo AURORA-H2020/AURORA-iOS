@@ -43,7 +43,7 @@ extension ConsumptionForm.Electricity: View {
         }
         Section(
             footer: Text(
-                "How many people, including you, are living in your household."
+                "How many people, including you, live in your household."
             )
             .multilineTextAlignment(.leading)
         ) {
@@ -62,12 +62,12 @@ extension ConsumptionForm.Electricity: View {
         }
         Section(
             footer: Text(
-                "Select the start and end date of this consumption. You can find this information on your electricity bill."
+                "Select the beginning and end of this consumption. You can find this information on your electricity bill."
             )
             .multilineTextAlignment(.leading)
         ) {
             DatePicker(
-                "Start",
+                "Beginning",
                 selection: .init(
                     get: {
                         self.partialElectricity.startDate?.dateValue() ?? .init()

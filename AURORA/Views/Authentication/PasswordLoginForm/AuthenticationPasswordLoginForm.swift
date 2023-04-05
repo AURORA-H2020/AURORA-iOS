@@ -142,7 +142,7 @@ extension AuthenticationPasswordLoginForm: View {
                 .focused(self.$isTextFieldFocused)
                 if self.method == .register {
                     SecureField(
-                        "Confirm Password",
+                        "Confirm password",
                         text: self.$passwordConfirmation
                     )
                     .focused(self.$isTextFieldFocused)
@@ -205,7 +205,7 @@ extension AuthenticationPasswordLoginForm: View {
                                 mailAddress: self.mailAddress
                             )
                         ) {
-                            Text("Forgot Password")
+                            Text("Reset my password")
                         }
                     }
                 }

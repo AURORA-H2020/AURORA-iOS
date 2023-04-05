@@ -371,7 +371,7 @@ private extension ConsumptionForm {
         }
         Section(
             header: Text("Description"),
-            footer: Text("Add an optional description to your entry.")
+            footer: Text("You may add a description to your entry to help you find it later.")
         ) {
             if #available(iOS 16.0, *) {
                 TextField(

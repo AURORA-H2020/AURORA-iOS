@@ -11,7 +11,7 @@ extension AuthenticationProviderButton {
         /// Google.
         case google = "Google"
         /// email address.
-        case mailAddress = "Email"
+        case mailAddress = "email"
     }
     
 }

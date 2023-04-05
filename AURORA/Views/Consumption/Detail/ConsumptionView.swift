@@ -61,7 +61,7 @@ extension ConsumptionView: View {
                     )
                     .foregroundColor(.secondary)
                 } label: {
-                    Text("Start")
+                    Text("Beginning")
                 }
                 Entry {
                     Text(
@@ -88,7 +88,7 @@ extension ConsumptionView: View {
                     )
                     .foregroundColor(.secondary)
                 } label: {
-                    Text("Start")
+                    Text("Beginning")
                 }
                 Entry {
                     Text(

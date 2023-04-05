@@ -43,7 +43,7 @@ extension ConsumptionForm.Heating: View {
         }
         Section(
             footer: Text(
-                "How many people, including you, are living in your household."
+                "How many people, including you, live in your household."
             )
             .multilineTextAlignment(.leading)
         ) {
@@ -99,12 +99,12 @@ extension ConsumptionForm.Heating: View {
         }
         Section(
             footer: Text(
-                "Select the start and end date of this consumption. You can find this information on your heating bill."
+                "Select the beginning and end of this consumption. You can find this information on your heating bill."
             )
             .multilineTextAlignment(.leading)
         ) {
             DatePicker(
-                "Start",
+                "Beginning",
                 selection: .init(
                     get: {
                         self.partialHeating.startDate?.dateValue() ?? .init()

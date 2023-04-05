@@ -45,7 +45,7 @@ extension ConsumptionSummary.LabeledConsumption {
             return localizedDisplayString
         } else {
             return .init(
-                localized: "No consumptions entered (?)"
+                localized: "No consumption entered yet (?)"
             )
         }
     }
