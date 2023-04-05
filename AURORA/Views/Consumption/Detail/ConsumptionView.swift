@@ -182,7 +182,7 @@ extension ConsumptionView: View {
                 } label: {
                     Label(
                         "Edit",
-                        systemImage: "pencil"
+                        systemImage: "square.and.pencil"
                     )
                 }
             }
