@@ -97,10 +97,10 @@ extension AuthenticationPasswordLoginForm: View {
             .listRowBackground(Color(.systemGroupedBackground))
             .listRowInsets(.init())
             Section(
-                header: Text("E-Mail")
+                header: Text("Email")
             ) {
                 TextField(
-                    "E-Mail",
+                    "Email",
                     text: self.$mailAddress
                 )
                 .autocapitalization(.none)
@@ -213,7 +213,7 @@ extension AuthenticationPasswordLoginForm: View {
             }
             .listRowInsets(.init())
         }
-        .navigationTitle("Continue with E-Mail")
+        .navigationTitle("Continue with email")
         .disabled(self.asyncButtonState == .busy)
         .interactiveDismissDisabled(self.asyncButtonState == .busy)
     }

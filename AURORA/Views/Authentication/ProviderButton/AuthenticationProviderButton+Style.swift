@@ -10,8 +10,8 @@ extension AuthenticationProviderButton {
         case apple = "Apple"
         /// Google.
         case google = "Google"
-        /// E-Mail address.
-        case mailAddress = "E-Mail"
+        /// email address.
+        case mailAddress = "Email"
     }
     
 }

@@ -49,11 +49,11 @@ extension AuthenticationForgotPasswordForm: View {
     var body: some View {
         List {
             Section(
-                header: Text("E-Mail Address"),
-                footer: Text("An E-Mail will be sent to your inbox containing a link to reset your password.")
+                header: Text("Email Address"),
+                footer: Text("An email will be sent to your inbox containing a link to reset your password.")
             ) {
                 TextField(
-                    "E-Mail",
+                    "Email",
                     text: self.$mailAddress
                 )
                 .autocapitalization(.none)
@@ -72,7 +72,7 @@ extension AuthenticationForgotPasswordForm: View {
                             return .init(
                                 title: Text("Password reset"),
                                 message: Text(
-                                    "You will shortly receive an E-Mail to reset your password."
+                                    "You will shortly receive an email to reset your password."
                                 ),
                                 dismissButton: .default(
                                     Text("Okay"),
@@ -83,7 +83,7 @@ extension AuthenticationForgotPasswordForm: View {
                             return .init(
                                 title: Text("Error"),
                                 message: Text(
-                                    "An error occurred while trying to reset your password. Please check your E-Mail address and try again."
+                                    "An error occurred while trying to reset your password. Please check your email address and try again."
                                 )
                             )
                         }

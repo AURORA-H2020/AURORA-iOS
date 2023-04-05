@@ -6,7 +6,7 @@ extension Firebase.Authentication {
     
     /// A Firebase Authentication Method
     enum Method: Codable, Hashable, Sendable {
-        /// E-Mail and Password
+        /// Email and Password
         case password(
             method: PasswordMethod,
             email: String,

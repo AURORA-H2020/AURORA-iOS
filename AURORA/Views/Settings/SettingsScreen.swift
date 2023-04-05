@@ -101,7 +101,7 @@ private extension SettingsScreen {
                     self.isChangeMailAddressFormPresented = true
                 } label: {
                     Label(
-                        "Change E-Mail",
+                        "Change email",
                         systemImage: "envelope"
                     )
                 }

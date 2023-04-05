@@ -70,7 +70,7 @@ extension Firebase.Authentication {
         case .password(let method, let email, let password):
             switch method {
             case .login:
-                // Try to sign in with E-Mail and password
+                // Try to sign in with email and password
                 return try await self.firebase
                     .firebaseAuth
                     .signIn(
@@ -78,7 +78,7 @@ extension Firebase.Authentication {
                         password: password
                     )
             case .register:
-                // Create user with E-Mail and password
+                // Create user with email and password
                 return try await self.firebase
                     .firebaseAuth
                     .createUser(
@@ -108,12 +108,12 @@ extension Firebase.Authentication {
     
 }
 
-// MARK: - Send Password Reset E-Mail
+// MARK: - Send Password Reset email
 
 extension Firebase.Authentication {
     
-    /// Sends a password reset to the given E-Mail address
-    /// - Parameter mailAddress: The E-Mail address.
+    /// Sends a password reset to the given email address
+    /// - Parameter mailAddress: The email address.
     func sendPasswordReset(
         to mailAddress: String
     ) async throws {
@@ -132,7 +132,7 @@ extension Firebase.Authentication {
     
     /// A Firebase Authentication Provider
     enum Provider: String, Codable, Hashable, CaseIterable {
-        /// E-Mail and Password
+        /// Email and Password
         case password
         /// Phone
         case phone
@@ -151,7 +151,7 @@ extension Firebase.Authentication {
         /// Microsoft
         case microsoft = "hotmail.com"
         
-        /// E-Mail and Password (Typealias for  `password` case)
+        /// Email and Password (Typealias for  `password` case)
         static let email: Self = .password
     }
     
@@ -170,13 +170,13 @@ extension Firebase.Authentication {
     
 }
 
-// MARK: - Update E-Mail
+// MARK: - Update Email
 
 extension Firebase.Authentication {
     
-    /// Update E-Mail address.
+    /// Update Email address.
     /// - Parameters:
-    ///   - newMailAddress: The new E-Mail address
+    ///   - newMailAddress: The new email address
     ///   - currentPassword: The current password.
     func updateMailAddress(
         newMailAddress: String,
@@ -198,7 +198,7 @@ extension Firebase.Authentication {
                     password: currentPassword
                 )
             )
-        // Update E-Mail
+        // Update email
         try await userAccount
             .updateEmail(
                 to: newMailAddress
