@@ -42,7 +42,7 @@ extension Consumption.Electricity: PartialConvertible {
     /// - Parameter partial: The partial instance.
     init(partial: Partial<Self>) throws {
         self.init(
-            costs: try partial(\.costs),
+            costs: partial.costs?.flatMap { $0 },
             householdSize: try partial(\.householdSize),
             startDate: try partial(\.startDate),
             endDate: try partial(\.endDate)
