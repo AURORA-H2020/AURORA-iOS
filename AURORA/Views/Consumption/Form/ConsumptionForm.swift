@@ -84,10 +84,18 @@ private extension ConsumptionForm {
     /// The Consumption, if available.
     var consumption: Consumption? {
         get throws {
+            // Verify category and value are available
             guard let category = self.category,
                   let value = self.value else {
+                // Otherwise return nil
                 return nil
             }
+            // Verify fractional decimal digits is equal or less than two.
+            guard max(-Decimal(value).exponent, 0) <= 2 else {
+                // Otherwise return nil
+                return nil
+            }
+            // Try to initialize consumption
             return .init(
                 id: self.consumptionId,
                 category: category,
