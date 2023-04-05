@@ -9,7 +9,7 @@ extension Consumption {
     struct Heating: Codable, Hashable {
         
         /// The costs in cents.
-        var costs: Double
+        var costs: Double?
         
         /// The size of the household
         var householdSize: Int

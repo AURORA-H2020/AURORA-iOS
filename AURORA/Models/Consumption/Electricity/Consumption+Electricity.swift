@@ -9,7 +9,7 @@ extension Consumption {
     struct Electricity: Codable, Hashable {
         
         /// The costs.
-        var costs: Double
+        var costs: Double?
         
         /// The size of the household
         var householdSize: Int

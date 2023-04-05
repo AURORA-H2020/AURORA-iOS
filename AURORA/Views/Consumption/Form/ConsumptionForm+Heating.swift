@@ -27,7 +27,14 @@ extension ConsumptionForm.Heating: View {
     var body: some View {
         CurrencyTextField(
             "Costs",
-            value: self.$partialHeating.costs
+            value: .init(
+                get: {
+                    self.partialHeating.costs?.flatMap { $0 }
+                },
+                set: { newValue in
+                    self.partialHeating.costs = newValue
+                }
+            )
         )
         Stepper(
             "People in household: \(self.partialHeating.householdSize ?? 1)",
