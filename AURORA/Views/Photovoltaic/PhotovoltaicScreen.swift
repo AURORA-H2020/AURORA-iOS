@@ -48,6 +48,7 @@ extension PhotovoltaicScreen: View {
             )
             .navigationTitle("Your Solar Power")
         }
+        .navigationViewStyle(.stack)
     }
     
 }
