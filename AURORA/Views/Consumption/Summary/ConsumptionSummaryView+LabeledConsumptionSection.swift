@@ -73,8 +73,18 @@ extension ConsumptionSummaryView.LabeledConsumptionSection: View {
                     Divider()
                         .overlay(Color.white)
                     Spacer()
-                    Text("\(self.labeledConsumption.formatted(using: self.mode))\nused")
-                        .fontWeight(.semibold)
+                    let suffix: String = {
+                        switch self.mode {
+                        case .carbonEmission:
+                            return .init(localized: "produced")
+                        case .energyExpended:
+                            return .init(localized: "used")
+                        }
+                    }()
+                    Text(
+                        verbatim: "\(self.labeledConsumption.formatted(using: self.mode))\n\(suffix)"
+                    )
+                    .fontWeight(.semibold)
                     Spacer()
                 }
             }
