@@ -74,7 +74,7 @@ private extension ContentView {
                     .tabItem {
                         Label(
                             "Home",
-                            systemImage: "chart.pie"
+                            systemImage: "house"
                         )
                     }
                     if let country = try? self.firebase.country?.get(),

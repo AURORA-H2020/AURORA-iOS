@@ -169,7 +169,7 @@ private extension PhotovoltaicScreen {
                 )
             }
             HStack {
-                Text("Energy produced")
+                Text("Annual energy production")
                 Spacer()
                 Text(
                     investmentResult
@@ -182,7 +182,7 @@ private extension PhotovoltaicScreen {
         Section(
             footer: VStack {
                 Text(
-                    "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead"
+                    "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead."
                 )
                 Image(
                     systemName: "minus.circle"
@@ -224,7 +224,7 @@ private extension PhotovoltaicScreen {
         .headerProminence(.increased)
         Section(
             footer: Text(
-                "You would be reducing CO₂ emission within your local community by this amount. Great job!"
+                "You would be reducing CO₂ emissions within your local community by this amount. Great job!"
             )
         ) {
             self.investmentResultBox(

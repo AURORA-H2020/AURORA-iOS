@@ -111,7 +111,7 @@ extension AuthenticationForgotPasswordForm: View {
             ) {
             }
         }
-        .navigationTitle("Forgot Password")
+        .navigationTitle("Reset Password")
         .disabled(self.asyncButtonState == .busy)
         .interactiveDismissDisabled(self.asyncButtonState == .busy)
     }

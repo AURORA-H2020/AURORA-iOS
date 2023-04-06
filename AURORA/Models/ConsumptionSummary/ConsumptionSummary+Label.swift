@@ -124,7 +124,7 @@ extension ConsumptionSummary.Label {
     var localizedString: String? {
         switch self {
         case .aPlus:
-            return .init(localized: "Ambassador+")
+            return .init(localized: "Accomplisher")
         case .a:
             return .init(localized: "Ambassador")
         case .b:

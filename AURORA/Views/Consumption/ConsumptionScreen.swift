@@ -75,12 +75,12 @@ extension ConsumptionScreen: View {
                     )
                 }
             }
-            .navigationTitle("Your carbon footprint")
+            .navigationTitle("Dashboard")
             .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(.stack)
         .analyticsScreen(
-            name: "Your carbon footprint",
+            name: "Dashboard",
             class: "ConsumptionOverview"
         )
         .sheet(

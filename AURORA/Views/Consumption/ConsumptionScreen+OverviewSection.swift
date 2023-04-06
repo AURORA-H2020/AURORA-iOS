@@ -52,16 +52,9 @@ extension ConsumptionScreen.OverviewSection: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(
-                            "Welcome to AURORA"
+                            "Your carbon footprint"
                         )
                         .fontWeight(.semibold)
-                        Text(
-                            "Empowering a new generation of\nnear zero-emission citizens"
-                        )
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
                     }
                     Spacer()
                     Image("AURORA-Logo")
@@ -141,7 +134,7 @@ private extension ConsumptionScreen.OverviewSection {
                         .font(.footnote)
                         .fontWeight(.semibold)
                 } else {
-                    Text("No consumptions entered (?)")
+                    Text("No consumption entered yet (?)")
                         .font(.footnote)
                         .fontWeight(.semibold)
                 }

@@ -73,7 +73,7 @@ extension ConsumptionSummaryView.LabeledConsumptionSection: View {
                     Divider()
                         .overlay(Color.white)
                     Spacer()
-                    Text("\(self.labeledConsumption.formatted(using: self.mode))\nproduced")
+                    Text("\(self.labeledConsumption.formatted(using: self.mode))\nused")
                         .fontWeight(.semibold)
                     Spacer()
                 }

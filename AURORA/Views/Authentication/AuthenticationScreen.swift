@@ -123,12 +123,8 @@ extension AuthenticationScreen: View {
                         .frame(width: 120, height: 120)
                     }
                     VStack {
-                        Text("Welcome to AURORA")
+                        Text("Your carbon footprint")
                             .font(.largeTitle.weight(.semibold))
-                        if !self.isLandscape {
-                            Text("Empowering a new generation of\nnear zero-emission citizens")
-                                .foregroundColor(.secondary)
-                        }
                     }
                     .multilineTextAlignment(.center)
                     VStack(spacing: 25) {
