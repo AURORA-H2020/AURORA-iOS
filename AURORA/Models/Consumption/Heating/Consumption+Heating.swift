@@ -31,6 +31,22 @@ extension Consumption {
     
 }
 
+// MARK: - Consumption+Heating+dateRange
+
+extension Consumption.Heating {
+    
+    /// The date range from start to end date, if available.
+    var dateRange: ClosedRange<Date>? {
+        let startDate = self.startDate.dateValue()
+        let endDate = self.endDate.dateValue()
+        guard startDate <= endDate else {
+            return nil
+        }
+        return startDate...endDate
+    }
+    
+}
+
 // MARK: - Consumption+Heating+PartialConvertible
 
 extension Consumption.Heating: PartialConvertible {

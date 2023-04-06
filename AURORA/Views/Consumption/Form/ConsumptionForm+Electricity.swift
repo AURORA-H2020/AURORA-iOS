@@ -76,7 +76,7 @@ extension ConsumptionForm.Electricity: View {
                         self.partialElectricity.startDate = .init(date: newValue)
                     }
                 ),
-                in: ConsumptionForm.preferredDatePickerRange,
+                in: ConsumptionForm.preferredDatePickerRange.lowerBound...(self.partialElectricity.endDate?.dateValue() ?? ConsumptionForm.preferredDatePickerRange.upperBound),
                 displayedComponents: [.date]
             )
             DatePicker(
@@ -89,10 +89,7 @@ extension ConsumptionForm.Electricity: View {
                         self.partialElectricity.endDate = .init(date: newValue)
                     }
                 ),
-                in: (
-                    self.partialElectricity.startDate?.dateValue()
-                        ?? ConsumptionForm.preferredDatePickerRange.lowerBound
-                )...ConsumptionForm.preferredDatePickerRange.upperBound,
+                in: (self.partialElectricity.startDate?.dateValue() ?? ConsumptionForm.preferredDatePickerRange.lowerBound)...ConsumptionForm.preferredDatePickerRange.upperBound,
                 displayedComponents: [.date]
             )
         }

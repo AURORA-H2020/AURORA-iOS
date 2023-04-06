@@ -24,6 +24,22 @@ extension Consumption {
     
 }
 
+// MARK: - Consumption+Electricity+dateRange
+
+extension Consumption.Electricity {
+    
+    /// The date range from start to end date, if available.
+    var dateRange: ClosedRange<Date>? {
+        let startDate = self.startDate.dateValue()
+        let endDate = self.endDate.dateValue()
+        guard startDate <= endDate else {
+            return nil
+        }
+        return startDate...endDate
+    }
+    
+}
+
 // MARK: - Consumption+Electricity+PartialConvertible
 
 extension Consumption.Electricity: PartialConvertible {

@@ -113,7 +113,7 @@ extension ConsumptionForm.Heating: View {
                         self.partialHeating.startDate = .init(date: newValue)
                     }
                 ),
-                in: ConsumptionForm.preferredDatePickerRange,
+                in: ConsumptionForm.preferredDatePickerRange.lowerBound...(self.partialHeating.endDate?.dateValue() ?? ConsumptionForm.preferredDatePickerRange.upperBound),
                 displayedComponents: [.date]
             )
             DatePicker(
@@ -126,10 +126,7 @@ extension ConsumptionForm.Heating: View {
                         self.partialHeating.endDate = .init(date: newValue)
                     }
                 ),
-                in: (
-                    self.partialHeating.startDate?.dateValue()
-                        ?? ConsumptionForm.preferredDatePickerRange.lowerBound
-                )...ConsumptionForm.preferredDatePickerRange.upperBound,
+                in: (self.partialHeating.startDate?.dateValue() ?? ConsumptionForm.preferredDatePickerRange.lowerBound)...ConsumptionForm.preferredDatePickerRange.upperBound,
                 displayedComponents: [.date]
             )
         }
