@@ -1,10 +1,10 @@
 import SwiftUI
 
-// MARK: - ConsumptionOverview+LatestEntriesSection
+// MARK: - ConsumptionScreen+LatestEntriesSection
 
-extension ConsumptionOverview {
+extension ConsumptionScreen {
     
-    /// The ConsumptionOverview LatestEntriesSection
+    /// The ConsumptionScreen LatestEntriesSection
     struct LatestEntriesSection {
         
         // MARK: Properties
@@ -16,9 +16,9 @@ extension ConsumptionOverview {
         @FirestoreEntityQuery
         private var consumptions: [Consumption]
         
-        /// Bool value if CreateConsumptionForm is presented.
+        /// The currently presented sheet.
         @Binding
-        private var isCreateConsumptionFormPresented: Bool
+        private var sheet: ConsumptionScreen.Sheet?
         
         /// The Firebase instance.
         @EnvironmentObject
@@ -26,13 +26,13 @@ extension ConsumptionOverview {
         
         // MARK: Initializer
         
-        /// Creates a new instance of `ConsumptionOverview.LatestEntriesSection`
+        /// Creates a new instance of `ConsumptionScreen.LatestEntriesSection`
         /// - Parameters:
         ///   - userId: The user identifier.
-        ///   - isCreateConsumptionFormPresented: Bool Binding value if CreateConsumptionForm is presented.
+        ///   - sheet: The currently presented sheet.
         init(
             userId: User.UID,
-            isCreateConsumptionFormPresented: Binding<Bool>
+            sheet: Binding<ConsumptionScreen.Sheet?>
         ) {
             self.userId = userId
             self._consumptions = .init(
@@ -42,7 +42,7 @@ extension ConsumptionOverview {
                     .limit(to: 3)
                 ]
             )
-            self._isCreateConsumptionFormPresented = isCreateConsumptionFormPresented
+            self._sheet = sheet
         }
         
     }
@@ -51,29 +51,12 @@ extension ConsumptionOverview {
 
 // MARK: - View
 
-extension ConsumptionOverview.LatestEntriesSection: View {
+extension ConsumptionScreen.LatestEntriesSection: View {
     
     /// The content and behavior of the view.
     var body: some View {
         Section(
-            header: HStack {
-                Text("Latest entries")
-                Spacer()
-                if !self.consumptions.isEmpty {
-                    Button {
-                        self.isCreateConsumptionFormPresented = true
-                    } label: {
-                        Label(
-                            "Add entry",
-                            systemImage: "plus"
-                        )
-                        .font(.subheadline.weight(.semibold))
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
-                    .tint(.accentColor)
-                }
-            },
+            header: Text("Latest entries"),
             footer: Group {
                 if self.consumptions.isEmpty {
                     EmptyPlaceholder(
@@ -83,7 +66,7 @@ extension ConsumptionOverview.LatestEntriesSection: View {
                         primaryAction: .init(
                             title: "Add consumption",
                             action: {
-                                self.isCreateConsumptionFormPresented = true
+                                self.sheet = .consumptionForm()
                             }
                         )
                     )
@@ -114,7 +97,10 @@ extension ConsumptionOverview.LatestEntriesSection: View {
                     )
                 ) {
                     ConsumptionList.Cell(
-                        consumption: consumption
+                        consumption: consumption,
+                        editAction: {
+                            self.sheet = .consumptionForm(consumption)
+                        }
                     )
                 }
             }

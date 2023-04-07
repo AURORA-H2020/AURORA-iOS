@@ -103,7 +103,25 @@ private extension LocalNotificationForm {
     /// The content view.
     var content: some View {
         List {
-            Section {
+            Section(
+                footer: Group {
+                    switch self.predefinedLocationNotificationRequest {
+                    case .electricityBillReminder:
+                        Text(
+                            "We can remind you to enter your electricity consumption based on your bill. Just let us know when you expect the next one."
+                        )
+                    case .heatingBillReminder:
+                        Text(
+                            "We can remind you to enter your energy consumption based on your bill. Just let us know when you expect the next one."
+                        )
+                    case .mobilityReminder:
+                        Text(
+                            "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel."
+                        )
+                    }
+                }
+                .multilineTextAlignment(.leading)
+            ) {
                 Toggle(
                     "Enabled",
                     isOn: .init(

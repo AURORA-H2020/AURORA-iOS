@@ -14,6 +14,12 @@ struct City {
     /// The name of the city.
     let name: String
     
+    /// Bool value if the city has a photovoltaic installation
+    let hasPhotovoltaics: Bool?
+    
+    /// The PVGIS parameters
+    let pvgisParams: PVGISParams?
+    
 }
 
 // MARK: - City+FirestoreEntity

@@ -1,10 +1,10 @@
 import SwiftUI
 
-// MARK: - CreateConsumptionForm+Transportation
+// MARK: - ConsumptionForm+Transportation
 
-extension CreateConsumptionForm {
+extension ConsumptionForm {
     
-    /// The CreateConsumptionForm Transportation content
+    /// The ConsumptionForm Transportation content
     struct Transportation {
         
         /// The partial consumption transportation.
@@ -21,7 +21,7 @@ extension CreateConsumptionForm {
 
 // MARK: - View
 
-extension CreateConsumptionForm.Transportation: View {
+extension ConsumptionForm.Transportation: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -34,7 +34,8 @@ extension CreateConsumptionForm.Transportation: View {
                 set: { newValue in
                     self.partialTransportation.dateOfTravel = .init(date: newValue)
                 }
-            )
+            ),
+            in: ConsumptionForm.preferredDatePickerRange
         )
         Picker(
             "Type",

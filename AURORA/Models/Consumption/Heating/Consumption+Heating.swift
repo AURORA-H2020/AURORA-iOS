@@ -9,7 +9,7 @@ extension Consumption {
     struct Heating: Codable, Hashable {
         
         /// The costs in cents.
-        var costs: Int
+        var costs: Double?
         
         /// The size of the household
         var householdSize: Int
@@ -31,15 +31,43 @@ extension Consumption {
     
 }
 
+// MARK: - Consumption+Heating+dateRange
+
+extension Consumption.Heating {
+    
+    /// The date range from start to end date, if available.
+    var dateRange: ClosedRange<Date>? {
+        let startDate = self.startDate.dateValue()
+        let endDate = self.endDate.dateValue()
+        guard startDate <= endDate else {
+            return nil
+        }
+        return startDate...endDate
+    }
+    
+}
+
 // MARK: - Consumption+Heating+PartialConvertible
 
 extension Consumption.Heating: PartialConvertible {
+    
+    /// A `Partial` representation.
+    var partial: Partial<Self> {
+        [
+            \.costs: self.costs,
+             \.householdSize: self.householdSize,
+             \.startDate: self.startDate,
+             \.endDate: self.endDate,
+             \.heatingFuel: self.heatingFuel,
+             \.districtHeatingSource: self.districtHeatingSource
+        ]
+    }
     
     /// Creates a new instance from `Partial`.
     /// - Parameter partial: The partial instance.
     init(partial: Partial<Self>) throws {
         self.init(
-            costs: try partial(\.costs),
+            costs: partial.costs?.flatMap { $0 },
             householdSize: try partial(\.householdSize),
             startDate: try partial(\.startDate),
             endDate: try partial(\.endDate),
@@ -51,17 +79,6 @@ extension Consumption.Heating: PartialConvertible {
                 return try partial(\.districtHeatingSource)
             }()
         )
-    }
-    
-}
-
-// MARK: - Consumption+Heating+formattedCosts
-
-extension Consumption.Heating {
-    
-    /// A formatted representation of the costs.
-    var formattedCosts: String {
-        self.costs.formatted(.currency(code: "EUR"))
     }
     
 }

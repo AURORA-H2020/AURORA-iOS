@@ -2,10 +2,12 @@ import FirebaseAnalyticsSwift
 import FirebaseAuth
 import SwiftUI
 
-// MARK: - SettingsView
+// swiftlint:disable file_length
 
-/// The SettingsView
-struct SettingsView {
+// MARK: - SettingsScreen
+
+/// The SettingsScreen
+struct SettingsScreen {
     
     /// Bool value if change mail address form is presented
     @State
@@ -27,7 +29,7 @@ struct SettingsView {
 
 // MARK: - View
 
-extension SettingsView: View {
+extension SettingsScreen: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -36,6 +38,7 @@ extension SettingsView: View {
                 self.accountSection
                 self.notificationsSection
                 self.privacySection
+                self.supportSection
                 self.legalSection
             }
             .navigationTitle("Settings")
@@ -72,8 +75,11 @@ extension SettingsView: View {
     
 }
 
-private extension SettingsView {
+// MARK: - Account Section
+
+private extension SettingsScreen {
     
+    /// The account section.
     var accountSection: some View {
         Section(
             header: Text("Account")
@@ -95,7 +101,7 @@ private extension SettingsView {
                     self.isChangeMailAddressFormPresented = true
                 } label: {
                     Label(
-                        "Change E-Mail",
+                        "Change email",
                         systemImage: "envelope"
                     )
                 }
@@ -148,8 +154,11 @@ private extension SettingsView {
     
 }
 
-private extension SettingsView {
+// MARK: - Notifications Section
+
+private extension SettingsScreen {
     
+    /// The notifications section.
     var notificationsSection: some View {
         Section(
             header: Text("Notifications")
@@ -184,8 +193,11 @@ private extension SettingsView {
     
 }
 
-private extension SettingsView {
+// MARK: - Privacy Section
+
+private extension SettingsScreen {
     
+    /// The privacy section.
     var privacySection: some View {
         Section(
             header: Text("Data privacy")
@@ -276,11 +288,84 @@ private extension SettingsView {
     
 }
 
-private extension SettingsView {
+// MARK: - Support Section
+
+private extension SettingsScreen {
     
+    /// The support section.
+    var supportSection: some View {
+        Section(
+            header: Text("Support")
+        ) {
+            Link(
+                destination: .init(
+                    string: "https://www.aurora-h2020.eu/aurora/ourapp/"
+                )!
+            ) {
+                Label(
+                    "About the App",
+                    systemImage: "square.stack.3d.up.fill"
+                )
+            }
+            Link(
+                destination: {
+                    let url = URL(string: "https://aurora-h2020.eu/app-support")!
+                    guard let userAccountId = try? self.firebase.authentication.state.userAccount.uid else {
+                        return url
+                    }
+                    guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+                        return url
+                    }
+                    urlComponents.queryItems = [
+                        .init(
+                            name: "user_id",
+                            value: userAccountId
+                        ),
+                        (
+                            try? self.firebase.country?.get()
+                        )?
+                        .id
+                        .flatMap { countryId in
+                            .init(
+                                name: "country_id",
+                                value: countryId
+                            )
+                        }
+                    ]
+                    .compactMap { $0 }
+                    return urlComponents.url ?? url
+                }()
+            ) {
+                Label(
+                    "Contact Support",
+                    systemImage: "questionmark.circle.fill"
+                )
+            }
+        }
+        .headerProminence(.increased)
+    }
+    
+}
+
+// MARK: - Legal Section
+
+private extension SettingsScreen {
+    
+    /// The legal section.
     var legalSection: some View {
         Section(
-            header: Text("Legal information")
+            header: Text("Legal information"),
+            footer: HStack(spacing: 10) {
+                Image("EU-Flag")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 60)
+                Text(
+                    "[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)."
+                )
+            }
+            .padding(.vertical, 15)
+            .listRowInsets(.init())
         ) {
             Button {
                 self.isFeaturePreviewPresented = true
@@ -326,7 +411,7 @@ private extension SettingsView {
 
 // MARK: - Export User Data
 
-private extension SettingsView {
+private extension SettingsScreen {
     
     /// Export user data file
     /// - Parameter userDataFile: The user data file url which should be exported.

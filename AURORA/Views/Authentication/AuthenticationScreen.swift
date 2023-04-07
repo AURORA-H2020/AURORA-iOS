@@ -1,9 +1,9 @@
 import SwiftUI
 
-// MARK: - AuthenticationForm
+// MARK: - AuthenticationScreen
 
-/// The AuthenticationForm
-struct AuthenticationForm {
+/// The AuthenticationScreen
+struct AuthenticationScreen {
     
     /// Bool value if View is busy
     @State
@@ -43,7 +43,7 @@ struct AuthenticationForm {
 
 // MARK: - Submit
 
-private extension AuthenticationForm {
+private extension AuthenticationScreen {
     
     /// Login using authentication provider
     /// - Parameter provider: The authentication provider
@@ -81,7 +81,7 @@ private extension AuthenticationForm {
 
 // MARK: - View
 
-extension AuthenticationForm: View {
+extension AuthenticationScreen: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -123,12 +123,8 @@ extension AuthenticationForm: View {
                         .frame(width: 120, height: 120)
                     }
                     VStack {
-                        Text("Welcome to AURORA")
+                        Text("Your carbon footprint")
                             .font(.largeTitle.weight(.semibold))
-                        if !self.isLandscape {
-                            Text("Empowering a new generation of\nnear zero-emission citizens")
-                                .foregroundColor(.secondary)
-                        }
                     }
                     .multilineTextAlignment(.center)
                     VStack(spacing: 25) {
@@ -153,7 +149,6 @@ extension AuthenticationForm: View {
                             }
                         }
                         Text(
-                            // swiftlint:disable:next line_length
                             "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)."
                         )
                         .font(.footnote)

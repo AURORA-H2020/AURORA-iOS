@@ -10,6 +10,9 @@ extension ConsumptionList {
         /// The Consumption
         let consumption: Consumption
         
+        /// An optional edit action.
+        var editAction: (() -> Void)?
+        
         /// Bool value if delete confirmation dialog is presented
         @State
         private var isDeleteConfirmationDialogPresented = false
@@ -28,21 +31,43 @@ extension ConsumptionList.Cell: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        HStack {
+        HStack(spacing: 10) {
             self.consumption
                 .category
                 .icon
                 .imageScale(.small)
+                .frame(minWidth: 32, minHeight: 32)
                 .foregroundColor(self.consumption.category.tintColor)
-                .padding(8)
                 .background(self.consumption.category.tintColor.opacity(0.3))
                 .clipShape(Circle())
             VStack(alignment: .leading) {
                 Text(self.consumption.category.rawValue.capitalized)
                     .foregroundColor(.primary)
-                if let createdAt = self.consumption.createdAt?.dateValue() {
-                    Text(createdAt.formatted(date: .numeric, time: .shortened))
-                        .font(.subheadline)
+                Group {
+                    switch self.consumption.category {
+                    case .electricity:
+                        if let electricityDateRange = self.consumption.electricity?.dateRange {
+                            Text(electricityDateRange)
+                        }
+                    case .heating:
+                        if let heatingDateRange = self.consumption.heating?.dateRange {
+                            Text(heatingDateRange)
+                        }
+                    case .transportation:
+                        if let transportation = self.consumption.transportation {
+                            Text(
+                                transportation.dateOfTravel.dateValue(),
+                                format: .dateTime
+                            )
+                        }
+                    }
+                }
+                .font(.footnote)
+                .foregroundColor(.secondary)
+                if let description = self.consumption.description, !description.isEmpty {
+                    Text(description)
+                        .lineLimit(2)
+                        .font(.footnote)
                         .foregroundColor(.secondary)
                 }
             }
@@ -50,8 +75,11 @@ extension ConsumptionList.Cell: View {
             Spacer()
             VStack(alignment: .trailing) {
                 Text(self.consumption.formattedValue)
+                    .font(.subheadline)
                     .foregroundColor(.secondary)
-                if let formattedCarbonEmissions = self.consumption.formattedCarbonEmissions {
+                if let formattedCarbonEmissions = self.consumption
+                    .carbonEmissions?
+                    .formatted(.carbonEmissions) {
                     Text(formattedCarbonEmissions)
                         .font(.footnote)
                         .foregroundColor(.secondary)
@@ -68,10 +96,19 @@ extension ConsumptionList.Cell: View {
                 Label("Delete", systemImage: "trash")
             }
             .tint(.red)
+            if let editAction = self.editAction {
+                Button {
+                    editAction()
+                } label: {
+                    Label("Edit", systemImage: "square.and.pencil")
+                }
+                .tint(.accentColor)
+            }
         }
         .confirmationDialog(
             "Delete Entry",
             isPresented: self.$isDeleteConfirmationDialogPresented,
+            titleVisibility: .visible,
             actions: {
                 Button(role: .destructive) {
                     try? self.firebase
@@ -89,9 +126,15 @@ extension ConsumptionList.Cell: View {
                 }
             },
             message: {
-                Text("Are you sure you want to delete the entry?")
+                Text(
+                    """
+                    Are you sure you want to delete the entry?
+                    Please note that it can take up to a minute for your summary to update.
+                    """
+                )
             }
         )
+        .frame(minHeight: 38)
     }
     
 }

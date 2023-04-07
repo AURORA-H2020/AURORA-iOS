@@ -107,18 +107,18 @@ extension LocalNotificationRequest.Predefined {
         switch self {
         case .electricityBillReminder:
             return .init(
-                title: .init(localized: "Electricity Bill Reminder"),
-                body: .init(localized: "Add your electricity bill.")
+                title: .init(localized: "Electricity bill reminder"),
+                body: .init(localized: "Add your electricity data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!.")
             )
         case .heatingBillReminder:
             return .init(
-                title: .init(localized: "Heating Bill Reminder"),
-                body: .init(localized: "Add your heating bill.")
+                title: .init(localized: "Heating bill reminder"),
+                body: .init(localized: "Add your heating data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!.")
             )
         case .mobilityReminder:
             return .init(
-                title: .init(localized: "Mobility Reminder"),
-                body: .init(localized: "Add your mobility data.")
+                title: .init(localized: "Mobility reminder"),
+                body: .init(localized: "Add your mobility data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!.")
             )
         }
     }

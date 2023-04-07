@@ -5,6 +5,9 @@ import Foundation
 /// A Partial convertible type
 protocol PartialConvertible {
     
+    /// A `Partial` representation.
+    var partial: Partial<Self> { get }
+    
     /// Creates a new instance from `Partial`.
     /// - Parameter partial: The partial instance.
     init(partial: Partial<Self>) throws
@@ -37,6 +40,28 @@ struct Partial<Wrapped> {
         self.values = values
     }
 
+}
+
+// MARK: - ExpressibleByDictionaryLiteral
+
+extension Partial: ExpressibleByDictionaryLiteral {
+    
+    /// Creates an instance initialized with the given key-value pairs.
+    /// - Parameter elements: The key-value pairs.
+    init(
+        dictionaryLiteral elements: (Values.Key, Values.Value?)...
+    ) {
+        self.init(
+            values: {
+                var values = Values()
+                for (keyPath, value) in elements where value != nil {
+                    values[keyPath] = value
+                }
+                return values
+            }()
+        )
+    }
+    
 }
 
 // MARK: - DynamicMemberLookup

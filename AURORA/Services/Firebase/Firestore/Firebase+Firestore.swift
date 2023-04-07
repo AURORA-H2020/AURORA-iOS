@@ -122,8 +122,11 @@ extension Firebase.Firestore {
         .map { snapshot in
             snapshot
                 .documents
-                .map { snapshot in
-                    .init {
+                .compactMap { snapshot in
+                    guard snapshot.exists else {
+                        return nil
+                    }
+                    return .init {
                         try self.firebase.crashlytics.recordError {
                             try snapshot.data(as: Entity.self)
                         }
@@ -157,7 +160,7 @@ extension Firebase.Firestore {
         _ entityType: Entity.Type,
         context: Entity.CollectionReferenceContext,
         id: String
-    ) -> AnyPublisher<Result<Entity, Error>, Error> {
+    ) -> AnyPublisher<Result<Entity, Error>?, Error> {
         Entity
             .collectionReference(
                 in: self.firebase.firebaseFirestore,
@@ -166,7 +169,10 @@ extension Firebase.Firestore {
             .document(id)
             .snapshotPublisher()
             .map { snapshot in
-                .init {
+                guard snapshot.exists else {
+                    return nil
+                }
+                return .init {
                     try self.firebase.crashlytics.recordError {
                         try snapshot.data(as: Entity.self)
                     }
@@ -182,7 +188,7 @@ extension Firebase.Firestore {
     func publisher<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
         id: String
-    ) -> AnyPublisher<Result<Entity, Error>, Error> where Entity.CollectionReferenceContext == Void {
+    ) -> AnyPublisher<Result<Entity, Error>?, Error> where Entity.CollectionReferenceContext == Void {
         self.publisher(
             entityType,
             context: (),

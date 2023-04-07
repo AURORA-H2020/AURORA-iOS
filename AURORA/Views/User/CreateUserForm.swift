@@ -87,8 +87,7 @@ private extension CreateUserForm {
                 yearOfBirth: self.yearOfBirth,
                 gender: self.gender,
                 country: country,
-                city: self.city,
-                consumptionSummary: nil
+                city: self.city
             )
         )
     }
@@ -150,8 +149,10 @@ extension CreateUserForm: View {
                 Section(
                     header: Text("Country"),
                     footer: Text(
-                        // swiftlint:disable:next line_length
-                        "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later."
+                        """
+                        This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.
+                        Crowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners.
+                        """
                     )
                 ) {
                     Picker(
@@ -206,7 +207,6 @@ extension CreateUserForm: View {
                             return .init(
                                 title: Text("Error"),
                                 message: Text(
-                                    // swiftlint:disable:next line_length
                                     "An error occurred while trying to create your profile. Please check your inputs and try again."
                                 )
                             )
@@ -230,12 +230,34 @@ extension CreateUserForm: View {
             .navigationTitle("Profile")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(role: .destructive) {
-                        try? self.firebase.authentication.logout()
+                    Menu {
+                        Button {
+                            try? self.firebase.authentication.logout()
+                        } label: {
+                            Label(
+                                "Logout",
+                                systemImage: "arrow.up.forward.square"
+                            )
+                        }
+                        Button(role: .destructive) {
+                            Task {
+                                do {
+                                    try await self.firebase.authentication.deleteAccount()
+                                } catch {
+                                    try? self.firebase.authentication.logout()
+                                }
+                            }
+                        } label: {
+                            Label(
+                                "Delete my account",
+                                systemImage: "trash"
+                            )
+                        }
                     } label: {
-                        Text("Logout")
+                        Image(
+                            systemName: "ellipsis.circle"
+                        )
                     }
-
                 }
             }
         }

@@ -31,16 +31,16 @@ extension ChangeMailAddressForm: View {
     var body: some View {
         List {
             Section(
-                header: Text("New E-Mail address"),
+                header: Text("New email address"),
                 footer: Group {
                     if let email = try? self.firebase.authentication.state.userAccount.email {
-                        Text("Current E-Mail address:\n\(email)")
+                        Text("Current email address:\n\(email)")
                             .multilineTextAlignment(.leading)
                     }
                 }
             ) {
                 TextField(
-                    "New E-Mail address",
+                    "New email address",
                     text: self.$mailAddress
                 )
                 .autocapitalization(.none)
@@ -84,7 +84,7 @@ extension ChangeMailAddressForm: View {
             ) {
             }
         }
-        .navigationTitle("Change E-Mail")
+        .navigationTitle("Change email")
     }
     
 }
@@ -97,8 +97,8 @@ private extension ChangeMailAddressForm {
         switch result {
         case .success:
             return .init(
-                title: Text("E-Mail address changed"),
-                message: Text("Your E-Mail address has successfully been changed."),
+                title: Text("Email address changed"),
+                message: Text("Your email address has successfully been changed."),
                 dismissButton: .default(
                     Text("Okay"),
                     action: self.dismiss.callAsFunction
@@ -108,8 +108,7 @@ private extension ChangeMailAddressForm {
             return .init(
                 title: Text("Error"),
                 message: Text(
-                    // swiftlint:disable:next line_length
-                    "An error occurred while trying to update your E-Mail address. Please check your inputs and try again."
+                    "An error occurred while trying to update your email address. Please check your inputs and try again."
                 )
             )
         }

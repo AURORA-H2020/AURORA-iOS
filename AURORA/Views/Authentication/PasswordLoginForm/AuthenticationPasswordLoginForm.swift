@@ -97,10 +97,10 @@ extension AuthenticationPasswordLoginForm: View {
             .listRowBackground(Color(.systemGroupedBackground))
             .listRowInsets(.init())
             Section(
-                header: Text("E-Mail")
+                header: Text("Email")
             ) {
                 TextField(
-                    "E-Mail",
+                    "Email",
                     text: self.$mailAddress
                 )
                 .autocapitalization(.none)
@@ -142,7 +142,7 @@ extension AuthenticationPasswordLoginForm: View {
                 .focused(self.$isTextFieldFocused)
                 if self.method == .register {
                     SecureField(
-                        "Confirm Password",
+                        "Confirm password",
                         text: self.$passwordConfirmation
                     )
                     .focused(self.$isTextFieldFocused)
@@ -162,7 +162,6 @@ extension AuthenticationPasswordLoginForm: View {
                                 return .init(
                                     title: Text("Login failed"),
                                     message: Text(
-                                        // swiftlint:disable:next line_length
                                         "An error occurred while trying to login. Please check your inputs and try again."
                                     )
                                 )
@@ -170,7 +169,6 @@ extension AuthenticationPasswordLoginForm: View {
                                 return .init(
                                     title: Text("Registration failed"),
                                     message: Text(
-                                        // swiftlint:disable:next line_length
                                         "An error occurred while trying to create a new account. Please check your inputs and try again."
                                     )
                                 )
@@ -207,7 +205,7 @@ extension AuthenticationPasswordLoginForm: View {
                                 mailAddress: self.mailAddress
                             )
                         ) {
-                            Text("Forgot Password")
+                            Text("Reset my password")
                         }
                     }
                 }
@@ -215,7 +213,7 @@ extension AuthenticationPasswordLoginForm: View {
             }
             .listRowInsets(.init())
         }
-        .navigationTitle("Continue with E-Mail")
+        .navigationTitle("Continue with email")
         .disabled(self.asyncButtonState == .busy)
         .interactiveDismissDisabled(self.asyncButtonState == .busy)
     }

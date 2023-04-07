@@ -1,13 +1,18 @@
 import SwiftUI
 
-// MARK: - CreateConsumptionForm
+// MARK: - ConsumptionForm
 
-/// The CreateConsumptionForm
-struct CreateConsumptionForm {
+/// The ConsumptionForm
+struct ConsumptionForm {
+    
+    // MARK: Properties
+    
+    /// The consumption identifier
+    private let consumptionId: Consumption.ID
     
     /// The Consumption Category
     @State
-    var category: Consumption.Category?
+    private var category: Consumption.Category?
     
     /// The Partial Consumption Electricity
     @State
@@ -37,20 +42,103 @@ struct CreateConsumptionForm {
     @EnvironmentObject
     private var firebase: Firebase
     
+    // MARK: Initializer
+    
+    /// Creates a new instance of `ConsumptionForm` in creation mode.
+    /// - Parameter category: The optional consumption category. Default value `nil`
+    init(
+        category: Consumption.Category? = nil
+    ) {
+        self.consumptionId = nil
+        self._category = .init(initialValue: category)
+    }
+    
+    /// Creates a new instance of `ConsumptionForm` in edit mode.
+    /// - Parameter consumption: The consumption to edit.
+    init(
+        consumption: Consumption
+    ) {
+        self.consumptionId = consumption.id
+        self._category = .init(initialValue: consumption.category)
+        self._value = .init(initialValue: consumption.value)
+        if let electricity = consumption.electricity {
+            self._partialElectricity = .init(initialValue: electricity.partial)
+        }
+        if let heating = consumption.heating {
+            self._partialHeating = .init(initialValue: heating.partial)
+        }
+        if let transportation = consumption.transportation {
+            self._partialTransportation = .init(initialValue: transportation.partial)
+        }
+        if let description = consumption.description {
+            self._description = .init(initialValue: description)
+        }
+    }
+    
+}
+
+// MARK: - ConsumptionForm+preferredDatePickerRange
+
+extension ConsumptionForm {
+    
+    /// The preferred DatePicker range.
+    static let preferredDatePickerRange: ClosedRange<Date> = {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let yearExpansionFactor: Int = 30
+        lazy var oneYearInSeconds: TimeInterval = 60 * 60 * 24 * 365
+        let minimumDate = calendar.date(
+            byAdding: .year,
+            value: -yearExpansionFactor,
+            to: currentDate
+        )
+        ??
+        currentDate.addingTimeInterval(-(oneYearInSeconds * .init(yearExpansionFactor)))
+        let maximumDate = calendar.date(
+            byAdding: .year,
+            value: yearExpansionFactor,
+            to: currentDate
+        )
+        ??
+        currentDate.addingTimeInterval(oneYearInSeconds * .init(yearExpansionFactor))
+        return minimumDate...maximumDate
+    }()
+    
 }
 
 // MARK: - Consumption
 
-private extension CreateConsumptionForm {
+private extension ConsumptionForm {
     
     /// The Consumption, if available.
     var consumption: Consumption? {
         get throws {
+            // Verify category and value are available
             guard let category = self.category,
                   let value = self.value else {
+                // Otherwise return nil
                 return nil
             }
+            // Verify description count is less than 2000 characters
+            guard self.description.count <= 2000 else {
+                // Otherwise return nil
+                return nil
+            }
+            // Verify fractional decimal digits of the value is equal or less than two
+            // and less than 100000
+            guard value <= 100000 && max(-Decimal(value).exponent, 0) <= 2 else {
+                // Otherwise return nil
+                return nil
+            }
+            // Check if costs is greater 100000
+            if let costs = (self.partialElectricity.costs ?? self.partialHeating.costs).flatMap({ $0 }),
+               costs > 100000 {
+                // Return nil
+                return nil
+            }
+            // Try to initialize consumption
             return .init(
+                id: self.consumptionId,
                 category: category,
                 electricity: category == .electricity
                     ? try .init(partial: self.partialElectricity)
@@ -75,7 +163,7 @@ private extension CreateConsumptionForm {
 
 // MARK: - Submit
 
-private extension CreateConsumptionForm {
+private extension ConsumptionForm {
     
     /// Submit form
     func submit() throws {
@@ -87,13 +175,24 @@ private extension CreateConsumptionForm {
         // Initialize an UINotificationFeedbackGenerator
         let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
         do {
-            // Add consumption
-            try self.firebase
-                .firestore
-                .add(
-                    consumption,
-                    context: .current()
-                )
+            // Check if an identifier is available
+            if consumption.id == nil {
+                // Add consumption
+                try self.firebase
+                    .firestore
+                    .add(
+                        consumption,
+                        context: .current()
+                    )
+            } else {
+                // Update consumption
+                try self.firebase
+                    .firestore
+                    .update(
+                        consumption,
+                        context: .current()
+                    )
+            }
         } catch {
             // Invoke error feedback
             notificationFeedbackGenerator
@@ -112,7 +211,7 @@ private extension CreateConsumptionForm {
 
 // MARK: - Category did change
 
-private extension CreateConsumptionForm {
+private extension ConsumptionForm {
     
     /// Category did change
     /// - Parameter category: The new Consumption Category
@@ -145,7 +244,7 @@ private extension CreateConsumptionForm {
 
 // MARK: - View
 
-extension CreateConsumptionForm: View {
+extension ConsumptionForm: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -156,14 +255,10 @@ extension CreateConsumptionForm: View {
                 self.initialCategoryPicker
             }
         }
-        .navigationTitle("Add Consumption")
+        .navigationTitle(self.consumptionId == nil ? "Add Consumption" : "Edit Consumption")
         .onChange(
             of: self.category,
             perform: self.categoryDidChange
-        )
-        .animation(
-            .default,
-            value: self.category
         )
     }
     
@@ -171,7 +266,7 @@ extension CreateConsumptionForm: View {
 
 // MARK: - Initial Category Picker
 
-private extension CreateConsumptionForm {
+private extension ConsumptionForm {
     
     /// Initial category picker
     var initialCategoryPicker: some View {
@@ -207,7 +302,7 @@ private extension CreateConsumptionForm {
 
 // MARK: - Content
 
-private extension CreateConsumptionForm {
+private extension ConsumptionForm {
     
     /// The content for a given category
     /// - Parameter category: A Consumption Category
@@ -216,45 +311,47 @@ private extension CreateConsumptionForm {
     func content(
         for category: Consumption.Category
     ) -> some View {
-        Section(
-            header: Menu {
-                ForEach(
-                    Consumption
-                        .Category
-                        .allCases
-                        .filter { $0 != category },
-                    id: \.self
-                ) { category in
-                    Button {
-                        self.category = category
-                    } label: {
-                        Label {
-                            Text(category.localizedString)
-                        } icon: {
-                            category.icon
+        if self.consumptionId == nil {
+            Section(
+                header: Menu {
+                    ForEach(
+                        Consumption
+                            .Category
+                            .allCases
+                            .filter { $0 != category },
+                        id: \.self
+                    ) { category in
+                        Button {
+                            self.category = category
+                        } label: {
+                            Label {
+                                Text(category.localizedString)
+                            } icon: {
+                                category.icon
+                            }
                         }
                     }
+                } label: {
+                    HStack {
+                        category.icon
+                        Text(category.localizedString)
+                            .fontWeight(.semibold)
+                        Image(
+                            systemName: "chevron.up.chevron.down"
+                        )
+                        .imageScale(.small)
+                    }
                 }
-            } label: {
-                HStack {
-                    category.icon
-                    Text(category.localizedString)
-                        .fontWeight(.semibold)
-                    Image(
-                        systemName: "chevron.up.chevron.down"
-                    )
-                    .imageScale(.small)
-                }
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.capsule)
+                .tint(category.tintColor)
+                .controlSize(.regular)
+                .align(.centerHorizontal)
+                .padding(.top, 15)
+            ) {
             }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.capsule)
-            .tint(category.tintColor)
-            .controlSize(.regular)
-            .align(.centerHorizontal)
-            .padding(.top, 15)
-        ) {
+            .headerProminence(.increased)
         }
-        .headerProminence(.increased)
         switch category {
         case .electricity:
             Electricity(
@@ -274,7 +371,7 @@ private extension CreateConsumptionForm {
         }
         Section(
             header: Text("Description"),
-            footer: Text("Add an optional description to your entry.")
+            footer: Text("You may add a description to your entry to help you find it later.")
         ) {
             if #available(iOS 16.0, *) {
                 TextField(

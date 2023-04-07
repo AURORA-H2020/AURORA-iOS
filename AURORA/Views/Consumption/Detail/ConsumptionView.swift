@@ -8,6 +8,10 @@ struct ConsumptionView {
     /// The Consumption
     let consumption: Consumption
     
+    /// Bool value if consumption form is presented
+    @State
+    private var isConsumptionFormPresented = false
+    
     /// Bool value if delete confirmation dialog is presented
     @State
     private var isDeleteConfirmationDialogPresented = false
@@ -31,7 +35,9 @@ extension ConsumptionView: View {
                 } label: {
                     Text(self.consumption.category.localizedString)
                 }
-                if let formattedCarbonEmissions = self.consumption.formattedCarbonEmissions {
+                if let formattedCarbonEmissions = self.consumption
+                    .carbonEmissions?
+                    .formatted(.carbonEmissions) {
                     Entry {
                         Text(formattedCarbonEmissions)
                     } label: {
@@ -40,11 +46,13 @@ extension ConsumptionView: View {
                 }
             }
             if let electricity = self.consumption.electricity {
-                Entry {
-                    Text(electricity.formattedCosts)
-                        .foregroundColor(.secondary)
-                } label: {
-                    Text("Costs")
+                if let costs = electricity.costs {
+                    Entry {
+                        CurrencyText(costs)
+                            .foregroundColor(.secondary)
+                    } label: {
+                        Text("Costs")
+                    }
                 }
                 Entry {
                     Text(
@@ -53,7 +61,7 @@ extension ConsumptionView: View {
                     )
                     .foregroundColor(.secondary)
                 } label: {
-                    Text("Start")
+                    Text("Beginning")
                 }
                 Entry {
                     Text(
@@ -65,11 +73,13 @@ extension ConsumptionView: View {
                     Text("End")
                 }
             } else if let heating = self.consumption.heating {
-                Entry {
-                    Text(heating.formattedCosts)
-                        .foregroundColor(.secondary)
-                } label: {
-                    Text("Costs")
+                if let costs = heating.costs {
+                    Entry {
+                        CurrencyText(costs)
+                            .foregroundColor(.secondary)
+                    } label: {
+                        Text("Costs")
+                    }
                 }
                 Entry {
                     Text(
@@ -78,7 +88,7 @@ extension ConsumptionView: View {
                     )
                     .foregroundColor(.secondary)
                 } label: {
-                    Text("Start")
+                    Text("Beginning")
                 }
                 Entry {
                     Text(
@@ -171,6 +181,16 @@ extension ConsumptionView: View {
         .navigationTitle(self.consumption.category.localizedString)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self.isConsumptionFormPresented = true
+                } label: {
+                    Label(
+                        "Edit",
+                        systemImage: "square.and.pencil"
+                    )
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button(role: .destructive) {
                     self.isDeleteConfirmationDialogPresented = true
                 } label: {
@@ -180,6 +200,15 @@ extension ConsumptionView: View {
                     )
                     .foregroundColor(.red)
                 }
+            }
+        }
+        .sheet(
+            isPresented: self.$isConsumptionFormPresented
+        ) {
+            SheetNavigationView {
+                ConsumptionForm(
+                    consumption: self.consumption
+                )
             }
         }
         .confirmationDialog(

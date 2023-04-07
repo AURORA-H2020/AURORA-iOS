@@ -42,6 +42,9 @@ struct Consumption {
     /// The carbon emissions.
     let carbonEmissions: Double?
     
+    /// The energy expenditure.
+    let energyExpended: Double?
+    
     // MARK: Initializer
     
     /// Creates a new instance of `Consumption`
@@ -56,6 +59,7 @@ struct Consumption {
     ///   - value: The value
     ///   - description: The optional description.
     ///   - carbonEmissions: The carbon emissions.
+    ///   - energyExpended: The energy expenditure.
     init(
         id: String? = nil,
         createdAt: Timestamp? = nil,
@@ -66,7 +70,8 @@ struct Consumption {
         transportation: Transportation? = nil,
         value: Double,
         description: String? = nil,
-        carbonEmissions: Double? = nil
+        carbonEmissions: Double? = nil,
+        energyExpended: Double? = nil
     ) {
         self.id = id
         self.createdAt = createdAt
@@ -78,6 +83,7 @@ struct Consumption {
         self.value = value
         self.description = description
         self.carbonEmissions = carbonEmissions
+        self.energyExpended = energyExpended
     }
     
 }
@@ -125,47 +131,9 @@ extension Consumption {
     var formattedValue: String {
         switch self.category {
         case .transportation:
-            return Measurement<UnitLength>(
-                value: self.value,
-                unit: .kilometers
-            )
-            .formatted()
+            return self.value.formatted(.kilometers)
         case .heating, .electricity:
-            return Measurement<UnitEnergy>(
-                value: self.value,
-                unit: .kilowattHours
-            )
-            .formatted()
-        }
-    }
-    
-}
-
-// MARK: - Consumption+formattedValue
-
-extension Consumption {
-    
-    /// A formatted representation of the carbon emissions, if available.
-    var formattedCarbonEmissions: String? {
-        guard let carbonEmissions = self.carbonEmissions,
-              !carbonEmissions.isNaN else {
-            return nil
-        }
-        let measurement = Measurement<UnitMass>(
-            value: carbonEmissions,
-            unit: .kilograms
-        )
-        if measurement.value <= 0 {
-            return measurement
-                .converted(to: .grams)
-                .formatted(
-                    .measurement(
-                        width: .abbreviated,
-                        usage: .asProvided
-                    )
-                )
-        } else {
-            return measurement.formatted()
+            return self.value.formatted(.kilowattHours)
         }
     }
     

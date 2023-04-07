@@ -13,6 +13,9 @@ struct Country {
     /// The ISO 3166 Alpha-2 country code.
     let countryCode: String
     
+    /// The ISO 4217 currency code.
+    let currencyCode: String
+    
 }
 
 // MARK: - Country+FirestoreEntity
@@ -43,10 +46,13 @@ extension Country: Comparable {
 
 // MARK: - Country+europe
 
-private extension Country {
+extension Country {
     
     /// A Country representing Europe (EU)
-    static let europe = Self(countryCode: "EU")
+    static let europe = Self(
+        countryCode: "EU",
+        currencyCode: "EUR"
+    )
     
 }
 
@@ -71,6 +77,33 @@ extension Country {
                 ??
                 self.countryCode
         }
+    }
+    
+}
+
+// MARK: - Country+localizedCurrencySymbol
+
+extension Country {
+    
+    /// The localized currency symbol
+    var localizedCurrencySymbol: String {
+        Locale(
+            identifier: Locale.identifier(
+                fromComponents: [
+                    NSLocale.Key.countryCode.rawValue: self.countryCode,
+                    NSLocale.Key.currencyCode.rawValue: self.currencyCode
+                ]
+            )
+        )
+        .currencySymbol
+        ??
+        Locale
+            .current
+            .localizedString(
+                forCurrencyCode: self.currencyCode
+            )
+        ??
+        self.currencyCode
     }
     
 }

@@ -7,9 +7,13 @@ struct ConsumptionList {
     
     // MARK: Properties
     
-    /// Bool value if CreateConsumptionForm is presented.
+    /// The search text.
     @State
-    private var isCreateConsumptionFormPresented: Bool = false
+    private var searchText = String()
+    
+    /// The currently presented Sheet.
+    @State
+    private var sheet: Sheet?
     
     /// The Consumptions.
     @FirestoreEntityQuery
@@ -32,6 +36,31 @@ struct ConsumptionList {
     
 }
 
+// MARK: - Sheet
+
+private extension ConsumptionList {
+    
+    /// A Sheet
+    enum Sheet: Hashable, Identifiable {
+        /// ConsumptionForm
+        case consumptionForm(Consumption? = nil)
+        
+        /// The stable identity of the entity associated with this instance.
+        var id: String {
+            switch self {
+            case .consumptionForm(let consumption):
+                return [
+                    "ConsumptionForm",
+                    consumption?.id
+                ]
+                .compactMap { $0 }
+                .joined(separator: "-")
+            }
+        }
+    }
+    
+}
+
 // MARK: - View
 
 extension ConsumptionList: View {
@@ -40,7 +69,7 @@ extension ConsumptionList: View {
     var body: some View {
         List {
             ForEach(
-                self.consumptions
+                self.consumptions.filter(by: self.searchText)
             ) { consumption in
                 NavigationLink(
                     destination: ConsumptionView(
@@ -48,28 +77,73 @@ extension ConsumptionList: View {
                     )
                 ) {
                     Cell(
-                        consumption: consumption
+                        consumption: consumption,
+                        editAction: {
+                            self.sheet = .consumptionForm(consumption)
+                        }
                     )
                 }
             }
         }
         .navigationTitle("Entries")
+        .searchable(
+            text: self.$searchText,
+            placement: .navigationBarDrawer(
+                displayMode: .always
+            )
+        )
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.isCreateConsumptionFormPresented = true
+                    self.sheet = .consumptionForm()
                 } label: {
                     Image(systemName: "plus")
                 }
             }
         }
         .sheet(
-            isPresented: self.$isCreateConsumptionFormPresented
-        ) {
-            SheetNavigationView {
-                CreateConsumptionForm()
+            item: self.$sheet
+        ) { sheet in
+            switch sheet {
+            case .consumptionForm(let consumption):
+                SheetNavigationView {
+                    if let consumption = consumption {
+                        ConsumptionForm(
+                            consumption: consumption
+                        )
+                    } else {
+                        ConsumptionForm()
+                    }
+                }
             }
-            .adaptivePresentationDetents([.medium, .large])
+        }
+    }
+    
+}
+
+// MARK: - [Consumption]+filter(by:)
+
+private extension Array where Element == Consumption {
+    
+    /// Filters the current instance of consumptions based on the given `searchText`.
+    /// - Parameters:
+    ///   - searchText: The text to filter by.
+    func filter(
+        by searchText: String
+    ) -> Self {
+        let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !searchText.isEmpty else {
+            return self
+        }
+        return self.filter { consumption in
+            consumption.category.rawValue.localizedCaseInsensitiveContains(searchText)
+                || consumption.description?.localizedCaseInsensitiveContains(searchText) == true
+                || String(consumption.value).localizedCaseInsensitiveContains(searchText)
+                || consumption.electricity?.startDate.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
+                || consumption.electricity?.endDate.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
+                || consumption.heating?.startDate.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
+                || consumption.heating?.endDate.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
+                || consumption.transportation?.dateOfTravel.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
         }
     }
     
