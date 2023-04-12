@@ -131,7 +131,7 @@ extension ConsumptionSummaryView: View {
                     EmptyPlaceholder(
                         systemImage: "chart.bar.xaxis",
                         title: .init(self.localizedNavigationTitle),
-                        subtitle: "Your energy lables are currently not available."
+                        subtitle: "Your energy labels are currently not available."
                     )
                 }
                 .listRowBackground(Color(.systemGroupedBackground))
