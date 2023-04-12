@@ -131,7 +131,7 @@ extension Firebase.Authentication {
 extension Firebase.Authentication {
     
     /// A Firebase Authentication Provider
-    enum Provider: String, Codable, Hashable, CaseIterable {
+    enum Provider: String, Codable, Hashable, CaseIterable, Sendable {
         /// Email and Password
         case password
         /// Phone
