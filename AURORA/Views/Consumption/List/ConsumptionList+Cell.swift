@@ -47,11 +47,17 @@ extension ConsumptionList.Cell: View {
                     switch self.consumption.category {
                     case .electricity:
                         if let electricityDateRange = self.consumption.electricity?.dateRange {
-                            Text(electricityDateRange)
+                            Text(
+                                electricityDateRange,
+                                format: .interval.day().month().year()
+                            )
                         }
                     case .heating:
                         if let heatingDateRange = self.consumption.heating?.dateRange {
-                            Text(heatingDateRange)
+                            Text(
+                                heatingDateRange,
+                                format: .interval.day().month().year()
+                            )
                         }
                     case .transportation:
                         if let transportation = self.consumption.transportation {
