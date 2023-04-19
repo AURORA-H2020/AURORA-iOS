@@ -141,3 +141,6 @@ iOSInjectionProject/
 
 # End of https://www.gitignore.io/api/xcode,macos,swift,carthage,cocoapods
 docs/components/**
+
+# LingoHub
+.lingohub
