@@ -23,7 +23,7 @@ jobs:
       - name: Download Localizations from LingoHub
         run: mkdir -p ./.lingohub && lingohub resource:down --all --directory '/.lingohub' --project AURORA
       - name: Import Localizations
-        run: >-
+        run: |
           for file in ./.lingohub/*.xliff
           do
             echo "Importing localizations from $file"
