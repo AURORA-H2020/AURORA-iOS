@@ -10,19 +10,21 @@ import Foundation
 extension Firebase {
     
     /// Bool value if Firebase is configured.
-    private static var isConfigured = false
+    private(set) static var isConfigured = false
     
     /// Configure FIrebase
     /// - Parameter bundle: The Bundle. Default value `.main`
+    /// - Returns: Returns `true` if Firebase configured successfully and returns `false` if Firebase has already been configured.
+    @discardableResult
     static func configure(
         in bundle: Bundle = .main
-    ) {
+    ) -> Bool {
         // Verify is not configured
         guard !self.isConfigured else {
             // Otherwise return out of function
             // This way we are preventing any runtime crash
             // when accidentally calling `configure` multiple times.
-            return
+            return false
         }
         // Toggle is configured
         self.isConfigured.toggle()
@@ -82,6 +84,8 @@ extension Firebase {
             .Performance
             .sharedInstance()
             .isDataCollectionEnabled = !isDebug
+        // Return success
+        return true
     }
     
 }
