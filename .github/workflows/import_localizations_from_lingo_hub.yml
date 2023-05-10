@@ -1,0 +1,39 @@
+name: Import Localizations from LingoHub
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  upload:
+    name: Import Localizations from LingoHub
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install LingoHub CLI
+        run: gem install lingohub
+      - name: Login to LingoHub
+        run: mkdir ~/.lingohub/ && echo "$LINGO_HUB_CREDENTIALS" >> ~/.lingohub/credentials
+        shell: bash
+        env:
+          LINGO_HUB_CREDENTIALS: ${{ secrets.LINGO_HUB_CREDENTIALS }}
+      - name: Download Localizations from LingoHub
+        run: mkdir -p ./.lingohub && lingohub resource:down --all --directory '/.lingohub' --project AURORA
+      - name: Import Localizations
+        run: |
+          for file in ./.lingohub/*.xliff
+          do
+            echo "Importing localizations from $file"
+            set -o pipefail && xcodebuild -importLocalizations -localizationPath "$file" -project AURORA.xcodeproj | xcpretty
+          done
+          rm -rf "./lingohub"
+      - name: Push changes
+        run: |
+          git config --global user.name "github-actions[AURORA-App-Bot]"
+          git config --global user.email "app.developer@inscico.eu"
+          git add -A
+          git commit -m "Imported localizations from LingoHub"
+          git push

@@ -1,0 +1,735 @@
+/* No comment provided by engineer. */
+"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Ta projekt](https://www.aurora-h2020.eu/) financira program Evropske unije za raziskave in inovacije Obzorje 2020 v okviru sporazuma o dodelitvi sredstev št. [101036418](https://cordis.europa.eu/project/id/101036418).";
+
+/* No comment provided by engineer. */
+"%@ in %@" = "%@ v %@";
+
+/* No comment provided by engineer. */
+"About the App" = "O aplikaciji";
+
+/* No comment provided by engineer. */
+"Accomplisher" = "Izvajalec";
+
+/* No comment provided by engineer. */
+"Account" = "Račun";
+
+/* No comment provided by engineer. */
+"Account deletion" = "Izbris računa";
+
+/* No comment provided by engineer. */
+"Add a consumption" = "Dodaj porabo";
+
+/* No comment provided by engineer. */
+"Add consumption" = "Dodaj porabo";
+
+/* No comment provided by engineer. */
+"Add Consumption" = "Dodaj porabo";
+
+/* No comment provided by engineer. */
+"Add your electricity data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Dodaj svoje podatke o električni energiji v AURORA Energy Tracker in preveri svoj napredek pri doseganju skoraj ničelnih emisij!";
+
+/* No comment provided by engineer. */
+"Add your first consumption entry." = "Dodaj svoj prvi vnos porabe.";
+
+/* No comment provided by engineer. */
+"Add your heating data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Dodaj svoje podatke o ogrevanju v AURORA Energy Tracker in preveri svoj napredek pri doseganju skoraj ničelnih emisij!";
+
+/* No comment provided by engineer. */
+"Add your mobility data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Dodaj svoje podatke o mobilnosti v AURORA Energy Tracker in preveri svoj napredek, da postanete državljan s skoraj ničelnimi emisijami!";
+
+/* No comment provided by engineer. */
+"Almost empty" = "Skoraj prazno";
+
+/* No comment provided by engineer. */
+"Alternative fuel bus" = "Avtobus na alternativno gorivo";
+
+/* No comment provided by engineer. */
+"Ambassador" = "Veleposlanik";
+
+/* No comment provided by engineer. */
+"An email will be sent to your inbox containing a link to reset your password." = "V tvoj e-poštni predal bo poslano e-poštno sporočilo s povezavo za ponastavitev gesla.";
+
+/* No comment provided by engineer. */
+"An error occurred please try again." = "Zgodila se je napaka, prosimo, poskusi znova.";
+
+/* No comment provided by engineer. */
+"An error occurred while loading your profile." = "Pri nalaganju vašega profila je prišlo do napake.";
+
+/* No comment provided by engineer. */
+"An error occurred while logging in. Please try again.\n\n%@" = "Pri prijavi je prišlo do napake. Prosimo poskusite znova.\n\n%@";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to create a new account. Please check your inputs and try again." = "Pri poskusu ustvarjanja novega računa je prišlo do napake. Prosimo preverite svoje podatke in poskusite znova.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to create your profile. Please check your inputs and try again." = "Pri poskusu ustvarjanja vašega profila je prišlo do napake. Prosimo preverite svoje podatke in poskusite znova.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to delete your account." = "Pri poskusu izbrisa vašega računa je prišlo do napake.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to download your data." = "Pri poskusu prenosa podatkov je prišlo do napake.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to login. Please check your inputs and try again." = "Pri poskusu prijave je prišlo do napake. Preverite svoje podatke in poskusite znova.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to logout." = "Pri poskusu odjave je prišlo do napake.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to reset your password. Please check your email address and try again." = "Pri poskusu ponastavitve gesla je prišlo do napake. Preveri svoj e-poštni naslov in poskusi znova.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to save your consumption. Please try again." = "Pri poskusu shranjevanja vaše porabe je prišlo do napake. Prosim poskusite znova.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to update your email address. Please check your inputs and try again." = "Pri poskusu posodobitve tvojega e-poštnega naslova je prišlo do napake. Preveri svoje podatke in poskusi znova.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to update your password. Please check your inputs and try again." = "Pri poskusu posodobitve gesla je prišlo do napake. Prosim preverite svoje podatke in poskusite znova.";
+
+/* No comment provided by engineer. */
+"Annual energy production" = "Letna proizvodnja energije";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the entry?" = "Si prepričan, da želiš izbrisati vnos?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the entry?\nPlease note that it can take up to a minute for your summary to update." = "Si prepričan, da želiš izbrisati vnos? Upoštevaj, da lahko posodobitev povzetka traja do ene minute.";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete your account?" = "Si prepričan, da želiš izbrisati svoj račun?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to logout?" = "Si prepričan, da se želiš odjaviti?";
+
+/* No comment provided by engineer. */
+"At least %lld characters." = "Vsaj %lld znakov.";
+
+/* No comment provided by engineer. */
+"At least one letter." = "Vsaj ena črka.";
+
+/* No comment provided by engineer. */
+"At least one number." = "Vsaj ena številka.";
+
+/* No comment provided by engineer. */
+"At least one uppercase letter." = "Vsaj ena velika tiskana črka.";
+
+/* No comment provided by engineer. */
+"Aviation" = "Letalstvo";
+
+/* No comment provided by engineer. */
+"Beginning" = "Začetek";
+
+/* No comment provided by engineer. */
+"Big Achiever" = "Velika uspešnica";
+
+/* No comment provided by engineer. */
+"Bike" = "Kolo";
+
+/* No comment provided by engineer. */
+"Biomass" = "Biomasa";
+
+/* No comment provided by engineer. */
+"Busses" = "Avtobusi";
+
+/* No comment provided by engineer. */
+"By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)." = "Z nadaljevanjem se strinjaš z AURORINIMI [Pogoji uporabe storitev](https://www.aurora-h2020.eu/aurora/privacy-policy/) in [Pravilnikom o zasebnosti](https://www.aurora-h2020.eu/aurora/privacy-policy/).";
+
+/* No comment provided by engineer. */
+"Calculcate" = "Izračunaj";
+
+/* No comment provided by engineer. */
+"Cancel" = "Preklic";
+
+/* No comment provided by engineer. */
+"Carbon emissions" = "Emisije ogljika";
+
+/* No comment provided by engineer. */
+"Carbon Emissions" = "Emisije ogljika";
+
+/* No comment provided by engineer. */
+"Cars & Motorcycles" = "Avtomobili in motorna kolesa";
+
+/* No comment provided by engineer. */
+"Category" = "Kategorija";
+
+/* No comment provided by engineer. */
+"Champion" = "Prvak";
+
+/* No comment provided by engineer. */
+"Change email" = "Sprememba e-pošte";
+
+/* No comment provided by engineer. */
+"Change Password" = "Sprememba gesla";
+
+/* No comment provided by engineer. */
+"City" = "Mesto";
+
+/* No comment provided by engineer. */
+"CO₂" = "CO₂";
+
+/* No comment provided by engineer. */
+"CO₂ emitted if **conventional**" = "emisije CO₂, če je **konvencionalno**";
+
+/* No comment provided by engineer. */
+"CO₂ emitted if **photovoltaics**" = "CO₂, ki se sproščajo, če **fotovoltaika**";
+
+/* No comment provided by engineer. */
+"CO₂ reduction" = "Zmanjšanje CO₂";
+
+/* No comment provided by engineer. */
+"Coal" = "Premog";
+
+/* No comment provided by engineer. */
+"Confirm new password" = "Potrditev novega gesla";
+
+/* No comment provided by engineer. */
+"Confirm password" = "Potrditev gesla";
+
+/* No comment provided by engineer. */
+"Consumption" = "Poraba";
+
+/* No comment provided by engineer. */
+"Consumptions" = "Porabe";
+
+/* No comment provided by engineer. */
+"Contact Support" = "Kontaktna podpora";
+
+/* No comment provided by engineer. */
+"Continue with %@" = "Nadaljuj z %@";
+
+/* No comment provided by engineer. */
+"Continue with email" = "Nadaljuj z e-pošto";
+
+/* No comment provided by engineer. */
+"Costs" = "Stroški";
+
+/* No comment provided by engineer. */
+"Country" = "Država";
+
+/* No comment provided by engineer. */
+"Create your profile" = "Ustvari svoj profil";
+
+/* No comment provided by engineer. */
+"Created" = "Ustvarjeno";
+
+/* No comment provided by engineer. */
+"Current email address:\n%@" = "Trenutni e-poštni naslov:";
+
+/* No comment provided by engineer. */
+"Current Password" = "Trenutno geslo";
+
+/* No comment provided by engineer. */
+"Dashboard" = "Nadzorna plošča";
+
+/* No comment provided by engineer. */
+"Data privacy" = "Varstvo podatkov";
+
+/* No comment provided by engineer. */
+"Day" = "Dan";
+
+/* No comment provided by engineer. */
+"Default" = "Privzeto";
+
+/* No comment provided by engineer. */
+"Delete" = "Izbriši";
+
+/* No comment provided by engineer. */
+"Delete account" = "Izbriši račun";
+
+/* No comment provided by engineer. */
+"Delete Entry" = "Brisanje vnosa";
+
+/* No comment provided by engineer. */
+"Delete my account" = "Izbriši moj račun";
+
+/* No comment provided by engineer. */
+"Description" = "Opis";
+
+/* No comment provided by engineer. */
+"Did you know? Even the use of photovoltaics emit some CO₂ - albeit significantly less than conventional sources of energy." = "Si vedel? Tudi pri uporabi fotovoltaike se sprosti nekaj CO₂, čeprav bistveno manj kot pri običajnih virih energije.";
+
+/* No comment provided by engineer. */
+"Diesel bus" = "Avtobus na dizelski pogon";
+
+/* No comment provided by engineer. */
+"Diesel passenger train" = "Potniški vlak na dizelski pogon";
+
+/* No comment provided by engineer. */
+"Distance" = "Razdalja";
+
+/* No comment provided by engineer. */
+"District heating" = "Daljinsko ogrevanje";
+
+/* No comment provided by engineer. */
+"District heating source" = "Vir daljinskega ogrevanja";
+
+/* No comment provided by engineer. */
+"Download my data" = "Prenesi moje podatke";
+
+/* No comment provided by engineer. */
+"Driver" = "Voznik";
+
+/* No comment provided by engineer. */
+"Edit" = "Uredi";
+
+/* No comment provided by engineer. */
+"Edit Consumption" = "Urejanje porabe";
+
+/* No comment provided by engineer. */
+"Edit profile" = "Urejanje profila";
+
+/* No comment provided by engineer. */
+"Electric bike" = "Električno kolo";
+
+/* No comment provided by engineer. */
+"Electric bus" = "Električni avtobus";
+
+/* No comment provided by engineer. */
+"Electric car" = "Električni avtomobil";
+
+/* No comment provided by engineer. */
+"Electric heating" = "Električno ogrevanje";
+
+/* No comment provided by engineer. */
+"Electric motorcycle" = "Električno motorno kolo";
+
+/* No comment provided by engineer. */
+"Electric passenger train" = "Električni potniški vlak";
+
+/* No comment provided by engineer. */
+"Electric scooter" = "Električni skuter";
+
+/* No comment provided by engineer. */
+"Electricity" = "Električna energija";
+
+/* No comment provided by engineer. */
+"Electricity bill reminder" = "Opomin na račun za elektriko";
+
+/* No comment provided by engineer. */
+"Email" = "E-pošta";
+
+/* No comment provided by engineer. */
+"Email Address" = "Elektronski naslov";
+
+/* No comment provided by engineer. */
+"Email address changed" = "Spremenjen e-poštni naslov";
+
+/* No comment provided by engineer. */
+"Enabled" = "Omogočeno";
+
+/* No comment provided by engineer. */
+"End" = "Konec";
+
+/* No comment provided by engineer. */
+"Energy Used" = "Porabljena energija";
+
+/* No comment provided by engineer. */
+"Enter your current password." = "Vnesi svoje trenutno geslo.";
+
+/* No comment provided by engineer. */
+"Enter your information to create your personal AURORA profile." = "Vnesi svoje podatke in ustvarite osebni profil AURORA.";
+
+/* No comment provided by engineer. */
+"Entries" = "Vnosi";
+
+/* No comment provided by engineer. */
+"Error" = "Napaka";
+
+/* No comment provided by engineer. */
+"Explorer" = "Raziskovalec";
+
+/* No comment provided by engineer. */
+"Export" = "Izvoz";
+
+/* No comment provided by engineer. */
+"Export Data" = "Izvoz podatkov";
+
+/* No comment provided by engineer. */
+"Feature Preview" = "Predogled funkcij";
+
+/* No comment provided by engineer. */
+"Female" = "Ženska";
+
+/* No comment provided by engineer. */
+"First Mover" = "Prva oseba, ki se premika";
+
+/* No comment provided by engineer. */
+"First name" = "Ime in priimek";
+
+/* No comment provided by engineer. */
+"Frequency" = "Pogostost";
+
+/* No comment provided by engineer. */
+"Fuel car" = "Vozilo na gorivo";
+
+/* No comment provided by engineer. */
+"Gender" = "Spol";
+
+/* No comment provided by engineer. */
+"Geothermal" = "Geotermalna";
+
+/* No comment provided by engineer. */
+"Geothermal energy" = "Geotermalna energija";
+
+/* No comment provided by engineer. */
+"Get an overview of your latest submitted data, pending entry requests, and how you can improve your carbon footprint accuracy." = "Pridobite pregled nad zadnjimi predloženimi podatki, nerešenimi zahtevki za vnos in možnostmi za izboljšanje natančnosti ogljičnega odtisa.";
+
+/* No comment provided by engineer. */
+"Ground Breaker" = "Lomilec tal";
+
+/* No comment provided by engineer. */
+"Heating" = "Ogrevanje";
+
+/* No comment provided by engineer. */
+"Heating bill reminder" = "Opomnik za račun za ogrevanje";
+
+/* No comment provided by engineer. */
+"Heating fuel" = "Gorivo za ogrevanje";
+
+/* No comment provided by engineer. */
+"Heating oil" = "Kurilno olje";
+
+/* No comment provided by engineer. */
+"Heating source" = "Vir ogrevanja";
+
+/* No comment provided by engineer. */
+"High speed train" = "Hitri vlak";
+
+/* No comment provided by engineer. */
+"Home" = "Domov";
+
+/* No comment provided by engineer. */
+"How does it work?" = "Kako to deluje?";
+
+/* No comment provided by engineer. */
+"How many people, including you, live in your household." = "Koliko oseb, vključno s tabo, živi v tvojem gospodinjstvu.";
+
+/* No comment provided by engineer. */
+"Hybrid car" = "Hibridni avtomobil";
+
+/* No comment provided by engineer. */
+"Hybrid-electric bus" = "Hibridno-električni avtobus";
+
+/* No comment provided by engineer. */
+"Imprint" = "Odtis";
+
+/* No comment provided by engineer. */
+"Investment" = "Naložba";
+
+/* No comment provided by engineer. */
+"Last name" = "Priimek";
+
+/* No comment provided by engineer. */
+"Latest entries" = "Najnovejši vnosi";
+
+/* No comment provided by engineer. */
+"Learn more" = "Več informacij";
+
+/* No comment provided by engineer. */
+"Learn more on our website" = "Več informacij najdeš na našem spletnem mestu";
+
+/* No comment provided by engineer. */
+"Legal information" = "Pravne informacije";
+
+/* No comment provided by engineer. */
+"Licenses" = "Licence";
+
+/* No comment provided by engineer. */
+"Locally-produced biomass" = "Lokalno proizvedena biomasa";
+
+/* No comment provided by engineer. */
+"Login" = "Prijava";
+
+/* No comment provided by engineer. */
+"Login failed" = "Prijava ni uspela";
+
+/* No comment provided by engineer. */
+"Logout" = "Odjava";
+
+/* No comment provided by engineer. */
+"LPG" = "Avtoplin LPG";
+
+/* No comment provided by engineer. */
+"Male" = "Moški";
+
+/* No comment provided by engineer. */
+"Medium occupancy" = "Srednja zasedenost";
+
+/* No comment provided by engineer. */
+"Metro, tram, or urban light train" = "Metro, tramvaj ali mestni vlak";
+
+/* No comment provided by engineer. */
+"Mobility reminder" = "Opomnik za mobilnost";
+
+/* No comment provided by engineer. */
+"Month" = "Mesec";
+
+/* No comment provided by engineer. */
+"Motorcycle" = "Motorno kolo";
+
+/* No comment provided by engineer. */
+"Natural gas" = "Zemeljski plin";
+
+/* No comment provided by engineer. */
+"Nearly full" = "Skoraj polno";
+
+/* No comment provided by engineer. */
+"New email address" = "Nov e-poštni naslov";
+
+/* No comment provided by engineer. */
+"New Password" = "Novo geslo";
+
+/* No comment provided by engineer. */
+"No consumption entered yet (?)" = "Poraba še ni vnesena (?)";
+
+/* No comment provided by engineer. */
+"Non Binary" = "Nebinarno";
+
+/* No comment provided by engineer. */
+"Notifications" = "Obvestila";
+
+/* No comment provided by engineer. */
+"Occupancy" = "Zasedenost";
+
+/* No comment provided by engineer. */
+"Occupancy: %lld" = "Zasedenost: %lld";
+
+/* No comment provided by engineer. */
+"Oil" = "Nafta";
+
+/* No comment provided by engineer. */
+"Okay" = "V redu";
+
+/* No comment provided by engineer. */
+"Once our solar installations go live in each demo site you can track the energy production right from the app." = "Ko bodo sončne elektrarne delovale na vseh predstavitvenih mestih, bo možno proizvodnjo električne energije spremljate kar v aplikaciji.";
+
+/* No comment provided by engineer. */
+"Open Settings" = "Odpri nastavitve";
+
+/* No comment provided by engineer. */
+"Other" = "Ostalo";
+
+/* No comment provided by engineer. */
+"Other bus" = "Drugi avtobus";
+
+/* No comment provided by engineer. */
+"Other City" = "Drugo mesto";
+
+/* No comment provided by engineer. */
+"Overall" = "Splošno";
+
+/* No comment provided by engineer. */
+"Password" = "Geslo";
+
+/* No comment provided by engineer. */
+"Password changed" = "Geslo je spremenjeno";
+
+/* No comment provided by engineer. */
+"Password confirmation doesn't match." = "Potrditev gesla ne ustreza.";
+
+/* No comment provided by engineer. */
+"Password reset" = "Ponastavitev gesla";
+
+/* No comment provided by engineer. */
+"People in household: %lld" = "Število oseb v gospodinjstvu: %lld";
+
+/* No comment provided by engineer. */
+"Plane" = "Letalo";
+
+/* No comment provided by engineer. */
+"Please choose" = "Izberi";
+
+/* No comment provided by engineer. */
+"Please enable notifications for the AURORA app in the settings of your device." = "V nastavitvah naprave omogoči obvestila za aplikacijo AURORA.";
+
+/* No comment provided by engineer. */
+"Please logout and login again to delete your account." = "Če želiš izbrisati svoj račun, se odjavite in ponovno prijavite. ";
+
+/* No comment provided by engineer. */
+"Please note that all values displayed here are specific for your city, **%@**, and are merely for information.\nAll calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later.\nEstimated savings might be different from actual data, once the photovoltaic installations will be operational.\nYou obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Upoštevaj, da so vse prikazane vrednosti značilne za vaše mesto, **%@**, in so zgolj informativne. Vsi izračuni temeljijo na trenutnih načrtih za sončne elektrarne in jih bo morda treba pozneje prilagoditi. Ocenjeni prihranki se lahko razlikujejo od dejanskih podatkov, ko bodo sončne elektrarne začele delovati. Z uporabo tega kalkulatorja se seveda ne zavezujete. Ta kalkulator uporablja [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) Joint Research Centre Evropske komisije.";
+
+/* No comment provided by engineer. */
+"Please note that all values displayed here are specific for your city, **%@**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Upoštevaj, da so vse tukaj prikazane vrednosti značilne za vaše mesto, **%@**, in so zgolj informativne. Vsi izračuni temeljijo na trenutnih načrtih za sončne elektrarne in jih bo morda treba pozneje prilagoditi. Ocenjeni prihranki se lahko razlikujejo od dejanskih podatkov, ko bodo sončne elektrarne začele delovati. Z uporabo tega kalkulatorja seveda ne prevzemate nobenih obveznosti. Ta kalkulator uporablja [Fotovoltaični geografski](https://re.jrc.ec.europa.eu/pvg_tools/) informacijski sistem (PVGIS) Skupnega raziskovalnega centra Evropske komisije.";
+
+/* No comment provided by engineer. */
+"Prefer not to say" = "Raje ne povem";
+
+/* No comment provided by engineer. */
+"Privacy policy" = "Politika zasebnosti";
+
+/* No comment provided by engineer. */
+"produced" = "izdelano";
+
+/* No comment provided by engineer. */
+"Profile" = "Profil";
+
+/* No comment provided by engineer. */
+"Recent login required" = "Potrebna je nedavna prijava";
+
+/* No comment provided by engineer. */
+"Register" = "Register";
+
+/* No comment provided by engineer. */
+"Registration failed" = "Registracija ni uspela";
+
+/* No comment provided by engineer. */
+"Reload" = "Ponovno nalaganje";
+
+/* No comment provided by engineer. */
+"Reset" = "Ponastavitev";
+
+/* No comment provided by engineer. */
+"Reset my password" = "Ponastavitev mojega gesla";
+
+/* No comment provided by engineer. */
+"Reset Password" = "Ponastavitev gesla";
+
+/* No comment provided by engineer. */
+"Save" = "Shrani";
+
+/* No comment provided by engineer. */
+"Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Izberi začetek in konec te porabe. Te podatke lahko najdeš na računu za električno energijo.";
+
+/* No comment provided by engineer. */
+"Select the beginning and end of this consumption. You can find this information on your heating bill." = "Izberi začetek in konec te porabe. Te podatke lahko najdeš na računu za ogrevanje.";
+
+/* No comment provided by engineer. */
+"Select your type of heating. You can find this information on your heating bill." = "Izberi vrsto ogrevanja. Te podatke lahko najdeš na računu za ogrevanje.";
+
+/* No comment provided by engineer. */
+"Settings" = "Nastavitve";
+
+/* No comment provided by engineer. */
+"Show all entries" = "Prikaži vse vnose";
+
+/* No comment provided by engineer. */
+"Solar Power" = "Sončna energija";
+
+/* No comment provided by engineer. */
+"Solar thermal" = "Sončna toplota";
+
+/* No comment provided by engineer. */
+"Solar thermal energy" = "Sončna toplotna energija";
+
+/* No comment provided by engineer. */
+"Start of travel" = "Začetek potovanja";
+
+/* No comment provided by engineer. */
+"Submit" = "Pošlji";
+
+/* No comment provided by engineer. */
+"Support" = "Podpora";
+
+/* No comment provided by engineer. */
+"The next notification will be sent on %@" = "Naslednje obvestilo bo poslano %@";
+
+/* No comment provided by engineer. */
+"This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.\nCrowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners." = "Te informacije nam pomagajo natančneje izračunati tvoj ogljični odtis. Upoštevaj, da svoje države pozneje ne moreš spremeniti. Množično financiranje lokalnih sončnih elektrarn je trenutno načrtovano le za izbrana mesta partnerjev projekta AURORA.";
+
+/* No comment provided by engineer. */
+"This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead." = "To je količina CO₂, ki bi se sprostila, če bi proizvedeno energijo črpali iz lokalnega omrežja.";
+
+/* No comment provided by engineer. */
+"Time" = "Čas";
+
+/* No comment provided by engineer. */
+"Trains & Trams" = "Vlaki in tramvaji";
+
+/* No comment provided by engineer. */
+"Transportation" = "Prevozi";
+
+/* No comment provided by engineer. */
+"Transportation type" = "Vrsta prevoza";
+
+/* No comment provided by engineer. */
+"Type" = "Tip";
+
+/* No comment provided by engineer. */
+"Updated" = "Posodobljeno";
+
+/* No comment provided by engineer. */
+"used" = "uporabljen";
+
+/* No comment provided by engineer. */
+"View your energy labels" = "Oglejte si svoje energetske nalepke";
+
+/* No comment provided by engineer. */
+"Walking" = "Hoja";
+
+/* No comment provided by engineer. */
+"Waste treatment" = "Ravnanje z odpadki";
+
+/* No comment provided by engineer. */
+"We are working on expanding your profile data with the addition of households, personalised vehicles, energy sources, and more." = "Podatke o vašem profilu širimo z dodajanjem podatkom o gospodinjstvih, osebnih vozilih, virih energije in še več.";
+
+/* No comment provided by engineer. */
+"We can remind you to enter your electricity consumption based on your bill. Just let us know when you expect the next one." = "Opomnimo te lahko, da vneseš porabo električne energije na podlagi računa. Sporoči nam le, kdaj pričakuješ naslednjega.";
+
+/* No comment provided by engineer. */
+"We can remind you to enter your energy consumption based on your bill. Just let us know when you expect the next one." = "Opomnimo te lahko, da vneseš porabo energije na podlagi računa. Sporoči nam le, kdaj pričakuješ naslednjega.";
+
+/* No comment provided by engineer. */
+"We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Lahko te opomnimo, da redno vnašaš podatke o prevozu. Sporoči nam, kako pogosto potuješ.";
+
+/* No comment provided by engineer. */
+"Weekday" = "Delavnik";
+
+/* No comment provided by engineer. */
+"Year" = "Leto";
+
+/* No comment provided by engineer. */
+"Year of birth" = "Letnica rojstva";
+
+/* No comment provided by engineer. */
+"You can find this information on your electricity bill." = "Te podatke lahko najdeš na računu za elektriko.";
+
+/* No comment provided by engineer. */
+"You can find this information on your heating bill." = "Te podatke lahko najdeš na računu za ogrevanje.";
+
+/* No comment provided by engineer. */
+"You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment." = "Kmalu lahko zmanjšaš svoj ogljični odtis z naložbo v lokalno sončno elektrarno AURORA. Do takrat lahko tukaj že preizkusiš, za koliko bi se tvoj ogljični odtis zmanjšal glede na morebitno naložbo.";
+
+/* No comment provided by engineer. */
+"You may add a description to your entry to help you find it later." = "Vpisu lahko dodaš opis, da ga kasneje lažje najdeš.";
+
+/* No comment provided by engineer. */
+"You will shortly receive an email to reset your password." = "Kmalu prejmeš e-poštno sporočilo za ponastavitev gesla.";
+
+/* No comment provided by engineer. */
+"You would be reducing CO₂ emissions within your local community by this amount. Great job!" = "Za to količino bi zmanjšal emisije CO₂ v svoji lokalni skupnosti. Odlično delo!";
+
+/* No comment provided by engineer. */
+"Your Carbon Emissions Labels" = "Tvoje oznake za emisije ogljika";
+
+/* No comment provided by engineer. */
+"Your carbon footprint" = "Tvoj ogljični odtis";
+
+/* No comment provided by engineer. */
+"Your data has been successfully downloaded. Do you want to export it?" = "Tvoji podatki so bili uspešno preneseni. Ali jih želiš izvoziti?";
+
+/* No comment provided by engineer. */
+"Your email address has successfully been changed." = "Tvoj e-poštni naslov je bil uspešno spremenjen.";
+
+/* No comment provided by engineer. */
+"Your Energy Labels" = "Tvoje energetske nalepke";
+
+/* No comment provided by engineer. */
+"Your energy labels are calculated based on your tracked consumption and specific to your location. This means, as you enter data throughout the year, more of your carbon emission and energy budgets will be made available. For example: If you have only entered data for all days of January and December, 2/12 of the total budget will be used to calculate your label. The only exception is transportation, which yields the full budget after a certain number of annual entries. Your overall budget is based on the sum of your electricity, heating and transportation budgets." = "Tvoje energetske nalepke so izračunane na podlagi spremljane porabe in glede na tvojo lokacijo. To pomeni, da bo z vnašanjem podatkov med letom na voljo več podatkov o tvojih emisijah ogljika in energetskih računih. Na primer: Če si vnesli podatke samo za vse dni v januarju in decembru, bo za izračun tvoje nalepke uporabljena 2/12 celotnega obsega proračuna. Edina izjema je prevoz, pri katerem se po določenem številu letnih vnosov pridobi celoten izračun. Tvoj skupni znesek temelji na vsoti računov za električno energijo, ogrevanje in prevoz.";
+
+/* No comment provided by engineer. */
+"Your energy labels are currently not available." = "Tvoje energetske nalepke trenutno niso na voljo.";
+
+/* No comment provided by engineer. */
+"Your investment" = "Tvoja naložba";
+
+/* No comment provided by engineer. */
+"Your Password has successfully been changed." = "Geslo je bilo uspešno spremenjeno.";
+
+/* No comment provided by engineer. */
+"Your profile changes couldn't be saved. Please check your inputs and try again." = "Sprememb profila ni bilo mogoče shraniti. Prosim, preveri svoje vnose in poskusi znova.";
+
+/* No comment provided by engineer. */
+"Your Solar Power" = "Tvoja sončna energija";
+

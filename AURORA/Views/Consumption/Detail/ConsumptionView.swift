@@ -200,6 +200,29 @@ extension ConsumptionView: View {
                     )
                     .foregroundColor(.red)
                 }
+                .confirmationDialog(
+                    "Delete Entry",
+                    isPresented: self.$isDeleteConfirmationDialogPresented,
+                    actions: {
+                        Button(role: .destructive) {
+                            try? self.firebase
+                                .firestore
+                                .delete(
+                                    self.consumption,
+                                    context: .current()
+                                )
+                        } label: {
+                            Text("Delete")
+                        }
+                        Button(role: .cancel) {
+                        } label: {
+                            Text("Cancel")
+                        }
+                    },
+                    message: {
+                        Text("Are you sure you want to delete the entry?")
+                    }
+                )
             }
         }
         .sheet(
@@ -211,29 +234,6 @@ extension ConsumptionView: View {
                 )
             }
         }
-        .confirmationDialog(
-            "Delete Entry",
-            isPresented: self.$isDeleteConfirmationDialogPresented,
-            actions: {
-                Button(role: .destructive) {
-                    try? self.firebase
-                        .firestore
-                        .delete(
-                            self.consumption,
-                            context: .current()
-                        )
-                } label: {
-                    Text("Delete")
-                }
-                Button(role: .cancel) {
-                } label: {
-                    Text("Cancel")
-                }
-            },
-            message: {
-                Text("Are you sure you want to delete the entry?")
-            }
-        )
     }
     
 }

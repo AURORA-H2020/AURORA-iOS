@@ -1,0 +1,585 @@
+/* No comment provided by engineer. */
+"%@ in %@" = "%@ em %@";
+
+/* No comment provided by engineer. */
+"About the App" = "Sobre a App";
+
+/* No comment provided by engineer. */
+"Account" = "Conta";
+
+/* No comment provided by engineer. */
+"Account deletion" = "Apagar conta";
+
+/* No comment provided by engineer. */
+"Add a consumption" = "Adicionar um consumo";
+
+/* No comment provided by engineer. */
+"Add consumption" = "Adicionar consumo";
+
+/* No comment provided by engineer. */
+"Add Consumption" = "Adicionar Consumo";
+
+/* No comment provided by engineer. */
+"Add your first consumption entry." = "Adiciona o teu primeiro registo de consumo.";
+
+/* No comment provided by engineer. */
+"Almost empty" = "Quase vazio";
+
+/* No comment provided by engineer. */
+"Alternative fuel bus" = "Autocarro com combustível alternativo";
+
+/* No comment provided by engineer. */
+"An error occurred while loading your profile." = "Ocorreu um erro ao carregar o teu perfil.";
+
+/* No comment provided by engineer. */
+"An error occurred while logging in. Please try again.\n\n%@" = "Ocorreu um erro ao entrar na conta. Por favor tenta outra vez. \n\n%@";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to create a new account. Please check your inputs and try again." = "Ocorreu um erro ao tentar criar uma nova conta. Por favor verifica os teus dados e tenta novamente.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to create your profile. Please check your inputs and try again." = "Ocorreu um erro ao tentar criar o teu perfil. Por favor verifica os teus dados e tenta novamente.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to delete your account." = "Ocorreu um erro ao tentar eliminar a tua conta.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to download your data." = "Ocorreu um erro ao tentar descarregar os teus dados.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to login. Please check your inputs and try again." = "Ocorreu um erro ao tentar entrar na conta. Por favor verifica os teus dados e tenta novamente.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to logout." = "Ocorreu um erro ao tentar sair da conta.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to save your consumption. Please try again." = "Ocorreu um erro ao tentar guardar os teus consumos. Por favor tenta novamente.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to update your password. Please check your inputs and try again." = "Ocorreu um erro ao tentar atualizar a tua palavra-passe. Por favor verifica os teus dados e tenta novamente.";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the entry?" = "Tens a certeza que queres eliminar o registo?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete your account?" = "Tens a certeza que queres eliminar a tua conta?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to logout?" = "Tens a certeza que queres sair da tua conta?";
+
+/* No comment provided by engineer. */
+"At least %lld characters." = "Pelo menos €lld caracteres. ";
+
+/* No comment provided by engineer. */
+"At least one letter." = "Pelo menos uma letra.";
+
+/* No comment provided by engineer. */
+"At least one number." = "Pelo menos um número.";
+
+/* No comment provided by engineer. */
+"At least one uppercase letter." = "Pelo menos uma letra maiúscula.";
+
+/* No comment provided by engineer. */
+"Aviation" = "Aviação";
+
+/* No comment provided by engineer. */
+"Beginning" = "Começo";
+
+/* No comment provided by engineer. */
+"Bike" = "Bicicleta";
+
+/* No comment provided by engineer. */
+"Biomass" = "Biomassa";
+
+/* No comment provided by engineer. */
+"Busses" = "Autocarros";
+
+/* No comment provided by engineer. */
+"By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)." = "Ao continuar, aceitas os [Termos e Condições] (https://www.aurora-h2020.eu/aurora/privacy-policy/) e [Políticas de Privacidade] (https://www.aurora-h2020.eu/aurora/privacy-policy/) do AURORA. ";
+
+/* No comment provided by engineer. */
+"Calculcate" = "Calcular";
+
+/* No comment provided by engineer. */
+"Cancel" = "Cancelar";
+
+/* No comment provided by engineer. */
+"Carbon emissions" = "Emissões de carbono";
+
+/* No comment provided by engineer. */
+"Carbon Emissions" = "Emissões de Carbono";
+
+/* No comment provided by engineer. */
+"Cars & Motorcycles" = "Carros e Motociclos";
+
+/* No comment provided by engineer. */
+"Category" = "Categoria";
+
+/* No comment provided by engineer. */
+"Champion" = "Campeão";
+
+/* No comment provided by engineer. */
+"Change email" = "Alterar email";
+
+/* No comment provided by engineer. */
+"Change Password" = "Alterar Palavra-Passe";
+
+/* No comment provided by engineer. */
+"City" = "Cidade";
+
+/* No comment provided by engineer. */
+"Coal" = "Carvão";
+
+/* No comment provided by engineer. */
+"Confirm new password" = "Confirmar nova palavra-passe";
+
+/* No comment provided by engineer. */
+"Confirm password" = "Confirmar palavra-passe";
+
+/* No comment provided by engineer. */
+"Consumption" = "Consumo";
+
+/* No comment provided by engineer. */
+"Consumptions" = "Consumos";
+
+/* No comment provided by engineer. */
+"Continue with %@" = "Continuar como %@";
+
+/* No comment provided by engineer. */
+"Continue with email" = "Continuar com email";
+
+/* No comment provided by engineer. */
+"Costs" = "Custos";
+
+/* No comment provided by engineer. */
+"Country" = "País";
+
+/* No comment provided by engineer. */
+"Create your profile" = "Cria o teu perfil";
+
+/* No comment provided by engineer. */
+"Created" = "Criado";
+
+/* No comment provided by engineer. */
+"Current email address:\n%@" = "Endereço de email atual:\n%@";
+
+/* No comment provided by engineer. */
+"Current Password" = "Palavra-Passe atual";
+
+/* No comment provided by engineer. */
+"Data privacy" = "Privacidade de dados";
+
+/* No comment provided by engineer. */
+"Day" = "Dia";
+
+/* No comment provided by engineer. */
+"Default" = "Padrão";
+
+/* No comment provided by engineer. */
+"Delete" = "Eliminar";
+
+/* No comment provided by engineer. */
+"Delete account" = "Eliminar conta";
+
+/* No comment provided by engineer. */
+"Delete Entry" = "Eliminar Registo";
+
+/* No comment provided by engineer. */
+"Delete my account" = "Eliminar a minha conta";
+
+/* No comment provided by engineer. */
+"Description" = "Descrição";
+
+/* No comment provided by engineer. */
+"Diesel bus" = "Autocarro a diesel";
+
+/* No comment provided by engineer. */
+"Diesel passenger train" = "Comboio de passageiros a diesel";
+
+/* No comment provided by engineer. */
+"Distance" = "Distância";
+
+/* No comment provided by engineer. */
+"District heating" = "Sistema de redes de calor";
+
+/* No comment provided by engineer. */
+"District heating source" = "Fonte de aquecimento por redes calor";
+
+/* No comment provided by engineer. */
+"Download my data" = "Descarregar os meus dados";
+
+/* No comment provided by engineer. */
+"Edit Consumption" = "Editar Consumo";
+
+/* No comment provided by engineer. */
+"Edit profile" = "Editar perfil";
+
+/* No comment provided by engineer. */
+"Electric bike" = "Bicicleta elétrica";
+
+/* No comment provided by engineer. */
+"Electric bus" = "Autocarro elétrico";
+
+/* No comment provided by engineer. */
+"Electric car" = "Carro elétrico";
+
+/* No comment provided by engineer. */
+"Electric heating" = "Aquecimento elétrico";
+
+/* No comment provided by engineer. */
+"Electric motorcycle" = "Motociclo elétrico";
+
+/* No comment provided by engineer. */
+"Electric passenger train" = "Comboio de passageiros elétrico";
+
+/* No comment provided by engineer. */
+"Electric scooter" = "Trotinete elétrica";
+
+/* No comment provided by engineer. */
+"Electricity" = "Eletricidade";
+
+/* No comment provided by engineer. */
+"Electricity bill reminder" = "Lembrete da fatura de eletricidade";
+
+/* No comment provided by engineer. */
+"Email" = "Email";
+
+/* No comment provided by engineer. */
+"Email Address" = "Endereço de Email";
+
+/* No comment provided by engineer. */
+"Enabled" = "Ativado";
+
+/* No comment provided by engineer. */
+"End" = "Fim";
+
+/* No comment provided by engineer. */
+"Energy Used" = "Energia utilizada";
+
+/* No comment provided by engineer. */
+"Enter your current password." = "Insere a tua palavra-passe atual.";
+
+/* No comment provided by engineer. */
+"Enter your information to create your personal AURORA profile." = "Insere a tua informação para criar o teu perfil pessoal AURORA.";
+
+/* No comment provided by engineer. */
+"Entries" = "Registos";
+
+/* No comment provided by engineer. */
+"Error" = "Erro";
+
+/* No comment provided by engineer. */
+"Export" = "Exportar";
+
+/* No comment provided by engineer. */
+"Export Data" = "Exportar Dados";
+
+/* No comment provided by engineer. */
+"Feature Preview" = "Pré-visualização das características";
+
+/* No comment provided by engineer. */
+"Female" = "Feminino";
+
+/* No comment provided by engineer. */
+"First name" = "Primeiro nome";
+
+/* No comment provided by engineer. */
+"Frequency" = "Frequência";
+
+/* No comment provided by engineer. */
+"Fuel car" = "Carro a combustível fóssil";
+
+/* No comment provided by engineer. */
+"Gender" = "Género";
+
+/* No comment provided by engineer. */
+"Geothermal" = "Geotérmico";
+
+/* No comment provided by engineer. */
+"Geothermal energy" = "Energia geotérmica";
+
+/* No comment provided by engineer. */
+"Get an overview of your latest submitted data, pending entry requests, and how you can improve your carbon footprint accuracy." = "Obtém uma visão geral dos teus dados submetidos recentemente, pedidos de registo pendentes, e como podes melhorar a exatidão da tua pegada de carbono.";
+
+/* No comment provided by engineer. */
+"Heating" = "Aquecimento";
+
+/* No comment provided by engineer. */
+"Heating bill reminder" = "Lembrete da fatura de aquecimento";
+
+/* No comment provided by engineer. */
+"Heating fuel" = "Combustível de aquecimento";
+
+/* No comment provided by engineer. */
+"Heating oil" = "Óleo de aquecimento";
+
+/* No comment provided by engineer. */
+"Heating source" = "Fonte de aquecimento";
+
+/* No comment provided by engineer. */
+"High speed train" = "Comboio de alta velocidade";
+
+/* No comment provided by engineer. */
+"Home" = "Casa";
+
+/* No comment provided by engineer. */
+"How does it work?" = "Como funciona?";
+
+/* No comment provided by engineer. */
+"Hybrid car" = "Carro híbrido";
+
+/* No comment provided by engineer. */
+"Hybrid-electric bus" = "Autocarro elétrico-híbrido";
+
+/* No comment provided by engineer. */
+"Imprint" = "Carimbo";
+
+/* No comment provided by engineer. */
+"Investment" = "Investimento";
+
+/* No comment provided by engineer. */
+"Last name" = "Último nome";
+
+/* No comment provided by engineer. */
+"Latest entries" = "Últimos registos";
+
+/* No comment provided by engineer. */
+"Legal information" = "Informação legal";
+
+/* No comment provided by engineer. */
+"Licenses" = "Licenças";
+
+/* No comment provided by engineer. */
+"Locally-produced biomass" = "Biomassa produzida localmente";
+
+/* No comment provided by engineer. */
+"Login" = "Entrar";
+
+/* No comment provided by engineer. */
+"Login failed" = "Erro ao entrar";
+
+/* No comment provided by engineer. */
+"Logout" = "Sair";
+
+/* No comment provided by engineer. */
+"LPG" = "GPL";
+
+/* No comment provided by engineer. */
+"Male" = "Masculino";
+
+/* No comment provided by engineer. */
+"Medium occupancy" = "Ocupação média";
+
+/* No comment provided by engineer. */
+"Metro, tram, or urban light train" = "Metro, metro de superfície ou comboio ligeiro urbano";
+
+/* No comment provided by engineer. */
+"Mobility reminder" = "Lembrete de mobilidade";
+
+/* No comment provided by engineer. */
+"Month" = "Mês";
+
+/* No comment provided by engineer. */
+"Motorcycle" = "Motociclo";
+
+/* No comment provided by engineer. */
+"Natural gas" = "Gás natural";
+
+/* No comment provided by engineer. */
+"Nearly full" = "Quase cheio";
+
+/* No comment provided by engineer. */
+"New Password" = "Nova palavra-passe";
+
+/* No comment provided by engineer. */
+"Non Binary" = "Não binário";
+
+/* No comment provided by engineer. */
+"Notifications" = "Notificações";
+
+/* No comment provided by engineer. */
+"Occupancy" = "Ocupação";
+
+/* No comment provided by engineer. */
+"Occupancy: %lld" = "Ocupação: %lld";
+
+/* No comment provided by engineer. */
+"Oil" = "Petróleo";
+
+/* No comment provided by engineer. */
+"Okay" = "Ok";
+
+/* No comment provided by engineer. */
+"Once our solar installations go live in each demo site you can track the energy production right from the app." = "Assim que as nossas instalações solares entrem em funcionamento em cada demonstrador, poderás acompanhar a produção de energia diretamente a partir da aplicação.";
+
+/* No comment provided by engineer. */
+"Open Settings" = "Abrir definições";
+
+/* No comment provided by engineer. */
+"Other" = "Outro";
+
+/* No comment provided by engineer. */
+"Other bus" = "Outro autocarro";
+
+/* No comment provided by engineer. */
+"Other City" = "Outra cidade";
+
+/* No comment provided by engineer. */
+"Overall" = "Em geral";
+
+/* No comment provided by engineer. */
+"Password" = "Palavra-Passe";
+
+/* No comment provided by engineer. */
+"Password changed" = "Palavra-Passe alterada";
+
+/* No comment provided by engineer. */
+"Password confirmation doesn't match." = "A confirmação da palavra-passe não coincide.";
+
+/* No comment provided by engineer. */
+"Password reset" = "Redefinir palavra-passe";
+
+/* No comment provided by engineer. */
+"People in household: %lld" = "Pessoas na habitação: %lld";
+
+/* No comment provided by engineer. */
+"Plane" = "Avião";
+
+/* No comment provided by engineer. */
+"Please choose" = "Por favor escolhe";
+
+/* No comment provided by engineer. */
+"Please enable notifications for the AURORA app in the settings of your device." = "Por favor, ativa as notificações para a aplicação AURORA nas definições do teu dispositivo.";
+
+/* No comment provided by engineer. */
+"Please logout and login again to delete your account." = "Por favor, sai e inicia a sessão novamente para apagar a tua conta.";
+
+/* No comment provided by engineer. */
+"Prefer not to say" = "Prefiro não dizer";
+
+/* No comment provided by engineer. */
+"Privacy policy" = "Política de privacidade";
+
+/* No comment provided by engineer. */
+"produced" = "produzido";
+
+/* No comment provided by engineer. */
+"Profile" = "Perfil";
+
+/* No comment provided by engineer. */
+"Recent login required" = "É necessário um login recente ";
+
+/* No comment provided by engineer. */
+"Register" = "Registar";
+
+/* No comment provided by engineer. */
+"Registration failed" = "O registo falhou";
+
+/* No comment provided by engineer. */
+"Reload" = "Recarregar";
+
+/* No comment provided by engineer. */
+"Reset my password" = "Redefinir a minha palavra-passe";
+
+/* No comment provided by engineer. */
+"Reset Password" = "Redefinir palavra-passe";
+
+/* No comment provided by engineer. */
+"Save" = "Guardar";
+
+/* No comment provided by engineer. */
+"Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Seleciona o início e fim deste consumo. Podes encontrar esta informação na tua fatura de eletricidade.";
+
+/* No comment provided by engineer. */
+"Select the beginning and end of this consumption. You can find this information on your heating bill." = "Seleciona o início e fim deste consumo. Podes encontrar esta informação na tua fatura de aquecimento.";
+
+/* No comment provided by engineer. */
+"Select your type of heating. You can find this information on your heating bill." = "Seleciona o teu tipo de aquecimento. Podes encontrar esta informação na tua fatura de aquecimento.";
+
+/* No comment provided by engineer. */
+"Settings" = "Definições";
+
+/* No comment provided by engineer. */
+"Show all entries" = "Mostrar todos os registos";
+
+/* No comment provided by engineer. */
+"Solar thermal" = "Solar térmico";
+
+/* No comment provided by engineer. */
+"Solar thermal energy" = "Energia solar térmica";
+
+/* No comment provided by engineer. */
+"Start of travel" = "Início da viagem";
+
+/* No comment provided by engineer. */
+"Submit" = "Submeter";
+
+/* No comment provided by engineer. */
+"Support" = "Apoio";
+
+/* No comment provided by engineer. */
+"The next notification will be sent on %@" = "A próxima notificação será enviada em %@";
+
+/* No comment provided by engineer. */
+"Time" = "Tempo";
+
+/* No comment provided by engineer. */
+"Trains & Trams" = "Comboios & Elétricos";
+
+/* No comment provided by engineer. */
+"Transportation" = "Transporte";
+
+/* No comment provided by engineer. */
+"Transportation type" = "Tipo de transporte";
+
+/* No comment provided by engineer. */
+"Type" = "Tipo";
+
+/* No comment provided by engineer. */
+"Updated" = "Atualizar";
+
+/* No comment provided by engineer. */
+"used" = "usado";
+
+/* No comment provided by engineer. */
+"Walking" = "Caminhar";
+
+/* No comment provided by engineer. */
+"Waste treatment" = "Tratamento de resíduos";
+
+/* No comment provided by engineer. */
+"We are working on expanding your profile data with the addition of households, personalised vehicles, energy sources, and more." = "Estamos a trabalhar na expansão dos teus dados de perfil com a adição de habitações, veículos personalizados, fontes de energia e muito mais.";
+
+/* No comment provided by engineer. */
+"Weekday" = "Dia da semana";
+
+/* No comment provided by engineer. */
+"Year" = "Ano";
+
+/* No comment provided by engineer. */
+"Year of birth" = "Ano de nascimento";
+
+/* No comment provided by engineer. */
+"You can find this information on your electricity bill." = "Podes encontrar este informação na tua fatura de eletricidade.";
+
+/* No comment provided by engineer. */
+"You can find this information on your heating bill." = "Podes encontrar este informação na tua fatura de aquecimento.";
+
+/* No comment provided by engineer. */
+"Your carbon footprint" = "A tua pegada de carbono";
+
+/* No comment provided by engineer. */
+"Your data has been successfully downloaded. Do you want to export it?" = "Os teus dados foram descarregados com sucesso. Queres exportá-los?";
+
+/* No comment provided by engineer. */
+"Your investment" = "O teu investimento";
+
+/* No comment provided by engineer. */
+"Your Password has successfully been changed." = "A tua palavra-passe foi alterada com sucesso.";
+
+/* No comment provided by engineer. */
+"Your profile changes couldn't be saved. Please check your inputs and try again." = "As tuas alterações de perfil não puderam ser gravadas. Por favor verifica os teus dados e tenta outra vez. ";
+
+/* No comment provided by engineer. */
+"Your Solar Power" = "A tua Energia Solar";
+

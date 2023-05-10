@@ -28,7 +28,6 @@ extension AppDelegate {
         // when configuring Firebase during the initialization of a `SwiftUI.App`
         // - Read more: https://firebase.google.com/docs/ios/learn-more#app_delegate_swizzling
         Firebase.configure()
-        return true
     }
     
 }

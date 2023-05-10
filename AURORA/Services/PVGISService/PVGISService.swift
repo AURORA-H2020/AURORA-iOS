@@ -64,7 +64,7 @@ extension PVGISService {
     
 }
 
-// MARK: - Calculcate Photovoltaic Investment
+// MARK: - Calculate Photovoltaic Investment
 
 extension PVGISService {
     
@@ -73,7 +73,7 @@ extension PVGISService {
     ///   - amount: The amount to invest.
     ///   - pvgisParams: The PVGIS parameters of the city.
     ///   - country: The country.
-    func calculcatePhotovoltaicInvestment(
+    func calculatePhotovoltaicInvestment(
         amount: Int,
         using pvgisParams: City.PVGISParams,
         in country: Country
@@ -95,14 +95,14 @@ extension PVGISService {
             throw URLError(.badServerResponse)
         }
         // Try to decode response as calculation response
-        let calculcationResponse = try JSONDecoder()
+        let calculationResponse = try JSONDecoder()
             .decode(
-                CalculcationResponse.self,
+                CalculationResponse.self,
                 from: responseData
             )
         // Initialize the produced energy
         let producedEnergy = Measurement<UnitEnergy>(
-            value: calculcationResponse
+            value: calculationResponse
                 .outputs
                 .totals
                 .fixed
@@ -202,12 +202,12 @@ private extension URL {
     
 }
 
-// MARK: - CalculcationResponse
+// MARK: - CalculationResponse
 
 private extension PVGISService {
     
-    /// A PVGIS calculcation response
-    struct CalculcationResponse: Codable {
+    /// A PVGIS calculation response
+    struct CalculationResponse: Codable {
         
         /// The Outputs.
         let outputs: Outputs
@@ -216,11 +216,11 @@ private extension PVGISService {
     
 }
 
-// MARK: - CalculcationResponse+Outputs
+// MARK: - CalculationResponse+Outputs
 
-private extension PVGISService.CalculcationResponse {
+private extension PVGISService.CalculationResponse {
     
-    /// The PVGIS calculcation response outputs.
+    /// The PVGIS calculation response outputs.
     struct Outputs: Codable {
         
         /// The Totals.
@@ -230,11 +230,11 @@ private extension PVGISService.CalculcationResponse {
     
 }
 
-// MARK: - CalculcationResponse+Outputs+Totals
+// MARK: - CalculationResponse+Outputs+Totals
 
-private extension PVGISService.CalculcationResponse.Outputs {
+private extension PVGISService.CalculationResponse.Outputs {
     
-    /// The PVGIS calculcation response outputs totals.
+    /// The PVGIS calculation response outputs totals.
     struct Totals: Codable {
         
         /// The Fixed.
@@ -244,11 +244,11 @@ private extension PVGISService.CalculcationResponse.Outputs {
     
 }
 
-// MARK: - CalculcationResponse+Outputs+Totals+Fixed
+// MARK: - CalculationResponse+Outputs+Totals+Fixed
 
-private extension PVGISService.CalculcationResponse.Outputs.Totals {
+private extension PVGISService.CalculationResponse.Outputs.Totals {
     
-    /// The PVGIS calculcation response outputs totals fixed.
+    /// The PVGIS calculation response outputs totals fixed.
     struct Fixed: Codable {
         
         /// The CodingKeys
