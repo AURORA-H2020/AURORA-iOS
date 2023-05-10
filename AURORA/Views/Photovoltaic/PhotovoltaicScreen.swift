@@ -22,7 +22,7 @@ struct PhotovoltaicScreen {
     @State
     private var asyncButtonState: AsyncButtonState?
     
-    /// The calculcated photovoltaic investment result.
+    /// The calculated photovoltaic investment result.
     @State
     private var investmentResult: PVGISService.PhotovoltaicInvestmentResult?
     
@@ -86,14 +86,14 @@ private extension PhotovoltaicScreen {
                             return
                         }
                         self.investmentResult = try await PVGISService()
-                            .calculcatePhotovoltaicInvestment(
+                            .calculatePhotovoltaicInvestment(
                                 amount: investmentAmount,
                                 using: self.pvgisParams,
                                 in: self.country
                             )
                     },
                     label: {
-                        Text("Calculcate")
+                        Text("Calculate")
                             .font(.headline)
                     }
                 )
