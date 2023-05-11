@@ -29,6 +29,9 @@ struct User {
     /// The optional City Reference.
     var city: FirestoreEntityReference<City>?
     
+    /// Bool value if marketing consent is allowed
+    var isMarketingConsentAllowed: Bool?
+    
 }
 
 // MARK: - User+FirestoreEntity
