@@ -82,8 +82,12 @@ extension LocalNotificationForm: View {
                             repeats: true
                         )
                     )
-                    try await self.localNotificationCenter
-                        .add(localNotificationRequest)
+                    do {
+                        try await self.localNotificationCenter
+                            .add(localNotificationRequest)
+                    } catch {
+                        return
+                    }
                     self.nextTriggerDate = localNotificationRequest.nextTriggerDate
                 }
             } else {
