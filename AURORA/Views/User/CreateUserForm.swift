@@ -31,6 +31,10 @@ struct CreateUserForm {
     @State
     private var city: FirestoreEntityReference<City>?
     
+    /// Bool value if marketing consent is allowed
+    @State
+    private var isMarketingConsentAllowed = false
+    
     /// The Cities
     @State
     private var cities: [City]?
@@ -87,7 +91,8 @@ private extension CreateUserForm {
                 yearOfBirth: self.yearOfBirth,
                 gender: self.gender,
                 country: country,
-                city: self.city
+                city: self.city,
+                isMarketingConsentAllowed: self.isMarketingConsentAllowed
             )
         )
     }
@@ -147,7 +152,6 @@ extension CreateUserForm: View {
                 }
                 .headerProminence(.increased)
                 Section(
-                    header: Text("Country"),
                     footer: Text(
                         """
                         This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.
@@ -196,6 +200,17 @@ extension CreateUserForm: View {
                     Task {
                         self.cities = try? await self.firebase.firestore.get(City.self, context: country.id)
                     }
+                }
+                Section {
+                    Toggle(isOn: self.$isMarketingConsentAllowed) {
+                        Text(
+                            "I would like to receive updates about the app and AURORA project by email."
+                        )
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.leading)
+                    }
+                    .tint(.accentColor)
                 }
                 Section(
                     footer: AsyncButton(
