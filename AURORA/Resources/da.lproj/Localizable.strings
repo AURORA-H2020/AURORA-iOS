@@ -128,9 +128,6 @@
 "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)." = "Hvis du fortsætter, accepterer du AURORA's\n[Servicevilkår] (https://www.aurora-h2020.eu/aurora/privacy-policy/) og [Fortrolighedspolitik](https://www.aurora-h2020.eu/aurora/privacy-policy/).";
 
 /* No comment provided by engineer. */
-"Calculcate" = "Beregn";
-
-/* No comment provided by engineer. */
 "Cancel" = "Annuller";
 
 /* No comment provided by engineer. */
@@ -207,6 +204,9 @@
 
 /* No comment provided by engineer. */
 "Current Password" = "Nuværende adgangskode";
+
+/* No comment provided by engineer. */
+"Dashboard" = "Instrumentbræt";
 
 /* No comment provided by engineer. */
 "Data privacy" = "Beskyttelse af personoplysninger";
@@ -591,6 +591,9 @@
 
 /* No comment provided by engineer. */
 "Submit" = "Indsend";
+
+/* No comment provided by engineer. */
+"Support" = "Support";
 
 /* No comment provided by engineer. */
 "The next notification will be sent on %@" = "Den næste notifikation vil blive sendt den %@";
