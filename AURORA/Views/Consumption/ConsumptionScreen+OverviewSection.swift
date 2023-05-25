@@ -52,7 +52,7 @@ extension ConsumptionScreen.OverviewSection: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(
-                            "Your carbon footprint"
+                            "Your performance"
                         )
                         .fontWeight(.semibold)
                     }
