@@ -152,6 +152,26 @@ extension LocalNotificationRequest.Trigger.MatchingDateComponents {
     
 }
 
+// MARK: - Frequency+localizedString
+
+extension LocalNotificationRequest.Trigger.MatchingDateComponents.Frequency {
+    
+    /// The localized string.
+    var localizedString: String {
+        switch self {
+        case .daily:
+            return .init(localized: "Daily")
+        case .weekly:
+            return .init(localized: "Weekly")
+        case .monthly:
+            return .init(localized: "Monthly")
+        case .yearly:
+            return .init(localized: "Yearly")
+        }
+    }
+    
+}
+
 // MARK: - Days
 
 extension LocalNotificationRequest.Trigger.MatchingDateComponents {

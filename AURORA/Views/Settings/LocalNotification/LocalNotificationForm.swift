@@ -174,7 +174,7 @@ private extension LocalNotificationForm {
                                 .allCases,
                             id: \.self
                         ) { frequency in
-                            Text(frequency.rawValue.capitalized)
+                            Text(frequency.localizedString)
                                 .tag(frequency)
                         }
                     }

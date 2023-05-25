@@ -41,7 +41,7 @@ extension ConsumptionList.Cell: View {
                 .background(self.consumption.category.tintColor.opacity(0.3))
                 .clipShape(Circle())
             VStack(alignment: .leading) {
-                Text(self.consumption.category.rawValue.capitalized)
+                Text(self.consumption.category.localizedString)
                     .foregroundColor(.primary)
                 Group {
                     switch self.consumption.category {

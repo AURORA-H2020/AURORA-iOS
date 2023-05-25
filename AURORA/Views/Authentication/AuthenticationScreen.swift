@@ -123,7 +123,7 @@ extension AuthenticationScreen: View {
                         .frame(width: 120, height: 120)
                     }
                     VStack {
-                        Text("Your carbon footprint")
+                        Text("Your performance")
                             .font(.largeTitle.weight(.semibold))
                     }
                     .multilineTextAlignment(.center)
