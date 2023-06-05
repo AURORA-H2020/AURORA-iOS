@@ -9,6 +9,9 @@ extension ConsumptionScreen {
         
         // MARK: Properties
         
+        /// The user uid.
+        private let userId: User.UID
+        
         /// The currently presented sheet.
         @Binding
         private var sheet: ConsumptionScreen.Sheet?
@@ -27,6 +30,7 @@ extension ConsumptionScreen {
             userId: User.UID,
             sheet: Binding<ConsumptionScreen.Sheet?>
         ) {
+            self.userId = userId
             self._sheet = sheet
             self._consumptionSummaries = .init(
                 context: userId,
@@ -94,6 +98,17 @@ extension ConsumptionScreen.OverviewSection: View {
                     "Add a consumption",
                     systemImage: "plus.circle.fill"
                 )
+            }
+            NavigationLink(
+                destination: RecurringConsumptionList(
+                    userId: self.userId
+                )
+            ) {
+                Label(
+                    "Recurring consumptions",
+                    systemImage: "arrow.clockwise.circle.fill"
+                )
+                .foregroundColor(.accentColor)
             }
             Link(
                 destination: .init(
