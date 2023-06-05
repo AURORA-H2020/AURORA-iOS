@@ -116,10 +116,17 @@
 		3D8C289029C70B6500811044 /* ConsumptionSummary+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C288F29C70B6500811044 /* ConsumptionSummary+Category.swift */; };
 		3D8C289229C70C0100811044 /* ConsumptionSummary+Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C289129C70C0100811044 /* ConsumptionSummary+Month.swift */; };
 		3D8C289429C70D9F00811044 /* ConsumptionSummary+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C289329C70D9F00811044 /* ConsumptionSummary+Label.swift */; };
+		3D8E1EFB2A2949C600416DFF /* RecurringConsumptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1EFA2A2949C600416DFF /* RecurringConsumptionList.swift */; };
+		3D8E1EFD2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1EFC2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift */; };
+		3D8E1EFF2A294B4A00416DFF /* RecurringConsumptionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1EFE2A294B4A00416DFF /* RecurringConsumptionForm.swift */; };
 		3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */; };
 		3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */; };
 		3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */; };
 		3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */; };
+		3DCB91FE2A28F25C00D6F748 /* RecurringConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */; };
+		3DCB92022A28F67B00D6F748 /* RecurringConsumption+Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */; };
+		3DCB92042A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB92032A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift */; };
+		3DCB92062A28F85E00D6F748 /* RecurringConsumption+Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB92052A28F85E00D6F748 /* RecurringConsumption+Transportation.swift */; };
 		3DD34C5A2948F280002064D8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD34C592948F280002064D8 /* App.swift */; };
 		3DD34C5E2948F280002064D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD34C5D2948F280002064D8 /* Assets.xcassets */; };
 		3DDEDA0029DC873C00303BA1 /* FormatStyle+Kilometers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDED9FF29DC873C00303BA1 /* FormatStyle+Kilometers.swift */; };
@@ -228,11 +235,18 @@
 		3D8C288F29C70B6500811044 /* ConsumptionSummary+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Category.swift"; sourceTree = "<group>"; };
 		3D8C289129C70C0100811044 /* ConsumptionSummary+Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Month.swift"; sourceTree = "<group>"; };
 		3D8C289329C70D9F00811044 /* ConsumptionSummary+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Label.swift"; sourceTree = "<group>"; };
+		3D8E1EFA2A2949C600416DFF /* RecurringConsumptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumptionList.swift; sourceTree = "<group>"; };
+		3D8E1EFC2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumptionList+Cell.swift"; sourceTree = "<group>"; };
+		3D8E1EFE2A294B4A00416DFF /* RecurringConsumptionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumptionForm.swift; sourceTree = "<group>"; };
 		3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionSummaryView.swift; sourceTree = "<group>"; };
 		3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+CarbonEmissions.swift"; sourceTree = "<group>"; };
 		3DAA79C2297153F40097DD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionList.swift; sourceTree = "<group>"; };
 		3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotovoltaicScreen.swift; sourceTree = "<group>"; };
+		3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumption.swift; sourceTree = "<group>"; };
+		3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency.swift"; sourceTree = "<group>"; };
+		3DCB92032A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+Unit.swift"; sourceTree = "<group>"; };
+		3DCB92052A28F85E00D6F748 /* RecurringConsumption+Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Transportation.swift"; sourceTree = "<group>"; };
 		3DD34C562948F280002064D8 /* AURORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AURORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD34C592948F280002064D8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		3DD34C5D2948F280002064D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -275,6 +289,7 @@
 		3D1CA71F298CF5050009177C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3DCB91FC2A28F24700D6F748 /* RecurringConsumption */,
 				3D3B8D42299150DB008590A8 /* City */,
 				3D3B8D3F29915045008590A8 /* Country */,
 				3D1EE66A298AACF8009E4645 /* User */,
@@ -353,6 +368,7 @@
 				3DC2C2A929B7852E00A37D0C /* Detail */,
 				3D1EE630298AAC5B009E4645 /* Form */,
 				3D1EE633298AAC5B009E4645 /* List */,
+				3D8E1EF92A2949A700416DFF /* Recurring */,
 			);
 			path = Consumption;
 			sourceTree = "<group>";
@@ -694,6 +710,16 @@
 			path = PVGISService;
 			sourceTree = "<group>";
 		};
+		3D8E1EF92A2949A700416DFF /* Recurring */ = {
+			isa = PBXGroup;
+			children = (
+				3D8E1EFA2A2949C600416DFF /* RecurringConsumptionList.swift */,
+				3D8E1EFC2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift */,
+				3D8E1EFE2A294B4A00416DFF /* RecurringConsumptionForm.swift */,
+			);
+			path = Recurring;
+			sourceTree = "<group>";
+		};
 		3D98EC4829C9A63400CC3ABE /* Summary */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +754,17 @@
 				3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */,
 			);
 			path = Photovoltaic;
+			sourceTree = "<group>";
+		};
+		3DCB91FC2A28F24700D6F748 /* RecurringConsumption */ = {
+			isa = PBXGroup;
+			children = (
+				3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */,
+				3DCB92052A28F85E00D6F748 /* RecurringConsumption+Transportation.swift */,
+				3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */,
+				3DCB92032A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift */,
+			);
+			path = RecurringConsumption;
 			sourceTree = "<group>";
 		};
 		3DD34C4D2948F280002064D8 = {
@@ -904,12 +941,14 @@
 				3D1EE612298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift in Sources */,
 				3D5CB9CB29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift in Sources */,
 				3D5CB9CD29D6D4F3008E7414 /* ConsumptionSummary+Mode.swift in Sources */,
+				3DCB92022A28F67B00D6F748 /* RecurringConsumption+Frequency.swift in Sources */,
 				3D1EE697298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift in Sources */,
 				3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */,
 				3D1EE60E298AAB39009E4645 /* AuthenticationScreen.swift in Sources */,
 				3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */,
 				3D1EE688298AACF8009E4645 /* Consumption+Transportation+TransportationType.swift in Sources */,
 				3D1EE68F298AACF8009E4645 /* User+Gender.swift in Sources */,
+				3D8E1EFD2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift in Sources */,
 				3D1EE683298AACF8009E4645 /* Firebase+Firestore.swift in Sources */,
 				3D1EE689298AACF8009E4645 /* Consumption+Transportation.swift in Sources */,
 				3D1EE698298AACF8009E4645 /* GoogleFirebaseAuthenticationProvider.swift in Sources */,
@@ -924,10 +963,12 @@
 				3D1EE699298AACF8009E4645 /* FirebaseAuthenticationProvider.swift in Sources */,
 				3D3B8D412991504E008590A8 /* Country.swift in Sources */,
 				3D8C289229C70C0100811044 /* ConsumptionSummary+Month.swift in Sources */,
+				3DCB92062A28F85E00D6F748 /* RecurringConsumption+Transportation.swift in Sources */,
 				3D8C289029C70B6500811044 /* ConsumptionSummary+Category.swift in Sources */,
 				3D1EE6A4298AADD4009E4645 /* LocalNotificationRequest+ID.swift in Sources */,
 				3D1EE69A298AACF8009E4645 /* Firebase+Authentication+State.swift in Sources */,
 				3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */,
+				3DCB91FE2A28F25C00D6F748 /* RecurringConsumption.swift in Sources */,
 				3D1EE685298AACF8009E4645 /* Consumption.swift in Sources */,
 				3D1EE694298AACF8009E4645 /* ConsumptionSummary.swift in Sources */,
 				3D1EE692298AACF8009E4645 /* FirestoreEntity.swift in Sources */,
@@ -972,6 +1013,7 @@
 				3D1EE6B0298AAE24009E4645 /* PieChartSpacing.swift in Sources */,
 				3D1EE651298AAC9E009E4645 /* ThirdPartyDependency.swift in Sources */,
 				3D1EE696298AACF8009E4645 /* Firebase+Authentication.swift in Sources */,
+				3D8E1EFF2A294B4A00416DFF /* RecurringConsumptionForm.swift in Sources */,
 				3D3B8D44299150E5008590A8 /* City.swift in Sources */,
 				3D08956A2991080800C996AD /* Consumption+Heating+HeatingFuel.swift in Sources */,
 				3D1EE6C2298AAE79009E4645 /* Partial.swift in Sources */,
@@ -981,7 +1023,9 @@
 				3D8C288E29C70AAF00811044 /* ConsumptionSummary+LabeledConsumption.swift in Sources */,
 				3D1EE6A5298AADD4009E4645 /* LocalNotificationRequest+Trigger+MatchingDateComponents.swift in Sources */,
 				3D6F643529D410F70096CB97 /* ConsumptionSummaryView+Chart.swift in Sources */,
+				3DCB92042A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift in Sources */,
 				3D8A05E52991AF9A005DEA43 /* ConsumptionForm+Heating.swift in Sources */,
+				3D8E1EFB2A2949C600416DFF /* RecurringConsumptionList.swift in Sources */,
 				3D1EE68A298AACF8009E4645 /* Consumption+Heating.swift in Sources */,
 				3D1EE63A298AAC5B009E4645 /* ConsumptionList+Cell.swift in Sources */,
 				3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */,

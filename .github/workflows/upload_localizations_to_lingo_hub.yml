@@ -26,4 +26,4 @@ jobs:
         env:
           LINGO_HUB_CREDENTIALS: ${{ secrets.LINGO_HUB_CREDENTIALS }}
       - name: Upload Localizations to LingoHub
-        run: lingohub resource:up './en.xcloc/Localized Contents/en.xliff' --locale en --project AURORA
+        run: lingohub resource:up './en.xcloc/Localized Contents/en.xliff' --locale en --project AURORA-iOS
