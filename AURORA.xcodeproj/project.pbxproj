@@ -93,6 +93,7 @@
 		3D1EE6CF298AAEC0009E4645 /* SheetNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */; };
 		3D1EE6D0298AAEC0009E4645 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */; };
 		3D1EE6D2298AAEC0009E4645 /* EmptyPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */; };
+		3D238F462A2E792A002C11BC /* MultiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D238F452A2E792A002C11BC /* MultiPicker.swift */; };
 		3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */; };
 		3D384D862948F6C40018249C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D384D852948F6C40018249C /* GoogleService-Info.plist */; };
 		3D3B8D3E2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8D3D2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift */; };
@@ -131,6 +132,8 @@
 		3DD34C5E2948F280002064D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD34C5D2948F280002064D8 /* Assets.xcassets */; };
 		3DDEDA0029DC873C00303BA1 /* FormatStyle+Kilometers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDED9FF29DC873C00303BA1 /* FormatStyle+Kilometers.swift */; };
 		3DDEDA0229DC87D300303BA1 /* FormatStyle+KilowattHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDEDA0129DC87D300303BA1 /* FormatStyle+KilowattHours.swift */; };
+		3DFBBA802A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */; };
+		3DFBBA822A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */; };
 		4355071229F2764300F60352 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4355071029F2764300F60352 /* InfoPlist.strings */; };
 		4355071529F2764300F60352 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4355071329F2764300F60352 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -211,6 +214,7 @@
 		3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetNavigationView.swift; sourceTree = "<group>"; };
 		3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyPlaceholder.swift; sourceTree = "<group>"; };
+		3D238F452A2E792A002C11BC /* MultiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPicker.swift; sourceTree = "<group>"; };
 		3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionView.swift; sourceTree = "<group>"; };
 		3D384D852948F6C40018249C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D3B8D3D2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Transportation+TransportationType+Group.swift"; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 		3DD34C5D2948F280002064D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DDED9FF29DC873C00303BA1 /* FormatStyle+Kilometers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+Kilometers.swift"; sourceTree = "<group>"; };
 		3DDEDA0129DC87D300303BA1 /* FormatStyle+KilowattHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+KilowattHours.swift"; sourceTree = "<group>"; };
+		3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+Weekday.swift"; sourceTree = "<group>"; };
+		3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+DayOfMonth.swift"; sourceTree = "<group>"; };
 		4355071129F2764300F60352 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4355071429F2764300F60352 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		437400FE2A0D58B6007FFB77 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -407,6 +413,7 @@
 				3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */,
 				3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */,
 				3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */,
+				3D238F452A2E792A002C11BC /* MultiPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -763,6 +770,8 @@
 				3DCB92052A28F85E00D6F748 /* RecurringConsumption+Transportation.swift */,
 				3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */,
 				3DCB92032A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift */,
+				3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */,
+				3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */,
 			);
 			path = RecurringConsumption;
 			sourceTree = "<group>";
@@ -942,6 +951,7 @@
 				3D5CB9CB29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift in Sources */,
 				3D5CB9CD29D6D4F3008E7414 /* ConsumptionSummary+Mode.swift in Sources */,
 				3DCB92022A28F67B00D6F748 /* RecurringConsumption+Frequency.swift in Sources */,
+				3D238F462A2E792A002C11BC /* MultiPicker.swift in Sources */,
 				3D1EE697298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift in Sources */,
 				3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */,
 				3D1EE60E298AAB39009E4645 /* AuthenticationScreen.swift in Sources */,
@@ -1007,6 +1017,7 @@
 				3D3B8D3E2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift in Sources */,
 				3D1EE681298AACF8009E4645 /* Firebase+Functions.swift in Sources */,
 				3D1EE682298AACF8009E4645 /* Firebase.swift in Sources */,
+				3DFBBA822A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift in Sources */,
 				3D1EE687298AACF8009E4645 /* Consumption+Transportation+PublicVehicleOccupancy.swift in Sources */,
 				3DD34C5A2948F280002064D8 /* App.swift in Sources */,
 				3D1EE686298AACF8009E4645 /* Consumption+Category.swift in Sources */,
@@ -1042,6 +1053,7 @@
 				3D1EE64B298AAC9E009E4645 /* ChangePasswordForm.swift in Sources */,
 				3D1EE68E298AACF8009E4645 /* User+Account.swift in Sources */,
 				3D1EE6B1298AAE24009E4645 /* PieChart+Slice.swift in Sources */,
+				3DFBBA802A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift in Sources */,
 				3D1EE6C9298AAEA3009E4645 /* AsyncButton.swift in Sources */,
 				3D1EE6B8298AAE4C009E4645 /* View+delay.swift in Sources */,
 				3D1EE650298AAC9E009E4645 /* SettingsScreen.swift in Sources */,
