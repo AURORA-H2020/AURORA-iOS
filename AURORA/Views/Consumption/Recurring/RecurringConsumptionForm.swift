@@ -26,6 +26,10 @@ struct RecurringConsumptionForm {
     @State
     private var partialTransportation: Partial<RecurringConsumption.Transportation>
     
+    /// The description
+    @State
+    private var description: String
+    
     /// Bool value if delete confirmation dialog is presented
     @State
     private var isDeleteConfirmationDialogPresented = false
@@ -58,6 +62,9 @@ struct RecurringConsumptionForm {
         self._partialTransportation = .init(
             initialValue: recurringConsumption?.transportation?.partial ?? .default()
         )
+        self._description = .init(
+            initialValue: recurringConsumption?.description ?? .init()
+        )
     }
     
 }
@@ -76,7 +83,12 @@ private extension RecurringConsumptionForm {
                 frequency: try .init(partial: self.partialFrequency),
                 transportation: category == .transportation
                     ? try .init(partial: self.partialTransportation)
-                    : nil
+                    : nil,
+                description: {
+                    let description = self.description
+                        .trimmingCharacters(in: .whitespaces)
+                    return description.isEmpty ? nil : description
+                }()
             )
         }
     }
@@ -142,6 +154,7 @@ extension RecurringConsumptionForm: View {
             self.categorySection
             self.frequencySection
             self.categoryContentSection
+            self.descriptionSection
             self.submitSection
         }
         .navigationTitle(self.recurringConsumptionId == nil ? "Add" : "Edit")
@@ -426,6 +439,34 @@ private extension RecurringConsumptionForm {
             .font(.footnote)
             .foregroundColor(.secondary)
         }
+    }
+    
+}
+
+// MARK: - Description Section
+
+private extension RecurringConsumptionForm {
+    
+    /// The description section
+    var descriptionSection: some View {
+        Section(
+            header: Text("Description"),
+            footer: Text("You may add a description to your entry to help you find it later.")
+        ) {
+            if #available(iOS 16.0, *) {
+                TextField(
+                    "Description",
+                    text: self.$description,
+                    axis: .vertical
+                )
+            } else {
+                TextField(
+                    "Description",
+                    text: self.$description
+                )
+            }
+        }
+        .headerProminence(.increased)
     }
     
 }
