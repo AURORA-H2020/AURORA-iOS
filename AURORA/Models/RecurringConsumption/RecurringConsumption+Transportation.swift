@@ -10,6 +10,12 @@ extension RecurringConsumption {
         /// The type of transportation.
         var transportationType: Consumption.Transportation.TransportationType
         
+        /// The private vehicle occupancy.
+        var privateVehicleOccupancy: Int?
+        
+        /// The vehicle occupancy.
+        var publicVehicleOccupancy: Consumption.Transportation.PublicVehicleOccupancy?
+        
         /// The hour of travel
         var hourOfTravel: Int
         
@@ -31,6 +37,8 @@ extension RecurringConsumption.Transportation: PartialConvertible {
     var partial: Partial<Self> {
         [
             \.transportationType: self.transportationType,
+             \.privateVehicleOccupancy: self.privateVehicleOccupancy,
+             \.publicVehicleOccupancy: self.publicVehicleOccupancy,
              \.hourOfTravel: self.hourOfTravel,
              \.minuteOfTravel: self.minuteOfTravel,
              \.distance: self.distance
@@ -40,11 +48,18 @@ extension RecurringConsumption.Transportation: PartialConvertible {
     /// Creates a new instance from `Partial`.
     /// - Parameter partial: The partial instance.
     init(partial: Partial<Self>) throws {
-        try self.init(
-            transportationType: partial(\.transportationType),
-            hourOfTravel: partial(\.hourOfTravel),
-            minuteOfTravel: partial(\.minuteOfTravel),
-            distance: partial(\.distance)
+        let transportationType = try partial(\.transportationType)
+        self.init(
+            transportationType: transportationType,
+            privateVehicleOccupancy: transportationType.privateVehicleOccupancyRange != nil
+                ? try partial(\.privateVehicleOccupancy)
+                : partial.privateVehicleOccupancy.flatMap { $0 },
+            publicVehicleOccupancy: transportationType.isPublicVehicle
+                ? try partial(\.publicVehicleOccupancy)
+                : partial.publicVehicleOccupancy.flatMap { $0 },
+            hourOfTravel: try partial(\.hourOfTravel),
+            minuteOfTravel: try partial(\.minuteOfTravel),
+            distance: try partial(\.distance)
         )
     }
     
@@ -53,6 +68,14 @@ extension RecurringConsumption.Transportation: PartialConvertible {
 // MARK: - Partial<RecurringConsumption.Transportation>+timeOfTravel
 
 extension Partial where Wrapped == RecurringConsumption.Transportation {
+    
+    /// A default partial recurring consumption transportation instance.
+    /// Where time of travel (hourOfTravel, minuteOfTravel) is set to the current time.
+    static func `default`() -> Self {
+        var partial = Self()
+        partial.timeOfTravel = .init()
+        return partial
+    }
     
     /// The time of travel represented as a date.
     var timeOfTravel: Date {

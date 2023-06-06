@@ -45,7 +45,7 @@ extension RecurringConsumptionList: View {
                     systemImage: "arrow.clockwise.circle.fill",
                     systemImageColor: .secondary.opacity(0.5),
                     title: "Recurring consumptions",
-                    subtitle: "Add your first recurring consumption.",
+                    subtitle: "Here you can add regularly repeating consumptions, such as your commute.\nRecurring consumptions automatically add consumptions for you based on a custom interval.",
                     primaryAction: .init(
                         title: "Add"
                     ) {

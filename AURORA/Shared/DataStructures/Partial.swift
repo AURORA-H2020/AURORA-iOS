@@ -100,6 +100,8 @@ extension Partial {
             KeyPath<Wrapped, Value>,
             value: Any
         )
+        /// Non empty value is required
+        case nonEmptyValueRequired(KeyPath<Wrapped, Value>)
     }
     
 }
