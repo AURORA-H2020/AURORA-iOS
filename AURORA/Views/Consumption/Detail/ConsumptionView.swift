@@ -8,9 +8,9 @@ struct ConsumptionView {
     /// The Consumption
     let consumption: Consumption
     
-    /// Bool value if consumption form is presented
+    /// The consumption form sheet mode
     @State
-    private var isConsumptionFormPresented = false
+    private var consumptionFormSheetMode: ConsumptionFormSheetMode?
     
     /// Bool value if delete confirmation dialog is presented
     @State
@@ -19,6 +19,25 @@ struct ConsumptionView {
     /// The Firebase instance.
     @EnvironmentObject
     private var firebase: Firebase
+    
+}
+
+// MARK: - ConsumptionFormSheetMode
+
+private extension ConsumptionView {
+    
+    /// A consumption form sheet mode
+    enum ConsumptionFormSheetMode: String, Hashable, Identifiable {
+        /// Edit
+        case edit
+        /// Duplicate
+        case duplicate
+        
+        /// The stable identity of the entity associated with this instance.
+        var id: RawValue {
+            self.rawValue
+        }
+    }
     
 }
 
@@ -184,12 +203,19 @@ extension ConsumptionView: View {
                     }
                 }
             }
+            Section {
+                Button {
+                    self.consumptionFormSheetMode = .duplicate
+                } label: {
+                    Label("Duplicate", systemImage: "doc.on.doc.fill")
+                }
+            }
         }
         .navigationTitle(self.consumption.category.localizedString)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.isConsumptionFormPresented = true
+                    self.consumptionFormSheetMode = .edit
                 } label: {
                     Label(
                         "Edit",
@@ -233,11 +259,20 @@ extension ConsumptionView: View {
             }
         }
         .sheet(
-            isPresented: self.$isConsumptionFormPresented
-        ) {
+            item: self.$consumptionFormSheetMode
+        ) { consumptionFormSheetMode in
             SheetNavigationView {
                 ConsumptionForm(
-                    consumption: self.consumption
+                    consumption: {
+                        switch consumptionFormSheetMode {
+                        case .edit:
+                            return self.consumption
+                        case .duplicate:
+                            var consumption = self.consumption
+                            consumption.id = nil
+                            return consumption
+                        }
+                    }()
                 )
             }
         }
