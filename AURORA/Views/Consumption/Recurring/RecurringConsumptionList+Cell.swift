@@ -44,7 +44,12 @@ extension RecurringConsumptionList.Cell: View {
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }
+            Spacer()
+            Text(self.recurringConsumption.isEnabled ? "Enabled" : "Disabled")
+                .font(.callout)
+                .foregroundColor(.secondary)
         }
+        .opacity(self.recurringConsumption.isEnabled ? 1 : 0.5)
         .swipeActions(
             edge: .trailing
         ) {

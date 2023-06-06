@@ -15,6 +15,9 @@ struct RecurringConsumption {
     @ServerTimestamp
     var createdAt: Timestamp?
     
+    /// Bool value if is enabled
+    var isEnabled: Bool
+    
     /// The category.
     var category: Consumption.Category
     
