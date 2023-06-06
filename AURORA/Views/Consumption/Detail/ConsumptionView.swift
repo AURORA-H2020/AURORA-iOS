@@ -154,7 +154,14 @@ extension ConsumptionView: View {
                 }
             }
             if let createdAt = self.consumption.createdAt {
-                Section {
+                Section(
+                    footer: Group {
+                        if self.consumption.generatedByRecurringConsumptionId != nil {
+                            Text("This entry was automatically added via recurring consumptions.")
+                                .multilineTextAlignment(.leading)
+                        }
+                    }
+                ) {
                     Entry {
                         Text(
                             createdAt.dateValue(),
