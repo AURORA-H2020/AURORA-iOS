@@ -27,6 +27,9 @@ struct RecurringConsumption {
     /// The transportation information.
     var transportation: Transportation?
     
+    /// The optional description
+    var description: String?
+    
 }
 
 // MARK: - RecurringConsumption+FirestoreEntity
