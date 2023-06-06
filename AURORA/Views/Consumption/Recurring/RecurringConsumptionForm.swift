@@ -10,6 +10,10 @@ struct RecurringConsumptionForm {
     /// The recurring consumption identifier
     private let recurringConsumptionId: RecurringConsumption.ID
     
+    /// Bool value if is enabled
+    @State
+    private var isEnabled: Bool
+    
     /// The consumption category
     @State
     private var category: Consumption.Category
@@ -42,21 +46,18 @@ struct RecurringConsumptionForm {
         recurringConsumption: RecurringConsumption? = nil
     ) {
         self.recurringConsumptionId = recurringConsumption?.id
-        if let category = recurringConsumption?.category {
-            self._category = .init(initialValue: category)
-        } else {
-            self._category = .init(initialValue: .transportation)
-        }
-        if let frequency = recurringConsumption?.frequency {
-            self._partialFrequency = .init(initialValue: frequency.partial)
-        } else {
-            self._partialFrequency = .init(initialValue: [\.unit: RecurringConsumption.Frequency.Unit.daily])
-        }
-        if let transporation = recurringConsumption?.transportation {
-            self._partialTransportation = .init(initialValue: transporation.partial)
-        } else {
-            self._partialTransportation = .init(initialValue: .default())
-        }
+        self._isEnabled = .init(
+            initialValue: recurringConsumption?.isEnabled ?? true
+        )
+        self._category = .init(
+            initialValue: recurringConsumption?.category ?? .transportation
+        )
+        self._partialFrequency = .init(
+            initialValue: recurringConsumption?.frequency.partial ?? [\.unit: RecurringConsumption.Frequency.Unit.daily]
+        )
+        self._partialTransportation = .init(
+            initialValue: recurringConsumption?.transportation?.partial ?? .default()
+        )
     }
     
 }
@@ -68,19 +69,15 @@ private extension RecurringConsumptionForm {
     /// The recurring consumption, if available.
     var recurringConsumption: RecurringConsumption? {
         get throws {
-            do {
-                return .init(
-                    id: self.recurringConsumptionId,
-                    category: self.category,
-                    frequency: try .init(partial: self.partialFrequency),
-                    transportation: category == .transportation
-                        ? try .init(partial: self.partialTransportation)
-                        : nil
-                )
-            } catch {
-                print("HERE", error)
-                throw error
-            }
+            .init(
+                id: self.recurringConsumptionId,
+                isEnabled: self.isEnabled,
+                category: self.category,
+                frequency: try .init(partial: self.partialFrequency),
+                transportation: category == .transportation
+                    ? try .init(partial: self.partialTransportation)
+                    : nil
+            )
         }
     }
     
@@ -141,6 +138,7 @@ extension RecurringConsumptionForm: View {
     /// The content and behavior of the view.
     var body: some View {
         List {
+            self.enabledStateSection
             self.categorySection
             self.frequencySection
             self.categoryContentSection
@@ -183,6 +181,24 @@ extension RecurringConsumptionForm: View {
                             Text("Are you sure you want to delete the entry?")
                         }
                     )
+                }
+            }
+        }
+    }
+    
+}
+
+// MARK: - Enabled State Section
+
+private extension RecurringConsumptionForm {
+    
+    /// The enabled state section
+    @ViewBuilder
+    var enabledStateSection: some View {
+        if self.recurringConsumptionId != nil {
+            Section {
+                Toggle(isOn: self.$isEnabled) {
+                    Text(self.isEnabled ? "Enabled" : "Disabled")
                 }
             }
         }
