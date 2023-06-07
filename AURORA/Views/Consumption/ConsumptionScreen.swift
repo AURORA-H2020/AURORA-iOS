@@ -98,13 +98,9 @@ extension ConsumptionScreen: View {
                 }
             case .consumptionForm(let consumption):
                 SheetNavigationView {
-                    if let consumption = consumption {
-                        ConsumptionForm(
-                            consumption: consumption
-                        )
-                    } else {
-                        ConsumptionForm()
-                    }
+                    ConsumptionForm(
+                        mode: consumption.flatMap(ConsumptionForm.Mode.edit) ?? .create()
+                    )
                 }
             }
         }
