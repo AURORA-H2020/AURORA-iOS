@@ -1,8 +1,9 @@
 import Combine
 import FirebaseAuth
 import FirebaseFirestore
-import FirebaseFirestoreCombineSwift
 import Foundation
+
+// swiftlint:disable file_length
 
 // MARK: - Firebase+Firestore
 
@@ -42,7 +43,17 @@ extension Firebase.Firestore {
         .getDocuments()
         .documents
         .compactMap { snapshot in
-            try? self.firebase.crashlytics.recordError {
+            // Verify document exists
+            guard snapshot.exists else {
+                // Otherwise return nil
+                return nil
+            }
+            // Try to decode data as Entity
+            return try? self.firebase.crashlytics.recordError(
+                userInfo: [
+                    "Path": snapshot.reference.path
+                ]
+            ) {
                 try snapshot.data(as: Entity.self)
             }
         }
@@ -93,6 +104,39 @@ extension Firebase.Firestore {
             context: (),
             id: id
         )
+    }
+    
+    /// Retrieve FirestoreSubcollectionEntity
+    /// - Parameters:
+    ///   - entityType: The FirestoreSubcollectionEntity Type.
+    ///   - wherePredicate: A closure which takes in a Query to attach where conditions.
+    func getCollectionGroup<Entity: FirestoreSubcollectionEntity>(
+        _ entityType: Entity.Type,
+        where wherePredicate: (FirebaseFirestore.Query) -> FirebaseFirestore.Query = { $0 }
+    ) async throws -> [Entity] {
+        try await wherePredicate(
+            Entity
+                .collectionGroupQuery(
+                    in: self.firebase.firebaseFirestore
+                )
+        )
+        .getDocuments()
+        .documents
+        .compactMap { snapshot in
+            // Verify document exists
+            guard snapshot.exists else {
+                // Otherwise return nil
+                return nil
+            }
+            // Try to decode data as Entity
+            return try? self.firebase.crashlytics.recordError(
+                userInfo: [
+                    "Path": snapshot.reference.path
+                ]
+            ) {
+                try snapshot.data(as: Entity.self)
+            }
+        }
     }
     
 }
@@ -154,7 +198,7 @@ extension Firebase.Firestore {
         _ entityType: Entity.Type,
         context: Entity.CollectionReferenceContext,
         where wherePredicate: (FirebaseFirestore.CollectionReference) -> FirebaseFirestore.Query = { $0 }
-    ) -> AnyPublisher<[Result<Entity, Error>], Error> {
+    ) -> some Publisher<[Result<Entity, Error>], Never> {
         wherePredicate(
             Entity
                 .collectionReference(
@@ -163,21 +207,30 @@ extension Firebase.Firestore {
                 )
         )
         .snapshotPublisher()
-        .map { snapshot in
-            snapshot
-                .documents
-                .compactMap { snapshot in
-                    guard snapshot.exists else {
-                        return nil
-                    }
-                    return .init {
-                        try self.firebase.crashlytics.recordError {
-                            try snapshot.data(as: Entity.self)
+        .map { result in
+            switch result {
+            case .success(let snapshot):
+                return snapshot
+                    .documents
+                    .compactMap { snapshot in
+                        guard snapshot.exists else {
+                            return nil
+                        }
+                        return .init {
+                            try self.firebase.crashlytics.recordError(
+                                userInfo: [
+                                    "Path": snapshot.reference.path
+                                ]
+                            ) {
+                                try snapshot.data(as: Entity.self)
+                            }
                         }
                     }
-                }
+            case .failure(let error):
+                self.firebase.crashlytics.record(error: error)
+                return [.failure(error)]
+            }
         }
-        .eraseToAnyPublisher()
     }
     
     /// A Publisher which emits FirestoreEntities
@@ -187,7 +240,7 @@ extension Firebase.Firestore {
     func publisher<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
         where wherePredicate: (FirebaseFirestore.CollectionReference) -> FirebaseFirestore.Query = { $0 }
-    ) -> AnyPublisher<[Result<Entity, Error>], Error> where Entity.CollectionReferenceContext == Void {
+    ) -> some Publisher<[Result<Entity, Error>], Never> where Entity.CollectionReferenceContext == Void {
         self.publisher(
             entityType,
             context: (),
@@ -204,7 +257,7 @@ extension Firebase.Firestore {
         _ entityType: Entity.Type,
         context: Entity.CollectionReferenceContext,
         id: String
-    ) -> AnyPublisher<Result<Entity, Error>?, Error> {
+    ) -> some Publisher<Result<Entity?, Error>, Never> {
         Entity
             .collectionReference(
                 in: self.firebase.firebaseFirestore,
@@ -212,17 +265,26 @@ extension Firebase.Firestore {
             )
             .document(id)
             .snapshotPublisher()
-            .map { snapshot in
-                guard snapshot.exists else {
-                    return nil
-                }
-                return .init {
-                    try self.firebase.crashlytics.recordError {
-                        try snapshot.data(as: Entity.self)
+            .map { result in
+                switch result {
+                case .success(let snapshot):
+                    guard snapshot.exists else {
+                        return .success(nil)
                     }
+                    return .init {
+                        try self.firebase.crashlytics.recordError(
+                            userInfo: [
+                                "Path": snapshot.reference.path
+                            ]
+                        ) {
+                            try snapshot.data(as: Entity.self)
+                        }
+                    }
+                case .failure(let error):
+                    self.firebase.crashlytics.record(error: error)
+                    return .failure(error)
                 }
             }
-            .eraseToAnyPublisher()
     }
     
     /// A Publisher that emits a FirestoreEntity
@@ -232,7 +294,7 @@ extension Firebase.Firestore {
     func publisher<Entity: FirestoreEntity>(
         _ entityType: Entity.Type,
         id: String
-    ) -> AnyPublisher<Result<Entity, Error>?, Error> where Entity.CollectionReferenceContext == Void {
+    ) -> some Publisher<Result<Entity?, Error>, Never> where Entity.CollectionReferenceContext == Void {
         self.publisher(
             entityType,
             context: (),
@@ -264,12 +326,14 @@ extension Firebase.Firestore {
         } else {
             // Otherwise add entity
             // which automatically assigns an identifier
-            _ = Entity
-                .collectionReference(
-                    in: self.firebase.firebaseFirestore,
-                    context: context
-                )
-                .addDocument(from: entity)
+            try self.firebase.crashlytics.recordError {
+                try Entity
+                    .collectionReference(
+                        in: self.firebase.firebaseFirestore,
+                        context: context
+                    )
+                    .addDocument(from: entity)
+            }
         }
     }
     
@@ -299,28 +363,30 @@ extension Firebase.Firestore {
         _ entity: Entity,
         context: Entity.CollectionReferenceContext
     ) throws {
-        // Initialize mutable entity
-        var entity = entity
-        // Check if Entity is a User
-        if Entity.self is User.Type {
-            // Set identifier to UID of current Firebase user
-            // as a User document id must always be equal
-            // to the FirebaseAuth user
-            entity.id = try self.firebase.authentication.state.userAccount.uid
+        try self.firebase.crashlytics.recordError {
+            // Initialize mutable entity
+            var entity = entity
+            // Check if Entity is a User
+            if Entity.self is User.Type {
+                // Set identifier to UID of current Firebase user
+                // as a User document id must always be equal
+                // to the FirebaseAuth user
+                entity.id = try self.firebase.authentication.state.userAccount.uid
+            }
+            // Verify entity identifier is available
+            guard let entityId = entity.id else {
+                // Otherwise throw an error
+                throw FirestoreEntityIdentifierMissingError(entity: entity)
+            }
+            // Update document
+            try Entity
+                .collectionReference(
+                    in: self.firebase.firebaseFirestore,
+                    context: context
+                )
+                .document(entityId)
+                .setData(from: entity)
         }
-        // Verify entity identifier is available
-        guard let entityId = entity.id else {
-            // Otherwise throw an error
-            throw FirestoreEntityIdentifierMissingError()
-        }
-        // Update document
-        try Entity
-            .collectionReference(
-                in: self.firebase.firebaseFirestore,
-                context: context
-            )
-            .document(entityId)
-            .setData(from: entity, completion: nil)
     }
     
     /// Update a FirestoreEntity
@@ -352,7 +418,7 @@ extension Firebase.Firestore {
         // Verify entity identifier is available
         guard let entityId = entity.id else {
             // Otherwise throw an error
-            throw FirestoreEntityIdentifierMissingError()
+            throw FirestoreEntityIdentifierMissingError(entity: entity)
         }
         // Delete
         Entity
@@ -361,7 +427,7 @@ extension Firebase.Firestore {
                 context: context
             )
             .document(entityId)
-            .delete(completion: nil)
+            .delete()
     }
     
     /// Delete a FirestoreEntity
@@ -408,11 +474,60 @@ extension Firebase.Firestore {
     
 }
 
-// MARK: - FirestoreEntityIdentifierMissingError
+// MARK: - FirebaseFirestore+Query+snapshotPublisher
 
-extension Firebase.Firestore {
+private extension FirebaseFirestore.Query {
     
-    /// An FirestoreEntity Identifier missing Error
-    struct FirestoreEntityIdentifierMissingError: Error {}
+    /// Returns a publisher that emits a `Result` containing a `FirebaseFirestore.QuerySnapshot` or an `Error` if one occurs.
+    /// - Parameters:
+    ///     - includeMetadataChanges: A boolean value indicating whether metadata-only changes should trigger snapshot events.
+    /// - Returns: An `AnyPublisher` that emits a `Result` containing a `FirebaseFirestore.QuerySnapshot` or an `Error`.
+    func snapshotPublisher(
+        includeMetadataChanges: Bool = false
+    ) -> some Publisher<Result<FirebaseFirestore.QuerySnapshot, Error>, Never> {
+        let subject = PassthroughSubject<Result<FirebaseFirestore.QuerySnapshot, Error>, Never>()
+        let snapshotListenerRegistration = self.addSnapshotListener(
+            includeMetadataChanges: includeMetadataChanges
+        ) { snapshot, error in
+            if let error = error {
+                subject.send(.failure(error))
+            } else if let snapshot = snapshot {
+                subject.send(.success(snapshot))
+            }
+        }
+        return subject
+            .handleEvents(
+                receiveCancel: snapshotListenerRegistration.remove
+            )
+    }
+    
+}
+
+// MARK: - FirebaseFirestore+DocumentReference+snapshotPublisher
+
+private extension FirebaseFirestore.DocumentReference {
+    
+    /// Returns a publisher that emits a `Result` containing a `FirebaseFirestore.DocumentSnapshot` or an `Error` if an error occurs.
+    /// - Parameters:
+    ///     - includeMetadataChanges: A boolean value indicating whether metadata changes should be included in the snapshot.
+    /// - Returns: An `AnyPublisher` that emits a `Result` containing a `FirebaseFirestore.DocumentSnapshot` or an `Error`.
+    func snapshotPublisher(
+        includeMetadataChanges: Bool = false
+    ) -> some Publisher<Result<FirebaseFirestore.DocumentSnapshot, Error>, Never> {
+        let subject = PassthroughSubject<Result<FirebaseFirestore.DocumentSnapshot, Error>, Never>()
+        let snapshotListenerRegistration = self.addSnapshotListener(
+            includeMetadataChanges: includeMetadataChanges
+        ) { snapshot, error in
+            if let error = error {
+                subject.send(.failure(error))
+            } else if let snapshot = snapshot {
+                subject.send(.success(snapshot))
+            }
+        }
+        return subject
+            .handleEvents(
+                receiveCancel: snapshotListenerRegistration.remove
+            )
+    }
     
 }

@@ -69,18 +69,18 @@ extension Firebase.Crashlytics {
     /// Records a non-fatal Error which may occur
     /// when executing the given asynchronous operation.
     /// - Parameters:
-    ///   - operation: An asynchronous closure to execute.
     ///   - userInfo: The optional user infos. Default value `nil`
     ///   - file: The file. Default value `#file`
     ///   - function: The function. Default value `#function`
     ///   - line: The line. Default value `#line`
+    ///   - operation: An asynchronous closure to execute.
     @discardableResult
     func recordError<Result>(
-        operation: () async throws -> Result,
         userInfo: [String: Any]? = nil,
         file: String = #file,
         function: String = #function,
-        line: Int = #line
+        line: Int = #line,
+        operation: () async throws -> Result
     ) async rethrows -> Result {
         do {
             return try await operation()
@@ -99,18 +99,18 @@ extension Firebase.Crashlytics {
     /// Records a non-fatal Error which may occur
     /// when executing the given synchronous operation.
     /// - Parameters:
-    ///   - operation: A synchronous closure to execute.
     ///   - userInfo: The optional user infos. Default value `nil`
     ///   - file: The file. Default value `#file`
     ///   - function: The function. Default value `#function`
     ///   - line: The line. Default value `#line`
+    ///   - operation: A synchronous closure to execute.
     @discardableResult
     func recordError<Result>(
-        operation: () throws -> Result,
         userInfo: [String: Any]? = nil,
         file: String = #file,
         function: String = #function,
-        line: Int = #line
+        line: Int = #line,
+        operation: () throws -> Result
     ) rethrows -> Result {
         do {
             return try operation()

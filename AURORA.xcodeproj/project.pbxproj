@@ -20,7 +20,6 @@
 		3D1EE5E7298AA919009E4645 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E6298AA919009E4645 /* FirebaseAuth */; };
 		3D1EE5E9298AA919009E4645 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E8298AA919009E4645 /* FirebaseCrashlytics */; };
 		3D1EE5EB298AA919009E4645 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5EA298AA919009E4645 /* FirebaseFirestore */; };
-		3D1EE5ED298AA919009E4645 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5EC298AA919009E4645 /* FirebaseFirestoreCombine-Community */; };
 		3D1EE5EF298AA919009E4645 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5EE298AA919009E4645 /* FirebaseFirestoreSwift */; };
 		3D1EE5F1298AA919009E4645 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5F0298AA919009E4645 /* FirebaseFunctions */; };
 		3D1EE5F3298AA919009E4645 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5F2298AA919009E4645 /* FirebasePerformance */; };
@@ -57,7 +56,6 @@
 		3D1EE689298AACF8009E4645 /* Consumption+Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE665298AACF8009E4645 /* Consumption+Transportation.swift */; };
 		3D1EE68A298AACF8009E4645 /* Consumption+Heating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE667298AACF8009E4645 /* Consumption+Heating.swift */; };
 		3D1EE68B298AACF8009E4645 /* Consumption+Electricity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE669298AACF8009E4645 /* Consumption+Electricity.swift */; };
-		3D1EE68C298AACF8009E4645 /* User+UID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE66B298AACF8009E4645 /* User+UID.swift */; };
 		3D1EE68D298AACF8009E4645 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE66C298AACF8009E4645 /* User.swift */; };
 		3D1EE68E298AACF8009E4645 /* User+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE66D298AACF8009E4645 /* User+Account.swift */; };
 		3D1EE68F298AACF8009E4645 /* User+Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE66E298AACF8009E4645 /* User+Gender.swift */; };
@@ -118,6 +116,8 @@
 		3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */; };
 		3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */; };
 		3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */; };
+		3DC28EEE2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC28EED2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift */; };
+		3DC28EF02A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC28EEF2A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift */; };
 		3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */; };
 		3DCB91FE2A28F25C00D6F748 /* RecurringConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */; };
 		3DCB92022A28F67B00D6F748 /* RecurringConsumption+Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */; };
@@ -173,7 +173,6 @@
 		3D1EE665298AACF8009E4645 /* Consumption+Transportation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Consumption+Transportation.swift"; sourceTree = "<group>"; };
 		3D1EE667298AACF8009E4645 /* Consumption+Heating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Consumption+Heating.swift"; sourceTree = "<group>"; };
 		3D1EE669298AACF8009E4645 /* Consumption+Electricity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Consumption+Electricity.swift"; sourceTree = "<group>"; };
-		3D1EE66B298AACF8009E4645 /* User+UID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+UID.swift"; sourceTree = "<group>"; };
 		3D1EE66C298AACF8009E4645 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3D1EE66D298AACF8009E4645 /* User+Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Account.swift"; sourceTree = "<group>"; };
 		3D1EE66E298AACF8009E4645 /* User+Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Gender.swift"; sourceTree = "<group>"; };
@@ -236,6 +235,8 @@
 		3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+CarbonEmissions.swift"; sourceTree = "<group>"; };
 		3DAA79C2297153F40097DD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionList.swift; sourceTree = "<group>"; };
+		3DC28EED2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSubcollectionEntity.swift; sourceTree = "<group>"; };
+		3DC28EEF2A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEntityIdentifierMissingError.swift; sourceTree = "<group>"; };
 		3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotovoltaicScreen.swift; sourceTree = "<group>"; };
 		3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumption.swift; sourceTree = "<group>"; };
 		3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency.swift"; sourceTree = "<group>"; };
@@ -273,7 +274,6 @@
 				3D1EE5E1298AA919009E4645 /* FirebaseAnalytics in Frameworks */,
 				3D1EE5E7298AA919009E4645 /* FirebaseAuth in Frameworks */,
 				3D1EE5EB298AA919009E4645 /* FirebaseFirestore in Frameworks */,
-				3D1EE5ED298AA919009E4645 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				3D1EE5EF298AA919009E4645 /* FirebaseFirestoreSwift in Frameworks */,
 				3D1EE5F6298AA965009E4645 /* GoogleSignInSwift in Frameworks */,
 			);
@@ -538,8 +538,10 @@
 			children = (
 				3D1EE65C298AACF8009E4645 /* Firebase+Firestore.swift */,
 				3D1EE671298AACF8009E4645 /* FirestoreEntity.swift */,
+				3DC28EED2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift */,
 				3D1EE670298AACF8009E4645 /* FirestoreEntityReference.swift */,
 				3D1EE66F298AACF8009E4645 /* FirestoreEntityQuery.swift */,
+				3DC28EEF2A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -589,9 +591,8 @@
 			isa = PBXGroup;
 			children = (
 				3D1EE66C298AACF8009E4645 /* User.swift */,
-				3D1EE66B298AACF8009E4645 /* User+UID.swift */,
-				3D1EE66D298AACF8009E4645 /* User+Account.swift */,
 				3D1EE66E298AACF8009E4645 /* User+Gender.swift */,
+				3D1EE66D298AACF8009E4645 /* User+Account.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -828,7 +829,6 @@
 				3D1EE5E6298AA919009E4645 /* FirebaseAuth */,
 				3D1EE5E8298AA919009E4645 /* FirebaseCrashlytics */,
 				3D1EE5EA298AA919009E4645 /* FirebaseFirestore */,
-				3D1EE5EC298AA919009E4645 /* FirebaseFirestoreCombine-Community */,
 				3D1EE5EE298AA919009E4645 /* FirebaseFirestoreSwift */,
 				3D1EE5F0298AA919009E4645 /* FirebaseFunctions */,
 				3D1EE5F2298AA919009E4645 /* FirebasePerformance */,
@@ -981,12 +981,12 @@
 				3D57AEF729B795A7000EE0EB /* City+PVGISParams.swift in Sources */,
 				3D8A05E32991AF2F005DEA43 /* ConsumptionForm+Electricity.swift in Sources */,
 				3D1EE68D298AACF8009E4645 /* User.swift in Sources */,
-				3D1EE68C298AACF8009E4645 /* User+UID.swift in Sources */,
 				3D1EE64D298AAC9E009E4645 /* FeaturePreview+Page.swift in Sources */,
 				3D8A05E72991B006005DEA43 /* ConsumptionForm+Transportation.swift in Sources */,
 				3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */,
 				3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */,
 				3D6F643729D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift in Sources */,
+				3DC28EF02A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift in Sources */,
 				3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */,
 				3D3B8D3E2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift in Sources */,
 				3D1EE681298AACF8009E4645 /* Firebase+Functions.swift in Sources */,
@@ -998,6 +998,7 @@
 				3D1EE651298AAC9E009E4645 /* ThirdPartyDependency.swift in Sources */,
 				3D1EE696298AACF8009E4645 /* Firebase+Authentication.swift in Sources */,
 				3D8E1EFF2A294B4A00416DFF /* RecurringConsumptionForm.swift in Sources */,
+				3DC28EEE2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift in Sources */,
 				3D3B8D44299150E5008590A8 /* City.swift in Sources */,
 				3D08956A2991080800C996AD /* Consumption+Heating+HeatingFuel.swift in Sources */,
 				3D1EE6C2298AAE79009E4645 /* Partial.swift in Sources */,
@@ -1319,11 +1320,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D1EE5DF298AA919009E4645 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		3D1EE5EC298AA919009E4645 /* FirebaseFirestoreCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D1EE5DF298AA919009E4645 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreCombine-Community";
 		};
 		3D1EE5EE298AA919009E4645 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;

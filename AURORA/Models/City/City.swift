@@ -22,27 +22,16 @@ struct City {
     
 }
 
-// MARK: - City+FirestoreEntity
+// MARK: - City+FirestoreSubcollectionEntity
 
-extension City: FirestoreEntity {
+extension City: FirestoreSubcollectionEntity {
+    
+    /// The parent FirestoreEntity.
+    typealias ParentEntity = Country
     
     /// The Firestore collection name.
     static var collectionName: String {
         "cities"
-    }
-    
-    /// The Firestore CollectionReference.
-    /// - Parameters:
-    ///   - firestore: The Firestore instance.
-    ///   - parameter: The Firebase User Identifier.
-    static func collectionReference(
-        in firestore: FirebaseFirestore.Firestore,
-        context countryId: String
-    ) -> FirebaseFirestore.CollectionReference {
-        firestore
-            .collection(Country.collectionName)
-            .document(countryId)
-            .collection(self.collectionName)
     }
     
 }

@@ -19,12 +19,12 @@ struct RecurringConsumptionList {
     
     /// Creates a new instance of `RecurringConsumptionList`
     /// - Parameters:
-    ///   - userId: The user identifier.
+    ///   - user: The user reference.
     init(
-        userId: User.UID
+        user: FirestoreEntityReference<User>
     ) {
         self._recurringConsumptions = .init(
-            context: userId,
+            context: user,
             predicates: [
                 RecurringConsumption.orderByCreatedAtPredicate
             ]
