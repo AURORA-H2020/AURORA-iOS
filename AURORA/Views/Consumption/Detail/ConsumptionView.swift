@@ -263,14 +263,12 @@ extension ConsumptionView: View {
         ) { consumptionFormSheetMode in
             SheetNavigationView {
                 ConsumptionForm(
-                    consumption: {
+                    mode: {
                         switch consumptionFormSheetMode {
                         case .edit:
-                            return self.consumption
+                            return .edit(self.consumption)
                         case .duplicate:
-                            var consumption = self.consumption
-                            consumption.id = nil
-                            return consumption
+                            return .prefill(self.consumption)
                         }
                     }()
                 )

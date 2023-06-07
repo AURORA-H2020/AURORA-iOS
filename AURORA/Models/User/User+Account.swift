@@ -10,3 +10,14 @@ extension User {
     typealias Account = FirebaseAuth.User
     
 }
+
+// MARK: - User+Account+Identifiable
+
+extension User.Account: Identifiable {
+    
+    /// The stable identity of the entity associated with this instance.
+    public var id: String {
+        self.uid
+    }
+    
+}

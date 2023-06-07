@@ -152,7 +152,7 @@ extension EditUserForm: View {
                 .firestore
                 .get(
                     City.self,
-                    context: self.user.country.id,
+                    context: self.user.country,
                     id: city.id
                 )
         }

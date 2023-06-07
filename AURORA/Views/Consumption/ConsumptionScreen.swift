@@ -64,13 +64,13 @@ extension ConsumptionScreen: View {
     var body: some View {
         NavigationView {
             List {
-                if let userId = self.user.id {
+                if let user = FirestoreEntityReference(self.user) {
                     OverviewSection(
-                        userId: .init(userId),
+                        user: user,
                         sheet: self.$sheet
                     )
                     LatestEntriesSection(
-                        userId: .init(userId),
+                        user: user,
                         sheet: self.$sheet
                     )
                 }
@@ -88,23 +88,19 @@ extension ConsumptionScreen: View {
         ) { sheet in
             switch sheet {
             case .consumptionSummary(let mode):
-                if let userId = self.user.id {
+                if let user = FirestoreEntityReference(self.user) {
                     SheetNavigationView {
                         ConsumptionSummaryView(
-                            userId: .init(userId),
+                            user: user,
                             mode: mode
                         )
                     }
                 }
             case .consumptionForm(let consumption):
                 SheetNavigationView {
-                    if let consumption = consumption {
-                        ConsumptionForm(
-                            consumption: consumption
-                        )
-                    } else {
-                        ConsumptionForm()
-                    }
+                    ConsumptionForm(
+                        mode: consumption.flatMap(ConsumptionForm.Mode.edit) ?? .create()
+                    )
                 }
             }
         }

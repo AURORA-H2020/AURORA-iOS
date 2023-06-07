@@ -32,34 +32,16 @@ struct RecurringConsumption {
     
 }
 
-// MARK: - RecurringConsumption+FirestoreEntity
+// MARK: - RecurringConsumption+FirestoreSubcollectionEntity
 
-extension RecurringConsumption: FirestoreEntity {
+extension RecurringConsumption: FirestoreSubcollectionEntity {
+    
+    /// The parent FirestoreEntity.
+    typealias ParentEntity = User
     
     /// The Firestore collection name.
     static var collectionName: String {
         "recurring-consumptions"
-    }
-    
-    /// The Firestore CollectionReference.
-    /// - Parameters:
-    ///   - firestore: The Firestore instance.
-    ///   - parameter: The Firebase User Identifier.
-    static func collectionReference(
-        in firestore: FirebaseFirestore.Firestore,
-        context userUID: User.UID
-    ) -> FirebaseFirestore.CollectionReference {
-        firestore
-            .collection(User.collectionName)
-            .document(userUID.id)
-            .collection(self.collectionName)
-    }
-    
-    /// The Firestore CollectionReference..
-    static var collectionReference: FirebaseFirestore.CollectionReference {
-        get throws {
-            try self.collectionReference(context: .current())
-        }
     }
     
     /// The order by created at predicate.
