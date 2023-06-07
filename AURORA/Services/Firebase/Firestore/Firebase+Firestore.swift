@@ -97,6 +97,50 @@ extension Firebase.Firestore {
     
 }
 
+// MARK: - Count
+
+extension Firebase.Firestore {
+    
+    /// Retrieve the count of FirestoreEntities which are saved in Firestore.
+    /// - Parameters:
+    ///   - entityType: The FirestoreEntity Type.
+    ///   - context: The CollectionReferenceContext
+    ///   - wherePredicate: A closure which takes in a CollectionReference to attach where conditions.
+    func count<Entity: FirestoreEntity>(
+        _ entityType: Entity.Type,
+        context: Entity.CollectionReferenceContext,
+        where wherePredicate: (FirebaseFirestore.CollectionReference) -> FirebaseFirestore.Query = { $0 }
+    ) async throws -> Int {
+        try await wherePredicate(
+            Entity
+                .collectionReference(
+                    in: self.firebase.firebaseFirestore,
+                    context: context
+                )
+        )
+        .count
+        .getAggregation(source: .server)
+        .count
+        .intValue
+    }
+    
+    /// Retrieve the count of FirestoreEntities which are saved in Firestore.
+    /// - Parameters:
+    ///   - entityType: The FirestoreEntity Type.
+    ///   - wherePredicate: A closure which takes in a CollectionReference to attach where conditions.
+    func count<Entity: FirestoreEntity>(
+        _ entityType: Entity.Type,
+        where wherePredicate: (FirebaseFirestore.CollectionReference) -> FirebaseFirestore.Query = { $0 }
+    ) async throws -> Int where Entity.CollectionReferenceContext == Void {
+        try await self.count(
+            entityType,
+            context: (),
+            where: wherePredicate
+        )
+    }
+    
+}
+
 // MARK: - Publisher
 
 extension Firebase.Firestore {
