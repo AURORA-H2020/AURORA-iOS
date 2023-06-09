@@ -21,6 +21,10 @@ struct SettingsScreen {
     @State
     private var isFeaturePreviewPresented = false
     
+    /// The RecurringConsumptionsReminderService
+    @StateObject
+    private var recurringConsumptionsReminderService: RecurringConsumptionsReminderService = .shared
+    
     /// The Firebase instance
     @EnvironmentObject
     private var firebase: Firebase
@@ -186,6 +190,22 @@ private extension SettingsScreen {
                             .clipShape(Circle())
                     }
                 }
+            }
+            Toggle(
+                isOn: self.$recurringConsumptionsReminderService.isEnabled
+            ) {
+                HStack(spacing: 14) {
+                    Image(
+                        systemName: "arrow.clockwise.circle.fill"
+                    )
+                    .imageScale(.small)
+                    .foregroundColor(.accentColor)
+                    .padding(8)
+                    .background(Color.accentColor.opacity(0.3))
+                    .clipShape(Circle())
+                    Text("Regular energy behaviour changes")
+                }
+                .multilineTextAlignment(.leading)
             }
         }
         .headerProminence(.increased)

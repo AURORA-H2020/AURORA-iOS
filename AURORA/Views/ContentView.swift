@@ -147,6 +147,9 @@ private extension ContentView {
                 LocalNotificationCenter
                     .current
                     .removeAllDeliveredNotifications()
+                RecurringConsumptionsReminderService
+                    .shared
+                    .reset()
             }
     }
     
