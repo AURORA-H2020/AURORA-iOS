@@ -47,6 +47,17 @@ extension PhotovoltaicScreen: View {
                 value: self.investmentResult
             )
             .navigationTitle("Your Solar Power")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if self.investmentResult != nil {
+                        Button {
+                            self.investmentResult = nil
+                        } label: {
+                            Text("Reset")
+                        }
+                    }
+                }
+            }
         }
         .navigationViewStyle(.stack)
     }
