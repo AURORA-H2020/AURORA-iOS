@@ -7,9 +7,9 @@ struct RecurringConsumptionList {
     
     // MARK: Properties
     
-    /// Bool value if RecurringConsumptionForm is presented
+    /// The presented recurring consumption form mode.
     @State
-    private var isRecurringConsumptionFormPresented = false
+    private var presentedRecurringConsumptionFormMode: RecurringConsumptionForm.Mode?
     
     /// The recurring consumptions.
     @FirestoreEntityQuery
@@ -49,17 +49,15 @@ extension RecurringConsumptionList: View {
                     primaryAction: .init(
                         title: "Add"
                     ) {
-                        self.isRecurringConsumptionFormPresented = true
+                        self.presentedRecurringConsumptionFormMode = .create
                     }
                 )
             } else {
                 List {
                     ForEach(self.recurringConsumptions) { recurringConsumption in
-                        NavigationLink(
-                            destination: RecurringConsumptionForm(
-                                recurringConsumption: recurringConsumption
-                            )
-                        ) {
+                        Button {
+                            self.presentedRecurringConsumptionFormMode = .edit(recurringConsumption)
+                        } label: {
                             Cell(
                                 recurringConsumption: recurringConsumption
                             )
@@ -72,15 +70,17 @@ extension RecurringConsumptionList: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.isRecurringConsumptionFormPresented = true
+                    self.presentedRecurringConsumptionFormMode = .create
                 } label: {
                     Image(systemName: "plus")
                 }
             }
         }
-        .sheet(isPresented: self.$isRecurringConsumptionFormPresented) {
-            SheetNavigationView {
-                RecurringConsumptionForm()
+        .sheet(
+            item: self.$presentedRecurringConsumptionFormMode
+        ) { mode in
+            NavigationView {
+                RecurringConsumptionForm(mode: mode)
             }
         }
     }

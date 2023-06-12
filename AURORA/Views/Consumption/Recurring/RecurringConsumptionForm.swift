@@ -7,8 +7,8 @@ struct RecurringConsumptionForm {
     
     // MARK: Properties
     
-    /// The recurring consumption identifier
-    private let recurringConsumptionId: RecurringConsumption.ID
+    /// The mode
+    private let mode: Mode
     
     /// Bool value if is enabled
     @State
@@ -45,26 +45,74 @@ struct RecurringConsumptionForm {
     // MARK: Initializer
     
     /// Creates a new instance of `RecurringConsumptionForm`
-    /// - Parameter recurringConsumption: The optional recurring consumption to edit. Default value `nil`
+    /// - Parameter mode: The recurring consumption form mode. Default value `.create`
     init(
-        recurringConsumption: RecurringConsumption? = nil
+        mode: Mode = .create
     ) {
-        self.recurringConsumptionId = recurringConsumption?.id
+        self.mode = mode
         self._isEnabled = .init(
-            initialValue: recurringConsumption?.isEnabled ?? true
+            initialValue: mode.editableRecurringConsumption?.isEnabled ?? true
         )
         self._category = .init(
-            initialValue: recurringConsumption?.category ?? .transportation
+            initialValue: mode.editableRecurringConsumption?.category ?? .transportation
         )
         self._partialFrequency = .init(
-            initialValue: recurringConsumption?.frequency.partial ?? [\.unit: RecurringConsumption.Frequency.Unit.daily]
+            initialValue: mode.editableRecurringConsumption?.frequency.partial ?? [\.unit: RecurringConsumption.Frequency.Unit.daily]
         )
         self._partialTransportation = .init(
-            initialValue: recurringConsumption?.transportation?.partial ?? .default()
+            initialValue: mode.editableRecurringConsumption?.transportation?.partial ?? .default()
         )
         self._description = .init(
-            initialValue: recurringConsumption?.description ?? .init()
+            initialValue: mode.editableRecurringConsumption?.description ?? .init()
         )
+    }
+    
+}
+
+// MARK: - Mode
+
+extension RecurringConsumptionForm {
+    
+    /// A recurring consumption form mode
+    enum Mode: Hashable, Identifiable {
+        /// Create
+        case create
+        /// Edit
+        case edit(RecurringConsumption)
+        
+        /// The stable identity of the entity associated with this instance.
+        var id: String {
+            switch self {
+            case .create:
+                return "create"
+            case .edit(let recurringConsumption):
+                return [
+                    "edit",
+                    recurringConsumption.id
+                ]
+                .compactMap { $0 }
+                .joined(separator: "-")
+            }
+        }
+        
+        /// Bool if mode is create.
+        var isCreate: Bool {
+            if case .create = self {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        /// The editable recurring consumption, available if mode is edit.
+        var editableRecurringConsumption: RecurringConsumption? {
+            switch self {
+            case .create:
+                return nil
+            case .edit(let recurringConsumption):
+                return recurringConsumption
+            }
+        }
     }
     
 }
@@ -77,7 +125,8 @@ private extension RecurringConsumptionForm {
     var recurringConsumption: RecurringConsumption? {
         get throws {
             .init(
-                id: self.recurringConsumptionId,
+                id: self.mode.editableRecurringConsumption?.id,
+                createdAt: self.mode.editableRecurringConsumption?.createdAt,
                 isEnabled: self.isEnabled,
                 category: self.category,
                 frequency: try .init(partial: self.partialFrequency),
@@ -99,9 +148,27 @@ private extension RecurringConsumptionForm {
 
 private extension RecurringConsumptionForm {
     
+    /// Bool value if form can be submitted
+    var canSubmit: Bool {
+        // Verify recurring consumption is available
+        guard let recurringConsumption = try? self.recurringConsumption else {
+            // Otherwise submit is not possible
+            return false
+        }
+        switch self.mode {
+        case .create:
+            // Return true as submitting is available
+            return true
+        case .edit(let editableRecurringConsumption):
+            // Submit is possible if the recurring consumption
+            // is not equal to the editable recurring consumption
+            return recurringConsumption != editableRecurringConsumption
+        }
+    }
+    
     /// Submit form
     func submit() throws {
-        // Verify a recurring consumption is available
+        // Verify an edited recurring consumption is available
         guard let recurringConsumption = try self.recurringConsumption else {
             // Otherwise return out of function
             return
@@ -157,43 +224,116 @@ extension RecurringConsumptionForm: View {
             self.descriptionSection
             self.submitSection
         }
-        .navigationTitle(self.recurringConsumptionId == nil ? "Add" : "Edit")
+        .navigationTitle(self.mode.isCreate ? "Add" : "Edit")
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if self.recurringConsumptionId != nil,
-                   let recurringConsumption = try? self.recurringConsumption {
-                    Button(role: .destructive) {
-                        self.isDeleteConfirmationDialogPresented = true
-                    } label: {
-                        Label(
-                            "Delete",
-                            systemImage: "trash"
-                        )
-                        .foregroundColor(.red)
-                    }
-                    .confirmationDialog(
-                        "Delete Entry",
-                        isPresented: self.$isDeleteConfirmationDialogPresented,
-                        actions: {
-                            Button(role: .destructive) {
-                                try? self.firebase
-                                    .firestore
-                                    .delete(
-                                        recurringConsumption,
-                                        context: .current()
-                                    )
-                            } label: {
-                                Text("Delete")
-                            }
-                            Button(role: .cancel) {
-                            } label: {
-                                Text("Cancel")
-                            }
-                        },
-                        message: {
-                            Text("Are you sure you want to delete the entry?")
-                        }
+            self.toolbarContent
+        }
+        .interactiveDismissDisabled(self.canSubmit)
+    }
+    
+}
+
+// MARK: - Toolbar Content
+
+private extension RecurringConsumptionForm {
+    
+    /// The toolbar content
+    @ToolbarContentBuilder
+    var toolbarContent: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            if let recurringConsumption = self.mode.editableRecurringConsumption {
+                Button(role: .destructive) {
+                    self.isDeleteConfirmationDialogPresented = true
+                } label: {
+                    Label(
+                        "Delete",
+                        systemImage: "trash"
                     )
+                    .foregroundColor(.red)
+                }
+                .confirmationDialog(
+                    "Delete Entry",
+                    isPresented: self.$isDeleteConfirmationDialogPresented,
+                    actions: {
+                        Button(role: .destructive) {
+                            try? self.firebase
+                                .firestore
+                                .delete(
+                                    recurringConsumption,
+                                    context: .current()
+                                )
+                        } label: {
+                            Text("Delete")
+                        }
+                        Button(role: .cancel) {
+                        } label: {
+                            Text("Cancel")
+                        }
+                    },
+                    message: {
+                        Text("Are you sure you want to delete the entry?")
+                    }
+                )
+            }
+        }
+        ToolbarItem(placement: .navigationBarLeading) {
+            if self.canSubmit {
+                AsyncButton(
+                    confirmationDialog: { action in
+                        .init(
+                            title: Text("Unsaved changes"),
+                            message: Text("Are you sure you want to discard your unsaved changes?"),
+                            buttons: [
+                                .default(
+                                    Text("Save changes"),
+                                    action: action
+                                ),
+                                .destructive(
+                                    Text("Discard changes")
+                                ) {
+                                    self.dismiss()
+                                },
+                                .cancel()
+                            ]
+                        )
+                    },
+                    alert: { result in
+                        guard case .failure = result else {
+                            return nil
+                        }
+                        return .init(
+                            title: Text("Error"),
+                            message: Text(
+                                "An error occurred while trying to save your recurring consumption."
+                            ),
+                            primaryButton: .default(
+                                Text("Retry")
+                            ),
+                            secondaryButton: .default(
+                                Text("Quit")
+                            ) {
+                                self.dismiss()
+                            }
+                        )
+                    },
+                    action: {
+                        try self.submit()
+                    },
+                    label: {
+                        Image(
+                            systemName: "xmark.circle.fill"
+                        )
+                        .foregroundColor(.secondary)
+                    }
+                )
+            } else {
+                Button {
+                    self.dismiss()
+                } label: {
+                    Image(
+                        systemName: "xmark.circle.fill"
+                    )
+                    .foregroundColor(.secondary)
                 }
             }
         }
@@ -208,7 +348,7 @@ private extension RecurringConsumptionForm {
     /// The enabled state section
     @ViewBuilder
     var enabledStateSection: some View {
-        if self.recurringConsumptionId != nil {
+        if !self.mode.isCreate {
             Section {
                 Toggle(isOn: self.$isEnabled) {
                     Text(self.isEnabled ? "Enabled" : "Disabled")
@@ -499,7 +639,7 @@ private extension RecurringConsumptionForm {
                         .font(.headline)
                 }
             )
-            .disabled((try? self.recurringConsumption) == nil)
+            .disabled(!self.canSubmit)
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
             .align(.centerHorizontal)
