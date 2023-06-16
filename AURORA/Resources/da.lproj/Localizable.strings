@@ -8,6 +8,9 @@
 "About the App" = "Om appen";
 
 /* No comment provided by engineer. */
+"Accomplisher" = "Accompllisher";
+
+/* No comment provided by engineer. */
 "Account" = "Konto";
 
 /* No comment provided by engineer. */
@@ -41,6 +44,9 @@
 "Alternative fuel bus" = "Bus med alternativ brændstof";
 
 /* No comment provided by engineer. */
+"Ambassador" = "Ambassadør";
+
+/* No comment provided by engineer. */
 "An email will be sent to your inbox containing a link to reset your password." = "Der sendes en e-mail til din indbakke med et link til at nulstille din adgangskode.";
 
 /* No comment provided by engineer. */
@@ -71,7 +77,7 @@
 "An error occurred while trying to logout." = "Der opstod en fejl i forsøget på at logge ud.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to reset your password. Please check your email address and try again." = "Der opstod en fejl i forsøget på at nulstille din adgangskode. Tjek din e-mailadresse, og prøv igen.";
+"An error occurred while trying to reset your password. Please check your email address and try again." = "Der opstod en fejl under forsøget på at nulstille din adgangskode. Tjek din e-mailadresse, og prøv igen.";
 
 /* No comment provided by engineer. */
 "An error occurred while trying to save your consumption. Please try again." = "Der opstod en fejl i forsøget på at gemme dit forbrug. Prøv igen.";
@@ -116,6 +122,9 @@
 "Beginning" = "Starten";
 
 /* No comment provided by engineer. */
+"Big Achiever" = "Big Achiever";
+
+/* No comment provided by engineer. */
 "Bike" = "Cykel";
 
 /* No comment provided by engineer. */
@@ -141,6 +150,9 @@
 
 /* No comment provided by engineer. */
 "Category" = "Kategori";
+
+/* No comment provided by engineer. */
+"Champion" = "Champion";
 
 /* No comment provided by engineer. */
 "Change email" = "Ændre e-mail";
@@ -254,10 +266,13 @@
 "Download my data" = "Download mine data";
 
 /* No comment provided by engineer. */
+"Driver" = "Driver";
+
+/* No comment provided by engineer. */
 "Edit" = "Rediger";
 
 /* No comment provided by engineer. */
-"Edit Consumption" = "Rediger Forbrug";
+"Edit Consumption" = "Rediger forbrug";
 
 /* No comment provided by engineer. */
 "Edit profile" = "Rediger profil";
@@ -320,6 +335,9 @@
 "Error" = "Fejl";
 
 /* No comment provided by engineer. */
+"Explorer" = "Explorer";
+
+/* No comment provided by engineer. */
 "Export" = "Eksport";
 
 /* No comment provided by engineer. */
@@ -332,10 +350,16 @@
 "Female" = "Kvinde";
 
 /* No comment provided by engineer. */
+"First Mover" = "First Mover";
+
+/* No comment provided by engineer. */
 "First name" = "Fornavn";
 
 /* No comment provided by engineer. */
 "Frequency" = "Hyppighed";
+
+/* No comment provided by engineer. */
+"Friday" = "Fredag";
 
 /* No comment provided by engineer. */
 "Fuel car" = "Brændstofbil";
@@ -351,6 +375,9 @@
 
 /* No comment provided by engineer. */
 "Get an overview of your latest submitted data, pending entry requests, and how you can improve your carbon footprint accuracy." = "Få et overblik over dine seneste indsendte data, anmodninger om indlæg, og hvordan du kan forbedre nøjagtigheden af dit CO₂-aftryk.";
+
+/* No comment provided by engineer. */
+"Ground Breaker" = "Ground Breaker";
 
 /* No comment provided by engineer. */
 "Heating" = "Varme";
@@ -435,6 +462,9 @@
 
 /* No comment provided by engineer. */
 "Mobility reminder" = "Mobilitetspåmindelse";
+
+/* No comment provided by engineer. */
+"Monday" = "Mandag";
 
 /* No comment provided by engineer. */
 "Month" = "Måned";
@@ -560,6 +590,9 @@
 "Reset Password" = "Nulstil adgangskode";
 
 /* No comment provided by engineer. */
+"Saturday" = "lørdag";
+
+/* No comment provided by engineer. */
 "Save" = "Gem";
 
 /* No comment provided by engineer. */
@@ -593,6 +626,9 @@
 "Submit" = "Indsend";
 
 /* No comment provided by engineer. */
+"Sunday" = "Søndag";
+
+/* No comment provided by engineer. */
 "Support" = "Support";
 
 /* No comment provided by engineer. */
@@ -605,6 +641,9 @@
 "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead." = "Dette er mængden af CO₂, der ville blive udledt, hvis du i stedet havde trukket den producerede energi fra dit lokale net.";
 
 /* No comment provided by engineer. */
+"Thursday" = "Torsdag";
+
+/* No comment provided by engineer. */
 "Time" = "Tid";
 
 /* No comment provided by engineer. */
@@ -615,6 +654,9 @@
 
 /* No comment provided by engineer. */
 "Transportation type" = "Transporttype";
+
+/* No comment provided by engineer. */
+"Tuesday" = "Tirsdag";
 
 /* No comment provided by engineer. */
 "Type" = "Type";
@@ -647,7 +689,13 @@
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Vi kan minde dig om regelmæssigt at indtaste dine transportdata. Bare fortæl os, hvor ofte du rejser.";
 
 /* No comment provided by engineer. */
+"Wednesday" = "onsdag";
+
+/* No comment provided by engineer. */
 "Weekday" = "Hverdag";
+
+/* No comment provided by engineer. */
+"Weekdays" = "Hverdage";
 
 /* No comment provided by engineer. */
 "Year" = "År";
@@ -671,13 +719,10 @@
 "You will shortly receive an email to reset your password." = "Du vil snart modtage en e-mail for at nulstille din adgangskode.";
 
 /* No comment provided by engineer. */
-"You would be reducing CO₂ emissions within your local community by this amount. Great job!" = "Du vil reducere CO₂-udledningen i dit lokalsamfund med denne mængde. Godt arbejde!";
+"You would be reducing CO₂ emissions within your local community by this amount. Great job!" = "Du ville reducere CO₂-udledningen i dit lokalsamfund med denne mængde. Godt arbejde!";
 
 /* No comment provided by engineer. */
 "Your Carbon Emissions Labels" = "Dine CO₂-udledningsmærker";
-
-/* No comment provided by engineer. */
-"Your carbon footprint" = "Dit CO₂-aftryk";
 
 /* No comment provided by engineer. */
 "Your data has been successfully downloaded. Do you want to export it?" = "Dine data er blevet downloadet med succes. Ønsker du at eksportere dem?";
@@ -689,7 +734,7 @@
 "Your Energy Labels" = "Dine energimærker";
 
 /* No comment provided by engineer. */
-"Your energy labels are calculated based on your tracked consumption and specific to your location. This means, as you enter data throughout the year, more of your carbon emission and energy budgets will be made available. For example: If you have only entered data for all days of January and December, 2/12 of the total budget will be used to calculate your label. The only exception is transportation, which yields the full budget after a certain number of annual entries. Your overall budget is based on the sum of your electricity, heating and transportation budgets." = "Dine energimærker beregnes ud fra dit forbrug og specifikt for din by. Det betyder, at efterhånden som du indtaster data i løbet af året, vil flere af dine CO₂-udledning og energibudgetter blive gjort tilgængelige. For eksempel: Hvis du kun har indtastet data for alle dage i januar og december, vil 2/12 af det samlede budget blive brugt til at beregne din mærker. Den eneste undtagelse er transport, som giver det fulde budget efter et vist antal årlige indlæg. Dit samlede CO₂ budget er baseret på summen af dine el-, varme- og transport forbrug.";
+"Your energy labels are calculated based on your tracked consumption and specific to your location. This means, as you enter data throughout the year, more of your carbon emission and energy budgets will be made available. For example: If you have only entered data for all days of January and December, 2/12 of the total budget will be used to calculate your label. The only exception is transportation, which yields the full budget after a certain number of annual entries. Your overall budget is based on the sum of your electricity, heating and transportation budgets." = "Dine energimærker beregnes ud fra dit forbrug og er specifikt for din by. Det betyder, at efterhånden som du indtaster data i løbet af året, vil flere af dine CO₂-udledning og energibudgetter blive gjort tilgængelige. For eksempel: Hvis du kun har indtastet data for alle dage i januar og december, vil 2/12 af det samlede budget blive brugt til at beregne din mærker. Den eneste undtagelse er transport, som giver det fulde budget efter et vist antal årlige indlæg. Dit samlede CO₂ budget er baseret på summen af dine el-, varme- og transport forbrug.";
 
 /* No comment provided by engineer. */
 "Your energy labels are currently not available." = "Dine energimærker er ikke tilgængelige i øjeblikket.";

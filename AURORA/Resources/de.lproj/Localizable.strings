@@ -137,6 +137,9 @@
 "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)." = "Wenn Sie fortfahren, erklären Sie sich mit AURORAs\n[Nutzungsbedingungen](https://www.aurora-h2020.eu/aurora/privacy-policy/) und [Datenschutzbestimmungen](https://www.aurora-h2020.eu/aurora/privacy-policy/).";
 
 /* No comment provided by engineer. */
+"Calculate" = "Berechnen";
+
+/* No comment provided by engineer. */
 "Cancel" = "Abbrechen";
 
 /* No comment provided by engineer. */
@@ -408,6 +411,9 @@
 
 /* No comment provided by engineer. */
 "Hybrid-electric bus" = "Hybrid-Elektrobus";
+
+/* No comment provided by engineer. */
+"I would like to receive updates about the app and AURORA project by email." = "Ich möchte Updates über die App und das AURORA-Projekt per E-Mail erhalten.";
 
 /* No comment provided by engineer. */
 "Imprint" = "Impressum";
@@ -701,9 +707,6 @@
 "Your Carbon Emissions Labels" = "Ihre CO₂-Emissionsabzeichen";
 
 /* No comment provided by engineer. */
-"Your carbon footprint" = "Ihr CO₂-Fußabdruck";
-
-/* No comment provided by engineer. */
 "Your data has been successfully downloaded. Do you want to export it?" = "Ihre Daten wurden erfolgreich heruntergeladen. Möchten Sie sie exportieren?";
 
 /* No comment provided by engineer. */
@@ -723,6 +726,9 @@
 
 /* No comment provided by engineer. */
 "Your Password has successfully been changed." = "Ihr Passwort wurde erfolgreich geändert.";
+
+/* No comment provided by engineer. */
+"Your performance" = "Ihre Leistung";
 
 /* No comment provided by engineer. */
 "Your profile changes couldn't be saved. Please check your inputs and try again." = "Ihre Profiländerungen konnten nicht gespeichert werden. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
