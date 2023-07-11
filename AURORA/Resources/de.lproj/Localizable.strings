@@ -17,6 +17,9 @@
 "Account deletion" = "Konto löschen";
 
 /* No comment provided by engineer. */
+"Add" = "Hinzufügen";
+
+/* No comment provided by engineer. */
 "Add a consumption" = "Verbrauch hinzufügen";
 
 /* No comment provided by engineer. */
@@ -83,6 +86,12 @@
 "An error occurred while trying to save your consumption. Please try again." = "Beim Versuch, Ihren Verbrauch zu speichern, ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
+"An error occurred while trying to save your recurring consumption." = "Beim Speichern Ihres wiederkehrenden Verbrauchs ist ein Fehler aufgetreten.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to save your recurring consumption. Please try again." = "Beim Speichern Ihres wiederkehrenden Verbrauchs ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
+
+/* No comment provided by engineer. */
 "An error occurred while trying to update your email address. Please check your inputs and try again." = "Beim Versuch, Ihre E-Mail-Adresse zu aktualisieren, ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
@@ -99,6 +108,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete your account?" = "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to discard your unsaved changes?" = "Möchten Sie Ihre ungespeicherten Änderungen wirklich verwerfen?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to logout?" = "Sind Sie sicher, dass Sie sich abmelden möchten?";
@@ -221,6 +233,9 @@
 "Current Password" = "Aktuelles Passwort";
 
 /* No comment provided by engineer. */
+"Daily" = "Täglich";
+
+/* No comment provided by engineer. */
 "Dashboard" = "Übersicht";
 
 /* No comment provided by engineer. */
@@ -257,6 +272,12 @@
 "Diesel passenger train" = "Diesel-Personenzug";
 
 /* No comment provided by engineer. */
+"Disabled" = "Deaktiviert";
+
+/* No comment provided by engineer. */
+"Discard changes" = "Änderungen verwerfen";
+
+/* No comment provided by engineer. */
 "Distance" = "Entfernung";
 
 /* No comment provided by engineer. */
@@ -266,10 +287,16 @@
 "District heating source" = "Fernwärmequelle";
 
 /* No comment provided by engineer. */
+"Don't ask me again" = "Nicht mehr fragen";
+
+/* No comment provided by engineer. */
 "Download my data" = "Meine Daten herunterladen";
 
 /* No comment provided by engineer. */
 "Driver" = "Durchstarter*in";
+
+/* No comment provided by engineer. */
+"Duplicate" = "Duplizieren";
 
 /* No comment provided by engineer. */
 "Edit" = "Bearbeiten";
@@ -353,6 +380,9 @@
 "Female" = "Weiblich";
 
 /* No comment provided by engineer. */
+"Fequency" = "Frequenz";
+
+/* No comment provided by engineer. */
 "First Mover" = "Favorit*in";
 
 /* No comment provided by engineer. */
@@ -360,6 +390,9 @@
 
 /* No comment provided by engineer. */
 "Frequency" = "Häufigkeit";
+
+/* No comment provided by engineer. */
+"Friday" = "Freitag";
 
 /* No comment provided by engineer. */
 "Fuel car" = "Treibstoffauto";
@@ -380,6 +413,9 @@
 "Ground Breaker" = "Grenzgänger*in";
 
 /* No comment provided by engineer. */
+"Has your regular energy behaviour changed?" = "Hat sich Ihr reguläres Energieverhalten geändert?";
+
+/* No comment provided by engineer. */
 "Heating" = "Heizen";
 
 /* No comment provided by engineer. */
@@ -393,6 +429,9 @@
 
 /* No comment provided by engineer. */
 "Heating source" = "Heizquelle";
+
+/* No comment provided by engineer. */
+"Here you can add regularly repeating consumptions, such as your commute.\nRecurring consumptions automatically add consumptions for you based on a custom interval." = "Hier können Sie regelmäßig wiederkehrende Verbräuche, wie zum Beispiel Ihren Arbeitsweg, hinzufügen.\nWiederkehrende Verbräuche fügen automatisch Verbräuche basierend auf einem von Ihnen festgelegtem Intervall hinzu.";
 
 /* No comment provided by engineer. */
 "High speed train" = "Hochgeschwindigkeitszug";
@@ -467,7 +506,13 @@
 "Mobility reminder" = "Erinnerung an die Mobilität";
 
 /* No comment provided by engineer. */
+"Monday" = "Montag";
+
+/* No comment provided by engineer. */
 "Month" = "Monat";
+
+/* No comment provided by engineer. */
+"Monthly" = "Monatlich";
 
 /* No comment provided by engineer. */
 "Motorcycle" = "Motorrad";
@@ -483,6 +528,9 @@
 
 /* No comment provided by engineer. */
 "New Password" = "Neues Passwort";
+
+/* No comment provided by engineer. */
+"No" = "Nein";
 
 /* No comment provided by engineer. */
 "No consumption entered yet (?)" = "Noch kein Verbrauch eingegeben (?)";
@@ -507,6 +555,9 @@
 
 /* No comment provided by engineer. */
 "Once our solar installations go live in each demo site you can track the energy production right from the app." = "Sobald unsere Solaranlagen an den einzelnen Demostandorten in Betrieb sind, können Sie die Energieproduktion direkt über die App verfolgen.";
+
+/* No comment provided by engineer. */
+"Only %@ is supported as a recurring consumption." = "Nur %@ wird als wiederkehrender Verbrauch unterstützt.";
 
 /* No comment provided by engineer. */
 "Open Settings" = "Einstellungen öffnen";
@@ -569,13 +620,22 @@
 "Profile" = "Profil";
 
 /* No comment provided by engineer. */
+"Quit" = "Beenden";
+
+/* No comment provided by engineer. */
 "Recent login required" = "Neue Anmeldung erforderlich";
+
+/* No comment provided by engineer. */
+"Recurring consumptions" = "Wiederkehrende Verbräuche";
 
 /* No comment provided by engineer. */
 "Register" = "Registrieren";
 
 /* No comment provided by engineer. */
 "Registration failed" = "Registrierung fehlgeschlagen";
+
+/* No comment provided by engineer. */
+"Regular energy behaviour changes" = "Regelmäßige Änderungen des Energieverhaltens";
 
 /* No comment provided by engineer. */
 "Reload" = "Neu laden";
@@ -590,7 +650,19 @@
 "Reset Password" = "Passwort zurücksetzen";
 
 /* No comment provided by engineer. */
+"Retry" = "Erneut versuchen";
+
+/* No comment provided by engineer. */
+"Saturday" = "Samstag";
+
+/* No comment provided by engineer. */
 "Save" = "Speichern";
+
+/* No comment provided by engineer. */
+"Save changes" = "Änderungen speichern";
+
+/* No comment provided by engineer. */
+"Select" = "Auswählen";
 
 /* No comment provided by engineer. */
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Wählen Sie den Beginn und das Ende dieses Verbrauchs. Sie finden diese Informationen auf Ihrer Stromrechnung.";
@@ -623,16 +695,25 @@
 "Submit" = "Bestätigen";
 
 /* No comment provided by engineer. */
+"Sunday" = "Sonntag";
+
+/* No comment provided by engineer. */
 "Support" = "Support";
 
 /* No comment provided by engineer. */
 "The next notification will be sent on %@" = "Die nächste Benachrichtigung wird am %@ gesendet";
 
 /* No comment provided by engineer. */
+"This entry was automatically added via recurring consumptions." = "Dieser Eintrag wurde automatisch über wiederkehrende Verbräuche hinzugefügt.";
+
+/* No comment provided by engineer. */
 "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.\nCrowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners." = "Diese Informationen helfen uns, Ihren CO₂-Fußabdruck genauer zu berechnen. Bitte beachten Sie, dass Sie Ihr Land später nicht mehr ändern können.\nCrowdfunding für lokale Photovoltaikanlagen ist derzeit nur für ausgewählte Städte der AURORA-Projektpartner geplant.";
 
 /* No comment provided by engineer. */
 "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead." = "Dies ist die Menge an CO₂, die erzeugt würde, wenn Sie die erzeugte Energie stattdessen aus dem örtlichen Netz bezogen hätten.";
+
+/* No comment provided by engineer. */
+"Thursday" = "Donnerstag";
 
 /* No comment provided by engineer. */
 "Time" = "Zeit";
@@ -647,7 +728,22 @@
 "Transportation type" = "Art der Beförderung";
 
 /* No comment provided by engineer. */
+"Tuesday" = "Dienstag";
+
+/* No comment provided by engineer. */
 "Type" = "Typ";
+
+/* No comment provided by engineer. */
+"Typical occupancy" = "Typische Auslastung";
+
+/* No comment provided by engineer. */
+"Typical occupancy: %lld" = "Typische Auslastung: %lld";
+
+/* No comment provided by engineer. */
+"Unsaved changes" = "Nicht gespeicherte Änderungen";
+
+/* No comment provided by engineer. */
+"Update recurring consumptions?" = "Wiederkehrende Verbräuche aktualisieren?";
 
 /* No comment provided by engineer. */
 "Updated" = "Aktualisiert";
@@ -677,13 +773,28 @@
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Wir können Sie daran erinnern, Ihre Transportdaten regelmäßig einzugeben. Teilen Sie uns einfach mit, wie häufig Sie reisen.";
 
 /* No comment provided by engineer. */
+"Wednesday" = "Mittwoch";
+
+/* No comment provided by engineer. */
 "Weekday" = "Wochentag";
+
+/* No comment provided by engineer. */
+"Weekdays" = "Wochentags";
+
+/* No comment provided by engineer. */
+"Weekly" = "Wöchentlich";
 
 /* No comment provided by engineer. */
 "Year" = "Jahr";
 
 /* No comment provided by engineer. */
 "Year of birth" = "Geburtsjahr";
+
+/* No comment provided by engineer. */
+"Yearly" = "Jährlich";
+
+/* No comment provided by engineer. */
+"Yes" = "Ja";
 
 /* No comment provided by engineer. */
 "You can find this information on your electricity bill." = "Diese Informationen finden Sie auf Ihrer Stromrechnung.";
