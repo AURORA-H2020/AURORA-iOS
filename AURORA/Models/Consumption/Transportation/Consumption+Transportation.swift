@@ -11,6 +11,9 @@ extension Consumption {
         /// The date of the travel.
         var dateOfTravel: Timestamp
         
+        /// The end date of the travel.
+        var dateOfTravelEnd: Timestamp?
+        
         /// The type of transportation.
         var transportationType: TransportationType
         
@@ -32,9 +35,10 @@ extension Consumption.Transportation: PartialConvertible {
     var partial: Partial<Self> {
         [
             \.dateOfTravel: self.dateOfTravel,
-             \.transportationType: self.transportationType,
-             \.privateVehicleOccupancy: self.privateVehicleOccupancy,
-             \.publicVehicleOccupancy: self.publicVehicleOccupancy
+            \.dateOfTravelEnd: self.dateOfTravelEnd,
+            \.transportationType: self.transportationType,
+            \.privateVehicleOccupancy: self.privateVehicleOccupancy,
+            \.publicVehicleOccupancy: self.publicVehicleOccupancy
         ]
     }
     
@@ -44,6 +48,7 @@ extension Consumption.Transportation: PartialConvertible {
         let transportationType: TransportationType = try partial(\.transportationType)
         self.init(
             dateOfTravel: try partial(\.dateOfTravel),
+            dateOfTravelEnd: partial.dateOfTravelEnd.flatMap { $0 },
             transportationType: transportationType,
             privateVehicleOccupancy: try {
                 if transportationType.privateVehicleOccupancyRange != nil {
