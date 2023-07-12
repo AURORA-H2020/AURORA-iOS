@@ -35,8 +35,6 @@
 		3D1EE639298AAC5B009E4645 /* ConsumptionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE632298AAC5B009E4645 /* ConsumptionScreen.swift */; };
 		3D1EE63A298AAC5B009E4645 /* ConsumptionList+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE634298AAC5B009E4645 /* ConsumptionList+Cell.swift */; };
 		3D1EE64B298AAC9E009E4645 /* ChangePasswordForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE63E298AAC9E009E4645 /* ChangePasswordForm.swift */; };
-		3D1EE64C298AAC9E009E4645 /* FeaturePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE640298AAC9E009E4645 /* FeaturePreview.swift */; };
-		3D1EE64D298AAC9E009E4645 /* FeaturePreview+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE641298AAC9E009E4645 /* FeaturePreview+Page.swift */; };
 		3D1EE64E298AAC9E009E4645 /* ChangeMailAddressForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE643298AAC9E009E4645 /* ChangeMailAddressForm.swift */; };
 		3D1EE64F298AAC9E009E4645 /* LocalNotificationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE645298AAC9E009E4645 /* LocalNotificationForm.swift */; };
 		3D1EE650298AAC9E009E4645 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE646298AAC9E009E4645 /* SettingsScreen.swift */; };
@@ -153,8 +151,6 @@
 		3D1EE632298AAC5B009E4645 /* ConsumptionScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumptionScreen.swift; sourceTree = "<group>"; };
 		3D1EE634298AAC5B009E4645 /* ConsumptionList+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumptionList+Cell.swift"; sourceTree = "<group>"; };
 		3D1EE63E298AAC9E009E4645 /* ChangePasswordForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordForm.swift; sourceTree = "<group>"; };
-		3D1EE640298AAC9E009E4645 /* FeaturePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePreview.swift; sourceTree = "<group>"; };
-		3D1EE641298AAC9E009E4645 /* FeaturePreview+Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeaturePreview+Page.swift"; sourceTree = "<group>"; };
 		3D1EE643298AAC9E009E4645 /* ChangeMailAddressForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeMailAddressForm.swift; sourceTree = "<group>"; };
 		3D1EE645298AAC9E009E4645 /* LocalNotificationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationForm.swift; sourceTree = "<group>"; };
 		3D1EE646298AAC9E009E4645 /* SettingsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
@@ -349,7 +345,6 @@
 				3D1EE646298AAC9E009E4645 /* SettingsScreen.swift */,
 				3D1EE642298AAC9E009E4645 /* ChangeMailAddress */,
 				3D1EE63D298AAC9E009E4645 /* ChangePassword */,
-				3D1EE63F298AAC9E009E4645 /* FeaturePreview */,
 				3D1EE644298AAC9E009E4645 /* LocalNotification */,
 				3D1EE647298AAC9E009E4645 /* ThirdPartyDependency */,
 			);
@@ -483,15 +478,6 @@
 				3D1EE63E298AAC9E009E4645 /* ChangePasswordForm.swift */,
 			);
 			path = ChangePassword;
-			sourceTree = "<group>";
-		};
-		3D1EE63F298AAC9E009E4645 /* FeaturePreview */ = {
-			isa = PBXGroup;
-			children = (
-				3D1EE640298AAC9E009E4645 /* FeaturePreview.swift */,
-				3D1EE641298AAC9E009E4645 /* FeaturePreview+Page.swift */,
-			);
-			path = FeaturePreview;
 			sourceTree = "<group>";
 		};
 		3D1EE642298AAC9E009E4645 /* ChangeMailAddress */ = {
@@ -993,7 +979,6 @@
 				3D57AEF729B795A7000EE0EB /* City+PVGISParams.swift in Sources */,
 				3D8A05E32991AF2F005DEA43 /* ConsumptionForm+Electricity.swift in Sources */,
 				3D1EE68D298AACF8009E4645 /* User.swift in Sources */,
-				3D1EE64D298AAC9E009E4645 /* FeaturePreview+Page.swift in Sources */,
 				3D8A05E72991B006005DEA43 /* ConsumptionForm+Transportation.swift in Sources */,
 				3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */,
 				3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */,
@@ -1032,7 +1017,6 @@
 				3D1EE64F298AAC9E009E4645 /* LocalNotificationForm.swift in Sources */,
 				3D537A62298B1E9500C294AA /* Password.swift in Sources */,
 				3D1EE6CA298AAEA3009E4645 /* AsyncButton+Modifiers.swift in Sources */,
-				3D1EE64C298AAC9E009E4645 /* FeaturePreview.swift in Sources */,
 				3D1CA71A298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift in Sources */,
 				3D411D0F29BB28E0008EBB75 /* CurrencyText.swift in Sources */,
 				3D1EE6A3298AADD4009E4645 /* LocalNotificationCenter.swift in Sources */,
@@ -1289,7 +1273,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 10.10.0;
+				version = 10.12.0;
 			};
 		};
 		3D1EE5F4298AA965009E4645 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {

@@ -8,10 +8,16 @@
 "About the App" = "Om appen";
 
 /* No comment provided by engineer. */
+"Accomplisher" = "Accompllisher";
+
+/* No comment provided by engineer. */
 "Account" = "Konto";
 
 /* No comment provided by engineer. */
 "Account deletion" = "Slet konto";
+
+/* No comment provided by engineer. */
+"Add" = "Tilføj";
 
 /* No comment provided by engineer. */
 "Add a consumption" = "Tilføj et forbrug";
@@ -32,13 +38,16 @@
 "Add your heating data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Tilføj dine data for varme til AURORA Energy Tracker, og se dine fremskridt mod at blive en borger med minimal udledning. ";
 
 /* No comment provided by engineer. */
-"Add your mobility data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Tilføj dine data for mobilitet til AURORA Energy Tracker, og se dine fremskridt mod at blive en borger med minimal udledning. ";
+"Add your mobility data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Tilføj dine data for mobilitet til AURORA Energy Tracker og se dine fremskridt mod at blive en borger med minimal udledning. ";
 
 /* No comment provided by engineer. */
 "Almost empty" = "Næsten tom";
 
 /* No comment provided by engineer. */
 "Alternative fuel bus" = "Bus med alternativ brændstof";
+
+/* No comment provided by engineer. */
+"Ambassador" = "Ambassadør";
 
 /* No comment provided by engineer. */
 "An email will be sent to your inbox containing a link to reset your password." = "Der sendes en e-mail til din indbakke med et link til at nulstille din adgangskode.";
@@ -53,7 +62,7 @@
 "An error occurred while logging in. Please try again.\n\n%@" = "Der opstod en fejl under login. Prøv venligst igen.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to create a new account. Please check your inputs and try again." = "Der opstod en fejl under forsøget på at oprette en ny konto. Kontroller dine indtastninger og prøv igen.";
+"An error occurred while trying to create a new account. Please check your inputs and try again." = "Der opstod en fejl under forsøget på at oprette en ny konto. Kontrollér dine indtastninger og prøv igen.";
 
 /* No comment provided by engineer. */
 "An error occurred while trying to create your profile. Please check your inputs and try again." = "Der opstod en fejl i forsøget på at oprette din profil. Kontrollér venligst dine indtastninger og prøv igen.";
@@ -71,10 +80,16 @@
 "An error occurred while trying to logout." = "Der opstod en fejl i forsøget på at logge ud.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to reset your password. Please check your email address and try again." = "Der opstod en fejl i forsøget på at nulstille din adgangskode. Tjek din e-mailadresse, og prøv igen.";
+"An error occurred while trying to reset your password. Please check your email address and try again." = "Der opstod en fejl under forsøget på at nulstille din adgangskode. Tjek din e-mailadresse, og prøv igen.";
 
 /* No comment provided by engineer. */
 "An error occurred while trying to save your consumption. Please try again." = "Der opstod en fejl i forsøget på at gemme dit forbrug. Prøv igen.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to save your recurring consumption." = "Der opstod en fejl under forsøget på at gemme dit tilbagevendende forbrug.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to save your recurring consumption. Please try again." = "Der opstod en fejl under forsøget på at gemme dit tilbagevendende forbrug. Prøv venligst igen.";
 
 /* No comment provided by engineer. */
 "An error occurred while trying to update your email address. Please check your inputs and try again." = "Der opstod en fejl under forsøget på at opdatere din e-mailadresse. Tjek dine indtastninger og prøv igen.";
@@ -93,6 +108,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete your account?" = "Er du sikker på, at du vil slette din konto?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to discard your unsaved changes?" = "Er du sikker på, at du vil kassere dine ikke-gemte ændringer?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to logout?" = "Er du sikker på, at du vil logge ud?";
@@ -116,6 +134,9 @@
 "Beginning" = "Starten";
 
 /* No comment provided by engineer. */
+"Big Achiever" = "Big Achiever";
+
+/* No comment provided by engineer. */
 "Bike" = "Cykel";
 
 /* No comment provided by engineer. */
@@ -126,6 +147,9 @@
 
 /* No comment provided by engineer. */
 "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)." = "Hvis du fortsætter, accepterer du AURORA's\n[Servicevilkår] (https://www.aurora-h2020.eu/aurora/privacy-policy/) og [Fortrolighedspolitik](https://www.aurora-h2020.eu/aurora/privacy-policy/).";
+
+/* No comment provided by engineer. */
+"Calculate" = "Beregn";
 
 /* No comment provided by engineer. */
 "Cancel" = "Annuller";
@@ -143,7 +167,10 @@
 "Category" = "Kategori";
 
 /* No comment provided by engineer. */
-"Change email" = "Ændre e-mail";
+"Champion" = "Champion";
+
+/* No comment provided by engineer. */
+"Change email" = "Skift e-mail";
 
 /* No comment provided by engineer. */
 "Change Password" = "Skift adgangskode";
@@ -206,6 +233,9 @@
 "Current Password" = "Nuværende adgangskode";
 
 /* No comment provided by engineer. */
+"Daily" = "Daglig";
+
+/* No comment provided by engineer. */
 "Dashboard" = "Instrumentbræt";
 
 /* No comment provided by engineer. */
@@ -242,6 +272,12 @@
 "Diesel passenger train" = "Dieseltog";
 
 /* No comment provided by engineer. */
+"Disabled" = "Deaktiveret";
+
+/* No comment provided by engineer. */
+"Discard changes" = "Kassér ændringer";
+
+/* No comment provided by engineer. */
 "Distance" = "Afstand";
 
 /* No comment provided by engineer. */
@@ -251,13 +287,22 @@
 "District heating source" = "Fjernvarmekilde";
 
 /* No comment provided by engineer. */
+"Don't ask me again" = "Spørg mig ikke igen";
+
+/* No comment provided by engineer. */
 "Download my data" = "Download mine data";
+
+/* No comment provided by engineer. */
+"Driver" = "Driver";
+
+/* No comment provided by engineer. */
+"Duplicate" = "Duplikér";
 
 /* No comment provided by engineer. */
 "Edit" = "Rediger";
 
 /* No comment provided by engineer. */
-"Edit Consumption" = "Rediger Forbrug";
+"Edit Consumption" = "Rediger forbrug";
 
 /* No comment provided by engineer. */
 "Edit profile" = "Rediger profil";
@@ -320,22 +365,34 @@
 "Error" = "Fejl";
 
 /* No comment provided by engineer. */
+"Explorer" = "Explorer";
+
+/* No comment provided by engineer. */
 "Export" = "Eksport";
 
 /* No comment provided by engineer. */
 "Export Data" = "Eksportér data";
 
 /* No comment provided by engineer. */
-"Feature Preview" = "Funktions forhåndsvisning";
+"Feature Preview" = "Funktionsforhåndsvisning";
 
 /* No comment provided by engineer. */
 "Female" = "Kvinde";
+
+/* No comment provided by engineer. */
+"Fequency" = "Hyppighed";
+
+/* No comment provided by engineer. */
+"First Mover" = "First Mover";
 
 /* No comment provided by engineer. */
 "First name" = "Fornavn";
 
 /* No comment provided by engineer. */
 "Frequency" = "Hyppighed";
+
+/* No comment provided by engineer. */
+"Friday" = "Fredag";
 
 /* No comment provided by engineer. */
 "Fuel car" = "Brændstofbil";
@@ -353,6 +410,12 @@
 "Get an overview of your latest submitted data, pending entry requests, and how you can improve your carbon footprint accuracy." = "Få et overblik over dine seneste indsendte data, anmodninger om indlæg, og hvordan du kan forbedre nøjagtigheden af dit CO₂-aftryk.";
 
 /* No comment provided by engineer. */
+"Ground Breaker" = "Ground Breaker";
+
+/* No comment provided by engineer. */
+"Has your regular energy behaviour changed?" = "Har din regelmæssige energiadfærd ændret sig?";
+
+/* No comment provided by engineer. */
 "Heating" = "Varme";
 
 /* No comment provided by engineer. */
@@ -366,6 +429,9 @@
 
 /* No comment provided by engineer. */
 "Heating source" = "Varmekilde";
+
+/* No comment provided by engineer. */
+"Here you can add regularly repeating consumptions, such as your commute.\nRecurring consumptions automatically add consumptions for you based on a custom interval." = "Her kan du tilføje regelmæssigt gentagne forbrug, såsom din pendling.\nTilbagevendende forbrug tilføjer automatisk forbrug til dig baseret på et brugerdefineret interval.";
 
 /* No comment provided by engineer. */
 "High speed train" = "Højhastighedstog";
@@ -384,6 +450,9 @@
 
 /* No comment provided by engineer. */
 "Hybrid-electric bus" = "Hybrid elbus";
+
+/* No comment provided by engineer. */
+"I would like to receive updates about the app and AURORA project by email." = "Jeg vil gerne modtage opdateringer om appen og AURORA-projektet via e-mail.";
 
 /* No comment provided by engineer. */
 "Imprint" = "Forlæggermærke";
@@ -437,7 +506,13 @@
 "Mobility reminder" = "Mobilitetspåmindelse";
 
 /* No comment provided by engineer. */
+"Monday" = "Mandag";
+
+/* No comment provided by engineer. */
 "Month" = "Måned";
+
+/* No comment provided by engineer. */
+"Monthly" = "Månedlig";
 
 /* No comment provided by engineer. */
 "Motorcycle" = "Motorcykel";
@@ -453,6 +528,9 @@
 
 /* No comment provided by engineer. */
 "New Password" = "Ny adgangskode";
+
+/* No comment provided by engineer. */
+"No" = "Nej";
 
 /* No comment provided by engineer. */
 "No consumption entered yet (?)" = "Der er endnu ikke registreret noget forbrug (?)";
@@ -477,6 +555,9 @@
 
 /* No comment provided by engineer. */
 "Once our solar installations go live in each demo site you can track the energy production right from the app." = "Når vores solcelleanlæg går live på hvert demosted, kan du følge energiproduktionen direkte fra appen.";
+
+/* No comment provided by engineer. */
+"Only %@ is supported as a recurring consumption." = "Kun %@ understøttes som et tilbagevendende forbrug.";
 
 /* No comment provided by engineer. */
 "Open Settings" = "Åbn indstillinger";
@@ -524,7 +605,7 @@
 "Please note that all values displayed here are specific for your city, **%@**, and are merely for information.\nAll calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later.\nEstimated savings might be different from actual data, once the photovoltaic installations will be operational.\nYou obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Bemærk venligst, at alle værdier, der vises her, er specifikke for din by, **%@**, og kun er til orientering. Alle beregninger er baseret på nuværende planer for solcelleanlæggene og skal muligvis justeres senere. Estimerede besparelser kan være anderledes end de faktiske data, når solcelleanlæggene er i drift. Du påtager dig naturligvis ingen forpligtelser ved at bruge appen. Appen bruger [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/ ) Informationssystem (PVGIS) af Det Fælles Forskningscenter i Europa-Komissionen. ";
 
 /* No comment provided by engineer. */
-"Please note that all values displayed here are specific for your city, **%@**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Bemærk venligst, at alle værdier, der vises her, er specifikke for din by, **%@**, og kun er til orientering. Alle beregninger er baseret på nuværende planer for solcelleanlæggene og skal muligvis justeres senere. Estimerede besparelser kan være anderledes end de faktiske data, når solcelleanlæggene er i drift. Du påtager dig naturligvis ingen forpligtelser ved at bruge appen. Appen bruger [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/ ) Informationssystem (PVGIS) af Det Fælles Forskningscenter i Europa-Komissionen. ";
+"Please note that all values displayed here are specific for your city, **%@**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Bemærk venligst, at alle værdier, der vises her, er specifikke for din by, **%@**, er kun til orientering. Alle beregninger er baseret på nuværende planer for solcelleanlæggene og skal muligvis justeres senere. Estimerede besparelser kan være anderledes end de faktiske data, når solcelleanlæggene er i drift. Du påtager dig naturligvis ingen forpligtelser ved at bruge appen. Appen bruger [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/ ) Informationssystem (PVGIS) af Det Fælles Forskningscenter i Europa-Komissionen. ";
 
 /* No comment provided by engineer. */
 "Prefer not to say" = "Foretrækker ikke at sige noget";
@@ -539,13 +620,22 @@
 "Profile" = "Profil";
 
 /* No comment provided by engineer. */
+"Quit" = "Afslut";
+
+/* No comment provided by engineer. */
 "Recent login required" = "Seneste login påkrævet";
+
+/* No comment provided by engineer. */
+"Recurring consumptions" = "Tilbagevendende forbrug";
 
 /* No comment provided by engineer. */
 "Register" = "Oprettelse";
 
 /* No comment provided by engineer. */
 "Registration failed" = "Oprettelse mislykkedes";
+
+/* No comment provided by engineer. */
+"Regular energy behaviour changes" = "Regelmæssige ændringer i energiadfærden";
 
 /* No comment provided by engineer. */
 "Reload" = "Genindlæs";
@@ -560,7 +650,19 @@
 "Reset Password" = "Nulstil adgangskode";
 
 /* No comment provided by engineer. */
+"Retry" = "Prøv igen";
+
+/* No comment provided by engineer. */
+"Saturday" = "lørdag";
+
+/* No comment provided by engineer. */
 "Save" = "Gem";
+
+/* No comment provided by engineer. */
+"Save changes" = "Gem ændringer";
+
+/* No comment provided by engineer. */
+"Select" = "Vælg";
 
 /* No comment provided by engineer. */
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Vælg begyndelsen og slutningen af dette forbrug. Du kan finde disse oplysninger på din elregning.";
@@ -593,16 +695,25 @@
 "Submit" = "Indsend";
 
 /* No comment provided by engineer. */
+"Sunday" = "Søndag";
+
+/* No comment provided by engineer. */
 "Support" = "Support";
 
 /* No comment provided by engineer. */
 "The next notification will be sent on %@" = "Den næste notifikation vil blive sendt den %@";
 
 /* No comment provided by engineer. */
-"This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.\nCrowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners." = "Disse oplysninger hjælper os til mere præcist at beregne dit CO2-aftryk. Bemærk venligst, at du ikke kan ændre dit land senere. Crowdfunding af lokale solcelleanlæg er i øjeblikket kun planlagt for udvalgte byer af AURORA-projektpartnere.";
+"This entry was automatically added via recurring consumptions." = "Dette indlæg blev automatisk tilføjet via tilbagevendende forbrug.";
+
+/* No comment provided by engineer. */
+"This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.\nCrowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners." = "Disse oplysninger hjælper os til mere præcist at beregne dit CO₂-aftryk. Bemærk venligst, at du ikke kan ændre dit land senere. Crowdfunding af lokale solcelleanlæg er i øjeblikket kun planlagt for udvalgte byer af AURORA-projektpartnere.";
 
 /* No comment provided by engineer. */
 "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead." = "Dette er mængden af CO₂, der ville blive udledt, hvis du i stedet havde trukket den producerede energi fra dit lokale net.";
+
+/* No comment provided by engineer. */
+"Thursday" = "Torsdag";
 
 /* No comment provided by engineer. */
 "Time" = "Tid";
@@ -617,7 +728,22 @@
 "Transportation type" = "Transporttype";
 
 /* No comment provided by engineer. */
+"Tuesday" = "Tirsdag";
+
+/* No comment provided by engineer. */
 "Type" = "Type";
+
+/* No comment provided by engineer. */
+"Typical occupancy" = "Typisk pladsforhold";
+
+/* No comment provided by engineer. */
+"Typical occupancy: %lld" = "Typisk pladsforhold:% lld";
+
+/* No comment provided by engineer. */
+"Unsaved changes" = "Ikke-gemte ændringer";
+
+/* No comment provided by engineer. */
+"Update recurring consumptions?" = "Opdatér tilbagevendende forbrug?";
 
 /* No comment provided by engineer. */
 "Updated" = "Opdateret";
@@ -647,7 +773,16 @@
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Vi kan minde dig om regelmæssigt at indtaste dine transportdata. Bare fortæl os, hvor ofte du rejser.";
 
 /* No comment provided by engineer. */
+"Wednesday" = "onsdag";
+
+/* No comment provided by engineer. */
 "Weekday" = "Hverdag";
+
+/* No comment provided by engineer. */
+"Weekdays" = "Hverdage";
+
+/* No comment provided by engineer. */
+"Weekly" = "Ugentlig";
 
 /* No comment provided by engineer. */
 "Year" = "År";
@@ -656,13 +791,19 @@
 "Year of birth" = "Fødeår";
 
 /* No comment provided by engineer. */
+"Yearly" = "Årlig";
+
+/* No comment provided by engineer. */
+"Yes" = "Ja";
+
+/* No comment provided by engineer. */
 "You can find this information on your electricity bill." = "Du kan finde disse oplysninger på din elregning.";
 
 /* No comment provided by engineer. */
 "You can find this information on your heating bill." = "Du kan finde disse oplysninger på din varmeregning.";
 
 /* No comment provided by engineer. */
-"You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment." = "Du kan snart reducere dit CO2-aftryk ved at investere i dit lokale AURORA solcelleanlæg. Indtil da kan du allerede teste her, hvor meget dit CO2-aftryk vil blive reduceret, afhængigt af din potentielle investering.";
+"You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment." = "Du kan snart reducere dit CO₂-aftryk ved at investere i dit lokale AURORA solcelleanlæg. Indtil da kan du allerede teste her, hvor meget dit CO₂-aftryk vil blive reduceret, afhængigt af din potentielle investering.";
 
 /* No comment provided by engineer. */
 "You may add a description to your entry to help you find it later." = "Du kan tilføje en beskrivelse til dit indlæg for at hjælpe dig med at finde den senere.";
@@ -671,13 +812,10 @@
 "You will shortly receive an email to reset your password." = "Du vil snart modtage en e-mail for at nulstille din adgangskode.";
 
 /* No comment provided by engineer. */
-"You would be reducing CO₂ emissions within your local community by this amount. Great job!" = "Du vil reducere CO₂-udledningen i dit lokalsamfund med denne mængde. Godt arbejde!";
+"You would be reducing CO₂ emissions within your local community by this amount. Great job!" = "Du ville reducere CO₂-udledningen i dit lokalsamfund med denne mængde. Godt arbejde!";
 
 /* No comment provided by engineer. */
 "Your Carbon Emissions Labels" = "Dine CO₂-udledningsmærker";
-
-/* No comment provided by engineer. */
-"Your carbon footprint" = "Dit CO₂-aftryk";
 
 /* No comment provided by engineer. */
 "Your data has been successfully downloaded. Do you want to export it?" = "Dine data er blevet downloadet med succes. Ønsker du at eksportere dem?";
@@ -689,7 +827,7 @@
 "Your Energy Labels" = "Dine energimærker";
 
 /* No comment provided by engineer. */
-"Your energy labels are calculated based on your tracked consumption and specific to your location. This means, as you enter data throughout the year, more of your carbon emission and energy budgets will be made available. For example: If you have only entered data for all days of January and December, 2/12 of the total budget will be used to calculate your label. The only exception is transportation, which yields the full budget after a certain number of annual entries. Your overall budget is based on the sum of your electricity, heating and transportation budgets." = "Dine energimærker beregnes ud fra dit forbrug og specifikt for din by. Det betyder, at efterhånden som du indtaster data i løbet af året, vil flere af dine CO₂-udledning og energibudgetter blive gjort tilgængelige. For eksempel: Hvis du kun har indtastet data for alle dage i januar og december, vil 2/12 af det samlede budget blive brugt til at beregne din mærker. Den eneste undtagelse er transport, som giver det fulde budget efter et vist antal årlige indlæg. Dit samlede CO₂ budget er baseret på summen af dine el-, varme- og transport forbrug.";
+"Your energy labels are calculated based on your tracked consumption and specific to your location. This means, as you enter data throughout the year, more of your carbon emission and energy budgets will be made available. For example: If you have only entered data for all days of January and December, 2/12 of the total budget will be used to calculate your label. The only exception is transportation, which yields the full budget after a certain number of annual entries. Your overall budget is based on the sum of your electricity, heating and transportation budgets." = "Dine energimærker beregnes ud fra dit forbrug og er specifikt for din by. Det betyder, at efterhånden som du indtaster data i løbet af året, vil flere af dine CO₂-udledning og energibudgetter blive gjort tilgængelige. For eksempel: Hvis du kun har indtastet data for alle dage i januar og december, vil 2/12 af det samlede budget blive brugt til at beregne din mærker. Den eneste undtagelse er transport, som giver det fulde budget efter et vist antal årlige indlæg. Dit samlede CO₂ budget er baseret på summen af dine el-, varme- og transport forbrug.";
 
 /* No comment provided by engineer. */
 "Your energy labels are currently not available." = "Dine energimærker er ikke tilgængelige i øjeblikket.";
@@ -699,6 +837,9 @@
 
 /* No comment provided by engineer. */
 "Your Password has successfully been changed." = "Din adgangskode er nu blevet ændret.";
+
+/* No comment provided by engineer. */
+"Your performance" = "Din præstation";
 
 /* No comment provided by engineer. */
 "Your profile changes couldn't be saved. Please check your inputs and try again." = "Dine profilændringer kunne ikke gemmes. Kontrollér venligst dine indtastninger og prøv igen.";

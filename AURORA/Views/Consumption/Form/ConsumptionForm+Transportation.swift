@@ -37,6 +37,32 @@ extension ConsumptionForm.Transportation: View {
             ),
             in: ConsumptionForm.preferredDatePickerRange
         )
+        if self.partialTransportation.dateOfTravelEnd?.flatMap({ $0 }) == nil {
+            HStack {
+                Text("End of travel")
+                Spacer()
+                Button {
+                    self.partialTransportation.dateOfTravelEnd = .init(
+                        date: (self.partialTransportation.dateOfTravel?.dateValue() ?? Date()).addingTimeInterval(3600)
+                    )
+                } label: {
+                    Text("Set")
+                }
+            }
+        } else {
+            DatePicker(
+                "End of travel",
+                selection: .init(
+                    get: {
+                        self.partialTransportation.dateOfTravelEnd.flatMap { $0 }?.dateValue() ?? .init()
+                    },
+                    set: { newValue in
+                        self.partialTransportation.dateOfTravelEnd = .init(date: newValue)
+                    }
+                ),
+                in: (self.partialTransportation.dateOfTravel?.dateValue() ?? Date())...ConsumptionForm.preferredDatePickerRange.upperBound
+            )
+        }
         Picker(
             "Type",
             selection: self.$partialTransportation.transportationType

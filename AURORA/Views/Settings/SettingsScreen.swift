@@ -17,10 +17,6 @@ struct SettingsScreen {
     @State
     private var isChangePasswordFormPresented = false
     
-    /// Bool value if feature preview is presented
-    @State
-    private var isFeaturePreviewPresented = false
-    
     /// The RecurringConsumptionsReminderService
     @StateObject
     private var recurringConsumptionsReminderService: RecurringConsumptionsReminderService = .shared
@@ -67,13 +63,6 @@ extension SettingsScreen: View {
                 ChangePasswordForm()
             }
             .environmentObject(self.firebase)
-        }
-        .sheet(
-            isPresented: self.$isFeaturePreviewPresented
-        ) {
-            SheetNavigationView {
-                FeaturePreview()
-            }
         }
     }
     
@@ -387,14 +376,6 @@ private extension SettingsScreen {
             .padding(.vertical, 15)
             .listRowInsets(.init())
         ) {
-            Button {
-                self.isFeaturePreviewPresented = true
-            } label: {
-                Label(
-                    "Feature Preview",
-                    systemImage: "wand.and.stars"
-                )
-            }
             Link(
                 destination: .init(
                     string: "https://www.aurora-h2020.eu/aurora/privacy-policy/"

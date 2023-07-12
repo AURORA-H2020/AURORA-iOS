@@ -137,6 +137,9 @@
 "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)." = "Z nadaljevanjem se strinjaš z AURORINIMI [Pogoji uporabe storitev](https://www.aurora-h2020.eu/aurora/privacy-policy/) in [Pravilnikom o zasebnosti](https://www.aurora-h2020.eu/aurora/privacy-policy/).";
 
 /* No comment provided by engineer. */
+"Calculate" = "Izračunaj";
+
+/* No comment provided by engineer. */
 "Cancel" = "Preklic";
 
 /* No comment provided by engineer. */
@@ -216,6 +219,9 @@
 
 /* No comment provided by engineer. */
 "Current Password" = "Trenutno geslo";
+
+/* No comment provided by engineer. */
+"Daily" = "Dnevno";
 
 /* No comment provided by engineer. */
 "Dashboard" = "Nadzorna plošča";
@@ -410,6 +416,9 @@
 "Hybrid-electric bus" = "Hibridno-električni avtobus";
 
 /* No comment provided by engineer. */
+"I would like to receive updates about the app and AURORA project by email." = "Obvestila o posodobitvah aplikacije in o projektu AURORA želim prejemati po e-pošti.";
+
+/* No comment provided by engineer. */
 "Imprint" = "Odtis";
 
 /* No comment provided by engineer. */
@@ -462,6 +471,9 @@
 
 /* No comment provided by engineer. */
 "Month" = "Mesec";
+
+/* No comment provided by engineer. */
+"Monthly" = "Mesečno";
 
 /* No comment provided by engineer. */
 "Motorcycle" = "Motorno kolo";
@@ -674,10 +686,16 @@
 "Weekday" = "Delavnik";
 
 /* No comment provided by engineer. */
+"Weekly" = "Tedensko";
+
+/* No comment provided by engineer. */
 "Year" = "Leto";
 
 /* No comment provided by engineer. */
 "Year of birth" = "Letnica rojstva";
+
+/* No comment provided by engineer. */
+"Yearly" = "Letno";
 
 /* No comment provided by engineer. */
 "You can find this information on your electricity bill." = "Te podatke lahko najdeš na računu za elektriko.";
@@ -701,9 +719,6 @@
 "Your Carbon Emissions Labels" = "Tvoje oznake za emisije ogljika";
 
 /* No comment provided by engineer. */
-"Your carbon footprint" = "Tvoj ogljični odtis";
-
-/* No comment provided by engineer. */
 "Your data has been successfully downloaded. Do you want to export it?" = "Tvoji podatki so bili uspešno preneseni. Ali jih želiš izvoziti?";
 
 /* No comment provided by engineer. */
@@ -723,6 +738,9 @@
 
 /* No comment provided by engineer. */
 "Your Password has successfully been changed." = "Geslo je bilo uspešno spremenjeno.";
+
+/* No comment provided by engineer. */
+"Your performance" = "Tvoja uspešnost";
 
 /* No comment provided by engineer. */
 "Your profile changes couldn't be saved. Please check your inputs and try again." = "Sprememb profila ni bilo mogoče shraniti. Prosim, preveri svoje vnose in poskusi znova.";

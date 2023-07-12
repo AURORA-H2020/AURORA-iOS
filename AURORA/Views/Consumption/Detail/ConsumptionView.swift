@@ -134,13 +134,33 @@ extension ConsumptionView: View {
                 }
             } else if let transportation = self.consumption.transportation {
                 Entry {
-                    Text(
-                        transportation.dateOfTravel.dateValue(),
-                        style: .date
-                    )
+                    Group {
+                        if transportation.dateOfTravelEnd != nil {
+                            Text(
+                                transportation.dateOfTravel.dateValue(),
+                                format: .dateTime
+                            )
+                        } else {
+                            Text(
+                                transportation.dateOfTravel.dateValue(),
+                                style: .date
+                            )
+                        }
+                    }
                     .foregroundColor(.secondary)
                 } label: {
                     Text("Start of travel")
+                }
+                if let dateOfTravelEnd = transportation.dateOfTravelEnd {
+                    Entry {
+                        Text(
+                            dateOfTravelEnd.dateValue(),
+                            format: .dateTime
+                        )
+                        .foregroundColor(.secondary)
+                    } label: {
+                        Text("End of travel")
+                    }
                 }
                 Entry {
                     Text(transportation.transportationType.localizedString)
