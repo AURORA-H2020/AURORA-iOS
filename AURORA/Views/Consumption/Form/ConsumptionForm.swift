@@ -337,6 +337,7 @@ private extension ConsumptionForm {
                     .buttonStyle(.bordered)
                     .tint(category.tintColor)
                     .controlSize(.large)
+                    .accessibilityIdentifier("add"+category.rawValue)
                 }
             }
             .padding(.top, 30)

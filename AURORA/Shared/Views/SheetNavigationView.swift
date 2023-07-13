@@ -44,6 +44,7 @@ extension SheetNavigationView: View {
                                 systemName: "xmark.circle.fill"
                             )
                             .foregroundColor(.secondary)
+                            .accessibilityIdentifier("modalClose")
                         }
                     }
                 }
