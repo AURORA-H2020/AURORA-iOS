@@ -130,7 +130,19 @@
 		3DFBBA822A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */; };
 		4355071229F2764300F60352 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4355071029F2764300F60352 /* InfoPlist.strings */; };
 		4355071529F2764300F60352 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4355071329F2764300F60352 /* Localizable.strings */; };
+		4699A6422A5EC0BF003D6323 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4699A6412A5EC0BF003D6323 /* SnapshotHelper.swift */; };
+		4699A6462A5ED5AF003D6323 /* AURORA_Fastlane_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4699A6452A5ED5AF003D6323 /* AURORA_Fastlane_Snapshots.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4699A63C2A5EC049003D6323 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DD34C4E2948F280002064D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DD34C552948F280002064D8;
+			remoteInfo = AURORA;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3D0895692991080800C996AD /* Consumption+Heating+HeatingFuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Heating+HeatingFuel.swift"; sourceTree = "<group>"; };
@@ -257,6 +269,9 @@
 		43E177B729F2775900524CA3 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		43EBBEA629F27726008F1939 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		43EBBEA729F27726008F1939 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4699A6362A5EC049003D6323 /* AURORA Fastlane Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AURORA Fastlane Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4699A6412A5EC0BF003D6323 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		4699A6452A5ED5AF003D6323 /* AURORA_Fastlane_Snapshots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AURORA_Fastlane_Snapshots.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +289,13 @@
 				3D1EE5EB298AA919009E4645 /* FirebaseFirestore in Frameworks */,
 				3D1EE5EF298AA919009E4645 /* FirebaseFirestoreSwift in Frameworks */,
 				3D1EE5F6298AA965009E4645 /* GoogleSignInSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4699A6332A5EC049003D6323 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,6 +777,7 @@
 			isa = PBXGroup;
 			children = (
 				3DD34C582948F280002064D8 /* AURORA */,
+				4699A6372A5EC049003D6323 /* AURORA Fastlane Snapshots */,
 				3DD34C572948F280002064D8 /* Products */,
 				3DD34C682948F365002064D8 /* Frameworks */,
 			);
@@ -764,6 +787,7 @@
 			isa = PBXGroup;
 			children = (
 				3DD34C562948F280002064D8 /* AURORA.app */,
+				4699A6362A5EC049003D6323 /* AURORA Fastlane Snapshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -802,6 +826,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		4699A6372A5EC049003D6323 /* AURORA Fastlane Snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				4699A6412A5EC0BF003D6323 /* SnapshotHelper.swift */,
+				4699A6452A5ED5AF003D6323 /* AURORA_Fastlane_Snapshots.swift */,
+			);
+			path = "AURORA Fastlane Snapshots";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -835,6 +868,24 @@
 			productReference = 3DD34C562948F280002064D8 /* AURORA.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4699A6352A5EC049003D6323 /* AURORA Fastlane Snapshots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4699A6402A5EC049003D6323 /* Build configuration list for PBXNativeTarget "AURORA Fastlane Snapshots" */;
+			buildPhases = (
+				4699A6322A5EC049003D6323 /* Sources */,
+				4699A6332A5EC049003D6323 /* Frameworks */,
+				4699A6342A5EC049003D6323 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4699A63D2A5EC049003D6323 /* PBXTargetDependency */,
+			);
+			name = "AURORA Fastlane Snapshots";
+			productName = "AURORA Fastlane Snapshots";
+			productReference = 4699A6362A5EC049003D6323 /* AURORA Fastlane Snapshots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -842,11 +893,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					3DD34C552948F280002064D8 = {
 						CreatedOnToolsVersion = 14.1;
+					};
+					4699A6352A5EC049003D6323 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 3DD34C552948F280002064D8;
 					};
 				};
 			};
@@ -873,6 +928,7 @@
 			projectRoot = "";
 			targets = (
 				3DD34C552948F280002064D8 /* AURORA */,
+				4699A6352A5EC049003D6323 /* AURORA Fastlane Snapshots */,
 			);
 		};
 /* End PBXProject section */
@@ -886,6 +942,13 @@
 				4355071529F2764300F60352 /* Localizable.strings in Resources */,
 				4355071229F2764300F60352 /* InfoPlist.strings in Resources */,
 				3D384D862948F6C40018249C /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4699A6342A5EC049003D6323 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,7 +1093,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4699A6322A5EC049003D6323 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4699A6462A5ED5AF003D6323 /* AURORA_Fastlane_Snapshots.swift in Sources */,
+				4699A6422A5EC0BF003D6323 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4699A63D2A5EC049003D6323 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DD34C552948F280002064D8 /* AURORA */;
+			targetProxy = 4699A63C2A5EC049003D6323 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4355071029F2764300F60352 /* InfoPlist.strings */ = {
@@ -1244,6 +1324,48 @@
 			};
 			name = Release;
 		};
+		4699A63E2A5EC049003D6323 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UNLWT228LJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.inscico.aurora-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AURORA;
+			};
+			name = Debug;
+		};
+		4699A63F2A5EC049003D6323 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UNLWT228LJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.inscico.aurora-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AURORA;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1261,6 +1383,15 @@
 			buildConfigurations = (
 				3DD34C652948F280002064D8 /* Debug */,
 				3DD34C662948F280002064D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4699A6402A5EC049003D6323 /* Build configuration list for PBXNativeTarget "AURORA Fastlane Snapshots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4699A63E2A5EC049003D6323 /* Debug */,
+				4699A63F2A5EC049003D6323 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
