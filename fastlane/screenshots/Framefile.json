@@ -1,0 +1,64 @@
+{
+  "default": {
+    "title": {
+      "fonts": [
+        {
+          "font": "./fonts/Montserrat-Medium.ttf",
+          "supported": ["en-UK", "de-DE", "da-DK", "es-ES", "sl-SL", "pt-PT"]
+        }
+      ],
+      "color": "#ffffff"
+    },
+    "padding": 30,
+    "show_complete_frame": false,
+    "title_min_height": "40%"
+  },
+
+  "data": [
+    {
+      "filter": "0_Dashboard",
+      "title": {
+        "color": "#ffffff",
+        "font_size": 80
+      },
+      "background": "./background-1.jpg"
+    },
+    {
+      "filter": "1_EnergyLabels",
+      "title": {
+        "color": "#ffffff",
+        "font_size": 80
+      },
+      "title_below_image": true,
+      "background": "./background-2.jpg"
+    },
+    {
+      "filter": "2_AddConsumption",
+      "title": {
+        "color": "#ffffff",
+        "font_size": 80
+      },
+      "background": "./background-3.jpg"
+    },
+    {
+      "filter": "3_Settings",
+      "title": {
+        "color": "#ffffff",
+        "font_size": 80
+      },
+      "background": "./background-4.jpg"
+    },
+    {
+      "filter": "iPad Pro (12.9-inch) (2nd generation)",
+      "force_device_type": "iPad Pro",
+      "title_min_height": "20%",
+      "padding": 50
+    },
+    {
+      "filter": "iPad Pro (12.9-inch) (6th generation)",
+      "force_device_type": "iPad Pro (12.9-inch) (4th generation)",
+      "title_min_height": "20%",
+      "padding": 50
+    }
+  ]
+}
