@@ -117,6 +117,7 @@ fastlane/report.xml
 fastlane/**/screenshots.html
 fastlane/**/*.png
 fastlane/test_output
+fastlane/README.md
 
 # Code Injection
 #

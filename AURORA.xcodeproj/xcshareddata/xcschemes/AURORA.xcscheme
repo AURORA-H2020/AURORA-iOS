@@ -33,9 +33,9 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4699A6352A5EC049003D6323"
-               BuildableName = "AURORA Fastlane Snapshots.xctest"
-               BlueprintName = "AURORA Fastlane Snapshots"
+               BlueprintIdentifier = "3D839E072A61190A00810AD8"
+               BuildableName = "AURORA-UITests.xctest"
+               BlueprintName = "AURORA-UITests"
                ReferencedContainer = "container:AURORA.xcodeproj">
             </BuildableReference>
          </TestableReference>

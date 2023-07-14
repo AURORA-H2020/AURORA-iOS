@@ -89,7 +89,8 @@ extension ConsumptionScreen.OverviewSection: View {
                 Label(
                     "View your energy labels",
                     systemImage: "chart.bar.xaxis"
-                ).accessibilityIdentifier("viewEnergyLabels")
+                )
+                .accessibilityIdentifier("ViewEnergyLabels")
             }
             Button {
                 self.sheet = .consumptionForm()
@@ -97,7 +98,8 @@ extension ConsumptionScreen.OverviewSection: View {
                 Label(
                     "Add a consumption",
                     systemImage: "plus.circle.fill"
-                ).accessibilityIdentifier("addConsumption")
+                )
+                .accessibilityIdentifier("AddConsumption")
             }
             NavigationLink(
                 destination: RecurringConsumptionList(
@@ -109,7 +111,7 @@ extension ConsumptionScreen.OverviewSection: View {
                     systemImage: "arrow.clockwise.circle.fill"
                 )
                 .foregroundColor(.accentColor)
-                .accessibilityIdentifier("addRecurringConsumption")
+                .accessibilityIdentifier("AddRecurringConsumption")
             }
             Link(
                 destination: .init(
@@ -119,7 +121,8 @@ extension ConsumptionScreen.OverviewSection: View {
                 Label(
                     "Learn more",
                     systemImage: "questionmark.circle.fill"
-                ).accessibilityIdentifier("learnMore")
+                )
+                .accessibilityIdentifier("LearnMore")
             }
         }
         .headerProminence(.increased)
