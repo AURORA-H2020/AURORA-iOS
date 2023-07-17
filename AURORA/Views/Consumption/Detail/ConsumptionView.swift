@@ -8,9 +8,9 @@ struct ConsumptionView {
     /// The Consumption
     let consumption: Consumption
     
-    /// Bool value if consumption form is presented
+    /// The consumption form sheet mode
     @State
-    private var isConsumptionFormPresented = false
+    private var consumptionFormSheetMode: ConsumptionFormSheetMode?
     
     /// Bool value if delete confirmation dialog is presented
     @State
@@ -19,6 +19,25 @@ struct ConsumptionView {
     /// The Firebase instance.
     @EnvironmentObject
     private var firebase: Firebase
+    
+}
+
+// MARK: - ConsumptionFormSheetMode
+
+private extension ConsumptionView {
+    
+    /// A consumption form sheet mode
+    enum ConsumptionFormSheetMode: String, Hashable, Identifiable {
+        /// Edit
+        case edit
+        /// Duplicate
+        case duplicate
+        
+        /// The stable identity of the entity associated with this instance.
+        var id: RawValue {
+            self.rawValue
+        }
+    }
     
 }
 
@@ -115,13 +134,33 @@ extension ConsumptionView: View {
                 }
             } else if let transportation = self.consumption.transportation {
                 Entry {
-                    Text(
-                        transportation.dateOfTravel.dateValue(),
-                        style: .date
-                    )
+                    Group {
+                        if transportation.dateOfTravelEnd != nil {
+                            Text(
+                                transportation.dateOfTravel.dateValue(),
+                                format: .dateTime
+                            )
+                        } else {
+                            Text(
+                                transportation.dateOfTravel.dateValue(),
+                                style: .date
+                            )
+                        }
+                    }
                     .foregroundColor(.secondary)
                 } label: {
                     Text("Start of travel")
+                }
+                if let dateOfTravelEnd = transportation.dateOfTravelEnd {
+                    Entry {
+                        Text(
+                            dateOfTravelEnd.dateValue(),
+                            format: .dateTime
+                        )
+                        .foregroundColor(.secondary)
+                    } label: {
+                        Text("End of travel")
+                    }
                 }
                 Entry {
                     Text(transportation.transportationType.localizedString)
@@ -154,7 +193,14 @@ extension ConsumptionView: View {
                 }
             }
             if let createdAt = self.consumption.createdAt {
-                Section {
+                Section(
+                    footer: Group {
+                        if self.consumption.generatedByRecurringConsumptionId != nil {
+                            Text("This entry was automatically added via recurring consumptions.")
+                                .multilineTextAlignment(.leading)
+                        }
+                    }
+                ) {
                     Entry {
                         Text(
                             createdAt.dateValue(),
@@ -177,12 +223,19 @@ extension ConsumptionView: View {
                     }
                 }
             }
+            Section {
+                Button {
+                    self.consumptionFormSheetMode = .duplicate
+                } label: {
+                    Label("Duplicate", systemImage: "doc.on.doc.fill")
+                }
+            }
         }
         .navigationTitle(self.consumption.category.localizedString)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.isConsumptionFormPresented = true
+                    self.consumptionFormSheetMode = .edit
                 } label: {
                     Label(
                         "Edit",
@@ -226,11 +279,18 @@ extension ConsumptionView: View {
             }
         }
         .sheet(
-            isPresented: self.$isConsumptionFormPresented
-        ) {
+            item: self.$consumptionFormSheetMode
+        ) { consumptionFormSheetMode in
             SheetNavigationView {
                 ConsumptionForm(
-                    consumption: self.consumption
+                    mode: {
+                        switch consumptionFormSheetMode {
+                        case .edit:
+                            return .edit(self.consumption)
+                        case .duplicate:
+                            return .prefill(self.consumption)
+                        }
+                    }()
                 )
             }
         }

@@ -137,6 +137,9 @@
 "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)." = "Al continuar, acepta las [Condiciones del servicio]() y la [Política de privacidad]() de AURORA [Condiciones del servicio](https://www.aurora-h2020.eu/aurora/privacy-policy/) y [Política de privacidad](https://www.aurora-h2020.eu/aurora/privacy-policy/) de AURORA.";
 
 /* No comment provided by engineer. */
+"Calculate" = "Calcular";
+
+/* No comment provided by engineer. */
 "Cancel" = "Cancelar";
 
 /* No comment provided by engineer. */
@@ -216,6 +219,9 @@
 
 /* No comment provided by engineer. */
 "Current Password" = "Contraseña actual";
+
+/* No comment provided by engineer. */
+"Daily" = "Diariamente";
 
 /* No comment provided by engineer. */
 "Dashboard" = "Pantalla principal";
@@ -344,9 +350,6 @@
 "Export Data" = "Exportar datos";
 
 /* No comment provided by engineer. */
-"Feature Preview" = "Previsualización ";
-
-/* No comment provided by engineer. */
 "Female" = "Mujer";
 
 /* No comment provided by engineer. */
@@ -369,9 +372,6 @@
 
 /* No comment provided by engineer. */
 "Geothermal energy" = "Energía geotérmica";
-
-/* No comment provided by engineer. */
-"Get an overview of your latest submitted data, pending entry requests, and how you can improve your carbon footprint accuracy." = "Obtenga una visión general de sus últimos datos cargados, entradas pendientes y sobre cómo mejorar la precisión de su huella de carbono";
 
 /* No comment provided by engineer. */
 "Ground Breaker" = "Guía";
@@ -408,6 +408,9 @@
 
 /* No comment provided by engineer. */
 "Hybrid-electric bus" = "Autobús ";
+
+/* No comment provided by engineer. */
+"I would like to receive updates about the app and AURORA project by email." = "Querría recibir actualizaciones sobre la app y el proyecto AURORA por email.";
 
 /* No comment provided by engineer. */
 "Imprint" = "Autobús híbrido eléctrico";
@@ -464,6 +467,9 @@
 "Month" = "Mes";
 
 /* No comment provided by engineer. */
+"Monthly" = "Mensual";
+
+/* No comment provided by engineer. */
 "Motorcycle" = "Moto";
 
 /* No comment provided by engineer. */
@@ -498,9 +504,6 @@
 
 /* No comment provided by engineer. */
 "Okay" = "OK";
-
-/* No comment provided by engineer. */
-"Once our solar installations go live in each demo site you can track the energy production right from the app." = "Puede hacer un seguimiento de la producción de energía directamente desde la aplicación una vez que nuestras instalaciones solares entren en funcionamiento en cada demostrador.";
 
 /* No comment provided by engineer. */
 "Open Settings" = "Abrir configuración";
@@ -659,9 +662,6 @@
 "Waste treatment" = "Tratamiento de residuos";
 
 /* No comment provided by engineer. */
-"We are working on expanding your profile data with the addition of households, personalised vehicles, energy sources, and more." = "Estamos trabajando para ampliar los datos de su perfil con la incorporación de hogares, vehículos personalizados, fuentes de energía y mucho más.";
-
-/* No comment provided by engineer. */
 "We can remind you to enter your electricity consumption based on your bill. Just let us know when you expect the next one." = "Podemos recordarle que introduzca su consumo de electricidad basándonos en su factura. Solo tiene que indicarnos cuándo espera la siguiente.";
 
 /* No comment provided by engineer. */
@@ -674,10 +674,16 @@
 "Weekday" = "Día de la semana";
 
 /* No comment provided by engineer. */
+"Weekly" = "Mensualmente";
+
+/* No comment provided by engineer. */
 "Year" = "Año";
 
 /* No comment provided by engineer. */
 "Year of birth" = "Año de nacimiento";
+
+/* No comment provided by engineer. */
+"Yearly" = "Anualmente";
 
 /* No comment provided by engineer. */
 "You can find this information on your electricity bill." = "Puede encontrar esta información en su factura de electricidad.";
@@ -701,9 +707,6 @@
 "Your Carbon Emissions Labels" = "Tus Etiquetas de Emisiones de Carbono";
 
 /* No comment provided by engineer. */
-"Your carbon footprint" = "Su huella de carbono";
-
-/* No comment provided by engineer. */
 "Your data has been successfully downloaded. Do you want to export it?" = "Sus datos se han descargado correctamente. ¿Desea exportarlos?";
 
 /* No comment provided by engineer. */
@@ -723,6 +726,9 @@
 
 /* No comment provided by engineer. */
 "Your Password has successfully been changed." = "Su contraseña ha sido modificada correctamente";
+
+/* No comment provided by engineer. */
+"Your performance" = "Tu comportamiento";
 
 /* No comment provided by engineer. */
 "Your profile changes couldn't be saved. Please check your inputs and try again." = "No se han podido guardar los cambios en su perfil. Por favor, compruebe los datos introducidos e inténtelo de nuevo.";

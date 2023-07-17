@@ -77,21 +77,14 @@ private extension ContentView {
                             systemImage: "house"
                         )
                     }
-                    if let country = try? self.firebase.country?.get(),
-                       let city = try? self.firebase.city?.get(),
-                       city.hasPhotovoltaics == true,
-                       let pvgisParams = city.pvgisParams {
-                        PhotovoltaicScreen(
-                            country: country,
-                            city: city,
-                            pvgisParams: pvgisParams
+                    PhotovoltaicScreen(
+                        firebase: self.firebase
+                    )
+                    .tabItem {
+                        Label(
+                            "Solar Power",
+                            systemImage: "sun.max"
                         )
-                        .tabItem {
-                            Label(
-                                "Solar Power",
-                                systemImage: "sun.max"
-                            )
-                        }
                     }
                     SettingsScreen()
                         .tabItem {
@@ -147,6 +140,9 @@ private extension ContentView {
                 LocalNotificationCenter
                     .current
                     .removeAllDeliveredNotifications()
+                RecurringConsumptionsReminderService
+                    .shared
+                    .reset()
             }
     }
     

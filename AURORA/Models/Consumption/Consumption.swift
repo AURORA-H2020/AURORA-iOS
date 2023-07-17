@@ -45,6 +45,9 @@ struct Consumption {
     /// The energy expenditure.
     let energyExpended: Double?
     
+    /// The recurring consumption reference which auto generated this consumption.
+    let generatedByRecurringConsumptionId: FirestoreEntityReference<RecurringConsumption>?
+    
     // MARK: Initializer
     
     /// Creates a new instance of `Consumption`
@@ -60,6 +63,7 @@ struct Consumption {
     ///   - description: The optional description.
     ///   - carbonEmissions: The carbon emissions.
     ///   - energyExpended: The energy expenditure.
+    ///   - generatedByRecurringConsumptionId: The recurring consumption reference which auto generated this consumption.
     init(
         id: String? = nil,
         createdAt: Timestamp? = nil,
@@ -71,7 +75,8 @@ struct Consumption {
         value: Double,
         description: String? = nil,
         carbonEmissions: Double? = nil,
-        energyExpended: Double? = nil
+        energyExpended: Double? = nil,
+        generatedByRecurringConsumptionId: FirestoreEntityReference<RecurringConsumption>? = nil
     ) {
         self.id = id
         self.createdAt = createdAt
@@ -84,38 +89,21 @@ struct Consumption {
         self.description = description
         self.carbonEmissions = carbonEmissions
         self.energyExpended = energyExpended
+        self.generatedByRecurringConsumptionId = generatedByRecurringConsumptionId
     }
     
 }
 
-// MARK: - Consumption+FirestoreEntity
+// MARK: - Consumption+FirestoreSubcollectionEntity
 
-extension Consumption: FirestoreEntity {
+extension Consumption: FirestoreSubcollectionEntity {
+
+    /// The parent FirestoreEntity.
+    typealias ParentEntity = User
     
     /// The Firestore collection name.
     static var collectionName: String {
         "consumptions"
-    }
-    
-    /// The Firestore CollectionReference.
-    /// - Parameters:
-    ///   - firestore: The Firestore instance.
-    ///   - parameter: The Firebase User Identifier.
-    static func collectionReference(
-        in firestore: FirebaseFirestore.Firestore,
-        context userUID: User.UID
-    ) -> FirebaseFirestore.CollectionReference {
-        firestore
-            .collection(User.collectionName)
-            .document(userUID.id)
-            .collection(self.collectionName)
-    }
-    
-    /// The Firestore CollectionReference..
-    static var collectionReference: FirebaseFirestore.CollectionReference {
-        get throws {
-            try self.collectionReference(context: .current())
-        }
     }
     
     /// The order by created at predicate.

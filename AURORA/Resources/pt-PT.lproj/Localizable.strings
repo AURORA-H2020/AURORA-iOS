@@ -1,5 +1,5 @@
 /* No comment provided by engineer. */
-"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Este projeto](https://www.aurora-h2020.eu/) recebeu financiamento do programa de investigação e inovação Horizon 2020 da União Europeia sob o contrato No. [101036418](https://cordis.europa.eu/project/id/101036418).";
+"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Este projeto](https://www.aurora-h2020.eu/) recebeu financiamento do programa de investigação e inovação Horizonte 2020 da União Europeia sob o contrato No. [101036418](https://cordis.europa.eu/project/id/101036418).";
 
 /* No comment provided by engineer. */
 "%@ in %@" = "%@ em %@";
@@ -89,7 +89,7 @@
 "An error occurred while trying to update your password. Please check your inputs and try again." = "Ocorreu um erro ao tentar atualizar a tua palavra-passe. Por favor verifica os teus dados e tenta novamente.";
 
 /* No comment provided by engineer. */
-"Annual energy production" = "Produção de energia anual";
+"Annual energy production" = "Produção anual de energia";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the entry?" = "Tens a certeza que queres eliminar o registo?";
@@ -135,6 +135,9 @@
 
 /* No comment provided by engineer. */
 "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)." = "Ao continuar, aceitas os [Termos e Condições] (https://www.aurora-h2020.eu/aurora/privacy-policy/) e [Políticas de Privacidade] (https://www.aurora-h2020.eu/aurora/privacy-policy/) do AURORA. ";
+
+/* No comment provided by engineer. */
+"Calculate" = "Calcular";
 
 /* No comment provided by engineer. */
 "Cancel" = "Cancelar";
@@ -216,6 +219,9 @@
 
 /* No comment provided by engineer. */
 "Current Password" = "Palavra-Passe atual";
+
+/* No comment provided by engineer. */
+"Daily" = "Diário";
 
 /* No comment provided by engineer. */
 "Dashboard" = "Painel de controlo";
@@ -344,9 +350,6 @@
 "Export Data" = "Exportar Dados";
 
 /* No comment provided by engineer. */
-"Feature Preview" = "Pré-visualização das características";
-
-/* No comment provided by engineer. */
 "Female" = "Feminino";
 
 /* No comment provided by engineer. */
@@ -369,9 +372,6 @@
 
 /* No comment provided by engineer. */
 "Geothermal energy" = "Energia geotérmica";
-
-/* No comment provided by engineer. */
-"Get an overview of your latest submitted data, pending entry requests, and how you can improve your carbon footprint accuracy." = "Obtém uma visão geral dos teus dados submetidos recentemente, pedidos de registo pendentes, e como podes melhorar a exatidão da tua pegada de carbono.";
 
 /* No comment provided by engineer. */
 "Ground Breaker" = "Galopador";
@@ -410,6 +410,9 @@
 "Hybrid-electric bus" = "Autocarro elétrico-híbrido";
 
 /* No comment provided by engineer. */
+"I would like to receive updates about the app and AURORA project by email." = "Gostaria de receber atualizações sobre a aplicação e o projeto AURORA por email. ";
+
+/* No comment provided by engineer. */
 "Imprint" = "Carimbo";
 
 /* No comment provided by engineer. */
@@ -422,10 +425,10 @@
 "Latest entries" = "Últimos registos";
 
 /* No comment provided by engineer. */
-"Learn more" = "Saiba mais";
+"Learn more" = "Sabe mais";
 
 /* No comment provided by engineer. */
-"Learn more on our website" = "Saiba mais na nossa página web.";
+"Learn more on our website" = "Sabe mais na nossa página web.";
 
 /* No comment provided by engineer. */
 "Legal information" = "Informação legal";
@@ -464,6 +467,9 @@
 "Month" = "Mês";
 
 /* No comment provided by engineer. */
+"Monthly" = "Mensal";
+
+/* No comment provided by engineer. */
 "Motorcycle" = "Motociclo";
 
 /* No comment provided by engineer. */
@@ -494,13 +500,10 @@
 "Occupancy: %lld" = "Ocupação: %lld";
 
 /* No comment provided by engineer. */
-"Oil" = "Petróleo";
+"Oil" = "Óleo";
 
 /* No comment provided by engineer. */
 "Okay" = "Ok";
-
-/* No comment provided by engineer. */
-"Once our solar installations go live in each demo site you can track the energy production right from the app." = "Assim que as nossas instalações solares entrem em funcionamento em cada demonstrador, poderás acompanhar a produção de energia diretamente a partir da aplicação.";
 
 /* No comment provided by engineer. */
 "Open Settings" = "Abrir definições";
@@ -530,7 +533,7 @@
 "Password reset" = "Redefinir palavra-passe";
 
 /* No comment provided by engineer. */
-"People in household: %lld" = "Pessoas na habitação: %lld";
+"People in household: %lld" = "Número de pessoas na habitação: %lld";
 
 /* No comment provided by engineer. */
 "Plane" = "Avião";
@@ -545,10 +548,10 @@
 "Please logout and login again to delete your account." = "Por favor, sai e inicia a sessão novamente para apagar a tua conta.";
 
 /* No comment provided by engineer. */
-"Please note that all values displayed here are specific for your city, **%@**, and are merely for information.\nAll calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later.\nEstimated savings might be different from actual data, once the photovoltaic installations will be operational.\nYou obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Por favor nota que todos os valores apresentados são específicos para a tua cidade, **%@**, e são meramente informativos. \nTodos os cálculos são baseados nos planos atuais para a instalação fotovoltaica, e podem precisar de ser ajustados mais tarde.\nPoupanças estimadas podem ser diferentes dos dados atuais, assim que a instalação fotovoltaica esteja operacional.\nObviamente não fará nenhum compromisso ao utilizar esta calculadora. \n\nEsta calculadora usa o [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) do Centro Comum de Investigação da Comissão Europeia.";
+"Please note that all values displayed here are specific for your city, **%@**, and are merely for information.\nAll calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later.\nEstimated savings might be different from actual data, once the photovoltaic installations will be operational.\nYou obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Por favor nota que todos os valores apresentados são específicos para a tua cidade, **%@**, e são meramente informativos. \nTodos os cálculos são baseados nos planos atuais para a instalação fotovoltaica, e podem precisar de ser ajustados mais tarde.\nPoupanças estimadas podem ser diferentes dos dados atuais, assim que a instalação fotovoltaica esteja operacional.\nObviamente não farás nenhum compromisso ao utilizar esta calculadora. \n\nEsta calculadora usa o [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) do Centro Comum de Investigação da Comissão Europeia.";
 
 /* No comment provided by engineer. */
-"Please note that all values displayed here are specific for your city, **%@**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Por favor nota que todos os valores apresentados são específicos para a tua cidade, **%@**, e são meramente informativos. Todos os cálculos são baseados nos planos atuais para a instalação fotovoltaica, e podem precisar de ser ajustados mais tarde. Poupanças estimadas podem ser diferentes dos dados atuais, assim que a instalação fotovoltaica esteja operacional. Obviamente não fará nenhum compromisso ao utilizar esta calculadora. \n\nEsta calculadora usa o [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) do Centro Comum de Investigação da Comissão Europeia.";
+"Please note that all values displayed here are specific for your city, **%@**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Por favor nota que todos os valores apresentados são específicos para a tua cidade, **%@**, e são meramente informativos. Todos os cálculos são baseados nos planos atuais para a instalação fotovoltaica, e podem precisar de ser ajustados mais tarde. Poupanças estimadas podem ser diferentes dos dados atuais, assim que a instalação fotovoltaica esteja operacional. Obviamente não farás nenhum compromisso ao utilizar esta calculadora. \n\nEsta calculadora usa o [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) do Centro Comum de Investigação da Comissão Europeia.";
 
 /* No comment provided by engineer. */
 "Prefer not to say" = "Prefiro não dizer";
@@ -629,7 +632,7 @@
 "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead." = "Esta é a quantidade de CO₂ que seria emitida se tivesses consumido a energia produzida a partir da rede elétrica local.";
 
 /* No comment provided by engineer. */
-"Time" = "Tempo";
+"Time" = "Hora";
 
 /* No comment provided by engineer. */
 "Trains & Trams" = "Comboios & Elétricos";
@@ -659,19 +662,19 @@
 "Waste treatment" = "Tratamento de resíduos";
 
 /* No comment provided by engineer. */
-"We are working on expanding your profile data with the addition of households, personalised vehicles, energy sources, and more." = "Estamos a trabalhar na expansão dos teus dados de perfil com a adição de habitações, veículos personalizados, fontes de energia e muito mais.";
-
-/* No comment provided by engineer. */
 "We can remind you to enter your electricity consumption based on your bill. Just let us know when you expect the next one." = "Nós podemos relembrar-te para introduzires o teu consumo de eletricidade baseado na tua fatura. Indica-nos quando esperas receber a próxima.";
 
 /* No comment provided by engineer. */
 "We can remind you to enter your energy consumption based on your bill. Just let us know when you expect the next one." = "Nós podemos relembrar-te para introduzires o teu consumo de energia baseado na tua fatura. Apenas indica-nos quando esperas receber a próxima.";
 
 /* No comment provided by engineer. */
-"We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Nós podemos relembrar-te regularmente para introduzires os teus dados de mobilidade. Apenas indica-nos o quão frequente viajas. ";
+"We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Nós podemos relembrar-te regularmente para introduzires os teus dados de transporte. Apenas indica-nos o quão frequente viajas. ";
 
 /* No comment provided by engineer. */
 "Weekday" = "Dia da semana";
+
+/* No comment provided by engineer. */
+"Weekly" = "Semanal";
 
 /* No comment provided by engineer. */
 "Year" = "Ano";
@@ -680,10 +683,13 @@
 "Year of birth" = "Ano de nascimento";
 
 /* No comment provided by engineer. */
-"You can find this information on your electricity bill." = "Podes encontrar este informação na tua fatura de eletricidade.";
+"Yearly" = "Anual";
 
 /* No comment provided by engineer. */
-"You can find this information on your heating bill." = "Podes encontrar este informação na tua fatura de aquecimento.";
+"You can find this information on your electricity bill." = "Podes encontrar esta informação na tua fatura de eletricidade.";
+
+/* No comment provided by engineer. */
+"You can find this information on your heating bill." = "Podes encontrar esta informação na tua fatura de aquecimento.";
 
 /* No comment provided by engineer. */
 "You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment." = "Brevemente podes reduzir a tua pegada de carbono ao investires na tua instalação fotovoltaica AURORA local. Até lá, já podes testar aqui, por quanto a tua pegada poderá ser reduzida, dependendo do teu potencial investimento.";
@@ -701,9 +707,6 @@
 "Your Carbon Emissions Labels" = "As tuas Etiquetas de Emissões de Carbono";
 
 /* No comment provided by engineer. */
-"Your carbon footprint" = "A tua pegada de carbono";
-
-/* No comment provided by engineer. */
 "Your data has been successfully downloaded. Do you want to export it?" = "Os teus dados foram descarregados com sucesso. Queres exportá-los?";
 
 /* No comment provided by engineer. */
@@ -713,7 +716,7 @@
 "Your Energy Labels" = "As tuas Etiquetas Energéticas";
 
 /* No comment provided by engineer. */
-"Your energy labels are calculated based on your tracked consumption and specific to your location. This means, as you enter data throughout the year, more of your carbon emission and energy budgets will be made available. For example: If you have only entered data for all days of January and December, 2/12 of the total budget will be used to calculate your label. The only exception is transportation, which yields the full budget after a certain number of annual entries. Your overall budget is based on the sum of your electricity, heating and transportation budgets." = "As suas etiquetas energéticas são calculadas com base no teu consumo de energia rastreado e específico da tua localização. Isto significa que, à medida que introduza dados ao longo do ano, mais das tuas emissões de carbono e balanços de energia serão disponibilizados. Por exemplo: Se tiveres introduzido dados apenas para todos os dias de Janeiro e Dezembro, 2/12 do balanço total será utilizado para calcular a tua etiqueta. A única excepção é o transporte, que produz o balanço completo após um certo número de entradas anuais. O teu balanço global é baseado na soma dos seus balanços de eletricidade, aquecimento e transporte.";
+"Your energy labels are calculated based on your tracked consumption and specific to your location. This means, as you enter data throughout the year, more of your carbon emission and energy budgets will be made available. For example: If you have only entered data for all days of January and December, 2/12 of the total budget will be used to calculate your label. The only exception is transportation, which yields the full budget after a certain number of annual entries. Your overall budget is based on the sum of your electricity, heating and transportation budgets." = "As tuas etiquetas energéticas são calculadas com base no teu consumo de energia rastreado e específico da tua localização. Isto significa que, à medida que introduza dados ao longo do ano, mais das tuas emissões de carbono e balanços de energia serão disponibilizados. Por exemplo: Se tiveres introduzido dados apenas para todos os dias de Janeiro e Dezembro, 2/12 do balanço total será utilizado para calcular a tua etiqueta. A única excepção é o transporte, que produz o balanço completo após um certo número de entradas anuais. O teu balanço global é baseado na soma dos seus balanços de eletricidade, aquecimento e transporte.";
 
 /* No comment provided by engineer. */
 "Your energy labels are currently not available." = "De momento, as tuas etiquetas energéticas não se encontram disponíveis.";
@@ -723,6 +726,9 @@
 
 /* No comment provided by engineer. */
 "Your Password has successfully been changed." = "A tua palavra-passe foi alterada com sucesso.";
+
+/* No comment provided by engineer. */
+"Your performance" = "O teu desempenho";
 
 /* No comment provided by engineer. */
 "Your profile changes couldn't be saved. Please check your inputs and try again." = "As tuas alterações de perfil não puderam ser gravadas. Por favor verifica os teus dados e tenta outra vez. ";

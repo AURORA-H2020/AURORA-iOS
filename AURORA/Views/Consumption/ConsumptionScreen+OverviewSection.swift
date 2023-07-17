@@ -9,6 +9,9 @@ extension ConsumptionScreen {
         
         // MARK: Properties
         
+        /// The user reference.
+        private let user: FirestoreEntityReference<User>
+        
         /// The currently presented sheet.
         @Binding
         private var sheet: ConsumptionScreen.Sheet?
@@ -21,15 +24,16 @@ extension ConsumptionScreen {
         
         /// Creates a new instance of `ConsumptionScreen.OverviewSection`
         /// - Parameters:
-        ///   - userId: The user identifier.
+        ///   - user: The user reference.
         ///   - sheet: The currently presented sheet.
         init(
-            userId: User.UID,
+            user: FirestoreEntityReference<User>,
             sheet: Binding<ConsumptionScreen.Sheet?>
         ) {
+            self.user = user
             self._sheet = sheet
             self._consumptionSummaries = .init(
-                context: userId,
+                context: user,
                 predicates: [
                     ConsumptionSummary.orderByYearPredicate,
                     .limitTo(1)
@@ -94,6 +98,17 @@ extension ConsumptionScreen.OverviewSection: View {
                     "Add a consumption",
                     systemImage: "plus.circle.fill"
                 )
+            }
+            NavigationLink(
+                destination: RecurringConsumptionList(
+                    user: self.user
+                )
+            ) {
+                Label(
+                    "Recurring consumptions",
+                    systemImage: "arrow.clockwise.circle.fill"
+                )
+                .foregroundColor(.accentColor)
             }
             Link(
                 destination: .init(

@@ -9,8 +9,8 @@ extension ConsumptionScreen {
         
         // MARK: Properties
         
-        /// The user identifier
-        private let userId: User.UID
+        /// The user reference
+        private let user: FirestoreEntityReference<User>
         
         /// The Consumptions.
         @FirestoreEntityQuery
@@ -31,12 +31,12 @@ extension ConsumptionScreen {
         ///   - userId: The user identifier.
         ///   - sheet: The currently presented sheet.
         init(
-            userId: User.UID,
+            user: FirestoreEntityReference<User>,
             sheet: Binding<ConsumptionScreen.Sheet?>
         ) {
-            self.userId = userId
+            self.user = user
             self._consumptions = .init(
-                context: userId,
+                context: user,
                 predicates: [
                     Consumption.orderByCreatedAtPredicate,
                     .limit(to: 3)
@@ -74,7 +74,7 @@ extension ConsumptionScreen.LatestEntriesSection: View {
                 } else {
                     NavigationLink(
                         destination: ConsumptionList(
-                            userId: self.userId
+                            user: self.user
                         )
                     ) {
                         Text("Show all entries")

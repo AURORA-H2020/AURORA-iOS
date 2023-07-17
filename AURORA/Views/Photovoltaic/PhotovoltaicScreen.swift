@@ -28,6 +28,33 @@ struct PhotovoltaicScreen {
     
 }
 
+// MARK: - Convenience Initializer
+
+extension PhotovoltaicScreen {
+    
+    /// Creates a new instance of `PhotovoltaicScreen`, if available.
+    /// - Parameter firebase: The Firebase instance
+    init?(
+        firebase: Firebase
+    ) {
+        // Verify country and city are available
+        // and the city has has photovoltaics as weel as pvgis params
+        guard let country = try? firebase.country?.get(),
+              let city = try? firebase.city?.get(),
+              city.hasPhotovoltaics == true,
+              let pvgisParams = city.pvgisParams else {
+            // Otherwise return nil
+            return nil
+        }
+        self.init(
+            country: country,
+            city: city,
+            pvgisParams: pvgisParams
+        )
+    }
+    
+}
+
 // MARK: - View
 
 extension PhotovoltaicScreen: View {
@@ -47,6 +74,17 @@ extension PhotovoltaicScreen: View {
                 value: self.investmentResult
             )
             .navigationTitle("Your Solar Power")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if self.investmentResult != nil {
+                        Button {
+                            self.investmentResult = nil
+                        } label: {
+                            Text("Reset")
+                        }
+                    }
+                }
+            }
         }
         .navigationViewStyle(.stack)
     }

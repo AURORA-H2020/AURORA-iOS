@@ -22,12 +22,12 @@ struct ConsumptionList {
     // MARK: Initializer
     
     /// Creates a new instance of `ConsumptionList`
-    /// - Parameter userId: The user identifier
+    /// - Parameter user: The user reference
     init(
-        userId: User.UID
+        user: FirestoreEntityReference<User>
     ) {
         self._consumptions = .init(
-            context: userId,
+            context: user,
             predicates: [
                 Consumption.orderByCreatedAtPredicate
             ]
@@ -107,13 +107,9 @@ extension ConsumptionList: View {
             switch sheet {
             case .consumptionForm(let consumption):
                 SheetNavigationView {
-                    if let consumption = consumption {
-                        ConsumptionForm(
-                            consumption: consumption
-                        )
-                    } else {
-                        ConsumptionForm()
-                    }
+                    ConsumptionForm(
+                        mode: consumption.flatMap(ConsumptionForm.Mode.edit) ?? .create()
+                    )
                 }
             }
         }

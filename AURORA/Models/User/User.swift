@@ -61,3 +61,23 @@ extension User {
     }
     
 }
+
+// MARK: - FirestoreEntityReference<User>+current()
+
+extension FirestoreEntityReference where Destination == User {
+    
+    /// Retrieve the currently authenticated user reference
+    /// - Parameter firebase: The Firebase instance. Default value `.default`
+    static func current(
+        firebase: Firebase = .default
+    ) throws -> Self {
+        .init(
+            id: try firebase
+                .authentication
+                .state
+                .userAccount
+                .id
+        )
+    }
+    
+}

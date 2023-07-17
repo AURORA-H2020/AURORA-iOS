@@ -1,3 +1,4 @@
+import Combine
 import FirebaseAuth
 import FirebaseCrashlytics
 import FirebaseFirestore
@@ -50,14 +51,14 @@ final class Firebase: ObservableObject {
     /// The auth state did change subscription
     private var authStateDidChangeSubscription: FirebaseAuth.AuthStateDidChangeListenerHandle?
     
-    /// The user document snapshot subscription
-    private var userDocumentSnapshotSubscription: FirebaseFirestore.ListenerRegistration?
+    /// The user document snapshot cancellable
+    private var userDocumentSnapshotCancellable: AnyCancellable?
     
-    /// The country document snapshot subscription
-    private var countryDocumentSnapshotSubscription: FirebaseFirestore.ListenerRegistration?
+    /// The country document snapshot cancellable
+    private var countryDocumentSnapshotCancellable: AnyCancellable?
     
-    /// The city document snapshot subscription
-    private var cityDocumentSnapshotSubscription: FirebaseFirestore.ListenerRegistration?
+    /// The city document snapshot cancellable
+    private var cityDocumentSnapshotCancellable: AnyCancellable?
     
     // MARK: Initializer
     
@@ -77,8 +78,6 @@ final class Firebase: ObservableObject {
     deinit {
         // Remove auth state did change subscription
         self.authStateDidChangeSubscription.flatMap(self.firebaseAuth.removeStateDidChangeListener)
-        // Remove user document snapshot subscription
-        self.userDocumentSnapshotSubscription?.remove()
     }
     
 }
@@ -145,15 +144,12 @@ extension Firebase {
     func setup(
         using userAccount: User.Account?
     ) {
-        // Clear current user document subscription
-        self.userDocumentSnapshotSubscription?.remove()
-        self.userDocumentSnapshotSubscription = nil
-        // Clear current country document subscription
-        self.countryDocumentSnapshotSubscription?.remove()
-        self.countryDocumentSnapshotSubscription = nil
-        // Clear current city document subscription
-        self.cityDocumentSnapshotSubscription?.remove()
-        self.cityDocumentSnapshotSubscription = nil
+        // Clear current user document cancellable
+        self.userDocumentSnapshotCancellable = nil
+        // Clear current country document cancellable
+        self.countryDocumentSnapshotCancellable = nil
+        // Clear current city document cancellable
+        self.cityDocumentSnapshotCancellable = nil
         // Verify a user account is available
         guard let userAccount = userAccount else {
             // Clear user
@@ -166,13 +162,12 @@ extension Firebase {
             return
         }
         // Subscribe to user document snapshots
-        self.userDocumentSnapshotSubscription = User
-            .collectionReference(in: self.firebaseFirestore)
-            .document(userAccount.uid)
-            .addSnapshotListener(
-                ofType: User.self,
-                crashlytics: self.crashlytics
-            ) { [weak self] user in
+        self.userDocumentSnapshotCancellable = self.firestore
+            .publisher(
+                User.self,
+                id: userAccount.id
+            )
+            .sink { [weak self] user in
                 // Update user
                 self?.user = user
                 // Setup using user result
@@ -185,25 +180,22 @@ extension Firebase {
     private func setup(
         using user: Result<User?, Error>?
     ) {
-        // Clear current country document subscription
-        self.countryDocumentSnapshotSubscription?.remove()
-        self.countryDocumentSnapshotSubscription = nil
-        // Clear current city document subscription
-        self.cityDocumentSnapshotSubscription?.remove()
-        self.cityDocumentSnapshotSubscription = nil
+        // Clear current country document cancellable
+        self.countryDocumentSnapshotCancellable = nil
+        // Clear current city document cancellable
+        self.cityDocumentSnapshotCancellable = nil
         // Switch on user
         switch user {
         case .success(let user):
             // Check if a user is available
             if let user = user {
                 // Add snapshot listener to country
-                self.cityDocumentSnapshotSubscription = Country
-                    .collectionReference()
-                    .document(user.country.id)
-                    .addSnapshotListener(
-                        ofType: Country.self,
-                        crashlytics: self.crashlytics
-                    ) { [weak self] country in
+                self.countryDocumentSnapshotCancellable = self.firestore
+                    .publisher(
+                        Country.self,
+                        id: user.country.id
+                    )
+                    .sink { [weak self] country in
                         // Update country
                         self?.country = country
                     }
@@ -215,13 +207,13 @@ extension Firebase {
             if let user = user,
                let cityReference = user.city {
                 // Add snapshot listener to city
-                self.cityDocumentSnapshotSubscription = City
-                    .collectionReference(context: user.country.id)
-                    .document(cityReference.id)
-                    .addSnapshotListener(
-                        ofType: City.self,
-                        crashlytics: self.crashlytics
-                    ) { [weak self] city in
+                self.cityDocumentSnapshotCancellable = self.firestore
+                    .publisher(
+                        City.self,
+                        context: user.country,
+                        id: cityReference.id
+                    )
+                    .sink { [weak self] city in
                         // Update city
                         self?.city = city
                     }
@@ -237,60 +229,6 @@ extension Firebase {
             // Update to nil
             self.country = nil
             self.city = nil
-        }
-    }
-    
-}
-
-// MARK: - FirebaseFirestore+DocumentReference+addSnapshotListener()
-
-private extension FirebaseFirestore.DocumentReference {
-    
-    /// Attaches a listener for DocumentSnapshot events of a given `FirestoreEntity`.
-    /// - Parameters:
-    ///   - entityType: The FirestoreEntity type.
-    ///   - crashlytics: The optional Crashlytics to report any errors to.
-    ///   - listener: A listener closure.
-    func addSnapshotListener<Entity: FirestoreEntity>(
-        ofType entityType: Entity.Type,
-        crashlytics: Firebase.Crashlytics,
-        listener: @escaping (Result<Entity?, Error>?) -> Void
-    ) -> FirebaseFirestore.ListenerRegistration {
-        self.addSnapshotListener { snapshot, error in
-            // Check if document does not exists
-            if snapshot?.exists == false {
-                // Invoke listener with success using nil
-                listener(.success(nil))
-            }
-            // Check if a snapshot is available
-            else if let snapshot = snapshot {
-                // Invoke listener by trying to decode data as entity type
-                listener(
-                    .init {
-                        // Record any decoding error
-                        try crashlytics.recordError {
-                            // Decode data as User
-                            try snapshot.data(as: Entity.self)
-                        }
-                    }
-                )
-            }
-            // Check if an error is available
-            else if let error = error {
-                // Invoke listener with failure and error
-                listener(.failure(error))
-                // Record error
-                crashlytics.record(
-                    error: error,
-                    userInfo: [
-                        "Hint": "SnapshotListener Error",
-                        "DocumentPath": snapshot?.reference.path ?? .init()
-                    ]
-                )
-            } else {
-                // Invoke listener with nil
-                listener(nil)
-            }
         }
     }
     

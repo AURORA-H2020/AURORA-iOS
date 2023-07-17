@@ -44,34 +44,82 @@ struct ConsumptionForm {
     
     // MARK: Initializer
     
-    /// Creates a new instance of `ConsumptionForm` in creation mode.
-    /// - Parameter category: The optional consumption category. Default value `nil`
+    /// Creates a new instance of `ConsumptionForm`
+    /// - Parameter mode: The mode. Default value `.create()`
     init(
-        category: Consumption.Category? = nil
+        mode: Mode = .create()
     ) {
-        self.consumptionId = nil
-        self._category = .init(initialValue: category)
+        switch mode {
+        case .create(let category):
+            self.consumptionId = nil
+            self._category = .init(initialValue: category)
+        case .edit(let consumption), .prefill(let consumption):
+            self.consumptionId = mode.isEdit ? consumption.id : nil
+            self._category = .init(initialValue: consumption.category)
+            self._value = .init(initialValue: consumption.value)
+            if let electricity = consumption.electricity {
+                self._partialElectricity = .init(
+                    initialValue: {
+                        var partial = electricity.partial
+                        if !mode.isEdit {
+                            partial.removeValue(for: \.startDate)
+                            partial.removeValue(for: \.endDate)
+                        }
+                        return partial
+                    }()
+                )
+            }
+            if let heating = consumption.heating {
+                self._partialHeating = .init(
+                    initialValue: {
+                        var partial = heating.partial
+                        if !mode.isEdit {
+                            partial.removeValue(for: \.startDate)
+                            partial.removeValue(for: \.endDate)
+                        }
+                        return partial
+                    }()
+                )
+            }
+            if let transportation = consumption.transportation {
+                self._partialTransportation = .init(
+                    initialValue: {
+                        var partial = transportation.partial
+                        if !mode.isEdit {
+                            partial.removeValue(for: \.dateOfTravel)
+                        }
+                        return partial
+                    }()
+                )
+            }
+            if let description = consumption.description {
+                self._description = .init(initialValue: description)
+            }
+        }
     }
     
-    /// Creates a new instance of `ConsumptionForm` in edit mode.
-    /// - Parameter consumption: The consumption to edit.
-    init(
-        consumption: Consumption
-    ) {
-        self.consumptionId = consumption.id
-        self._category = .init(initialValue: consumption.category)
-        self._value = .init(initialValue: consumption.value)
-        if let electricity = consumption.electricity {
-            self._partialElectricity = .init(initialValue: electricity.partial)
-        }
-        if let heating = consumption.heating {
-            self._partialHeating = .init(initialValue: heating.partial)
-        }
-        if let transportation = consumption.transportation {
-            self._partialTransportation = .init(initialValue: transportation.partial)
-        }
-        if let description = consumption.description {
-            self._description = .init(initialValue: description)
+}
+
+// MARK: - ConsumptionForm+Mode
+
+extension ConsumptionForm {
+    
+    /// A consumption form mode
+    enum Mode: Hashable {
+        /// Create
+        case create(Consumption.Category? = nil)
+        /// Edit
+        case edit(Consumption)
+        /// Prefill
+        case prefill(Consumption)
+        
+        /// Bool value if mode is set to edit
+        var isEdit: Bool {
+            if case .edit = self {
+                return true
+            } else {
+                return false
+            }
         }
     }
     

@@ -17,9 +17,9 @@ struct SettingsScreen {
     @State
     private var isChangePasswordFormPresented = false
     
-    /// Bool value if feature preview is presented
-    @State
-    private var isFeaturePreviewPresented = false
+    /// The RecurringConsumptionsReminderService
+    @StateObject
+    private var recurringConsumptionsReminderService: RecurringConsumptionsReminderService = .shared
     
     /// The Firebase instance
     @EnvironmentObject
@@ -63,13 +63,6 @@ extension SettingsScreen: View {
                 ChangePasswordForm()
             }
             .environmentObject(self.firebase)
-        }
-        .sheet(
-            isPresented: self.$isFeaturePreviewPresented
-        ) {
-            SheetNavigationView {
-                FeaturePreview()
-            }
         }
     }
     
@@ -186,6 +179,22 @@ private extension SettingsScreen {
                             .clipShape(Circle())
                     }
                 }
+            }
+            Toggle(
+                isOn: self.$recurringConsumptionsReminderService.isEnabled
+            ) {
+                HStack(spacing: 14) {
+                    Image(
+                        systemName: "arrow.clockwise.circle.fill"
+                    )
+                    .imageScale(.small)
+                    .foregroundColor(.accentColor)
+                    .padding(8)
+                    .background(Color.accentColor.opacity(0.3))
+                    .clipShape(Circle())
+                    Text("Regular energy behaviour changes")
+                }
+                .multilineTextAlignment(.leading)
             }
         }
         .headerProminence(.increased)
@@ -367,14 +376,6 @@ private extension SettingsScreen {
             .padding(.vertical, 15)
             .listRowInsets(.init())
         ) {
-            Button {
-                self.isFeaturePreviewPresented = true
-            } label: {
-                Label(
-                    "Feature Preview",
-                    systemImage: "wand.and.stars"
-                )
-            }
             Link(
                 destination: .init(
                     string: "https://www.aurora-h2020.eu/aurora/privacy-policy/"

@@ -23,15 +23,15 @@ struct ConsumptionSummaryView {
     
     /// Creates a new instance of `ConsumptionSummaryView`
     /// - Parameters:
-    ///   - userId: The user identifier.
+    ///   - user: The user reference.
     ///   - mode: The mode. Default value `.carbonEmission`
     init(
-        userId: User.UID,
+        user: FirestoreEntityReference<User>,
         mode: ConsumptionSummary.Mode = .carbonEmission
     ) {
         self._mode = .init(initialValue: mode)
         self._consumptionSummaries = .init(
-            context: userId,
+            context: user,
             predicates: [
                 ConsumptionSummary.orderByYearPredicate
             ]

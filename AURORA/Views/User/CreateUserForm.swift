@@ -198,7 +198,7 @@ extension CreateUserForm: View {
                         return
                     }
                     Task {
-                        self.cities = try? await self.firebase.firestore.get(City.self, context: country.id)
+                        self.cities = try? await self.firebase.firestore.get(City.self, context: country)
                     }
                 }
                 Section {

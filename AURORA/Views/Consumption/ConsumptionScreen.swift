@@ -11,6 +11,13 @@ struct ConsumptionScreen {
     /// The User.
     private let user: User
     
+    /// The RecurringConsumptionsReminderService
+    private let recurringConsumptionsReminderService: RecurringConsumptionsReminderService = .shared
+    
+    /// Bool if recurring consumptions reminder alert is presented
+    @State
+    private var isRecurringConsumptionsReminderAlertPresented = false
+    
     /// The currently presented sheet.
     @State
     private var sheet: Sheet?
@@ -37,6 +44,8 @@ extension ConsumptionScreen {
         case consumptionSummary(ConsumptionSummary.Mode = .carbonEmission)
         /// ConsumptionForm
         case consumptionForm(Consumption? = nil)
+        /// RecurringConsumptionList
+        case recurringConsumptionList
         
         /// The stable identity of the entity associated with this instance.
         var id: String {
@@ -50,6 +59,8 @@ extension ConsumptionScreen {
                 ]
                 .compactMap { $0 }
                 .joined(separator: "-")
+            case .recurringConsumptionList:
+                return "RecurringConsumptionList"
             }
         }
     }
@@ -64,13 +75,13 @@ extension ConsumptionScreen: View {
     var body: some View {
         NavigationView {
             List {
-                if let userId = self.user.id {
+                if let user = FirestoreEntityReference(self.user) {
                     OverviewSection(
-                        userId: .init(userId),
+                        user: user,
                         sheet: self.$sheet
                     )
                     LatestEntriesSection(
-                        userId: .init(userId),
+                        user: user,
                         sheet: self.$sheet
                     )
                 }
@@ -88,24 +99,52 @@ extension ConsumptionScreen: View {
         ) { sheet in
             switch sheet {
             case .consumptionSummary(let mode):
-                if let userId = self.user.id {
+                if let user = FirestoreEntityReference(self.user) {
                     SheetNavigationView {
                         ConsumptionSummaryView(
-                            userId: .init(userId),
+                            user: user,
                             mode: mode
                         )
                     }
                 }
             case .consumptionForm(let consumption):
                 SheetNavigationView {
-                    if let consumption = consumption {
-                        ConsumptionForm(
-                            consumption: consumption
+                    ConsumptionForm(
+                        mode: consumption.flatMap(ConsumptionForm.Mode.edit) ?? .create()
+                    )
+                }
+            case .recurringConsumptionList:
+                if let user = FirestoreEntityReference(self.user) {
+                    SheetNavigationView {
+                        RecurringConsumptionList(
+                            user: user
                         )
-                    } else {
-                        ConsumptionForm()
                     }
                 }
+            }
+        }
+        .alert(
+            "Update recurring consumptions?",
+            isPresented: self.$isRecurringConsumptionsReminderAlertPresented,
+            actions: {
+                Button("Yes") {
+                    self.sheet = .recurringConsumptionList
+                }
+                Button("No") {}
+                Button(
+                    "Don't ask me again",
+                    role: .cancel
+                ) {
+                    self.recurringConsumptionsReminderService.isEnabled = false
+                }
+            },
+            message: {
+                Text("Has your regular energy behaviour changed?")
+            }
+        )
+        .onAppear {
+            if self.recurringConsumptionsReminderService.shouldShowReminder {
+                self.isRecurringConsumptionsReminderAlertPresented = true
             }
         }
     }

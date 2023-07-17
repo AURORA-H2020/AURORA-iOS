@@ -6,20 +6,8 @@ import Foundation
 /// A FirestoreEntity Reference
 struct FirestoreEntityReference<Destination: FirestoreEntity>: Hashable, Identifiable, Sendable {
     
-    // MARK: Properties
-    
     /// The identifier.
     var id: String
-    
-    // MARK: Initializer
-    
-    /// Creates a new instance of `FirestoreEntityReference`
-    /// - Parameter id: The identifier.
-    init(
-        id: String
-    ) {
-        self.id = id
-    }
     
 }
 

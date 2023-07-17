@@ -20,7 +20,6 @@
 		3D1EE5E7298AA919009E4645 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E6298AA919009E4645 /* FirebaseAuth */; };
 		3D1EE5E9298AA919009E4645 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E8298AA919009E4645 /* FirebaseCrashlytics */; };
 		3D1EE5EB298AA919009E4645 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5EA298AA919009E4645 /* FirebaseFirestore */; };
-		3D1EE5ED298AA919009E4645 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5EC298AA919009E4645 /* FirebaseFirestoreCombine-Community */; };
 		3D1EE5EF298AA919009E4645 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5EE298AA919009E4645 /* FirebaseFirestoreSwift */; };
 		3D1EE5F1298AA919009E4645 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5F0298AA919009E4645 /* FirebaseFunctions */; };
 		3D1EE5F3298AA919009E4645 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5F2298AA919009E4645 /* FirebasePerformance */; };
@@ -36,8 +35,6 @@
 		3D1EE639298AAC5B009E4645 /* ConsumptionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE632298AAC5B009E4645 /* ConsumptionScreen.swift */; };
 		3D1EE63A298AAC5B009E4645 /* ConsumptionList+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE634298AAC5B009E4645 /* ConsumptionList+Cell.swift */; };
 		3D1EE64B298AAC9E009E4645 /* ChangePasswordForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE63E298AAC9E009E4645 /* ChangePasswordForm.swift */; };
-		3D1EE64C298AAC9E009E4645 /* FeaturePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE640298AAC9E009E4645 /* FeaturePreview.swift */; };
-		3D1EE64D298AAC9E009E4645 /* FeaturePreview+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE641298AAC9E009E4645 /* FeaturePreview+Page.swift */; };
 		3D1EE64E298AAC9E009E4645 /* ChangeMailAddressForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE643298AAC9E009E4645 /* ChangeMailAddressForm.swift */; };
 		3D1EE64F298AAC9E009E4645 /* LocalNotificationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE645298AAC9E009E4645 /* LocalNotificationForm.swift */; };
 		3D1EE650298AAC9E009E4645 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE646298AAC9E009E4645 /* SettingsScreen.swift */; };
@@ -57,7 +54,6 @@
 		3D1EE689298AACF8009E4645 /* Consumption+Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE665298AACF8009E4645 /* Consumption+Transportation.swift */; };
 		3D1EE68A298AACF8009E4645 /* Consumption+Heating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE667298AACF8009E4645 /* Consumption+Heating.swift */; };
 		3D1EE68B298AACF8009E4645 /* Consumption+Electricity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE669298AACF8009E4645 /* Consumption+Electricity.swift */; };
-		3D1EE68C298AACF8009E4645 /* User+UID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE66B298AACF8009E4645 /* User+UID.swift */; };
 		3D1EE68D298AACF8009E4645 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE66C298AACF8009E4645 /* User.swift */; };
 		3D1EE68E298AACF8009E4645 /* User+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE66D298AACF8009E4645 /* User+Account.swift */; };
 		3D1EE68F298AACF8009E4645 /* User+Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE66E298AACF8009E4645 /* User+Gender.swift */; };
@@ -76,11 +72,6 @@
 		3D1EE6A6298AADD4009E4645 /* LocalNotificationRequest+Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE69F298AADD4009E4645 /* LocalNotificationRequest+Trigger.swift */; };
 		3D1EE6A7298AADD4009E4645 /* LocalNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6A0298AADD4009E4645 /* LocalNotificationRequest.swift */; };
 		3D1EE6A8298AADD4009E4645 /* UNMutableNotificationContent+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6A2298AADD4009E4645 /* UNMutableNotificationContent+Init.swift */; };
-		3D1EE6AF298AAE24009E4645 /* PieChartGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6AA298AAE24009E4645 /* PieChartGeometry.swift */; };
-		3D1EE6B0298AAE24009E4645 /* PieChartSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6AB298AAE24009E4645 /* PieChartSpacing.swift */; };
-		3D1EE6B1298AAE24009E4645 /* PieChart+Slice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6AC298AAE24009E4645 /* PieChart+Slice.swift */; };
-		3D1EE6B2298AAE24009E4645 /* PieChart+Slice+Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6AD298AAE24009E4645 /* PieChart+Slice+Geometry.swift */; };
-		3D1EE6B3298AAE24009E4645 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6AE298AAE24009E4645 /* PieChart.swift */; };
 		3D1EE6B8298AAE4C009E4645 /* View+delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6B4298AAE4C009E4645 /* View+delay.swift */; };
 		3D1EE6B9298AAE4C009E4645 /* View+animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6B5298AAE4C009E4645 /* View+animation.swift */; };
 		3D1EE6BA298AAE4C009E4645 /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6B6298AAE4C009E4645 /* Collection+Safe.swift */; };
@@ -93,6 +84,7 @@
 		3D1EE6CF298AAEC0009E4645 /* SheetNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */; };
 		3D1EE6D0298AAEC0009E4645 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */; };
 		3D1EE6D2298AAEC0009E4645 /* EmptyPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */; };
+		3D238F462A2E792A002C11BC /* MultiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D238F452A2E792A002C11BC /* MultiPicker.swift */; };
 		3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */; };
 		3D384D862948F6C40018249C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D384D852948F6C40018249C /* GoogleService-Info.plist */; };
 		3D3B8D3E2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8D3D2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift */; };
@@ -108,6 +100,7 @@
 		3D5CB9CD29D6D4F3008E7414 /* ConsumptionSummary+Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CB9CC29D6D4F2008E7414 /* ConsumptionSummary+Mode.swift */; };
 		3D6F643529D410F70096CB97 /* ConsumptionSummaryView+Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F643429D410F70096CB97 /* ConsumptionSummaryView+Chart.swift */; };
 		3D6F643729D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift */; };
+		3D7495E22A327A6700349A89 /* RecurringConsumptionsReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7495E12A327A6700349A89 /* RecurringConsumptionsReminderService.swift */; };
 		3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */; };
 		3D8A05E32991AF2F005DEA43 /* ConsumptionForm+Electricity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E22991AF2F005DEA43 /* ConsumptionForm+Electricity.swift */; };
 		3D8A05E52991AF9A005DEA43 /* ConsumptionForm+Heating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E42991AF9A005DEA43 /* ConsumptionForm+Heating.swift */; };
@@ -116,14 +109,25 @@
 		3D8C289029C70B6500811044 /* ConsumptionSummary+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C288F29C70B6500811044 /* ConsumptionSummary+Category.swift */; };
 		3D8C289229C70C0100811044 /* ConsumptionSummary+Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C289129C70C0100811044 /* ConsumptionSummary+Month.swift */; };
 		3D8C289429C70D9F00811044 /* ConsumptionSummary+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C289329C70D9F00811044 /* ConsumptionSummary+Label.swift */; };
+		3D8E1EFB2A2949C600416DFF /* RecurringConsumptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1EFA2A2949C600416DFF /* RecurringConsumptionList.swift */; };
+		3D8E1EFD2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1EFC2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift */; };
+		3D8E1EFF2A294B4A00416DFF /* RecurringConsumptionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1EFE2A294B4A00416DFF /* RecurringConsumptionForm.swift */; };
 		3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */; };
 		3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */; };
 		3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */; };
+		3DC28EEE2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC28EED2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift */; };
+		3DC28EF02A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC28EEF2A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift */; };
 		3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */; };
+		3DCB91FE2A28F25C00D6F748 /* RecurringConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */; };
+		3DCB92022A28F67B00D6F748 /* RecurringConsumption+Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */; };
+		3DCB92042A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB92032A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift */; };
+		3DCB92062A28F85E00D6F748 /* RecurringConsumption+Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB92052A28F85E00D6F748 /* RecurringConsumption+Transportation.swift */; };
 		3DD34C5A2948F280002064D8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD34C592948F280002064D8 /* App.swift */; };
 		3DD34C5E2948F280002064D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD34C5D2948F280002064D8 /* Assets.xcassets */; };
 		3DDEDA0029DC873C00303BA1 /* FormatStyle+Kilometers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDED9FF29DC873C00303BA1 /* FormatStyle+Kilometers.swift */; };
 		3DDEDA0229DC87D300303BA1 /* FormatStyle+KilowattHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDEDA0129DC87D300303BA1 /* FormatStyle+KilowattHours.swift */; };
+		3DFBBA802A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */; };
+		3DFBBA822A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */; };
 		4355071229F2764300F60352 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4355071029F2764300F60352 /* InfoPlist.strings */; };
 		4355071529F2764300F60352 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4355071329F2764300F60352 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -147,8 +151,6 @@
 		3D1EE632298AAC5B009E4645 /* ConsumptionScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumptionScreen.swift; sourceTree = "<group>"; };
 		3D1EE634298AAC5B009E4645 /* ConsumptionList+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsumptionList+Cell.swift"; sourceTree = "<group>"; };
 		3D1EE63E298AAC9E009E4645 /* ChangePasswordForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordForm.swift; sourceTree = "<group>"; };
-		3D1EE640298AAC9E009E4645 /* FeaturePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePreview.swift; sourceTree = "<group>"; };
-		3D1EE641298AAC9E009E4645 /* FeaturePreview+Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeaturePreview+Page.swift"; sourceTree = "<group>"; };
 		3D1EE643298AAC9E009E4645 /* ChangeMailAddressForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeMailAddressForm.swift; sourceTree = "<group>"; };
 		3D1EE645298AAC9E009E4645 /* LocalNotificationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationForm.swift; sourceTree = "<group>"; };
 		3D1EE646298AAC9E009E4645 /* SettingsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
@@ -168,7 +170,6 @@
 		3D1EE665298AACF8009E4645 /* Consumption+Transportation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Consumption+Transportation.swift"; sourceTree = "<group>"; };
 		3D1EE667298AACF8009E4645 /* Consumption+Heating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Consumption+Heating.swift"; sourceTree = "<group>"; };
 		3D1EE669298AACF8009E4645 /* Consumption+Electricity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Consumption+Electricity.swift"; sourceTree = "<group>"; };
-		3D1EE66B298AACF8009E4645 /* User+UID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+UID.swift"; sourceTree = "<group>"; };
 		3D1EE66C298AACF8009E4645 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3D1EE66D298AACF8009E4645 /* User+Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Account.swift"; sourceTree = "<group>"; };
 		3D1EE66E298AACF8009E4645 /* User+Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Gender.swift"; sourceTree = "<group>"; };
@@ -187,11 +188,6 @@
 		3D1EE69F298AADD4009E4645 /* LocalNotificationRequest+Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocalNotificationRequest+Trigger.swift"; sourceTree = "<group>"; };
 		3D1EE6A0298AADD4009E4645 /* LocalNotificationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationRequest.swift; sourceTree = "<group>"; };
 		3D1EE6A2298AADD4009E4645 /* UNMutableNotificationContent+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UNMutableNotificationContent+Init.swift"; sourceTree = "<group>"; };
-		3D1EE6AA298AAE24009E4645 /* PieChartGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartGeometry.swift; sourceTree = "<group>"; };
-		3D1EE6AB298AAE24009E4645 /* PieChartSpacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartSpacing.swift; sourceTree = "<group>"; };
-		3D1EE6AC298AAE24009E4645 /* PieChart+Slice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PieChart+Slice.swift"; sourceTree = "<group>"; };
-		3D1EE6AD298AAE24009E4645 /* PieChart+Slice+Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PieChart+Slice+Geometry.swift"; sourceTree = "<group>"; };
-		3D1EE6AE298AAE24009E4645 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		3D1EE6B4298AAE4C009E4645 /* View+delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+delay.swift"; sourceTree = "<group>"; };
 		3D1EE6B5298AAE4C009E4645 /* View+animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+animation.swift"; sourceTree = "<group>"; };
 		3D1EE6B6298AAE4C009E4645 /* Collection+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
@@ -204,6 +200,7 @@
 		3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetNavigationView.swift; sourceTree = "<group>"; };
 		3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyPlaceholder.swift; sourceTree = "<group>"; };
+		3D238F452A2E792A002C11BC /* MultiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPicker.swift; sourceTree = "<group>"; };
 		3D2BB4F4298E58D80082F41B /* ConsumptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionView.swift; sourceTree = "<group>"; };
 		3D384D852948F6C40018249C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D3B8D3D2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Transportation+TransportationType+Group.swift"; sourceTree = "<group>"; };
@@ -219,6 +216,7 @@
 		3D5CB9CC29D6D4F2008E7414 /* ConsumptionSummary+Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Mode.swift"; sourceTree = "<group>"; };
 		3D6F643429D410F70096CB97 /* ConsumptionSummaryView+Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+Chart.swift"; sourceTree = "<group>"; };
 		3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+LabeledConsumptionSection.swift"; sourceTree = "<group>"; };
+		3D7495E12A327A6700349A89 /* RecurringConsumptionsReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumptionsReminderService.swift; sourceTree = "<group>"; };
 		3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Authentication+Method.swift"; sourceTree = "<group>"; };
 		3D83A231296849F20066B039 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		3D8A05E22991AF2F005DEA43 /* ConsumptionForm+Electricity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionForm+Electricity.swift"; sourceTree = "<group>"; };
@@ -228,16 +226,27 @@
 		3D8C288F29C70B6500811044 /* ConsumptionSummary+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Category.swift"; sourceTree = "<group>"; };
 		3D8C289129C70C0100811044 /* ConsumptionSummary+Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Month.swift"; sourceTree = "<group>"; };
 		3D8C289329C70D9F00811044 /* ConsumptionSummary+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Label.swift"; sourceTree = "<group>"; };
+		3D8E1EFA2A2949C600416DFF /* RecurringConsumptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumptionList.swift; sourceTree = "<group>"; };
+		3D8E1EFC2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumptionList+Cell.swift"; sourceTree = "<group>"; };
+		3D8E1EFE2A294B4A00416DFF /* RecurringConsumptionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumptionForm.swift; sourceTree = "<group>"; };
 		3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionSummaryView.swift; sourceTree = "<group>"; };
 		3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+CarbonEmissions.swift"; sourceTree = "<group>"; };
 		3DAA79C2297153F40097DD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionList.swift; sourceTree = "<group>"; };
+		3DC28EED2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSubcollectionEntity.swift; sourceTree = "<group>"; };
+		3DC28EEF2A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEntityIdentifierMissingError.swift; sourceTree = "<group>"; };
 		3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotovoltaicScreen.swift; sourceTree = "<group>"; };
+		3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumption.swift; sourceTree = "<group>"; };
+		3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency.swift"; sourceTree = "<group>"; };
+		3DCB92032A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+Unit.swift"; sourceTree = "<group>"; };
+		3DCB92052A28F85E00D6F748 /* RecurringConsumption+Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Transportation.swift"; sourceTree = "<group>"; };
 		3DD34C562948F280002064D8 /* AURORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AURORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD34C592948F280002064D8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		3DD34C5D2948F280002064D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DDED9FF29DC873C00303BA1 /* FormatStyle+Kilometers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+Kilometers.swift"; sourceTree = "<group>"; };
 		3DDEDA0129DC87D300303BA1 /* FormatStyle+KilowattHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+KilowattHours.swift"; sourceTree = "<group>"; };
+		3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+Weekday.swift"; sourceTree = "<group>"; };
+		3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+DayOfMonth.swift"; sourceTree = "<group>"; };
 		4355071129F2764300F60352 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4355071429F2764300F60352 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		437400FE2A0D58B6007FFB77 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -263,7 +272,6 @@
 				3D1EE5E1298AA919009E4645 /* FirebaseAnalytics in Frameworks */,
 				3D1EE5E7298AA919009E4645 /* FirebaseAuth in Frameworks */,
 				3D1EE5EB298AA919009E4645 /* FirebaseFirestore in Frameworks */,
-				3D1EE5ED298AA919009E4645 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				3D1EE5EF298AA919009E4645 /* FirebaseFirestoreSwift in Frameworks */,
 				3D1EE5F6298AA965009E4645 /* GoogleSignInSwift in Frameworks */,
 			);
@@ -275,6 +283,7 @@
 		3D1CA71F298CF5050009177C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3DCB91FC2A28F24700D6F748 /* RecurringConsumption */,
 				3D3B8D42299150DB008590A8 /* City */,
 				3D3B8D3F29915045008590A8 /* Country */,
 				3D1EE66A298AACF8009E4645 /* User */,
@@ -336,7 +345,6 @@
 				3D1EE646298AAC9E009E4645 /* SettingsScreen.swift */,
 				3D1EE642298AAC9E009E4645 /* ChangeMailAddress */,
 				3D1EE63D298AAC9E009E4645 /* ChangePassword */,
-				3D1EE63F298AAC9E009E4645 /* FeaturePreview */,
 				3D1EE644298AAC9E009E4645 /* LocalNotification */,
 				3D1EE647298AAC9E009E4645 /* ThirdPartyDependency */,
 			);
@@ -353,6 +361,7 @@
 				3DC2C2A929B7852E00A37D0C /* Detail */,
 				3D1EE630298AAC5B009E4645 /* Form */,
 				3D1EE633298AAC5B009E4645 /* List */,
+				3D8E1EF92A2949A700416DFF /* Recurring */,
 			);
 			path = Consumption;
 			sourceTree = "<group>";
@@ -385,12 +394,12 @@
 			isa = PBXGroup;
 			children = (
 				3D1EE6C4298AAEA3009E4645 /* AsyncButton */,
-				3D1EE6A9298AAE24009E4645 /* PieChart */,
 				3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */,
 				3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */,
 				3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */,
 				3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */,
 				3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */,
+				3D238F452A2E792A002C11BC /* MultiPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -411,6 +420,7 @@
 				3D1EE5F8298AA97D009E4645 /* Firebase */,
 				3D1EE606298AAAB8009E4645 /* LocalNotification */,
 				3D57AEF129B792CC000EE0EB /* PVGISService */,
+				3D7495E02A327A3B00349A89 /* RecurringConsumptionsReminderService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -470,15 +480,6 @@
 			path = ChangePassword;
 			sourceTree = "<group>";
 		};
-		3D1EE63F298AAC9E009E4645 /* FeaturePreview */ = {
-			isa = PBXGroup;
-			children = (
-				3D1EE640298AAC9E009E4645 /* FeaturePreview.swift */,
-				3D1EE641298AAC9E009E4645 /* FeaturePreview+Page.swift */,
-			);
-			path = FeaturePreview;
-			sourceTree = "<group>";
-		};
 		3D1EE642298AAC9E009E4645 /* ChangeMailAddress */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,8 +527,10 @@
 			children = (
 				3D1EE65C298AACF8009E4645 /* Firebase+Firestore.swift */,
 				3D1EE671298AACF8009E4645 /* FirestoreEntity.swift */,
+				3DC28EED2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift */,
 				3D1EE670298AACF8009E4645 /* FirestoreEntityReference.swift */,
 				3D1EE66F298AACF8009E4645 /* FirestoreEntityQuery.swift */,
+				3DC28EEF2A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -577,9 +580,8 @@
 			isa = PBXGroup;
 			children = (
 				3D1EE66C298AACF8009E4645 /* User.swift */,
-				3D1EE66B298AACF8009E4645 /* User+UID.swift */,
-				3D1EE66D298AACF8009E4645 /* User+Account.swift */,
 				3D1EE66E298AACF8009E4645 /* User+Gender.swift */,
+				3D1EE66D298AACF8009E4645 /* User+Account.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -647,18 +649,6 @@
 			path = LocalNotificationRequest;
 			sourceTree = "<group>";
 		};
-		3D1EE6A9298AAE24009E4645 /* PieChart */ = {
-			isa = PBXGroup;
-			children = (
-				3D1EE6AA298AAE24009E4645 /* PieChartGeometry.swift */,
-				3D1EE6AB298AAE24009E4645 /* PieChartSpacing.swift */,
-				3D1EE6AC298AAE24009E4645 /* PieChart+Slice.swift */,
-				3D1EE6AD298AAE24009E4645 /* PieChart+Slice+Geometry.swift */,
-				3D1EE6AE298AAE24009E4645 /* PieChart.swift */,
-			);
-			path = PieChart;
-			sourceTree = "<group>";
-		};
 		3D1EE6C4298AAEA3009E4645 /* AsyncButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +682,24 @@
 				3D57AEF229B792ED000EE0EB /* PVGISService.swift */,
 			);
 			path = PVGISService;
+			sourceTree = "<group>";
+		};
+		3D7495E02A327A3B00349A89 /* RecurringConsumptionsReminderService */ = {
+			isa = PBXGroup;
+			children = (
+				3D7495E12A327A6700349A89 /* RecurringConsumptionsReminderService.swift */,
+			);
+			path = RecurringConsumptionsReminderService;
+			sourceTree = "<group>";
+		};
+		3D8E1EF92A2949A700416DFF /* Recurring */ = {
+			isa = PBXGroup;
+			children = (
+				3D8E1EFA2A2949C600416DFF /* RecurringConsumptionList.swift */,
+				3D8E1EFC2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift */,
+				3D8E1EFE2A294B4A00416DFF /* RecurringConsumptionForm.swift */,
+			);
+			path = Recurring;
 			sourceTree = "<group>";
 		};
 		3D98EC4829C9A63400CC3ABE /* Summary */ = {
@@ -728,6 +736,19 @@
 				3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */,
 			);
 			path = Photovoltaic;
+			sourceTree = "<group>";
+		};
+		3DCB91FC2A28F24700D6F748 /* RecurringConsumption */ = {
+			isa = PBXGroup;
+			children = (
+				3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */,
+				3DCB92052A28F85E00D6F748 /* RecurringConsumption+Transportation.swift */,
+				3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */,
+				3DCB92032A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift */,
+				3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */,
+				3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */,
+			);
+			path = RecurringConsumption;
 			sourceTree = "<group>";
 		};
 		3DD34C4D2948F280002064D8 = {
@@ -805,7 +826,6 @@
 				3D1EE5E6298AA919009E4645 /* FirebaseAuth */,
 				3D1EE5E8298AA919009E4645 /* FirebaseCrashlytics */,
 				3D1EE5EA298AA919009E4645 /* FirebaseFirestore */,
-				3D1EE5EC298AA919009E4645 /* FirebaseFirestoreCombine-Community */,
 				3D1EE5EE298AA919009E4645 /* FirebaseFirestoreSwift */,
 				3D1EE5F0298AA919009E4645 /* FirebaseFunctions */,
 				3D1EE5F2298AA919009E4645 /* FirebasePerformance */,
@@ -899,17 +919,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D1EE690298AACF8009E4645 /* FirestoreEntityQuery.swift in Sources */,
-				3D1EE6AF298AAE24009E4645 /* PieChartGeometry.swift in Sources */,
 				3D1EE6A8298AADD4009E4645 /* UNMutableNotificationContent+Init.swift in Sources */,
 				3D1EE612298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift in Sources */,
 				3D5CB9CB29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift in Sources */,
 				3D5CB9CD29D6D4F3008E7414 /* ConsumptionSummary+Mode.swift in Sources */,
+				3DCB92022A28F67B00D6F748 /* RecurringConsumption+Frequency.swift in Sources */,
+				3D238F462A2E792A002C11BC /* MultiPicker.swift in Sources */,
 				3D1EE697298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift in Sources */,
 				3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */,
 				3D1EE60E298AAB39009E4645 /* AuthenticationScreen.swift in Sources */,
 				3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */,
 				3D1EE688298AACF8009E4645 /* Consumption+Transportation+TransportationType.swift in Sources */,
 				3D1EE68F298AACF8009E4645 /* User+Gender.swift in Sources */,
+				3D8E1EFD2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift in Sources */,
 				3D1EE683298AACF8009E4645 /* Firebase+Firestore.swift in Sources */,
 				3D1EE689298AACF8009E4645 /* Consumption+Transportation.swift in Sources */,
 				3D1EE698298AACF8009E4645 /* GoogleFirebaseAuthenticationProvider.swift in Sources */,
@@ -924,16 +946,17 @@
 				3D1EE699298AACF8009E4645 /* FirebaseAuthenticationProvider.swift in Sources */,
 				3D3B8D412991504E008590A8 /* Country.swift in Sources */,
 				3D8C289229C70C0100811044 /* ConsumptionSummary+Month.swift in Sources */,
+				3DCB92062A28F85E00D6F748 /* RecurringConsumption+Transportation.swift in Sources */,
 				3D8C289029C70B6500811044 /* ConsumptionSummary+Category.swift in Sources */,
 				3D1EE6A4298AADD4009E4645 /* LocalNotificationRequest+ID.swift in Sources */,
 				3D1EE69A298AACF8009E4645 /* Firebase+Authentication+State.swift in Sources */,
 				3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */,
+				3D7495E22A327A6700349A89 /* RecurringConsumptionsReminderService.swift in Sources */,
+				3DCB91FE2A28F25C00D6F748 /* RecurringConsumption.swift in Sources */,
 				3D1EE685298AACF8009E4645 /* Consumption.swift in Sources */,
 				3D1EE694298AACF8009E4645 /* ConsumptionSummary.swift in Sources */,
 				3D1EE692298AACF8009E4645 /* FirestoreEntity.swift in Sources */,
 				3D1EE6A7298AADD4009E4645 /* LocalNotificationRequest.swift in Sources */,
-				3D1EE6B3298AAE24009E4645 /* PieChart.swift in Sources */,
-				3D1EE6B2298AAE24009E4645 /* PieChart+Slice+Geometry.swift in Sources */,
 				3D1EE655298AACE0009E4645 /* CreateUserForm.swift in Sources */,
 				3D1EE610298AAB39009E4645 /* AuthenticationProviderButton+Style.swift in Sources */,
 				3D1EE6D2298AAEC0009E4645 /* EmptyPlaceholder.swift in Sources */,
@@ -956,22 +979,23 @@
 				3D57AEF729B795A7000EE0EB /* City+PVGISParams.swift in Sources */,
 				3D8A05E32991AF2F005DEA43 /* ConsumptionForm+Electricity.swift in Sources */,
 				3D1EE68D298AACF8009E4645 /* User.swift in Sources */,
-				3D1EE68C298AACF8009E4645 /* User+UID.swift in Sources */,
-				3D1EE64D298AAC9E009E4645 /* FeaturePreview+Page.swift in Sources */,
 				3D8A05E72991B006005DEA43 /* ConsumptionForm+Transportation.swift in Sources */,
 				3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */,
 				3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */,
 				3D6F643729D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift in Sources */,
+				3DC28EF02A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift in Sources */,
 				3D2BB4F5298E58D80082F41B /* ConsumptionView.swift in Sources */,
 				3D3B8D3E2991407B008590A8 /* Consumption+Transportation+TransportationType+Group.swift in Sources */,
 				3D1EE681298AACF8009E4645 /* Firebase+Functions.swift in Sources */,
 				3D1EE682298AACF8009E4645 /* Firebase.swift in Sources */,
+				3DFBBA822A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift in Sources */,
 				3D1EE687298AACF8009E4645 /* Consumption+Transportation+PublicVehicleOccupancy.swift in Sources */,
 				3DD34C5A2948F280002064D8 /* App.swift in Sources */,
 				3D1EE686298AACF8009E4645 /* Consumption+Category.swift in Sources */,
-				3D1EE6B0298AAE24009E4645 /* PieChartSpacing.swift in Sources */,
 				3D1EE651298AAC9E009E4645 /* ThirdPartyDependency.swift in Sources */,
 				3D1EE696298AACF8009E4645 /* Firebase+Authentication.swift in Sources */,
+				3D8E1EFF2A294B4A00416DFF /* RecurringConsumptionForm.swift in Sources */,
+				3DC28EEE2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift in Sources */,
 				3D3B8D44299150E5008590A8 /* City.swift in Sources */,
 				3D08956A2991080800C996AD /* Consumption+Heating+HeatingFuel.swift in Sources */,
 				3D1EE6C2298AAE79009E4645 /* Partial.swift in Sources */,
@@ -981,7 +1005,9 @@
 				3D8C288E29C70AAF00811044 /* ConsumptionSummary+LabeledConsumption.swift in Sources */,
 				3D1EE6A5298AADD4009E4645 /* LocalNotificationRequest+Trigger+MatchingDateComponents.swift in Sources */,
 				3D6F643529D410F70096CB97 /* ConsumptionSummaryView+Chart.swift in Sources */,
+				3DCB92042A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift in Sources */,
 				3D8A05E52991AF9A005DEA43 /* ConsumptionForm+Heating.swift in Sources */,
+				3D8E1EFB2A2949C600416DFF /* RecurringConsumptionList.swift in Sources */,
 				3D1EE68A298AACF8009E4645 /* Consumption+Heating.swift in Sources */,
 				3D1EE63A298AAC5B009E4645 /* ConsumptionList+Cell.swift in Sources */,
 				3D537A5C298B1C2C00C294AA /* String+isMailAddress.swift in Sources */,
@@ -991,13 +1017,12 @@
 				3D1EE64F298AAC9E009E4645 /* LocalNotificationForm.swift in Sources */,
 				3D537A62298B1E9500C294AA /* Password.swift in Sources */,
 				3D1EE6CA298AAEA3009E4645 /* AsyncButton+Modifiers.swift in Sources */,
-				3D1EE64C298AAC9E009E4645 /* FeaturePreview.swift in Sources */,
 				3D1CA71A298CEFF40009177C /* ConsumptionScreen+LatestEntriesSection.swift in Sources */,
 				3D411D0F29BB28E0008EBB75 /* CurrencyText.swift in Sources */,
 				3D1EE6A3298AADD4009E4645 /* LocalNotificationCenter.swift in Sources */,
 				3D1EE64B298AAC9E009E4645 /* ChangePasswordForm.swift in Sources */,
 				3D1EE68E298AACF8009E4645 /* User+Account.swift in Sources */,
-				3D1EE6B1298AAE24009E4645 /* PieChart+Slice.swift in Sources */,
+				3DFBBA802A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift in Sources */,
 				3D1EE6C9298AAEA3009E4645 /* AsyncButton.swift in Sources */,
 				3D1EE6B8298AAE4C009E4645 /* View+delay.swift in Sources */,
 				3D1EE650298AAC9E009E4645 /* SettingsScreen.swift in Sources */,
@@ -1248,7 +1273,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 10.9.0;
+				version = 10.12.0;
 			};
 		};
 		3D1EE5F4298AA965009E4645 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
@@ -1291,11 +1316,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D1EE5DF298AA919009E4645 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		3D1EE5EC298AA919009E4645 /* FirebaseFirestoreCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D1EE5DF298AA919009E4645 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreCombine-Community";
 		};
 		3D1EE5EE298AA919009E4645 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
