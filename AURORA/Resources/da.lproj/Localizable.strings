@@ -350,6 +350,9 @@
 "End" = "Slut";
 
 /* No comment provided by engineer. */
+"End of travel" = "Rejsens afslutning";
+
+/* No comment provided by engineer. */
 "Energy Used" = "Energi forbrugt";
 
 /* No comment provided by engineer. */
@@ -372,9 +375,6 @@
 
 /* No comment provided by engineer. */
 "Export Data" = "Eksportér data";
-
-/* No comment provided by engineer. */
-"Feature Preview" = "Funktionsforhåndsvisning";
 
 /* No comment provided by engineer. */
 "Female" = "Kvinde";
@@ -405,9 +405,6 @@
 
 /* No comment provided by engineer. */
 "Geothermal energy" = "Geotermisk energi";
-
-/* No comment provided by engineer. */
-"Get an overview of your latest submitted data, pending entry requests, and how you can improve your carbon footprint accuracy." = "Få et overblik over dine seneste indsendte data, anmodninger om indlæg, og hvordan du kan forbedre nøjagtigheden af dit CO₂-aftryk.";
 
 /* No comment provided by engineer. */
 "Ground Breaker" = "Ground Breaker";
@@ -554,9 +551,6 @@
 "Okay" = "Okay";
 
 /* No comment provided by engineer. */
-"Once our solar installations go live in each demo site you can track the energy production right from the app." = "Når vores solcelleanlæg går live på hvert demosted, kan du følge energiproduktionen direkte fra appen.";
-
-/* No comment provided by engineer. */
 "Only %@ is supported as a recurring consumption." = "Kun %@ understøttes som et tilbagevendende forbrug.";
 
 /* No comment provided by engineer. */
@@ -674,6 +668,9 @@
 "Select your type of heating. You can find this information on your heating bill." = "Vælg din type af opvarmning. Du kan finde disse oplysninger på din varmeregning.";
 
 /* No comment provided by engineer. */
+"Set" = "Indstille";
+
+/* No comment provided by engineer. */
 "Settings" = "Indstillinger";
 
 /* No comment provided by engineer. */
@@ -759,9 +756,6 @@
 
 /* No comment provided by engineer. */
 "Waste treatment" = "Affaldsforbrænding";
-
-/* No comment provided by engineer. */
-"We are working on expanding your profile data with the addition of households, personalised vehicles, energy sources, and more." = "Vi arbejder på at udvide dine profildata med husstande, personlige køretøjer, energikilder og meget mere.";
 
 /* No comment provided by engineer. */
 "We can remind you to enter your electricity consumption based on your bill. Just let us know when you expect the next one." = "Vi kan minde dig om at indtaste dit elforbrug ud fra din regning. Bare lad os vide, hvornår du forventer den næste.";

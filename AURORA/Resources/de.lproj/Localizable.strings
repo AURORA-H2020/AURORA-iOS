@@ -155,10 +155,10 @@
 "Cancel" = "Abbrechen";
 
 /* No comment provided by engineer. */
-"Carbon emissions" = "Kohlenstoff-Emissionen";
+"Carbon emissions" = "CO₂-Emissionen";
 
 /* No comment provided by engineer. */
-"Carbon Emissions" = "Kohlenstoff-Emissionen";
+"Carbon Emissions" = "CO₂-Emissionen";
 
 /* No comment provided by engineer. */
 "Cars & Motorcycles" = "Autos & Motorräder";
@@ -326,7 +326,7 @@
 "Electric passenger train" = "Elektrischer Personenzug";
 
 /* No comment provided by engineer. */
-"Electric scooter" = "Elektro-Roller";
+"Electric scooter" = "Elektroroller";
 
 /* No comment provided by engineer. */
 "Electricity" = "Elektrizität";
@@ -348,6 +348,9 @@
 
 /* No comment provided by engineer. */
 "End" = "Ende";
+
+/* No comment provided by engineer. */
+"End of travel" = "Ende der Reise";
 
 /* No comment provided by engineer. */
 "Energy Used" = "Verwendete Energie";
@@ -372,9 +375,6 @@
 
 /* No comment provided by engineer. */
 "Export Data" = "Daten exportieren";
-
-/* No comment provided by engineer. */
-"Feature Preview" = "Funktionsvorschau";
 
 /* No comment provided by engineer. */
 "Female" = "Weiblich";
@@ -407,9 +407,6 @@
 "Geothermal energy" = "Geothermische Energie";
 
 /* No comment provided by engineer. */
-"Get an overview of your latest submitted data, pending entry requests, and how you can improve your carbon footprint accuracy." = "Verschaffen Sie sich einen Überblick über Ihre zuletzt übermittelten Daten, über ausstehende Eintragungsanfragen und darüber, wie Sie die Genauigkeit Ihrer CO₂-Bilanz verbessern können.";
-
-/* No comment provided by engineer. */
 "Ground Breaker" = "Grenzgänger*in";
 
 /* No comment provided by engineer. */
@@ -422,7 +419,7 @@
 "Heating bill reminder" = "Erinnerung an die Heizkostenabrechnung";
 
 /* No comment provided by engineer. */
-"Heating fuel" = "Heizstoff";
+"Heating fuel" = "Heizmittel";
 
 /* No comment provided by engineer. */
 "Heating oil" = "Heizöl";
@@ -554,9 +551,6 @@
 "Okay" = "Okay";
 
 /* No comment provided by engineer. */
-"Once our solar installations go live in each demo site you can track the energy production right from the app." = "Sobald unsere Solaranlagen an den einzelnen Demostandorten in Betrieb sind, können Sie die Energieproduktion direkt über die App verfolgen.";
-
-/* No comment provided by engineer. */
 "Only %@ is supported as a recurring consumption." = "Nur %@ wird als wiederkehrender Verbrauch unterstützt.";
 
 /* No comment provided by engineer. */
@@ -635,7 +629,7 @@
 "Registration failed" = "Registrierung fehlgeschlagen";
 
 /* No comment provided by engineer. */
-"Regular energy behaviour changes" = "Regelmäßige Änderungen des Energieverhaltens";
+"Regular energy behaviour changes" = "Nach Energieverhalten fragen";
 
 /* No comment provided by engineer. */
 "Reload" = "Neu laden";
@@ -668,10 +662,13 @@
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Wählen Sie den Beginn und das Ende dieses Verbrauchs. Sie finden diese Informationen auf Ihrer Stromrechnung.";
 
 /* No comment provided by engineer. */
-"Select the beginning and end of this consumption. You can find this information on your heating bill." = "Wählen Sie den Beginn und das Ende dieses Verbrauchs. Diese Informationen finden Sie auf Ihrer Heizkostenabrechnung.";
+"Select the beginning and end of this consumption. You can find this information on your heating bill." = "Wählen Sie den Beginn und das Ende dieses Verbrauchs. Sie finden diese Informationen auf Ihrer Heizkostenabrechnung.";
 
 /* No comment provided by engineer. */
 "Select your type of heating. You can find this information on your heating bill." = "Wählen Sie Ihre Heizungsart. Diese Information finden Sie auf Ihrer Heizkostenabrechnung.";
+
+/* No comment provided by engineer. */
+"Set" = "Auswählen";
 
 /* No comment provided by engineer. */
 "Settings" = "Einstellungen";
@@ -710,7 +707,7 @@
 "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.\nCrowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners." = "Diese Informationen helfen uns, Ihren CO₂-Fußabdruck genauer zu berechnen. Bitte beachten Sie, dass Sie Ihr Land später nicht mehr ändern können.\nCrowdfunding für lokale Photovoltaikanlagen ist derzeit nur für ausgewählte Städte der AURORA-Projektpartner geplant.";
 
 /* No comment provided by engineer. */
-"This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead." = "Dies ist die Menge an CO₂, die erzeugt würde, wenn Sie die erzeugte Energie stattdessen aus dem örtlichen Netz bezogen hätten.";
+"This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead." = "Soviel CO₂ würde entstehen, wenn Sie die erzeugte Energie aus dem örtlichen Netz beziehen.";
 
 /* No comment provided by engineer. */
 "Thursday" = "Donnerstag";
@@ -725,7 +722,7 @@
 "Transportation" = "Transport";
 
 /* No comment provided by engineer. */
-"Transportation type" = "Art der Beförderung";
+"Transportation type" = "Verkehrsmittel";
 
 /* No comment provided by engineer. */
 "Tuesday" = "Dienstag";
@@ -761,9 +758,6 @@
 "Waste treatment" = "Abfallbehandlung";
 
 /* No comment provided by engineer. */
-"We are working on expanding your profile data with the addition of households, personalised vehicles, energy sources, and more." = "Wir arbeiten daran, Ihre Profildaten um Haushalte, personalisierte Fahrzeuge, Energiequellen und mehr zu erweitern.";
-
-/* No comment provided by engineer. */
 "We can remind you to enter your electricity consumption based on your bill. Just let us know when you expect the next one." = "Wir können daran erinnern Ihren Stromverbrauch einzutragen. Lassen Sie uns einfach wissen, wann Sie die nächste Rechnung erwarten.";
 
 /* No comment provided by engineer. */
@@ -797,10 +791,10 @@
 "Yes" = "Ja";
 
 /* No comment provided by engineer. */
-"You can find this information on your electricity bill." = "Diese Informationen finden Sie auf Ihrer Stromrechnung.";
+"You can find this information on your electricity bill." = "Diese Information finden Sie auf Ihrer Stromrechnung.";
 
 /* No comment provided by engineer. */
-"You can find this information on your heating bill." = "Diese Informationen finden Sie auf Ihrer Heizkostenabrechnung.";
+"You can find this information on your heating bill." = "Diese Information finden Sie auf Ihrer Heizkostenabrechnung.";
 
 /* No comment provided by engineer. */
 "You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment." = "Sie können schon bald Ihren ökologischen Fußabdruck verringern, indem Sie in Ihre lokale AURORA-Photovoltaikanlage investieren. Bis dahin können Sie hier schon einmal testen, um wie viel sich Ihr Fußabdruck, je nach Ihrer potenziellen Investition, verringern würde.";
@@ -839,7 +833,7 @@
 "Your Password has successfully been changed." = "Ihr Passwort wurde erfolgreich geändert.";
 
 /* No comment provided by engineer. */
-"Your performance" = "Ihre Leistung";
+"Your performance" = "Ihr Energieverbrauch";
 
 /* No comment provided by engineer. */
 "Your profile changes couldn't be saved. Please check your inputs and try again." = "Ihre Profiländerungen konnten nicht gespeichert werden. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
