@@ -93,6 +93,9 @@ extension ConsumptionForm.Transportation: View {
         .onChange(
             of: self.partialTransportation.transportationType
         ) { transportationType in
+            if transportationType?.isPublicVehicle == false {
+                self.partialTransportation.publicVehicleOccupancy = nil
+            }
             self.partialTransportation.privateVehicleOccupancy = transportationType?
                 .privateVehicleOccupancyRange != nil ? 1 : nil
         }
