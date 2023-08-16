@@ -17,6 +17,8 @@ struct EditUserForm {
         user.lastName = self.lastName
         user.yearOfBirth = self.yearOfBirth
         user.gender = self.gender
+        user.homeEnergyLabel = self.homeEnergyLabel
+        user.householdProfile = self.householdProfile
         return user
     }
     
@@ -35,6 +37,14 @@ struct EditUserForm {
     /// The gender.
     @State
     private var gender: User.Gender?
+    
+    /// The home energy label.
+    @State
+    private var homeEnergyLabel: User.HomeEnergyLabel?
+    
+    /// The household profile.
+    @State
+    private var householdProfile: User.HouseholdProfile?
     
     /// The Country
     @State
@@ -64,6 +74,8 @@ struct EditUserForm {
         self._lastName = .init(initialValue: user.lastName)
         self._yearOfBirth = .init(initialValue: user.yearOfBirth)
         self._gender = .init(initialValue: user.gender)
+        self._homeEnergyLabel = .init(initialValue: user.homeEnergyLabel)
+        self._householdProfile = .init(initialValue: user.householdProfile)
     }
     
 }
@@ -113,6 +125,28 @@ extension EditUserForm: View {
                     ForEach(User.Gender.allCases, id: \.self) { gender in
                         Text(gender.localizedString)
                             .tag(gender as User.Gender?)
+                    }
+                }
+                Picker(
+                    "Home energy label",
+                    selection: self.$homeEnergyLabel
+                ) {
+                    Text("Prefer not to say")
+                        .tag(nil as User.HomeEnergyLabel?)
+                    ForEach(User.HomeEnergyLabel.allCases, id: \.self) { energyLabel in
+                        Text(energyLabel.localizedString)
+                            .tag(energyLabel as User.HomeEnergyLabel?)
+                    }
+                }
+                Picker(
+                    "Household profile",
+                    selection: self.$householdProfile
+                ) {
+                    Text("Prefer not to say")
+                        .tag(nil as User.HouseholdProfile?)
+                    ForEach(User.HouseholdProfile.allCases, id: \.self) { householdProfile in
+                        Text(householdProfile.localizedString)
+                            .tag(householdProfile as User.HouseholdProfile?)
                     }
                 }
                 if let country = self.country {

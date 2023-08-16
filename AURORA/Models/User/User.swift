@@ -29,6 +29,12 @@ struct User {
     /// The optional City Reference.
     var city: FirestoreEntityReference<City>?
     
+    /// The home energy label.
+    var homeEnergyLabel: HomeEnergyLabel?
+    
+    /// The household profile.
+    var householdProfile: HouseholdProfile?
+    
     /// Bool value if marketing consent is allowed
     var isMarketingConsentAllowed: Bool?
     

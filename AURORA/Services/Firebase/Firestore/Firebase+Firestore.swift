@@ -385,7 +385,10 @@ extension Firebase.Firestore {
                     context: context
                 )
                 .document(entityId)
-                .setData(from: entity)
+                .setData(
+                    from: entity,
+                    merge: true
+                )
         }
     }
     
