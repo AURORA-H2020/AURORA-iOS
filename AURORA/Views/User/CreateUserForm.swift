@@ -31,6 +31,14 @@ struct CreateUserForm {
     @State
     private var city: FirestoreEntityReference<City>?
     
+    /// The home energy label.
+    @State
+    private var homeEnergyLabel: User.HomeEnergyLabel?
+    
+    /// The household profile.
+    @State
+    private var householdProfile: User.HouseholdProfile?
+    
     /// Bool value if marketing consent is allowed
     @State
     private var isMarketingConsentAllowed = false
@@ -92,6 +100,8 @@ private extension CreateUserForm {
                 gender: self.gender,
                 country: country,
                 city: self.city,
+                homeEnergyLabel: self.homeEnergyLabel,
+                householdProfile: self.householdProfile,
                 isMarketingConsentAllowed: self.isMarketingConsentAllowed
             )
         )
@@ -199,6 +209,30 @@ extension CreateUserForm: View {
                     }
                     Task {
                         self.cities = try? await self.firebase.firestore.get(City.self, context: country)
+                    }
+                }
+                Section {
+                    Picker(
+                        "Home energy label",
+                        selection: self.$homeEnergyLabel
+                    ) {
+                        Text("Prefer not to say")
+                            .tag(nil as User.HomeEnergyLabel?)
+                        ForEach(User.HomeEnergyLabel.allCases, id: \.self) { energyLabel in
+                            Text(energyLabel.localizedString)
+                                .tag(energyLabel as User.HomeEnergyLabel?)
+                        }
+                    }
+                    Picker(
+                        "Household profile",
+                        selection: self.$householdProfile
+                    ) {
+                        Text("Prefer not to say")
+                            .tag(nil as User.HouseholdProfile?)
+                        ForEach(User.HouseholdProfile.allCases, id: \.self) { householdProfile in
+                            Text(householdProfile.localizedString)
+                                .tag(householdProfile as User.HouseholdProfile?)
+                        }
                     }
                 }
                 Section {
