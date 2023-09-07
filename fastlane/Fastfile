@@ -89,4 +89,10 @@ platform :ios do
     )
   end
 
+  desc "Generate app screenshots and apply frames"
+  lane :screenshots do
+    capture_screenshots
+    frame_screenshots
+  end
+
 end

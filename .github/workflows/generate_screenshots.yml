@@ -1,0 +1,35 @@
+name: Generate Screenshots
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "release/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate_screenshots:
+    name: Generate Screenshots
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache build files
+        uses: actions/cache@v3
+        with:
+          path: build
+          key: ${{ runner.os }}-spm-${{ hashFiles('AURORA.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+      - name: Take Screenshots
+        run: fastlane screenshots
+        env:
+          FASTLANE_SNAPSHOT_UI_TEST_EMAIL: ${{ secrets.FASTLANE_SNAPSHOT_UI_TEST_EMAIL }}
+          FASTLANE_SNAPSHOT_UI_TEST_PASSWORD: ${{ secrets.FASTLANE_SNAPSHOT_UI_TEST_PASSWORD }}
+      - name: Upload Screenshots Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Screenshots
+          path: fastlane/screenshots

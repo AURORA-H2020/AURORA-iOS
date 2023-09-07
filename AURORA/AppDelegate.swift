@@ -27,7 +27,34 @@ extension AppDelegate {
         // as some Firebase products rely on swizzling which is not supported
         // when configuring Firebase during the initialization of a `SwiftUI.App`
         // - Read more: https://firebase.google.com/docs/ios/learn-more#app_delegate_swizzling
-        Firebase.configure()
+        guard Firebase.configure() else {
+            // Otherwise return false
+            return false
+        }
+        #if DEBUG
+        // Check if app is running an ui tests environment
+        if ProcessInfo.processInfo.arguments.contains("--uitesting") {
+            // Disable animations
+            UIView.setAnimationsEnabled(false)
+            // Check if email and password are available
+            if let email = UserDefaults.standard.string(forKey: "email"),
+               let password = UserDefaults.standard.string(forKey: "password") {
+                Task {
+                    // Try to login
+                    try? await self.firebase
+                        .authentication
+                        .login(
+                            using: .password(
+                                method: .login,
+                                email: email,
+                                password: password
+                            )
+                        )
+                }
+            }
+        }
+        #endif
+        return true
     }
     
 }

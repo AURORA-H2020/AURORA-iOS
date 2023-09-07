@@ -76,6 +76,7 @@ private extension ContentView {
                             "Home",
                             systemImage: "house"
                         )
+                        .accessibilityIdentifier("HomeTab")
                     }
                     PhotovoltaicScreen(
                         firebase: self.firebase
@@ -85,6 +86,7 @@ private extension ContentView {
                             "Solar Power",
                             systemImage: "sun.max"
                         )
+                        .accessibilityIdentifier("SolarPowerTab")
                     }
                     SettingsScreen()
                         .tabItem {
@@ -92,6 +94,7 @@ private extension ContentView {
                                 "Settings",
                                 systemImage: "gear"
                             )
+                            .accessibilityIdentifier("SettingsTab")
                         }
                 }
             } else {
