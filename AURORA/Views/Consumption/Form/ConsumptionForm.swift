@@ -337,6 +337,7 @@ private extension ConsumptionForm {
                     .buttonStyle(.bordered)
                     .tint(category.tintColor)
                     .controlSize(.large)
+                    .accessibilityIdentifier("Add\(category.rawValue.capitalized)")
                 }
             }
             .padding(.top, 30)
