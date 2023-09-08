@@ -378,7 +378,7 @@ private extension SettingsScreen {
         ) {
             Link(
                 destination: .init(
-                    string: "https://www.aurora-h2020.eu/aurora/privacy-policy/"
+                    string: "https://www.aurora-h2020.eu/aurora/app-imprint/"
                 )!
             ) {
                 Label(
@@ -388,12 +388,22 @@ private extension SettingsScreen {
             }
             Link(
                 destination: .init(
-                    string: "https://www.aurora-h2020.eu/aurora/privacy-policy/"
+                    string: "https://www.aurora-h2020.eu/aurora/app-privacy-policy/"
                 )!
             ) {
                 Label(
                     "Privacy policy",
                     systemImage: "lock.fill"
+                )
+            }
+            Link(
+                destination: .init(
+                    string: "https://www.aurora-h2020.eu/aurora/app-tos/"
+                )!
+            ) {
+                Label(
+                    "Terms of Service",
+                    systemImage: "doc.text.fill"
                 )
             }
             NavigationLink(

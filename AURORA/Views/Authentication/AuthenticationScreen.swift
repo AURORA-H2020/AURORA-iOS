@@ -149,7 +149,7 @@ extension AuthenticationScreen: View {
                             }
                         }
                         Text(
-                            "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)."
+                            "By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy/)."
                         )
                         .font(.footnote)
                         .foregroundColor(.secondary)
