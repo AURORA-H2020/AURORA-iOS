@@ -146,7 +146,7 @@
 "Busses" = "Busse";
 
 /* No comment provided by engineer. */
-"By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/privacy-policy/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/privacy-policy/)." = "Wenn Sie fortfahren, erklären Sie sich mit AURORAs\n[Nutzungsbedingungen](https://www.aurora-h2020.eu/aurora/privacy-policy/) und [Datenschutzbestimmungen](https://www.aurora-h2020.eu/aurora/privacy-policy/).";
+"By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy/)." = "Wenn Sie fortfahren, erklären Sie sich mit den [Nutzungsbedingungen] (https://www.aurora-h2020.eu/aurora/app-tos/) und den [Datenschutzbestimmungen] (https://www.aurora-h2020.eu/aurora/app-privacy-policy/) von AURORA einverstanden.";
 
 /* No comment provided by engineer. */
 "Calculate" = "Berechnen";
@@ -350,7 +350,7 @@
 "End" = "Ende";
 
 /* No comment provided by engineer. */
-"End of travel" = "Ende der Reise";
+"End of travel" = "Ende der Fahrt";
 
 /* No comment provided by engineer. */
 "Energy Used" = "Verwendete Energie";
@@ -428,13 +428,25 @@
 "Heating source" = "Heizquelle";
 
 /* No comment provided by engineer. */
-"Here you can add regularly repeating consumptions, such as your commute.\nRecurring consumptions automatically add consumptions for you based on a custom interval." = "Hier können Sie regelmäßig wiederkehrende Verbräuche, wie zum Beispiel Ihren Arbeitsweg, hinzufügen.\nWiederkehrende Verbräuche fügen automatisch Verbräuche basierend auf einem von Ihnen festgelegtem Intervall hinzu.";
+"Here you can add regularly repeating consumptions, such as your commute.\nRecurring consumptions automatically add consumptions for you based on a custom interval." = "Hier können Sie regelmäßig wiederkehrende Verbräuche, wie zum Beispiel Ihren Arbeitsweg, hinzufügen.\nWiederkehrende Verbräuche fügen automatisch Verbräuche in dem von Ihnen angegebenen Interval hinzu..";
 
 /* No comment provided by engineer. */
 "High speed train" = "Hochgeschwindigkeitszug";
 
 /* No comment provided by engineer. */
 "Home" = "Start";
+
+/* No comment provided by engineer. */
+"Home energy label" = "Energieausweis des Zuhauses";
+
+/* No comment provided by engineer. */
+"Home-based workers/students" = "Von Zuhause arbeitend / studierend";
+
+/* No comment provided by engineer. */
+"Homemakers" = "Familienfürsorger*innen";
+
+/* No comment provided by engineer. */
+"Household profile" = "Haushaltsprofil";
 
 /* No comment provided by engineer. */
 "How does it work?" = "Wie funktioniert das?";
@@ -533,7 +545,7 @@
 "No consumption entered yet (?)" = "Noch kein Verbrauch eingegeben (?)";
 
 /* No comment provided by engineer. */
-"Non Binary" = "Nicht binär";
+"Non Binary" = "Nicht-binär";
 
 /* No comment provided by engineer. */
 "Notifications" = "Benachrichtigungen";
@@ -644,6 +656,9 @@
 "Reset Password" = "Passwort zurücksetzen";
 
 /* No comment provided by engineer. */
+"Retired individuals" = "Personen im Ruhestand";
+
+/* No comment provided by engineer. */
 "Retry" = "Erneut versuchen";
 
 /* No comment provided by engineer. */
@@ -686,7 +701,7 @@
 "Solar thermal energy" = "Solarthermische Energie";
 
 /* No comment provided by engineer. */
-"Start of travel" = "Beginn der Reise";
+"Start of travel" = "Beginn der Fahrt";
 
 /* No comment provided by engineer. */
 "Submit" = "Bestätigen";
@@ -696,6 +711,9 @@
 
 /* No comment provided by engineer. */
 "Support" = "Support";
+
+/* No comment provided by engineer. */
+"Terms of Service" = "Nutzungsbedingungen";
 
 /* No comment provided by engineer. */
 "The next notification will be sent on %@" = "Die nächste Benachrichtigung wird am %@ gesendet";
@@ -737,7 +755,13 @@
 "Typical occupancy: %lld" = "Typische Auslastung: %lld";
 
 /* No comment provided by engineer. */
+"Unknown" = "Unbekannt";
+
+/* No comment provided by engineer. */
 "Unsaved changes" = "Nicht gespeicherte Änderungen";
+
+/* No comment provided by engineer. */
+"Unsure" = "Unsicher";
 
 /* No comment provided by engineer. */
 "Update recurring consumptions?" = "Wiederkehrende Verbräuche aktualisieren?";
@@ -764,7 +788,7 @@
 "We can remind you to enter your energy consumption based on your bill. Just let us know when you expect the next one." = "Wir können daran erinnern Ihren Energieverbrauch einzutragen. Lassen Sie uns einfach wissen, wann Sie die nächste Rechnung erwarten.";
 
 /* No comment provided by engineer. */
-"We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Wir können Sie daran erinnern, Ihre Transportdaten regelmäßig einzugeben. Teilen Sie uns einfach mit, wie häufig Sie reisen.";
+"We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Wir können Sie daran erinnern, Ihre Transportdaten regelmäßig einzugeben. Teilen Sie uns einfach mit, wie häufig Sie unterwegs sind.";
 
 /* No comment provided by engineer. */
 "Wednesday" = "Mittwoch";
@@ -777,6 +801,9 @@
 
 /* No comment provided by engineer. */
 "Weekly" = "Wöchentlich";
+
+/* No comment provided by engineer. */
+"Workers/students outside the home" = "Außerhalb des Zuhauses arbeitend / studierend";
 
 /* No comment provided by engineer. */
 "Year" = "Jahr";
