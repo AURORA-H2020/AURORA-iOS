@@ -16,6 +16,10 @@ struct ConsumptionView {
     @State
     private var isDeleteConfirmationDialogPresented = false
     
+    /// The dismiss action
+    @Environment(\.dismiss)
+    private var dismiss
+    
     /// The Firebase instance.
     @EnvironmentObject
     private var firebase: Firebase
@@ -264,6 +268,7 @@ extension ConsumptionView: View {
                                     self.consumption,
                                     context: .current()
                                 )
+                            self.dismiss()
                         } label: {
                             Text("Delete")
                         }
