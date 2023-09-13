@@ -91,7 +91,9 @@ platform :ios do
 
   desc "Generate app screenshots and apply frames"
   lane :screenshots do
-    capture_screenshots
+    capture_screenshots(
+      stop_after_first_error: true
+    )
     frame_screenshots
   end
 
