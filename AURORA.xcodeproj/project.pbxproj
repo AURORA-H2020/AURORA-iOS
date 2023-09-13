@@ -132,6 +132,10 @@
 		3DDEDA0229DC87D300303BA1 /* FormatStyle+KilowattHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDEDA0129DC87D300303BA1 /* FormatStyle+KilowattHours.swift */; };
 		3DFBBA802A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */; };
 		3DFBBA822A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */; };
+		3DFE87052AB080D60066B0A0 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 3DFE87042AB080D60066B0A0 /* FirebaseRemoteConfig */; };
+		3DFE87072AB080D60066B0A0 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3DFE87062AB080D60066B0A0 /* FirebaseRemoteConfigSwift */; };
+		3DFE870A2AB081850066B0A0 /* Firebase+RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFE87092AB081850066B0A0 /* Firebase+RemoteConfig.swift */; };
+		3DFE870D2AB085460066B0A0 /* LegalUpdateConsentForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFE870C2AB085460066B0A0 /* LegalUpdateConsentForm.swift */; };
 		4355071229F2764300F60352 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4355071029F2764300F60352 /* InfoPlist.strings */; };
 		4355071529F2764300F60352 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4355071329F2764300F60352 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -266,6 +270,8 @@
 		3DDEDA0129DC87D300303BA1 /* FormatStyle+KilowattHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+KilowattHours.swift"; sourceTree = "<group>"; };
 		3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+Weekday.swift"; sourceTree = "<group>"; };
 		3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+DayOfMonth.swift"; sourceTree = "<group>"; };
+		3DFE87092AB081850066B0A0 /* Firebase+RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+RemoteConfig.swift"; sourceTree = "<group>"; };
+		3DFE870C2AB085460066B0A0 /* LegalUpdateConsentForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalUpdateConsentForm.swift; sourceTree = "<group>"; };
 		4355071129F2764300F60352 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4355071429F2764300F60352 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		437400FE2A0D58B6007FFB77 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -290,6 +296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DFE87052AB080D60066B0A0 /* FirebaseRemoteConfig in Frameworks */,
 				3D1EE5E3298AA919009E4645 /* FirebaseAnalyticsSwift in Frameworks */,
 				3D1EE5E5298AA919009E4645 /* FirebaseAppCheck in Frameworks */,
 				3D1EE5F3298AA919009E4645 /* FirebasePerformance in Frameworks */,
@@ -298,6 +305,7 @@
 				3D1EE5E1298AA919009E4645 /* FirebaseAnalytics in Frameworks */,
 				3D1EE5E7298AA919009E4645 /* FirebaseAuth in Frameworks */,
 				3D1EE5EB298AA919009E4645 /* FirebaseFirestore in Frameworks */,
+				3DFE87072AB080D60066B0A0 /* FirebaseRemoteConfigSwift in Frameworks */,
 				3D1EE5EF298AA919009E4645 /* FirebaseFirestoreSwift in Frameworks */,
 				3D1EE5F6298AA965009E4645 /* GoogleSignInSwift in Frameworks */,
 			);
@@ -327,6 +335,7 @@
 				3D1EE5FC298AA9DD009E4645 /* Consumption */,
 				3DC2C2AA29B787B300A37D0C /* Photovoltaic */,
 				3D1EE5FB298AA9D8009E4645 /* Settings */,
+				3DFE870B2AB085390066B0A0 /* Legal */,
 				3D1EE5FA298AA9D5009E4645 /* User */,
 			);
 			path = Views;
@@ -341,6 +350,7 @@
 				3D1EE656298AACF7009E4645 /* Crashlytics */,
 				3D1EE65B298AACF8009E4645 /* Firestore */,
 				3D1EE658298AACF7009E4645 /* Functions */,
+				3DFE87082AB081740066B0A0 /* RemoteConfig */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -849,6 +859,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		3DFE87082AB081740066B0A0 /* RemoteConfig */ = {
+			isa = PBXGroup;
+			children = (
+				3DFE87092AB081850066B0A0 /* Firebase+RemoteConfig.swift */,
+			);
+			path = RemoteConfig;
+			sourceTree = "<group>";
+		};
+		3DFE870B2AB085390066B0A0 /* Legal */ = {
+			isa = PBXGroup;
+			children = (
+				3DFE870C2AB085460066B0A0 /* LegalUpdateConsentForm.swift */,
+			);
+			path = Legal;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -895,6 +921,8 @@
 				3D1EE5F0298AA919009E4645 /* FirebaseFunctions */,
 				3D1EE5F2298AA919009E4645 /* FirebasePerformance */,
 				3D1EE5F5298AA965009E4645 /* GoogleSignInSwift */,
+				3DFE87042AB080D60066B0A0 /* FirebaseRemoteConfig */,
+				3DFE87062AB080D60066B0A0 /* FirebaseRemoteConfigSwift */,
 			);
 			productName = AURORA;
 			productReference = 3DD34C562948F280002064D8 /* AURORA.app */;
@@ -1040,6 +1068,7 @@
 				3D7495E22A327A6700349A89 /* RecurringConsumptionsReminderService.swift in Sources */,
 				3DCB91FE2A28F25C00D6F748 /* RecurringConsumption.swift in Sources */,
 				3D1EE685298AACF8009E4645 /* Consumption.swift in Sources */,
+				3DFE870A2AB081850066B0A0 /* Firebase+RemoteConfig.swift in Sources */,
 				3D1EE694298AACF8009E4645 /* ConsumptionSummary.swift in Sources */,
 				3D1EE692298AACF8009E4645 /* FirestoreEntity.swift in Sources */,
 				3D1EE6A7298AADD4009E4645 /* LocalNotificationRequest.swift in Sources */,
@@ -1066,6 +1095,7 @@
 				3D57AEF729B795A7000EE0EB /* City+PVGISParams.swift in Sources */,
 				3D8A05E32991AF2F005DEA43 /* ConsumptionForm+Electricity.swift in Sources */,
 				3D1EE68D298AACF8009E4645 /* User.swift in Sources */,
+				3DFE870D2AB085460066B0A0 /* LegalUpdateConsentForm.swift in Sources */,
 				3D8A05E72991B006005DEA43 /* ConsumptionForm+Transportation.swift in Sources */,
 				3D1EE611298AAB39009E4645 /* AuthenticationForgotPasswordForm.swift in Sources */,
 				3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */,
@@ -1477,6 +1507,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D1EE5F4298AA965009E4645 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		3DFE87042AB080D60066B0A0 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D1EE5DF298AA919009E4645 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		3DFE87062AB080D60066B0A0 /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D1EE5DF298AA919009E4645 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

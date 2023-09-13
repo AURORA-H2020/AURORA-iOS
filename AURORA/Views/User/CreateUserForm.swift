@@ -102,7 +102,8 @@ private extension CreateUserForm {
                 city: self.city,
                 homeEnergyLabel: self.homeEnergyLabel,
                 householdProfile: self.householdProfile,
-                isMarketingConsentAllowed: self.isMarketingConsentAllowed
+                isMarketingConsentAllowed: self.isMarketingConsentAllowed,
+                acceptedLegalDocumentVersion: self.firebase.remoteConfig.latestLegalDocumentsVersion
             )
         )
     }

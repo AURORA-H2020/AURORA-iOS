@@ -3,6 +3,7 @@ import FirebaseAuth
 import FirebaseCrashlytics
 import FirebaseFirestore
 import FirebaseFunctions
+import FirebaseRemoteConfig
 import Foundation
 
 // MARK: - Firebase
@@ -48,8 +49,14 @@ final class Firebase: ObservableObject {
         GoogleFirebaseAuthenticationProvider()
     ]
     
+    /// The Firebase RemoteConfig instance.
+    private(set) lazy var firebaseRemoteConfig = FirebaseRemoteConfig.RemoteConfig.remoteConfig()
+    
     /// The auth state did change subscription
     private var authStateDidChangeSubscription: FirebaseAuth.AuthStateDidChangeListenerHandle?
+    
+    /// The remote config update subscription
+    private var remoteConfigUpdateSubscription: FirebaseRemoteConfig.ConfigUpdateListenerRegistration?
     
     /// The user document snapshot cancellable
     private var userDocumentSnapshotCancellable: AnyCancellable?
@@ -72,12 +79,24 @@ final class Firebase: ObservableObject {
                 // Setup using user
                 self?.setup(using: user)
             }
+        // Add remote config update listener
+        self.remoteConfigUpdateSubscription = self.firebaseRemoteConfig
+            .addOnConfigUpdateListener { [weak self] _, _ in
+                // Activate changes
+                self?.firebaseRemoteConfig.activate()
+            }
+        Task {
+            // Fetch and active remote config
+            try? await self.firebaseRemoteConfig.fetchAndActivate()
+        }
     }
     
     /// Deinit
     deinit {
         // Remove auth state did change subscription
         self.authStateDidChangeSubscription.flatMap(self.firebaseAuth.removeStateDidChangeListener)
+        // Remove remote config subscription
+        self.remoteConfigUpdateSubscription?.remove()
     }
     
 }
@@ -111,6 +130,13 @@ extension Firebase {
     var functions: Functions {
         .init(
             firebase: self
+        )
+    }
+    
+    /// The Firebase RemoteConfig
+    var remoteConfig: RemoteConfig {
+        .init(
+            remoteConfig: self.firebaseRemoteConfig
         )
     }
     

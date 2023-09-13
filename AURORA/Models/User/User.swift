@@ -35,8 +35,11 @@ struct User {
     /// The household profile.
     var householdProfile: HouseholdProfile?
     
-    /// Bool value if marketing consent is allowed
+    /// Bool value if marketing consent is allowed.
     var isMarketingConsentAllowed: Bool?
+    
+    /// The accepted legal document version.
+    var acceptedLegalDocumentVersion: Int?
     
 }
 
