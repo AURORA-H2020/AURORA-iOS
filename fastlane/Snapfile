@@ -28,7 +28,10 @@ clear_previous_screenshots(true)
 override_status_bar(true)
 
 # Arguments to pass to the app on launch.
-launch_arguments(["-email #{ENV['FASTLANE_SNAPSHOT_UI_TEST_EMAIL']} -password #{ENV['FASTLANE_SNAPSHOT_UI_TEST_PASSWORD']}"])
+launch_arguments([
+   "-email #{ENV['FASTLANE_SNAPSHOT_UI_TEST_EMAIL']}", 
+   "-password #{ENV['FASTLANE_SNAPSHOT_UI_TEST_PASSWORD']}"
+])
 
 # Clean build
 clean(true)
