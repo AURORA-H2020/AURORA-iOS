@@ -1,3 +1,4 @@
+import FirebaseRemoteConfigSwift
 import SwiftUI
 
 // MARK: - ContentView
@@ -5,9 +6,43 @@ import SwiftUI
 /// The ContentView
 struct ContentView {
     
+    /// Bool value if legal update consent form is presented
+    @State
+    private var isLegalUpdateConsentFormPresented = false
+    
+    /// The latest legal documents version
+    @RemoteConfigProperty(
+        key: Firebase.RemoteConfig.latestLegalDocumentsVersionKey,
+        fallback: 0
+    )
+    private var latestLegalDocumentsVersion: Int
+    
     /// The Firebase instance
     @EnvironmentObject
     private var firebase: Firebase
+    
+}
+
+// MARK: - Present Legal Update Consent Form if needed
+
+private extension ContentView {
+    
+    /// Present legal update consent form if needed.
+    /// - Parameters:
+    ///   - user: The user.
+    ///   - latestLegalDocumentsVersion: The latest legal document version.
+    func presentLegalUpdateConsentFormIfNeeded(
+        user: User,
+        latestLegalDocumentsVersion: Int
+    ) {
+        self.isLegalUpdateConsentFormPresented = {
+            if let acceptedLegalDocumentVersion = user.acceptedLegalDocumentVersion {
+                return latestLegalDocumentsVersion > acceptedLegalDocumentVersion
+            } else {
+                return true
+            }
+        }()
+    }
     
 }
 
@@ -96,6 +131,30 @@ private extension ContentView {
                             )
                             .accessibilityIdentifier("SettingsTab")
                         }
+                }
+                .onAppear {
+                    self.presentLegalUpdateConsentFormIfNeeded(
+                        user: user,
+                        latestLegalDocumentsVersion: self.latestLegalDocumentsVersion
+                    )
+                }
+                .onChange(
+                    of: self.latestLegalDocumentsVersion
+                ) { latestLegalDocumentsVersion in
+                    self.presentLegalUpdateConsentFormIfNeeded(
+                        user: user,
+                        latestLegalDocumentsVersion: latestLegalDocumentsVersion
+                    )
+                }
+                .sheet(
+                    isPresented: self.$isLegalUpdateConsentFormPresented
+                ) {
+                    LegalUpdateConsentForm(
+                        latestLegalDocumentsVersion: self.latestLegalDocumentsVersion,
+                        user: user
+                    )
+                    .interactiveDismissDisabled(true)
+                    .environmentObject(self.firebase)
                 }
             } else {
                 CreateUserForm()
