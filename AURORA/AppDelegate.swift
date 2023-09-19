@@ -31,32 +31,47 @@ extension AppDelegate {
             // Otherwise return false
             return false
         }
+        // Prepare application
+        self.prepare(application: application)
+        return true
+    }
+    
+}
+
+// MARK: - Prepare Application
+
+private extension AppDelegate {
+    
+    /// Prepare application.
+    /// - Parameter application: The UIApplication.
+    func prepare(
+        application: UIApplication
+    ) {
         // Check if app is running an ui tests environment
-        if ProcessInfo.processInfo.arguments.contains("--uitesting") {
+        if ProcessInfo.processInfo.arguments.contains("UITests") {
             // Disable animations
             UIView.setAnimationsEnabled(false)
-            // Check if email and password are available
-            if let email = UserDefaults.standard.string(forKey: "ui_test_login_email"),
-               !email.isEmpty,
-               let password = UserDefaults.standard.string(forKey: "ui_test_login_password"),
-               !password.isEmpty {
-                // Logout
-                try? self.firebase.authentication.logout()
-                Task {
-                    // Try to login
-                    try? await self.firebase
-                        .authentication
-                        .login(
-                            using: .password(
-                                method: .login,
-                                email: email,
-                                password: password
-                            )
+        }
+        // Check if email and password are available
+        if let email = UserDefaults.standard.string(forKey: "ui_test_login_email"),
+           !email.isEmpty,
+           let password = UserDefaults.standard.string(forKey: "ui_test_login_password"),
+           !password.isEmpty {
+            // Logout
+            try? self.firebase.authentication.logout()
+            // Login
+            Task {
+                try? await self.firebase
+                    .authentication
+                    .login(
+                        using: .password(
+                            method: .login,
+                            email: email,
+                            password: password
                         )
-                }
+                    )
             }
         }
-        return true
     }
     
 }
