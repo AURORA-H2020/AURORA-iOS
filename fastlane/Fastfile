@@ -128,7 +128,6 @@ platform :ios do
       output_directory: "./fastlane/screenshots",
       skip_open_summary: true,
       clear_previous_screenshots: true,
-      erase_simulator: true,
       override_status_bar: true,
       test_without_building: true,
       scheme: scheme,
