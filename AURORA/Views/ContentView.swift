@@ -36,6 +36,9 @@ private extension ContentView {
         latestLegalDocumentsVersion: Int
     ) {
         self.isLegalUpdateConsentFormPresented = {
+            guard !ProcessInfo.processInfo.isRunningUITests else {
+                return false
+            }
             if let acceptedLegalDocumentVersion = user.acceptedLegalDocumentVersion {
                 return latestLegalDocumentsVersion > acceptedLegalDocumentVersion
             } else {

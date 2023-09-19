@@ -98,6 +98,7 @@
 		3D57AEF729B795A7000EE0EB /* City+PVGISParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D57AEF629B795A7000EE0EB /* City+PVGISParams.swift */; };
 		3D5CB9CB29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CB9CA29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift */; };
 		3D5CB9CD29D6D4F3008E7414 /* ConsumptionSummary+Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CB9CC29D6D4F2008E7414 /* ConsumptionSummary+Mode.swift */; };
+		3D6DA4952AB9955400813903 /* ProcessInfo+isRunningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6DA4942AB9955400813903 /* ProcessInfo+isRunningUITests.swift */; };
 		3D6F643529D410F70096CB97 /* ConsumptionSummaryView+Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F643429D410F70096CB97 /* ConsumptionSummaryView+Chart.swift */; };
 		3D6F643729D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift */; };
 		3D7495E22A327A6700349A89 /* RecurringConsumptionsReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7495E12A327A6700349A89 /* RecurringConsumptionsReminderService.swift */; };
@@ -232,6 +233,7 @@
 		3D57AEF629B795A7000EE0EB /* City+PVGISParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+PVGISParams.swift"; sourceTree = "<group>"; };
 		3D5CB9CA29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionScreen+OverviewSection.swift"; sourceTree = "<group>"; };
 		3D5CB9CC29D6D4F2008E7414 /* ConsumptionSummary+Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummary+Mode.swift"; sourceTree = "<group>"; };
+		3D6DA4942AB9955400813903 /* ProcessInfo+isRunningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+isRunningUITests.swift"; sourceTree = "<group>"; };
 		3D6F643429D410F70096CB97 /* ConsumptionSummaryView+Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+Chart.swift"; sourceTree = "<group>"; };
 		3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+LabeledConsumptionSection.swift"; sourceTree = "<group>"; };
 		3D7495E12A327A6700349A89 /* RecurringConsumptionsReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumptionsReminderService.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				3D537A5B298B1C2C00C294AA /* String+isMailAddress.swift */,
 				3D1CA71D298CF44D0009177C /* UIApplication+openSettings.swift */,
 				3D1CA722298CFDC70009177C /* View+adaptivePresentationDetents.swift */,
+				3D6DA4942AB9955400813903 /* ProcessInfo+isRunningUITests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1055,6 +1058,7 @@
 				3D1EE60F298AAB39009E4645 /* AuthenticationProviderButton.swift in Sources */,
 				3D08956C299108BA00C996AD /* Consumption+Heating+DistrictHeatingSource.swift in Sources */,
 				3D1EE5FF298AA9EE009E4645 /* ContentView.swift in Sources */,
+				3D6DA4952AB9955400813903 /* ProcessInfo+isRunningUITests.swift in Sources */,
 				3D1CA71C298CF2150009177C /* LocalNotificationRequest+Predefined.swift in Sources */,
 				3D411D1129BB2A10008EBB75 /* CurrencyTextField.swift in Sources */,
 				3D1EE699298AACF8009E4645 /* FirebaseAuthenticationProvider.swift in Sources */,

@@ -48,7 +48,7 @@ private extension AppDelegate {
         application: UIApplication
     ) {
         // Check if app is running an ui tests environment
-        if ProcessInfo.processInfo.arguments.contains("UITests") {
+        if ProcessInfo.processInfo.isRunningUITests {
             // Disable animations
             UIView.setAnimationsEnabled(false)
         }
