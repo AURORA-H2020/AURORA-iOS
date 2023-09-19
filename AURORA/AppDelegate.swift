@@ -37,8 +37,12 @@ extension AppDelegate {
             // Disable animations
             UIView.setAnimationsEnabled(false)
             // Check if email and password are available
-            if let email = UserDefaults.standard.string(forKey: "email"),
-               let password = UserDefaults.standard.string(forKey: "password") {
+            if let email = UserDefaults.standard.string(forKey: "ui_test_login_email"),
+               !email.isEmpty,
+               let password = UserDefaults.standard.string(forKey: "ui_test_login_password"),
+               !password.isEmpty {
+                // Logout
+                try? self.firebase.authentication.logout()
                 Task {
                     // Try to login
                     try? await self.firebase
