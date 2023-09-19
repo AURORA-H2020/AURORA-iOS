@@ -47,29 +47,31 @@ private extension AppDelegate {
     func prepare(
         application: UIApplication
     ) {
-        // Check if app is running an ui tests environment
+        // Check if process is running ui tests.
         if ProcessInfo.processInfo.isRunningUITests {
             // Disable animations
             UIView.setAnimationsEnabled(false)
-        }
-        // Check if email and password are available
-        if let email = UserDefaults.standard.string(forKey: "ui_test_login_email"),
-           !email.isEmpty,
-           let password = UserDefaults.standard.string(forKey: "ui_test_login_password"),
-           !password.isEmpty {
-            // Logout
-            try? self.firebase.authentication.logout()
-            // Login
-            Task {
-                try? await self.firebase
-                    .authentication
-                    .login(
-                        using: .password(
-                            method: .login,
-                            email: email,
-                            password: password
+            // Check if ui test login credentials are available
+            if let email = UserDefaults.standard.string(forKey: "ui_test_login_email"),
+               !email.isEmpty,
+               let password = UserDefaults.standard.string(forKey: "ui_test_login_password"),
+               !password.isEmpty {
+                // Logout
+                try? self.firebase.authentication.logout()
+                // Login
+                Task(
+                    priority: .userInitiated
+                ) {
+                    try? await self.firebase
+                        .authentication
+                        .login(
+                            using: .password(
+                                method: .login,
+                                email: email,
+                                password: password
+                            )
                         )
-                    )
+                }
             }
         }
     }
