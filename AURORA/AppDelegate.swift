@@ -31,7 +31,6 @@ extension AppDelegate {
             // Otherwise return false
             return false
         }
-        #if DEBUG
         // Check if app is running an ui tests environment
         if ProcessInfo.processInfo.arguments.contains("--uitesting") {
             // Disable animations
@@ -57,7 +56,6 @@ extension AppDelegate {
                 }
             }
         }
-        #endif
         return true
     }
     
