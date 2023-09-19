@@ -108,7 +108,9 @@ extension ConsumptionSummary.Label {
         .init(
             named: [
                 "LabelColor",
-                self.value.uppercased()
+                self.value
+                    .uppercased()
+                    .replacingOccurrences(of: "+", with: "Plus")
             ]
             .joined(separator: "/")
         )
