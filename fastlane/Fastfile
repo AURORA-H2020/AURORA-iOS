@@ -91,9 +91,51 @@ platform :ios do
 
   desc "Generate app screenshots and apply frames"
   lane :screenshots do
-    capture_screenshots(
-      stop_after_first_error: true
+    # The devices to capture screenshots for
+    devices = [
+      "iPhone 14 Plus",
+      "iPhone 8 Plus",
+      "iPad Pro (12.9-inch) (6th generation)",
+      "iPad Pro (12.9-inch) (2nd generation)"
+    ]
+    # The languages
+    languages = [
+      "en-US",
+      "de-DE",
+      "da-DK",
+      "es-ES",
+      "sl-SL",
+      "pt-PT"
+    ]
+    # The scheme
+    scheme = "AURORA"
+    # The derived data path
+    derivedDataPath = "./build"
+    # Build tests
+    run_tests(
+      scheme: scheme,
+      devices: devices,
+      derived_data_path: derivedDataPath,
+      build_for_testing: true
     )
+    # Run tests and capture screenshots
+    capture_screenshots(
+      devices: devices,
+      languages: languages,
+      launch_arguments: [
+        "-ui_test_login_email #{ENV['FASTLANE_SNAPSHOT_UI_TEST_EMAIL']} -ui_test_login_password #{ENV['FASTLANE_SNAPSHOT_UI_TEST_PASSWORD']}"
+      ],
+      output_directory: "./fastlane/screenshots",
+      skip_open_summary: true,
+      clear_previous_screenshots: true,
+      erase_simulator: true,
+      override_status_bar: true,
+      test_without_building: true,
+      scheme: scheme,
+      stop_after_first_error: true,
+      derived_data_path: derivedDataPath
+    )
+    # Frame screenshots
     frame_screenshots
   end
 
