@@ -143,7 +143,8 @@ extension ConsumptionScreen: View {
             }
         )
         .onAppear {
-            if self.recurringConsumptionsReminderService.shouldShowReminder {
+            if !ProcessInfo.processInfo.isRunningUITests
+                && self.recurringConsumptionsReminderService.shouldShowReminder {
                 self.isRecurringConsumptionsReminderAlertPresented = true
             }
         }
