@@ -1,11 +1,14 @@
 /* No comment provided by engineer. */
-"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Este proyecto]((https://www.aurora-h2020.eu/) ha recibido financiación del programa de investigación e innovación H2020 de la Unión Europea bajo el contrato Nº [101036418](https://cordis.europa.eu/project/id/101036418).";
+"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Este proyecto](https://www.aurora-h2020.eu/) ha recibido financiación del programa de investigación e innovación H2020 de la Unión Europea bajo el contrato Nº [101036418](https://cordis.europa.eu/project/id/101036418).";
 
 /* No comment provided by engineer. */
 "%@ in %@" = "%@ en %@";
 
 /* No comment provided by engineer. */
 "About the App" = "Sobre la App";
+
+/* No comment provided by engineer. */
+"Accept" = "Aceptar";
 
 /* No comment provided by engineer. */
 "Accomplisher" = "Activista";
@@ -15,6 +18,9 @@
 
 /* No comment provided by engineer. */
 "Account deletion" = "Eliminación de la cuenta";
+
+/* No comment provided by engineer. */
+"Add" = "Añadir";
 
 /* No comment provided by engineer. */
 "Add a consumption" = "Introduzca su  consumo";
@@ -83,6 +89,12 @@
 "An error occurred while trying to save your consumption. Please try again." = "Se ha producido un error al intentar guardar tu consumo. Por favor, inténtelo de nuevo.";
 
 /* No comment provided by engineer. */
+"An error occurred while trying to save your recurring consumption." = "Se ha producido un error al intentar guardar su consumo recurrente.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to save your recurring consumption. Please try again." = "Se ha producido un error al intentar guardar su consumo recurrente. Por favor, inténtelo de nuevo.";
+
+/* No comment provided by engineer. */
 "An error occurred while trying to update your email address. Please check your inputs and try again." = "Se ha producido un error al actualizar su dirección de correo. Por favor, compruebe lo que ha introducido e inténtelo de nuevo.";
 
 /* No comment provided by engineer. */
@@ -99,6 +111,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete your account?" = "¿Seguro que quiere eliminar su cuenta?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to discard your unsaved changes?" = "¿Está seguro de que quiere descartar los cambios no guardados?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to logout?" = "¿Seguro que quiere cerrar la sesión?";
@@ -242,6 +257,9 @@
 "Delete Entry" = "Borrar entrada";
 
 /* No comment provided by engineer. */
+"Delete Forever" = "Borra definitivamente";
+
+/* No comment provided by engineer. */
 "Delete my account" = "Eliminar mi cuenta";
 
 /* No comment provided by engineer. */
@@ -257,6 +275,12 @@
 "Diesel passenger train" = "Tren de pasajeros diesel";
 
 /* No comment provided by engineer. */
+"Disabled" = "Deshabilitado";
+
+/* No comment provided by engineer. */
+"Discard changes" = "Descartar cambios";
+
+/* No comment provided by engineer. */
 "Distance" = "Distancia";
 
 /* No comment provided by engineer. */
@@ -266,10 +290,16 @@
 "District heating source" = "Fuente de calefacción de distrito";
 
 /* No comment provided by engineer. */
+"Don't ask me again" = "No volver a preguntarme";
+
+/* No comment provided by engineer. */
 "Download my data" = "Descargar mis datos";
 
 /* No comment provided by engineer. */
 "Driver" = "Dinamizador";
+
+/* No comment provided by engineer. */
+"Duplicate" = "Duplicar";
 
 /* No comment provided by engineer. */
 "Edit" = "Editar";
@@ -323,6 +353,9 @@
 "End" = "Finalizar";
 
 /* No comment provided by engineer. */
+"End of travel" = "Fin del viaje";
+
+/* No comment provided by engineer. */
 "Energy Used" = "Energía utilizada";
 
 /* No comment provided by engineer. */
@@ -350,6 +383,9 @@
 "Female" = "Mujer";
 
 /* No comment provided by engineer. */
+"Fequency" = "Frecuencia";
+
+/* No comment provided by engineer. */
 "First Mover" = "Facilitador";
 
 /* No comment provided by engineer. */
@@ -357,6 +393,9 @@
 
 /* No comment provided by engineer. */
 "Frequency" = "Frecuencia";
+
+/* No comment provided by engineer. */
+"Friday" = "Viernes";
 
 /* No comment provided by engineer. */
 "Fuel car" = "Combustible";
@@ -371,7 +410,13 @@
 "Geothermal energy" = "Energía geotérmica";
 
 /* No comment provided by engineer. */
+"Go back" = "Volver atrás";
+
+/* No comment provided by engineer. */
 "Ground Breaker" = "Guía";
+
+/* No comment provided by engineer. */
+"Has your regular energy behaviour changed?" = "¿Ha cambiado su comportamiento energético habitual?";
 
 /* No comment provided by engineer. */
 "Heating" = "Calefacción";
@@ -389,10 +434,25 @@
 "Heating source" = "Fuente de calefacción";
 
 /* No comment provided by engineer. */
+"Here you can add regularly repeating consumptions, such as your commute.\nRecurring consumptions automatically add consumptions for you based on a custom interval." = "Aquí puede añadir consumos que se repiten con regularidad, como sus desplazamientos al trabajo. Los consumos recurrentes añaden automáticamente consumos por usted en función de un intervalo personalizado.";
+
+/* No comment provided by engineer. */
 "High speed train" = "Tren de alta velocidad";
 
 /* No comment provided by engineer. */
 "Home" = "Inicio";
+
+/* No comment provided by engineer. */
+"Home energy label" = "Etiqueta energética del hogar";
+
+/* No comment provided by engineer. */
+"Home-based workers/students" = "Teletrabajadores/estudiantes a distancia";
+
+/* No comment provided by engineer. */
+"Homemakers" = "Trabajadores del hogar";
+
+/* No comment provided by engineer. */
+"Household profile" = "Perfil del domicilio";
 
 /* No comment provided by engineer. */
 "How does it work?" = "¿Cómo funciona?";
@@ -408,6 +468,9 @@
 
 /* No comment provided by engineer. */
 "I would like to receive updates about the app and AURORA project by email." = "Querría recibir actualizaciones sobre la app y el proyecto AURORA por email.";
+
+/* No comment provided by engineer. */
+"Important" = "Importante";
 
 /* No comment provided by engineer. */
 "Imprint" = "Autobús híbrido eléctrico";
@@ -461,6 +524,9 @@
 "Mobility reminder" = "Recordatorio de desplazamientos";
 
 /* No comment provided by engineer. */
+"Monday" = "Lunes";
+
+/* No comment provided by engineer. */
 "Month" = "Mes";
 
 /* No comment provided by engineer. */
@@ -482,6 +548,9 @@
 "New Password" = "Nueva contraseña";
 
 /* No comment provided by engineer. */
+"No" = "No";
+
+/* No comment provided by engineer. */
 "No consumption entered yet (?)" = "Aún no se ha introducido ningún consumo (?)";
 
 /* No comment provided by engineer. */
@@ -501,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "Okay" = "OK";
+
+/* No comment provided by engineer. */
+"Only %@ is supported as a recurring consumption." = "Sólo se admite %@ como consumo recurrente.";
 
 /* No comment provided by engineer. */
 "Open Settings" = "Abrir configuración";
@@ -563,13 +635,28 @@
 "Profile" = "Perfil";
 
 /* No comment provided by engineer. */
+"Quit" = "Salir";
+
+/* No comment provided by engineer. */
 "Recent login required" = "Inicio de sesión reciente necesario";
+
+/* No comment provided by engineer. */
+"Recurring consumptions" = "Consumos recurrentes";
 
 /* No comment provided by engineer. */
 "Register" = "Registro";
 
 /* No comment provided by engineer. */
 "Registration failed" = "Registro fallido";
+
+/* No comment provided by engineer. */
+"Regular energy behaviour changes" = "Cambios regulares de comportamiento energético";
+
+/* No comment provided by engineer. */
+"Reject" = "Rechazar";
+
+/* No comment provided by engineer. */
+"Rejecting the latest Privacy Policy and Terms of Services requires us to delete your account. Note that we cannot recover your account after deleting it." = "Rechazar la Política de privacidad y las Condiciones del servicio más recientes nos obliga a eliminar su cuenta. Tenga en cuenta que no podemos recuperar su cuenta después de eliminarla.";
 
 /* No comment provided by engineer. */
 "Reload" = "Recarga";
@@ -584,7 +671,22 @@
 "Reset Password" = "Restablecer contraseña";
 
 /* No comment provided by engineer. */
+"Retired individuals" = "Jubilados";
+
+/* No comment provided by engineer. */
+"Retry" = "Reintentar";
+
+/* No comment provided by engineer. */
+"Saturday" = "Sábado";
+
+/* No comment provided by engineer. */
 "Save" = "Guardar";
+
+/* No comment provided by engineer. */
+"Save changes" = "Guardar los cambios";
+
+/* No comment provided by engineer. */
+"Select" = "Seleccionar";
 
 /* No comment provided by engineer. */
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Seleccione el inicio y el final de este consumo. Puede encontrar esta información en su factura de la luz.";
@@ -594,6 +696,9 @@
 
 /* No comment provided by engineer. */
 "Select your type of heating. You can find this information on your heating bill." = "Seleccione su tipo de calefacción. Puede encontrar esta información en su factura de calefacción.";
+
+/* No comment provided by engineer. */
+"Set" = "Asignar";
 
 /* No comment provided by engineer. */
 "Settings" = "Ajustes";
@@ -617,16 +722,31 @@
 "Submit" = "Enviar";
 
 /* No comment provided by engineer. */
+"Sunday" = "Domingo";
+
+/* No comment provided by engineer. */
 "Support" = "Soporte";
 
 /* No comment provided by engineer. */
+"Terms of Service" = "Condiciones del servicio";
+
+/* No comment provided by engineer. */
 "The next notification will be sent on %@" = "La siguiente notificación se enviará %@";
+
+/* No comment provided by engineer. */
+"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Esta aplicación ha sido desarrollada por el proyecto  Horizonte 2020 AURORA financiado por la UE (nº [101036418](https://cordis.europa.eu/project/id/101036418)). Sus datos son procesados por miembros del consorcio del proyecto y almacenados de forma segura en Google Firebase. Sus datos sólo se utilizarán con fines de investigación en un formato anonimizado y nunca comercialmente sin su consentimiento explícito. Puede modificar, descargar o eliminar sus datos en cualquier momento o ponerse en contacto con nuestro servicio de asistencia en [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). Al continuar, acepta las [Condiciones del servicio](https://www.aurora-h2020.eu/es/aurora/app-tos) y la [Política de privacidad](https://www.aurora-h2020.eu/es/aurora/app-privacy-policy) de AURORA.";
+
+/* No comment provided by engineer. */
+"This entry was automatically added via recurring consumptions." = "Esta entrada se añadió automáticamente mediante consumos recurrentes.";
 
 /* No comment provided by engineer. */
 "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.\nCrowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners." = "Esta información nos ayuda a calcular con mayor precisión tu huella de carbono. Por favor, tenga en cuenta que no podrá cambiar de país más adelante. \nLa financiación colectiva de instalaciones fotovoltaicas locales solo está prevista actualmente para determinadas ciudades de los socios del proyecto AURORA.";
 
 /* No comment provided by engineer. */
 "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead." = "Esta es la cantidad de CO₂ que se emitiría si, en lugar de ello, hubiera tomado la energía producida de su red local.";
+
+/* No comment provided by engineer. */
+"Thursday" = "Jueves";
 
 /* No comment provided by engineer. */
 "Time" = "Hora";
@@ -641,7 +761,28 @@
 "Transportation type" = "Tipo de transporte";
 
 /* No comment provided by engineer. */
+"Tuesday" = "Martes";
+
+/* No comment provided by engineer. */
 "Type" = "Tipo";
+
+/* No comment provided by engineer. */
+"Typical occupancy" = "Ocupación habitual";
+
+/* No comment provided by engineer. */
+"Typical occupancy: %lld" = "Ocupación habitual: %lld";
+
+/* No comment provided by engineer. */
+"Unknown" = "Desconocido";
+
+/* No comment provided by engineer. */
+"Unsaved changes" = "Cambios no guardados";
+
+/* No comment provided by engineer. */
+"Unsure" = "Inseguro";
+
+/* No comment provided by engineer. */
+"Update recurring consumptions?" = "¿Actualizar los consumos recurrentes?";
 
 /* No comment provided by engineer. */
 "Updated" = "Actualizado";
@@ -656,6 +797,9 @@
 "Walking" = "A pie";
 
 /* No comment provided by engineer. */
+"Warning" = "Advertencia";
+
+/* No comment provided by engineer. */
 "Waste treatment" = "Tratamiento de residuos";
 
 /* No comment provided by engineer. */
@@ -668,10 +812,22 @@
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Podemos recordarle que introduzca regularmente sus datos de transporte. Solo tiene que decirnos con qué frecuencia viaja.";
 
 /* No comment provided by engineer. */
+"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Hemos actualizado nuestra [Política de privacidad](https://www.aurora-h2020.eu/es/aurora/app-privacy-policy) y nuestras [Condiciones del servicio](https://www.aurora-h2020.eu/es/aurora/app-tos). Revise y acepte la última versión para seguir utilizando la aplicación.";
+
+/* No comment provided by engineer. */
+"Wednesday" = "Miércoles";
+
+/* No comment provided by engineer. */
 "Weekday" = "Día de la semana";
 
 /* No comment provided by engineer. */
+"Weekdays" = "Entre semana";
+
+/* No comment provided by engineer. */
 "Weekly" = "Mensualmente";
+
+/* No comment provided by engineer. */
+"Workers/students outside the home" = "Trabajadores/estudiantes fuera del domicilio";
 
 /* No comment provided by engineer. */
 "Year" = "Año";
@@ -681,6 +837,9 @@
 
 /* No comment provided by engineer. */
 "Yearly" = "Anualmente";
+
+/* No comment provided by engineer. */
+"Yes" = "Sí";
 
 /* No comment provided by engineer. */
 "You can find this information on your electricity bill." = "Puede encontrar esta información en su factura de electricidad.";

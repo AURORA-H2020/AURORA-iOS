@@ -8,6 +8,9 @@
 "About the App" = "O aplikaciji";
 
 /* No comment provided by engineer. */
+"Accept" = "Sprejmi";
+
+/* No comment provided by engineer. */
 "Accomplisher" = "Avantgardist";
 
 /* No comment provided by engineer. */
@@ -15,6 +18,9 @@
 
 /* No comment provided by engineer. */
 "Account deletion" = "Izbris računa";
+
+/* No comment provided by engineer. */
+"Add" = "Dodaj";
 
 /* No comment provided by engineer. */
 "Add a consumption" = "Dodajte porabo";
@@ -83,6 +89,12 @@
 "An error occurred while trying to save your consumption. Please try again." = "Pri poskusu shranjevanja vaše porabe je prišlo do napake. Prosim, poskusite znova.";
 
 /* No comment provided by engineer. */
+"An error occurred while trying to save your recurring consumption." = "Pri poskusu shranjevanja ponavljajoče porabe je prišlo do napake.";
+
+/* No comment provided by engineer. */
+"An error occurred while trying to save your recurring consumption. Please try again." = "Pri poskusu shranjevanja ponavljajoče porabe je prišlo do napake. Prosimo, poskusi znova.";
+
+/* No comment provided by engineer. */
 "An error occurred while trying to update your email address. Please check your inputs and try again." = "Pri poskusu posodobitve tvojega e-poštnega naslova je prišlo do napake. Preverite svoje podatke in poskusi znova.";
 
 /* No comment provided by engineer. */
@@ -99,6 +111,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete your account?" = "Ste prepričani, da želite izbrisati svoj račun?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to discard your unsaved changes?" = "Si prepričan, da želiš zavreči neshranjene spremembe?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to logout?" = "Ste prepričani, da se želite odjaviti?";
@@ -242,6 +257,9 @@
 "Delete Entry" = "Brisanje vnosa";
 
 /* No comment provided by engineer. */
+"Delete Forever" = "Trajno izbriši";
+
+/* No comment provided by engineer. */
 "Delete my account" = "Izbriši moj račun";
 
 /* No comment provided by engineer. */
@@ -257,6 +275,12 @@
 "Diesel passenger train" = "Potniški vlak na dizelski pogon";
 
 /* No comment provided by engineer. */
+"Disabled" = "Onemogočeno";
+
+/* No comment provided by engineer. */
+"Discard changes" = "Zavrži spremembe";
+
+/* No comment provided by engineer. */
 "Distance" = "Razdalja";
 
 /* No comment provided by engineer. */
@@ -266,10 +290,16 @@
 "District heating source" = "Vir daljinskega ogrevanja";
 
 /* No comment provided by engineer. */
+"Don't ask me again" = "Ne sprašuj me več";
+
+/* No comment provided by engineer. */
 "Download my data" = "Prenesi moje podatke";
 
 /* No comment provided by engineer. */
 "Driver" = "Dosegaš cilj";
+
+/* No comment provided by engineer. */
+"Duplicate" = "Podvoji";
 
 /* No comment provided by engineer. */
 "Edit" = "Uredi";
@@ -323,6 +353,9 @@
 "End" = "Konec";
 
 /* No comment provided by engineer. */
+"End of travel" = "Konec potovanja";
+
+/* No comment provided by engineer. */
 "Energy Used" = "Porabljena energija";
 
 /* No comment provided by engineer. */
@@ -350,6 +383,9 @@
 "Female" = "Ženska";
 
 /* No comment provided by engineer. */
+"Fequency" = "Pogostost";
+
+/* No comment provided by engineer. */
 "First Mover" = "Faza poskusov";
 
 /* No comment provided by engineer. */
@@ -357,6 +393,9 @@
 
 /* No comment provided by engineer. */
 "Frequency" = "Pogostost";
+
+/* No comment provided by engineer. */
+"Friday" = "Petek";
 
 /* No comment provided by engineer. */
 "Fuel car" = "Vozilo na gorivo";
@@ -371,7 +410,13 @@
 "Geothermal energy" = "Geotermalna energija";
 
 /* No comment provided by engineer. */
+"Go back" = "Pojdi nazaj";
+
+/* No comment provided by engineer. */
 "Ground Breaker" = "Gradnja temeljev";
+
+/* No comment provided by engineer. */
+"Has your regular energy behaviour changed?" = "Se je tvoje običajno energijsko vedenje spremenilo?";
 
 /* No comment provided by engineer. */
 "Heating" = "Ogrevanje";
@@ -389,10 +434,25 @@
 "Heating source" = "Vir ogrevanja";
 
 /* No comment provided by engineer. */
+"Here you can add regularly repeating consumptions, such as your commute.\nRecurring consumptions automatically add consumptions for you based on a custom interval." = "Tukaj lahko dodaš redno ponavljajoče porabe, kot na primer prevoz na delo. Ponavljajoče porabe se avtomatsko dodajo glede na termin, ki ga določiš.";
+
+/* No comment provided by engineer. */
 "High speed train" = "Hitri vlak";
 
 /* No comment provided by engineer. */
 "Home" = "Domov";
+
+/* No comment provided by engineer. */
+"Home energy label" = "Energijska oznaka za dom";
+
+/* No comment provided by engineer. */
+"Home-based workers/students" = "Zaposleni in študentje, ki živijo doma";
+
+/* No comment provided by engineer. */
+"Homemakers" = "Domačini";
+
+/* No comment provided by engineer. */
+"Household profile" = "Profil gospodinjstva";
 
 /* No comment provided by engineer. */
 "How does it work?" = "Kako to deluje?";
@@ -408,6 +468,9 @@
 
 /* No comment provided by engineer. */
 "I would like to receive updates about the app and AURORA project by email." = "Obvestila o posodobitvah aplikacije in o projektu AURORA želim prejemati po e-pošti.";
+
+/* No comment provided by engineer. */
+"Important" = "Pomembno";
 
 /* No comment provided by engineer. */
 "Imprint" = "Odtis";
@@ -461,6 +524,9 @@
 "Mobility reminder" = "Opomnik za mobilnost";
 
 /* No comment provided by engineer. */
+"Monday" = "Ponedeljek";
+
+/* No comment provided by engineer. */
 "Month" = "Mesec";
 
 /* No comment provided by engineer. */
@@ -482,6 +548,9 @@
 "New Password" = "Novo geslo";
 
 /* No comment provided by engineer. */
+"No" = "Ne";
+
+/* No comment provided by engineer. */
 "No consumption entered yet (?)" = "Poraba še ni vnesena (?)";
 
 /* No comment provided by engineer. */
@@ -501,6 +570,9 @@
 
 /* No comment provided by engineer. */
 "Okay" = "V redu";
+
+/* No comment provided by engineer. */
+"Only %@ is supported as a recurring consumption." = "Samo %@ je podprt kot ponavljajoča poraba.";
 
 /* No comment provided by engineer. */
 "Open Settings" = "Odpri nastavitve";
@@ -563,13 +635,28 @@
 "Profile" = "Profil";
 
 /* No comment provided by engineer. */
+"Quit" = "Izhod";
+
+/* No comment provided by engineer. */
 "Recent login required" = "Potrebna je nedavna prijava";
+
+/* No comment provided by engineer. */
+"Recurring consumptions" = "Ponavljajoča poraba";
 
 /* No comment provided by engineer. */
 "Register" = "Registrirajte se";
 
 /* No comment provided by engineer. */
 "Registration failed" = "Registracija ni uspela";
+
+/* No comment provided by engineer. */
+"Regular energy behaviour changes" = "Redne spremembe energijskega vedenja";
+
+/* No comment provided by engineer. */
+"Reject" = "Zavrni";
+
+/* No comment provided by engineer. */
+"Rejecting the latest Privacy Policy and Terms of Services requires us to delete your account. Note that we cannot recover your account after deleting it." = "Če zavrneš najnovejši pravilnik o zasebnosti in pogoje uporabe storitev, moramo izbrisati tvoj račun. Upoštevaj, da računa po izbrisu ne moremo več obnoviti.";
 
 /* No comment provided by engineer. */
 "Reload" = "Ponovno nalaganje";
@@ -584,7 +671,22 @@
 "Reset Password" = "Ponastavitev gesla";
 
 /* No comment provided by engineer. */
+"Retired individuals" = "Upokojenci";
+
+/* No comment provided by engineer. */
+"Retry" = "Poskusi ponovno";
+
+/* No comment provided by engineer. */
+"Saturday" = "Sobota";
+
+/* No comment provided by engineer. */
 "Save" = "Shrani";
+
+/* No comment provided by engineer. */
+"Save changes" = "Shrani spremembe";
+
+/* No comment provided by engineer. */
+"Select" = "Izberi";
 
 /* No comment provided by engineer. */
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Izberi začetek in konec te porabe. Te podatke lahko najdeš na računu za električno energijo.";
@@ -594,6 +696,9 @@
 
 /* No comment provided by engineer. */
 "Select your type of heating. You can find this information on your heating bill." = "Izberi vrsto ogrevanja. Te podatke lahko najdeš na računu za ogrevanje.";
+
+/* No comment provided by engineer. */
+"Set" = "Nastavi";
 
 /* No comment provided by engineer. */
 "Settings" = "Nastavitve";
@@ -617,16 +722,31 @@
 "Submit" = "Pošlji";
 
 /* No comment provided by engineer. */
+"Sunday" = "Nedelja";
+
+/* No comment provided by engineer. */
 "Support" = "Podpora";
 
 /* No comment provided by engineer. */
+"Terms of Service" = "Pogoji uporabe storitev";
+
+/* No comment provided by engineer. */
 "The next notification will be sent on %@" = "Naslednje obvestilo bo poslano %@";
+
+/* No comment provided by engineer. */
+"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Ta aplikacija je bila razvita v okviru projekta AURORA, ki ga financira EU v okviru programa Obzorje 2020 (št. projekta [101036418](https://cordis.europa.eu/project/id/101036418)). Vaši podatki se obdelujejo s strani članov konzorcija projekta in varno shranjujejo v sistemu Google Firebase. Vaši podatki bodo uporabljeni izključno za raziskovalne namene v anonimizirani obliki in nikoli komercialno, brez vašega izrecnega soglasja. Svoje podatke lahko kadar koli spremenite, prenesete ali izbrišete ter se obrnete na našo podporo na naslovu [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). Z nadaljevanjem se strinjate s  [Pogoji uporabe](https://www.aurora-h2020.eu/sl/aurora/app-tos) in [Pravilnikom o zasebnosti](https://www.aurora-h2020.eu/sl/aurora/app-privacy-policy) AURORA.";
+
+/* No comment provided by engineer. */
+"This entry was automatically added via recurring consumptions." = "Ta vnos je bil avtomatsko dodan kot ponavljajoča poraba.";
 
 /* No comment provided by engineer. */
 "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.\nCrowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners." = "Te informacije nam pomagajo natančneje izračunati tvoj ogljični odtis. Upoštevaj, da svoje države pozneje ne moreš spremeniti. Množično financiranje lokalnih sončnih elektrarn je trenutno načrtovano le za izbrana mesta partnerjev projekta AURORA.";
 
 /* No comment provided by engineer. */
 "This is the amount of CO₂ that would be emitted if you had drawn the produced energy from your local grid instead." = "To je količina CO₂, ki bi se sprostila, če bi proizvedeno energijo črpali iz lokalnega omrežja.";
+
+/* No comment provided by engineer. */
+"Thursday" = "Četrtek";
 
 /* No comment provided by engineer. */
 "Time" = "Čas";
@@ -641,7 +761,28 @@
 "Transportation type" = "Vrsta prevoza";
 
 /* No comment provided by engineer. */
+"Tuesday" = "Torek";
+
+/* No comment provided by engineer. */
 "Type" = "Tip";
+
+/* No comment provided by engineer. */
+"Typical occupancy" = "Tipična zasedenost";
+
+/* No comment provided by engineer. */
+"Typical occupancy: %lld" = "Tipična zasedenost:  %lld";
+
+/* No comment provided by engineer. */
+"Unknown" = "Neznano";
+
+/* No comment provided by engineer. */
+"Unsaved changes" = "Neshranjene spremembe";
+
+/* No comment provided by engineer. */
+"Unsure" = "Nisem siguren";
+
+/* No comment provided by engineer. */
+"Update recurring consumptions?" = "Posodobim ponavljajoče porabe?";
 
 /* No comment provided by engineer. */
 "Updated" = "Posodobljeno";
@@ -656,6 +797,9 @@
 "Walking" = "Hoja";
 
 /* No comment provided by engineer. */
+"Warning" = "Opozorilo";
+
+/* No comment provided by engineer. */
 "Waste treatment" = "Ravnanje z odpadki";
 
 /* No comment provided by engineer. */
@@ -668,10 +812,22 @@
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Lahko vas opomnimo, da redno vnašate podatke o prevozu. Sporočite nam, kako pogosto potujete.";
 
 /* No comment provided by engineer. */
+"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Posodobili smo [Pravilnik o zasebnosti](https://www.aurora-h2020.eu/sl/aurora/app-privacy-policy) in [Pogoje uporabe storitev](https://www.aurora-h2020.eu/sl/aurora/app-tos). Če želite nadaljevati z uporabo aplikacije, preglejte in sprejmite najnovejšo različico.";
+
+/* No comment provided by engineer. */
+"Wednesday" = "Sreda";
+
+/* No comment provided by engineer. */
 "Weekday" = "Delavnik";
 
 /* No comment provided by engineer. */
+"Weekdays" = "Delovniki";
+
+/* No comment provided by engineer. */
 "Weekly" = "Tedensko";
+
+/* No comment provided by engineer. */
+"Workers/students outside the home" = "Zaposleni in študentje, ki ne živijo doma";
 
 /* No comment provided by engineer. */
 "Year" = "Leto";
@@ -681,6 +837,9 @@
 
 /* No comment provided by engineer. */
 "Yearly" = "Letno";
+
+/* No comment provided by engineer. */
+"Yes" = "Da";
 
 /* No comment provided by engineer. */
 "You can find this information on your electricity bill." = "Te podatke lahko najdete na računu za elektriko.";

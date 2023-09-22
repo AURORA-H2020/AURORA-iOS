@@ -1,11 +1,14 @@
 /* No comment provided by engineer. */
-"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Dieses Projekt](https://www.aurora-h2020.eu/) wurde durch das Forschungs- und Innovationsprogramm Horizon 2020 der Europäischen Union unter der Fördernummer [101036418] (https://cordis.europa.eu/project/id/101036418) gefördert.";
+"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Dieses Projekt](https://www.aurora-h2020.eu/) wurde durch das Forschungs- und Innovationsprogramm Horizon 2020 der Europäischen Union unter der Fördernummer [101036418](https://cordis.europa.eu/project/id/101036418) gefördert.";
 
 /* No comment provided by engineer. */
 "%@ in %@" = "%@ in %@";
 
 /* No comment provided by engineer. */
 "About the App" = "Über die App";
+
+/* No comment provided by engineer. */
+"Accept" = "Akzeptieren";
 
 /* No comment provided by engineer. */
 "Accomplisher" = "Ausgezeichnet";
@@ -146,9 +149,6 @@
 "Busses" = "Busse";
 
 /* No comment provided by engineer. */
-"By continuing, you agree to AURORA's\n[Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos/) and [Privacy policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy/)." = "Wenn Sie fortfahren, erklären Sie sich mit den [Nutzungsbedingungen] (https://www.aurora-h2020.eu/aurora/app-tos/) und den [Datenschutzbestimmungen] (https://www.aurora-h2020.eu/aurora/app-privacy-policy/) von AURORA einverstanden.";
-
-/* No comment provided by engineer. */
 "Calculate" = "Berechnen";
 
 /* No comment provided by engineer. */
@@ -182,7 +182,7 @@
 "CO₂" = "CO₂";
 
 /* No comment provided by engineer. */
-"CO₂ emitted if **conventional**" = "CO₂-Emissionen, wenn **konventionell**";
+"CO₂ emitted if **conventional**" = "CO₂-Emissionen (**konventionell**)";
 
 /* No comment provided by engineer. */
 "CO₂ emitted if **photovoltaics**" = "CO₂-Emissionen bei **Photovoltaik**";
@@ -255,6 +255,9 @@
 
 /* No comment provided by engineer. */
 "Delete Entry" = "Eintrag löschen";
+
+/* No comment provided by engineer. */
+"Delete Forever" = "Für immer löschen";
 
 /* No comment provided by engineer. */
 "Delete my account" = "Mein Konto löschen";
@@ -407,6 +410,9 @@
 "Geothermal energy" = "Geothermische Energie";
 
 /* No comment provided by engineer. */
+"Go back" = "Zurück";
+
+/* No comment provided by engineer. */
 "Ground Breaker" = "Grenzgänger*in";
 
 /* No comment provided by engineer. */
@@ -462,6 +468,9 @@
 
 /* No comment provided by engineer. */
 "I would like to receive updates about the app and AURORA project by email." = "Ich möchte Updates über die App und das AURORA-Projekt per E-Mail erhalten.";
+
+/* No comment provided by engineer. */
+"Important" = "Wichtig";
 
 /* No comment provided by engineer. */
 "Imprint" = "Impressum";
@@ -644,6 +653,12 @@
 "Regular energy behaviour changes" = "Nach Energieverhalten fragen";
 
 /* No comment provided by engineer. */
+"Reject" = "Ablehnen";
+
+/* No comment provided by engineer. */
+"Rejecting the latest Privacy Policy and Terms of Services requires us to delete your account. Note that we cannot recover your account after deleting it." = "Wenn Sie die neuesten Datenschutzbestimmungen und Nutzungsbedingungen ablehnen, müssen wir Ihr Konto löschen. Beachten Sie, dass wir Ihr Konto nach der Löschung nicht wiederherstellen können.";
+
+/* No comment provided by engineer. */
 "Reload" = "Neu laden";
 
 /* No comment provided by engineer. */
@@ -719,6 +734,9 @@
 "The next notification will be sent on %@" = "Die nächste Benachrichtigung wird am %@ gesendet";
 
 /* No comment provided by engineer. */
+"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Diese App wurde im Rahmen des von der EU geförderten Projekts AURORA Horizon 2020 (Nr. [101036418](https://cordis.europa.eu/project/id/101036418)) entwickelt. Ihre Daten werden von den Mitgliedern des Projektkonsortiums verarbeitet und sicher in Google Firebase gespeichert. Ihre Daten werden nur in anonymisierter Form für Forschungszwecke verwendet und niemals ohne Ihre ausdrückliche Zustimmung kommerziell genutzt. Sie können Ihre Daten jederzeit ändern, herunterladen oder löschen oder sich an unseren Support unter [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu) wenden. Indem Sie fortfahren, erklären Sie sich mit den [Nutzungsbedingungen](https://www.aurora-h2020.eu/de/aurora/app-tos) und der [Datenschutzrichtlinie](https://www.aurora-h2020.eu/de/aurora/app-privacy-policy) von AURORA einverstanden.";
+
+/* No comment provided by engineer. */
 "This entry was automatically added via recurring consumptions." = "Dieser Eintrag wurde automatisch über wiederkehrende Verbräuche hinzugefügt.";
 
 /* No comment provided by engineer. */
@@ -779,6 +797,9 @@
 "Walking" = "Laufen";
 
 /* No comment provided by engineer. */
+"Warning" = "Achtung";
+
+/* No comment provided by engineer. */
 "Waste treatment" = "Abfallbehandlung";
 
 /* No comment provided by engineer. */
@@ -789,6 +810,9 @@
 
 /* No comment provided by engineer. */
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Wir können Sie daran erinnern, Ihre Transportdaten regelmäßig einzugeben. Teilen Sie uns einfach mit, wie häufig Sie unterwegs sind.";
+
+/* No comment provided by engineer. */
+"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Wir haben unsere [Datenschutzrichtlinien](https://www.aurora-h2020.eu/de/aurora/app-privacy-policy) und [Nutzungsbedingungen](https://www.aurora-h2020.eu/de/aurora/app-tos) aktualisiert. Bitte prüfen und akzeptieren Sie die neueste Version, um die App weiterhin nutzen zu können.";
 
 /* No comment provided by engineer. */
 "Wednesday" = "Mittwoch";
@@ -827,7 +851,7 @@
 "You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment." = "Sie können schon bald Ihren ökologischen Fußabdruck verringern, indem Sie in Ihre lokale AURORA-Photovoltaikanlage investieren. Bis dahin können Sie hier schon einmal testen, um wie viel sich Ihr Fußabdruck, je nach Ihrer potenziellen Investition, verringern würde.";
 
 /* No comment provided by engineer. */
-"You may add a description to your entry to help you find it later." = "Sie können Ihrem Eintrag eine Beschreibung hinzufügen, damit Sie ihn später leichter finden.";
+"You may add a description to your entry to help you find it later." = "Sie können Ihrem Eintrag eine Beschreibung hinzufügen um ihn später leichter zu finden.";
 
 /* No comment provided by engineer. */
 "You will shortly receive an email to reset your password." = "Sie werden in Kürze eine E-Mail erhalten, um Ihr Passwort zurückzusetzen.";
