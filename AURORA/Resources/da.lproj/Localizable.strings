@@ -8,6 +8,9 @@
 "About the App" = "Om appen";
 
 /* No comment provided by engineer. */
+"Accept" = "Accepter";
+
+/* No comment provided by engineer. */
 "Accomplisher" = "Accompllisher";
 
 /* No comment provided by engineer. */
@@ -254,6 +257,9 @@
 "Delete Entry" = "Slet indlæg";
 
 /* No comment provided by engineer. */
+"Delete Forever" = "Slette permanent";
+
+/* No comment provided by engineer. */
 "Delete my account" = "Slet min konto";
 
 /* No comment provided by engineer. */
@@ -404,6 +410,9 @@
 "Geothermal energy" = "Geotermisk energi";
 
 /* No comment provided by engineer. */
+"Go back" = "Tilbage";
+
+/* No comment provided by engineer. */
 "Ground Breaker" = "Ground Breaker";
 
 /* No comment provided by engineer. */
@@ -434,6 +443,18 @@
 "Home" = "Hjem";
 
 /* No comment provided by engineer. */
+"Home energy label" = "Energimærke på din bolig";
+
+/* No comment provided by engineer. */
+"Home-based workers/students" = "Arbejder/studerer hjemmefra";
+
+/* No comment provided by engineer. */
+"Homemakers" = "Hjemmegående";
+
+/* No comment provided by engineer. */
+"Household profile" = "Husstandsprofil";
+
+/* No comment provided by engineer. */
 "How does it work?" = "Hvordan fungere det?";
 
 /* No comment provided by engineer. */
@@ -447,6 +468,9 @@
 
 /* No comment provided by engineer. */
 "I would like to receive updates about the app and AURORA project by email." = "Jeg vil gerne modtage opdateringer om appen og AURORA-projektet via e-mail.";
+
+/* No comment provided by engineer. */
+"Important" = "Vigtigt";
 
 /* No comment provided by engineer. */
 "Imprint" = "Forlæggermærke";
@@ -593,7 +617,7 @@
 "Please logout and login again to delete your account." = "Log venligst ud og log på igen for at slette din konto.";
 
 /* No comment provided by engineer. */
-"Please note that all values displayed here are specific for your city, **%@**, and are merely for information.\nAll calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later.\nEstimated savings might be different from actual data, once the photovoltaic installations will be operational.\nYou obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Bemærk venligst, at alle værdier, der vises her, er specifikke for din by, **%@**, og kun er til orientering. Alle beregninger er baseret på nuværende planer for solcelleanlæggene og skal muligvis justeres senere. Estimerede besparelser kan være anderledes end de faktiske data, når solcelleanlæggene er i drift. Du påtager dig naturligvis ingen forpligtelser ved at bruge appen. Appen bruger [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/ ) Informationssystem (PVGIS) af Det Fælles Forskningscenter i Europa-Komissionen. ";
+"Please note that all values displayed here are specific for your city, **%@**, and are merely for information.\nAll calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later.\nEstimated savings might be different from actual data, once the photovoltaic installations will be operational.\nYou obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Bemærk venligst, at alle værdier, der vises her, er specifikke for din by, **%@**, og kun er til orientering. Alle beregninger er baseret på nuværende planer for solcelleanlæggene og skal muligvis justeres senere. Estimerede besparelser kan være anderledes end de faktiske data, når solcelleanlæggene er i drift. Du påtager dig naturligvis ingen forpligtelser ved at bruge appen. Appen bruger [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Informationssystem (PVGIS) af Det Fælles Forskningscenter i Europa-Komissionen. ";
 
 /* No comment provided by engineer. */
 "Please note that all values displayed here are specific for your city, **%@**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Bemærk venligst, at alle værdier, der vises her, er specifikke for din by, **%@**, er kun til orientering. Alle beregninger er baseret på nuværende planer for solcelleanlæggene og skal muligvis justeres senere. Estimerede besparelser kan være anderledes end de faktiske data, når solcelleanlæggene er i drift. Du påtager dig naturligvis ingen forpligtelser ved at bruge appen. Appen bruger [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/ ) Informationssystem (PVGIS) af Det Fælles Forskningscenter i Europa-Komissionen. ";
@@ -629,6 +653,12 @@
 "Regular energy behaviour changes" = "Regelmæssige ændringer i energiadfærden";
 
 /* No comment provided by engineer. */
+"Reject" = "Afvis";
+
+/* No comment provided by engineer. */
+"Rejecting the latest Privacy Policy and Terms of Services requires us to delete your account. Note that we cannot recover your account after deleting it." = "Afvisning af den seneste privatlivspolitik og servicevilkår kræver, at vi sletter din konto. Bemærk at vi ikke kan gendanne din konto efter at have slettet den.";
+
+/* No comment provided by engineer. */
 "Reload" = "Genindlæs";
 
 /* No comment provided by engineer. */
@@ -639,6 +669,9 @@
 
 /* No comment provided by engineer. */
 "Reset Password" = "Nulstil adgangskode";
+
+/* No comment provided by engineer. */
+"Retired individuals" = "Pensionister";
 
 /* No comment provided by engineer. */
 "Retry" = "Prøv igen";
@@ -695,7 +728,13 @@
 "Support" = "Support";
 
 /* No comment provided by engineer. */
+"Terms of Service" = "Servicevilkår";
+
+/* No comment provided by engineer. */
 "The next notification will be sent on %@" = "Den næste notifikation vil blive sendt den %@";
+
+/* No comment provided by engineer. */
+"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Appen er udviklet af det AURORA Horizon 2020 EU-finansierede projekt (nr. [101036418](https://cordis.europa.eu/project/id/101036418)). Dine data behandles af medlemmer af projektkonsortiet og opbevares sikkert i Google Firebase. Dine data vil kun blive brugt til forskningsformål i et anonymiseret format og aldrig kommercielt uden dit udtrykkelige samtykke. Du kan til enhver tid ændre, downloade eller slette dine data eller kontakte vores support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). Ved at fortsætte accepterer du AURORAs [servicevilkår](https://www.aurora-h2020.eu/da/aurora/app-tos) og [privatlivspolitik](https://www.aurora-h2020.eu/da/aurora /app-privatlivspolitik).";
 
 /* No comment provided by engineer. */
 "This entry was automatically added via recurring consumptions." = "Dette indlæg blev automatisk tilføjet via tilbagevendende forbrug.";
@@ -734,7 +773,13 @@
 "Typical occupancy: %lld" = "Typisk pladsforhold:% lld";
 
 /* No comment provided by engineer. */
+"Unknown" = "Ukendt";
+
+/* No comment provided by engineer. */
 "Unsaved changes" = "Ikke-gemte ændringer";
+
+/* No comment provided by engineer. */
+"Unsure" = "Usikker";
 
 /* No comment provided by engineer. */
 "Update recurring consumptions?" = "Opdatér tilbagevendende forbrug?";
@@ -752,6 +797,9 @@
 "Walking" = "Gående";
 
 /* No comment provided by engineer. */
+"Warning" = "Advarsel";
+
+/* No comment provided by engineer. */
 "Waste treatment" = "Affaldsforbrænding";
 
 /* No comment provided by engineer. */
@@ -764,6 +812,9 @@
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Vi kan minde dig om regelmæssigt at indtaste dine transportdata. Bare fortæl os, hvor ofte du rejser.";
 
 /* No comment provided by engineer. */
+"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Vi har opdateret vores [privatlivspolitik](https://www.aurora-h2020.eu/da/aurora/app-privacy-policy) og [servicevilkår](https://www.aurora-h2020.eu/da/aurora/app-tos). Læs og accepter den seneste version for at fortsætte med at bruge appen.";
+
+/* No comment provided by engineer. */
 "Wednesday" = "onsdag";
 
 /* No comment provided by engineer. */
@@ -774,6 +825,9 @@
 
 /* No comment provided by engineer. */
 "Weekly" = "Ugentlig";
+
+/* No comment provided by engineer. */
+"Workers/students outside the home" = "Arbejder/studerer udenfor hjemmet";
 
 /* No comment provided by engineer. */
 "Year" = "År";
