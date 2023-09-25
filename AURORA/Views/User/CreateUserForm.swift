@@ -59,18 +59,12 @@ struct CreateUserForm {
     
     /// Creates a new instance of `CreateUserForm`
     init() {
-        let firebaseUserDisplayNameComponents = try? Firebase
-            .default
-            .authentication
-            .state
-            .userAccount
-            .displayName?
-            .components(separatedBy: " ")
+        let preferredDisplayNameComponents = Firebase.Authentication.State.preferredDisplayNameComponents
         self._firstName = .init(
-            initialValue: firebaseUserDisplayNameComponents?.first ?? .init()
+            initialValue: preferredDisplayNameComponents?.givenName ?? .init()
         )
         self._lastName = .init(
-            initialValue: firebaseUserDisplayNameComponents?.last ?? .init()
+            initialValue: preferredDisplayNameComponents?.familyName ?? .init()
         )
     }
     
