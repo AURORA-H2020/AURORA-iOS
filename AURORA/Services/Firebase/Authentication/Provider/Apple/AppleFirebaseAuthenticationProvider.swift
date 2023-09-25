@@ -175,6 +175,8 @@ extension AppleFirebaseAuthenticationProvider: AuthenticationServices.ASAuthoriz
                 .subject
                 .send(completion: .failure(SignInError.identitiyTokenMissing))
         }
+        // Set display name components
+        Firebase.Authentication.State.displayNameComponents = appleIDCredential.fullName
         // Initialize OAuthCredential
         let oAuthCredential = FirebaseAuth.OAuthProvider.credential(
             withProviderID: Firebase.Authentication.Provider.apple.rawValue,

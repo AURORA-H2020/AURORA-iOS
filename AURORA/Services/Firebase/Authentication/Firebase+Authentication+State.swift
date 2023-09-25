@@ -14,6 +14,32 @@ extension Firebase.Authentication {
     
 }
 
+// MARK: - Display Name Components
+
+extension Firebase.Authentication.State {
+    
+    /// The display name components.
+    static var displayNameComponents: PersonNameComponents?
+    
+    /// The preferred display name components.
+    static var preferredDisplayNameComponents: PersonNameComponents? {
+        if let displayNameComponents = self.displayNameComponents {
+            self.displayNameComponents = nil
+            return displayNameComponents
+        } else if let userAccount = try? Firebase.default.authentication.state.userAccount,
+                  let displayName = userAccount.displayName {
+            let displayNameComponents = displayName.components(separatedBy: " ")
+            return .init(
+                givenName: displayNameComponents.first,
+                familyName: displayNameComponents.last
+            )
+        } else {
+            return nil
+        }
+    }
+    
+}
+
 // MARK: - State+isAuthenticated
 
 extension Firebase.Authentication.State {
