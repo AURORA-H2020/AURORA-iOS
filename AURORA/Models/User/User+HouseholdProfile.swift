@@ -62,7 +62,7 @@ extension User.HouseholdProfile {
     static let retiredIndividuals: Self = "retiredIndividuals"
     
     /// Home-based workers/students
-    static let homeBasedWorkesOrStudents: Self = "homeBasedWorkesOrStudents"
+    static let homeBasedWorkersOrStudents: Self = "homeBasedWorkersOrStudents"
     
     /// Homemakers
     static let homemakers: Self = "homemakers"
@@ -79,7 +79,7 @@ extension User.HouseholdProfile: CaseIterable {
     /// A collection of all values of this type.
     static let allCases: [Self] = [
         .retiredIndividuals,
-        .homeBasedWorkesOrStudents,
+        .homeBasedWorkersOrStudents,
         .homemakers,
         .workersOrStudentsOutsideTheHome
     ]
@@ -95,7 +95,7 @@ extension User.HouseholdProfile {
         switch self {
         case .retiredIndividuals:
             return .init(localized: "Retired individuals")
-        case .homeBasedWorkesOrStudents:
+        case .homeBasedWorkersOrStudents:
             return .init(localized: "Home-based workers/students")
         case .homemakers:
             return .init(localized: "Homemakers")

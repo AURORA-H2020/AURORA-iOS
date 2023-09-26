@@ -8,6 +8,9 @@
 "About the App" = "Sobre a App";
 
 /* No comment provided by engineer. */
+"Accept" = "Aceitar";
+
+/* No comment provided by engineer. */
 "Accomplisher" = "Admirável";
 
 /* No comment provided by engineer. */
@@ -254,6 +257,9 @@
 "Delete Entry" = "Eliminar Registo";
 
 /* No comment provided by engineer. */
+"Delete Forever" = "Eliminar definitivamente";
+
+/* No comment provided by engineer. */
 "Delete my account" = "Eliminar a minha conta";
 
 /* No comment provided by engineer. */
@@ -404,6 +410,9 @@
 "Geothermal energy" = "Energia geotérmica";
 
 /* No comment provided by engineer. */
+"Go back" = "Voltar";
+
+/* No comment provided by engineer. */
 "Ground Breaker" = "Galopador";
 
 /* No comment provided by engineer. */
@@ -434,6 +443,18 @@
 "Home" = "Casa";
 
 /* No comment provided by engineer. */
+"Home energy label" = "Classificação energética da casa";
+
+/* No comment provided by engineer. */
+"Home-based workers/students" = "Trabalhadores/estudantes remotos";
+
+/* No comment provided by engineer. */
+"Homemakers" = "Domésticos";
+
+/* No comment provided by engineer. */
+"Household profile" = "Perfil doméstico";
+
+/* No comment provided by engineer. */
 "How does it work?" = "Como funciona?";
 
 /* No comment provided by engineer. */
@@ -447,6 +468,9 @@
 
 /* No comment provided by engineer. */
 "I would like to receive updates about the app and AURORA project by email." = "Gostaria de receber atualizações sobre a aplicação e o projeto AURORA por email. ";
+
+/* No comment provided by engineer. */
+"Important" = "Importante";
 
 /* No comment provided by engineer. */
 "Imprint" = "Carimbo";
@@ -629,6 +653,12 @@
 "Regular energy behaviour changes" = "Alterações comportamentais regulares";
 
 /* No comment provided by engineer. */
+"Reject" = "Rejeitar";
+
+/* No comment provided by engineer. */
+"Rejecting the latest Privacy Policy and Terms of Services requires us to delete your account. Note that we cannot recover your account after deleting it." = "A rejeição da Política de Privacidade e dos Termos de Serviço mais recentes obriga-nos a eliminar a sua conta. Tenha em atenção que não podemos recuperar a sua conta depois de a eliminar.";
+
+/* No comment provided by engineer. */
 "Reload" = "Recarregar";
 
 /* No comment provided by engineer. */
@@ -639,6 +669,9 @@
 
 /* No comment provided by engineer. */
 "Reset Password" = "Redefinir palavra-passe";
+
+/* No comment provided by engineer. */
+"Retired individuals" = "Reformado";
 
 /* No comment provided by engineer. */
 "Retry" = "Tentar novamente";
@@ -695,7 +728,13 @@
 "Support" = "Apoio";
 
 /* No comment provided by engineer. */
+"Terms of Service" = "Termos de Serviço";
+
+/* No comment provided by engineer. */
 "The next notification will be sent on %@" = "A próxima notificação será enviada em %@";
+
+/* No comment provided by engineer. */
+"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Esta aplicação móvel foi desenvolvida pelo projeto AURORA, financiado pela UE, através do programa Horizonte 2020 (nº [101036418](https://cordis.europa.eu/project/id/101036418)). Os seus dados são processados por membros do consórcio do projeto e armazenados de forma segura no Google Firebase. Os seus dados serão utilizados apenas para fins de investigação, em formato anónimo e nunca serão usados comercialmente sem o seu consentimento explícito. Pode modificar, descarregar ou excluir seus dados a qualquer momento ou entrar em contato com nosso suporte através de [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). Ao prosseguir, está a concordar com os [Termos de Serviço](https://www.aurora-h2020.eu/pt/aurora/app-tos) e a [Política de Privacidade](https://www.aurora-h2020.eu/pt/aurora/app-privacy-policy) da aplicação móvel AURORA.";
 
 /* No comment provided by engineer. */
 "This entry was automatically added via recurring consumptions." = "Este registo foi automaticamente por via de consumos recorrentes";
@@ -734,7 +773,13 @@
 "Typical occupancy: %lld" = "Ocupação típica: %lld";
 
 /* No comment provided by engineer. */
+"Unknown" = "Desconhecido";
+
+/* No comment provided by engineer. */
 "Unsaved changes" = "Alterações não salvas";
+
+/* No comment provided by engineer. */
+"Unsure" = "Não tenho a certeza";
 
 /* No comment provided by engineer. */
 "Update recurring consumptions?" = "Atualizar consumos recorrentes?";
@@ -752,6 +797,9 @@
 "Walking" = "Caminhar";
 
 /* No comment provided by engineer. */
+"Warning" = "Aviso";
+
+/* No comment provided by engineer. */
 "Waste treatment" = "Tratamento de resíduos";
 
 /* No comment provided by engineer. */
@@ -764,6 +812,9 @@
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Nós podemos relembrar-te regularmente para introduzires os teus dados de transporte. Apenas indica-nos o quão frequente viajas. ";
 
 /* No comment provided by engineer. */
+"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Atualizamos nossa [Política de Privacidade](https://www.aurora-h2020.eu/pt/aurora/app-privacy-policy) e [Termos de Serviço](https://www.aurora-h2020.eu/pt/aurora/ aplicativos). Revise e aceite a versão mais recente para continuar usando o aplicativo.";
+
+/* No comment provided by engineer. */
 "Wednesday" = "Quarta-feira";
 
 /* No comment provided by engineer. */
@@ -774,6 +825,9 @@
 
 /* No comment provided by engineer. */
 "Weekly" = "Semanal";
+
+/* No comment provided by engineer. */
+"Workers/students outside the home" = "Trabalhadores/estudantes deslocados";
 
 /* No comment provided by engineer. */
 "Year" = "Ano";
