@@ -11,22 +11,17 @@ struct CarbonEmissionsFormatStyle: FormatStyle {
     func format(
         _ value: Double
     ) -> String {
-        let value = value.isNaN ? 0 : value
-        var measurement = Measurement<UnitMass>(
-            value: value,
+        Measurement<UnitMass>(
+            value: value.isNaN ? 0 : value,
             unit: .kilograms
         )
-        if measurement.value <= 0 {
-            measurement = measurement.converted(to: .grams)
-        }
-        return measurement
-            .formatted(
-                .measurement(
-                    width: .abbreviated,
-                    usage: .asProvided,
-                    numberFormatStyle: .number.precision(.fractionLength(0...1))
-                )
+        .formatted(
+            .measurement(
+                width: .abbreviated,
+                usage: .general,
+                numberFormatStyle: .number.precision(.fractionLength(0...1))
             )
+        )
     }
     
 }

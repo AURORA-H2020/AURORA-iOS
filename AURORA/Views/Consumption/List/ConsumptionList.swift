@@ -69,7 +69,9 @@ extension ConsumptionList: View {
     var body: some View {
         List {
             ForEach(
-                self.consumptions.filter(by: self.searchText)
+                self.consumptions
+                    .sorted(using: KeyPathComparator(\.sortableDate, order: .reverse))
+                    .filter(by: self.searchText)
             ) { consumption in
                 NavigationLink(
                     destination: ConsumptionView(
@@ -141,6 +143,17 @@ private extension Array where Element == Consumption {
                 || consumption.heating?.endDate.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
                 || consumption.transportation?.dateOfTravel.dateValue().formatted().localizedCaseInsensitiveContains(searchText) == true
         }
+    }
+    
+}
+
+// MARK: - Consumption+sortableDate
+
+private extension Consumption {
+    
+    /// The date used to sort an array of consumptions.
+    var sortableDate: Date {
+        self.startDate ?? self.createdAt?.dateValue() ?? .init()
     }
     
 }
