@@ -338,6 +338,9 @@
 "Electricity bill reminder" = "Opomin na račun za elektriko";
 
 /* No comment provided by engineer. */
+"Electricity source" = "Vir električne energije";
+
+/* No comment provided by engineer. */
 "Email" = "E-pošta";
 
 /* No comment provided by engineer. */
@@ -444,6 +447,9 @@
 
 /* No comment provided by engineer. */
 "Home energy label" = "Energijska oznaka za dom";
+
+/* No comment provided by engineer. */
+"Home Photovoltaics" = "Domača sončna elektrarna";
 
 /* No comment provided by engineer. */
 "Home-based workers/students" = "Zaposleni in študentje, ki živijo doma";
@@ -602,6 +608,9 @@
 "Password reset" = "Ponastavitev gesla";
 
 /* No comment provided by engineer. */
+"People in household" = "Osebe v gospodinjstvu";
+
+/* No comment provided by engineer. */
 "People in household: %lld" = "Število oseb v gospodinjstvu: %lld";
 
 /* No comment provided by engineer. */
@@ -629,7 +638,7 @@
 "Privacy policy" = "Politika zasebnosti";
 
 /* No comment provided by engineer. */
-"produced" = "izdelano";
+"produced" = "izpustov";
 
 /* No comment provided by engineer. */
 "Profile" = "Profil";
@@ -687,6 +696,9 @@
 
 /* No comment provided by engineer. */
 "Select" = "Izberi";
+
+/* No comment provided by engineer. */
+"Select the appropriate electricity source." = "Izberite ustrezen vir električne energije.";
 
 /* No comment provided by engineer. */
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Izberi začetek in konec te porabe. Te podatke lahko najdeš na računu za električno energijo.";

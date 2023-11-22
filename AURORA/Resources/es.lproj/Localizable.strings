@@ -338,6 +338,9 @@
 "Electricity bill reminder" = "Recordatorio de factura de la luz";
 
 /* No comment provided by engineer. */
+"Electricity source" = "Fuente de electricidad";
+
+/* No comment provided by engineer. */
 "Email" = "Correo";
 
 /* No comment provided by engineer. */
@@ -446,6 +449,9 @@
 "Home energy label" = "Etiqueta energética del hogar";
 
 /* No comment provided by engineer. */
+"Home Photovoltaics" = "Fotovoltaica doméstica";
+
+/* No comment provided by engineer. */
 "Home-based workers/students" = "Teletrabajadores/estudiantes a distancia";
 
 /* No comment provided by engineer. */
@@ -473,7 +479,7 @@
 "Important" = "Importante";
 
 /* No comment provided by engineer. */
-"Imprint" = "Autobús híbrido eléctrico";
+"Imprint" = "Aviso legal";
 
 /* No comment provided by engineer. */
 "Investment" = "Inversión";
@@ -602,6 +608,9 @@
 "Password reset" = "Restablecer contraseña";
 
 /* No comment provided by engineer. */
+"People in household" = "Personas en el hogar";
+
+/* No comment provided by engineer. */
 "People in household: %lld" = "Personas que conviven en el hogar: %lld";
 
 /* No comment provided by engineer. */
@@ -687,6 +696,9 @@
 
 /* No comment provided by engineer. */
 "Select" = "Seleccionar";
+
+/* No comment provided by engineer. */
+"Select the appropriate electricity source." = "Seleccione la fuente de electricidad adecuada.";
 
 /* No comment provided by engineer. */
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Seleccione el inicio y el final de este consumo. Puede encontrar esta información en su factura de la luz.";

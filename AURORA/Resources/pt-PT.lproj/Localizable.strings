@@ -11,7 +11,7 @@
 "Accept" = "Aceitar";
 
 /* No comment provided by engineer. */
-"Accomplisher" = "Admirável";
+"Accomplisher" = "Accomplisher";
 
 /* No comment provided by engineer. */
 "Account" = "Conta";
@@ -50,7 +50,7 @@
 "Alternative fuel bus" = "Autocarro com combustível alternativo";
 
 /* No comment provided by engineer. */
-"Ambassador" = "Aplicado";
+"Ambassador" = "Ambassador";
 
 /* No comment provided by engineer. */
 "An email will be sent to your inbox containing a link to reset your password." = "Será enviado um email para a tua caixa de entrada com o link para redefinires a tua palavra-passe. ";
@@ -137,7 +137,7 @@
 "Beginning" = "Começo";
 
 /* No comment provided by engineer. */
-"Big Achiever" = "Batalhador";
+"Big Achiever" = "Big Achiever";
 
 /* No comment provided by engineer. */
 "Bike" = "Bicicleta";
@@ -167,7 +167,7 @@
 "Category" = "Categoria";
 
 /* No comment provided by engineer. */
-"Champion" = "Campeão";
+"Champion" = "Champion";
 
 /* No comment provided by engineer. */
 "Change email" = "Alterar email";
@@ -296,7 +296,7 @@
 "Download my data" = "Descarregar os meus dados";
 
 /* No comment provided by engineer. */
-"Driver" = "Determinado";
+"Driver" = "Driver";
 
 /* No comment provided by engineer. */
 "Duplicate" = "Duplicar";
@@ -336,6 +336,9 @@
 
 /* No comment provided by engineer. */
 "Electricity bill reminder" = "Lembrete da fatura de eletricidade";
+
+/* No comment provided by engineer. */
+"Electricity source" = "Fonte de eletricidade";
 
 /* No comment provided by engineer. */
 "Email" = "Email";
@@ -386,7 +389,7 @@
 "Fequency" = "Frequência";
 
 /* No comment provided by engineer. */
-"First Mover" = "Focado";
+"First Mover" = "First Mover";
 
 /* No comment provided by engineer. */
 "First name" = "Primeiro nome";
@@ -413,7 +416,7 @@
 "Go back" = "Voltar";
 
 /* No comment provided by engineer. */
-"Ground Breaker" = "Galopador";
+"Ground Breaker" = "Ground Breaker";
 
 /* No comment provided by engineer. */
 "Has your regular energy behaviour changed?" = "O seu comportamento energético regular mudou?";
@@ -444,6 +447,9 @@
 
 /* No comment provided by engineer. */
 "Home energy label" = "Classificação energética da casa";
+
+/* No comment provided by engineer. */
+"Home Photovoltaics" = "Fotovoltaico doméstico";
 
 /* No comment provided by engineer. */
 "Home-based workers/students" = "Trabalhadores/estudantes remotos";
@@ -602,6 +608,9 @@
 "Password reset" = "Redefinir palavra-passe";
 
 /* No comment provided by engineer. */
+"People in household" = "Número de pessoas na habitação";
+
+/* No comment provided by engineer. */
 "People in household: %lld" = "Número de pessoas na habitação: %lld";
 
 /* No comment provided by engineer. */
@@ -687,6 +696,9 @@
 
 /* No comment provided by engineer. */
 "Select" = "Selecionar";
+
+/* No comment provided by engineer. */
+"Select the appropriate electricity source." = "Selecione a fonte de eletricidade apropriada. ";
 
 /* No comment provided by engineer. */
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Seleciona o início e fim deste consumo. Podes encontrar esta informação na tua fatura de eletricidade.";
