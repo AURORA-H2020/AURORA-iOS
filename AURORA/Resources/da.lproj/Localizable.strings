@@ -338,6 +338,9 @@
 "Electricity bill reminder" = "Påmindelse om elregning";
 
 /* No comment provided by engineer. */
+"Electricity source" = "Strømkilde";
+
+/* No comment provided by engineer. */
 "Email" = "E-mail";
 
 /* No comment provided by engineer. */
@@ -444,6 +447,9 @@
 
 /* No comment provided by engineer. */
 "Home energy label" = "Energimærke på din bolig";
+
+/* No comment provided by engineer. */
+"Home Photovoltaics" = "Solceller til hjemmet";
 
 /* No comment provided by engineer. */
 "Home-based workers/students" = "Arbejder/studerer hjemmefra";
@@ -602,6 +608,9 @@
 "Password reset" = "Adgangskode nulstillet";
 
 /* No comment provided by engineer. */
+"People in household" = "Personer i husstanden";
+
+/* No comment provided by engineer. */
 "People in household: %lld" = "Personer i husstanden: %lld";
 
 /* No comment provided by engineer. */
@@ -687,6 +696,9 @@
 
 /* No comment provided by engineer. */
 "Select" = "Vælg";
+
+/* No comment provided by engineer. */
+"Select the appropriate electricity source." = "Vælg den rigtige strømkilde.";
 
 /* No comment provided by engineer. */
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Vælg begyndelsen og slutningen af dette forbrug. Du kan finde disse oplysninger på din elregning.";
