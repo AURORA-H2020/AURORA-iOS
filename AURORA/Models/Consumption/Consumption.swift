@@ -126,3 +126,21 @@ extension Consumption {
     }
     
 }
+
+// MARK: - Consumption+startDate
+
+extension Consumption {
+    
+    /// The date when the consumption has been started, if available
+    var startDate: Date? {
+        switch self.category {
+        case .electricity:
+            return self.electricity?.startDate.dateValue()
+        case .heating:
+            return self.heating?.startDate.dateValue()
+        case .transportation:
+            return self.transportation?.dateOfTravel.dateValue()
+        }
+    }
+    
+}

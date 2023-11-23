@@ -78,6 +78,20 @@ extension ConsumptionView: View {
                     }
                 }
                 Entry {
+                    Text(String(electricity.householdSize))
+                        .foregroundColor(.secondary)
+                } label: {
+                    Text("People in household")
+                }
+                if let electricitySource = electricity.electricitySource {
+                    Entry {
+                        Text(electricitySource.localizedString)
+                            .foregroundColor(.secondary)
+                    } label: {
+                        Text("Electricity source")
+                    }
+                }
+                Entry {
                     Text(
                         electricity.startDate.dateValue(),
                         style: .date
@@ -103,6 +117,12 @@ extension ConsumptionView: View {
                     } label: {
                         Text("Costs")
                     }
+                }
+                Entry {
+                    Text(String(heating.householdSize))
+                        .foregroundColor(.secondary)
+                } label: {
+                    Text("People in household")
                 }
                 Entry {
                     Text(

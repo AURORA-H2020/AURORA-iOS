@@ -65,28 +65,28 @@
 "An error occurred while logging in. Please try again.\n\n%@" = "Beim Einloggen ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.\n\n%@";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to create a new account. Please check your inputs and try again." = "Beim Versuch, ein neues Konto zu erstellen, ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
+"An error occurred while trying to create a new account. Please check your inputs and try again." = "Beim Versuch ein neues Konto zu erstellen ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to create your profile. Please check your inputs and try again." = "Beim Versuch, Ihr Profil zu erstellen, ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
+"An error occurred while trying to create your profile. Please check your inputs and try again." = "Beim Versuch Ihr Profil zu erstellen ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to delete your account." = "Beim Versuch, Ihr Konto zu löschen, ist ein Fehler aufgetreten.";
+"An error occurred while trying to delete your account." = "Beim Versuch Ihr Konto zu löschen ist ein Fehler aufgetreten.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to download your data." = "Beim Versuch, Ihre Daten herunterzuladen, ist ein Fehler aufgetreten.";
+"An error occurred while trying to download your data." = "Beim Versuch Ihre Daten herunterzuladen ist ein Fehler aufgetreten.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to login. Please check your inputs and try again." = "Beim Versuch, sich anzumelden, ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
+"An error occurred while trying to login. Please check your inputs and try again." = "Beim Versuch sich anzumelden ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to logout." = "Beim Versuch, sich abzumelden, ist ein Fehler aufgetreten.";
+"An error occurred while trying to logout." = "Beim Versuch sich abzumelden ist ein Fehler aufgetreten.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to reset your password. Please check your email address and try again." = "Beim Versuch, Ihr Passwort zurückzusetzen, ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre E-Mail-Adresse und versuchen Sie es erneut.";
+"An error occurred while trying to reset your password. Please check your email address and try again." = "Beim Versuch Ihr Passwort zurückzusetzen ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre E-Mail-Adresse und versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to save your consumption. Please try again." = "Beim Versuch, Ihren Verbrauch zu speichern, ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
+"An error occurred while trying to save your consumption. Please try again." = "Beim Versuch Ihren Verbrauch zu speichern ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
 "An error occurred while trying to save your recurring consumption." = "Beim Speichern Ihres wiederkehrenden Verbrauchs ist ein Fehler aufgetreten.";
@@ -95,10 +95,10 @@
 "An error occurred while trying to save your recurring consumption. Please try again." = "Beim Speichern Ihres wiederkehrenden Verbrauchs ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to update your email address. Please check your inputs and try again." = "Beim Versuch, Ihre E-Mail-Adresse zu aktualisieren, ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
+"An error occurred while trying to update your email address. Please check your inputs and try again." = "Beim Versuch Ihre E-Mail-Adresse zu aktualisieren ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
-"An error occurred while trying to update your password. Please check your inputs and try again." = "Beim Versuch, Ihr Passwort zu aktualisieren, ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
+"An error occurred while trying to update your password. Please check your inputs and try again." = "Beim Versuch Ihr Passwort zu aktualisieren ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
 "Annual energy production" = "Jährliche Energieerzeugung";
@@ -338,6 +338,9 @@
 "Electricity bill reminder" = "Erinnerung an die Stromrechnung";
 
 /* No comment provided by engineer. */
+"Electricity source" = "Stromquelle";
+
+/* No comment provided by engineer. */
 "Email" = "E-Mail";
 
 /* No comment provided by engineer. */
@@ -444,6 +447,9 @@
 
 /* No comment provided by engineer. */
 "Home energy label" = "Energieausweis des Zuhauses";
+
+/* No comment provided by engineer. */
+"Home Photovoltaics" = "Eigene Photovoltaik";
 
 /* No comment provided by engineer. */
 "Home-based workers/students" = "Von Zuhause arbeitend / studierend";
@@ -602,6 +608,9 @@
 "Password reset" = "Passwort zurücksetzen";
 
 /* No comment provided by engineer. */
+"People in household" = "Personen im Haushalt";
+
+/* No comment provided by engineer. */
 "People in household: %lld" = "Personen im Haushalt: %lld";
 
 /* No comment provided by engineer. */
@@ -687,6 +696,9 @@
 
 /* No comment provided by engineer. */
 "Select" = "Auswählen";
+
+/* No comment provided by engineer. */
+"Select the appropriate electricity source." = "Wählen Sie die Quelle Ihres Stromverbrauchs aus.";
 
 /* No comment provided by engineer. */
 "Select the beginning and end of this consumption. You can find this information on your electricity bill." = "Wählen Sie den Beginn und das Ende dieses Verbrauchs. Sie finden diese Informationen auf Ihrer Stromrechnung.";

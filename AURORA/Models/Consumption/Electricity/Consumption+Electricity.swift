@@ -14,6 +14,9 @@ extension Consumption {
         /// The size of the household
         var householdSize: Int
         
+        /// The electricity source
+        var electricitySource: ElectricitySource?
+        
         /// The start date.
         var startDate: Timestamp
         
@@ -49,6 +52,7 @@ extension Consumption.Electricity: PartialConvertible {
         [
             \.costs: self.costs,
              \.householdSize: self.householdSize,
+             \.electricitySource: self.electricitySource,
              \.startDate: self.startDate,
              \.endDate: self.endDate
         ]
@@ -60,6 +64,7 @@ extension Consumption.Electricity: PartialConvertible {
         self.init(
             costs: partial.costs?.flatMap { $0 },
             householdSize: try partial(\.householdSize),
+            electricitySource: partial.electricitySource?.flatMap { $0 },
             startDate: try partial(\.startDate),
             endDate: try partial(\.endDate)
         )

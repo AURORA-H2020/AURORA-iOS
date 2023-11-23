@@ -14,6 +14,7 @@
 		3D1CA71E298CF44D0009177C /* UIApplication+openSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA71D298CF44D0009177C /* UIApplication+openSettings.swift */; };
 		3D1CA721298CF6AD0009177C /* EditUserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA720298CF6AD0009177C /* EditUserForm.swift */; };
 		3D1CA723298CFDC70009177C /* View+adaptivePresentationDetents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CA722298CFDC70009177C /* View+adaptivePresentationDetents.swift */; };
+		3D1D367D2ACF39F9006F8DE2 /* Consumption+Electricity+ElectricitySource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1D367C2ACF39F9006F8DE2 /* Consumption+Electricity+ElectricitySource.swift */; };
 		3D1EE5E1298AA919009E4645 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E0298AA919009E4645 /* FirebaseAnalytics */; };
 		3D1EE5E3298AA919009E4645 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E2298AA919009E4645 /* FirebaseAnalyticsSwift */; };
 		3D1EE5E5298AA919009E4645 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E4298AA919009E4645 /* FirebaseAppCheck */; };
@@ -159,6 +160,7 @@
 		3D1CA71D298CF44D0009177C /* UIApplication+openSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+openSettings.swift"; sourceTree = "<group>"; };
 		3D1CA720298CF6AD0009177C /* EditUserForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserForm.swift; sourceTree = "<group>"; };
 		3D1CA722298CFDC70009177C /* View+adaptivePresentationDetents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+adaptivePresentationDetents.swift"; sourceTree = "<group>"; };
+		3D1D367C2ACF39F9006F8DE2 /* Consumption+Electricity+ElectricitySource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumption+Electricity+ElectricitySource.swift"; sourceTree = "<group>"; };
 		3D1EE5FE298AA9EE009E4645 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D1EE603298AAA21009E4645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D1EE607298AAB39009E4645 /* AuthenticationScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationScreen.swift; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 			isa = PBXGroup;
 			children = (
 				3D1EE669298AACF8009E4645 /* Consumption+Electricity.swift */,
+				3D1D367C2ACF39F9006F8DE2 /* Consumption+Electricity+ElectricitySource.swift */,
 			);
 			path = Electricity;
 			sourceTree = "<group>";
@@ -939,7 +942,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					3D839E072A61190A00810AD8 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -1084,6 +1087,7 @@
 				3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */,
 				3D8C289429C70D9F00811044 /* ConsumptionSummary+Label.swift in Sources */,
 				3DDEDA0029DC873C00303BA1 /* FormatStyle+Kilometers.swift in Sources */,
+				3D1D367D2ACF39F9006F8DE2 /* Consumption+Electricity+ElectricitySource.swift in Sources */,
 				3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */,
 				3D1EE652298AAC9E009E4645 /* ThirdPartyDependencyDetail.swift in Sources */,
 				3D1CA721298CF6AD0009177C /* EditUserForm.swift in Sources */,
@@ -1367,7 +1371,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.inscico.aurora-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1400,7 +1404,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.inscico.aurora-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1448,7 +1452,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 10.14.0;
+				version = 10.16.0;
 			};
 		};
 		3D1EE5F4298AA965009E4645 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
