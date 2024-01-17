@@ -158,19 +158,10 @@ extension ConsumptionView: View {
                 }
             } else if let transportation = self.consumption.transportation {
                 Entry {
-                    Group {
-                        if transportation.dateOfTravelEnd != nil {
-                            Text(
-                                transportation.dateOfTravel.dateValue(),
-                                format: .dateTime
-                            )
-                        } else {
-                            Text(
-                                transportation.dateOfTravel.dateValue(),
-                                style: .date
-                            )
-                        }
-                    }
+                    Text(
+                        transportation.dateOfTravel.dateValue(),
+                        format: .dateTime
+                    )
                     .foregroundColor(.secondary)
                 } label: {
                     Text("Start of travel")
