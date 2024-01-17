@@ -104,6 +104,7 @@
 		3D6F643729D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift */; };
 		3D7495E22A327A6700349A89 /* RecurringConsumptionsReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7495E12A327A6700349A89 /* RecurringConsumptionsReminderService.swift */; };
 		3D785DA8298B9FC8004D5296 /* Firebase+Authentication+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */; };
+		3D7E3B8D2B5720BC00CD77B8 /* NetworkPathReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E3B8C2B5720BC00CD77B8 /* NetworkPathReader.swift */; };
 		3D839E152A6119CF00810AD8 /* ScreenshotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D839E142A6119CF00810AD8 /* ScreenshotsUITests.swift */; };
 		3D839E172A6119E000810AD8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D839E162A6119E000810AD8 /* SnapshotHelper.swift */; };
 		3D8A05E32991AF2F005DEA43 /* ConsumptionForm+Electricity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A05E22991AF2F005DEA43 /* ConsumptionForm+Electricity.swift */; };
@@ -240,6 +241,7 @@
 		3D6F643629D4194B0096CB97 /* ConsumptionSummaryView+LabeledConsumptionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionSummaryView+LabeledConsumptionSection.swift"; sourceTree = "<group>"; };
 		3D7495E12A327A6700349A89 /* RecurringConsumptionsReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumptionsReminderService.swift; sourceTree = "<group>"; };
 		3D785DA7298B9FC8004D5296 /* Firebase+Authentication+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Authentication+Method.swift"; sourceTree = "<group>"; };
+		3D7E3B8C2B5720BC00CD77B8 /* NetworkPathReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPathReader.swift; sourceTree = "<group>"; };
 		3D839E082A61190A00810AD8 /* AURORA-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AURORA-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D839E142A6119CF00810AD8 /* ScreenshotsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsUITests.swift; sourceTree = "<group>"; };
 		3D839E162A6119E000810AD8 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */,
 				3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */,
 				3D238F452A2E792A002C11BC /* MultiPicker.swift */,
+				3D7E3B8C2B5720BC00CD77B8 /* NetworkPathReader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1094,6 +1097,7 @@
 				3D1EE684298AACF8009E4645 /* Firebase+Configure.swift in Sources */,
 				3D1EE6A6298AADD4009E4645 /* LocalNotificationRequest+Trigger.swift in Sources */,
 				3D1EE68B298AACF8009E4645 /* Consumption+Electricity.swift in Sources */,
+				3D7E3B8D2B5720BC00CD77B8 /* NetworkPathReader.swift in Sources */,
 				3D1EE653298AAC9E009E4645 /* ThirdPartyDependencyList.swift in Sources */,
 				3D1EE6CF298AAEC0009E4645 /* SheetNavigationView.swift in Sources */,
 				3D1EE639298AAC5B009E4645 /* ConsumptionScreen.swift in Sources */,

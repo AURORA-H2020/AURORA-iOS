@@ -437,30 +437,40 @@ private extension ConsumptionForm {
         }
         .headerProminence(.increased)
         Section(
-            footer: AsyncButton(
-                fillWidth: true,
-                alert: { result in
-                    guard case .failure = result else {
-                        return nil
-                    }
-                    return .init(
-                        title: Text("Error"),
-                        message: Text(
-                            "An error occurred while trying to save your consumption. Please try again."
+            footer: VStack(spacing: 16) {
+                AsyncButton(
+                    fillWidth: true,
+                    alert: { result in
+                        guard case .failure = result else {
+                            return nil
+                        }
+                        return .init(
+                            title: Text("Error"),
+                            message: Text(
+                                "An error occurred while trying to save your consumption. Please try again."
+                            )
                         )
-                    )
-                },
-                action: {
-                    try self.submit()
-                },
-                label: {
-                    Text("Save")
-                        .font(.headline)
+                    },
+                    action: {
+                        try self.submit()
+                    },
+                    label: {
+                        Text("Save")
+                            .font(.headline)
+                    }
+                )
+                .disabled((try? self.consumption) == nil)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                NetworkPathReader { path in
+                    if path?.status != .satisfied {
+                        Text("It seems you're offline. Your data will automatically sync as soon as you reconnect to the internet.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
                 }
-            )
-            .disabled((try? self.consumption) == nil)
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
+            }
             .align(.centerHorizontal)
         ) {
         }
