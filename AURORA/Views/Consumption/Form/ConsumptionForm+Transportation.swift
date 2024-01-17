@@ -50,18 +50,30 @@ extension ConsumptionForm.Transportation: View {
                 }
             }
         } else {
-            DatePicker(
-                "End of travel",
-                selection: .init(
-                    get: {
-                        self.partialTransportation.dateOfTravelEnd.flatMap { $0 }?.dateValue() ?? .init()
-                    },
-                    set: { newValue in
-                        self.partialTransportation.dateOfTravelEnd = .init(date: newValue)
-                    }
-                ),
-                in: (self.partialTransportation.dateOfTravel?.dateValue() ?? Date())...ConsumptionForm.preferredDatePickerRange.upperBound
-            )
+            HStack {
+                DatePicker(
+                    "End of travel",
+                    selection: .init(
+                        get: {
+                            self.partialTransportation.dateOfTravelEnd.flatMap { $0 }?.dateValue() ?? .init()
+                        },
+                        set: { newValue in
+                            self.partialTransportation.dateOfTravelEnd = .init(date: newValue)
+                        }
+                    ),
+                    in: (self.partialTransportation.dateOfTravel?.dateValue() ?? Date())...ConsumptionForm.preferredDatePickerRange.upperBound
+                )
+                Button {
+                    self.partialTransportation.dateOfTravelEnd = nil
+                } label: {
+                    Image(
+                        systemName: "xmark.circle.fill"
+                    )
+                    .imageScale(.medium)
+                    .foregroundColor(.secondary)
+                }
+            }
+            .buttonStyle(.borderless)
         }
         Picker(
             "Type",
