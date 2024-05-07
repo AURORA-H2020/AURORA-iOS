@@ -52,7 +52,9 @@ extension Consumption.Transportation.TransportationType.Group {
             ]
         case .aviation:
             return [
-                .plane
+                .planeDomestic,
+                .planeIntraEu,
+                .planeExtraEu
             ]
         case .other:
             return [

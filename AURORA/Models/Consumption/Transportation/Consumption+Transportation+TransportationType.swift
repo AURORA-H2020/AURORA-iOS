@@ -46,7 +46,9 @@ extension Consumption.Transportation {
         // MARK: Aviation
         
         /// Plane
-        case plane
+        case planeDomestic = "plane"
+        case planeIntraEu
+        case planeExtraEu
         
         // MARK: Other
         
@@ -134,8 +136,12 @@ extension Consumption.Transportation.TransportationType {
             return .init(localized: "Diesel passenger train")
         case .highSpeedTrain:
             return .init(localized: "High speed train")
-        case .plane:
-            return .init(localized: "Plane")
+        case .planeDomestic:
+            return .init(localized: "Plane (domestic)")
+        case .planeIntraEu:
+            return .init(localized: "Plane (intra EU)")
+        case .planeExtraEu:
+            return .init(localized: "Plane (extra EU)")
         case .electricBike:
             return .init(localized: "Electric bike")
         case .electricScooter:
