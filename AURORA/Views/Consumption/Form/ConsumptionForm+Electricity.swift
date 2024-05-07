@@ -27,6 +27,27 @@ extension ConsumptionForm.Electricity: View {
     var body: some View {
         Section(
             footer: Text(
+                "Select the appropriate electricity source."
+            )
+            .multilineTextAlignment(.leading)
+        ) {
+            Picker(
+                "Electricity source",
+                selection: self.$partialElectricity.electricitySource
+            ) {
+                Text("Please choose")
+                    .tag(nil as Consumption.Electricity.ElectricitySource??)
+                ForEach(
+                    Consumption.Electricity.ElectricitySource.allCases,
+                    id: \.self
+                ) { electricitySource in
+                    Text(electricitySource.localizedString)
+                        .tag(electricitySource as Consumption.Electricity.ElectricitySource??)
+                }
+            }
+        }
+        Section(
+            footer: Text(
                 "You can find this information on your electricity bill."
             )
             .multilineTextAlignment(.leading)
@@ -59,27 +80,6 @@ extension ConsumptionForm.Electricity: View {
                 ),
                 in: 1...100
             )
-        }
-        Section(
-            footer: Text(
-                "Select the appropriate electricity source."
-            )
-            .multilineTextAlignment(.leading)
-        ) {
-            Picker(
-                "Electricity source",
-                selection: self.$partialElectricity.electricitySource
-            ) {
-                Text("Please choose")
-                    .tag(nil as Consumption.Electricity.ElectricitySource??)
-                ForEach(
-                    Consumption.Electricity.ElectricitySource.allCases,
-                    id: \.self
-                ) { electricitySource in
-                    Text(electricitySource.localizedString)
-                        .tag(electricitySource as Consumption.Electricity.ElectricitySource??)
-                }
-            }
         }
         Section(
             footer: Text(
