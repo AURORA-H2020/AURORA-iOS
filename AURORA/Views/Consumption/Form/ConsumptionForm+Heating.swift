@@ -27,41 +27,6 @@ extension ConsumptionForm.Heating: View {
     var body: some View {
         Section(
             footer: Text(
-                "You can find this information on your heating bill."
-            )
-            .multilineTextAlignment(.leading)
-        ) {
-            HStack {
-                NumberTextField(
-                    "Consumption",
-                    value: self.$value
-                )
-                Text(KilowattHoursFormatStyle.symbol)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-            }
-        }
-        Section(
-            footer: Text(
-                "How many people, including you, live in your household."
-            )
-            .multilineTextAlignment(.leading)
-        ) {
-            Stepper(
-                "People in household: \(self.partialHeating.householdSize ?? 1)",
-                value: .init(
-                    get: {
-                        self.partialHeating.householdSize ?? 1
-                    },
-                    set: { householdSize in
-                        self.partialHeating.householdSize = householdSize
-                    }
-                ),
-                in: 1...100
-            )
-        }
-        Section(
-            footer: Text(
                 "Select your type of heating. You can find this information on your heating bill."
             )
             .multilineTextAlignment(.leading)
@@ -96,6 +61,41 @@ extension ConsumptionForm.Heating: View {
                     }
                 }
             }
+        }
+        Section(
+            footer: Text(
+                "You can find this information on your heating bill."
+            )
+            .multilineTextAlignment(.leading)
+        ) {
+            HStack {
+                NumberTextField(
+                    "Consumption",
+                    value: self.$value
+                )
+                Text(KilowattHoursFormatStyle.symbol)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+            }
+        }
+        Section(
+            footer: Text(
+                "How many people, including you, live in your household."
+            )
+            .multilineTextAlignment(.leading)
+        ) {
+            Stepper(
+                "People in household: \(self.partialHeating.householdSize ?? 1)",
+                value: .init(
+                    get: {
+                        self.partialHeating.householdSize ?? 1
+                    },
+                    set: { householdSize in
+                        self.partialHeating.householdSize = householdSize
+                    }
+                ),
+                in: 1...100
+            )
         }
         Section(
             footer: Text(
