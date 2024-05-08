@@ -48,19 +48,49 @@ extension ConsumptionForm.Electricity: View {
         }
         Section(
             footer: Text(
-                "You can find this information on your electricity bill."
+                self.partialElectricity.electricitySource == .homePhotovoltaics 
+                    ? "You can usually find this information on an app or website provided by your PV installation contractor."
+                    : "You can find this information on your electricity bill."
             )
             .multilineTextAlignment(.leading)
         ) {
             HStack {
                 NumberTextField(
-                    "Consumption",
+                    self.partialElectricity.electricitySource == .homePhotovoltaics 
+                        ? "Energy produced"
+                        : "Consumption",
                     value: self.$value
                 )
                 Text(KilowattHoursFormatStyle.symbol)
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }
+            if self.partialElectricity.electricitySource == .homePhotovoltaics {
+                HStack {
+                    NumberTextField(
+                        "Energy exported (optional)",
+                        value: .init(
+                            get: {
+                                self.partialElectricity.electricityExported?.flatMap { $0 }
+                            },
+                            set: { newValue in
+                                self.partialElectricity.electricityExported = newValue
+                            }
+                        )
+                    )
+                    Text(KilowattHoursFormatStyle.symbol)
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+        .onChange(
+            of: self.partialElectricity.electricitySource
+        ) { electricitySource in
+            guard electricitySource != .homePhotovoltaics else {
+                return
+            }
+            self.partialElectricity.removeValue(for: \.electricityExported)
         }
         Section(
             footer: Text(
