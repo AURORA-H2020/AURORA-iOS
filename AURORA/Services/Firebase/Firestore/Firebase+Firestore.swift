@@ -387,7 +387,7 @@ extension Firebase.Firestore {
                 .document(entityId)
                 .setData(
                     from: entity,
-                    merge: true
+                    merge: false
                 )
         }
     }

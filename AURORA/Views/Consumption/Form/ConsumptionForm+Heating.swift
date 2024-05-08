@@ -62,6 +62,14 @@ extension ConsumptionForm.Heating: View {
                 }
             }
         }
+        .onChange(
+            of: self.partialHeating.heatingFuel
+        ) { heatingFuel in
+            guard heatingFuel != .district else {
+                return
+            }
+            self.partialHeating.removeValue(for: \.districtHeatingSource)
+        }
         Section(
             footer: Text(
                 "You can find this information on your heating bill."
