@@ -54,33 +54,31 @@ extension ConsumptionForm.Electricity: View {
             )
             .multilineTextAlignment(.leading)
         ) {
-            HStack {
-                NumberTextField(
-                    self.partialElectricity.electricitySource == .homePhotovoltaics 
-                        ? "Energy produced"
-                        : "Consumption",
-                    value: self.$value
+            MeasurementTextField(
+                self.partialElectricity.electricitySource == .homePhotovoltaics
+                    ? "Energy produced"
+                    : "Consumption",
+                value: self.$value
+            ) {
+                Text(
+                    ConsumptionMeasurement.Unit.kilowattHours.symbol
                 )
-                Text(KilowattHoursFormatStyle.symbol)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
             }
             if self.partialElectricity.electricitySource == .homePhotovoltaics {
-                HStack {
-                    NumberTextField(
-                        "Energy exported (optional)",
-                        value: .init(
-                            get: {
-                                self.partialElectricity.electricityExported?.flatMap { $0 }
-                            },
-                            set: { newValue in
-                                self.partialElectricity.electricityExported = newValue
-                            }
-                        )
+                MeasurementTextField(
+                    "Energy exported (optional)",
+                    value: .init(
+                        get: {
+                            self.partialElectricity.electricityExported?.flatMap { $0 }
+                        },
+                        set: { newValue in
+                            self.partialElectricity.electricityExported = newValue
+                        }
                     )
-                    Text(KilowattHoursFormatStyle.symbol)
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
+                ) {
+                    Text(
+                        ConsumptionMeasurement.Unit.kilowattHours.symbol
+                    )
                 }
             }
         }

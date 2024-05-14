@@ -45,9 +45,11 @@ extension Consumption.Transportation {
         
         // MARK: Aviation
         
-        /// Plane
+        /// Plane domestic
         case planeDomestic = "plane"
+        /// Plane intra eu
         case planeIntraEu
+        /// Plane extra eu
         case planeExtraEu
         
         // MARK: Other
@@ -96,6 +98,37 @@ extension Consumption.Transportation.TransportationType {
             return 1...3
         default:
             return nil
+        }
+    }
+    
+}
+
+// MARK: - Consumption+Transportation+TransportationType+canDeclarePrivateConsumption
+
+extension Consumption.Transportation.TransportationType {
+    
+    /// Returns a boolean if a private fuel or power consumption can be declared for this type of transportation.
+    var canDeclarePrivateConsumption: Bool {
+        self.canDeclarePrivateFuelConsumption || self.canDeclarePrivatePowerConsumption
+    }
+    
+    /// Returns a boolean if a private fuel consumption can be declared for this type of transportation.
+    var canDeclarePrivateFuelConsumption: Bool {
+        switch self {
+        case .fuelCar, .hybridCar, .motorcycle:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    /// Returns a boolean if a private power consumption can be declared for this type of transportation.
+    var canDeclarePrivatePowerConsumption: Bool {
+        switch self {
+        case .electricCar, .electricMotorcycle:
+            return true
+        default:
+            return false
         }
     }
     

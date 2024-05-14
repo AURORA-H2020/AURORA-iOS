@@ -38,6 +38,10 @@ struct ConsumptionForm {
     @Environment(\.dismiss)
     private var dismiss
     
+    /// The locale.
+    @Environment(\.locale)
+    private var locale
+    
     /// The Firebase instance
     @EnvironmentObject
     private var firebase: Firebase
@@ -53,7 +57,12 @@ struct ConsumptionForm {
         case .create(let category):
             self.consumptionId = nil
             self._category = .init(initialValue: category)
-        case .edit(let consumption), .prefill(let consumption):
+        case .edit(var consumption), .prefill(var consumption):
+            // Convert consumption from metric to current measurement system
+            consumption.convert(
+                from: .metric,
+                to: .init()
+            )
             self.consumptionId = mode.isEdit ? consumption.id : nil
             self._category = .init(initialValue: consumption.category)
             self._value = .init(initialValue: consumption.value)
@@ -184,6 +193,11 @@ private extension ConsumptionForm {
                 // Return nil
                 return nil
             }
+            // Check if fuel consumption is greater 100
+            if let fuelConsumption = self.partialTransportation.fuelConsumption.flatMap({ $0 }), fuelConsumption >= 100 {
+                // Return nil
+                return nil
+            }
             // Try to initialize consumption
             return .init(
                 id: self.consumptionId,
@@ -216,10 +230,15 @@ private extension ConsumptionForm {
     /// Submit form
     func submit() throws {
         // Verify a consumption is available
-        guard let consumption = try self.consumption else {
+        guard var consumption = try self.consumption else {
             // Otherwise return out of function
             return
         }
+        // Convert consumption to metric system before storing it in Firebase
+        consumption.convert(
+            from: .init(locale: self.locale),
+            to: .metric
+        )
         // Initialize an UINotificationFeedbackGenerator
         let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
         do {

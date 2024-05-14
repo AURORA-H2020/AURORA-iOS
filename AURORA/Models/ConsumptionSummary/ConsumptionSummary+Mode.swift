@@ -30,36 +30,31 @@ extension ConsumptionSummary.Mode {
     
 }
 
-// MARK: - Mode+symbol
-
-extension ConsumptionSummary.Mode {
-    
-    /// The symbol
-    var symbol: String {
-        switch self {
-        case .carbonEmission:
-            return CarbonEmissionsFormatStyle.symbol
-        case .energyExpended:
-            return KilowattHoursFormatStyle.symbol
-        }
-    }
-    
-}
-
 // MARK: - Mode+format(consumption:)
 
 extension ConsumptionSummary.Mode {
-    
-    /// Format a labeled consumption.
-    /// - Parameter consumption: The labeled consumption to format.
+
+    /// Formats a labeled consumption.
+    /// - Parameters:
+    ///   - consumption: The labeled consumption to format.
+    ///   - measurementSystem: The measurment system. Default value `.init()`
     func format(
-        consumption: ConsumptionSummary.LabeledConsumption
+        consumption: ConsumptionSummary.LabeledConsumption,
+        measurementSystem: ConsumptionMeasurement.System = .init()
     ) -> String {
         switch self {
         case .carbonEmission:
-            return "\(consumption.total.formatted(.carbonEmissions)) \(self.symbol)"
+            return ConsumptionMeasurement(
+                value: consumption.total,
+                unit: .kilograms.converted(to: measurementSystem)
+            )
+            .formatted(isCarbonEmissions: true)
         case .energyExpended:
-            return consumption.total.formatted(.kilowattHours)
+            return ConsumptionMeasurement(
+                value: consumption.total,
+                unit: .kilowattHours
+            )
+            .formatted()
         }
     }
     

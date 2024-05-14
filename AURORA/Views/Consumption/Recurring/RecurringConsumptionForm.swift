@@ -34,6 +34,10 @@ struct RecurringConsumptionForm {
     @State
     private var isDeleteConfirmationDialogPresented = false
     
+    /// The locale.
+    @Environment(\.locale)
+    private var locale
+    
     /// The DismissAction
     @Environment(\.dismiss)
     private var dismiss
@@ -124,7 +128,12 @@ private extension RecurringConsumptionForm {
     /// The recurring consumption, if available.
     var recurringConsumption: RecurringConsumption? {
         get throws {
-            .init(
+            // Check if fuel consumption is greater 100
+            if let fuelConsumption = self.partialTransportation.fuelConsumption.flatMap({ $0 }), fuelConsumption >= 100 {
+                // Return nil
+                return nil
+            }
+            return .init(
                 id: self.mode.editableRecurringConsumption?.id,
                 createdAt: self.mode.editableRecurringConsumption?.createdAt,
                 isEnabled: self.isEnabled,
@@ -568,16 +577,39 @@ private extension RecurringConsumptionForm {
                 in: privateVehicleOccupancyRange
             )
         }
-        HStack {
-            NumberTextField(
-                "Distance",
-                value: self.$partialTransportation.distance
-            )
+        MeasurementTextField(
+            "Distance",
+            value: self.$partialTransportation.distance
+        ) {
             Text(
-                verbatim: "km"
+                ConsumptionMeasurement.Unit(
+                    measurementSystem: .init(locale: self.locale),
+                    category: .transportation
+                )
+                .symbol
             )
-            .font(.footnote)
-            .foregroundColor(.secondary)
+        }
+        if self.partialTransportation.transportationType?.canDeclarePrivateConsumption == true {
+            let canDeclarePrivatePowerConsumption = self.partialTransportation
+                .transportationType?
+                .canDeclarePrivatePowerConsumption == true
+            MeasurementTextField(
+                canDeclarePrivatePowerConsumption ? "Power consumption (optional)" : "Fuel consumption (optional)",
+                value: .init(
+                    get: {
+                        self.partialTransportation.fuelConsumption?.flatMap { $0 }
+                    },
+                    set: { newValue in
+                        self.partialTransportation.fuelConsumption = newValue
+                    }
+                )
+            ) {
+                Text(
+                    canDeclarePrivatePowerConsumption
+                        ? ConsumptionMeasurement.Unit.kilowattHoursPer100Kilometers.converted(to: .init(locale: self.locale)).symbol
+                        : ConsumptionMeasurement.Unit.litersPer100Kilometers.converted(to: .init(locale: self.locale)).symbol
+                )
+            }
         }
     }
     

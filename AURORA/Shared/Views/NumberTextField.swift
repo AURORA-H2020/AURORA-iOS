@@ -22,6 +22,10 @@ struct NumberTextField<Value: Numeric & LosslessStringConvertible> {
     @State
     private var text: String
     
+    /// The locale.
+    @Environment(\.locale)
+    private var locale
+    
     // MARK: Initializer
     
     /// Creates a new instance of `NumberTextField`
@@ -38,7 +42,7 @@ struct NumberTextField<Value: Numeric & LosslessStringConvertible> {
             initialValue: value.wrappedValue
         )
         self._text = .init(
-            initialValue: value.wrappedValue?.localizedNumericString ?? .init()
+            initialValue: value.wrappedValue?.localizedNumericString() ?? .init()
         )
     }
     
@@ -103,7 +107,7 @@ private extension NumberTextField {
             }
             // Verify character is a decimal separator
             // and a separator hasn't been previously found
-            guard character == Locale.current.decimalSeparatorCharacter && !foundDecimalSeparator else {
+            guard character == self.locale.decimalSeparatorCharacter && !foundDecimalSeparator else {
                 // Do not include character
                 return false
             }
@@ -117,7 +121,7 @@ private extension NumberTextField {
         // Verify value can be initialized from text
         guard let newValue = Value(
             text.replacingOccurrences(
-                of: String(Locale.current.decimalSeparatorCharacter),
+                of: String(self.locale.decimalSeparatorCharacter),
                 with: "."
             )
         ) else {
@@ -148,7 +152,7 @@ private extension NumberTextField {
         // Update value
         self.value = value
         // Update text
-        self.text = value?.localizedNumericString ?? .init()
+        self.text = value?.localizedNumericString(locale: self.locale) ?? .init()
     }
     
 }
@@ -158,11 +162,13 @@ private extension NumberTextField {
 private extension LosslessStringConvertible {
     
     /// A localized string.
-    var localizedNumericString: String {
+    func localizedNumericString(
+        locale: Locale = .current
+    ) -> String {
         String(self)
             .replacingOccurrences(
                 of: ".",
-                with: String(Locale.current.decimalSeparatorCharacter)
+                with: String(locale.decimalSeparatorCharacter)
             )
     }
     

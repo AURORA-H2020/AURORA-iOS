@@ -15,6 +15,10 @@ extension ConsumptionForm {
         @Binding
         var value: Double?
         
+        /// The locale.
+        @Environment(\.locale)
+        private var locale
+        
     }
     
 }
@@ -53,7 +57,18 @@ extension ConsumptionForm.Heating: View {
                     Text("Please choose")
                         .tag(nil as Consumption.Heating.DistrictHeatingSource??)
                     ForEach(
-                        Consumption.Heating.DistrictHeatingSource.allCases,
+                        {
+                            var districtHeatingSources = Consumption.Heating.DistrictHeatingSource.allCases
+                            // Hide coal if not currently set
+                            if self.partialHeating.districtHeatingSource != .coal {
+                                districtHeatingSources = districtHeatingSources.filter { $0 != .coal }
+                            }
+                            // Hide biomass if not currently set
+                            if self.partialHeating.districtHeatingSource != .biomass {
+                                districtHeatingSources = districtHeatingSources.filter { $0 != .biomass }
+                            }
+                            return districtHeatingSources
+                        }(),
                         id: \.self
                     ) { districtHeatingSource in
                         Text(districtHeatingSource.localizedString)
@@ -76,14 +91,18 @@ extension ConsumptionForm.Heating: View {
             )
             .multilineTextAlignment(.leading)
         ) {
-            HStack {
-                NumberTextField(
-                    "Consumption",
-                    value: self.$value
+            MeasurementTextField(
+                "Consumption",
+                value: self.$value
+            ) {
+                Text(
+                    ConsumptionMeasurement.Unit(
+                        measurementSystem: .init(locale: self.locale),
+                        category: .heating,
+                        heatingFuel: self.partialHeating.heatingFuel
+                    )
+                    .symbol
                 )
-                Text(KilowattHoursFormatStyle.symbol)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
             }
         }
         Section(

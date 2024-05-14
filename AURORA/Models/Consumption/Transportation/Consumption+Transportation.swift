@@ -23,6 +23,9 @@ extension Consumption {
         /// The vehicle occupancy.
         var publicVehicleOccupancy: PublicVehicleOccupancy?
         
+        /// The fuel consumption.
+        var fuelConsumption: Double?
+        
     }
     
 }
@@ -38,7 +41,8 @@ extension Consumption.Transportation: PartialConvertible {
             \.dateOfTravelEnd: self.dateOfTravelEnd,
             \.transportationType: self.transportationType,
             \.privateVehicleOccupancy: self.privateVehicleOccupancy,
-            \.publicVehicleOccupancy: self.publicVehicleOccupancy
+            \.publicVehicleOccupancy: self.publicVehicleOccupancy,
+            \.fuelConsumption: self.fuelConsumption
         ]
     }
     
@@ -67,7 +71,8 @@ extension Consumption.Transportation: PartialConvertible {
                         .publicVehicleOccupancy?
                         .flatMap { $0 }
                 }
-            }()
+            }(),
+            fuelConsumption: partial.fuelConsumption.flatMap { $0 }
         )
     }
     

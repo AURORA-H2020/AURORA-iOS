@@ -19,6 +19,10 @@ extension ConsumptionSummaryView {
         /// The labeled consumption.
         let labeledConsumption: ConsumptionSummary.LabeledConsumption
         
+        /// The locale.
+        @Environment(\.locale)
+        private var locale
+        
     }
 
 }
@@ -29,12 +33,16 @@ extension ConsumptionSummaryView.LabeledConsumptionSection: View {
     
     /// The content and behavior of the view.
     var body: some View {
+        let formattedLabeledConsumption = self.labeledConsumption.formatted(
+            using: self.mode,
+            measurementSystem: .init(locale: self.locale)
+        )
         Section(
             header: HStack {
                 if let category = self.category {
                     Text(category.localizedString)
                     Spacer()
-                    Text("\(self.labeledConsumption.formatted(using: self.mode)) in \(String(self.year))")
+                    Text("\(formattedLabeledConsumption) in \(String(self.year))")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundColor(.secondary)
@@ -82,7 +90,7 @@ extension ConsumptionSummaryView.LabeledConsumptionSection: View {
                         }
                     }()
                     Text(
-                        verbatim: "\(self.labeledConsumption.formatted(using: self.mode))\n\(suffix)"
+                        verbatim: "\(formattedLabeledConsumption)\n\(suffix)"
                     )
                     .fontWeight(.semibold)
                     Spacer()

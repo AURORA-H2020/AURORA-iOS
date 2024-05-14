@@ -26,11 +26,17 @@ extension ConsumptionSummary {
 extension ConsumptionSummary.LabeledConsumption {
     
     /// Format labeled consumption using a given mode.
-    /// - Parameter mode: The mode.
+    /// - Parameters:
+    ///   - mode: The mode.
+    ///   - measurementSystem: The measurment system. Default value `.init()`
     func formatted(
-        using mode: ConsumptionSummary.Mode
+        using mode: ConsumptionSummary.Mode,
+        measurementSystem: ConsumptionMeasurement.System = .init()
     ) -> String {
-        mode.format(consumption: self)
+        mode.format(
+            consumption: self,
+            measurementSystem: measurementSystem
+        )
     }
     
 }

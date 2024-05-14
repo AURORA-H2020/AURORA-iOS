@@ -1,9 +1,9 @@
 import SwiftUI
 
-// MARK: - CurrencyTextField
+// MARK: - MeasurementTextField
 
-/// The CurrencyTextField
-struct CurrencyTextField<Value: Numeric & LosslessStringConvertible> {
+/// The MeasurementTextField
+struct MeasurementTextField<Value: Numeric & LosslessStringConvertible, Unit: View> {
     
     // MARK: Properties
     
@@ -14,9 +14,8 @@ struct CurrencyTextField<Value: Numeric & LosslessStringConvertible> {
     @Binding
     private var value: Value?
     
-    /// The Firebase instance.
-    @EnvironmentObject
-    private var firebase: Firebase
+    /// The unit.
+    private let unit: Unit
     
     // MARK: Initializer
     
@@ -26,27 +25,31 @@ struct CurrencyTextField<Value: Numeric & LosslessStringConvertible> {
     ///   - value: The underlying value to edit.
     init(
         _ title: LocalizedStringKey,
-        value: Binding<Value?>
+        value: Binding<Value?>,
+        @ViewBuilder
+        unit: () -> Unit
     ) {
         self.title = title
         self._value = value
+        self.unit = unit()
     }
     
 }
 
 // MARK: - View
 
-extension CurrencyTextField: View {
+extension MeasurementTextField: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        MeasurementTextField(
-            self.title,
-            value: self.$value
-        ) {
-            Text(
-                verbatim: ((try? self.firebase.country?.get()) ?? .europe).localizedCurrencySymbol
+        HStack {
+            NumberTextField(
+                self.title,
+                value: self.$value
             )
+            self.unit
+                .font(.footnote)
+                .foregroundColor(.secondary)
         }
     }
     

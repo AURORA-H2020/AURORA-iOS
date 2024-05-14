@@ -118,11 +118,14 @@
 		3D8E1EFD2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1EFC2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift */; };
 		3D8E1EFF2A294B4A00416DFF /* RecurringConsumptionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1EFE2A294B4A00416DFF /* RecurringConsumptionForm.swift */; };
 		3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */; };
-		3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */; };
+		3DA73D1F2BEDF03200F17E80 /* ConsumptionMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA73D1E2BEDF03200F17E80 /* ConsumptionMeasurement.swift */; };
+		3DA73D212BEDF05200F17E80 /* ConsumptionMeasurement+System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA73D202BEDF05200F17E80 /* ConsumptionMeasurement+System.swift */; };
+		3DA73D232BEDF06500F17E80 /* ConsumptionMeasurement+Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA73D222BEDF06500F17E80 /* ConsumptionMeasurement+Unit.swift */; };
 		3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */; };
 		3DC28EEE2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC28EED2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift */; };
 		3DC28EF02A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC28EEF2A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift */; };
 		3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */; };
+		3DCA6B8D2BF33418009BC2EE /* MeasurementTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA6B8C2BF33418009BC2EE /* MeasurementTextField.swift */; };
 		3DCB91FE2A28F25C00D6F748 /* RecurringConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */; };
 		3DCB92022A28F67B00D6F748 /* RecurringConsumption+Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */; };
 		3DCB92042A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB92032A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift */; };
@@ -131,8 +134,6 @@
 		3DD34C5E2948F280002064D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD34C5D2948F280002064D8 /* Assets.xcassets */; };
 		3DD3F8CA2A8CACEE00258CA9 /* User+HomeEnergyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD3F8C92A8CACEE00258CA9 /* User+HomeEnergyLabel.swift */; };
 		3DD3F8CC2A8CAE1C00258CA9 /* User+HouseholdProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD3F8CB2A8CAE1C00258CA9 /* User+HouseholdProfile.swift */; };
-		3DDEDA0029DC873C00303BA1 /* FormatStyle+Kilometers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDED9FF29DC873C00303BA1 /* FormatStyle+Kilometers.swift */; };
-		3DDEDA0229DC87D300303BA1 /* FormatStyle+KilowattHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDEDA0129DC87D300303BA1 /* FormatStyle+KilowattHours.swift */; };
 		3DFBBA802A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */; };
 		3DFBBA822A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */; };
 		3DFE87052AB080D60066B0A0 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 3DFE87042AB080D60066B0A0 /* FirebaseRemoteConfig */; };
@@ -257,12 +258,15 @@
 		3D8E1EFC2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumptionList+Cell.swift"; sourceTree = "<group>"; };
 		3D8E1EFE2A294B4A00416DFF /* RecurringConsumptionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumptionForm.swift; sourceTree = "<group>"; };
 		3D98EC4929C9A63E00CC3ABE /* ConsumptionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionSummaryView.swift; sourceTree = "<group>"; };
-		3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+CarbonEmissions.swift"; sourceTree = "<group>"; };
+		3DA73D1E2BEDF03200F17E80 /* ConsumptionMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionMeasurement.swift; sourceTree = "<group>"; };
+		3DA73D202BEDF05200F17E80 /* ConsumptionMeasurement+System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionMeasurement+System.swift"; sourceTree = "<group>"; };
+		3DA73D222BEDF06500F17E80 /* ConsumptionMeasurement+Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumptionMeasurement+Unit.swift"; sourceTree = "<group>"; };
 		3DAA79C2297153F40097DD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBA890C298C36C400E00AF0 /* ConsumptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionList.swift; sourceTree = "<group>"; };
 		3DC28EED2A3059B4005D54BF /* FirestoreSubcollectionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSubcollectionEntity.swift; sourceTree = "<group>"; };
 		3DC28EEF2A305E4C005D54BF /* FirestoreEntityIdentifierMissingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEntityIdentifierMissingError.swift; sourceTree = "<group>"; };
 		3DC2C2AB29B787BB00A37D0C /* PhotovoltaicScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotovoltaicScreen.swift; sourceTree = "<group>"; };
+		3DCA6B8C2BF33418009BC2EE /* MeasurementTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementTextField.swift; sourceTree = "<group>"; };
 		3DCB91FD2A28F25C00D6F748 /* RecurringConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringConsumption.swift; sourceTree = "<group>"; };
 		3DCB92012A28F67B00D6F748 /* RecurringConsumption+Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency.swift"; sourceTree = "<group>"; };
 		3DCB92032A28F79300D6F748 /* RecurringConsumption+Frequency+Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+Unit.swift"; sourceTree = "<group>"; };
@@ -272,8 +276,6 @@
 		3DD34C5D2948F280002064D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DD3F8C92A8CACEE00258CA9 /* User+HomeEnergyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+HomeEnergyLabel.swift"; sourceTree = "<group>"; };
 		3DD3F8CB2A8CAE1C00258CA9 /* User+HouseholdProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+HouseholdProfile.swift"; sourceTree = "<group>"; };
-		3DDED9FF29DC873C00303BA1 /* FormatStyle+Kilometers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+Kilometers.swift"; sourceTree = "<group>"; };
-		3DDEDA0129DC87D300303BA1 /* FormatStyle+KilowattHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+KilowattHours.swift"; sourceTree = "<group>"; };
 		3DFBBA7F2A2F053D0003A10F /* RecurringConsumption+Frequency+Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+Weekday.swift"; sourceTree = "<group>"; };
 		3DFBBA812A2F05870003A10F /* RecurringConsumption+Frequency+DayOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecurringConsumption+Frequency+DayOfMonth.swift"; sourceTree = "<group>"; };
 		3DFE87092AB081850066B0A0 /* Firebase+RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+RemoteConfig.swift"; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				3D1EE66A298AACF8009E4645 /* User */,
 				3D1EE65F298AACF8009E4645 /* Consumption */,
 				3D1EE674298AACF8009E4645 /* ConsumptionSummary */,
+				3DA73D1D2BEDEFDF00F17E80 /* ConsumptionMeasurement */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -364,7 +367,6 @@
 		3D1EE5F9298AA981009E4645 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				3D98EC4B29C9B19200CC3ABE /* FormatStyles */,
 				3D1EE602298AAA0C009E4645 /* DataStructures */,
 				3D1EE600298AAA01009E4645 /* Extensions */,
 				3D1EE601298AAA06009E4645 /* Views */,
@@ -439,6 +441,7 @@
 				3D1EE6C4298AAEA3009E4645 /* AsyncButton */,
 				3D1EE6CE298AAEC0009E4645 /* EmptyPlaceholder.swift */,
 				3D1EE6CC298AAEC0009E4645 /* NumberTextField.swift */,
+				3DCA6B8C2BF33418009BC2EE /* MeasurementTextField.swift */,
 				3D1EE6CB298AAEC0009E4645 /* SheetNavigationView.swift */,
 				3D411D0E29BB28E0008EBB75 /* CurrencyText.swift */,
 				3D411D1029BB2A10008EBB75 /* CurrencyTextField.swift */,
@@ -776,14 +779,14 @@
 			path = Summary;
 			sourceTree = "<group>";
 		};
-		3D98EC4B29C9B19200CC3ABE /* FormatStyles */ = {
+		3DA73D1D2BEDEFDF00F17E80 /* ConsumptionMeasurement */ = {
 			isa = PBXGroup;
 			children = (
-				3D98EC4C29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift */,
-				3DDED9FF29DC873C00303BA1 /* FormatStyle+Kilometers.swift */,
-				3DDEDA0129DC87D300303BA1 /* FormatStyle+KilowattHours.swift */,
+				3DA73D1E2BEDF03200F17E80 /* ConsumptionMeasurement.swift */,
+				3DA73D222BEDF06500F17E80 /* ConsumptionMeasurement+Unit.swift */,
+				3DA73D202BEDF05200F17E80 /* ConsumptionMeasurement+System.swift */,
 			);
-			path = FormatStyles;
+			path = ConsumptionMeasurement;
 			sourceTree = "<group>";
 		};
 		3DC2C2A929B7852E00A37D0C /* Detail */ = {
@@ -1045,19 +1048,22 @@
 				3D1EE6A8298AADD4009E4645 /* UNMutableNotificationContent+Init.swift in Sources */,
 				3D1EE612298AAB39009E4645 /* AuthenticationPasswordLoginForm.swift in Sources */,
 				3D5CB9CB29D6C8D3008E7414 /* ConsumptionScreen+OverviewSection.swift in Sources */,
+				3DA73D1F2BEDF03200F17E80 /* ConsumptionMeasurement.swift in Sources */,
 				3D5CB9CD29D6D4F3008E7414 /* ConsumptionSummary+Mode.swift in Sources */,
 				3DCB92022A28F67B00D6F748 /* RecurringConsumption+Frequency.swift in Sources */,
 				3D238F462A2E792A002C11BC /* MultiPicker.swift in Sources */,
 				3D1EE697298AACF8009E4645 /* AppleFirebaseAuthenticationProvider.swift in Sources */,
+				3DA73D212BEDF05200F17E80 /* ConsumptionMeasurement+System.swift in Sources */,
 				3D98EC4A29C9A63E00CC3ABE /* ConsumptionSummaryView.swift in Sources */,
 				3D1EE60E298AAB39009E4645 /* AuthenticationScreen.swift in Sources */,
-				3D98EC4D29C9B19B00CC3ABE /* FormatStyle+CarbonEmissions.swift in Sources */,
+				3DA73D232BEDF06500F17E80 /* ConsumptionMeasurement+Unit.swift in Sources */,
 				3D1EE688298AACF8009E4645 /* Consumption+Transportation+TransportationType.swift in Sources */,
 				3D1EE68F298AACF8009E4645 /* User+Gender.swift in Sources */,
 				3D8E1EFD2A294A8C00416DFF /* RecurringConsumptionList+Cell.swift in Sources */,
 				3D1EE683298AACF8009E4645 /* Firebase+Firestore.swift in Sources */,
 				3D1EE689298AACF8009E4645 /* Consumption+Transportation.swift in Sources */,
 				3D1EE698298AACF8009E4645 /* GoogleFirebaseAuthenticationProvider.swift in Sources */,
+				3DCA6B8D2BF33418009BC2EE /* MeasurementTextField.swift in Sources */,
 				3D1EE604298AAA21009E4645 /* AppDelegate.swift in Sources */,
 				3D1EE64E298AAC9E009E4645 /* ChangeMailAddressForm.swift in Sources */,
 				3DBA890D298C36C400E00AF0 /* ConsumptionList.swift in Sources */,
@@ -1089,7 +1095,6 @@
 				3D1EE6BD298AAE62009E4645 /* Identified.swift in Sources */,
 				3D57AEF329B792ED000EE0EB /* PVGISService.swift in Sources */,
 				3D8C289429C70D9F00811044 /* ConsumptionSummary+Label.swift in Sources */,
-				3DDEDA0029DC873C00303BA1 /* FormatStyle+Kilometers.swift in Sources */,
 				3D1D367D2ACF39F9006F8DE2 /* Consumption+Electricity+ElectricitySource.swift in Sources */,
 				3DC2C2AC29B787BB00A37D0C /* PhotovoltaicScreen.swift in Sources */,
 				3D1EE652298AAC9E009E4645 /* ThirdPartyDependencyDetail.swift in Sources */,
@@ -1156,7 +1161,6 @@
 				3D1EE6C9298AAEA3009E4645 /* AsyncButton.swift in Sources */,
 				3D1EE6B8298AAE4C009E4645 /* View+delay.swift in Sources */,
 				3D1EE650298AAC9E009E4645 /* SettingsScreen.swift in Sources */,
-				3DDEDA0229DC87D300303BA1 /* FormatStyle+KilowattHours.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1456,7 +1460,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 10.25.0;
+				version = 10.26.0;
 			};
 		};
 		3D1EE5F4298AA965009E4645 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
