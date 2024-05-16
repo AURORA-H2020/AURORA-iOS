@@ -234,8 +234,9 @@ private extension PhotovoltaicScreen {
                 title: "CO₂ emitted if **conventional**",
                 value: ConsumptionMeasurement(
                     value: investmentResult.normalCarbonEmissions.value,
-                    unit: .kilograms.converted(to: .init(locale: self.locale))
+                    unit: .kilograms
                 )
+                .converted(to: .init(locale: self.locale))
                 .formatted()
             )
         }
@@ -257,8 +258,9 @@ private extension PhotovoltaicScreen {
                 title: "CO₂ emitted if **photovoltaics**",
                 value: ConsumptionMeasurement(
                     value: investmentResult.carbonEmissions.value,
-                    unit: .kilograms.converted(to: .init(locale: self.locale))
+                    unit: .kilograms
                 )
+                .converted(to: .init(locale: self.locale))
                 .formatted()
             )
         }
@@ -273,8 +275,9 @@ private extension PhotovoltaicScreen {
                 title: "CO₂ reduction",
                 value: ConsumptionMeasurement(
                     value: investmentResult.carbonEmissionsReduction.value,
-                    unit: .kilograms.converted(to: .init(locale: self.locale))
+                    unit: .kilograms
                 )
+                .converted(to: .init(locale: self.locale))
                 .formatted()
             )
         }

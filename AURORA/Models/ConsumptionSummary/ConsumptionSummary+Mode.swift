@@ -46,14 +46,16 @@ extension ConsumptionSummary.Mode {
         case .carbonEmission:
             return ConsumptionMeasurement(
                 value: consumption.total,
-                unit: .kilograms.converted(to: measurementSystem)
+                unit: .kilograms
             )
+            .converted(to: measurementSystem)
             .formatted(isCarbonEmissions: true)
         case .energyExpended:
             return ConsumptionMeasurement(
                 value: consumption.total,
                 unit: .kilowattHours
             )
+            .converted(to: measurementSystem)
             .formatted()
         }
     }

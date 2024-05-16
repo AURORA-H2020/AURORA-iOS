@@ -91,8 +91,9 @@ extension ConsumptionList.Cell: View {
                     Text(
                         ConsumptionMeasurement(
                             value: carbonEmissions,
-                            unit: .kilograms.converted(to: .init(locale: self.locale))
+                            unit: .kilograms
                         )
+                        .converted(to: .init(locale: self.locale))
                         .formatted(isCarbonEmissions: true)
                     )
                     .font(.footnote)
