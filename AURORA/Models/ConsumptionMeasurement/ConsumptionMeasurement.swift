@@ -92,7 +92,7 @@ extension ConsumptionMeasurement {
                         to: .liters
                     )
                 case .kilowattHours:
-                    return value
+                    return self.value
                 case .kilograms:
                     return convert(
                         UnitMass.self,
