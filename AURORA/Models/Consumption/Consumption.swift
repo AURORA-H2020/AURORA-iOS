@@ -172,6 +172,20 @@ extension Consumption {
         )
         .converted(to: destinationMeasurementSystem)
         .value
+        if let transportation = self.transportation,
+           let fuelConsumption = transportation.fuelConsumption {
+            self.transportation?.fuelConsumption = ConsumptionMeasurement(
+                value: fuelConsumption,
+                unit: {
+                    let unit: ConsumptionMeasurement.Unit = transportation.transportationType.canDeclarePrivatePowerConsumption
+                        ? .kilowattHoursPer100Kilometers
+                        : .litersPer100Kilometers
+                    return unit.converted(to: sourceMeasurementSystem)
+                }()
+            )
+            .converted(to: destinationMeasurementSystem)
+            .value
+        }
     }
     
 }
