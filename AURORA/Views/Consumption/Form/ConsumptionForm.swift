@@ -198,6 +198,11 @@ private extension ConsumptionForm {
                 // Return nil
                 return nil
             }
+            // Check if exported energy is greater than the value (energy produced)
+            if let energyExported = self.partialElectricity.electricityExported.flatMap({ $0 }), energyExported > value {
+                // Return nil
+                return nil
+            }
             // Try to initialize consumption
             return .init(
                 id: self.consumptionId,
