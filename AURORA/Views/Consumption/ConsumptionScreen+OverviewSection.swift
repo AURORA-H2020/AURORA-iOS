@@ -115,7 +115,7 @@ extension ConsumptionScreen.OverviewSection: View {
             }
             Link(
                 destination: .init(
-                    string: "https://www.aurora-h2020.eu"
+                    string: "https://www.aurora-h2020.eu/tools"
                 )!
             ) {
                 Label(
