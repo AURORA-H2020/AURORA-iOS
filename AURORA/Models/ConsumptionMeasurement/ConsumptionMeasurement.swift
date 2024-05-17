@@ -166,7 +166,7 @@ extension ConsumptionMeasurement {
                 .formatted(
                     .measurement(
                         width: .abbreviated,
-                        usage: .general,
+                        usage: .asProvided,
                         numberFormatStyle: numberFormatStyle
                     )
                 )
@@ -178,7 +178,7 @@ extension ConsumptionMeasurement {
                 .formatted(
                     .measurement(
                         width: .abbreviated,
-                        usage: .general,
+                        usage: .asProvided,
                         numberFormatStyle: numberFormatStyle
                     )
                 )
@@ -190,7 +190,7 @@ extension ConsumptionMeasurement {
                 .formatted(
                     .measurement(
                         width: .abbreviated,
-                        usage: .general,
+                        usage: .asProvided,
                         numberFormatStyle: numberFormatStyle
                     )
                 )
@@ -202,7 +202,7 @@ extension ConsumptionMeasurement {
                 .formatted(
                     .measurement(
                         width: .abbreviated,
-                        usage: .general,
+                        usage: .asProvided,
                         numberFormatStyle: numberFormatStyle
                     )
                 )
@@ -214,7 +214,7 @@ extension ConsumptionMeasurement {
                 .formatted(
                     .measurement(
                         width: .abbreviated,
-                        usage: .general,
+                        usage: .asProvided,
                         numberFormatStyle: numberFormatStyle
                     )
                 )
@@ -226,7 +226,7 @@ extension ConsumptionMeasurement {
                 .formatted(
                     .measurement(
                         width: .abbreviated,
-                        usage: .general,
+                        usage: .asProvided,
                         numberFormatStyle: numberFormatStyle
                     )
                 )
@@ -250,7 +250,7 @@ extension ConsumptionMeasurement {
                 .formatted(
                     .measurement(
                         width: .abbreviated,
-                        usage: .general,
+                        usage: .asProvided,
                         numberFormatStyle: numberFormatStyle
                     )
                 )
@@ -262,7 +262,7 @@ extension ConsumptionMeasurement {
                 .formatted(
                     .measurement(
                         width: .abbreviated,
-                        usage: .general,
+                        usage: .asProvided,
                         numberFormatStyle: numberFormatStyle
                     )
                 )
