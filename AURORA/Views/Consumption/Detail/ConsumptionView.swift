@@ -76,6 +76,20 @@ extension ConsumptionView: View {
                         Text("Carbon emissions")
                     }
                 }
+                if let energyExpended = self.consumption.energyExpended {
+                    Entry {
+                        Text(
+                            ConsumptionMeasurement(
+                                value: energyExpended,
+                                unit: .kilowattHours
+                            )
+                            .converted(to: .init(locale: self.locale))
+                            .formatted()
+                        )
+                    } label: {
+                        Text("Energy usage")
+                    }
+                }
             }
             if let electricity = self.consumption.electricity {
                 if let costs = electricity.costs {
