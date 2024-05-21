@@ -83,12 +83,12 @@ extension ConsumptionMeasurement {
                     return convert(
                         UnitVolume.self,
                         from: .liters,
-                        to: .gallons
+                        to: .imperialGallons
                     )
                 case .gallons:
                     return convert(
                         UnitVolume.self,
-                        from: .gallons,
+                        from: .imperialGallons,
                         to: .liters
                     )
                 case .kilowattHours:
@@ -197,7 +197,7 @@ extension ConsumptionMeasurement {
             case .gallons:
                 return Measurement<UnitVolume>(
                     value: self.value,
-                    unit: .gallons
+                    unit: .imperialGallons
                 )
                 .formatted(
                     .measurement(

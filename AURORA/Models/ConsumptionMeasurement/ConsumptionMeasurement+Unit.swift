@@ -104,7 +104,7 @@ extension ConsumptionMeasurement.Unit {
         case .liters:
             return UnitVolume.liters.symbol
         case .gallons:
-            return UnitVolume.gallons.symbol
+            return UnitVolume.imperialGallons.symbol
         case .kilowattHours:
             return UnitEnergy.kilowattHours.symbol
         case .kilograms:
