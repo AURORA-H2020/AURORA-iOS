@@ -118,15 +118,7 @@ extension ConsumptionMeasurement {
                         to: .litersPer100Kilometers
                     )
                 case .kilowattHoursPer100Kilometers, .milesPerKilowattHour:
-                    // 1 kWh/100km = 62.137119 mi/kWh
-                    let conversionFactor = 62.137119
-                    if self.unit == .kilowattHoursPer100Kilometers && measurementSystem == .imperial {
-                        return self.value * conversionFactor
-                    } else if self.unit == .milesPerKilowattHour && measurementSystem == .metric {
-                        return self.value / conversionFactor
-                    } else {
-                        return self.value
-                    }
+                    return (100 / Measurement<UnitLength>(value: 1, unit: .miles).converted(to: .kilometers).value) / self.value                    
                 }
             }(),
             unit: self.unit.converted(to: measurementSystem)
