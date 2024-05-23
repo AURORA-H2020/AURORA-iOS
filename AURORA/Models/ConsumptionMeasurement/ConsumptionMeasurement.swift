@@ -109,12 +109,12 @@ extension ConsumptionMeasurement {
                     return convert(
                         UnitFuelEfficiency.self,
                         from: .litersPer100Kilometers,
-                        to: .milesPerGallon
+                        to: .milesPerImperialGallon
                     )
                 case .milesPerGallon:
                     return convert(
                         UnitFuelEfficiency.self,
-                        from: .milesPerGallon,
+                        from: .milesPerImperialGallon,
                         to: .litersPer100Kilometers
                     )
                 case .kilowattHoursPer100Kilometers, .milesPerKilowattHour:
@@ -249,7 +249,7 @@ extension ConsumptionMeasurement {
             case .milesPerGallon:
                 return Measurement<UnitFuelEfficiency>(
                     value: self.value,
-                    unit: .milesPerGallon
+                    unit: .milesPerImperialGallon
                 )
                 .formatted(
                     .measurement(

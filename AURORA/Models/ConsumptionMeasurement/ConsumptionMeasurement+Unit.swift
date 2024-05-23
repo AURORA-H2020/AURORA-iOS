@@ -114,7 +114,7 @@ extension ConsumptionMeasurement.Unit {
         case .litersPer100Kilometers:
             return UnitFuelEfficiency.litersPer100Kilometers.symbol
         case .milesPerGallon:
-            return UnitFuelEfficiency.milesPerGallon.symbol
+            return UnitFuelEfficiency.milesPerImperialGallon.symbol
         case .kilowattHoursPer100Kilometers:
             return "kWh/100km"
         case .milesPerKilowattHour:
