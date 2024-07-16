@@ -149,6 +149,9 @@
 "Busses" = "Busse";
 
 /* No comment provided by engineer. */
+"Butane" = "Butan";
+
+/* No comment provided by engineer. */
 "Calculate" = "Berechnen";
 
 /* No comment provided by engineer. */
@@ -177,9 +180,6 @@
 
 /* No comment provided by engineer. */
 "City" = "Stadt";
-
-/* No comment provided by engineer. */
-"CO₂" = "CO₂";
 
 /* No comment provided by engineer. */
 "CO₂ emitted if **conventional**" = "CO₂-Emissionen (**konventionell**)";
@@ -359,6 +359,18 @@
 "End of travel" = "Ende der Fahrt";
 
 /* No comment provided by engineer. */
+"Energy exported" = "Ausgeführte Energie";
+
+/* No comment provided by engineer. */
+"Energy exported (optional)" = "Ausgeführte Energie (optional)";
+
+/* No comment provided by engineer. */
+"Energy produced" = "Erzeugte Energie";
+
+/* No comment provided by engineer. */
+"Energy usage" = "Energieverbrauch";
+
+/* No comment provided by engineer. */
 "Energy Used" = "Verwendete Energie";
 
 /* No comment provided by engineer. */
@@ -389,6 +401,9 @@
 "Fequency" = "Frequenz";
 
 /* No comment provided by engineer. */
+"Firewood" = "Brennholz";
+
+/* No comment provided by engineer. */
 "First Mover" = "Favorit*in";
 
 /* No comment provided by engineer. */
@@ -402,6 +417,12 @@
 
 /* No comment provided by engineer. */
 "Fuel car" = "Treibstoffauto";
+
+/* No comment provided by engineer. */
+"Fuel consumption" = "Kraftstoffverbrauch";
+
+/* No comment provided by engineer. */
+"Fuel consumption (optional)" = "Kraftstoffverbrauch (optional)";
 
 /* No comment provided by engineer. */
 "Gender" = "Geschlecht";
@@ -485,6 +506,9 @@
 "Investment" = "Investition";
 
 /* No comment provided by engineer. */
+"It seems you're offline. Your data will automatically sync as soon as you reconnect to the internet." = "Es scheint, dass Sie offline sind. Ihre Daten werden automatisch synchronisiert, sobald Sie wieder mit dem Internet verbunden sind.";
+
+/* No comment provided by engineer. */
 "Last name" = "Nachname";
 
 /* No comment provided by engineer. */
@@ -540,6 +564,12 @@
 
 /* No comment provided by engineer. */
 "Motorcycle" = "Motorrad";
+
+/* No comment provided by engineer. */
+"National Grid (green provider)" = "Nationales Stromnetz (grüner Anbieter)";
+
+/* No comment provided by engineer. */
+"National Grid (standard)" = "Nationales Stromnetz (Standard)";
 
 /* No comment provided by engineer. */
 "Natural gas" = "Erdgas";
@@ -614,7 +644,13 @@
 "People in household: %lld" = "Personen im Haushalt: %lld";
 
 /* No comment provided by engineer. */
-"Plane" = "Flugzeug";
+"Plane (domestic)" = "Flugzeug (Inland)";
+
+/* No comment provided by engineer. */
+"Plane (extra EU)" = "Flugzeug (außerhalb der EU)";
+
+/* No comment provided by engineer. */
+"Plane (intra EU)" = "Flugzeug (innerhalb der EU)";
 
 /* No comment provided by engineer. */
 "Please choose" = "Bitte wählen Sie";
@@ -630,6 +666,12 @@
 
 /* No comment provided by engineer. */
 "Please note that all values displayed here are specific for your city, **%@**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Bitte beachten Sie, dass alle hier angezeigten Werte spezifisch für Ihre Stadt, **%@**, sind und lediglich der Information dienen. Alle Berechnungen beruhen auf den aktuellen Plänen für die Photovoltaikanlagen und müssen möglicherweise später angepasst werden. Die geschätzten Einsparungen können von den tatsächlichen Daten abweichen, sobald die Photovoltaikanlagen in Betrieb sind. Mit der Nutzung dieses Rechners gehen Sie selbstverständlich keine Verpflichtungen ein.\n\nDieser Rechner verwendet das [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) der Gemeinsamen Forschungsstelle der Europäischen Kommission.";
+
+/* No comment provided by engineer. */
+"Power consumption" = "Stromverbrauch";
+
+/* No comment provided by engineer. */
+"Power consumption (optional)" = "Stromverbrauch (optional)";
 
 /* No comment provided by engineer. */
 "Prefer not to say" = "Keine Angabe";
@@ -861,6 +903,9 @@
 
 /* No comment provided by engineer. */
 "You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment." = "Sie können schon bald Ihren ökologischen Fußabdruck verringern, indem Sie in Ihre lokale AURORA-Photovoltaikanlage investieren. Bis dahin können Sie hier schon einmal testen, um wie viel sich Ihr Fußabdruck, je nach Ihrer potenziellen Investition, verringern würde.";
+
+/* No comment provided by engineer. */
+"You can usually find this information on an app or website provided by your PV installation contractor." = "Diese Informationen finden Sie in der Regel in einer App oder auf einer Website, die von Ihrem Solar-Installateur bereitgestellt wird.";
 
 /* No comment provided by engineer. */
 "You may add a description to your entry to help you find it later." = "Sie können Ihrem Eintrag eine Beschreibung hinzufügen um ihn später leichter zu finden.";

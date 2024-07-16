@@ -149,6 +149,9 @@
 "Busses" = "Avtobusi";
 
 /* No comment provided by engineer. */
+"Butane" = "Butan";
+
+/* No comment provided by engineer. */
 "Calculate" = "Izračunaj";
 
 /* No comment provided by engineer. */
@@ -177,9 +180,6 @@
 
 /* No comment provided by engineer. */
 "City" = "Mesto";
-
-/* No comment provided by engineer. */
-"CO₂" = "CO₂";
 
 /* No comment provided by engineer. */
 "CO₂ emitted if **conventional**" = "emisije CO₂, če je **konvencionalno**";
@@ -359,6 +359,18 @@
 "End of travel" = "Konec potovanja";
 
 /* No comment provided by engineer. */
+"Energy exported" = "Izvožena energija";
+
+/* No comment provided by engineer. */
+"Energy exported (optional)" = "Izvožena energija (neobvezno)";
+
+/* No comment provided by engineer. */
+"Energy produced" = "Proizvedena energija";
+
+/* No comment provided by engineer. */
+"Energy usage" = "Poraba energije";
+
+/* No comment provided by engineer. */
 "Energy Used" = "Porabljena energija";
 
 /* No comment provided by engineer. */
@@ -389,6 +401,9 @@
 "Fequency" = "Pogostost";
 
 /* No comment provided by engineer. */
+"Firewood" = "Les za kurjavo";
+
+/* No comment provided by engineer. */
 "First Mover" = "Faza poskusov";
 
 /* No comment provided by engineer. */
@@ -402,6 +417,12 @@
 
 /* No comment provided by engineer. */
 "Fuel car" = "Vozilo na gorivo";
+
+/* No comment provided by engineer. */
+"Fuel consumption" = "Poraba goriva";
+
+/* No comment provided by engineer. */
+"Fuel consumption (optional)" = "Poraba goriva (neobvezno)";
 
 /* No comment provided by engineer. */
 "Gender" = "Spol";
@@ -485,6 +506,9 @@
 "Investment" = "Naložba";
 
 /* No comment provided by engineer. */
+"It seems you're offline. Your data will automatically sync as soon as you reconnect to the internet." = "Zdi se, da si brez povezave. Tvoji podatki se bodo samodejno sinhronizirali takoj, ko boš ponovno vzpostavil povezavo z internetom.";
+
+/* No comment provided by engineer. */
 "Last name" = "Priimek";
 
 /* No comment provided by engineer. */
@@ -540,6 +564,12 @@
 
 /* No comment provided by engineer. */
 "Motorcycle" = "Motorno kolo";
+
+/* No comment provided by engineer. */
+"National Grid (green provider)" = "Državno omrežje (zeleni ponudnik)";
+
+/* No comment provided by engineer. */
+"National Grid (standard)" = "Državno omrežje (standardno)";
 
 /* No comment provided by engineer. */
 "Natural gas" = "Zemeljski plin";
@@ -614,7 +644,13 @@
 "People in household: %lld" = "Število oseb v gospodinjstvu: %lld";
 
 /* No comment provided by engineer. */
-"Plane" = "Letalo";
+"Plane (domestic)" = "Letalo (domače)";
+
+/* No comment provided by engineer. */
+"Plane (extra EU)" = "Letalo (izven EU)";
+
+/* No comment provided by engineer. */
+"Plane (intra EU)" = "Letalo (znotraj EU)";
 
 /* No comment provided by engineer. */
 "Please choose" = "Izberi";
@@ -630,6 +666,12 @@
 
 /* No comment provided by engineer. */
 "Please note that all values displayed here are specific for your city, **%@**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Upoštevajte, da so vse tukaj prikazane vrednosti značilne za vaše mesto, **%@**, in so zgolj informativne. Vsi izračuni temeljijo na trenutnih načrtih za sončne elektrarne in jih bo morda treba pozneje prilagoditi. Ocenjeni prihranki se lahko razlikujejo od dejanskih podatkov, ko bodo sončne elektrarne začele delovati. Z uporabo tega kalkulatorja ne prevzemate nobenih obveznosti. Ta kalkulator uporablja [Fotovoltaični geografski](https://re.jrc.ec.europa.eu/pvg_tools/) informacijski sistem (PVGIS) Skupnega raziskovalnega centra Evropske komisije.";
+
+/* No comment provided by engineer. */
+"Power consumption" = "Poraba energije";
+
+/* No comment provided by engineer. */
+"Power consumption (optional)" = "Poraba energije (neobvezno)";
 
 /* No comment provided by engineer. */
 "Prefer not to say" = "Raje ne povem";
@@ -861,6 +903,9 @@
 
 /* No comment provided by engineer. */
 "You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment." = "Kmalu boste lahko zmanjšali svoj ogljični odtis z naložbo v lokalno sončno elektrarno AURORA. Do takrat lahko že tukaj preizkusite, za koliko bi se vaš ogljični odtis zmanjšal glede na morebitno naložbo.";
+
+/* No comment provided by engineer. */
+"You can usually find this information on an app or website provided by your PV installation contractor." = "Te informacije običajno najdeš v aplikaciji ali na spletnem mestu izvajalca fotovoltaične instalacije.";
 
 /* No comment provided by engineer. */
 "You may add a description to your entry to help you find it later." = "Vpisu lahko dodate opis, da ga kasneje lažje najdete.";
