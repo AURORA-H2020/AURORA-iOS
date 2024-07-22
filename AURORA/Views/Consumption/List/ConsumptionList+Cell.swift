@@ -17,6 +17,10 @@ extension ConsumptionList {
         @State
         private var isDeleteConfirmationDialogPresented = false
         
+        /// The locale.
+        @Environment(\.locale)
+        private var locale
+        
         /// The Firebase instance.
         @EnvironmentObject
         private var firebase: Firebase
@@ -80,15 +84,20 @@ extension ConsumptionList.Cell: View {
             .multilineTextAlignment(.leading)
             Spacer()
             VStack(alignment: .trailing) {
-                Text(self.consumption.formattedValue)
+                Text(self.consumption.formatted(to: .init(locale: self.locale)))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                if let formattedCarbonEmissions = self.consumption
-                    .carbonEmissions?
-                    .formatted(.carbonEmissions) {
-                    Text(formattedCarbonEmissions)
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
+                if let carbonEmissions = self.consumption.carbonEmissions {
+                    Text(
+                        ConsumptionMeasurement(
+                            value: carbonEmissions,
+                            unit: .kilograms
+                        )
+                        .converted(to: .init(locale: self.locale))
+                        .formatted(isCarbonEmissions: true)
+                    )
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
                 }
             }
             .multilineTextAlignment(.trailing)

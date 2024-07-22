@@ -149,6 +149,9 @@
 "Busses" = "Busser";
 
 /* No comment provided by engineer. */
+"Butane" = "Butan";
+
+/* No comment provided by engineer. */
 "Calculate" = "Beregn";
 
 /* No comment provided by engineer. */
@@ -177,9 +180,6 @@
 
 /* No comment provided by engineer. */
 "City" = "By";
-
-/* No comment provided by engineer. */
-"CO₂" = "CO₂";
 
 /* No comment provided by engineer. */
 "CO₂ emitted if **conventional**" = "CO₂-udledning ved **konventionel**";
@@ -359,6 +359,18 @@
 "End of travel" = "Rejsens afslutning";
 
 /* No comment provided by engineer. */
+"Energy exported" = "Eksporteret energi";
+
+/* No comment provided by engineer. */
+"Energy exported (optional)" = "Eksporteret energi (valgfri)";
+
+/* No comment provided by engineer. */
+"Energy produced" = "Produceret energi";
+
+/* No comment provided by engineer. */
+"Energy usage" = "Energiforbrug";
+
+/* No comment provided by engineer. */
 "Energy Used" = "Energi forbrugt";
 
 /* No comment provided by engineer. */
@@ -389,6 +401,9 @@
 "Fequency" = "Hyppighed";
 
 /* No comment provided by engineer. */
+"Firewood" = "Brænde";
+
+/* No comment provided by engineer. */
 "First Mover" = "First Mover";
 
 /* No comment provided by engineer. */
@@ -402,6 +417,12 @@
 
 /* No comment provided by engineer. */
 "Fuel car" = "Brændstofbil";
+
+/* No comment provided by engineer. */
+"Fuel consumption" = "Brændstofforbrug";
+
+/* No comment provided by engineer. */
+"Fuel consumption (optional)" = "Brændstofforbrug (valgfrit)";
 
 /* No comment provided by engineer. */
 "Gender" = "Køn";
@@ -485,6 +506,9 @@
 "Investment" = "Investering";
 
 /* No comment provided by engineer. */
+"It seems you're offline. Your data will automatically sync as soon as you reconnect to the internet." = "Det ser ud til, at du er offline. Dine data synkroniseres automatisk, så snart du får forbindelse til internettet igen.";
+
+/* No comment provided by engineer. */
 "Last name" = "Efternavn";
 
 /* No comment provided by engineer. */
@@ -540,6 +564,12 @@
 
 /* No comment provided by engineer. */
 "Motorcycle" = "Motorcykel";
+
+/* No comment provided by engineer. */
+"National Grid (green provider)" = "Elnettet (grøn el)";
+
+/* No comment provided by engineer. */
+"National Grid (standard)" = "Elnettet (standard)";
 
 /* No comment provided by engineer. */
 "Natural gas" = "Naturgas";
@@ -614,7 +644,13 @@
 "People in household: %lld" = "Personer i husstanden: %lld";
 
 /* No comment provided by engineer. */
-"Plane" = "Fly";
+"Plane (domestic)" = "Fly (indenrigs)";
+
+/* No comment provided by engineer. */
+"Plane (extra EU)" = "Fly (uden for EU)";
+
+/* No comment provided by engineer. */
+"Plane (intra EU)" = "Fly (inden for EU)";
 
 /* No comment provided by engineer. */
 "Please choose" = "Vælg venligst";
@@ -630,6 +666,12 @@
 
 /* No comment provided by engineer. */
 "Please note that all values displayed here are specific for your city, **%@**, and are merely for information. All calculations are based on current plans for the photovoltaic installations, and may need to be adjusted later. Estimated savings might be different from actual data, once the photovoltaic installations will be operational. You obviously do not make any commitments by using this calculator.\n\nThis calculator uses the [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/) Information System (PVGIS) by the European Commission Joint Research Centre." = "Bemærk venligst, at alle værdier, der vises her, er specifikke for din by, **%@**, er kun til orientering. Alle beregninger er baseret på nuværende planer for solcelleanlæggene og skal muligvis justeres senere. Estimerede besparelser kan være anderledes end de faktiske data, når solcelleanlæggene er i drift. Du påtager dig naturligvis ingen forpligtelser ved at bruge appen. Appen bruger [Photovoltaic Geographical](https://re.jrc.ec.europa.eu/pvg_tools/ ) Informationssystem (PVGIS) af Det Fælles Forskningscenter i Europa-Komissionen. ";
+
+/* No comment provided by engineer. */
+"Power consumption" = "Strømforbrug";
+
+/* No comment provided by engineer. */
+"Power consumption (optional)" = "Strømforbrug (valgfri)";
 
 /* No comment provided by engineer. */
 "Prefer not to say" = "Foretrækker ikke at sige noget";
@@ -861,6 +903,9 @@
 
 /* No comment provided by engineer. */
 "You can soon reduce your carbon footprint by investing into your local AURORA photovoltaic installation. Until then, you can already test here, by how much your footprint would be reduced, depending on your potential investment." = "Du kan snart reducere dit CO₂-aftryk ved at investere i dit lokale AURORA solcelleanlæg. Indtil da kan du allerede teste her, hvor meget dit CO₂-aftryk vil blive reduceret, afhængigt af din potentielle investering.";
+
+/* No comment provided by engineer. */
+"You can usually find this information on an app or website provided by your PV installation contractor." = "Du kan normalt finde disse oplysninger i en app eller på en hjemmeside, som din solcelleinstallatør stiller til rådighed.";
 
 /* No comment provided by engineer. */
 "You may add a description to your entry to help you find it later." = "Du kan tilføje en beskrivelse til dit indlæg for at hjælpe dig med at finde den senere.";

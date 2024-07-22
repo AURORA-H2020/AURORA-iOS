@@ -27,19 +27,68 @@ extension ConsumptionForm.Electricity: View {
     var body: some View {
         Section(
             footer: Text(
-                "You can find this information on your electricity bill."
+                "Select the appropriate electricity source."
             )
             .multilineTextAlignment(.leading)
         ) {
-            HStack {
-                NumberTextField(
-                    "Consumption",
-                    value: self.$value
-                )
-                Text(KilowattHoursFormatStyle.symbol)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
+            Picker(
+                "Electricity source",
+                selection: self.$partialElectricity.electricitySource
+            ) {
+                Text("Please choose")
+                    .tag(nil as Consumption.Electricity.ElectricitySource??)
+                ForEach(
+                    Consumption.Electricity.ElectricitySource.allCases,
+                    id: \.self
+                ) { electricitySource in
+                    Text(electricitySource.localizedString)
+                        .tag(electricitySource as Consumption.Electricity.ElectricitySource??)
+                }
             }
+        }
+        Section(
+            footer: Text(
+                self.partialElectricity.electricitySource == .homePhotovoltaics 
+                    ? "You can usually find this information on an app or website provided by your PV installation contractor."
+                    : "You can find this information on your electricity bill."
+            )
+            .multilineTextAlignment(.leading)
+        ) {
+            MeasurementTextField(
+                self.partialElectricity.electricitySource == .homePhotovoltaics
+                    ? "Energy produced"
+                    : "Consumption",
+                value: self.$value
+            ) {
+                Text(
+                    ConsumptionMeasurement.Unit.kilowattHours.symbol
+                )
+            }
+            if self.partialElectricity.electricitySource == .homePhotovoltaics {
+                MeasurementTextField(
+                    "Energy exported (optional)",
+                    value: .init(
+                        get: {
+                            self.partialElectricity.electricityExported?.flatMap { $0 }
+                        },
+                        set: { newValue in
+                            self.partialElectricity.electricityExported = newValue
+                        }
+                    )
+                ) {
+                    Text(
+                        ConsumptionMeasurement.Unit.kilowattHours.symbol
+                    )
+                }
+            }
+        }
+        .onChange(
+            of: self.partialElectricity.electricitySource
+        ) { electricitySource in
+            guard electricitySource != .homePhotovoltaics else {
+                return
+            }
+            self.partialElectricity.removeValue(for: \.electricityExported)
         }
         Section(
             footer: Text(
@@ -59,27 +108,6 @@ extension ConsumptionForm.Electricity: View {
                 ),
                 in: 1...100
             )
-        }
-        Section(
-            footer: Text(
-                "Select the appropriate electricity source."
-            )
-            .multilineTextAlignment(.leading)
-        ) {
-            Picker(
-                "Electricity source",
-                selection: self.$partialElectricity.electricitySource
-            ) {
-                Text("Please choose")
-                    .tag(nil as Consumption.Electricity.ElectricitySource??)
-                ForEach(
-                    Consumption.Electricity.ElectricitySource.allCases,
-                    id: \.self
-                ) { electricitySource in
-                    Text(electricitySource.localizedString)
-                        .tag(electricitySource as Consumption.Electricity.ElectricitySource??)
-                }
-            }
         }
         Section(
             footer: Text(

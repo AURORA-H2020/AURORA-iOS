@@ -25,6 +25,9 @@ extension RecurringConsumption {
         /// The distance
         var distance: Double
         
+        /// The fuel consumption.
+        var fuelConsumption: Double?
+        
     }
     
 }
@@ -41,7 +44,8 @@ extension RecurringConsumption.Transportation: PartialConvertible {
              \.publicVehicleOccupancy: self.publicVehicleOccupancy,
              \.hourOfTravel: self.hourOfTravel,
              \.minuteOfTravel: self.minuteOfTravel,
-             \.distance: self.distance
+             \.distance: self.distance,
+             \.fuelConsumption: self.fuelConsumption
         ]
     }
     
@@ -59,7 +63,8 @@ extension RecurringConsumption.Transportation: PartialConvertible {
                 : partial.publicVehicleOccupancy.flatMap { $0 },
             hourOfTravel: try partial(\.hourOfTravel),
             minuteOfTravel: try partial(\.minuteOfTravel),
-            distance: try partial(\.distance)
+            distance: try partial(\.distance),
+            fuelConsumption: partial.fuelConsumption?.flatMap { $0 }
         )
     }
     

@@ -17,6 +17,9 @@ extension Consumption {
         /// The electricity source
         var electricitySource: ElectricitySource?
         
+        /// The exported electricity.
+        var electricityExported: Double?
+        
         /// The start date.
         var startDate: Timestamp
         
@@ -53,6 +56,7 @@ extension Consumption.Electricity: PartialConvertible {
             \.costs: self.costs,
              \.householdSize: self.householdSize,
              \.electricitySource: self.electricitySource,
+             \.electricityExported: self.electricityExported,
              \.startDate: self.startDate,
              \.endDate: self.endDate
         ]
@@ -65,6 +69,12 @@ extension Consumption.Electricity: PartialConvertible {
             costs: partial.costs?.flatMap { $0 },
             householdSize: try partial(\.householdSize),
             electricitySource: partial.electricitySource?.flatMap { $0 },
+            electricityExported: {
+                guard partial.electricitySource == .homePhotovoltaics else {
+                    return nil
+                }
+                return partial.electricityExported?.flatMap { $0 }
+            }(),
             startDate: try partial(\.startDate),
             endDate: try partial(\.endDate)
         )

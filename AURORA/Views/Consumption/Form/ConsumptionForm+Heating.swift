@@ -15,6 +15,10 @@ extension ConsumptionForm {
         @Binding
         var value: Double?
         
+        /// The locale.
+        @Environment(\.locale)
+        private var locale
+        
     }
     
 }
@@ -25,41 +29,6 @@ extension ConsumptionForm.Heating: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        Section(
-            footer: Text(
-                "You can find this information on your heating bill."
-            )
-            .multilineTextAlignment(.leading)
-        ) {
-            HStack {
-                NumberTextField(
-                    "Consumption",
-                    value: self.$value
-                )
-                Text(KilowattHoursFormatStyle.symbol)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-            }
-        }
-        Section(
-            footer: Text(
-                "How many people, including you, live in your household."
-            )
-            .multilineTextAlignment(.leading)
-        ) {
-            Stepper(
-                "People in household: \(self.partialHeating.householdSize ?? 1)",
-                value: .init(
-                    get: {
-                        self.partialHeating.householdSize ?? 1
-                    },
-                    set: { householdSize in
-                        self.partialHeating.householdSize = householdSize
-                    }
-                ),
-                in: 1...100
-            )
-        }
         Section(
             footer: Text(
                 "Select your type of heating. You can find this information on your heating bill."
@@ -88,7 +57,18 @@ extension ConsumptionForm.Heating: View {
                     Text("Please choose")
                         .tag(nil as Consumption.Heating.DistrictHeatingSource??)
                     ForEach(
-                        Consumption.Heating.DistrictHeatingSource.allCases,
+                        {
+                            var districtHeatingSources = Consumption.Heating.DistrictHeatingSource.allCases
+                            // Hide coal if not currently set
+                            if self.partialHeating.districtHeatingSource != .coal {
+                                districtHeatingSources = districtHeatingSources.filter { $0 != .coal }
+                            }
+                            // Hide biomass if not currently set
+                            if self.partialHeating.districtHeatingSource != .biomass {
+                                districtHeatingSources = districtHeatingSources.filter { $0 != .biomass }
+                            }
+                            return districtHeatingSources
+                        }(),
                         id: \.self
                     ) { districtHeatingSource in
                         Text(districtHeatingSource.localizedString)
@@ -96,6 +76,53 @@ extension ConsumptionForm.Heating: View {
                     }
                 }
             }
+        }
+        .onChange(
+            of: self.partialHeating.heatingFuel
+        ) { heatingFuel in
+            guard heatingFuel != .district else {
+                return
+            }
+            self.partialHeating.removeValue(for: \.districtHeatingSource)
+        }
+        Section(
+            footer: Text(
+                "You can find this information on your heating bill."
+            )
+            .multilineTextAlignment(.leading)
+        ) {
+            MeasurementTextField(
+                "Consumption",
+                value: self.$value
+            ) {
+                Text(
+                    ConsumptionMeasurement.Unit(
+                        measurementSystem: .init(locale: self.locale),
+                        category: .heating,
+                        heatingFuel: self.partialHeating.heatingFuel
+                    )
+                    .symbol
+                )
+            }
+        }
+        Section(
+            footer: Text(
+                "How many people, including you, live in your household."
+            )
+            .multilineTextAlignment(.leading)
+        ) {
+            Stepper(
+                "People in household: \(self.partialHeating.householdSize ?? 1)",
+                value: .init(
+                    get: {
+                        self.partialHeating.householdSize ?? 1
+                    },
+                    set: { householdSize in
+                        self.partialHeating.householdSize = householdSize
+                    }
+                ),
+                in: 1...100
+            )
         }
         Section(
             footer: Text(

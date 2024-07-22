@@ -16,6 +16,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Select Xcode version
+        run: xcodes select 15.3
       - name: Export Localizations
         run: set -o pipefail && xcodebuild -exportLocalizations -localizationPath ./ -exportLanguage en -project AURORA.xcodeproj -scheme AURORA -derivedDataPath ./build | xcpretty
       - name: Install LingoHub CLI

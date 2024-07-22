@@ -26,6 +26,10 @@ struct PhotovoltaicScreen {
     @State
     private var investmentResult: PVGISService.PhotovoltaicInvestmentResult?
     
+    /// The locale.
+    @Environment(\.locale)
+    private var locale
+    
 }
 
 // MARK: - Convenience Initializer
@@ -162,16 +166,13 @@ private extension PhotovoltaicScreen {
             .listRowInsets(.init())
             .padding(.top)
         ) {
-            HStack {
-                NumberTextField(
-                    "Investment",
-                    value: self.$investmentAmount
-                )
+            MeasurementTextField(
+                "Investment",
+                value: self.$investmentAmount
+            ) {
                 Text(
                     verbatim: self.country.localizedCurrencySymbol
                 )
-                .font(.footnote)
-                .foregroundColor(.secondary)
             }
             .disabled(self.asyncButtonState == .busy)
         }
@@ -210,10 +211,11 @@ private extension PhotovoltaicScreen {
                 Text("Annual energy production")
                 Spacer()
                 Text(
-                    investmentResult
-                        .producedEnergy
-                        .value
-                        .formatted(.kilowattHours)
+                    ConsumptionMeasurement(
+                        value: investmentResult.producedEnergy.value,
+                        unit: .kilowattHours
+                    )
+                    .formatted()
                 )
             }
         }
@@ -230,10 +232,12 @@ private extension PhotovoltaicScreen {
         ) {
             self.investmentResultBox(
                 title: "CO₂ emitted if **conventional**",
-                value: investmentResult
-                    .normalCarbonEmissions
-                    .value
-                    .formatted(.carbonEmissions)
+                value: ConsumptionMeasurement(
+                    value: investmentResult.normalCarbonEmissions.value,
+                    unit: .kilograms
+                )
+                .converted(to: .init(locale: self.locale))
+                .formatted()
             )
         }
         .listRowBackground(Color.orange)
@@ -252,10 +256,12 @@ private extension PhotovoltaicScreen {
         ) {
             self.investmentResultBox(
                 title: "CO₂ emitted if **photovoltaics**",
-                value: investmentResult
-                    .carbonEmissions
-                    .value
-                    .formatted(.carbonEmissions)
+                value: ConsumptionMeasurement(
+                    value: investmentResult.carbonEmissions.value,
+                    unit: .kilograms
+                )
+                .converted(to: .init(locale: self.locale))
+                .formatted()
             )
         }
         .listRowBackground(Color.orange)
@@ -267,10 +273,12 @@ private extension PhotovoltaicScreen {
         ) {
             self.investmentResultBox(
                 title: "CO₂ reduction",
-                value: investmentResult
-                    .carbonEmissionsReduction
-                    .value
-                    .formatted(.carbonEmissions)
+                value: ConsumptionMeasurement(
+                    value: investmentResult.carbonEmissionsReduction.value,
+                    unit: .kilograms
+                )
+                .converted(to: .init(locale: self.locale))
+                .formatted()
             )
         }
         .listRowBackground(Color.green)

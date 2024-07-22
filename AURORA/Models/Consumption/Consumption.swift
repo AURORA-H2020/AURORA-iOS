@@ -111,22 +111,6 @@ extension Consumption: FirestoreSubcollectionEntity {
     
 }
 
-// MARK: - Consumption+formattedValue
-
-extension Consumption {
-    
-    /// A formatted representation of the consumptions' value.
-    var formattedValue: String {
-        switch self.category {
-        case .transportation:
-            return self.value.formatted(.kilometers)
-        case .heating, .electricity:
-            return self.value.formatted(.kilowattHours)
-        }
-    }
-    
-}
-
 // MARK: - Consumption+startDate
 
 extension Consumption {
@@ -140,6 +124,67 @@ extension Consumption {
             return self.heating?.startDate.dateValue()
         case .transportation:
             return self.transportation?.dateOfTravel.dateValue()
+        }
+    }
+    
+}
+
+// MARK: - Formatted
+
+extension Consumption {
+    
+    /// Returns a formatted string representation.
+    /// - Parameters:
+    ///   - sourceMeasurementSystem: The source/origin measurement system. Default value `.metric`
+    ///   - destinationMeasurementSystem: The destination/target measurement system. Default value `.init()`
+    func formatted(
+        from sourceMeasurementSystem: ConsumptionMeasurement.System = .metric,
+        to destinationMeasurementSystem: ConsumptionMeasurement.System = .init()
+    ) -> String {
+        ConsumptionMeasurement(
+            consumption: self,
+            measurementSystem: sourceMeasurementSystem
+        )
+        .converted(to: destinationMeasurementSystem)
+        .formatted()
+    }
+    
+}
+
+// MARK: - Convert
+
+extension Consumption {
+    
+    /// Converts the consumption from an source/origin measurement system to a destination/target measurement system.
+    /// - Parameters:
+    ///   - sourceMeasurementSystem: The source/origin measurement system.
+    ///   - destinationMeasurementSystem: The destination/target measurement system.
+    mutating func convert(
+        from sourceMeasurementSystem: ConsumptionMeasurement.System,
+        to destinationMeasurementSystem: ConsumptionMeasurement.System
+    ) {
+        guard sourceMeasurementSystem != destinationMeasurementSystem else {
+            return
+        }
+        self.value = ConsumptionMeasurement(
+            consumption: self,
+            measurementSystem: sourceMeasurementSystem
+        )
+        .converted(to: destinationMeasurementSystem)
+        .value
+        if let transportation = self.transportation,
+           let fuelConsumption = transportation.fuelConsumption {
+            self.transportation?.fuelConsumption = ConsumptionMeasurement(
+                value: fuelConsumption,
+                unit: {
+                    let unit: ConsumptionMeasurement.Unit = transportation.transportationType.canDeclarePrivatePowerConsumption
+                        ? .kilowattHoursPer100Kilometers
+                        : .litersPer100Kilometers
+                    return unit.converted(to: sourceMeasurementSystem)
+                }()
+            )
+            .converted(to: destinationMeasurementSystem)
+            .value
         }
     }
     

@@ -24,6 +24,10 @@ extension Consumption.Heating {
         case district
         /// Electric
         case electric
+        /// Firewood
+        case firewood
+        /// Butane
+        case butane
     }
     
 }
@@ -53,6 +57,10 @@ extension Consumption.Heating.HeatingFuel {
             return .init(localized: "District heating")
         case .electric:
             return .init(localized: "Electric heating")
+        case .firewood:
+            return .init(localized: "Firewood")
+        case .butane:
+            return .init(localized: "Butane")
         }
     }
     

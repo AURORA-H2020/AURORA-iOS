@@ -22,6 +22,8 @@ jobs:
           LINGO_HUB_CREDENTIALS: ${{ secrets.LINGO_HUB_CREDENTIALS }}
       - name: Download Localizations from LingoHub
         run: mkdir -p ./.lingohub && lingohub resource:down --all --directory '/.lingohub' --project AURORA-iOS
+      - name: Select Xcode version
+        run: xcodes select 15.3
       - name: Import Localizations
         run: |
           for file in ./.lingohub/*.xliff

@@ -14,6 +14,10 @@ extension ConsumptionSummaryView {
         /// The ConsumptionSummary Mode
         let mode: ConsumptionSummary.Mode
         
+        /// The locale.
+        @Environment(\.locale)
+        private var locale
+        
     }
     
 }
@@ -58,9 +62,15 @@ extension ConsumptionSummaryView.Chart: View {
             .chartYAxisLabel {
                 switch self.mode {
                 case .carbonEmission:
-                    Text(verbatim: "\(UnitMass.kilograms.symbol) \(self.mode.symbol)")
+                    Text(
+                        verbatim: [
+                            ConsumptionMeasurement.Unit.kilograms.converted(to: .init(locale: self.locale)).symbol,
+                            ConsumptionMeasurement.Unit.carbonEmissionsSymbol
+                        ]
+                        .joined(separator: " ")
+                    )
                 case .energyExpended:
-                    Text(self.mode.symbol)
+                    Text(ConsumptionMeasurement.Unit.kilowattHours.symbol)
                 }
             }
             .chartXAxis {

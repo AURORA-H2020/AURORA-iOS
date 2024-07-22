@@ -20,6 +20,10 @@ struct ConsumptionView {
     @Environment(\.dismiss)
     private var dismiss
     
+    /// The locale.
+    @Environment(\.locale)
+    private var locale
+    
     /// The Firebase instance.
     @EnvironmentObject
     private var firebase: Firebase
@@ -54,17 +58,36 @@ extension ConsumptionView: View {
         List {
             Section {
                 Entry {
-                    Text(self.consumption.formattedValue)
+                    Text(self.consumption.formatted())
                 } label: {
                     Text(self.consumption.category.localizedString)
                 }
-                if let formattedCarbonEmissions = self.consumption
-                    .carbonEmissions?
-                    .formatted(.carbonEmissions) {
+                if let carbonEmissions = self.consumption.carbonEmissions {
                     Entry {
-                        Text(formattedCarbonEmissions)
+                        Text(
+                            ConsumptionMeasurement(
+                                value: carbonEmissions,
+                                unit: .kilograms
+                            )
+                            .converted(to: .init(locale: self.locale))
+                            .formatted(isCarbonEmissions: true)
+                        )
                     } label: {
                         Text("Carbon emissions")
+                    }
+                }
+                if let energyExpended = self.consumption.energyExpended {
+                    Entry {
+                        Text(
+                            ConsumptionMeasurement(
+                                value: energyExpended,
+                                unit: .kilowattHours
+                            )
+                            .converted(to: .init(locale: self.locale))
+                            .formatted()
+                        )
+                    } label: {
+                        Text("Energy usage")
                     }
                 }
             }
@@ -89,6 +112,21 @@ extension ConsumptionView: View {
                             .foregroundColor(.secondary)
                     } label: {
                         Text("Electricity source")
+                    }
+                }
+                if let energyExported = electricity.electricityExported {
+                    Entry {
+                        Text(
+                            ConsumptionMeasurement(
+                                value: energyExported,
+                                unit: .kilowattHours
+                            )
+                            .converted(to: .init(locale: self.locale))
+                            .formatted()
+                        )
+                        .foregroundColor(.secondary)
+                    } label: {
+                        Text("Energy exported")
                     }
                 }
                 Entry {
@@ -158,19 +196,10 @@ extension ConsumptionView: View {
                 }
             } else if let transportation = self.consumption.transportation {
                 Entry {
-                    Group {
-                        if transportation.dateOfTravelEnd != nil {
-                            Text(
-                                transportation.dateOfTravel.dateValue(),
-                                format: .dateTime
-                            )
-                        } else {
-                            Text(
-                                transportation.dateOfTravel.dateValue(),
-                                style: .date
-                            )
-                        }
-                    }
+                    Text(
+                        transportation.dateOfTravel.dateValue(),
+                        format: .dateTime
+                    )
                     .foregroundColor(.secondary)
                 } label: {
                     Text("Start of travel")
@@ -205,6 +234,26 @@ extension ConsumptionView: View {
                             .foregroundColor(.secondary)
                     } label: {
                         Text("Occupancy")
+                    }
+                }
+                if let fuelConsumption = transportation.fuelConsumption {
+                    let canDeclarePrivatePowerConsumption = transportation
+                        .transportationType
+                        .canDeclarePrivatePowerConsumption
+                    Entry {
+                        Text(
+                            ConsumptionMeasurement(
+                                value: fuelConsumption,
+                                unit: canDeclarePrivatePowerConsumption ? .kilowattHoursPer100Kilometers : .litersPer100Kilometers
+                            )
+                            .converted(to: .init(locale: self.locale))
+                            .formatted()
+                        )
+                        .foregroundColor(.secondary)
+                    } label: {
+                        Text(
+                            canDeclarePrivatePowerConsumption ? "Power consumption" : "Fuel consumption"
+                        )
                     }
                 }
             }

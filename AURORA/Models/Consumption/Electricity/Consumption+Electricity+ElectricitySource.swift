@@ -6,8 +6,10 @@ extension Consumption.Electricity {
     
     /// A consumption electricity source
     enum ElectricitySource: String, Codable, Hashable, Sendable, CaseIterable {
-        /// Default
-        case `default`
+        /// National Grid (Standard)
+        case nationalGridStandard = "default"
+        /// National Grid (Green Provider)
+        case nationalGridGreenProvider = "defaultGreenProvider"
         /// Home Photovoltaics
         case homePhotovoltaics
     }
@@ -21,8 +23,10 @@ extension Consumption.Electricity.ElectricitySource {
     /// A localized string
     var localizedString: String {
         switch self {
-        case .default:
-            return .init(localized: "Default")
+        case .nationalGridStandard:
+            return .init(localized: "National Grid (standard)")
+        case .nationalGridGreenProvider:
+            return .init(localized: "National Grid (green provider)")
         case .homePhotovoltaics:
             return .init(localized: "Home Photovoltaics")
         }

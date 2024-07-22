@@ -45,8 +45,12 @@ extension Consumption.Transportation {
         
         // MARK: Aviation
         
-        /// Plane
-        case plane
+        /// Plane domestic
+        case planeDomestic = "plane"
+        /// Plane intra eu
+        case planeIntraEu
+        /// Plane extra eu
+        case planeExtraEu
         
         // MARK: Other
         
@@ -99,6 +103,37 @@ extension Consumption.Transportation.TransportationType {
     
 }
 
+// MARK: - Consumption+Transportation+TransportationType+canDeclarePrivateConsumption
+
+extension Consumption.Transportation.TransportationType {
+    
+    /// Returns a boolean if a private fuel or power consumption can be declared for this type of transportation.
+    var canDeclarePrivateConsumption: Bool {
+        self.canDeclarePrivateFuelConsumption || self.canDeclarePrivatePowerConsumption
+    }
+    
+    /// Returns a boolean if a private fuel consumption can be declared for this type of transportation.
+    var canDeclarePrivateFuelConsumption: Bool {
+        switch self {
+        case .fuelCar, .hybridCar, .motorcycle:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    /// Returns a boolean if a private power consumption can be declared for this type of transportation.
+    var canDeclarePrivatePowerConsumption: Bool {
+        switch self {
+        case .electricCar, .electricMotorcycle:
+            return true
+        default:
+            return false
+        }
+    }
+    
+}
+
 // MARK: - Consumption+Transportation+TransportationType+localizedString
 
 extension Consumption.Transportation.TransportationType {
@@ -134,8 +169,12 @@ extension Consumption.Transportation.TransportationType {
             return .init(localized: "Diesel passenger train")
         case .highSpeedTrain:
             return .init(localized: "High speed train")
-        case .plane:
-            return .init(localized: "Plane")
+        case .planeDomestic:
+            return .init(localized: "Plane (domestic)")
+        case .planeIntraEu:
+            return .init(localized: "Plane (intra EU)")
+        case .planeExtraEu:
+            return .init(localized: "Plane (extra EU)")
         case .electricBike:
             return .init(localized: "Electric bike")
         case .electricScooter:

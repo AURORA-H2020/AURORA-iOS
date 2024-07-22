@@ -6,6 +6,7 @@ import XCTest
 final class ScreenshotsUITests: XCTestCase {
     
     /// Setup
+    @MainActor
     override func setUp() {
         super.setUp()
         self.continueAfterFailure = false
@@ -16,6 +17,7 @@ final class ScreenshotsUITests: XCTestCase {
     }
     
     /// Take Screenshots
+    @MainActor
     func testTakeScreenshots() {
         // Initialize App
         let app = XCUIApplication()
