@@ -308,7 +308,7 @@ extension CreateUserForm: View {
         .navigationViewStyle(.stack)
         .onChange(of: self.countries) { countries in
             guard self.country == nil,
-                  let deviceRegionIdentifier = Locale.current.regionCode,
+                  let deviceRegionIdentifier = Locale.current.region?.identifier,
                   let matchingCountry = countries.first(where: { $0.countryCode == deviceRegionIdentifier }) else {
                 return
             }
