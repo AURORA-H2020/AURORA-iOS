@@ -92,7 +92,7 @@ extension Firebase.Authentication {
                 .firebaseAuthenticationProviders
                 .first(where: { $0.provider == provider }) else {
                 // Otherwise throw unsupported provider error
-                throw AuthErrorCode(.noSuchProvider)
+                throw AuthErrorCode.noSuchProvider
             }
             // Record any error which occurs when trying to sign in
             return try await self.firebase.crashlytics.recordError {

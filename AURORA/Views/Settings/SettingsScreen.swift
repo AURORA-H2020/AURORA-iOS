@@ -1,4 +1,4 @@
-import FirebaseAnalyticsSwift
+import FirebaseAnalytics
 import FirebaseAuth
 import SwiftUI
 

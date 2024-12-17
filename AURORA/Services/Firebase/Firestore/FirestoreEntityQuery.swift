@@ -1,5 +1,4 @@
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 import SwiftUI
 
 // MARK: - FirestoreEntityQuery
@@ -14,7 +13,7 @@ struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
     private let firebase: Firebase
     
     /// The FirestoreQuery Result
-    @FirebaseFirestoreSwift.FirestoreQuery
+    @FirebaseFirestore.FirestoreQuery
     private var queryResult: Result<[Entity], Error>
     
     /// The results of the query.
@@ -29,12 +28,12 @@ struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
     }
     
     /// A binding to the request's mutable configuration properties
-    var projectedValue: FirebaseFirestoreSwift.FirestoreQuery<Result<[Entity], Error>>.Configuration {
+    var projectedValue: FirebaseFirestore.FirestoreQuery<Result<[Entity], Error>>.Configuration {
         self.$queryResult
     }
     
     /// The query's predicates.
-    var predicates: [FirebaseFirestoreSwift.QueryPredicate] {
+    var predicates: [FirebaseFirestore.QueryPredicate] {
         get {
             self.$queryResult.predicates
         }
@@ -61,7 +60,7 @@ struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
     ///   - firebase: The Firebase instance. Default value `.default`
     init(
         context: Entity.CollectionReferenceContext,
-        predicates: [FirebaseFirestoreSwift.QueryPredicate] = .init(),
+        predicates: [FirebaseFirestore.QueryPredicate] = .init(),
         firebase: Firebase = .default
     ) {
         self.firebase = firebase
@@ -87,7 +86,7 @@ extension FirestoreEntityQuery where Entity.CollectionReferenceContext == Void {
     ///   - predicates: An array of `QueryPredicate`s that defines a filter for the fetched results. Default value `.init()`
     ///   - firebase: The Firebase instance. Default value `.default`
     init(
-        predicates: [FirebaseFirestoreSwift.QueryPredicate] = .init(),
+        predicates: [FirebaseFirestore.QueryPredicate] = .init(),
         firebase: Firebase = .default
     ) {
         self.firebase = firebase

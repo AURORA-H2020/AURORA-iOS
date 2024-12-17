@@ -1,6 +1,5 @@
 import FirebaseAuth
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 import SwiftUI
 
 // MARK: - Consumption

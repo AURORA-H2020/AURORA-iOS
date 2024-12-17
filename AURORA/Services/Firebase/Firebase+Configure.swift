@@ -1,6 +1,7 @@
 import Firebase
 import FirebaseAnalytics
 import FirebaseAppCheck
+import FirebaseAuth
 import FirebaseCrashlytics
 import FirebasePerformance
 import Foundation

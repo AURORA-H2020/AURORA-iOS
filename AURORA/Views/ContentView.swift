@@ -1,4 +1,4 @@
-import FirebaseRemoteConfigSwift
+import FirebaseRemoteConfig
 import SwiftUI
 
 // MARK: - ContentView
