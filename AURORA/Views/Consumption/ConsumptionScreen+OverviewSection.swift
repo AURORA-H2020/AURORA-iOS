@@ -114,9 +114,7 @@ extension ConsumptionScreen.OverviewSection: View {
                 .accessibilityIdentifier("AddRecurringConsumption")
             }
             Link(
-                destination: .init(
-                    string: "https://www.aurora-h2020.eu/tools"
-                )!
+                destination: AURORAWebsiteLink.tools.url
             ) {
                 Label(
                     "Learn more",

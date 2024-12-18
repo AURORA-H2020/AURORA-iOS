@@ -1,42 +1,46 @@
 import SwiftUI
 
-// MARK: - PhotovoltaicScreen
+// MARK: - PhotovoltaicPlantScreen+SavingsCalculator
 
-/// The PhotovoltaicScreen.
-struct PhotovoltaicScreen {
+extension PhotovoltaicPlantScreen {
     
-    /// The Country.
-    let country: Country
-    
-    /// The City.
-    let city: City
-    
-    /// The PVGIS parameters of the city.
-    let pvgisParams: City.PVGISParams
-    
-    /// The amount to invest.
-    @State
-    private var investmentAmount: Int?
-    
-    /// The AsyncButtonState.
-    @State
-    private var asyncButtonState: AsyncButtonState?
-    
-    /// The calculated photovoltaic investment result.
-    @State
-    private var investmentResult: PVGISService.PhotovoltaicInvestmentResult?
-    
-    /// The locale.
-    @Environment(\.locale)
-    private var locale
+    /// The photovoltaic plant savings calculator
+    struct SavingsCalculator {
+        
+        /// The Country.
+        let country: Country
+        
+        /// The City.
+        let city: City
+        
+        /// The PVGIS parameters of the city.
+        let pvgisParams: City.PVGISParams
+        
+        /// The amount to invest.
+        @State
+        private var investmentAmount: Int?
+        
+        /// The AsyncButtonState.
+        @State
+        private var asyncButtonState: AsyncButtonState?
+        
+        /// The calculated photovoltaic investment result.
+        @State
+        private var investmentResult: PVGISService.PhotovoltaicInvestmentResult?
+        
+        /// The locale.
+        @Environment(\.locale)
+        private var locale
+        
+    }
     
 }
 
 // MARK: - Convenience Initializer
 
-extension PhotovoltaicScreen {
+extension PhotovoltaicPlantScreen.SavingsCalculator {
     
-    /// Creates a new instance of `PhotovoltaicScreen`, if available.
+    /// Creates a new instance of `PhotovoltaicPlantScreen.SavingsCalculator`, if available.
     /// - Parameter firebase: The Firebase instance
     init?(
         firebase: Firebase
@@ -61,43 +65,40 @@ extension PhotovoltaicScreen {
 
 // MARK: - View
 
-extension PhotovoltaicScreen: View {
+extension PhotovoltaicPlantScreen.SavingsCalculator: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        NavigationView {
-            List {
-                if let investmentResult = self.investmentResult {
-                    self.investmentResultForm(investmentResult)
-                } else {
-                    self.investmentForm
-                }
+        List {
+            if let investmentResult = self.investmentResult {
+                self.investmentResultForm(investmentResult)
+            } else {
+                self.investmentForm
             }
-            .animation(
-                .default,
-                value: self.investmentResult
-            )
-            .navigationTitle("Your Solar Power")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    if self.investmentResult != nil {
-                        Button {
-                            self.investmentResult = nil
-                        } label: {
-                            Text("Reset")
-                        }
+        }
+        .animation(
+            .default,
+            value: self.investmentResult
+        )
+        .navigationTitle("Estimate Savings")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if self.investmentResult != nil {
+                    Button {
+                        self.investmentResult = nil
+                    } label: {
+                        Text("Reset")
                     }
                 }
             }
         }
-        .navigationViewStyle(.stack)
     }
     
 }
 
 // MARK: - Investment Form
 
-private extension PhotovoltaicScreen {
+private extension PhotovoltaicPlantScreen.SavingsCalculator {
     
     /// The investment form
     var investmentForm: some View {
@@ -183,7 +184,7 @@ private extension PhotovoltaicScreen {
 
 // MARK: - Investment Result Form
 
-private extension PhotovoltaicScreen {
+private extension PhotovoltaicPlantScreen.SavingsCalculator {
     
     /// Investment result form.
     /// - Parameter investmentResult: The PhotovoltaicInvestmentResult.
@@ -293,9 +294,7 @@ private extension PhotovoltaicScreen {
                             .font(.subheadline.weight(.semibold))
                     }
                     Link(
-                        destination: .init(
-                            string: "https://www.aurora-h2020.eu"
-                        )!
+                        destination: AURORAWebsiteLink.home.url
                     ) {
                         Text("Learn more on our website")
                             .font(.subheadline.weight(.semibold))

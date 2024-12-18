@@ -116,15 +116,15 @@ private extension ContentView {
                         )
                         .accessibilityIdentifier("HomeTab")
                     }
-                    PhotovoltaicScreen(
-                        firebase: self.firebase
-                    )
-                    .tabItem {
-                        Label(
-                            "Solar Power",
-                            systemImage: "sun.max"
-                        )
-                        .accessibilityIdentifier("SolarPowerTab")
+                    if self.firebase.city == nil || (try? self.firebase.city?.get())?.hasPhotovoltaics == true {
+                        PhotovoltaicPlantScreen()
+                            .tabItem {
+                                Label(
+                                    "Solar Power",
+                                    systemImage: "sun.max"
+                                )
+                                .accessibilityIdentifier("SolarPowerTab")
+                            }
                     }
                     SettingsScreen()
                         .tabItem {
