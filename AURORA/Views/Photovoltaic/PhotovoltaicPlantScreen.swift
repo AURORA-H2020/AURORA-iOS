@@ -21,24 +21,18 @@ extension PhotovoltaicPlantScreen: View {
             Group {
                 let unavailablePhotovoltaicPlantView = EmptyPlaceholder(
                     systemImage: "sun.min",
-                    title: "Photovoltaic Plant",
-                    subtitle: "A photovoltaic plant is not available in your city."
+                    title: "Photovoltaic",
+                    subtitle: "This feature is currently not supported in your region."
                 )
                 switch self.firebase.photovoltaicPlant {
                 case .success(let photovoltaicPlant):
-                    if let photovoltaicPlant {
-                        if photovoltaicPlant.active, let photovoltaicPlantEntityReference = FirestoreEntityReference(photovoltaicPlant) {
-                            PhotovoltaicPlantView(
-                                photovoltaicPlant: photovoltaicPlant,
-                                photovoltaicPlantEntityReference: photovoltaicPlantEntityReference
-                            )
-                        } else {
-                            EmptyPlaceholder(
-                                systemImage: "sun.min",
-                                title: "Photovoltaic Plant",
-                                subtitle: "The photovoltaic plant is not yet active."
-                            )
-                        }
+                    if let photovoltaicPlant,
+                       photovoltaicPlant.active,
+                       let photovoltaicPlantEntityReference = FirestoreEntityReference(photovoltaicPlant) {
+                        PhotovoltaicPlantView(
+                            photovoltaicPlant: photovoltaicPlant,
+                            photovoltaicPlantEntityReference: photovoltaicPlantEntityReference
+                        )
                     } else {
                         unavailablePhotovoltaicPlantView
                     }
