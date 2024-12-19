@@ -47,6 +47,9 @@ struct Consumption {
     /// The recurring consumption reference which auto generated this consumption.
     let generatedByRecurringConsumptionId: FirestoreEntityReference<RecurringConsumption>?
     
+    /// The photovoltaic plant investment reference which auto generated this consumption.
+    let generatedByPvInvestmentId: FirestoreEntityReference<PhotovoltaicPlantInvestment>?
+    
     // MARK: Initializer
     
     /// Creates a new instance of `Consumption`
@@ -63,6 +66,7 @@ struct Consumption {
     ///   - carbonEmissions: The carbon emissions.
     ///   - energyExpended: The energy expenditure.
     ///   - generatedByRecurringConsumptionId: The recurring consumption reference which auto generated this consumption.
+    ///   - generatedByPvInvestmentId: The photovoltaic plant investment reference which auto generated this consumption.
     init(
         id: String? = nil,
         createdAt: Timestamp? = nil,
@@ -75,7 +79,8 @@ struct Consumption {
         description: String? = nil,
         carbonEmissions: Double? = nil,
         energyExpended: Double? = nil,
-        generatedByRecurringConsumptionId: FirestoreEntityReference<RecurringConsumption>? = nil
+        generatedByRecurringConsumptionId: FirestoreEntityReference<RecurringConsumption>? = nil,
+        generatedByPvInvestmentId: FirestoreEntityReference<PhotovoltaicPlantInvestment>? = nil
     ) {
         self.id = id
         self.createdAt = createdAt
@@ -89,6 +94,7 @@ struct Consumption {
         self.carbonEmissions = carbonEmissions
         self.energyExpended = energyExpended
         self.generatedByRecurringConsumptionId = generatedByRecurringConsumptionId
+        self.generatedByPvInvestmentId = generatedByPvInvestmentId
     }
     
 }
