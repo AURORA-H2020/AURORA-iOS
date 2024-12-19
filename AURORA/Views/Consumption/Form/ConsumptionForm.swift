@@ -446,18 +446,11 @@ private extension ConsumptionForm {
             header: Text("Description"),
             footer: Text("You may add a description to your entry to help you find it later.")
         ) {
-            if #available(iOS 16.0, *) {
-                TextField(
-                    "Description",
-                    text: self.$description,
-                    axis: .vertical
-                )
-            } else {
-                TextField(
-                    "Description",
-                    text: self.$description
-                )
-            }
+            TextField(
+                "Description",
+                text: self.$description,
+                axis: .vertical
+            )
         }
         .headerProminence(.increased)
         Section(

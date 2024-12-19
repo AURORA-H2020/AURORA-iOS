@@ -34,9 +34,7 @@ extension UNMutableNotificationContent {
         sound.flatMap { self.sound = $0 }
         interruptionLevel.flatMap { self.interruptionLevel = $0 }
         relevanceScore.flatMap { self.relevanceScore = $0 }
-        if #available(iOS 16.0, *) {
-            filterCriteria.flatMap { self.filterCriteria = $0 }
-        }
+        filterCriteria.flatMap { self.filterCriteria = $0 }
         threadIdentifier.flatMap { self.threadIdentifier = $0 }
         categoryIdentifier.flatMap { self.categoryIdentifier = $0 }
     }

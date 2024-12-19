@@ -39,7 +39,7 @@ extension LocalNotificationForm: View {
                     subtitle: "Please enable notifications for the AURORA app in the settings of your device.",
                     primaryAction: .init(
                         title: "Open Settings",
-                        action: UIApplication.shared.openSettings
+                        action: UIApplication.shared.openNotificationSettings
                     )
                 )
             } else {
