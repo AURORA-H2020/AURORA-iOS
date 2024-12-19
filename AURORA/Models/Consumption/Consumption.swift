@@ -116,6 +116,40 @@ extension Consumption: FirestoreSubcollectionEntity {
     
 }
 
+// MARK: - Localized Title
+
+extension Consumption {
+    
+    /// The localized title.
+    var localizedTitle: String {
+        if self.category == .electricity && self.generatedByPvInvestmentId != nil {
+            return .init(
+                localized: "Electricity (PV)"
+            )
+        } else {
+            return self.category.localizedString
+        }
+    }
+    
+}
+
+// MARK: - Icon
+
+extension Consumption {
+    
+    /// The icon.
+    var icon: Image {
+        if self.category == .electricity && self.generatedByPvInvestmentId != nil {
+            return .init(
+                systemName: "sunrise"
+            )
+        } else {
+            return self.category.icon
+        }
+    }
+    
+}
+
 // MARK: - Consumption+startDate
 
 extension Consumption {
