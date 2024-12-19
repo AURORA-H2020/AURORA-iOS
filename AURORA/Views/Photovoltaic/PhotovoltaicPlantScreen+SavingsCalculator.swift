@@ -207,6 +207,7 @@ private extension PhotovoltaicPlantScreen.SavingsCalculator {
                             .precision(.fractionLength(0))
                         )
                 )
+                .fontWeight(.semibold)
             }
             HStack {
                 Text("Annual energy production")
@@ -218,6 +219,7 @@ private extension PhotovoltaicPlantScreen.SavingsCalculator {
                     )
                     .formatted()
                 )
+                .fontWeight(.semibold)
             }
         }
         Section(
@@ -229,6 +231,7 @@ private extension PhotovoltaicPlantScreen.SavingsCalculator {
                     systemName: "minus.circle"
                 )
                 .font(.system(size: 30))
+                .padding(.top, 3)
             }
         ) {
             self.investmentResultBox(
@@ -285,7 +288,7 @@ private extension PhotovoltaicPlantScreen.SavingsCalculator {
         .listRowBackground(Color.green)
         .headerProminence(.increased)
         Section(
-            footer: VStack(spacing: 10) {
+            footer: VStack(spacing: 16) {
                 HStack {
                     Button {
                         self.investmentResult = nil
@@ -312,6 +315,7 @@ private extension PhotovoltaicPlantScreen.SavingsCalculator {
                 )
                 .font(.caption)
                 .multilineTextAlignment(.leading)
+                .padding(.bottom)
             }
             .listRowInsets(.init())
         ) {

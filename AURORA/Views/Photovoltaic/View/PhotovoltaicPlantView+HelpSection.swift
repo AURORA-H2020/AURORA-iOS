@@ -42,7 +42,8 @@ extension PhotovoltaicPlantView.HelpSection: View {
                         .align(.centerHorizontal)
                         .padding(.vertical, 5)
                     }
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.bordered)
+                    .tint(.accentColor)
                 }
             }
         }

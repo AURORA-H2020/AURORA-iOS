@@ -1,6 +1,5 @@
 import Contacts
 import SwiftUI
-import MapKit
 
 // MARK: - PhotovoltaicPlantView+InformationSection
 
@@ -100,7 +99,8 @@ extension PhotovoltaicPlantView.InformationSection: View {
                     .align(.centerHorizontal)
                     .padding(.vertical, 5)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bordered)
+                .tint(.accentColor)
                 .padding(.top, 12)
             }
         }
