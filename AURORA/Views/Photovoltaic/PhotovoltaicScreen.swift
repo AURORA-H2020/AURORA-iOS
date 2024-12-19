@@ -1,9 +1,9 @@
 import SwiftUI
 
-// MARK: - PhotovoltaicPlantScreen
+// MARK: - PhotovoltaicScreen
 
-/// The PhotovoltaicPlantScreen
-struct PhotovoltaicPlantScreen {
+/// The PhotovoltaicScreen
+struct PhotovoltaicScreen {
     
     /// The Firebase instance
     @EnvironmentObject
@@ -13,7 +13,7 @@ struct PhotovoltaicPlantScreen {
 
 // MARK: - View
 
-extension PhotovoltaicPlantScreen: View {
+extension PhotovoltaicScreen: View {
     
     /// The content and behavior of the view.
     var body: some View {

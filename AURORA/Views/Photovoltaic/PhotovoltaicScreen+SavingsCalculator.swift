@@ -1,10 +1,10 @@
 import SwiftUI
 
-// MARK: - PhotovoltaicPlantScreen+SavingsCalculator
+// MARK: - PhotovoltaicScreen+SavingsCalculator
 
-extension PhotovoltaicPlantScreen {
+extension PhotovoltaicScreen {
     
-    /// The photovoltaic plant savings calculator
+    /// The photovoltaic savings calculator
     struct SavingsCalculator {
         
         /// The Country.
@@ -38,9 +38,9 @@ extension PhotovoltaicPlantScreen {
 
 // MARK: - Convenience Initializer
 
-extension PhotovoltaicPlantScreen.SavingsCalculator {
+extension PhotovoltaicScreen.SavingsCalculator {
     
-    /// Creates a new instance of `PhotovoltaicPlantScreen.SavingsCalculator`, if available.
+    /// Creates a new instance of `PhotovoltaicScreen.SavingsCalculator`, if available.
     /// - Parameter firebase: The Firebase instance
     init?(
         firebase: Firebase
@@ -65,7 +65,7 @@ extension PhotovoltaicPlantScreen.SavingsCalculator {
 
 // MARK: - View
 
-extension PhotovoltaicPlantScreen.SavingsCalculator: View {
+extension PhotovoltaicScreen.SavingsCalculator: View {
     
     /// The content and behavior of the view.
     var body: some View {
@@ -98,7 +98,7 @@ extension PhotovoltaicPlantScreen.SavingsCalculator: View {
 
 // MARK: - Investment Form
 
-private extension PhotovoltaicPlantScreen.SavingsCalculator {
+private extension PhotovoltaicScreen.SavingsCalculator {
     
     /// The investment form
     var investmentForm: some View {
@@ -184,7 +184,7 @@ private extension PhotovoltaicPlantScreen.SavingsCalculator {
 
 // MARK: - Investment Result Form
 
-private extension PhotovoltaicPlantScreen.SavingsCalculator {
+private extension PhotovoltaicScreen.SavingsCalculator {
     
     /// Investment result form.
     /// - Parameter investmentResult: The PhotovoltaicInvestmentResult.

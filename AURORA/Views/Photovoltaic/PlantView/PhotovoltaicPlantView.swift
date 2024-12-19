@@ -82,6 +82,7 @@ extension PhotovoltaicPlantView: View {
             HelpSection(
                 photovoltaicPlant: photovoltaicPlant
             )
+            InvestmentSection()
             InformationSection(
                 photovoltaicPlant: photovoltaicPlant
             )
