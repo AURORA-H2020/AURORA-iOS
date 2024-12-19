@@ -271,6 +271,7 @@ private extension RecurringConsumptionForm {
                                     recurringConsumption,
                                     context: .current()
                                 )
+                            self.dismiss()
                         } label: {
                             Text("Delete")
                         }
