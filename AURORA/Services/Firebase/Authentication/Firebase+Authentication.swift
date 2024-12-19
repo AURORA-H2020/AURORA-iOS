@@ -200,8 +200,8 @@ extension Firebase.Authentication {
             )
         // Update email
         try await userAccount
-            .updateEmail(
-                to: newMailAddress
+            .sendEmailVerification(
+                beforeUpdatingEmail: newMailAddress
             )
     }
     
