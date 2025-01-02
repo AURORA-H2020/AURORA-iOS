@@ -306,7 +306,7 @@ private extension SettingsScreen {
         Section(
             header: Text("Support")
         ) {
-            Link(
+            Button(
                 destination: AURORAWebsiteLink.app.url
             ) {
                 Label(
@@ -314,7 +314,7 @@ private extension SettingsScreen {
                     systemImage: "square.stack.3d.up.fill"
                 )
             }
-            Link(
+            Button(
                 destination: AURORAWebsiteLink.appSupport(
                     userAccountID: try? self.firebase.authentication.state.userAccount.uid,
                     countryID: try? self.firebase.country?.get()?.id
@@ -352,7 +352,7 @@ private extension SettingsScreen {
             .padding(.vertical, 15)
             .listRowInsets(.init())
         ) {
-            Link(
+            Button(
                 destination: AURORAWebsiteLink.appImprint.url
             ) {
                 Label(
@@ -360,7 +360,7 @@ private extension SettingsScreen {
                     systemImage: "info.circle.fill"
                 )
             }
-            Link(
+            Button(
                 destination: AURORAWebsiteLink.appPrivacyPolicy.url
             ) {
                 Label(
@@ -368,7 +368,7 @@ private extension SettingsScreen {
                     systemImage: "lock.fill"
                 )
             }
-            Link(
+            Button(
                 destination: AURORAWebsiteLink.appTermsOfServices.url
             ) {
                 Label(

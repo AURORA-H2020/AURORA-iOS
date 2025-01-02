@@ -91,17 +91,18 @@ extension PhotovoltaicPlantView.InformationSection: View {
             }
         } footer: {
             if let infoURL = self.photovoltaicPlant.infoURL.flatMap(URL.init) {
-                Link(destination: infoURL) {
-                    Text(
-                        "How to invest?"
+                Button(destination: infoURL) {
+                    Label(
+                        "How to invest?",
+                        systemImage: "arrow.up.forward.square"
                     )
-                    .font(.headline)
-                    .align(.centerHorizontal)
-                    .padding(.vertical, 5)
+                    .font(.subheadline.weight(.semibold))
                 }
                 .buttonStyle(.bordered)
+                .buttonBorderShape(.capsule)
                 .tint(.accentColor)
                 .padding(.top, 12)
+                .align(.centerHorizontal)
             }
         }
         .headerProminence(.increased)

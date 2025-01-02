@@ -25,7 +25,7 @@ struct AURORAWebsiteLink: Codable, Hashable, Sendable {
         urlComponents.scheme = "https"
         urlComponents.host = "aurora-h2020.eu"
         urlComponents.path = (CollectionOfOne("/") + pathComponents).joined(separator: "/")
-        urlComponents.queryItems = queryItems
+        urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
         guard let url = urlComponents.url else {
             return nil
         }

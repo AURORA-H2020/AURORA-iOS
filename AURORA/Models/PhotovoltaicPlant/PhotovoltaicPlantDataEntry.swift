@@ -30,10 +30,13 @@ extension PhotovoltaicPlantDataEntry: FirestoreSubcollectionEntity {
         "data"
     }
     
+    /// The order by date predicate.
+    static let orderByDatePredicate = QueryPredicate.order(by: "date", descending: false)
+    
     /// The order by created at predicate.
     static let pastThirtyDaysPredicate = QueryPredicate.whereField(
         "date",
-        isGreaterThanOrEqualTo: Calendar.current.date(byAdding: .day, value: -30, to: .init()) ?? .init()
+        isGreaterThanOrEqualTo: Timestamp(date: Calendar.current.date(byAdding: .day, value: -31, to: .now) ?? .now)
     )
     
     /// The coding keys.

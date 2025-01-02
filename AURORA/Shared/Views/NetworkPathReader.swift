@@ -4,7 +4,7 @@ import SwiftUI
 // MARK: - NetworkPathReader
 
 /// A NetworkPathReader
-public struct NetworkPathReader<Content: View> {
+struct NetworkPathReader<Content: View> {
     
     // MARK: Properties
     
@@ -19,11 +19,28 @@ public struct NetworkPathReader<Content: View> {
     
     /// Creates a new instance of ``NetworkPathReader``
     /// - Parameter content: A closure providing the content for a network path
-    public init(
+    init(
         @ViewBuilder
         content: @escaping (NWPath?) -> Content
     ) {
         self.content = content
+    }
+    
+}
+
+// MARK: - Unsatisfied Warning
+
+extension NetworkPathReader where Content == Text? {
+    
+    /// A network path reader view which displays an information text in case the path is unsatisfied.
+    static let unsatisfiedWarning = Self { path in
+        if path?.status != .satisfied {
+            Text(
+                "It seems you're offline. Your data will automatically sync as soon as you reconnect to the internet."
+            )
+            .font(.caption)
+            .foregroundColor(.secondary)
+        }
     }
     
 }
@@ -33,7 +50,7 @@ public struct NetworkPathReader<Content: View> {
 extension NetworkPathReader: View {
     
     /// The content and behavior of the view.
-    public var body: some View {
+    var body: some View {
         self.content(self.monitor.path)
     }
     

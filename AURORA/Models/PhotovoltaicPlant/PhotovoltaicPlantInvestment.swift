@@ -52,4 +52,18 @@ extension PhotovoltaicPlantInvestment: FirestoreSubcollectionEntity {
         "pv-investments"
     }
     
+    /// The order by investment date predicate.
+    static let orderByInvestmentDatePredicate = QueryPredicate.order(by: "investmentDate", descending: false)
+    
+    /// Photovoltaic plant predicate.
+    /// - Parameter entityReference: The photovoltaic entity reference.
+    static func photovoltaicPlantPredicate(
+        entityReference: FirestoreEntityReference<PhotovoltaicPlant>
+    ) -> QueryPredicate {
+        .whereField(
+            "pvPlant",
+            isEqualTo: entityReference.id
+        )
+    }
+    
 }

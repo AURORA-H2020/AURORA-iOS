@@ -5,6 +5,9 @@ import SwiftUI
 /// The PhotovoltaicScreen
 struct PhotovoltaicScreen {
     
+    /// The User.
+    let user: User
+    
     /// The Firebase instance
     @EnvironmentObject
     private var firebase: Firebase
@@ -28,10 +31,12 @@ extension PhotovoltaicScreen: View {
                 case .success(let photovoltaicPlant):
                     if let photovoltaicPlant,
                        photovoltaicPlant.active,
-                       let photovoltaicPlantEntityReference = FirestoreEntityReference(photovoltaicPlant) {
+                       let photovoltaicPlantEntityReference = FirestoreEntityReference(photovoltaicPlant),
+                       let userEntityReference = FirestoreEntityReference(self.user) {
                         PhotovoltaicPlantView(
                             photovoltaicPlant: photovoltaicPlant,
-                            photovoltaicPlantEntityReference: photovoltaicPlantEntityReference
+                            photovoltaicPlantEntityReference: photovoltaicPlantEntityReference,
+                            userEntityReference: userEntityReference
                         )
                     } else {
                         unavailablePhotovoltaicPlantView

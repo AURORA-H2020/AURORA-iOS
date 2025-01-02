@@ -57,10 +57,12 @@ struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
     /// - Parameters:
     ///   - context: The CollectionReferenceContext.
     ///   - predicates: An array of `QueryPredicate`s that defines a filter for the fetched results. Default value `.init()`
+    ///   - animation: The optional animation to apply to the transaction.. Default value `nil`
     ///   - firebase: The Firebase instance. Default value `.default`
     init(
         context: Entity.CollectionReferenceContext,
         predicates: [FirebaseFirestore.QueryPredicate] = .init(),
+        animation: Animation? = nil,
         firebase: Firebase = .default
     ) {
         self.firebase = firebase
@@ -71,7 +73,14 @@ struct FirestoreEntityQuery<Entity: FirestoreEntity>: DynamicProperty {
                 )
                 .path,
             predicates: predicates,
-            decodingFailureStrategy: .ignore
+            decodingFailureStrategy: {
+                #if DEBUG
+                return .raise
+                #else
+                return .ignore
+                #endif
+            }(),
+            animation: animation
         )
     }
     
@@ -87,14 +96,14 @@ extension FirestoreEntityQuery where Entity.CollectionReferenceContext == Void {
     ///   - firebase: The Firebase instance. Default value `.default`
     init(
         predicates: [FirebaseFirestore.QueryPredicate] = .init(),
+        animation: Animation? = nil,
         firebase: Firebase = .default
     ) {
-        self.firebase = firebase
-        self._queryResult = .init(
-            collectionPath: Entity
-                .collectionReference(context: ())
-                .path,
-            predicates: predicates
+        self.init(
+            context: (),
+            predicates: predicates,
+            animation: animation,
+            firebase: firebase
         )
     }
     

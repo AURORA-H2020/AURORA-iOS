@@ -87,8 +87,13 @@ extension ThirdPartyDependency {
     /// All ThirdPartyDependencies
     static let all: [Self] = [
         .init(
-            author: "Firebase",
-            name: "abseil-cpp-SwiftPM",
+            author: "Google",
+            name: "abseil-cpp-binary",
+            branchName: "main"
+        ),
+        .init(
+            author: "Google",
+            name: "app-check",
             branchName: "main"
         ),
         .init(
@@ -98,13 +103,8 @@ extension ThirdPartyDependency {
         ),
         .init(
             author: "Firebase",
-            name: "boringssl-SwiftPM",
-            branchName: "main"
-        ),
-        .init(
-            author: "Firebase",
             name: "firebase-ios-sdk",
-            branchName: "master"
+            branchName: "main"
         ),
         .init(
             author: "Google",
@@ -127,8 +127,8 @@ extension ThirdPartyDependency {
             branchName: "main"
         ),
         .init(
-            author: "gRPC",
-            name: "grpc-ios",
+            author: "Google",
+            name: "grpc-binary",
             branchName: "main"
         ),
         .init(
@@ -142,9 +142,14 @@ extension ThirdPartyDependency {
             branchName: "master"
         ),
         .init(
+            author: "Google",
+            name: "interop-ios-for-google-sdks",
+            branchName: "main"
+        ),
+        .init(
             author: "Firebase",
             name: "leveldb",
-            branchName: "master"
+            branchName: "firebase-release"
         ),
         .init(
             author: "Firebase",

@@ -182,37 +182,24 @@ private extension RecurringConsumptionForm {
             // Otherwise return out of function
             return
         }
-        // Initialize an UINotificationFeedbackGenerator
-        let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
-        do {
-            // Check if an identifier is available
-            if recurringConsumption.id == nil {
-                // Add recurring consumption
-                try self.firebase
-                    .firestore
-                    .add(
-                        recurringConsumption,
-                        context: .current()
-                    )
-            } else {
-                // Update recurring consumption
-                try self.firebase
-                    .firestore
-                    .update(
-                        recurringConsumption,
-                        context: .current()
-                    )
-            }
-        } catch {
-            // Invoke error feedback
-            notificationFeedbackGenerator
-                .notificationOccurred(.error)
-            // Rethrow error
-            throw error
+        // Check if an identifier is available
+        if recurringConsumption.id == nil {
+            // Add recurring consumption
+            try self.firebase
+                .firestore
+                .add(
+                    recurringConsumption,
+                    context: .current()
+                )
+        } else {
+            // Update recurring consumption
+            try self.firebase
+                .firestore
+                .update(
+                    recurringConsumption,
+                    context: .current()
+                )
         }
-        // Invoke success feedback
-        notificationFeedbackGenerator
-            .notificationOccurred(.success)
         // Dismiss
         self.dismiss()
     }

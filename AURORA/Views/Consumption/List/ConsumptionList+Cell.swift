@@ -114,7 +114,7 @@ extension ConsumptionList.Cell: View {
                 Button {
                     editAction()
                 } label: {
-                    Label("Edit", systemImage: "square.and.pencil")
+                    Label("Edit", systemImage: "pencil.circle")
                 }
                 .tint(.accentColor)
             }

@@ -58,7 +58,7 @@ extension ConsumptionSummaryView.Chart: View {
                 }
             }
         }
-        .frame(minHeight: 200)
+        .frame(minHeight: 220)
         .chartYAxisLabel {
             switch self.mode {
             case .carbonEmission:

@@ -296,7 +296,7 @@ private extension PhotovoltaicScreen.SavingsCalculator {
                         Text("Reset")
                             .font(.subheadline.weight(.semibold))
                     }
-                    Link(
+                    Button(
                         destination: AURORAWebsiteLink.home.url
                     ) {
                         Text("Learn more on our website")

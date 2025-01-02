@@ -66,7 +66,7 @@ extension ConsumptionSummaryView: View {
             Section {
                 Picker(
                     "Year",
-                    selection: self.$selection.animation()
+                    selection: self.$selection.animation(.smooth)
                 ) {
                     ForEach(self.consumptionSummaries) { consumptionSummary in
                         Text(String(consumptionSummary.year))

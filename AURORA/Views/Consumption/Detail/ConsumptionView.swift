@@ -24,6 +24,10 @@ struct ConsumptionView {
     @State
     private var photovoltaicPlant: Result<PhotovoltaicPlant, Error>?
     
+    /// The presented photovoltaic plant investment mode.
+    @State
+    private var presentedPhotovoltaicPlantInvestmentMode: PhotovoltaicPlantInvestmentForm.Mode?
+    
     /// The dismiss action
     @Environment(\.dismiss)
     private var dismiss
@@ -130,27 +134,32 @@ extension ConsumptionView: View {
                             """)
                             .multilineTextAlignment(.leading)
                         }
-                        Button {
-                            #warning("Present edit pv investment form")
-                        } label: {
-                            Text("Manage Investment")
-                                .font(.subheadline)
+                        if let photovoltaicPlantInvestment = try? self.photovoltaicPlantInvestment?.get() {
+                            Button {
+                                self.presentedPhotovoltaicPlantInvestmentMode = .edit(
+                                    photovoltaicPlantInvestment,
+                                    try? self.photovoltaicPlant?.get()
+                                )
+                            } label: {
+                                Text("Manage Investment")
+                                    .font(.subheadline)
+                            }
+                            .buttonStyle(.bordered)
+                            .buttonBorderShape(.capsule)
+                            .tint(.accentColor)
                         }
-                        .buttonStyle(.bordered)
-                        .buttonBorderShape(.capsule)
-                        .tint(.accentColor)
                     }
                     .padding(.bottom, 6)
                 }
             }
             Section {
-                Entry {
+                LabeledContent {
                     Text(self.consumption.formatted())
                 } label: {
                     Text(self.consumption.localizedTitle)
                 }
                 if let carbonEmissions = self.consumption.carbonEmissions {
-                    Entry {
+                    LabeledContent {
                         Text(
                             ConsumptionMeasurement(
                                 value: carbonEmissions,
@@ -164,7 +173,7 @@ extension ConsumptionView: View {
                     }
                 }
                 if let photovoltaicPlant = try? self.photovoltaicPlant?.get() {
-                    Entry {
+                    LabeledContent {
                         Text(photovoltaicPlant.name)
                     } label: {
                         Text("Installation Site")
@@ -172,7 +181,7 @@ extension ConsumptionView: View {
                 }
                 if self.consumption.generatedByPvInvestmentId == nil,
                    let energyExpended = self.consumption.energyExpended {
-                    Entry {
+                    LabeledContent {
                         Text(
                             ConsumptionMeasurement(
                                 value: energyExpended,
@@ -189,21 +198,21 @@ extension ConsumptionView: View {
             if let electricity = self.consumption.electricity {
                 if self.consumption.generatedByPvInvestmentId == nil {
                     if let costs = electricity.costs {
-                        Entry {
+                        LabeledContent {
                             CurrencyText(costs)
                                 .foregroundColor(.secondary)
                         } label: {
                             Text("Costs")
                         }
                     }
-                    Entry {
+                    LabeledContent {
                         Text(String(electricity.householdSize))
                             .foregroundColor(.secondary)
                     } label: {
                         Text("People in household")
                     }
                     if let electricitySource = electricity.electricitySource {
-                        Entry {
+                        LabeledContent {
                             Text(electricitySource.localizedString)
                                 .foregroundColor(.secondary)
                         } label: {
@@ -211,7 +220,7 @@ extension ConsumptionView: View {
                         }
                     }
                     if let energyExported = electricity.electricityExported {
-                        Entry {
+                        LabeledContent {
                             Text(
                                 ConsumptionMeasurement(
                                     value: energyExported,
@@ -226,14 +235,14 @@ extension ConsumptionView: View {
                         }
                     }
                 } else {
-                    Entry {
+                    LabeledContent {
                         Text("PV Investment")
                             .foregroundColor(.secondary)
                     } label: {
                         Text("Electricity source")
                     }
                 }
-                Entry {
+                LabeledContent {
                     Text(
                         electricity.startDate.dateValue(),
                         style: .date
@@ -242,7 +251,7 @@ extension ConsumptionView: View {
                 } label: {
                     Text("Beginning")
                 }
-                Entry {
+                LabeledContent {
                     Text(
                         electricity.endDate.dateValue(),
                         style: .date
@@ -253,20 +262,20 @@ extension ConsumptionView: View {
                 }
             } else if let heating = self.consumption.heating {
                 if let costs = heating.costs {
-                    Entry {
+                    LabeledContent {
                         CurrencyText(costs)
                             .foregroundColor(.secondary)
                     } label: {
                         Text("Costs")
                     }
                 }
-                Entry {
+                LabeledContent {
                     Text(String(heating.householdSize))
                         .foregroundColor(.secondary)
                 } label: {
                     Text("People in household")
                 }
-                Entry {
+                LabeledContent {
                     Text(
                         heating.startDate.dateValue(),
                         style: .date
@@ -275,7 +284,7 @@ extension ConsumptionView: View {
                 } label: {
                     Text("Beginning")
                 }
-                Entry {
+                LabeledContent {
                     Text(
                         heating.endDate.dateValue(),
                         style: .date
@@ -284,14 +293,14 @@ extension ConsumptionView: View {
                 } label: {
                     Text("End")
                 }
-                Entry {
+                LabeledContent {
                     Text(heating.heatingFuel.localizedString)
                         .foregroundColor(.secondary)
                 } label: {
                     Text("Heating fuel")
                 }
                 if let districtHeatingSource = heating.districtHeatingSource {
-                    Entry {
+                    LabeledContent {
                         Text(districtHeatingSource.localizedString)
                             .foregroundColor(.secondary)
                     } label: {
@@ -299,7 +308,7 @@ extension ConsumptionView: View {
                     }
                 }
             } else if let transportation = self.consumption.transportation {
-                Entry {
+                LabeledContent {
                     Text(
                         transportation.dateOfTravel.dateValue(),
                         format: .dateTime
@@ -309,7 +318,7 @@ extension ConsumptionView: View {
                     Text("Start of travel")
                 }
                 if let dateOfTravelEnd = transportation.dateOfTravelEnd {
-                    Entry {
+                    LabeledContent {
                         Text(
                             dateOfTravelEnd.dateValue(),
                             format: .dateTime
@@ -319,21 +328,21 @@ extension ConsumptionView: View {
                         Text("End of travel")
                     }
                 }
-                Entry {
+                LabeledContent {
                     Text(transportation.transportationType.localizedString)
                         .foregroundColor(.secondary)
                 } label: {
                     Text("Transportation type")
                 }
                 if let privateVehicleOccupancy = transportation.privateVehicleOccupancy {
-                    Entry {
+                    LabeledContent {
                         Text(String(privateVehicleOccupancy))
                             .foregroundColor(.secondary)
                     } label: {
                         Text("Occupancy")
                     }
                 } else if let publicVehicleOccupancy = transportation.publicVehicleOccupancy {
-                    Entry {
+                    LabeledContent {
                         Text(publicVehicleOccupancy.localizedString)
                             .foregroundColor(.secondary)
                     } label: {
@@ -344,7 +353,7 @@ extension ConsumptionView: View {
                     let canDeclarePrivatePowerConsumption = transportation
                         .transportationType
                         .canDeclarePrivatePowerConsumption
-                    Entry {
+                    LabeledContent {
                         Text(
                             ConsumptionMeasurement(
                                 value: fuelConsumption,
@@ -379,7 +388,7 @@ extension ConsumptionView: View {
                     }
                 ) {
                     if self.consumption.generatedByPvInvestmentId == nil {
-                        Entry {
+                        LabeledContent {
                             Text(
                                 createdAt.dateValue(),
                                 style: .date
@@ -390,7 +399,7 @@ extension ConsumptionView: View {
                         }
                     }
                     if let updatedAt = self.consumption.updatedAt {
-                        Entry {
+                        LabeledContent {
                             Text(
                                 updatedAt.dateValue(),
                                 style: .date
@@ -402,39 +411,44 @@ extension ConsumptionView: View {
                     }
                 }
             }
-            if self.consumption.generatedByPvInvestmentId == nil {
-                Section {
-                    Button {
-                        self.consumptionFormSheetMode = .duplicate
-                    } label: {
-                        Label("Duplicate", systemImage: "doc.on.doc.fill")
-                    }
-                }
-            }
         }
         .navigationTitle(self.consumption.localizedTitle)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if self.consumption.generatedByPvInvestmentId == nil {
-                    Button {
-                        self.consumptionFormSheetMode = .edit
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    if self.consumption.generatedByPvInvestmentId == nil {
+                        Button {
+                            self.consumptionFormSheetMode = .edit
+                        } label: {
+                            Label(
+                                "Edit",
+                                systemImage: "pencil"
+                            )
+                        }
+                    }
+                    if self.consumption.generatedByPvInvestmentId == nil {
+                        Button {
+                            self.consumptionFormSheetMode = .duplicate
+                        } label: {
+                            Label(
+                                "Duplicate",
+                                systemImage: "doc.on.doc.fill"
+                            )
+                        }
+                    }
+                    Button(role: .destructive) {
+                        self.isDeleteConfirmationDialogPresented = true
                     } label: {
                         Label(
-                            "Edit",
-                            systemImage: "square.and.pencil"
+                            "Delete",
+                            systemImage: "trash"
                         )
                     }
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(role: .destructive) {
-                    self.isDeleteConfirmationDialogPresented = true
+                    .tint(.red)
                 } label: {
-                    Label(
-                        "Delete",
-                        systemImage: "trash"
+                    Image(
+                        systemName: "ellipsis.circle"
                     )
-                    .foregroundColor(.red)
                 }
                 .confirmationDialog(
                     "Delete Entry",
@@ -478,6 +492,21 @@ extension ConsumptionView: View {
                 )
             }
         }
+        .sheet(
+            item: self.$presentedPhotovoltaicPlantInvestmentMode,
+            onDismiss: {
+                Task {
+                    await self.loadPhotovoltaicData()
+                }
+            },
+            content: { mode in
+                SheetNavigationView {
+                    PhotovoltaicPlantInvestmentForm(
+                        mode: mode
+                    )
+                }
+            }
+        )
         .task {
             guard self.photovoltaicPlantInvestment == nil
                     && self.photovoltaicPlant == nil else {
@@ -485,38 +514,6 @@ extension ConsumptionView: View {
             }
             await self.loadPhotovoltaicData()
         }
-    }
-    
-}
-
-// MARK: - Entry
-
-private extension ConsumptionView {
-    
-    /// A ConsumptionView Entry
-    struct Entry<Label: View, Content: View>: View {
-        
-        // MARK: Properties
-        
-        /// A ViewBuilder closure providing the content.
-        @ViewBuilder
-        let content: () -> Content
-        
-        /// A ViewBuilder closure providing the label.
-        @ViewBuilder
-        let label: () -> Label
-        
-        // MARK: View
-        
-        /// The content and behavior of the view.
-        var body: some View {
-            HStack {
-                self.label()
-                Spacer()
-                self.content()
-            }
-        }
-        
     }
     
 }
