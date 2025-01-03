@@ -12,6 +12,8 @@ extension Consumption.Electricity {
         case nationalGridGreenProvider = "defaultGreenProvider"
         /// Home Photovoltaics
         case homePhotovoltaics
+        /// Photovoltaic Plant Investment
+        case photovoltaicPlantInvestment = "pvInvestment"
     }
     
 }
@@ -29,6 +31,8 @@ extension Consumption.Electricity.ElectricitySource {
             return .init(localized: "National Grid (green provider)")
         case .homePhotovoltaics:
             return .init(localized: "Home Photovoltaics")
+        case .photovoltaicPlantInvestment:
+            return .init(localized: "Photovoltaic Plant Investment")
         }
     }
     
