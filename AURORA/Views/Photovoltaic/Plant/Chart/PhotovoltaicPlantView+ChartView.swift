@@ -126,11 +126,16 @@ extension PhotovoltaicPlantView.ChartView: View {
                                     minimumDistance: 0
                                 )
                                 .onChanged { value in
-                                    self.selectedChartDataEntryID = chart.value(
+                                    let date = chart.value(
                                         atX: value.location.x - geometry[chart.plotAreaFrame].origin.x,
                                         as: Date.self
                                     )
                                     .flatMap(Calendar.current.startOfDay)
+                                    guard self.selectedChartDataEntryID != date,
+                                          chartData.entries.contains(where: { $0.date == date }) else {
+                                        return
+                                    }
+                                    self.selectedChartDataEntryID = date
                                     self.selectionFeedbackGenerator.selectionChanged()
                                 }
                                 .onEnded { _ in
