@@ -110,7 +110,8 @@ extension ConsumptionList.Cell: View {
                 Label("Delete", systemImage: "trash")
             }
             .tint(.red)
-            if let editAction = self.editAction {
+            if let editAction = self.editAction,
+               self.consumption.generatedByPvInvestmentId == nil {
                 Button {
                     editAction()
                 } label: {
