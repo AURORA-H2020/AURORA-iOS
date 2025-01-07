@@ -74,6 +74,7 @@ private extension PhotovoltaicPlantInvestmentForm {
         self.share != nil
     }
     
+    /// A submission error.
     struct SubmissionError: Error {}
     
     /// Submit form.
@@ -90,7 +91,6 @@ private extension PhotovoltaicPlantInvestmentForm {
             .firestore
             .update(
                 PhotovoltaicPlantInvestment(
-                    id: photovoltaicPlantEntityReference.id,
                     updatedAt: .init(),
                     city: cityEntityReference,
                     pvPlant: photovoltaicPlantEntityReference,
