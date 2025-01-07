@@ -195,6 +195,7 @@ extension PhotovoltaicPlantView.ChartView: View {
                     photovoltaicPlant: self.photovoltaicPlant
                 )
             }
+            .presentationDetents([.medium, .large])
         }
     }
     

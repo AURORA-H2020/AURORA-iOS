@@ -105,6 +105,7 @@ extension PhotovoltaicPlantView: View {
                     photovoltaicPlant: self.photovoltaicPlant
                 )
             }
+            .presentationDetents([.medium, .large])
         }
     }
     
