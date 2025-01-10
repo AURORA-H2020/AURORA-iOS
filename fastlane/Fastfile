@@ -93,10 +93,10 @@ platform :ios do
   lane :screenshots do
     # The devices to capture screenshots for
     devices = [
-      "iPhone 14 Plus",
+      "iPhone 14 Pro Max",
       "iPhone 8 Plus",
       "iPad Pro (12.9-inch) (6th generation)",
-      "iPad Pro (12.9-inch) (2nd generation)"
+      "iPad Pro (11-inch) (4th generation)"
     ]
     # The languages
     languages = [
