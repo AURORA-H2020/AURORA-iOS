@@ -23,10 +23,6 @@ jobs:
           key: ${{ runner.os }}-spm-${{ hashFiles('AURORA.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
           restore-keys: |
             ${{ runner.os }}-spm-
-      - name: Select Xcode version
-        run: xcodes select 15.3
-      - name: Create iPad Pro (12.9-inch) (2nd generation) Simulator
-        run: xcrun simctl create "iPad Pro (12.9-inch) (2nd generation)" "com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-"
       - name: Take Screenshots
         run: fastlane screenshots
         env:

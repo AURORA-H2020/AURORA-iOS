@@ -23,8 +23,6 @@ jobs:
           key: ${{ runner.os }}-spm-${{ hashFiles('AURORA.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
           restore-keys: |
             ${{ runner.os }}-spm-
-      - name: Select Xcode version
-        run: xcodes select 15.3
       - name: Build App
         run: fastlane build_app_lane
         env:
@@ -59,8 +57,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ipa
-      - name: Select Xcode version
-        run: xcodes select 15.3
       - name: Upload to TestFlight
         run: fastlane upload_to_test_flight_lane
         env:
@@ -83,7 +79,5 @@ jobs:
           name: upload-symbols-binary
       - name: Make upload-symbols binary executable
         run: chmod +x upload-symbols
-      - name: Select Xcode version
-        run: xcodes select 15.3
       - name: Upload Debug Symbols to Firebase Crashlytics
         run: fastlane upload_debug_symbols_to_crashlytics_lane
