@@ -50,7 +50,7 @@ extension PhotovoltaicPlantView {
     
 }
 
-// MARK: - Convenience Initializer
+// MARK: - Convenience Initializers
 
 extension PhotovoltaicPlantView.ChartData {
     
@@ -90,6 +90,32 @@ extension PhotovoltaicPlantView.ChartData {
                     )
                 }
         )
+    }
+    
+}
+
+extension [PhotovoltaicPlantView.ChartData] {
+    
+    /// Creates a new instance of ``[PhotovoltaicPlantView.ChartData]``
+    /// - Parameters:
+    ///   - sources: The sources. Default value `PhotovoltaicPlantView.ChartData.Source.allCases`
+    ///   - photovoltaicPlant: The photovoltaic plant.
+    ///   - photovoltaicPlantDataEntries: The photovoltaic plant data entries.
+    ///   - photovoltaicPlantInvestments: The photovoltaic plant investments.
+    init(
+        sources: [PhotovoltaicPlantView.ChartData.Source] = PhotovoltaicPlantView.ChartData.Source.allCases,
+        photovoltaicPlant: PhotovoltaicPlant,
+        photovoltaicPlantDataEntries: [PhotovoltaicPlantDataEntry],
+        photovoltaicPlantInvestments: [PhotovoltaicPlantInvestment]
+    ) {
+        self = sources.map { source in
+            .init(
+                source: source,
+                photovoltaicPlant: photovoltaicPlant,
+                photovoltaicPlantDataEntries: photovoltaicPlantDataEntries,
+                photovoltaicPlantInvestments: photovoltaicPlantInvestments
+            )
+        }
     }
     
 }

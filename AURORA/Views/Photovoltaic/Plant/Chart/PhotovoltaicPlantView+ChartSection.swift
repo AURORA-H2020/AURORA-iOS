@@ -43,17 +43,11 @@ extension PhotovoltaicPlantView {
             isHelpPresented: Binding<Bool>,
             presentedPhotovoltaicPlantInvestmentFormMode: Binding<PhotovoltaicPlantInvestmentForm.Mode?>
         ) {
-            self.chartData = ChartData
-                .Source
-                .allCases
-                .map { source in
-                    .init(
-                        source: source,
-                        photovoltaicPlant: photovoltaicPlant,
-                        photovoltaicPlantDataEntries: photovoltaicPlantDataEntries,
-                        photovoltaicPlantInvestments: photovoltaicPlantInvestments
-                    )
-                }
+            self.chartData = .init(
+                photovoltaicPlant: photovoltaicPlant,
+                photovoltaicPlantDataEntries: photovoltaicPlantDataEntries,
+                photovoltaicPlantInvestments: photovoltaicPlantInvestments
+            )
             self.photovoltaicPlant = photovoltaicPlant
             self.photovoltaicPlantInvestments = photovoltaicPlantInvestments
             self._isHelpPresented = isHelpPresented
