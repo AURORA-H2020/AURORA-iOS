@@ -86,20 +86,47 @@ private extension PhotovoltaicPlantInvestmentForm {
               let photovoltaicPlantEntityReference = try? self.photovoltaicPlant?.get().flatMap(FirestoreEntityReference.init) else {
             throw SubmissionError()
         }
-        // Add/Update investment
-        try self.firebase
-            .firestore
-            .update(
-                PhotovoltaicPlantInvestment(
-                    updatedAt: .init(),
-                    city: cityEntityReference,
-                    pvPlant: photovoltaicPlantEntityReference,
-                    share: share,
-                    investmentDate: .init(date: self.date),
-                    note: self.note.isEmpty ? nil : self.note
-                ),
-                context: .current()
-            )
+        let photovoltaicPlantInvestment = PhotovoltaicPlantInvestment(
+            id: {
+                switch self.mode {
+                case .create:
+                    return nil
+                case .edit(let photovoltaicPlantInvestment, _):
+                    return photovoltaicPlantInvestment.id
+                }
+            }(),
+            updatedAt: {
+                switch self.mode {
+                case .create:
+                    return nil
+                case .edit(let photovoltaicPlantInvestment, _):
+                    return .init()
+                }
+            }(),
+            city: cityEntityReference,
+            pvPlant: photovoltaicPlantEntityReference,
+            share: share,
+            investmentDate: .init(date: self.date),
+            note: self.note.isEmpty ? nil : self.note
+        )
+        switch self.mode {
+        case .create:
+            // Add investment
+            try self.firebase
+                .firestore
+                .add(
+                    photovoltaicPlantInvestment,
+                    context: .current()
+                )
+        case .edit:
+            // Update investment
+            try self.firebase
+                .firestore
+                .update(
+                    photovoltaicPlantInvestment,
+                    context: .current()
+                )
+        }
     }
     
 }
