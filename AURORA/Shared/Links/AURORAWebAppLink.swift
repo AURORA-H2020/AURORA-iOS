@@ -60,17 +60,14 @@ extension AURORAWebAppLink {
     static func photovoltaicPlantData(
         for photovoltaicPlant: PhotovoltaicPlant
     ) -> Self? {
-        guard let photovoltaicPlantID = photovoltaicPlant.id else {
-            return nil
-        }
-        return .init(
+        .init(
             pathComponents: [
                 "pv-data"
             ],
             queryItems: [
                 .init(
                     name: "site",
-                    value: photovoltaicPlantID
+                    value: photovoltaicPlant.plantId
                 )
             ]
         )
