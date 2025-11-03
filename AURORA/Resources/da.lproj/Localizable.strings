@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "Dette projekt (https://www.aurora-h2020.eu/) har modtaget finansiering fra Den Europæiske Unions forsknings- og innovationsprogram Horizon 2020 under tilskudsaftale nr. 101036418. (https://cordis.europa.eu/project/id/101036418). ";
-
-/* No comment provided by engineer. */
 "%@ in %@" = "%@ i %@";
 
 /* No comment provided by engineer. */
@@ -788,9 +785,6 @@
 "The next notification will be sent on %@" = "Den næste notifikation vil blive sendt den %@";
 
 /* No comment provided by engineer. */
-"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Appen er udviklet af det AURORA Horizon 2020 EU-finansierede projekt (nr. [101036418](https://cordis.europa.eu/project/id/101036418)). Dine data behandles af medlemmer af projektkonsortiet og opbevares sikkert i Google Firebase. Dine data vil kun blive brugt til forskningsformål i et anonymiseret format og aldrig kommercielt uden dit udtrykkelige samtykke. Du kan til enhver tid ændre, downloade eller slette dine data eller kontakte vores support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). Ved at fortsætte accepterer du AURORAs [servicevilkår](https://www.aurora-h2020.eu/da/aurora/app-tos) og [privatlivspolitik](https://www.aurora-h2020.eu/da/aurora /app-privatlivspolitik).";
-
-/* No comment provided by engineer. */
 "This entry was automatically added via recurring consumptions." = "Dette indlæg blev automatisk tilføjet via tilbagevendende forbrug.";
 
 /* No comment provided by engineer. */
@@ -864,9 +858,6 @@
 
 /* No comment provided by engineer. */
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Vi kan minde dig om regelmæssigt at indtaste dine transportdata. Bare fortæl os, hvor ofte du rejser.";
-
-/* No comment provided by engineer. */
-"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Vi har opdateret vores [privatlivspolitik](https://www.aurora-h2020.eu/da/aurora/app-privacy-policy) og [servicevilkår](https://www.aurora-h2020.eu/da/aurora/app-tos). Læs og accepter den seneste version for at fortsætte med at bruge appen.";
 
 /* No comment provided by engineer. */
 "Wednesday" = "onsdag";

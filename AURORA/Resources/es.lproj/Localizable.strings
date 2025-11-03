@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Este proyecto](https://www.aurora-h2020.eu/) ha recibido financiación del programa de investigación e innovación H2020 de la Unión Europea bajo el contrato Nº [101036418](https://cordis.europa.eu/project/id/101036418).";
-
-/* No comment provided by engineer. */
 "%@ in %@" = "%@ en %@";
 
 /* No comment provided by engineer. */
@@ -788,9 +785,6 @@
 "The next notification will be sent on %@" = "La siguiente notificación se enviará %@";
 
 /* No comment provided by engineer. */
-"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Esta aplicación ha sido desarrollada por el proyecto  Horizonte 2020 AURORA financiado por la UE (nº [101036418](https://cordis.europa.eu/project/id/101036418)). Sus datos son procesados por miembros del consorcio del proyecto y almacenados de forma segura en Google Firebase. Sus datos sólo se utilizarán con fines de investigación en un formato anonimizado y nunca comercialmente sin su consentimiento explícito. Puede modificar, descargar o eliminar sus datos en cualquier momento o ponerse en contacto con nuestro servicio de asistencia en [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). Al continuar, acepta las [Condiciones del servicio](https://www.aurora-h2020.eu/es/aurora/app-tos) y la [Política de privacidad](https://www.aurora-h2020.eu/es/aurora/app-privacy-policy) de AURORA.";
-
-/* No comment provided by engineer. */
 "This entry was automatically added via recurring consumptions." = "Esta entrada se añadió automáticamente mediante consumos recurrentes.";
 
 /* No comment provided by engineer. */
@@ -864,9 +858,6 @@
 
 /* No comment provided by engineer. */
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Podemos recordarle que introduzca regularmente sus datos de transporte. Solo tiene que decirnos con qué frecuencia viaja.";
-
-/* No comment provided by engineer. */
-"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Hemos actualizado nuestra [Política de privacidad](https://www.aurora-h2020.eu/es/aurora/app-privacy-policy) y nuestras [Condiciones del servicio](https://www.aurora-h2020.eu/es/aurora/app-tos). Revise y acepte la última versión para seguir utilizando la aplicación.";
 
 /* No comment provided by engineer. */
 "Wednesday" = "Miércoles";

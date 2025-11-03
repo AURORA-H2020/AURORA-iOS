@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Ta projekt](https://www.aurora-h2020.eu/) financira program Evropske unije za raziskave in inovacije Obzorje 2020 v okviru sporazuma o dodelitvi sredstev št. [101036418](https://cordis.europa.eu/project/id/101036418).";
-
-/* No comment provided by engineer. */
 "%@ in %@" = "%@ v %@";
 
 /* No comment provided by engineer. */
@@ -788,9 +785,6 @@
 "The next notification will be sent on %@" = "Naslednje obvestilo bo poslano %@";
 
 /* No comment provided by engineer. */
-"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Ta aplikacija je bila razvita v okviru projekta AURORA, ki ga financira EU v okviru programa Obzorje 2020 (št. projekta [101036418](https://cordis.europa.eu/project/id/101036418)). Vaši podatki se obdelujejo s strani članov konzorcija projekta in varno shranjujejo v sistemu Google Firebase. Vaši podatki bodo uporabljeni izključno za raziskovalne namene v anonimizirani obliki in nikoli komercialno, brez vašega izrecnega soglasja. Svoje podatke lahko kadar koli spremenite, prenesete ali izbrišete ter se obrnete na našo podporo na naslovu [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). Z nadaljevanjem se strinjate s  [Pogoji uporabe](https://www.aurora-h2020.eu/sl/aurora/app-tos) in [Pravilnikom o zasebnosti](https://www.aurora-h2020.eu/sl/aurora/app-privacy-policy) AURORA.";
-
-/* No comment provided by engineer. */
 "This entry was automatically added via recurring consumptions." = "Ta vnos je bil avtomatsko dodan kot ponavljajoča poraba.";
 
 /* No comment provided by engineer. */
@@ -864,9 +858,6 @@
 
 /* No comment provided by engineer. */
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Lahko vas opomnimo, da redno vnašate podatke o prevozu. Sporočite nam, kako pogosto potujete.";
-
-/* No comment provided by engineer. */
-"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Posodobili smo [Pravilnik o zasebnosti](https://www.aurora-h2020.eu/sl/aurora/app-privacy-policy) in [Pogoje uporabe storitev](https://www.aurora-h2020.eu/sl/aurora/app-tos). Če želite nadaljevati z uporabo aplikacije, preglejte in sprejmite najnovejšo različico.";
 
 /* No comment provided by engineer. */
 "Wednesday" = "Sreda";
