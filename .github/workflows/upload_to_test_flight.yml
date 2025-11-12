@@ -33,17 +33,17 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
       - name: Upload IPA Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ipa
           path: app.ipa
       - name: Upload Debug Symbols Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dSYM
           path: app.app.dSYM.zip
       - name: Upload Firebase Crashlytics Binary Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: upload-symbols-binary
           path: build/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols
@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Download IPA Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ipa
       - name: Upload to TestFlight
@@ -70,11 +70,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Download Debug Symbols Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dSYM
       - name: Download Firebase Crashlytics Binary Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: upload-symbols-binary
       - name: Make upload-symbols binary executable

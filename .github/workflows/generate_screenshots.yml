@@ -29,7 +29,7 @@ jobs:
           FASTLANE_SNAPSHOT_UI_TEST_EMAIL: ${{ secrets.FASTLANE_SNAPSHOT_UI_TEST_EMAIL }}
           FASTLANE_SNAPSHOT_UI_TEST_PASSWORD: ${{ secrets.FASTLANE_SNAPSHOT_UI_TEST_PASSWORD }}
       - name: Upload Screenshots Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Screenshots
           path: fastlane/screenshots
