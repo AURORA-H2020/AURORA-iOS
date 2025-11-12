@@ -82,6 +82,18 @@ extension ConsumptionScreen.OverviewSection: View {
                 .foregroundColor(.accentColor)
                 .accessibilityIdentifier("AddRecurringConsumption")
             }
+            NavigationLink(
+                destination: RecommendationListView(
+                    user: self.user
+                )
+            ) {
+                Label(
+                    "Recommendations",
+                    systemImage: "lightbulb"
+                )
+                .foregroundColor(.accentColor)
+                .accessibilityIdentifier("RecommendationsLink")
+            }
             Button(
                 destination: AURORAWebsiteLink.tools.url
             ) {
