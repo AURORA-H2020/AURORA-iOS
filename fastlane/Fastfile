@@ -49,6 +49,7 @@ platform :ios do
     )
     # Build App
     build_ios_app(
+      scheme: "AURORA",
       output_name: "app",
       export_method: "app-store",
       derived_data_path: "build"
