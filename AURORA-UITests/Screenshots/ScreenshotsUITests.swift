@@ -22,10 +22,10 @@ final class ScreenshotsUITests: XCTestCase {
         // Initialize App
         let app = XCUIApplication()
         // Check if home tab does not exists
-        if !app.tabBars.buttons["HomeTab"].exists {
-            // Wait until home tab exists
+        if !app.buttons["HomeTab"].firstMatch.exists {
             XCTAssertTrue(
-                app.tabBars.buttons["HomeTab"].waitForExistence(timeout: 10)
+                app.buttons["HomeTab"].firstMatch.waitForExistence(timeout: 10),
+                "Home tab not found"
             )
         }
         // Snapshot dashboard
@@ -45,7 +45,7 @@ final class ScreenshotsUITests: XCTestCase {
         // Tap close modal button
         app.buttons["CloseModal"].tap()
         // Tap settings tab
-        app.tabBars.buttons["SettingsTab"].tap()
+        app.buttons["SettingsTab"].firstMatch.tap()
         // Snapshot settings
         snapshot("3_Settings")
     }
