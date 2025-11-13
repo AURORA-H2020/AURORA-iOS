@@ -10,7 +10,7 @@ concurrency:
 jobs:
   upload:
     name: Import Localizations from LingoHub
-    runs-on: macos-latest
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v3
       - name: Install LingoHub CLI
