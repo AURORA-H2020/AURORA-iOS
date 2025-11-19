@@ -94,10 +94,10 @@ platform :ios do
   lane :screenshots do
     # The devices to capture screenshots for
     devices = [
-      "iPhone 17 Pro Max",
+      "iPhone 13 Pro Max",
       "iPhone SE (3rd generation)",
-      "iPad Pro 13-inch (M5)",
-      "iPad Pro 11-inch (M5)"
+      "iPad Pro (12.9-inch) (6th generation)",
+      "iPad Pro (11-inch) (4th generation)"
     ]
     # The languages
     languages = [
@@ -112,6 +112,31 @@ platform :ios do
     scheme = "AURORA"
     # The derived data path
     derivedDataPath = "./build"
+    # Ensure simulators exist
+    devices.each do |device_name|
+      # Check if simulator exists
+      existing = sh("xcrun simctl list devices available | grep -c '#{device_name}' || true").strip.to_i
+      if existing == 0
+        UI.message("Creating simulator: #{device_name}")
+        # Map device names to device type identifiers
+        device_type = case device_name
+        when "iPhone 13 Pro Max"
+          "com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro-Max"
+        when "iPhone SE (3rd generation)"
+          "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"
+        when "iPad Pro (12.9-inch) (6th generation)"
+          "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-12-9-inch-6th-generation"
+        when "iPad Pro (11-inch) (4th generation)"
+          "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-4th-generation"
+        end
+        # Get the latest iOS runtime
+        runtime = sh("xcrun simctl list runtimes available | grep 'iOS' | tail -1 | awk '{print $NF}'").strip
+        # Create the simulator
+        sh("xcrun simctl create '#{device_name}' '#{device_type}' '#{runtime}'")
+      else
+        UI.message("Simulator already exists: #{device_name}")
+      end
+    end
     # Build tests
     run_tests(
       scheme: scheme,
