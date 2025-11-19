@@ -13,7 +13,7 @@ concurrency:
 jobs:
   build_app:
     name: Build App
-    runs-on: macos-latest
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v3
       - name: Cache build files
@@ -23,8 +23,6 @@ jobs:
           key: ${{ runner.os }}-spm-${{ hashFiles('AURORA.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
           restore-keys: |
             ${{ runner.os }}-spm-
-      - name: Select Xcode version
-        run: xcodes select 15.3
       - name: Build App
         run: fastlane build_app_lane
         env:
@@ -35,32 +33,30 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
       - name: Upload IPA Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ipa
           path: app.ipa
       - name: Upload Debug Symbols Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dSYM
           path: app.app.dSYM.zip
       - name: Upload Firebase Crashlytics Binary Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: upload-symbols-binary
           path: build/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols
   upload_to_test_flight:
     name: Upload to TestFlight
-    runs-on: macos-latest
+    runs-on: macos-26
     needs: build_app
     steps:
       - uses: actions/checkout@v3
       - name: Download IPA Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ipa
-      - name: Select Xcode version
-        run: xcodes select 15.3
       - name: Upload to TestFlight
         run: fastlane upload_to_test_flight_lane
         env:
@@ -69,21 +65,19 @@ jobs:
           APP_STORE_CONNECT_API_KEY_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_PRIVATE_KEY }}
   upload_debug_symbols:
     name: Upload Debug Symbols to Firebase Crashlytics
-    runs-on: macos-latest
+    runs-on: macos-26
     needs: build_app
     steps:
       - uses: actions/checkout@v3
       - name: Download Debug Symbols Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dSYM
       - name: Download Firebase Crashlytics Binary Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: upload-symbols-binary
       - name: Make upload-symbols binary executable
         run: chmod +x upload-symbols
-      - name: Select Xcode version
-        run: xcodes select 15.3
       - name: Upload Debug Symbols to Firebase Crashlytics
         run: fastlane upload_debug_symbols_to_crashlytics_lane

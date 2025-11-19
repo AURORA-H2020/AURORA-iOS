@@ -92,7 +92,7 @@ extension Firebase.Authentication {
                 .firebaseAuthenticationProviders
                 .first(where: { $0.provider == provider }) else {
                 // Otherwise throw unsupported provider error
-                throw AuthErrorCode(.noSuchProvider)
+                throw AuthErrorCode.noSuchProvider
             }
             // Record any error which occurs when trying to sign in
             return try await self.firebase.crashlytics.recordError {
@@ -200,8 +200,8 @@ extension Firebase.Authentication {
             )
         // Update email
         try await userAccount
-            .updateEmail(
-                to: newMailAddress
+            .sendEmailVerification(
+                beforeUpdatingEmail: newMailAddress
             )
     }
     

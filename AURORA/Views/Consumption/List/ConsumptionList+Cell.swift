@@ -37,7 +37,6 @@ extension ConsumptionList.Cell: View {
     var body: some View {
         HStack(spacing: 10) {
             self.consumption
-                .category
                 .icon
                 .imageScale(.small)
                 .frame(minWidth: 32, minHeight: 32)
@@ -45,7 +44,7 @@ extension ConsumptionList.Cell: View {
                 .background(self.consumption.category.tintColor.opacity(0.3))
                 .clipShape(Circle())
             VStack(alignment: .leading) {
-                Text(self.consumption.category.localizedString)
+                Text(self.consumption.localizedTitle)
                     .foregroundColor(.primary)
                 Group {
                     switch self.consumption.category {
@@ -111,11 +110,12 @@ extension ConsumptionList.Cell: View {
                 Label("Delete", systemImage: "trash")
             }
             .tint(.red)
-            if let editAction = self.editAction {
+            if let editAction = self.editAction,
+               self.consumption.generatedByPvInvestmentId == nil {
                 Button {
                     editAction()
                 } label: {
-                    Label("Edit", systemImage: "square.and.pencil")
+                    Label("Edit", systemImage: "pencil.circle")
                 }
                 .tint(.accentColor)
             }

@@ -30,6 +30,10 @@ final class Firebase: ObservableObject {
     @Published
     var city: Result<City?, Error>?
     
+    /// The PhotovoltaicPlant.
+    @Published
+    var photovoltaicPlant: Result<PhotovoltaicPlant?, Error>?
+    
     /// The Firebase Auth instance.
     private(set) lazy var firebaseAuth = FirebaseAuth.Auth.auth()
     
@@ -66,6 +70,9 @@ final class Firebase: ObservableObject {
     
     /// The city document snapshot cancellable
     private var cityDocumentSnapshotCancellable: AnyCancellable?
+    
+    /// The photovoltaic plant document snapshot cancellable
+    private var photovoltaicPlantDocumentSnapshotCancellable: AnyCancellable?
     
     // MARK: Initializer
     
@@ -176,6 +183,8 @@ extension Firebase {
         self.countryDocumentSnapshotCancellable = nil
         // Clear current city document cancellable
         self.cityDocumentSnapshotCancellable = nil
+        // Clear photovoltaic plant document cancellable
+        self.photovoltaicPlantDocumentSnapshotCancellable = nil
         // Verify a user account is available
         guard let userAccount = userAccount else {
             // Clear user
@@ -184,6 +193,8 @@ extension Firebase {
             self.country = nil
             // Clear city
             self.city = nil
+            // Clear photovoltaic plant
+            self.photovoltaicPlant = nil
             // Return out of function
             return
         }
@@ -203,6 +214,7 @@ extension Firebase {
     
     /// Setup using User
     /// - Parameter user: The User Result
+    // swiftlint:disable:next function_body_length
     private func setup(
         using user: Result<User?, Error>?
     ) {
@@ -210,6 +222,8 @@ extension Firebase {
         self.countryDocumentSnapshotCancellable = nil
         // Clear current city document cancellable
         self.cityDocumentSnapshotCancellable = nil
+        // Clear current photovoltaic plant document cancellable
+        self.photovoltaicPlantDocumentSnapshotCancellable = nil
         // Switch on user
         switch user {
         case .success(let user):
@@ -242,6 +256,34 @@ extension Firebase {
                     .sink { [weak self] city in
                         // Update city
                         self?.city = city
+                        // Clear current photovoltaic plant document cancellable
+                        self?.photovoltaicPlantDocumentSnapshotCancellable = nil
+                        // Verify a city identifier is available
+                        guard let cityId = (try? city.get())?.id else {
+                            // Otherwise clear photovoltaic plant
+                            self?.photovoltaicPlant = .success(nil)
+                            // Return out of function
+                            return
+                        }
+                        // Add snapshot listener to photovoltaic plant
+                        self?.photovoltaicPlantDocumentSnapshotCancellable = self?.firestore
+                            .publisher(PhotovoltaicPlant.self) { collectionReference in
+                                collectionReference
+                                    .whereField("city", isEqualTo: cityId)
+                                    .limit(to: 1)
+                            }
+                            .compactMap(\.first)
+                            .sink { [weak self] photovoltaicPlant in
+                                // Update photovoltaic plant
+                                self?.photovoltaicPlant = {
+                                    switch photovoltaicPlant {
+                                    case .success(let photovoltaicPlant):
+                                        return .success(photovoltaicPlant)
+                                    case .failure(let error):
+                                        return .failure(error)
+                                    }
+                                }()
+                            }
                     }
             } else {
                 // Otherwise update city to nil
@@ -251,10 +293,12 @@ extension Firebase {
             // Update to failure
             self.country = .failure(error)
             self.city = .failure(error)
+            self.photovoltaicPlant = .failure(error)
         case nil:
             // Update to nil
             self.country = nil
             self.city = nil
+            self.photovoltaicPlant = nil
         }
     }
     

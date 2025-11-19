@@ -244,37 +244,24 @@ private extension ConsumptionForm {
             from: .init(locale: self.locale),
             to: .metric
         )
-        // Initialize an UINotificationFeedbackGenerator
-        let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
-        do {
-            // Check if an identifier is available
-            if consumption.id == nil {
-                // Add consumption
-                try self.firebase
-                    .firestore
-                    .add(
-                        consumption,
-                        context: .current()
-                    )
-            } else {
-                // Update consumption
-                try self.firebase
-                    .firestore
-                    .update(
-                        consumption,
-                        context: .current()
-                    )
-            }
-        } catch {
-            // Invoke error feedback
-            notificationFeedbackGenerator
-                .notificationOccurred(.error)
-            // Rethrow error
-            throw error
+        // Check if an identifier is available
+        if consumption.id == nil {
+            // Add consumption
+            try self.firebase
+                .firestore
+                .add(
+                    consumption,
+                    context: .current()
+                )
+        } else {
+            // Update consumption
+            try self.firebase
+                .firestore
+                .update(
+                    consumption,
+                    context: .current()
+                )
         }
-        // Invoke success feedback
-        notificationFeedbackGenerator
-            .notificationOccurred(.success)
         // Dismiss
         self.dismiss()
     }
@@ -446,18 +433,11 @@ private extension ConsumptionForm {
             header: Text("Description"),
             footer: Text("You may add a description to your entry to help you find it later.")
         ) {
-            if #available(iOS 16.0, *) {
-                TextField(
-                    "Description",
-                    text: self.$description,
-                    axis: .vertical
-                )
-            } else {
-                TextField(
-                    "Description",
-                    text: self.$description
-                )
-            }
+            TextField(
+                "Description",
+                text: self.$description,
+                axis: .vertical
+            )
         }
         .headerProminence(.increased)
         Section(
@@ -486,14 +466,9 @@ private extension ConsumptionForm {
                 .disabled((try? self.consumption) == nil)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
-                NetworkPathReader { path in
-                    if path?.status != .satisfied {
-                        Text("It seems you're offline. Your data will automatically sync as soon as you reconnect to the internet.")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                    }
-                }
+                NetworkPathReader
+                    .unsatisfiedWarning
+                    .multilineTextAlignment(.center)
             }
             .align(.centerHorizontal)
         ) {

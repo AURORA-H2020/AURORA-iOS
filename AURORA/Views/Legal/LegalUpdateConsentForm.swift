@@ -35,7 +35,7 @@ extension LegalUpdateConsentForm: View {
             systemImage: "info.circle.fill",
             systemImageColor: .accentColor,
             title: "Important",
-            subtitle: "We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app.",
+            subtitle: "We have updated our [Privacy Policy](\(AURORAWebsiteLink.appPrivacyPolicy.absoluteString)) and [Terms of Service](\(AURORAWebsiteLink.appTermsOfServices.absoluteString)). Please review and accept the latest version to continue using the app.",
             primaryAction: .init(title: "Accept") {
                 try? self.firebase
                     .firestore

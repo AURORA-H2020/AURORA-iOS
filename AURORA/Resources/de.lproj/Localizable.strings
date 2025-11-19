@@ -1,8 +1,17 @@
 /* No comment provided by engineer. */
-"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Dieses Projekt](https://www.aurora-h2020.eu/) wurde durch das Forschungs- und Innovationsprogramm Horizon 2020 der Europäischen Union unter der Fördernummer [101036418](https://cordis.europa.eu/project/id/101036418) gefördert.";
+"—" = "—";
+
+/* No comment provided by engineer. */
+"[This project](%@) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Dieses Projekt](%@) wurde durch das Forschungs- und Innovationsprogramm Horizon 2020 der Europäischen Union unter der Fördernummer [101036418](https://cordis.europa.eu/project/id/101036418) gefördert.";
 
 /* No comment provided by engineer. */
 "%@ in %@" = "%@ in %@";
+
+/* No comment provided by engineer. */
+"•" = "•";
+
+/* No comment provided by engineer. */
+"1 Share = %@ (%@)" = "1 Anteil = %@ (%@)";
 
 /* No comment provided by engineer. */
 "About the App" = "Über die App";
@@ -26,10 +35,19 @@
 "Add a consumption" = "Verbrauch hinzufügen";
 
 /* No comment provided by engineer. */
+"Add a note to your investment for personal reference." = "Fügen Sie eine Notiz zu Ihrer Investition als persönliche Referenz hinzu.";
+
+/* No comment provided by engineer. */
 "Add consumption" = "Verbrauch hinzufügen";
 
 /* No comment provided by engineer. */
 "Add Consumption" = "Verbrauch hinzufügen";
+
+/* No comment provided by engineer. */
+"Add investment" = "Investitionen hinzufügen";
+
+/* No comment provided by engineer. */
+"Add Investment" = "Investitionen hinzufügen";
 
 /* No comment provided by engineer. */
 "Add your electricity data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Fügen Sie Ihre Stromdaten dem AURORA Energy Tracker hinzu und überblicken Sie Ihre Fortschritte auf dem Weg zu einem nahezu emissionsfreien Bürger!";
@@ -42,6 +60,9 @@
 
 /* No comment provided by engineer. */
 "Add your mobility data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Fügen Sie Ihre Mobilitätsdaten dem AURORA Energy Tracker hinzu und überblicken Sie Ihre Fortschritte auf dem Weg zu einem nahezu emissionsfreien Bürger!";
+
+/* No comment provided by engineer. */
+"All Investments" = "Alle Investitionen";
 
 /* No comment provided by engineer. */
 "Almost empty" = "Fast leer";
@@ -89,6 +110,9 @@
 "An error occurred while trying to save your consumption. Please try again." = "Beim Versuch Ihren Verbrauch zu speichern ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
 
 /* No comment provided by engineer. */
+"An error occurred while trying to save your investment. Please try again." = "Beim Versuch Ihre Investition zu speichern ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
+
+/* No comment provided by engineer. */
 "An error occurred while trying to save your recurring consumption." = "Beim Speichern Ihres wiederkehrenden Verbrauchs ist ein Fehler aufgetreten.";
 
 /* No comment provided by engineer. */
@@ -108,6 +132,12 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the entry?\nPlease note that it can take up to a minute for your summary to update." = "Sind Sie sicher, dass Sie den Eintrag löschen möchten?\nBitte beachten Sie, dass es bis zu einer Minute dauern kann, bis Ihre Zusammenfassung aktualisiert wird.";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the investment?" = "Sind Sie sicher, dass Sie diese Investition löschen wollen?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this recommendation?" = "Sind Sie sicher, dass Sie diese Empfehlung löschen möchten?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete your account?" = "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?";
@@ -156,6 +186,9 @@
 
 /* No comment provided by engineer. */
 "Cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"Capacity" = "Kapazität";
 
 /* No comment provided by engineer. */
 "Carbon emissions" = "CO₂-Emissionen";
@@ -242,6 +275,9 @@
 "Data privacy" = "Datenschutz";
 
 /* No comment provided by engineer. */
+"Date" = "Datum";
+
+/* No comment provided by engineer. */
 "Day" = "Tag";
 
 /* No comment provided by engineer. */
@@ -260,7 +296,13 @@
 "Delete Forever" = "Für immer löschen";
 
 /* No comment provided by engineer. */
+"Delete Investment" = "Investition löschen";
+
+/* No comment provided by engineer. */
 "Delete my account" = "Mein Konto löschen";
+
+/* No comment provided by engineer. */
+"Delete Recommendation" = "Empfehlung löschen";
 
 /* No comment provided by engineer. */
 "Description" = "Beschreibung";
@@ -308,6 +350,9 @@
 "Edit Consumption" = "Verbrauch bearbeiten";
 
 /* No comment provided by engineer. */
+"Edit Investment" = "Investition bearbeiten";
+
+/* No comment provided by engineer. */
 "Edit profile" = "Profil bearbeiten";
 
 /* No comment provided by engineer. */
@@ -333,6 +378,9 @@
 
 /* No comment provided by engineer. */
 "Electricity" = "Elektrizität";
+
+/* No comment provided by engineer. */
+"Electricity (PV)" = "Elektrizität (PV)";
 
 /* No comment provided by engineer. */
 "Electricity bill reminder" = "Erinnerung an die Stromrechnung";
@@ -380,10 +428,16 @@
 "Enter your information to create your personal AURORA profile." = "Geben Sie Ihre Daten ein, um Ihr persönliches AURORA-Profil zu erstellen.";
 
 /* No comment provided by engineer. */
+"Entering your investment data is exclussively for recording purposes. This does not formulate an actual investment or binding order in any form." = "Die Eingabe Ihrer Anlagedaten dient ausschliesslich der Erfassung. Dies stellt keine tatsächliche Investition oder verbindliche Bestellung in irgendeiner Form dar.";
+
+/* No comment provided by engineer. */
 "Entries" = "Einträge";
 
 /* No comment provided by engineer. */
 "Error" = "Fehler";
+
+/* No comment provided by engineer. */
+"Estimate Savings" = "Einsparung schätzen";
 
 /* No comment provided by engineer. */
 "Explorer" = "Entdecker*in";
@@ -488,6 +542,12 @@
 "How many people, including you, live in your household." = "Wie viele Personen, einschließlich Ihnen, leben in Ihrem Haushalt?";
 
 /* No comment provided by engineer. */
+"How much of the solar panel installation's capacity your investment corresponds to.\nYou should find this information in the documents you received when you made your investment." = "Wie viel der Kapazität der Solaranlage Ihre Investition ausmacht. Diese Informationen finden Sie in den Unterlagen, die Sie bei Ihrer Investition erhalten haben.";
+
+/* No comment provided by engineer. */
+"How to invest?" = "Wie kann ich investieren?";
+
+/* No comment provided by engineer. */
 "Hybrid car" = "Hybrid-Auto";
 
 /* No comment provided by engineer. */
@@ -497,13 +557,28 @@
 "I would like to receive updates about the app and AURORA project by email." = "Ich möchte Updates über die App und das AURORA-Projekt per E-Mail erhalten.";
 
 /* No comment provided by engineer. */
+"If you have made additional investments at a later date, please add a new investment instead. Editing your existing investments may result in inaccurate tracking. " = "Wenn Sie zu einem späteren Zeitpunkt eine zusätzliche Investition getätigt haben, fügen Sie bitte stattdessen eine neue Investition hinzu. Die Bearbeitung Ihrer bestehenden Investitionen kann zu einer ungenauen Erfassung führen.";
+
+/* No comment provided by engineer. */
 "Important" = "Wichtig";
+
+/* No comment provided by engineer. */
+"Important!" = "Wichtig!";
 
 /* No comment provided by engineer. */
 "Imprint" = "Impressum";
 
 /* No comment provided by engineer. */
+"In the past 30 days" = "In den letzten 30 Tagen";
+
+/* No comment provided by engineer. */
+"Installation Site" = "Aufstellungsort";
+
+/* No comment provided by engineer. */
 "Investment" = "Investition";
+
+/* No comment provided by engineer. */
+"Investment Date" = "Investitionsdatum";
 
 /* No comment provided by engineer. */
 "It seems you're offline. Your data will automatically sync as soon as you reconnect to the internet." = "Es scheint, dass Sie offline sind. Ihre Daten werden automatisch synchronisiert, sobald Sie wieder mit dem Internet verbunden sind.";
@@ -543,6 +618,15 @@
 
 /* No comment provided by engineer. */
 "Male" = "Männlich";
+
+/* No comment provided by engineer. */
+"Manage Investment" = "Investitionen verwalten";
+
+/* No comment provided by engineer. */
+"Mark read" = "Gelesen markieren";
+
+/* No comment provided by engineer. */
+"Mark unread" = "Ungelesen markieren";
 
 /* No comment provided by engineer. */
 "Medium occupancy" = "Mittlere Auslastung";
@@ -590,7 +674,13 @@
 "No consumption entered yet (?)" = "Noch kein Verbrauch eingegeben (?)";
 
 /* No comment provided by engineer. */
+"No recommendations yet." = "Noch keine Empfehlungen.";
+
+/* No comment provided by engineer. */
 "Non Binary" = "Nicht-binär";
+
+/* No comment provided by engineer. */
+"Note" = "Notiz";
 
 /* No comment provided by engineer. */
 "Notifications" = "Benachrichtigungen";
@@ -644,6 +734,12 @@
 "People in household: %lld" = "Personen im Haushalt: %lld";
 
 /* No comment provided by engineer. */
+"Photovoltaic" = "Photovoltaik";
+
+/* No comment provided by engineer. */
+"Photovoltaic Plant Investment" = "Photovoltaikanlagen Investition";
+
+/* No comment provided by engineer. */
 "Plane (domestic)" = "Flugzeug (Inland)";
 
 /* No comment provided by engineer. */
@@ -683,13 +779,34 @@
 "produced" = "produziert";
 
 /* No comment provided by engineer. */
+"Production" = "Produktion";
+
+/* No comment provided by engineer. */
 "Profile" = "Profil";
+
+/* No comment provided by engineer. */
+"PV Investment" = "PV-Investition";
 
 /* No comment provided by engineer. */
 "Quit" = "Beenden";
 
 /* No comment provided by engineer. */
+"Read" = "Gelesen";
+
+/* No comment provided by engineer. */
 "Recent login required" = "Neue Anmeldung erforderlich";
+
+/* No comment provided by engineer. */
+"Recommendation" = "Empfehlung";
+
+/* No comment provided by engineer. */
+"Recommendations" = "Empfehlungen";
+
+/* No comment provided by engineer. */
+"Recommendations are updated regularly as you enter more data." = "Die Empfehlungen werden regelmäßig aktualisiert, wenn Sie weitere Daten eingeben.";
+
+/* No comment provided by engineer. */
+"Record your Investment" = "Erfassen Sie Ihre Investition";
 
 /* No comment provided by engineer. */
 "Recurring consumptions" = "Wiederkehrende Verbräuche";
@@ -737,6 +854,9 @@
 "Save changes" = "Änderungen speichern";
 
 /* No comment provided by engineer. */
+"See full data" = "Alle Daten zeigen";
+
+/* No comment provided by engineer. */
 "Select" = "Auswählen";
 
 /* No comment provided by engineer. */
@@ -758,7 +878,22 @@
 "Settings" = "Einstellungen";
 
 /* No comment provided by engineer. */
+"Share" = "Anteil";
+
+/* No comment provided by engineer. */
+"Shares" = "Anteile";
+
+/* No comment provided by engineer. */
 "Show all entries" = "Alle Einträge anzeigen";
+
+/* No comment provided by engineer. */
+"Since %@" = "Seit %@";
+
+/* No comment provided by engineer. */
+"Since Investment" = "Seit Investition";
+
+/* No comment provided by engineer. */
+"Solar Panel Information" = "Informationen zum Solarmodul";
 
 /* No comment provided by engineer. */
 "Solar Power" = "Solarenergie";
@@ -773,6 +908,9 @@
 "Start of travel" = "Beginn der Fahrt";
 
 /* No comment provided by engineer. */
+"Status" = "Status";
+
+/* No comment provided by engineer. */
 "Submit" = "Bestätigen";
 
 /* No comment provided by engineer. */
@@ -785,13 +923,22 @@
 "Terms of Service" = "Nutzungsbedingungen";
 
 /* No comment provided by engineer. */
+"The day you made the investment on." = "Der Tag, an dem Sie die Investition getätigt haben.";
+
+/* No comment provided by engineer. */
 "The next notification will be sent on %@" = "Die nächste Benachrichtigung wird am %@ gesendet";
 
 /* No comment provided by engineer. */
-"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Diese App wurde im Rahmen des von der EU geförderten Projekts AURORA Horizon 2020 (Nr. [101036418](https://cordis.europa.eu/project/id/101036418)) entwickelt. Ihre Daten werden von den Mitgliedern des Projektkonsortiums verarbeitet und sicher in Google Firebase gespeichert. Ihre Daten werden nur in anonymisierter Form für Forschungszwecke verwendet und niemals ohne Ihre ausdrückliche Zustimmung kommerziell genutzt. Sie können Ihre Daten jederzeit ändern, herunterladen oder löschen oder sich an unseren Support unter [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu) wenden. Indem Sie fortfahren, erklären Sie sich mit den [Nutzungsbedingungen](https://www.aurora-h2020.eu/de/aurora/app-tos) und der [Datenschutzrichtlinie](https://www.aurora-h2020.eu/de/aurora/app-privacy-policy) von AURORA einverstanden.";
+"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](%@) and [Privacy Policy](%@)." = "Diese App wurde im Rahmen des von der EU geförderten Projekts AURORA Horizon 2020 (Nr. [101036418](https://cordis.europa.eu/project/id/101036418)) entwickelt. Ihre Daten werden von den Mitgliedern des Projektkonsortiums verarbeitet und sicher in Google Firebase gespeichert. Ihre Daten werden nur in anonymisierter Form für Forschungszwecke verwendet und niemals ohne Ihre ausdrückliche Zustimmung kommerziell genutzt. Sie können Ihre Daten jederzeit ändern, herunterladen oder löschen oder sich an unseren Support unter [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu) wenden. Indem Sie fortfahren, erklären Sie sich mit den [Nutzungsbedingungen](%@) und der [Datenschutzrichtlinie](%@) von AURORA einverstanden.";
 
 /* No comment provided by engineer. */
 "This entry was automatically added via recurring consumptions." = "Dieser Eintrag wurde automatisch über wiederkehrende Verbräuche hinzugefügt.";
+
+/* No comment provided by engineer. */
+"This entry was created by your PV investment. It will update automatically with the latest data." = "Dieser Eintrag wurde von Ihrer PV-Investition erstellt und wird automatisch mit den neuesten Daten aktualisiert.";
+
+/* No comment provided by engineer. */
+"This feature is currently not supported in your region." = "Diese Funktion wird derzeit in Ihrer Region nicht unterstützt.";
 
 /* No comment provided by engineer. */
 "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.\nCrowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners." = "Diese Informationen helfen uns, Ihren CO₂-Fußabdruck genauer zu berechnen. Bitte beachten Sie, dass Sie Ihr Land später nicht mehr ändern können.\nCrowdfunding für lokale Photovoltaikanlagen ist derzeit nur für ausgewählte Städte der AURORA-Projektpartner geplant.";
@@ -804,6 +951,12 @@
 
 /* No comment provided by engineer. */
 "Time" = "Zeit";
+
+/* No comment provided by engineer. */
+"To help you improve your energy behaviour, AURORA provides you with personalised recommendations based on your energy usage data." = "Um Sie bei der Verbesserung Ihres Energieverhaltens zu unterstützen, bietet AURORA Ihnen personalisierte Empfehlungen auf der Grundlage Ihrer Energieverbrauchsdaten.";
+
+/* No comment provided by engineer. */
+"Total Production" = "Produktion insgesamt";
 
 /* No comment provided by engineer. */
 "Trains & Trams" = "Züge & Straßenbahnen";
@@ -828,6 +981,9 @@
 
 /* No comment provided by engineer. */
 "Unknown" = "Unbekannt";
+
+/* No comment provided by engineer. */
+"Unread" = "Ungelesen";
 
 /* No comment provided by engineer. */
 "Unsaved changes" = "Nicht gespeicherte Änderungen";
@@ -866,7 +1022,7 @@
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Wir können Sie daran erinnern, Ihre Transportdaten regelmäßig einzugeben. Teilen Sie uns einfach mit, wie häufig Sie unterwegs sind.";
 
 /* No comment provided by engineer. */
-"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Wir haben unsere [Datenschutzrichtlinien](https://www.aurora-h2020.eu/de/aurora/app-privacy-policy) und [Nutzungsbedingungen](https://www.aurora-h2020.eu/de/aurora/app-tos) aktualisiert. Bitte prüfen und akzeptieren Sie die neueste Version, um die App weiterhin nutzen zu können.";
+"We have updated our [Privacy Policy](%@) and [Terms of Service](%@). Please review and accept the latest version to continue using the app." = "Wir haben unsere [Datenschutzrichtlinie](%@) und [Nutzungsbedingungen](%@) aktualisiert. Bitte prüfen und akzeptieren Sie die neueste Version, um die App weiterhin nutzen zu können.";
 
 /* No comment provided by engineer. */
 "Wednesday" = "Mittwoch";
@@ -938,13 +1094,28 @@
 "Your investment" = "Ihre Investition";
 
 /* No comment provided by engineer. */
+"Your investment in your local AURORA solar power installations helps reduce your\ncarbon footprint. Here you can see a breakdown of the total energy produced by the\ninstallation (Total Production) and your investment's contribution (Your Production). Your\ncontribution is automatically added as an offset to your profile each Friday morning to help\nyou reach near-zero emissions." = "Ihre Investition in Ihre lokale AURORA-Solaranlage trägt dazu bei, Ihren ökologischen Fußabdruck zu verringern. Hier sehen Sie eine Aufschlüsselung der gesamten von der Anlage erzeugten Energie (Produktion insgesamt) und den Beitrag Ihrer Investition (Ihre Produktion). Ihr Beitrag wird jeden Freitag Morgen automatisch als Ausgleich zu Ihrem Profil hinzugefügt, um Ihnen zu helfen, Ihre Emissionen nahezu auf Null zu reduzieren.";
+
+/* No comment provided by engineer. */
+"Your Investments" = "Ihre Investitionen";
+
+/* No comment provided by engineer. */
+"Your Latest Investment" = "Ihre letzte Investition";
+
+/* No comment provided by engineer. */
 "Your Password has successfully been changed." = "Ihr Passwort wurde erfolgreich geändert.";
 
 /* No comment provided by engineer. */
 "Your performance" = "Ihr Energieverbrauch";
 
 /* No comment provided by engineer. */
+"Your Production" = "Ihre Produktion";
+
+/* No comment provided by engineer. */
 "Your profile changes couldn't be saved. Please check your inputs and try again." = "Ihre Profiländerungen konnten nicht gespeichert werden. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.";
+
+/* No comment provided by engineer. */
+"Your recommendations" = "Ihre Empfehlungen";
 
 /* No comment provided by engineer. */
 "Your Solar Power" = "Ihr Solarstrom";

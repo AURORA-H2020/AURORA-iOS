@@ -44,7 +44,7 @@ extension Firebase.Crashlytics {
         if !self.crashlytics.isCrashlyticsCollectionEnabled() {
             print(
                 "[Crashlytics]",
-                error.localizedDescription,
+                "\(error)",
                 "File: \(file)",
                 "Function: \(function)",
                 "Line: \(line)",

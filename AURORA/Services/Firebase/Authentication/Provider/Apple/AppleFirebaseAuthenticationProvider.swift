@@ -135,7 +135,9 @@ extension AppleFirebaseAuthenticationProvider: FirebaseAuthenticationProvider {
                             continuation.resume(throwing: error)
                         }
                     },
-                    receiveValue: continuation.resume
+                    receiveValue: { credential in
+                        continuation.resume(returning: credential)
+                    }
                 )
         }
     }
@@ -179,7 +181,7 @@ extension AppleFirebaseAuthenticationProvider: AuthenticationServices.ASAuthoriz
         Firebase.Authentication.State.displayNameComponents = appleIDCredential.fullName
         // Initialize OAuthCredential
         let oAuthCredential = FirebaseAuth.OAuthProvider.credential(
-            withProviderID: Firebase.Authentication.Provider.apple.rawValue,
+            providerID: .apple,
             idToken: .init(
                 decoding: appleIdentitiyToken,
                 as: UTF8.self

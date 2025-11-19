@@ -51,38 +51,7 @@ extension ConsumptionScreen.OverviewSection: View {
     
     /// The content and behavior of the view.
     var body: some View {
-        Section(
-            header: VStack(spacing: 15) {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(
-                            "Your performance"
-                        )
-                        .fontWeight(.semibold)
-                    }
-                    Spacer()
-                    Image("AURORA-Logo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 50)
-                }
-                .padding([.top, .horizontal])
-                if let consumptionSummary = self.consumptionSummaries.first {
-                    HStack {
-                        ForEach(ConsumptionSummary.Mode.allCases, id: \.self) { mode in
-                            self.labeledConsumptionButton(
-                                mode: mode,
-                                consumption: consumptionSummary.labeledConsumption(for: mode)
-                            ) {
-                                self.sheet = .consumptionSummary(mode)
-                            }
-                        }
-                    }
-                }
-            }
-            .listRowInsets(.init())
-            .padding(.bottom)
-        ) {
+        Section {
             Button {
                 self.sheet = .consumptionSummary()
             } label: {
@@ -113,10 +82,20 @@ extension ConsumptionScreen.OverviewSection: View {
                 .foregroundColor(.accentColor)
                 .accessibilityIdentifier("AddRecurringConsumption")
             }
-            Link(
-                destination: .init(
-                    string: "https://www.aurora-h2020.eu/tools"
-                )!
+            NavigationLink(
+                destination: RecommendationListView(
+                    user: self.user
+                )
+            ) {
+                Label(
+                    "Recommendations",
+                    systemImage: "lightbulb"
+                )
+                .foregroundColor(.accentColor)
+                .accessibilityIdentifier("RecommendationsLink")
+            }
+            Button(
+                destination: AURORAWebsiteLink.tools.url
             ) {
                 Label(
                     "Learn more",
@@ -124,6 +103,37 @@ extension ConsumptionScreen.OverviewSection: View {
                 )
                 .accessibilityIdentifier("LearnMore")
             }
+        } header: {
+            VStack(spacing: 15) {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(
+                            "Your performance"
+                        )
+                        .fontWeight(.semibold)
+                    }
+                    Spacer()
+                    Image("AURORA-Logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 50)
+                }
+                .padding([.top, .horizontal])
+                if let consumptionSummary = self.consumptionSummaries.first {
+                    HStack {
+                        ForEach(ConsumptionSummary.Mode.allCases, id: \.self) { mode in
+                            self.labeledConsumptionButton(
+                                mode: mode,
+                                consumption: consumptionSummary.labeledConsumption(for: mode)
+                            ) {
+                                self.sheet = .consumptionSummary(mode)
+                            }
+                        }
+                    }
+                }
+            }
+            .listRowInsets(.init())
+            .padding(.bottom)
         }
         .headerProminence(.increased)
     }

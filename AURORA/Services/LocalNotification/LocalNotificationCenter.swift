@@ -258,14 +258,7 @@ extension LocalNotificationCenter {
     func set(
         badgeCount: Int
     ) async throws {
-        if #available(iOS 16.0, *) {
-            try await self.notificationCenter
-                .setBadgeCount(badgeCount)
-        } else {
-            await MainActor.run {
-                self.application.applicationIconBadgeNumber = badgeCount
-            }
-        }
+        try await self.notificationCenter.setBadgeCount(badgeCount)
     }
     
     /// Reset badge count to zero.

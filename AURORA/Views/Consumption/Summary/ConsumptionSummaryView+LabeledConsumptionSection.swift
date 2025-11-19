@@ -93,6 +93,7 @@ extension ConsumptionSummaryView.LabeledConsumptionSection: View {
                         verbatim: "\(formattedLabeledConsumption)\n\(suffix)"
                     )
                     .fontWeight(.semibold)
+                    .contentTransition(.numericText())
                     Spacer()
                 }
             }

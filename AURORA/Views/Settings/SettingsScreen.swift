@@ -1,4 +1,4 @@
-import FirebaseAnalyticsSwift
+import FirebaseAnalytics
 import FirebaseAuth
 import SwiftUI
 
@@ -306,44 +306,20 @@ private extension SettingsScreen {
         Section(
             header: Text("Support")
         ) {
-            Link(
-                destination: .init(
-                    string: "https://www.aurora-h2020.eu/aurora/ourapp/"
-                )!
+            Button(
+                destination: AURORAWebsiteLink.app.url
             ) {
                 Label(
                     "About the App",
                     systemImage: "square.stack.3d.up.fill"
                 )
             }
-            Link(
-                destination: {
-                    let url = URL(string: "https://aurora-h2020.eu/app-support")!
-                    guard let userAccountId = try? self.firebase.authentication.state.userAccount.uid else {
-                        return url
-                    }
-                    guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
-                        return url
-                    }
-                    urlComponents.queryItems = [
-                        .init(
-                            name: "user_id",
-                            value: userAccountId
-                        ),
-                        (
-                            try? self.firebase.country?.get()
-                        )?
-                        .id
-                        .flatMap { countryId in
-                            .init(
-                                name: "country_id",
-                                value: countryId
-                            )
-                        }
-                    ]
-                    .compactMap { $0 }
-                    return urlComponents.url ?? url
-                }()
+            Button(
+                destination: AURORAWebsiteLink.appSupport(
+                    userAccountID: try? self.firebase.authentication.state.userAccount.uid,
+                    countryID: try? self.firebase.country?.get()?.id
+                )
+                .url
             ) {
                 Label(
                     "Contact Support",
@@ -370,36 +346,30 @@ private extension SettingsScreen {
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 60)
                 Text(
-                    "[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)."
+                    "[This project](\(AURORAWebsiteLink.home.absoluteString)) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)."
                 )
             }
             .padding(.vertical, 15)
             .listRowInsets(.init())
         ) {
-            Link(
-                destination: .init(
-                    string: "https://www.aurora-h2020.eu/aurora/app-imprint/"
-                )!
+            Button(
+                destination: AURORAWebsiteLink.appImprint.url
             ) {
                 Label(
                     "Imprint",
                     systemImage: "info.circle.fill"
                 )
             }
-            Link(
-                destination: .init(
-                    string: "https://www.aurora-h2020.eu/aurora/app-privacy-policy/"
-                )!
+            Button(
+                destination: AURORAWebsiteLink.appPrivacyPolicy.url
             ) {
                 Label(
                     "Privacy policy",
                     systemImage: "lock.fill"
                 )
             }
-            Link(
-                destination: .init(
-                    string: "https://www.aurora-h2020.eu/aurora/app-tos/"
-                )!
+            Button(
+                destination: AURORAWebsiteLink.appTermsOfServices.url
             ) {
                 Label(
                     "Terms of Service",

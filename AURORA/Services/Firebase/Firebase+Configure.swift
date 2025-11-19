@@ -1,6 +1,7 @@
 import Firebase
 import FirebaseAnalytics
 import FirebaseAppCheck
+import FirebaseAuth
 import FirebaseCrashlytics
 import FirebasePerformance
 import Foundation
@@ -121,9 +122,6 @@ private extension Firebase {
             with app: FirebaseCore.FirebaseApp
         ) -> FirebaseAppCheck.AppCheckProvider? {
             if self.isDebug {
-                if let debugToken = UserDefaults.standard.string(forKey: "FIRAAppCheckDebugToken") {
-                    print("[FirebaseAppCheck] Debug-Token: \(debugToken)")
-                }
                 return FirebaseAppCheck.AppCheckDebugProvider(app: app)
             } else {
                 return FirebaseAppCheck.AppAttestProvider(app: app)

@@ -1,8 +1,17 @@
 /* No comment provided by engineer. */
-"[This project](https://www.aurora-h2020.eu/) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Ta projekt](https://www.aurora-h2020.eu/) financira program Evropske unije za raziskave in inovacije Obzorje 2020 v okviru sporazuma o dodelitvi sredstev št. [101036418](https://cordis.europa.eu/project/id/101036418).";
+"—" = "—";
+
+/* No comment provided by engineer. */
+"[This project](%@) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)." = "[Ta projekt](%@) financira program Evropske unije za raziskave in inovacije Obzorje 2020 v okviru sporazuma o dodelitvi sredstev št. [101036418](https://cordis.europa.eu/project/id/101036418).";
 
 /* No comment provided by engineer. */
 "%@ in %@" = "%@ v %@";
+
+/* No comment provided by engineer. */
+"•" = "•";
+
+/* No comment provided by engineer. */
+"1 Share = %@ (%@)" = "1 delež = %@ (%@)";
 
 /* No comment provided by engineer. */
 "About the App" = "O aplikaciji";
@@ -26,10 +35,19 @@
 "Add a consumption" = "Dodajte porabo";
 
 /* No comment provided by engineer. */
+"Add a note to your investment for personal reference." = "Dodaj opombo k svoji naložbi za osebno evidenco.";
+
+/* No comment provided by engineer. */
 "Add consumption" = "Dodajte porabo";
 
 /* No comment provided by engineer. */
 "Add Consumption" = "Dodajte porabo";
+
+/* No comment provided by engineer. */
+"Add investment" = "Dodaj naložbo";
+
+/* No comment provided by engineer. */
+"Add Investment" = "Dodaj naložbo";
 
 /* No comment provided by engineer. */
 "Add your electricity data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Dodajte svoje podatke o električni energiji v AURORA Energy Tracker in preverite svoj napredek pri doseganju skoraj ničelnih emisij!";
@@ -42,6 +60,9 @@
 
 /* No comment provided by engineer. */
 "Add your mobility data to the AURORA Energy Tracker and check your progress towards becoming a near-zero emission citizen!." = "Dodajte svoje podatke o mobilnosti v AURORA Energy Tracker in preverite svoj napredek, da postanete državljan s skoraj ničelnimi emisijami!";
+
+/* No comment provided by engineer. */
+"All Investments" = "Vse naložbe";
 
 /* No comment provided by engineer. */
 "Almost empty" = "Skoraj prazno";
@@ -89,6 +110,9 @@
 "An error occurred while trying to save your consumption. Please try again." = "Pri poskusu shranjevanja vaše porabe je prišlo do napake. Prosim, poskusite znova.";
 
 /* No comment provided by engineer. */
+"An error occurred while trying to save your investment. Please try again." = "Pri poskusu shranjevanja vaše naložbe je prišlo do napake. Poskusite znova.";
+
+/* No comment provided by engineer. */
 "An error occurred while trying to save your recurring consumption." = "Pri poskusu shranjevanja ponavljajoče porabe je prišlo do napake.";
 
 /* No comment provided by engineer. */
@@ -108,6 +132,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the entry?\nPlease note that it can take up to a minute for your summary to update." = "Ste prepričani, da želite izbrisati vnos? Upoštevajte, da lahko posodobitev povzetka traja do ene minute.";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this recommendation?" = "Ste prepričani, da želite izbrisati to priporočilo?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete your account?" = "Ste prepričani, da želite izbrisati svoj račun?";
@@ -156,6 +183,9 @@
 
 /* No comment provided by engineer. */
 "Cancel" = "Preklic";
+
+/* No comment provided by engineer. */
+"Capacity" = "Zmogljivost";
 
 /* No comment provided by engineer. */
 "Carbon emissions" = "Emisije ogljika";
@@ -242,6 +272,9 @@
 "Data privacy" = "Varstvo podatkov";
 
 /* No comment provided by engineer. */
+"Date" = "Datum";
+
+/* No comment provided by engineer. */
 "Day" = "Dan";
 
 /* No comment provided by engineer. */
@@ -260,7 +293,13 @@
 "Delete Forever" = "Trajno izbriši";
 
 /* No comment provided by engineer. */
+"Delete Investment" = "Izbriši naložbo";
+
+/* No comment provided by engineer. */
 "Delete my account" = "Izbriši moj račun";
+
+/* No comment provided by engineer. */
+"Delete Recommendation" = "Izbriši priporočilo";
 
 /* No comment provided by engineer. */
 "Description" = "Opis";
@@ -308,6 +347,9 @@
 "Edit Consumption" = "Urejanje porabe";
 
 /* No comment provided by engineer. */
+"Edit Investment" = "Urejanje naložb";
+
+/* No comment provided by engineer. */
 "Edit profile" = "Urejanje profila";
 
 /* No comment provided by engineer. */
@@ -333,6 +375,9 @@
 
 /* No comment provided by engineer. */
 "Electricity" = "Električna energija";
+
+/* No comment provided by engineer. */
+"Electricity (PV)" = "Električna energija (PV)";
 
 /* No comment provided by engineer. */
 "Electricity bill reminder" = "Opomin na račun za elektriko";
@@ -380,10 +425,16 @@
 "Enter your information to create your personal AURORA profile." = "Vnesi svoje podatke in ustvarite osebni profil AURORA.";
 
 /* No comment provided by engineer. */
+"Entering your investment data is exclussively for recording purposes. This does not formulate an actual investment or binding order in any form." = "Vnos podatkov o naložbah je namenjen izključno evidentiranju. S tem se ne oblikuje dejanska naložba ali zavezujoče naročilo v kakršni koli obliki.";
+
+/* No comment provided by engineer. */
 "Entries" = "Vnosi";
 
 /* No comment provided by engineer. */
 "Error" = "Napaka";
+
+/* No comment provided by engineer. */
+"Estimate Savings" = "Ocena prihrankov";
 
 /* No comment provided by engineer. */
 "Explorer" = "Enostavno dosegljivo";
@@ -488,6 +539,12 @@
 "How many people, including you, live in your household." = "Koliko oseb, vključno s tabo, živi v tvojem gospodinjstvu.";
 
 /* No comment provided by engineer. */
+"How much of the solar panel installation's capacity your investment corresponds to.\nYou should find this information in the documents you received when you made your investment." = "Kolikšen del zmogljivosti sončne elektrarne predstavlja tvoja naložba. To informacijo najdeš v dokumentih, ki si jih prejel ob naložbi.";
+
+/* No comment provided by engineer. */
+"How to invest?" = "Kako investirati?";
+
+/* No comment provided by engineer. */
 "Hybrid car" = "Hibridni avtomobil";
 
 /* No comment provided by engineer. */
@@ -497,13 +554,28 @@
 "I would like to receive updates about the app and AURORA project by email." = "Obvestila o posodobitvah aplikacije in o projektu AURORA želim prejemati po e-pošti.";
 
 /* No comment provided by engineer. */
+"If you have made additional investments at a later date, please add a new investment instead. Editing your existing investments may result in inaccurate tracking. " = "Če si naknadno izvedel dodatne naložbe dodaj novo naložbo. Urejanje obstoječih naložb lahko povzroči netočno sledenje.";
+
+/* No comment provided by engineer. */
 "Important" = "Pomembno";
+
+/* No comment provided by engineer. */
+"Important!" = "Pomembno!";
 
 /* No comment provided by engineer. */
 "Imprint" = "Odtis";
 
 /* No comment provided by engineer. */
+"In the past 30 days" = "V zadnjih 30 dneh";
+
+/* No comment provided by engineer. */
+"Installation Site" = "Mesto namestitve";
+
+/* No comment provided by engineer. */
 "Investment" = "Naložba";
+
+/* No comment provided by engineer. */
+"Investment Date" = "Datum naložbe";
 
 /* No comment provided by engineer. */
 "It seems you're offline. Your data will automatically sync as soon as you reconnect to the internet." = "Zdi se, da si brez povezave. Tvoji podatki se bodo samodejno sinhronizirali takoj, ko boš ponovno vzpostavil povezavo z internetom.";
@@ -543,6 +615,15 @@
 
 /* No comment provided by engineer. */
 "Male" = "Moški";
+
+/* No comment provided by engineer. */
+"Manage Investment" = "Upravljanje naložb";
+
+/* No comment provided by engineer. */
+"Mark read" = "Označi kot prebrano";
+
+/* No comment provided by engineer. */
+"Mark unread" = "Označi kot neprebrano";
 
 /* No comment provided by engineer. */
 "Medium occupancy" = "Srednja zasedenost";
@@ -590,7 +671,13 @@
 "No consumption entered yet (?)" = "Poraba še ni vnesena (?)";
 
 /* No comment provided by engineer. */
+"No recommendations yet." = "Priporočil še ni.";
+
+/* No comment provided by engineer. */
 "Non Binary" = "Nebinarno";
+
+/* No comment provided by engineer. */
+"Note" = "Opomba";
 
 /* No comment provided by engineer. */
 "Notifications" = "Obvestila";
@@ -644,6 +731,12 @@
 "People in household: %lld" = "Število oseb v gospodinjstvu: %lld";
 
 /* No comment provided by engineer. */
+"Photovoltaic" = "Fotovoltaika";
+
+/* No comment provided by engineer. */
+"Photovoltaic Plant Investment" = "Naložbe v fotonapetostne elektrarne";
+
+/* No comment provided by engineer. */
 "Plane (domestic)" = "Letalo (domače)";
 
 /* No comment provided by engineer. */
@@ -683,13 +776,34 @@
 "produced" = "izpustov";
 
 /* No comment provided by engineer. */
+"Production" = "Proizvodnja";
+
+/* No comment provided by engineer. */
 "Profile" = "Profil";
+
+/* No comment provided by engineer. */
+"PV Investment" = "Naložba v fotovoltaiko";
 
 /* No comment provided by engineer. */
 "Quit" = "Izhod";
 
 /* No comment provided by engineer. */
+"Read" = "Prebrano";
+
+/* No comment provided by engineer. */
 "Recent login required" = "Potrebna je nedavna prijava";
+
+/* No comment provided by engineer. */
+"Recommendation" = "Priporočilo";
+
+/* No comment provided by engineer. */
+"Recommendations" = "Priporočila";
+
+/* No comment provided by engineer. */
+"Recommendations are updated regularly as you enter more data." = "Priporočila se redno posodabljajo na podlagi vnešenih podatkov.";
+
+/* No comment provided by engineer. */
+"Record your Investment" = "Evidentiraj svojo naložbo";
 
 /* No comment provided by engineer. */
 "Recurring consumptions" = "Ponavljajoča poraba";
@@ -737,6 +851,9 @@
 "Save changes" = "Shrani spremembe";
 
 /* No comment provided by engineer. */
+"See full data" = "Oglejte si celotne podatke";
+
+/* No comment provided by engineer. */
 "Select" = "Izberi";
 
 /* No comment provided by engineer. */
@@ -758,7 +875,22 @@
 "Settings" = "Nastavitve";
 
 /* No comment provided by engineer. */
+"Share" = "Delež";
+
+/* No comment provided by engineer. */
+"Shares" = "Delnice";
+
+/* No comment provided by engineer. */
 "Show all entries" = "Prikaži vse vnose";
+
+/* No comment provided by engineer. */
+"Since %@" = "Od %@";
+
+/* No comment provided by engineer. */
+"Since Investment" = "Od naložbe";
+
+/* No comment provided by engineer. */
+"Solar Panel Information" = "Informacije o fotovoltaičnih panelih";
 
 /* No comment provided by engineer. */
 "Solar Power" = "Sončna energija";
@@ -773,6 +905,9 @@
 "Start of travel" = "Začetek potovanja";
 
 /* No comment provided by engineer. */
+"Status" = "Status";
+
+/* No comment provided by engineer. */
 "Submit" = "Pošlji";
 
 /* No comment provided by engineer. */
@@ -785,13 +920,22 @@
 "Terms of Service" = "Pogoji uporabe storitev";
 
 /* No comment provided by engineer. */
+"The day you made the investment on." = "Dan, ko ste izvedli naložbo.";
+
+/* No comment provided by engineer. */
 "The next notification will be sent on %@" = "Naslednje obvestilo bo poslano %@";
 
 /* No comment provided by engineer. */
-"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos) and [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy)." = "Ta aplikacija je bila razvita v okviru projekta AURORA, ki ga financira EU v okviru programa Obzorje 2020 (št. projekta [101036418](https://cordis.europa.eu/project/id/101036418)). Vaši podatki se obdelujejo s strani članov konzorcija projekta in varno shranjujejo v sistemu Google Firebase. Vaši podatki bodo uporabljeni izključno za raziskovalne namene v anonimizirani obliki in nikoli komercialno, brez vašega izrecnega soglasja. Svoje podatke lahko kadar koli spremenite, prenesete ali izbrišete ter se obrnete na našo podporo na naslovu [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). Z nadaljevanjem se strinjate s  [Pogoji uporabe](https://www.aurora-h2020.eu/sl/aurora/app-tos) in [Pravilnikom o zasebnosti](https://www.aurora-h2020.eu/sl/aurora/app-privacy-policy) AURORA.";
+"This app was developed by the AURORA Horizon 2020 EU-funded project (No. [101036418](https://cordis.europa.eu/project/id/101036418)). Your data is processed by members of the project consortium and securely stored in Google Firebase. Your data will only be used for research purposes in an anonymised format and never commercially without your explicit consent. You can modify, download or delete your data at any time or reach out to our support under [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). By proceeding you agree to the AURORA’s [Terms of Service](%@) and [Privacy Policy](%@)." = "Ta aplikacija je bila razvita v okviru projekta AURORA, ki ga financira EU v okviru programa Obzorje 2020 (št. projekta [101036418](https://cordis.europa.eu/project/id/101036418)). Vaši podatki se obdelujejo s strani članov konzorcija projekta in varno shranjujejo v sistemu Google Firebase. Vaši podatki bodo uporabljeni izključno za raziskovalne namene v anonimizirani obliki in nikoli komercialno, brez vašega izrecnega soglasja. Svoje podatke lahko kadar koli spremenite, prenesete ali izbrišete ter se obrnete na našo podporo na naslovu [app-support@aurora-h2020.eu](mailto:app-support@aurora-h2020.eu). Z nadaljevanjem se strinjate s  [Pogoji uporabe](%@) in [Pravilnikom o zasebnosti](%@) AURORA.";
 
 /* No comment provided by engineer. */
 "This entry was automatically added via recurring consumptions." = "Ta vnos je bil avtomatsko dodan kot ponavljajoča poraba.";
+
+/* No comment provided by engineer. */
+"This entry was created by your PV investment. It will update automatically with the latest data." = "Ta vnos je bil ustvarjen s tvojo naložbo v PV. Samodejno se posodablja z najnovejšimi podatki.";
+
+/* No comment provided by engineer. */
+"This feature is currently not supported in your region." = "Ta funkcija trenutno ni podprta v tvoji regiji.";
 
 /* No comment provided by engineer. */
 "This information helps us to more accurately calculate your carbon footprint. Please note that you can't change your country later.\nCrowdfunding of local photovoltaic installations is currently only planned for select cities of AURORA project partners." = "Te informacije nam pomagajo natančneje izračunati tvoj ogljični odtis. Upoštevaj, da svoje države pozneje ne moreš spremeniti. Množično financiranje lokalnih sončnih elektrarn je trenutno načrtovano le za izbrana mesta partnerjev projekta AURORA.";
@@ -804,6 +948,12 @@
 
 /* No comment provided by engineer. */
 "Time" = "Čas";
+
+/* No comment provided by engineer. */
+"To help you improve your energy behaviour, AURORA provides you with personalised recommendations based on your energy usage data." = "Da bi vam pomagala izboljšati vaše ravnanje z energijo, vam AURORA na podlagi vaših podatkov o porabi energije pošilja prilagojena priporočila.";
+
+/* No comment provided by engineer. */
+"Total Production" = "Celotna proizvodnja";
 
 /* No comment provided by engineer. */
 "Trains & Trams" = "Vlaki in tramvaji";
@@ -828,6 +978,9 @@
 
 /* No comment provided by engineer. */
 "Unknown" = "Neznano";
+
+/* No comment provided by engineer. */
+"Unread" = "Neprebrano";
 
 /* No comment provided by engineer. */
 "Unsaved changes" = "Neshranjene spremembe";
@@ -866,7 +1019,7 @@
 "We can remind you to regularly enter your transportation data. Just let us know how frequently you travel." = "Lahko vas opomnimo, da redno vnašate podatke o prevozu. Sporočite nam, kako pogosto potujete.";
 
 /* No comment provided by engineer. */
-"We have updated our [Privacy Policy](https://www.aurora-h2020.eu/aurora/app-privacy-policy) and [Terms of Service](https://www.aurora-h2020.eu/aurora/app-tos). Please review and accept the latest version to continue using the app." = "Posodobili smo [Pravilnik o zasebnosti](https://www.aurora-h2020.eu/sl/aurora/app-privacy-policy) in [Pogoje uporabe storitev](https://www.aurora-h2020.eu/sl/aurora/app-tos). Če želite nadaljevati z uporabo aplikacije, preglejte in sprejmite najnovejšo različico.";
+"We have updated our [Privacy Policy](%@) and [Terms of Service](%@). Please review and accept the latest version to continue using the app." = "Posodobili smo [Pravilnik o zasebnosti](%@) in [Pogoje uporabe storitev](%@). Za nadaljnjo uporabo aplikacije preglej in sprejmi najnovejšo različico.";
 
 /* No comment provided by engineer. */
 "Wednesday" = "Sreda";
@@ -938,13 +1091,28 @@
 "Your investment" = "Vaša naložba";
 
 /* No comment provided by engineer. */
+"Your investment in your local AURORA solar power installations helps reduce your\ncarbon footprint. Here you can see a breakdown of the total energy produced by the\ninstallation (Total Production) and your investment's contribution (Your Production). Your\ncontribution is automatically added as an offset to your profile each Friday morning to help\nyou reach near-zero emissions." = "Tvoja naložba v lokalno sončno elektrarno AURORA pomaga zmanjšati tvoj ogljični odtis. Tukaj si lahko ogledaš razčlenitev celotne energije, ki jo proizvede elektrarna (skupna proizvodnja), in prispevek tvoje naložbe (tvoja proizvodnja). Tvoj prispevek se vsak petek zjutraj samodejno doda kot kompenzacija v tvoj profil in ti pomaga doseči skoraj ničelne emisije.";
+
+/* No comment provided by engineer. */
+"Your Investments" = "Tvoje naložbe";
+
+/* No comment provided by engineer. */
+"Your Latest Investment" = "Tvoja najnovejša naložba";
+
+/* No comment provided by engineer. */
 "Your Password has successfully been changed." = "Geslo je bilo uspešno spremenjeno.";
 
 /* No comment provided by engineer. */
 "Your performance" = "Vaša uspešnost";
 
 /* No comment provided by engineer. */
+"Your Production" = "Tvoja proizvodnja";
+
+/* No comment provided by engineer. */
 "Your profile changes couldn't be saved. Please check your inputs and try again." = "Sprememb profila ni bilo mogoče shraniti. Prosim, preverite vaše vnose in poskusite znova.";
+
+/* No comment provided by engineer. */
+"Your recommendations" = "Vaša priporočila";
 
 /* No comment provided by engineer. */
 "Your Solar Power" = "Vaša sončna energija";

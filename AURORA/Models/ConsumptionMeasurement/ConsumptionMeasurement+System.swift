@@ -23,14 +23,7 @@ extension ConsumptionMeasurement.System {
     init(
         locale: Locale = .current
     ) {
-        let usesMetricSystem: Bool = {
-            if #available(iOS 16, *) {
-                return locale.measurementSystem == .metric
-            } else {
-                return locale.usesMetricSystem
-            }
-        }()
-        self = usesMetricSystem ? .metric : .imperial
+        self = locale.measurementSystem == .metric ? .metric : .imperial
     }
     
 }

@@ -1,4 +1,4 @@
-import FirebaseRemoteConfigSwift
+import FirebaseRemoteConfig
 import SwiftUI
 
 // MARK: - ContentView
@@ -116,15 +116,17 @@ private extension ContentView {
                         )
                         .accessibilityIdentifier("HomeTab")
                     }
-                    PhotovoltaicScreen(
-                        firebase: self.firebase
-                    )
-                    .tabItem {
-                        Label(
-                            "Solar Power",
-                            systemImage: "sun.max"
+                    if self.firebase.city == nil || (try? self.firebase.city?.get())?.hasPhotovoltaics == true {
+                        PhotovoltaicScreen(
+                            user: user
                         )
-                        .accessibilityIdentifier("SolarPowerTab")
+                        .tabItem {
+                            Label(
+                                "Solar Power",
+                                systemImage: "sun.max"
+                            )
+                            .accessibilityIdentifier("SolarPowerTab")
+                        }
                     }
                     SettingsScreen()
                         .tabItem {

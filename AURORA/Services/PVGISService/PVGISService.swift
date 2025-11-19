@@ -176,7 +176,7 @@ private extension URL {
             ),
             .init(
                 name: "raddatabase",
-                value: "PVGIS-SARAH"
+                value: "PVGIS-SARAH2"
             ),
             .init(
                 name: "aspect",

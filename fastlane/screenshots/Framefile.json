@@ -4,7 +4,14 @@
       "fonts": [
         {
           "font": "./fonts/Montserrat-Medium.ttf",
-          "supported": ["en-UK", "de-DE", "da-DK", "es-ES", "sl-SL", "pt-PT"]
+          "supported": [
+            "en-US",
+            "de-DE",
+            "da-DK",
+            "es-ES",
+            "sl-SL",
+            "pt-PT"
+          ]
         }
       ],
       "color": "#ffffff"
@@ -13,7 +20,6 @@
     "show_complete_frame": false,
     "title_min_height": "40%"
   },
-
   "data": [
     {
       "filter": "0_Dashboard",
@@ -49,14 +55,14 @@
       "background": "./background-4.jpg"
     },
     {
-      "filter": "iPad Pro (12.9-inch) (2nd generation)",
-      "force_device_type": "iPad Pro",
+      "filter": "iPad Pro (12.9-inch) (6th generation)",
+      "force_device_type": "iPad Pro (12.9-inch) (4th generation)",
       "title_min_height": "20%",
       "padding": 50
     },
     {
-      "filter": "iPad Pro (12.9-inch) (6th generation)",
-      "force_device_type": "iPad Pro (12.9-inch) (4th generation)",
+      "filter": "iPad Pro (11-inch) (4th generation)",
+      "force_device_type": "iPad Pro (11-inch)",
       "title_min_height": "20%",
       "padding": 50
     }
