@@ -118,17 +118,8 @@ platform :ios do
       existing = sh("xcrun simctl list devices available | grep -c '#{device_name}' || true").strip.to_i
       if existing == 0
         UI.message("Creating simulator: #{device_name}")
-        # Map device names to device type identifiers
-        device_type = case device_name
-        when "iPhone 13 Pro Max"
-          "com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro-Max"
-        when "iPhone SE (3rd generation)"
-          "com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation"
-        when "iPad Pro (12.9-inch) (6th generation)"
-          "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-12-9-inch-6th-generation"
-        when "iPad Pro (11-inch) (4th generation)"
-          "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-4th-generation"
-        end
+        # Get the device type identifier
+        device_type = sh("xcrun simctl list devicetypes | grep '#{device_name}' | head -1 | awk -F '[()]' '{print $(NF-1)}'").strip
         # Get the latest iOS runtime
         runtime = sh("xcrun simctl list runtimes available | grep 'iOS' | tail -1 | awk '{print $NF}'").strip
         # Create the simulator
