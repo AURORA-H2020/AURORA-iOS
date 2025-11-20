@@ -22,11 +22,6 @@ extension PhotovoltaicScreen: View {
     var body: some View {
         NavigationView {
             Group {
-                let unavailablePhotovoltaicPlantView = EmptyPlaceholder(
-                    systemImage: "sun.min",
-                    title: "Photovoltaic",
-                    subtitle: "This feature is currently not supported in your region."
-                )
                 switch self.firebase.photovoltaicPlant {
                 case .success(let photovoltaicPlant):
                     if let photovoltaicPlant,
@@ -39,10 +34,10 @@ extension PhotovoltaicScreen: View {
                             userEntityReference: userEntityReference
                         )
                     } else {
-                        unavailablePhotovoltaicPlantView
+                        self.unavailablePhotovoltaicPlantView
                     }
                 case .failure:
-                    unavailablePhotovoltaicPlantView
+                    self.unavailablePhotovoltaicPlantView
                 case nil:
                     ProgressView()
                 }
@@ -59,6 +54,21 @@ extension PhotovoltaicScreen: View {
             }
         }
         .navigationViewStyle(.stack)
+    }
+    
+}
+
+// MARK: - Unavailable Photovoltaic Plant View
+
+private extension PhotovoltaicScreen {
+    
+    /// The unavailable photovoltaic plant view.
+    var unavailablePhotovoltaicPlantView: some View {
+        EmptyPlaceholder(
+            systemImage: "sun.min",
+            title: "Photovoltaic",
+            subtitle: "This feature is currently not supported in your region."
+        )
     }
     
 }
