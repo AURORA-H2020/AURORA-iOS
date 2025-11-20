@@ -272,17 +272,21 @@ extension Firebase {
                                     .whereField("city", isEqualTo: cityId)
                                     .limit(to: 1)
                             }
-                            .compactMap(\.first)
-                            .sink { [weak self] photovoltaicPlant in
-                                // Update photovoltaic plant
-                                self?.photovoltaicPlant = {
-                                    switch photovoltaicPlant {
+                            .map { results in
+                                if let result = results.first {
+                                    switch result {
                                     case .success(let photovoltaicPlant):
                                         return .success(photovoltaicPlant)
                                     case .failure(let error):
                                         return .failure(error)
                                     }
-                                }()
+                                } else {
+                                    return .success(nil)
+                                }
+                            }
+                            .sink { [weak self] photovoltaicPlant in
+                                // Update photovoltaic plant
+                                self?.photovoltaicPlant = photovoltaicPlant
                             }
                     }
             } else {
