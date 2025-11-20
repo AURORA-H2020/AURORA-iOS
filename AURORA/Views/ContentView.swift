@@ -116,7 +116,7 @@ private extension ContentView {
                         )
                         .accessibilityIdentifier("HomeTab")
                     }
-                    if self.firebase.city == nil || (try? self.firebase.city?.get())?.hasPhotovoltaics == true {
+                    if (try? self.firebase.city?.get())?.hasPhotovoltaics == true {
                         PhotovoltaicScreen(
                             user: user
                         )
