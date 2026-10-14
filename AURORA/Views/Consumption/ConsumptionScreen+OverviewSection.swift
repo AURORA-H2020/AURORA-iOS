@@ -115,7 +115,7 @@ extension ConsumptionScreen.OverviewSection: View {
                     Spacer()
                     Image("AURORA-Logo")
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
                         .frame(height: 50)
                 }
                 .padding([.top, .horizontal])

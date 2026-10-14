@@ -343,7 +343,7 @@ private extension SettingsScreen {
             footer: HStack(spacing: 10) {
                 Image("EU-Flag")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
                     .frame(height: 60)
                 Text(
                     "[This project](\(AURORAWebsiteLink.home.absoluteString)) has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. [101036418](https://cordis.europa.eu/project/id/101036418)."

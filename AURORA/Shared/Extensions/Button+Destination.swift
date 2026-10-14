@@ -6,17 +6,17 @@ extension Button {
     
     /// Creates a button that displays a custom label and opens the given URL.
     /// - Parameters:
-    ///   - application: The application. Default value `.shared`
+    ///   - application: The application. Default value `nil`, which resolves to `.shared`
     ///   - destination: The destination url.
     ///   - label: The label
     init(
-        application: UIApplication = .shared,
+        application: UIApplication? = nil,
         destination: @autoclosure @escaping () -> URL,
         @ViewBuilder
         label: () -> Label
     ) {
         self.init {
-            application.open(destination())
+            (application ?? .shared).open(destination())
         } label: {
             label()
         }
