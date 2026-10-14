@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D1EE5E1298AA919009E4645 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E0298AA919009E4645 /* FirebaseAnalytics */; };
+		3D1EE5E1298AA919009E4645 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E0298AA919009E4645 /* FirebaseAnalyticsCore */; };
 		3D1EE5E5298AA919009E4645 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E4298AA919009E4645 /* FirebaseAppCheck */; };
 		3D1EE5E7298AA919009E4645 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E6298AA919009E4645 /* FirebaseAuth */; };
 		3D1EE5E9298AA919009E4645 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E8298AA919009E4645 /* FirebaseCrashlytics */; };
@@ -65,7 +65,7 @@
 				3D1EE5F3298AA919009E4645 /* FirebasePerformance in Frameworks */,
 				3D1EE5E9298AA919009E4645 /* FirebaseCrashlytics in Frameworks */,
 				3D1EE5F1298AA919009E4645 /* FirebaseFunctions in Frameworks */,
-				3D1EE5E1298AA919009E4645 /* FirebaseAnalytics in Frameworks */,
+				3D1EE5E1298AA919009E4645 /* FirebaseAnalyticsCore in Frameworks */,
 				3D1EE5E7298AA919009E4645 /* FirebaseAuth in Frameworks */,
 				3D1EE5EB298AA919009E4645 /* FirebaseFirestore in Frameworks */,
 				3D1EE5F6298AA965009E4645 /* GoogleSignInSwift in Frameworks */,
@@ -143,7 +143,7 @@
 			);
 			name = AURORA;
 			packageProductDependencies = (
-				3D1EE5E0298AA919009E4645 /* FirebaseAnalytics */,
+				3D1EE5E0298AA919009E4645 /* FirebaseAnalyticsCore */,
 				3D1EE5E4298AA919009E4645 /* FirebaseAppCheck */,
 				3D1EE5E6298AA919009E4645 /* FirebaseAuth */,
 				3D1EE5E8298AA919009E4645 /* FirebaseCrashlytics */,
@@ -544,10 +544,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3D1EE5E0298AA919009E4645 /* FirebaseAnalytics */ = {
+		3D1EE5E0298AA919009E4645 /* FirebaseAnalyticsCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3D1EE5DF298AA919009E4645 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
+			productName = FirebaseAnalyticsCore;
 		};
 		3D1EE5E4298AA919009E4645 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;
