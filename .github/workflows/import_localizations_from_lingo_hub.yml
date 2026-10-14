@@ -10,7 +10,7 @@ concurrency:
 jobs:
   upload:
     name: Import Localizations from LingoHub
-    runs-on: macos-26
+    runs-on: xcode-27
     steps:
       - uses: actions/checkout@v3
       - name: Install LingoHub CLI
@@ -27,7 +27,7 @@ jobs:
           for file in ./.lingohub/*.xliff
           do
             echo "Importing localizations from $file"
-            set -o pipefail && xcodebuild -importLocalizations -localizationPath "$file" -project AURORA.xcodeproj | xcpretty
+            set -o pipefail && xcodebuild -importLocalizations -localizationPath "$file" -project AURORA.xcodeproj | xcbeautify
           done
           rm -rf "./lingohub"
       - name: Push changes

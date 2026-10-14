@@ -91,7 +91,7 @@ extension AuthenticationScreen: View {
                     "Login-Background"
                 )
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                .scaledToFill()
                 .frame(
                     height: geometry.frame(in: .local).size.height / 1.6
                 )
@@ -119,7 +119,7 @@ extension AuthenticationScreen: View {
                             "AURORA-Logo"
                         )
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
                         .frame(width: 120, height: 120)
                     }
                     VStack {

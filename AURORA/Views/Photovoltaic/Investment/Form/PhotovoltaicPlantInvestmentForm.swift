@@ -99,7 +99,7 @@ private extension PhotovoltaicPlantInvestmentForm {
                 switch self.mode {
                 case .create:
                     return nil
-                case .edit(let photovoltaicPlantInvestment, _):
+                case .edit:
                     return .init()
                 }
             }(),

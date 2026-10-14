@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D1EE5E1298AA919009E4645 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E0298AA919009E4645 /* FirebaseAnalytics */; };
+		3D1EE5E1298AA919009E4645 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E0298AA919009E4645 /* FirebaseAnalyticsCore */; };
 		3D1EE5E5298AA919009E4645 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E4298AA919009E4645 /* FirebaseAppCheck */; };
 		3D1EE5E7298AA919009E4645 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E6298AA919009E4645 /* FirebaseAuth */; };
 		3D1EE5E9298AA919009E4645 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1EE5E8298AA919009E4645 /* FirebaseCrashlytics */; };
@@ -65,7 +65,7 @@
 				3D1EE5F3298AA919009E4645 /* FirebasePerformance in Frameworks */,
 				3D1EE5E9298AA919009E4645 /* FirebaseCrashlytics in Frameworks */,
 				3D1EE5F1298AA919009E4645 /* FirebaseFunctions in Frameworks */,
-				3D1EE5E1298AA919009E4645 /* FirebaseAnalytics in Frameworks */,
+				3D1EE5E1298AA919009E4645 /* FirebaseAnalyticsCore in Frameworks */,
 				3D1EE5E7298AA919009E4645 /* FirebaseAuth in Frameworks */,
 				3D1EE5EB298AA919009E4645 /* FirebaseFirestore in Frameworks */,
 				3D1EE5F6298AA965009E4645 /* GoogleSignInSwift in Frameworks */,
@@ -143,7 +143,7 @@
 			);
 			name = AURORA;
 			packageProductDependencies = (
-				3D1EE5E0298AA919009E4645 /* FirebaseAnalytics */,
+				3D1EE5E0298AA919009E4645 /* FirebaseAnalyticsCore */,
 				3D1EE5E4298AA919009E4645 /* FirebaseAppCheck */,
 				3D1EE5E6298AA919009E4645 /* FirebaseAuth */,
 				3D1EE5E8298AA919009E4645 /* FirebaseCrashlytics */,
@@ -340,6 +340,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -402,6 +403,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -447,7 +449,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.inscico.aurora-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -480,7 +482,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.inscico.aurora-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -528,7 +530,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 11.6.0;
+				version = 12.19.2;
 			};
 		};
 		3D1EE5F4298AA965009E4645 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
@@ -536,16 +538,16 @@
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
 				kind = exactVersion;
-				version = 8.0.0;
+				version = 10.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3D1EE5E0298AA919009E4645 /* FirebaseAnalytics */ = {
+		3D1EE5E0298AA919009E4645 /* FirebaseAnalyticsCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3D1EE5DF298AA919009E4645 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
+			productName = FirebaseAnalyticsCore;
 		};
 		3D1EE5E4298AA919009E4645 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;
